@@ -1,0 +1,39 @@
+{% assign aspect_ratio = product.featured_image.aspect_ratio | default: 1 %}
+<div class="mobile__slider product-mb__media product-page-mobile__slider {% if aspect_ratio < 1 %}px-5{% endif %}">
+  {% if product.media.size <= 1 %}
+    <div class="flex justify-center items-center relative sf-prod-media-item" data-index="0">
+      {% render 'media', media: product.featured_media, render_by_image: true %}
+      <div class="zoom-in transition-all opacity-100 absolute z-10 right-5 bottom-2.5 cus_zoom_in">
+        {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+      </div>
+    </div>
+  {% else %}
+    <div class="{% if section.settings.product___slider == 'slick' %}custom___swiper___containner{% else %}swiper-container{% endif %} block relative">
+      <div class="{% if section.settings.product___slider == 'slick' %}custom___swiper___slider{% else %}swiper-wrapper{% endif %} mobile">
+        {% for media in product.media %}
+          <div data-index="{{ forloop.index0 }}" class="swiper-slide sf-prod-media-item" data-media-type="{{ media.media_type }}">
+            {% render 'media', media: media, aspect_ratio: product.featured_image.aspect_ratio %}
+            <div class="mobile_zoom_option zoom-in transition-all opacity-100 absolute z-10 right-5 bottom-2.5">
+              {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if section.settings.show_nav_media_mobile %}
+      {% render 'product-nav-media-mobile' %}
+    {% endif %}
+    {% if section.settings.show_pagination_mobile %}
+  	  <div class="flex custom_slider_bottom" style="align-items: center; justify-content: space-between;">
+        <div class="swiper-pagination"></div>
+        <div class="flex md:hidden custom__sku" style="font-size:10px; color: #888; font-family: Minionpro!important; align-items: center; margin-top: 10px; margin-right: 10px;">
+          <span class="prod__additional_infos-label" style="margin-right: 10px; min-width: auto;">{{ 'products.product.sku' | t }} | </span>
+          <div class="prod__additional_infos-value prod__sku">{{ product.selected_or_first_available_variant.sku | default: 'N/A' }}</div>
+        </div>
+  	  </div>
+    {% endif %}
+  {% endif %}
+  {% if section.settings.show_atwl %}
+    {% render 'tooltip', type: 'wishlist', class_name: 'sf__tooltip-top product-mb__atwl' %}
+  {% endif %}
+</div>

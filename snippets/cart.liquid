@@ -1,0 +1,99 @@
+{%- capture display_class -%}
+    {% if display_by == 'full-info' %}flex items-center{% else %}relative py-2{% endif %}
+{%- endcapture -%}
+{%- capture icon_class -%}
+    {% if request.path != '/cart' %}sf-cart-icon{% endif %}
+{%- endcapture -%}
+
+<a
+    href="{{ routes.cart_url }}"
+    class="{{ display_class | strip }} {{ icon_class | strip }} px-2 whitespace-nowrap cursor-pointer cart-icon"
+    style="{% if display_by == 'text' %} margin-right: 0; {% endif %}"
+>
+    {% if display_by == 'full-info' %}
+        <div
+            class="relative rounded-full border border-color-border px-3 flex items-center justify-center"
+            style="width: 48px; height: 48px;"
+        >
+            <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+                {% render 'icon', name: 'mob-cart', size: 'small' %}
+                <span class="sf__tooltip-content">{{ 'layout.cart.title' | t }}</span>
+            </span>
+            <sup class="sf-cart-count font-medium">{{ cart.item_count }}</sup>
+        </div>
+        <div class="ml-4">
+            <p class="font-medium">{{ 'cart.general.title' | t }}</p>
+            <p>{{ cart.total_price | money }}</p>
+        </div>
+
+        {% style %}
+            .sf-cart-count {
+                top: -0.25rem;
+                right: -0.375rem;
+            }
+        {% endstyle %}
+    {% elsif display_by == 'text' %}
+        {{ 'layout.cart.title' | t }}
+        <span class="sf-cart-count font-medium">{{ cart.item_count }}</span>
+    {% else %}
+        <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+            {% render 'icon', name: 'mob-cart', size: 'small' %}
+            <span class="sf__tooltip-content">{{ 'layout.cart.title' | t }}</span>
+        </span>
+        <span class="sf-cart-count font-medium cus_search_cont">{{ cart.item_count }}</span>
+    {% endif %}
+</a>
+
+
+
+{% comment %}
+MTS
+
+{%- capture display_class -%}
+    {% if display_by == 'full-info' %}flex items-center{% else %}relative py-2{% endif %}
+{%- endcapture -%}
+{%- capture icon_class -%}
+    {% if request.path != '/cart' %}sf-cart-icon{% endif %}
+{%- endcapture -%}
+
+<a
+    href="{{ routes.cart_url }}"
+    class="{{ display_class | strip }} {{ icon_class | strip }} px-2 whitespace-nowrap cursor-pointer cart-icon"
+    style="{% if display_by == 'text' %} margin-right: 0; {% endif %}"
+>
+    {% if display_by == 'full-info' %}
+        <div
+            class="relative rounded-full border border-color-border px-3 flex items-center justify-center"
+            style="width: 48px; height: 48px;"
+        >
+            <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+                {% render 'icon', name: 'cart', size: 'medium' %}
+                <span class="sf__tooltip-content">{{ 'layout.cart.title' | t }}</span>
+            </span>
+            <sup class="sf-cart-count font-medium">{{ cart.item_count }}</sup>
+        </div>
+        <div class="ml-4">
+            <p class="font-medium">{{ 'cart.general.title' | t }}</p>
+            <p>{{ cart.total_price | money }}</p>
+        </div>
+
+        {% style %}
+            .sf-cart-count {
+                top: -0.25rem;
+                right: -0.375rem;
+            }
+        {% endstyle %}
+    {% elsif display_by == 'text' %}
+        {{ 'layout.cart.title' | t }}
+        <span class="sf-cart-count font-medium">{{ cart.item_count }}</span>
+    {% else %}
+        <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+            {% render 'icon', name: 'cart', size: 'medium' %}
+            <span class="sf__tooltip-content">{{ 'layout.cart.title' | t }}</span>
+        </span>
+        <span class="sf-cart-count font-medium">{{ cart.item_count }}</span>
+    {% endif %}
+</a>
+
+
+{% endcomment %}

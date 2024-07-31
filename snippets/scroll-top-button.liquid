@@ -1,0 +1,28 @@
+{% if settings.show_scroll_top_button %}
+  {% style %}
+    #scroll-to-top-button {
+      border-radius: 50%;
+      padding: 0;
+      display: inline-flex;
+      width: 46px;
+      height: 46px;
+    }
+    @media (max-width: 767px) {
+      #scroll-to-top-button {
+        width: 40px;
+        height: 40px;
+      }
+      #scroll-to-top-button svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  {% endstyle %}
+<div id="scroll-to-top-target" class="w-0 h-0 invisible opacity-0"></div>
+<button
+  id="scroll-to-top-button"
+  class="sf__btn btn-scroll-top sf__btn-primary fixed z-50 bottom-[86px] items-center justify-center right-4 opacity-0 transition-opacity"
+>
+  {% render 'icon', name: 'arrow-up', size: 'medium' %}
+</button>
+{% endif %}

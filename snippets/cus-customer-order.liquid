@@ -1,0 +1,37 @@
+{% paginate customer.orders by 1 %}
+
+{% if customer.orders.size != 0 %}
+    <table class="responsive-table w-full">
+    <thead>
+        <tr class="flex border-b border-color-border py-5 text-left">
+        <th class="w-1/6 font-medium">{{ 'customer.orders.order_number' | t }}</th>
+        <th class="w-1/6 font-medium">{{ 'customer.orders.date' | t }}</th>
+        <th class="w-1/6 font-medium">{{ 'customer.orders.payment_status' | t }}</th>
+        <th class="w-1/6 font-medium">{{ 'customer.orders.fulfillment_status' | t }}</th>
+        <th class="w-1/6 font-medium">{{ 'customer.order.quantity' | t }}</th>
+        <th class="w-1/6 font-medium">{{ 'customer.orders.total' | t }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in customer.orders %}
+            <tr class="responsive-table-row flex border-b border-color-border py-5">
+            <td class="w-1/6" data-label="{{ 'customer.orders.order_number' | t }}">{{ order.name | link_to: order.customer_url }}</td>
+            <td class="w-1/6" data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | date: format: 'month_day_year' }}</td>
+            <td class="w-1/6" data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+            <td class="w-1/6" data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+            <th class="w-1/6" data-label="{{ 'customer.order.quantity' | t }}">{{ order.quantity }}</th>
+            <td class="w-1/5" data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% else %}
+    <div class="notification show success">
+        {% render 'icon', name: 'check', size: 'medium' %}
+        <a class="mx-2 font-semibold underline" href="{{ routes.collections_url }}">{{ 'customer.orders.make_your_first_order' | t }}</a>
+        <span>{{ 'customer.orders.none' | t }}</span>
+    </div>
+{% endif %}
+
+
+{% endpaginate %}

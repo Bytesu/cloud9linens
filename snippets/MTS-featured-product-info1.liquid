@@ -1,0 +1,227 @@
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+          
+<div class="sf-prod__info-wrapper" style="height:100%; margin-top: 0px;">
+  <div class="sf-prod__info" style="height:100%">
+    {%- form 'product', product, class: 'product-form form main-product h-full', novalidate: 'novalidate', data-product-id: product.id, data-product-handle: product.handle, id: product_form_id -%}
+      {% if section.blocks.size > 0 %}
+        <div class="main-product__blocks flex md:hidden" style="height:100%; flex-direction: column;">
+          <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+          {%- for block in section.blocks -%}
+            <div class="main-product__block main-product__block-{{ block.type }}" {{ block.shopify_attributes }}>
+              {%- case block.type -%}
+                {%- when '@app' -%}
+                  {% render block %}
+                {%- when 'badge' -%}
+                  {% assign has_tags = false %}
+                  {% for tag in product.tags %}
+                    {% if tag contains 'tag__' %}
+                      {% assign has_tags = true %}
+                    {% endif %}
+                  {% endfor %}
+                  {% if has_tags %}
+                    <div class="mb-4 prod__tags">
+                      {% render 'product-tags' %}
+                    </div>
+                  {% endif %}
+                {%- when 'title' -%}
+                  <div class="prod__title flex md:hidden justify-between items-center">
+                    
+                    {% comment %}
+                    MTS
+                    <h1 class="text-2xl md:text-3xl md:leading-[42px] pr-2">{{ product.title }}</h1>
+                    {% endcomment %}
+                    
+                    <h1 class="text-2xl md:leading-[42px] pr-2">{{ product.title }}</h1>
+                    {% if section.settings.show_atwl and section.settings.layout != 'layout-7'  %}
+                      <div class="hidden md:block">{% render 'tooltip', type: 'wishlist', class_name: 'sf__tooltip-top' %}</div>
+                    {% endif %}
+                  </div>
+                
+                {%- when 'short_description' -%}
+                  {% if product.metafields.descriptor.short_description != blank %}
+                    <div class="prod__description leading-6">{{ product.metafields.descriptor.short_description }}</div>
+                  {% endif %}
+                {%- when 'description' -%}
+                  <div class="hidden product__description prose">
+                    {{ product.description }}
+                  </div>
+                {%- when 'meta' -%}
+                  <ul class="hidden prod__additional_infos">
+                    <!-- TODO: change SKU by variant -->
+                    {% if block.settings.show_vendor and product.vendor != blank %}
+                      <li>
+                        <span class="prod__additional_infos-label">{{ 'products.product.vendor' | t }}:</span>
+                        <div class="prod__additional_infos-value prod__sku">{{ product.vendor }}</div>
+                      </li>
+                    {% endif %}
+                    {% if block.settings.show_sku %}
+                      <li>
+                        <span class="prod__additional_infos-label">{{ 'products.product.sku' | t }}:</span>
+                        <div class="prod__additional_infos-value prod__sku">{{ product.selected_or_first_available_variant.sku | default: 'N/A' }}</div>
+                      </li>
+                    {% endif %}
+                    {% if block.settings.show_collections and product.collections.size > 0 %}
+                      <li class="prod__categories">
+                        <div class="prod__additional_infos-label">{{ 'products.product.collections' | t }}:</div>
+                        <div class="prod__additional_infos-value">
+                          {% for collection in product.collections %}
+                            <a href="{{collection.url}}" class="hover:text-black">
+                              {{ collection.title }}{%- if forloop.last != true -%}, {%- endif -%}
+                            </a>
+                          {% endfor %}
+                        </div>
+                      </li>
+                    {% endif %}
+                  </ul>
+                {%- when 'variant_picker' -%}
+                  {%- unless product.has_only_default_variant -%}
+                    <div class="hidden product__variant-picker product-options">
+                      {% render 'product-option', product: product %}
+                    </div>
+                  {%- endunless -%}
+                {%- when 'buy_buttons' -%}
+                  <div class="cus-featured-product-form1 product-form__actions{% if block.settings.show_dynamic_checkout %} enable-dynamic-checkout{% endif %}">
+                    {% if block.settings.show_quantity_selector == true %}
+                    
+                    {% endif %}
+                    <div class="flex flex-wrap" style="flex-direction: column;">
+                      
+                      {% comment %}
+					 	Added by MTS
+                      {% endcomment %}
+                      
+                      <a
+                          href="#"
+                          type="submit"
+                          name="add"
+                          class="sf__btn flex flex-grow flex-shrink not-change relative cus-featured-wishlist"
+                          style="border: 0px solid #000; border-radius: 0px; padding: 0px;"
+                      >
+                          {% render 'wishlist-snippet', class_name: 'sf__tooltip-left', product: product %}
+                      </a>
+                      
+                      <span class="flex spr-summary-actions cus-prod-extra-btn" style="height:35px;">
+                        <a class="spr-summary-actions-newreview flex">
+                          <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-star-100.png?v=1652710491" alt="Wishlist" width="auto" height="18px"/>Write a review
+                        </a>
+                      </span>
+                      
+                      <div class="cus-prod-extra-btn" style="height:35px;">
+                        <a href="#open-share" class="flex items-center" data-open-share>
+                          <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-share-64.png?v=1652881231" alt="Share" width="auto" height="18px"/>
+                          <span class="">
+                            {{ 'products.product.social_share' | t }}
+                          </span>
+                        </a>
+                        <div class="sf-sharing hidden">
+                          <div class="sf-sharing__copy-link">
+                            <label for="" class="font-medium">{{ 'products.product.copy_link' | t }}</label>
+                            <input type="text" class="form-control" value="{{ shop.secure_url }}{{ product.url }}">
+                          </div>
+                          {% assign url = shop.url | append: product.url %}
+                          {% render 'social-sharing', url: url %}
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="prod__form-error"></div>
+                {%- when 'collapsible_tab' -%}
+                  {% if block.settings.heading != blank %}
+                    <div class="hidden prod__accordion">
+                      <div
+                              class="sf__accordion-item overflow-hidden{% if block.settings.default_open %} open{% endif %}"
+                              data-index="{{ forloop.index0 }}"
+                              style="--content-max-height: {% if block.settings.default_open %}100%{% else %}0px{% endif %};"
+                      >
+                        <div class="sf__accordion-button lg:text-[18px] pb-2.5 pr-4 border-b border-color-border">
+                          {{ block.settings.heading }}
+                        </div>
+                        <div class="sf__accordion-content">
+                          <div class="py-5 prose">
+                            {{ block.settings.content }}
+                            {{ block.settings.liquid }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                {%- when 'text' -%}
+                  {% if block.settings.text != blank %}
+                    {% assign text_style = block.settings.text_style %}
+                    {% assign text_class = '' %}
+                    {% case text_style %}
+                      {% when 'subtitle' %}
+                        {% assign text_class = 'text-color-subtext' %}
+                      {% when 'uppercase' %}
+                        {% assign text_class = 'text-color-subtext uppercase text-sm' %}
+                    {% endcase %}
+                    <div class="hidden bottom-block__text {{ text_class }}">
+                      {{ block.settings.text }}
+                    </div>
+                  {% endif %}
+                {%- when 'custom_text' -%}
+                  {% if block.settings.content != blank %}
+                    <div class="hidden bottom-block__text">
+                      <div class="prose">
+                        {{ block.settings.content }}
+                      </div>
+                    </div>
+                  {% endif %}
+                {%- when 'custom_liquid' -%}
+                  {% if block.settings.custom_liquid != blank %}
+                    <div class="hidden bottom-block__text">
+                      {{ block.settings.custom_liquid }}
+                    </div>
+                  {% endif %}
+                {%- when 'trust_badge' -%}
+                  {% if block.settings.trust_badges_image != blank %}
+                    {% assign position = block.settings.position %}
+                    <div class="hidden prod__trust-badges text-center prod__trust-badges--{{ position | default: 'below' }}">
+                      <div style="width: {{ block.settings.trust_badges_image_width }};">
+                        {% render 'responsive-image', image: block.settings.trust_badges_image %}
+                      </div>
+                      {% if block.settings.trust_badges_text != blank %}
+                        <h4 class="text-base">{{ block.settings.trust_badges_text }}</h4>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {%- when 'shipping' -%}
+                  <ul class="hidden">
+                    {% if block.settings.show_delivery_times %}
+                      <li class="prod__delivery-times flex items-center">
+                  <span class="bottom-block__icon">
+                    {% render 'icon', name: 'shipping-fast', size: 'medium' %}
+                  </span>
+                        {% assign range =  2 | times: 24 | times: 60 | times: 60 %}
+                        {% assign deliver_in =  block.settings.deliver_days | times: 24 | times: 60 | times: 60 %}
+                        {% assign now = 'now' | date: "%s" %}
+
+                        {% assign from = now | plus: deliver_in | minus: range | date: "%b %d" %}
+                        {% assign to = now | plus: deliver_in | plus: range | date: "%b %d" %}
+
+                        <div class="hidden ml-3">
+                          <p><strong>{{ block.settings.deliver_text | strip_html }}</strong><span class="ml-2">{{ from }} - {{ to }}</span></p>
+                        </div>
+                      </li>
+                    {% endif %}
+                    {% if block.settings.show_shipping_text and block.settings.shipping_text != blank %}
+                      <li class="hidden prod__shipping-text items-center mt-2">
+                        <span class="bottom-block__icon">
+                          {% render 'icon', name: 'box', size: 'custom', class: 'w-5 h-4' %}
+                        </span>
+                        <div class="ml-3 flex">
+                          {{ block.settings.shipping_text }}
+                        </div>
+                      </li>
+                    {% endif %}
+                  </ul>
+              {%- endcase -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {% endif %}
+    {%- endform -%}
+
+  </div>
+</div>

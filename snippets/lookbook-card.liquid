@@ -1,0 +1,71 @@
+{% assign btn_style = '' %}
+{% assign btn_wrap = '' %}
+{%- case block.settings.button_style -%}
+    {%- when 'dark' -%}
+        {%- assign btn_style = 'text-white bg-black' -%}
+        {%- assign btn_wrap = 'bg-gray-700' -%}
+    {%- else -%}
+        {%- assign btn_style = 'text-black bg-white' -%}
+        {%- assign btn_wrap = 'bg-gray-50' -%}
+{%- endcase -%}
+
+<div class="relative lookbook-image {{ class }} lg:mb-0" data-id={{ block.id }}>
+    <div class="relative h-full">
+        {% if block.settings.image != blank %}
+            {% render 'responsive-image', image: block.settings.image, aspect_ratio: image_aspect_ratio, wrapper_class: 'w-full h-full', image_class: 'w-full h-full' %}
+        {% else %}
+            {% capture current %}{% cycle  1, 2, 3, 4, 5, 6 %}{% endcapture %}
+            {{ 'product-' | append: current | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full' }}
+        {% endif %}
+
+        {% for i in (1..5) %}
+            {%- assign top__ = 'top_' | append: i -%}
+            {%- assign top = block.settings[top__] -%}
+            {%- assign left__ = 'left_' | append: i -%}
+            {%- assign left = block.settings[left__] -%}
+            {%- assign product__ = 'product_' | append: i -%}
+            {%- assign product = block.settings[product__] -%}
+
+            {% if product != blank %}
+                {%- assign prod = all_products[product] -%}
+                <div
+                  class="absolute group w-8 h-8 p-1 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-10 sf__hover-lookbook-icon "
+                  style="top: {{ top }}%; left: {{ left }}%;"
+                  data-id="{{ block.id }}-{{ i }}"
+                >
+                    <span class="flex">
+                        <span class="top-1.5 left-1.5 animate-ping absolute h-5 w-5 rounded-full opacity-75 {{ btn_wrap }}"></span>
+                        <span class="absolute p-1 rounded-full {{ btn_style }}">
+                            {% render 'icon', name: 'plus', size: 'small' %}
+                        </span>
+                    </span>
+                    {% assign top_pos = "top-1/2" %}
+                    {% if top > 50 %}
+                        {% assign top_pos = "bottom-1/2" %}
+                    {% endif %}
+                    {% assign left_pos = "left-1/2" %}
+                    {% if left > 50 %}
+                        {% assign left_pos = "right-1/2" %}
+                    {% endif %}
+                    <div
+                        class="lookbook-product absolute rounded px-3 py-2.5 {{ top_pos }} {{ left_pos }} w-36 md:w-48 bg-white transition-all opacity-0 invisible group-hover:opacity-100 group-hover:visible"
+                        data-id="{{ block.id }}-{{ i }}-content"
+                    >
+                        <a href="{{ prod.url }}" class="block h-full">
+                            {% render 'responsive-image', image: prod.featured_image, aspect_ratio: prod.featured_image.aspect_ratio, image_class: 'object-cover w-full h-full' %}
+                        </a>
+                        <a href="{{ prod.url }}" class="block mt-2 font-medium leading-5 text-black text-sm">{{ prod.title }}</a>
+                        <p class="mt-1 text-black text-xs">{{ prod.price | money }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% if block.settings.button_text != blank %}
+        <div class="mt-3 sm:mt-6">
+            <a href="{{ block.settings.button_link | default: "#" }}" class="font-medium text-xl">
+                {{ block.settings.button_text }}
+            </a>
+        </div>
+    {% endif %}
+</div>

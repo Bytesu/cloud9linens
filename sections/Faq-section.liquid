@@ -1,0 +1,62 @@
+<div class="main-faq m-faq-{{ section.id }}">
+    {% for block in section.blocks %}
+      <button class="accordion-faq">{{ block.settings.heading }} <span class="close_eye_svg"> <svg id="Layer_1" width="25px" data-name="Layer 1" viewBox="0 0 122.88 53.37"><title>closed-eye</title><path d="M1.05,7.37A4.49,4.49,0,1,1,7.93,1.61a114.61,114.61,0,0,0,14.88,15C35.48,27,48.63,32.25,61.67,32.24S87.79,27,100.37,16.49A112.38,112.38,0,0,0,114.94,1.64a4.48,4.48,0,0,1,6.92,5.69,129.09,129.09,0,0,1-10,10.85l5.91,5.42a4.47,4.47,0,1,1-6,6.6l-6.59-6a86.1,86.1,0,0,1-13.43,9.06l3.73,8A4.48,4.48,0,0,1,87.35,45l-3.74-8a61.24,61.24,0,0,1-17.56,4V48.9a4.48,4.48,0,0,1-8.95,0V41A61.75,61.75,0,0,1,39.58,37l-3.76,8a4.48,4.48,0,1,1-8.11-3.79l3.74-8A88.78,88.78,0,0,1,18,24.2l-6.55,6a4.47,4.47,0,1,1-6-6.6l5.83-5.34A130.63,130.63,0,0,1,1.05,7.37Z"/></svg> </span>
+      <span class="open_eye_svg"> <?xml version="1.0" standalone="no"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+   "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+  <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+   width="25px" viewBox="0 0 48.000000 48.000000"
+   preserveAspectRatio="xMidYMid meet">
+  
+  <g transform="translate(0.000000,48.000000) scale(0.100000,-0.100000)"
+  fill="#000000" stroke="none">
+  <path d="M156 374 c-75 -27 -134 -89 -151 -156 -10 -41 18 -36 33 5 25 70 119
+  136 192 137 87 0 185 -63 212 -136 15 -42 44 -48 33 -6 -31 126 -189 204 -319
+  156z"/>
+  <path d="M186 289 c-38 -30 -49 -64 -36 -105 14 -43 44 -64 90 -64 46 0 76 21
+  90 64 13 41 2 75 -36 105 -34 27 -74 27 -108 0z"/>
+  </g>
+  </svg>
+   </span></button>
+      <div class="panel-faq">
+        <p class="faq-para">{{ block.settings.faq_paragraph }}</p>
+      </div>
+    {% endfor %}
+  </div>
+  
+  {% schema %}
+    {
+      "name": "new faq",
+      "settings": [
+        
+      ],
+        "blocks": [
+       {
+         "name": "Slide",
+         "type": "slide",
+         "settings": [
+             {
+               "type": "text",
+               "id": "heading",
+               "label": "Heading",
+               "default": "Lorem ipsum"
+             },
+             {
+               "type": "richtext",
+               "id": "faq_paragraph",
+               "label": "Paragraph",
+               "default": "<p>lorem ipsum</p>"
+             }
+         ]
+       }
+    ],
+    
+      "presets": [
+        {
+          "name": "New FAQ"
+        }
+      ]
+    }
+  {% endschema %}
+  
+ 

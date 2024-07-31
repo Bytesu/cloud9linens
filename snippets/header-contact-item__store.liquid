@@ -1,0 +1,4 @@
+<a href="{{ pages[settings.find_store].url | default: '#' }}" class="{{ box_size }} {{ justify | default: 'justify-end' }} flex items-center px-4">
+    {% render 'icon', name: 'map-marker-alt', size: 'small' %}
+    <span class="ml-2">{{ 'pages.find_a_store' | t }}</span>
+</a>

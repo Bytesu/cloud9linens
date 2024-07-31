@@ -1,0 +1,248 @@
+{%- assign header_height = section.settings.header_height -%}
+{%- assign text_alignment = section.settings.text_alignment -%}
+{%- assign bg_image = section.settings.bg_image -%}
+{%- assign layout = section.settings.layout -%}
+{%- assign enable_parallax = section.settings.enable_parallax -%}
+{%- assign show_breadcrumb = true -%}
+{% if layout == 'without_breadcrumb' %}
+  {%- assign show_breadcrumb = false -%}
+{% endif %}
+
+{% for block in section.blocks %}
+    {%- assign selected_collection = collections[block.settings.collection] -%}
+    {% if selected_collection.handle == collection.handle %}
+        {% assign bg_image = block.settings.image %}
+    {% endif %}
+{% endfor %}
+
+{% assign collection_desc = collection.description %}
+{% if collection.handle == 'all' %}
+  {% assign collection_desc = section.settings.collection_all_desc %}
+{% endif %}
+
+{%- if header_height == 'adapt' -%}
+  {%- if bg_image.aspect_ratio == blank -%}
+    {%- assign min_aspect_ratio = 7 -%}
+  {%- else -%}
+    {%- assign min_aspect_ratio = bg_image.aspect_ratio -%}
+  {%- endif -%}
+  {% assign wrapper_height = 100 | divided_by: min_aspect_ratio %}
+{%- endif -%}
+
+<div
+    data-section-type="collection-header"
+    data-section-id="{{ section.id }}"
+    data-enable-parallax="{{ enable_parallax }}"
+    class="collection-header overflow-hidden collection-header--{{ header_height }} flex items-{{ section.settings.vertical_alignment }} justify-center relative"
+    style="--bg-color: {{ section.settings.bg_color | default: 'transparent' }}; {% if bg_image != blank %}--bg-image: url({{ bg_image | img_url: 'master' }}){% endif %};{% if header_height == 'adapt' %}height: {{- wrapper_height -}}vw{% endif %}"
+>
+    <div class="collection-header__bg absolute -inset-0 bg-color bg-no-repeat bg-cover bg-center pointer-events-none {% if enable_parallax %} bg-fixed{% endif %}"></div>
+    <div class="{{ section.settings.container }} text-{{ text_alignment }}">
+        <div class="sf__collection-headerContent relative z-1 text-{{ section.settings.text_color }}">
+            <h1 class="collection-header__title lg:text-[42px] text-2xl {% if section.settings.upper_title %}uppercase{% else %}capitalize{% endif %}">{{ collection.title }}</h1>
+            {% if show_breadcrumb and layout == 'inside' %}
+                <div class="collection-header__breadcrumb">
+                    {% capture justify %}{% if text_alignment == 'right' %}end{% else %}{{ text_alignment }}{% endif %}{% endcapture %}
+                    {% render 'breadcrumb', container: '', justify: justify %}
+                </div>
+            {% endif %}
+            {% if section.settings.show_desc and collection_desc != blank %}
+              <div class="collection-header__description mt-3">
+                {{ collection_desc }}
+              </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% if show_breadcrumb and layout == 'outside' %}
+<div class="sf__collection-breadcrumb">
+    {% render 'breadcrumb', container: section.settings.container %}
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Collection banner",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Page header"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Breadcrumb layout",
+        "default": "outside",
+        "options": [
+          {
+            "value": "outside",
+            "label": "Breadcrumb outside"
+          },
+          {
+            "value": "inside",
+            "label": "Breadcrumb inside"
+          },
+          {
+            "value": "without_breadcrumb",
+            "label": "Without breadcrumb"
+          }
+        ]
+      },
+    {
+        "type": "select",
+        "id": "header_height",
+        "label": "Height",
+        "default": "medium",
+        "options": [
+          {"label": {"en": "Adapt to image"},"value": "adapt"},
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Content alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+        {
+        "type": "select",
+        "id": "vertical_alignment",
+        "label": "Vertical alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "start",
+            "label": "Top"
+          },
+          {
+            "value": "center",
+            "label": "Middle"
+          },
+          {
+            "value": "end",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type":"select",
+        "id":"text_color",
+        "label":"Text color",
+        "options":[
+            {
+                "label":"Dark",
+                "value":"dark"
+            },
+            {
+                "label":"Light",
+                "value":"white"
+            }
+        ],
+        "default":"dark"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#f5f1ed"
+      },
+        {
+        "type": "image_picker",
+        "id": "bg_image",
+        "label": "Background image"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_parallax",
+        "label": "Enable parallax effect",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "upper_title",
+        "label": "Uppercase title",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Description"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_desc",
+        "label": "Show description",
+        "default": false
+      },
+      {
+        "type": "richtext",
+        "id": "collection_all_desc",
+        "label": "Description for all products"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "banner",
+        "name": "Custom banner",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection",
+            "info": "Choose a collection to show this banner."
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

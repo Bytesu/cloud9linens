@@ -1,0 +1,8 @@
+<div class="page-header">
+  {% if container == true %}<div class="container">{% endif %}
+  <h1 class="page-header__title">{{ title }}</h1>
+  <div class="page-header__breadcrumb mt-2">
+    {% render 'breadcrumb', container: 'container', justify: 'center' %}
+  </div>
+  {% if container == true %}</div>{% endif %}
+</div>

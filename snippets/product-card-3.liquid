@@ -1,0 +1,34 @@
+<div data-product-id="{{ product.id }}" class="sf__pcard {{ card_sale_class | strip_newlines }} cursor-pointer sf-prod__block sf__pcard-style-3" data-view="card"{% if sold_number != blank %} data-sold-number="{{ sold_number }}"{% endif %}>
+  {%- form 'product', product, id: form_id, class: 'product-form form', novalidate: 'novalidate', data-product-id: product.id, data-product-handle: product.handle -%}
+    <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+    <div class="sf__pcard-image {% unless settings.show_second_img %}spc__img-only{% endunless %}">
+      <div class="overflow-hidden cursor-pointer relative sf__image-box">
+        {% render 'product-card-main-images', product: product, image_ratio: image_ratio %}
+        {% render 'product-card-sale-badges', product: product %}
+        {%- if settings.show_wishlist_button -%}
+          <div class="sf__pcard-action-top absolute">
+            {% render 'wishlist-snippet', product: product, class_name: 'sf__tooltip-left', style: 2 %}
+          </div>
+        {%- endif -%}
+        {% render 'product-card-soldout-text', sold_out: sold_out %}
+        {%- if settings.show_cart_button or settings.show_compare_button or settings.show_quickview_button -%}
+          <div class="sf__pcard-action">
+            <div class="sf__pcard-group-action">
+              {% render 'product-card-tooltips',
+                product: product, position: 'top',
+                tooltips: 'add-to-cart,compare,quickview'
+              %}
+            </div>
+          </div>
+        {%- endif -%}
+        {% render 'product-card-countdown', product: product %}
+      </div>
+    </div>
+    <div class="sf__pcard-content text-{{ settings.pcard_alignment }}">
+      {% render 'product-card-info', product: product, show_vendor: show_vendor, show_title: show_title %}
+      {% render 'product-card-view-list', product: product, quick_add_text: quick_add_text %}
+    </div>
+  {%- endform -%}
+  <div class='background-color-expand'></div>
+</div>
+

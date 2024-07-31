@@ -1,0 +1,74 @@
+{% comment %}
+  {% render 'page-title', title: page.title, container: true %}
+{% endcomment %}
+
+
+<div class="flex md:hidden mob-container-wrapper mob-collection-title-wrapper">
+  <p class="mob-collection-title">My Wishlist</p>
+</div>
+<div class="container-fluid res-cart-container" style="margin-top: 50px; padding: 0 !important;">
+  <hr class="hrstyle2 res-cart-hidden">
+  <div class="container res-cart-header" style="display: flex; flex-direction: row; justify-content: space-between;">
+    <div class="res-cart-hidden">
+      <p style="font-size: 18px;"><span class="res-cart-hidden">Cloud9linens</span> <span style="font-weight: 600; padding: 0px 3px;"> | </span>My Wishlist</p>
+    </div>
+  	
+    <div class="flex" > 
+      <p style="position: relative; right: 0px; background-color: white; color: black; top: -2px; font-size: 18px;" class="relative px-2 py-3.5 sf-wishlist-count font-medium"></p>
+      <p>Item</p>
+    </div>
+    
+    <div>
+      <a style="font-size: 18px;" href="javascript:history.back()">Continue Shopping</a>
+    </div>
+    
+  </div>
+  <hr class="hrstyle2 res-cart-hidden">
+</div>
+
+{% comment %}
+MTS
+<div class="container-fluid hidden md:flex" style="margin-top: 50px; padding: 0 !important;">
+  <hr class="hrstyle2">
+  
+  <div class="container res-cart-header" style="display: flex; flex-direction: row; justify-content: space-between;">
+    <div>
+      <p style="font-size: 18px;"><span class="res-cart-hidden">Cloud9linens</span> <span style="font-weight: 600; padding: 0px 3px;"> | </span>My Wishlist</p>
+    </div>
+  	
+    <div class="flex" > 
+      <p style="position: relative; right: 0px; background-color: white; color: black; top: -2px; font-size: 18px;" class="relative px-2 py-3.5 sf-wishlist-count font-medium"></p>
+      <p>Item</p>
+    </div>
+    
+    <div>
+      <a style="font-size: 18px;" href="javascript:history.back()">Continue Shopping</a>
+    </div>
+  </div>
+
+  <hr class="hrstyle2">
+</div>
+{% endcomment %}
+
+{% comment %}
+<div class="sf-wishlist__container container my-16 px-4 lg:px-12 xl:px-28 2xl:px-64 grid md:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-12 opacity-0">
+</div>
+{% endcomment %}
+
+<div style="background-color: #EDEDED; padding: 30px;" class="sf-wishlist__container container my-16 px-4 lg:px-12 xl:px-28 2xl:px-64 grid md:grid-cols-3 xl:grid-cols-3 gap-x-8 gap-y-12 opacity-0">
+
+</div>
+
+<div class="sf-wishlist__no_products my-32 px-4 hidden">
+    <h3 class="text-center text-xl">
+        {{ 'layout.wishlist.no_products' | t }}
+        <a href="{{ routes.collections_url }}" class="border-b border-gray-800">
+            {{ 'layout.back_to_shopping' | t }}
+        </a>
+    </h3>
+</div>
+<hr class="hrstyle2  res-cart-hidden">
+<script>
+    window.themeScriptURLs.productQuickView.required = true
+    window.themeScriptURLs?.countdown.required = true
+</script>

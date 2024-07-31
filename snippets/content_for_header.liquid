@@ -1,0 +1,77 @@
+<script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.start');</script>
+<meta id="shopify-digital-wallet" name="shopify-digital-wallet" content="/59572912305/digital_wallets/dialog">
+
+{%- comment -%}
+<link rel="alternate" hreflang="x-default" href="https://next.minimog.co/">
+<link rel="alternate" hreflang="en" href="https://next.minimog.co/">
+<link rel="alternate" hreflang="de" href="https://next.minimog.co/de">
+<link rel="alternate" hreflang="es" href="https://next.minimog.co/es">
+<link rel="alternate" hreflang="fr" href="https://next.minimog.co/fr">
+{%- endcomment -%}
+
+<script id="shopify-features" type="application/json">
+  {
+    "accessToken":"1d449f21870c02b78386572cf67309ed",
+    "betas":["rich-media-storefront-analytics"],
+    "domain":"next.minimog.co",
+    "predictiveSearch":true,
+    "shopId":59572912305,
+    "smart_payment_buttons_url":"https:\/\/cdn.shopify.com\/shopifycloud\/payment-sheet\/assets\/latest\/spb.en.js",
+    "dynamic_checkout_cart_url":"https:\/\/cdn.shopify.com\/shopifycloud\/payment-sheet\/assets\/latest\/dynamic-checkout-cart.en.js",
+    "locale":"en"
+  }
+</script>
+<script>
+  var Shopify = Shopify || {};
+  Shopify.shop = "{{ shop.domain }}";
+  Shopify.locale = "{{ request.locale.iso_code }}";
+  Shopify.currency = { "active": "{{ shop.currency }}", "rate": "1.0" };
+  Shopify.country = "{{ shop.address.country }}";
+  Shopify.theme = { 
+    "name": "{{ theme.name }}", 
+    "id": {{ theme.id }}, 
+    "theme_store_id": null, 
+    "role": "{{ theme.role }}"
+  };
+  Shopify.theme.handle = "null";
+  Shopify.theme.style = { "id": null, "handle": null };
+  Shopify.cdnHost = "cdn.shopify.com";
+</script>
+<script type="module">!function (o) { (o.Shopify = o.Shopify || {}).modules = !0 }(window);</script>
+<script>!function (o) { function n() { var o = []; function n() { o.push(Array.prototype.slice.apply(arguments)) } return n.q = o, n } var t = o.Shopify = o.Shopify || {}; t.loadFeatures = n(), t.autoloadFeatures = n() }(window);</script>
+
+{% comment %} 
+<script>(function () {
+    function asyncLoad() {
+      var urls = ["\/\/productreviews.shopifycdn.com\/assets\/v4\/spr.js?shop=new-minimog.myshopify.com"];
+      for (var i = 0; i < urls.length; i++) {
+        var s = document.createElement('script');
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = urls[i];
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      }
+    };
+    if (window.attachEvent) {
+      window.attachEvent('onload', asyncLoad);
+    } else {
+      window.addEventListener('load', asyncLoad, false);
+    }
+  })();
+</script>
+<script
+  id="__st">var __st = { "a": 59572912305, "offset": 25200, "reqid": "79a16952-f38e-4eeb-87db-56f534d19a67", "pageurl": "next.minimog.co\/", "t": "prospect", "u": "5d3c920c5b37", "p": "home" };</script>
+<script>window.ShopifyPaypalV4VisibilityTracking = true;</script>
+<script>!function (o) { o.addEventListener("DOMContentLoaded", function () { window.Shopify = window.Shopify || {}, window.Shopify.recaptchaV3 = window.Shopify.recaptchaV3 || { siteKey: "6LcCR2cUAAAAANS1Gpq_mDIJ2pQuJphsSQaUEuc9" }; var t = ['form[action*="/contact"] input[name="form_type"][value="contact"]', 'form[action*="/comments"] input[name="form_type"][value="new_comment"]', 'form[action*="/account"] input[name="form_type"][value="customer_login"]', 'form[action*="/account"] input[name="form_type"][value="recover_customer_password"]', 'form[action*="/account"] input[name="form_type"][value="create_customer"]', 'form[action*="/contact"] input[name="form_type"][value="customer"]'].join(","); function n(e) { e = e.target; null == e || null != (e = function e(t, n) { if (null == t.parentElement) return null; if ("FORM" != t.parentElement.tagName) return e(t.parentElement, n); for (var o = t.parentElement.action, r = 0; r < n.length; r++)if (-1 !== o.indexOf(n[r])) return t.parentElement; return null }(e, ["/contact", "/comments", "/account"])) && null != e.querySelector(t) && ((e = o.createElement("script")).setAttribute("src", "https://cdn.shopify.com/shopifycloud/storefront-recaptcha-v3/v0.6/index.js"), o.body.appendChild(e), o.removeEventListener("focus", n, !0), o.removeEventListener("change", n, !0), o.removeEventListener("click", n, !0)) } o.addEventListener("click", n, !0), o.addEventListener("change", n, !0), o.addEventListener("focus", n, !0) }) }(document);</script>
+<script integrity="sha256-pVJhp6mHZ0dJmJmDtYierarGeV2NSFSPthRwqW7blSQ=" data-source-attribution="shopify.loadfeatures"
+  defer="defer"
+  src="//cdn.shopify.com/shopifycloud/shopify/assets/storefront/load_feature-a55261a7a987674749989983b5889eadaac6795d8d48548fb61470a96edb9524.js"
+  crossorigin="anonymous"></script>
+<script integrity="sha256-h+g5mYiIAULyxidxudjy/2wpCz/3Rd1CbrDf4NudHa4="
+  data-source-attribution="shopify.dynamic-checkout" defer="defer"
+  src="//cdn.shopify.com/shopifycloud/shopify/assets/storefront/features-87e8399988880142f2c62771b9d8f2ff6c290b3ff745dd426eb0dfe0db9d1dae.js"
+  crossorigin="anonymous"></script>
+{% endcomment %}
+
+<script>window.performance && window.performance.mark && window.performance.mark('shopify.content_for_header.end');</script>

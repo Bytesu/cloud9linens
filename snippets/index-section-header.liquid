@@ -1,0 +1,13 @@
+{% if section_settings.heading != blank or section_settings.subheading != blank or section_settings.description != blank %}
+  <div class="section__header text-{{ section_settings.header_alignment }}{% if section_settings.container == 'w-full' %} px-5{% endif %}">
+    {% if section_settings.subheading != blank %}
+      <p class="my-custom-font-size section__subheading">{{ section_settings.subheading }}</p>
+    {% endif %}
+    {% if section_settings.heading != blank %}
+      <h2 class="section__heading">{{ section_settings.heading }}</h2>
+    {% endif %}
+    {% if section_settings.description != blank %}
+      <div class=" {{ section.id }}my-custom-font-size section__description">{{ section_settings.description }}</div>
+    {% endif %}
+  </div>
+{% endif %}

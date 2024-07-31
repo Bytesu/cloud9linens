@@ -1,0 +1,9 @@
+<div class="sf__accordion-content">
+  <div class="pb-5 md:pb-0">
+    {% if block.settings.html != blank %}
+      <div class="mt-0{% if block.settings.title != blank %} md:mt-4{% endif %} block-text">
+        {{ block.settings.html }}
+      </div>
+    {% endif %}
+  </div>
+</div>

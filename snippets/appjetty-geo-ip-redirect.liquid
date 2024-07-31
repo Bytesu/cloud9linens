@@ -1,0 +1,122 @@
+{% capture snippet_content %}{% include 'appjetty-popup' %}{% endcapture %}
+
+{% if snippet_content contains "Liquid error" %}
+    
+  <script> var popup_snippet_included = false; </script>
+  
+{% else %}
+  
+  {{ snippet_content }}
+  
+  <script> var popup_snippet_included = true; </script>
+  
+{% endif %}
+
+
+<script>
+  
+  function setCookie(key, value, expiry) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + (expiry * 24 * 60 * 60 * 1000));
+    document.cookie = key + '=' + value + ';expires=' + expires.toUTCString()+';path=/';
+  }
+
+  function getCookie(key) {
+    var keyValue = document.cookie.match('(^|;) ?' + key + '=([^;]*)(;|$)');
+    return keyValue ? keyValue[2] : null;
+  }
+
+  function deleteCookie(name) {
+    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }   
+
+  function buildLanguageListAppJetty() {
+    return [
+      {%- for locale in shop.published_locales %}
+      {
+        name: '{{locale.name}}',
+        endonym_name: '{{locale.endonym_name}}',
+        iso_code: '{{locale.iso_code}}',
+        primary: {{locale.primary}},
+      }{% unless forloop.last %},{% endunless -%}
+      {%- endfor %}
+    ];
+  }
+
+  var shopDomain = 'https://{{shop.domain}}';
+  
+  var cart_object = {{ cart | json }};
+    
+  var currencies = [];
+  
+  var active_currency = cart_object.currency;
+
+  var shop_currencies = [];
+
+  var money_format = '{{ shop.money_format }}';
+
+  var money_with_currency_format = '{{ shop.money_with_currency_format }}';
+
+  {% for currency in shop.enabled_currencies %}
+
+      var money_format = '{{ shop.money_format }}';
+
+      var money_with_currency_format = '{{ shop.money_with_currency_format }}';
+
+      currencies.push({
+        'iso_code' : '{{ currency.iso_code }}',
+        'symbol'   : '{{ currency.symbol }}',
+        'name'     : '{{ currency.name }}'
+      });
+
+      shop_currencies.push('{{ currency.iso_code }}');
+
+  {% endfor %}
+  
+
+  function findCurrentLocale(languages, defaultLocale) {
+    var p = window.location.pathname.split('/').filter(function (x) { return x; });
+    if (p && p.length > 0 && languages.find(function (x) { return x.iso_code === p[0]; })) {
+      return p[0];
+    } else {
+      return defaultLocale;
+    }
+  }
+  
+  var languages = buildLanguageListAppJetty();
+  var shopDomain = 'https://{{shop.domain}}';
+  var primaryLanguage = languages.find(function (x) { return x.primary; });
+  var defaultLocale = primaryLanguage ? primaryLanguage.iso_code : 'en';
+  var currentLocale = findCurrentLocale(languages, defaultLocale);
+  
+  function AppJettyGeoCode(){
+    
+    var appjetty_country = getCookie('appjetty_country');
+
+    var appjetty_visitor_ip = getCookie('appjetty_visitor_ip');
+
+    var is_country_blocked = getCookie('is_country_blocked');
+
+    var is_ip_blocked = getCookie('is_ip_blocked');
+    
+  }
+
+if(typeof jQuery == 'undefined'){
+    
+  var headTag = document.getElementsByTagName("head")[0];
+ 
+  var jqTag   = document.createElement('script');
+
+  jqTag.type  = 'text/javascript';
+
+  jqTag.src   = 'https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js';
+
+  jqTag.onload = AppJettyGeoCode;
+
+  headTag.appendChild(jqTag);
+
+}else{
+  AppJettyGeoCode();
+}
+
+</script>

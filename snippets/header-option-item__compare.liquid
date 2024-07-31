@@ -1,0 +1,12 @@
+{% unless settings.product_compare_page == blank %}
+    <a href="{{ pages[settings.product_compare_page].url }}" class="{{ box_size | default : 'relative px-2 py-3.5' }}">
+    {% if display_by == 'icon' %}
+        <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+            {% render 'icon', name: 'compare', size: 'medium' %}
+            <span class="sf__tooltip-content">{{ 'layout.compare.title' | t }}</span>
+        </span>
+    {% else %}
+        {{ 'layout.compare.title' | t }}
+    {% endif %}
+</a>
+{% endunless %}

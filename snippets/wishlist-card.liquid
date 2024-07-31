@@ -1,0 +1,36 @@
+<div class="sf__wishlistcard {{ card_sale_class | strip_newlines }} cursor-pointer sf-prod__block sf__pcard-style-2" data-view="card"{% if sold_number != blank %} data-sold-number="{{ sold_number }}"{% endif %}>
+  
+  <form action="{{ routes.cart_url }}" method="post" novalidate class="checkout-form asdasd sf-cart__form scd__content">
+      
+    <div class="flex">
+        <div style="padding: 10px 20px 30px 20px;" class="sf-cart__table w-full">
+          {% comment %}
+          <div  class="sf-cart__table-head flex">
+            <div  class="sf-cart__table-col sf-cart__table-product">{{ 'cart.label.product' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-price">{{ 'cart.label.price' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-quantity hidden md:block">{{ 'cart.label.quantity' | t }}</div>
+            <div class="sf-cart__table-col text-right sf-cart__table-subtotal hidden md:block">{{ 'cart.label.total' | t }}</div>
+          </div>
+          {% endcomment %}
+
+          <div class="sf-cart__table-body scd__body">
+            {%- if cart.items.size > 0 -%}
+              <div class="scd__items">
+                {% for item in cart.items %}
+                  {% render 'cart-line-item', item: item %}
+                {% endfor %}
+              </div>
+            {%- else -%}
+              {% render 'cart-empty-message' %}
+            {%- endif -%}
+          </div>
+        </div>
+
+       
+        </div>
+      </form>
+    
+  
+  <div class='background-color-expand'></div>
+</div>
+

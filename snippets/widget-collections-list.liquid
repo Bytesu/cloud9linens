@@ -1,0 +1,22 @@
+{% assign menu = linklists[block.settings.menu] %}
+{% assign use_accordion = block.settings.use_accordion %}
+{% assign open_filtergroup = block.settings.open_filtergroup %}
+
+<div class="widget-filter mb-8 {% if use_accordion %}sf__accordion-item{% endif %}{% if use_accordion and open_filtergroup %} open{% endif %}" data-block-type="collections">
+  <h4 class="{% if use_accordion %}sf__accordion-button{% endif %} mb-4 font-medium !text-lg">{{ block.settings.title | escape }}</h4>
+  <div class="widget-filter__list max-h-full widget-filter--collections {% if use_accordion %} sf__accordion-content{% endif %}"{%- if open_filtergroup -%} style="opacity: 1;"{%- endif -%}>
+    {% if menu.links != blank %}
+    <ul class="sf__list-row">
+      {% for link in menu.links %}
+        {% if link.url contains '/collections/' %}
+        <li class="link-lv2 leading-8 hover-underline{% if link.active %} active pointer-events-none{% endif %}" data-tag-filter>
+          <a href="{{ link.url }}" title="{{ link.title }}" data-collection-link>
+            {{ link.title }}
+          </a>
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+</div>

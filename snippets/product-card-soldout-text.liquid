@@ -1,0 +1,5 @@
+{%- if sold_out and settings.show_badge_soldout -%}
+<span class="absolute prod__tag prod__tag--soldout">
+    {{ 'layout.products.product.sold_out' | t }}
+</span>
+{%- endif -%}

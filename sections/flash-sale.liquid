@@ -1,0 +1,70 @@
+{% stylesheet 'scss' %}
+  .foxkit-flashsale.style-2 {
+    background: #fdefee;
+    padding: 30px 0;
+    .prod__countdown {
+      background: none !important;
+      border: none !important;
+      padding: 0 !important;
+      justify-content: center;
+    }
+    .prod__countdown-heading {
+      font-weight: 400;
+      color: #000 !important;
+    }
+    .prod__countdown-heading,
+    .time-block span {
+      font-size: 32px;
+      color: #DA3F3F;
+    }
+    .time-block:not(:last-child):after {
+      top: 5px;
+      color: #DA3F3F;
+    }
+  }
+  .foxkit-flashsale.style-1 {
+    padding: 10px 1rem 2rem;
+    .prod__countdown-timer,
+    .prod__countdown-header {
+      width: 100%;
+      justify-content: center;
+    }
+    .prod__countdown-heading {
+      font-size: 2rem;
+      color: #000;
+      margin-bottom: 1rem;
+    }
+  }
+{% endstylesheet %}
+
+<div class="foxkit-flashsale" data-section-type="foxkit-flashsale" data-section-id="{{ section.id }}" data-collection-id="{{ collection.id }}">
+  <div class="container">
+    <div
+      class="prod__countdown hidden"
+      data-days="{{ 'general.time.days' | t }}"
+      data-hrs="{{ 'general.time.hrs' | t }}"
+      data-mins="{{ 'general.time.mins' | t }}"
+      data-secs="{{ 'general.time.secs' | t }}"
+    ></div>
+  </div>
+</div>
+
+<script src="{{ 'foxkit-flashsale.min.js' | asset_url }}"></script>
+
+{% schema %}
+  {
+    "name": "[FoxKit] - 🔥 Flash sale",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Config your flash sale in [FoxKit Coundown timer](https://foxkit.app/countdown-timer)"
+      }
+    ],
+    "templates": ["collection"],
+    "presets": [
+      {
+        "name": "[FoxKit] - 🔥 Flash sale"
+      }
+    ]
+  }
+{% endschema %}

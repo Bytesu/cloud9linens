@@ -1,0 +1,349 @@
+{%- assign settings = section.settings -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+<section
+    class="sf-lookbook {{ section.settings.custom_class }}"
+    data-section-type="lookbook"
+    data-section-id="{{ section.id }}"
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ settings.background_color }};"
+>
+    <div class="{{ container }}" style="--column-gap: 30px; --row-gap: 30px; --column-gap-mobile: 16px;">
+        {% render 'index-section-header', section_settings: section.settings %}
+        {% if section.blocks.size > 0 %}
+            <div class="md:grid sf-grid md:grid-cols-2 lg:grid-cols-{{ section.blocks | size }}">
+                {% for block in section.blocks %}
+                    {% assign custom_class = 'mb-0' %}
+                    {% if block.settings.button_text != blank %}
+                        {% assign custom_class = 'mb-10' %}
+                    {% endif %}
+                    <div class="sf-column">
+                        {% render 'lookbook-card', block: block, image_aspect_ratio: section.settings.image_aspect_ratio, class: custom_class %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Lookbook",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section header"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Hand-picked"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "header_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container type",
+            "default": "container-fluid",
+            "options": [
+                {
+                    "value": "container-fluid",
+                    "label": "Default"
+                },
+                {
+                    "value": "w-full",
+                    "label": "Full width"
+                },
+                {
+                    "value": "container",
+                    "label": "Use container box"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "rgba(0,0,0,0)"
+        },
+        {
+            "type": "select",
+            "id": "image_aspect_ratio",
+            "label": "Image aspect ratio",
+            "default": "3/4",
+            "options": [
+                {
+                    "value": "original",
+                    "label": "Adapt to image"
+                },
+                {
+                    "value": "1/1",
+                    "label": "1:1"
+                },
+                {
+                    "value": "3/4",
+                    "label": "3:4"
+                },
+                {
+                    "value": "4/3",
+                    "label": "4:3"
+                },
+                {
+                    "value": "16/9",
+                    "label": "16:9"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "custom_class",
+            "label": "Custom classes"
+        }
+    ],
+    "max_blocks": 3,
+    "blocks": [
+        {
+            "type": "item",
+            "name": "Item",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "General"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "button_text",
+                    "label": "Title",
+                    "default": "Shop this collection"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Title link"
+                },
+                {
+                    "type": "select",
+                    "id": "button_style",
+                    "label": "Button style",
+                    "default": "dark",
+                    "options": [
+                        {
+                            "value": "dark",
+                            "label": "Dark"
+                        },
+                        {
+                            "value": "light",
+                            "label": "Light"
+                        }
+                    ]
+                },
+                {
+                    "type": "header",
+                    "content": "Product 1"
+                },
+                {
+                    "type": "range",
+                    "id": "top_1",
+                    "label": "Offset top",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 9
+                },
+                {
+                    "type": "range",
+                    "id": "left_1",
+                    "label": "Offset left",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 63
+                },
+                {
+                    "type": "product",
+                    "id": "product_1",
+                    "label": "Select product"
+                },
+                {
+                    "type": "header",
+                    "content": "Product 2"
+                },
+                {
+                    "type": "range",
+                    "id": "top_2",
+                    "label": "Offset top",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 26
+                },
+                {
+                    "type": "range",
+                    "id": "left_2",
+                    "label": "Offset left",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 50
+                },
+                {
+                    "type": "product",
+                    "id": "product_2",
+                    "label": "Select product"
+                },
+                {
+                    "type": "header",
+                    "content": "Product 3"
+                },
+                {
+                    "type": "range",
+                    "id": "top_3",
+                    "label": "Offset top",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 61
+                },
+                {
+                    "type": "range",
+                    "id": "left_3",
+                    "label": "Offset left",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 48
+                },
+                {
+                    "type": "product",
+                    "id": "product_3",
+                    "label": "Select product"
+                },
+                {
+                    "type": "header",
+                    "content": "Product 4"
+                },
+                {
+                    "type": "range",
+                    "id": "top_4",
+                    "label": "Offset top",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 0
+                },
+                {
+                    "type": "range",
+                    "id": "left_4",
+                    "label": "Offset left",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 0
+                },
+                {
+                    "type": "product",
+                    "id": "product_4",
+                    "label": "Select product"
+                },
+                {
+                    "type": "header",
+                    "content": "Product 5"
+                },
+                {
+                    "type": "range",
+                    "id": "top_5",
+                    "label": "Offset top",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 20
+                },
+                {
+                    "type": "range",
+                    "id": "left_5",
+                    "label": "Offset left",
+                    "min": 0,
+                    "max": 100,
+                    "unit": "%",
+                    "step": 1,
+                    "default": 0
+                },
+                {
+                    "type": "product",
+                    "id": "product_5",
+                    "label": "Select product"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Lookbook",
+            "category": "Lookbook",
+            "blocks": [
+                {
+                    "type": "item"
+                },
+                {
+                    "type": "item"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

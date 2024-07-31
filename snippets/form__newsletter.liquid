@@ -1,0 +1,57 @@
+{%- capture form_id -%}contact-form__{{ "now" | date: "%L" }}{%- endcapture -%}
+{%- capture form_class -%}sf__footer-form-newsletter form__style-{{ block_settings.form_style }}{%- endcapture -%}
+{% form 'customer', id: form_id, class: form_class %}
+  <input
+    type="hidden"
+    name="contact[tags]"
+    value="newsletter">
+  <div class="relative ftr-flx">
+    
+    <input
+      id="subs_batn"
+      type="email"
+      required
+      name="contact[email]"
+      placeholder="{{ block_settings.email_placeholder }}"
+      autocorrect="off"
+      autocapitalize="off"
+      autocomplete="off"
+      spellcheck="false"
+      class="form-control form__control-icon py-1.5 px-12 sf__newletter__form-input mw_ftr_input cus_mob_fonts_source" style="font-size:10px;">
+    {% unless block_settings.form_style == 'minimal' %}
+      <span class="sf__footer-form-newsletter-icon absolute">
+        {% render 'icon', name: 'envelope', size: 'small' %}
+      </span>
+    {% endunless %}
+  
+    <div class="cus-ftr-btn">
+    <div class="custom_input_type">
+      <input
+          type="checkbox"
+          name="Radio"
+          value="" /> <p class="ftr-read cus_fonts_source">I have read the <a href="/pages/privacy-policy">privacy policy</a> and i agree to RECEIVE via email
+          special offers and promot ionsnews and events from Cloud9linens.</p></label>
+    </div>
+  </div>
+ 
+  
+  <div class="ftr-bttn">
+  <button
+      type="submit"
+      name="commit"
+      class="sf__form-submit absolute cus_fonts_source cstm__ftr__btn">
+      {% render 'icon', name: 'arrow-right', size: 'small' %}
+    </button>
+  </div>
+  </div>
+  {% if settings.agree_text != blank and block_settings.show_agree_checkbox %}
+    {% render 'agree-terms-checkbox' %}
+  {% endif %}
+
+  {% render 'form__error', form: form %}
+
+  {%- capture success_message -%}
+    {{ 'general.newsletter_form.confirmation' | t }}
+  {%- endcapture -%}
+  {% render 'form__success', form: form, success_message: success_message %}
+{% endform %}

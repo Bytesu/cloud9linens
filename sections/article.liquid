@@ -1,0 +1,383 @@
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+{%- assign item = section.settings -%}
+<section data-section-type="article-template" data-section-id="{{ section.id }}" class="sf__page-blog-single-post pb-10 lg:pb-12 xl:pb-24">
+    <div class="{{ container }}">
+        <div class="sf__page-header section__header">
+            {% render 'breadcrumb', justify: 'center' %}
+          </div>
+        {% if item.sidebar_show and section.blocks != blank %}
+            {%- case item.sidebar_position -%}
+                {%- when 'left_column' -%}
+                <div class="flex flex-wrap flex-row-reverse -mx-4">
+                    <div class="w-full lg:w-9/12 px-4">
+                        {% case item.design %}
+                        {% when "layout1" %}
+                            {% render 'article-design-01'%}
+                        {% when "layout2" %}
+                            {% render 'article-design-02'%}
+                        {% endcase %}
+                    </div>
+                    <div class="w-full lg:w-3/12 px-4">
+                        {% include 'blog-sidebar' %}
+                    </div>
+                </div>
+                {%- else -%}
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full lg:w-9/12 px-4">
+                        {% case item.design %}
+                        {% when "layout1" %}
+                            {% render 'article-design-01'%}
+                        {% when "layout2" %}
+                            {% render 'article-design-02'%}
+                        {% endcase %}
+                    </div>
+                    <div class="w-full lg:w-3/12 px-4">
+                        {% include 'blog-sidebar' %}
+                    </div>
+                </div>
+            {%- endcase -%}
+        {% else %}
+            {% case item.design %}
+            {% when "layout1" %}
+                {% render 'article-design-01' %}
+            {% when "layout2" %}
+                {% render 'article-design-02' %}
+            {% endcase %}
+        {% endif %}
+    </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "articleBody": {{ article.content | strip_html | json }},
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": {{ shop.url | append: page.url | json }}
+  },
+  "headline": {{ article.title | json }},
+  {% if article.excerpt != blank %}
+    "description": {{ article.excerpt | strip_html | json }},
+  {% endif %}
+  {% if article.image %}
+{% assign image_size = article.image.width | append: 'x' %}
+    "image": [
+      {{ article | img_url: image_size | prepend: "https:" | json }}
+    ],
+  {% endif %}
+  "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+  "author": {
+    "@type": "Person",
+    "name": {{ article.author | json }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    {% if page_image %}
+{% assign image_size = page_image.width | append: 'x' %}
+      "logo": {
+        "@type": "ImageObject",
+        "height": {{ page_image.height | json }},
+        "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+        "width": {{ page_image.width | json }}
+      },
+    {% endif %}
+    "name": {{ shop.name | json }}
+  }
+}
+</script>
+{% schema %}
+{
+    "name": "Blog post",
+    "settings": [
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container type",
+            "default": "container-fluid",
+            "options": [
+                {
+                    "value": "container-fluid",
+                    "label": "Default"
+                },
+                {
+                    "value": "w-full",
+                    "label": "Full width"
+                },
+                {
+                    "value": "container",
+                    "label": "Use container box"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Sidebar settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "sidebar_show",
+            "label": "Show sidebar",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "sidebar_position",
+            "label": "Position",
+            "default": "right_column",
+            "options": [
+                {
+                    "value": "left_column",
+                    "label": "Left column"
+                },
+                {
+                    "value": "right_column",
+                    "label": "Right column"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Article settings"
+        },
+        {
+            "type": "select",
+            "id": "design",
+            "label": "Design",
+            "options": [
+            {
+                "label": "Layout 1",
+                "value": "layout1"
+            },
+            {
+                "label": "Layout 2",
+                "value": "layout2"
+            }],
+            "default": "layout1"
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_author",
+            "label": "Show author",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_date",
+            "label": "Show date",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_tags",
+            "label": "Show tags",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_social",
+            "label": "Show social",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_related",
+            "label": "Show related articles",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_comment",
+            "label": "Show comments",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Related articles"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_related_articles",
+            "label": "Show related articles",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "article_align_content",
+            "label": "Content alignment",
+            "default": "text-left",
+            "options": [
+              {
+                "label": "Left",
+                "value": "text-left"
+              },
+              {
+                "label": "Center",
+                "value": "text-center"
+              },
+              {
+                "label": "Right",
+                "value": "text-right"
+              }
+            ]
+          },
+          {
+            "type": "checkbox",
+            "id": "article_show_tags",
+            "label": "Show tags",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "article_show_date",
+            "label": "Show publised date",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "article_show_excerpt",
+            "label": "Show excerpt",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "article_show_button",
+            "label": "Show read more link",
+            "default": true
+          }
+    ],
+    "blocks": [
+        {
+            "type": "categories",
+            "name": "Widget categories",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Categories"
+                },
+                {
+                    "type": "link_list",
+                    "id": "list_blog",
+                    "label": "Select categories menu"
+                }
+            ]
+        },
+        {
+            "type": "instagram",
+            "name": "Widget Instagram",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Instagram"
+                },
+                {
+                    "type": "range",
+                    "min": 4,
+                    "max": 24,
+                    "step": 1,
+                    "id": "images_count",
+                    "label": "Images to show",
+                    "default": 4
+                }
+            ]
+        },
+        {
+            "type": "tags",
+            "name": "Widget tags",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Tags"
+                }
+            ]
+        },
+        {
+            "type": "recent_post",
+            "name": "Widget recent posts",
+            "limit": 1,
+            "settings": [
+                {
+                "type": "text",
+                "id": "title",
+                "label": "Title",
+                "default": "Recent Post"
+                },
+                {
+                "type": "blog",
+                "id": "sidebar_recent_blog_name",
+                "label": "Blog Name"
+                },
+                {
+                "type": "text",
+                "id": "sidebar_recent_blog_count",
+                "label": "Post Count",
+                "info": "Integer",
+                "default": "3"
+                },
+                {
+                "type": "checkbox",
+                "id": "blog_show_tags",
+                "label": "Show tags",
+                "default": true
+                },
+                {
+                "type": "checkbox",
+                "id": "blog_show_author",
+                "label": "Show author",
+                "default": false
+                },
+                {
+                "type": "checkbox",
+                "id": "blog_show_date",
+                "label": "Show date",
+                "default": false
+                },
+                {
+                "type": "checkbox",
+                "id": "show_excerpt",
+                "label": "Show excerpt",
+                "default": false
+                },
+                {
+                "type": "paragraph",
+                "content": "Work only for the field \"Content\". Field \"Excerpt\" will show full."
+                },
+                {
+                "type": "checkbox",
+                "id": "truncate_excerpt",
+                "label": "Truncate Excerpt",
+                "default": false
+                },
+                {
+                "type": "text",
+                "id": "truncate",
+                "label": "Show Words",
+                "default": "15",
+                "info": "Integer"
+                },
+                {
+                "type": "text",
+                "id": "truncate_last_symbols",
+                "label": "Last Symbols",
+                "default": "..."
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

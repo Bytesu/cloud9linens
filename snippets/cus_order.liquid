@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="{{ 'customer-global.css' | asset_url }}" as="style">
+
+<link rel="stylesheet" href="{{ 'account-global.css' | asset_url }}" as="style">
+
+{%- capture page_title -%}
+    {{ 'customer.account.title' | t }}
+{%- endcapture -%}
+{% render 'mani_banner' %}
+
+{% if customer.orders.size == 0 %}
+<div class="order_head">
+    <h3 class="text-2xl font-medium mb-5 mt-10 fsz_24 mob_fs_18">Orders</h3>
+</div>
+{% assign collections_to_display = "bedspread,pj-sets,sandels" | split: "," %}
+<div class="mob_grey_box">
+        <h4 class="mob_fs_12 custom-didot">No Active Orders Found</h4>
+        <p class="cus_fonts_source mob_fs_8 txt_center">You have no current</br> active orders</p>
+        <a href="/collections/all" class="custom-didot mob_fs_12">Start Shopping</a>
+    </div>
+<div class="collection-cards order_collect">
+    <div class="grey_box">
+        <h4 class="fsz_18 custom-didot">No Active Orders Found</h4>
+        <p class="cus_fonts_source fsz_12 txt_center">You have no current</br> active orders</p>
+        <a href="/collections/all" class="custom-didot fsz_18">Start Shopping</a>
+    </div>
+  {% for collection_handle in collections_to_display %}
+    {% assign collection = collections[collection_handle] %}
+    {% if collection %}
+      <div class="collection-card order_ftd_image">
+        <a href="{{ collection.url }}" class="mob_order_collect">
+          <h3 class="fsz_14 txt_center mb-5 mob_fs_10">{{ collection.title }}</h3>
+          <img src="{{ collection.image.src | img_url: 'large' }}" alt="{{ collection.title }}">
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% else %}
+    
+<div class="md:px-6 lg:px-12 xl:px-16 2xl:px-48 py-8 flex">
+    <div class="px-4 md:px-8 xl:px-16 2xl:px-24 w-full md:w-5/6">
+        <div class="mb-0">
+            <h3 class="text-2xl font-medium mb-5 mt-10 fsz_24 mob_fs_18 txt_caps">Orders</h3>
+            {% comment %} <h3 class="text-2xl font-medium mb-8 fsz_18">{{ 'customer.orders.title' | t }}</h3> {% endcomment %}
+            {% render 'customer-orders', paginate: paginate %}
+        </div>
+    </div>
+</div>
+
+{% endif %}

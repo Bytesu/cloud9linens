@@ -1,0 +1,25 @@
+<div class="mt-4 sf-prod__layout-2">
+    <div class="flex flex-wrap sf-prod__container sf-prod__block">
+        <div class="w-full md:w-7/12">
+            <div class="sf-prod-media__wrapper">
+                <div class="sf-product-media__desktop hidden md:grid grid-cols-2 gap-2.5">
+                  {% for media in product.media %}
+                    {%- assign remainder = forloop.index0 | modulo: 3 -%}
+                    <div class="sf-prod-media-item media-type-{{ media.media_type }} overflow-hidden relative group {% if remainder == 0 or product.media.size < 3 %}col-span-2{% endif %}" data-index={{ forloop.index0 }}>
+                      {% render 'media', media: media, aspect_ratio: media.aspect_ratio %}
+                      <div class="transition-all opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5 group-hover:opacity-100 group-hover:right-5">
+                        {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="sf-product-media__mobile md:hidden">
+                  {% render 'product-page-mobile-media' %}
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:w-5/12">
+            {% render 'product-page__info' %}
+        </div>
+    </div>
+</div>

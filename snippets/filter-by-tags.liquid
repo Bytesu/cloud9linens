@@ -1,0 +1,26 @@
+{%- if current_tags != blank -%}
+    {%- assign all_tags_downcase = collection.tags | json | downcase -%}
+    {%- assign current_arr = '' -%}
+    {%- assign new_current_arr = '' -%}
+    {%- for tag in current_tags -%}
+        {% assign newtag = tag | prepend: '_' %}
+        {%- assign current_arr = current_arr | append: tag | append:',' | downcase -%}
+        {%- assign new_current_arr = new_current_arr | append: newtag | append:',' | downcase -%}
+    {%- endfor -%}
+    {%- assign new_current_tags = new_current_arr | split:',' -%}
+    {%- assign current_tags = current_arr | split:',' -%}
+
+{%- else -%}
+    {%- assign all_tags_downcase = collection.all_tags | json | downcase -%}
+{%- endif -%}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'collections' %}
+      {% render 'widget-collections-list', block: block %}
+    {% else %}
+      {% render 'widget-tags-filter', block: block, new_current_tags: new_current_tags, all_tags_downcase: all_tags_downcase, current_tags: current_tags %}
+  {% endcase %}
+{% endfor %}
+
+

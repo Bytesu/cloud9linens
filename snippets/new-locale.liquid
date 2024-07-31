@@ -1,0 +1,86 @@
+{%- assign text = key | t -%}
+{%- capture text -%}
+  {%- if text contains 'translation missing' -%}
+    {%- case key -%}
+      {%- when 'layout.back' -%}
+        Back
+      {%- when 'collections.paginate.load_more' -%}
+        Load more
+      {%- when 'products.product.preorder' -%}
+        Pre-order
+      {%- when 'products.product.out_of_stock' -%}
+        Out of stock
+      {%- when 'products.product.sold' -%}
+        Sold
+      {%- when 'products.product.available' -%}
+        Available
+      {%- when 'products.product.select_options' -%}
+        Select options
+      {%- when 'products.product.save_html' -%}
+        Save <span class="sf-currency sf-currency--saved font-medium" data-saved-price>{%- raw -%}{{ amount }}{%- endraw -%}</span>
+      {%- when 'products.product.sale_text' -%}
+        Sale
+      {%- when 'products.product.xr_button' -%}
+        View in your space
+      {%- when 'products.product.xr_button_label' -%}
+        View in your space, loads item in augmented reality window
+      {%- when 'products.product.preorder_note' -%}
+        Preorder item
+      {%- when 'products.product.discounted_price_html' -%}
+        -{%- raw -%}{{ value }}{%- endraw -%}
+      {%- when 'general.tooltip.not_found' -%}
+        Tooltip type not found
+      {%- when 'customer.account.greeting' -%}
+        Hello
+      {%- when 'customer.account.not' -%}
+        not
+      {%- when 'products.product.pickup_availability.unavailable' -%}
+        Couldn't load pickup availability
+      {%- when 'products.product.pickup_availability.refresh' -%}
+        Refresh
+      {%- when 'products.product.pickup_availability.view_store_info' -%}
+        View store information
+      {%- when 'products.product.pickup_availability.check_other_stores' -%}
+        Check availability at other stores
+      {%- when 'products.product.pickup_availability.pick_up_available' -%}
+        Pickup available
+      {%- when 'products.product.pickup_availability.pick_up_available_at_html' -%}
+        Pickup available at <span>{%- raw -%}{{ location_name }}{%- endraw -%}</span>
+      {%- when 'products.product.pickup_availability.pick_up_unavailable_at_html' -%}
+        Pickup currently unavailable at <span>{%- raw -%}{{ location_name }}{%- endraw -%}</span>
+      {%- when 'products.product.see_more_options' -%}
+        See {%- raw -%}{{ count }}{%- endraw -%} more option(s)
+      {%- when 'recipient.form.checkbox' -%}
+        I want to send this as a gift
+      {%- when 'recipient.form.email_label' -%}
+        Recipient email
+      {%- when 'recipient.form.email_label_optional' -%}
+        Recipient email (optional)
+      {%- when 'recipient.form.email' -%}
+        Email
+      {%- when 'recipient.form.name_label' -%}
+        Recipient name (optional)
+      {%- when 'recipient.form.name' -%}
+        Name
+      {%- when 'recipient.form.message_label' -%}
+        Message (optional)
+      {%- when 'recipient.form.message' -%}
+        Message
+      {%- when 'recipient.form.max_characters' -%}
+        {% raw %}{{ max_chars }}{% endraw %} characters max
+      {%- when 'templates.contact.form.error_heading' -%}
+        Please adjust the following:
+      {%- when 'cart.general.cart_error' -%}
+        There was an error while updating your cart. Please try again.
+      {%- else -%}
+        <span style="display: none;">Translation key not found!</span>
+    {%- endcase -%}
+  {%- else -%}
+    {{ text }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if text contains param -%}
+  {%- assign text = text | replace: param, value -%}
+{%- endif -%}
+
+{{- text | strip_newlines | strip -}}

@@ -1,0 +1,111 @@
+<section class="multicolumn-section--{{ section.id }} {{ section.settings.custom-sli }}">
+  <div class="main-part">
+    {%- for block in section.blocks -%}
+      <div class="block-div {{ block.settings.custom__Class }}">
+        <div class="img-div">
+          {% if block.settings.background-image != blank %}
+            <img src="{{ block.settings.background-image | img_url: 'master' }}">
+          {% endif %}
+        </div>
+        <div class="sub-head">
+          <h3>{{ block.settings.sub-head }}</h3>
+        </div>
+        <div class="text-area-div">
+          <p>{{ block.settings.cus-textarea }}</p>
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<style>
+
+
+  .sub-head h3 {
+    font-size: 31px;
+    color: {{ section.settings.text-color }};
+  }
+  .multicolumn-section--{{ section.id }}{
+    background-color: {{ section.settings.bg-color }}
+  }
+  .text-area-div p {
+    color: {{ section.settings.text-color }}
+  }
+.custom-first-slider .main-part{
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 90%;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  padding-bottom: 50px;
+}
+  
+  
+</style>
+
+{% schema %}
+  {
+    "name": "Multicoulmnblocks",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "#000000"
+      }, {
+        "type": "color",
+        "id": "text-color",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+      {
+            "type": "text",
+            "id": "custom-sli",
+            "label": "Custom Class"
+            
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "background-image",
+            "label": "Background Image"
+          }, {
+            "type": "text",
+            "id": "sub-head",
+            "label": "Heading",
+            "default": "Lorem Ipusm"
+          }, {
+            "type": "textarea",
+            "id": "cus-textarea",
+            "label": "Welcome message",
+            "default": "Welcome to my shop!"
+          },
+          {
+          "type": "text",
+          "id": "custom__Class",
+          "label": "Custom class"
+          }
+
+        ]
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "Multicoulmnblocks"
+      }
+    ]
+  }
+{% endschema %}
+
+
+

@@ -1,0 +1,134 @@
+{%- assign values_limit = settings.pcard_limit_values_number -%}
+{%- assign rest_values = 0 -%}
+
+{%- if values_limit == 0 or is_product_card != true -%}
+  {%- assign values_limit = 99 -%}
+{%- elsif option.values.size > values_limit -%}
+  {%- assign rest_values = option.values.size | minus: values_limit -%}
+{%- endif -%}
+
+{%- case design -%}
+  {%- when 'dropdown' -%}
+    <div class="inline-flex flex-wrap custom_select_main">
+      <label for="{{ option.name }} {{ option.position }}">{% if section.settings.mw_custom_design != blank %}{{ option.name }}{% endif %}</label>
+      <div class="sf__select-bordered">
+        <select
+          {% comment %}id="{{ option.name }} {{ option.position }}"{% endcomment %}
+          class="sf-product-variant-option-dropdown h-11 border border-color-border rounded w-full pl-4 pr-10 cursor-pointer"
+        >
+          {% if section.settings.mw_custom_design != blank %}
+            <option
+              class="custom_product_option product-option-item" data-option-position="{{ option.position }}"
+              data-value="{{ option.name }}">
+              Select&nbsp;{{- option.name -}}
+            </option>
+          {% endif %}
+          {% for value in option.values %}
+            <option
+              {% if section.settings.mw_custom_design == blank %}{% if option.selected_value == value %}selected{% endif %}{% endif %}
+              class="product-option-item"
+              data-option-position="{{ option.position }}"
+              data-value="{{- value | escape -}}"
+            >
+              {{- value -}}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  {% when 'image' %}
+    <div class="inline-flex flex-wrap">
+      {% for value in option.values %}
+        {%- if forloop.index0 < values_limit -%}
+          <div
+            {% if option.selected_value == value %}data-selected="true"{% endif %}
+            class="product-option-item border border-color-border w-16 h-16 flex items-center justify-center mr-2 mb-2 cursor-pointer"
+            data-option-position="{{ option.position }}"
+            data-option-type="image"
+            data-value="{{- value | escape -}}"
+          >
+            {{- value -}}
+          </div>
+        {%- endif -%}
+      {% endfor %}
+      {% render 'product-option-rest-values',
+        class: 'sf-po__option-button',
+        product_handle: product_handle,
+        rest_values: rest_values
+      %}
+    </div>
+  {% when 'color' %}
+    <div class="inline-flex flex-wrap">
+      {% for value in option.values %}
+        {%- if forloop.index0 < values_limit -%}
+          <div class="sf__tooltip-item sf__tooltip-top">
+            <div class="sf__variant-swatch flex justify-center items-center">
+              <div
+                {% if option.selected_value == value %}data-selected="true"{% endif %}
+                class="product-option-item flex items-center justify-center cursor-pointer text-white"
+                data-option-position="{{ option.position }}"
+                data-option-type="color"
+                data-value="{{- value | escape -}}"
+              >
+                {{- value -}}
+              </div>
+            </div>
+            <span class="sf__tooltip-content capitalize">{{- value -}}</span>
+          </div>
+        {%- endif -%}
+      {% endfor %}
+      {% render 'product-option-rest-values',
+        class: 'color-design',
+        product_handle: product_handle,
+        rest_values: rest_values
+      %}
+    </div>
+  {% when 'button' %}
+
+	{% comment %}
+	MTS
+    <div class="inline-flex flex-wrap{% if is_size %} mr-4{% endif %} w-full">
+    {% endcomment %}
+      
+	<div class="inline-flex flex-wrap{% if is_size %} mr-4{% endif %} w-full mw-padd" style="justify-content: space-between; font-family: Minionpro!important;">
+      {% for value in option.values %}
+        {%- if forloop.index0 < values_limit -%}
+          <div
+            {% if option.selected_value == value %}data-selected="true"{% endif %}
+            class="product-option-item sf-po__option-button cus-options-item custom-source-pro cstm__opt__variant"
+            data-option-position="{{ option.position }}"
+            data-option-type="{{ design }}"
+            data-value="{{- value | escape -}}"
+          >
+            {{- value -}}
+          </div>
+        {%- endif -%}
+      {% endfor %}
+      {% render 'product-option-rest-values',
+        class: 'sf-po__option-button',
+        product_handle: product_handle,
+        rest_values: rest_values
+      %}
+    </div>
+  {%- else -%}
+    <div class="inline-flex flex-wrap{% if is_size %} mr-4{% endif %}" style="margin: 0 -5px;">
+      {% for value in option.values %}
+        {%- if forloop.index0 < values_limit -%}
+          <div
+            {% if option.selected_value == value %}data-selected="true"{% endif %}
+            class="product-option-item sf-po__option-button rounded"
+            data-option-position="{{ option.position }}"
+            data-option-type="default"
+            data-value="{{- value | escape -}}"
+          >
+            {{- value -}}
+          </div>
+        {%- endif -%}
+      {% endfor %}
+      {% render 'product-option-rest-values',
+        class: 'sf-po__option-button default-design',
+        product_handle: product_handle,
+        rest_values: rest_values
+      %}
+    </div>
+{%- endcase -%}

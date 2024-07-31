@@ -1,0 +1,338 @@
+{%- assign bg_color = section.settings.background_color -%}
+{%- assign has_bg = false -%}
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+  {% assign has_bg = true %}
+{% endunless %}
+{%- capture container -%}
+{{ section.settings.container }} {% if section.settings.container != 'w-full' %}{%- if has_bg == false -%}section-my{%- else -%}section-py{%- endif -%}{% endif %}
+{%- endcapture -%}
+{%- assign settings = section.settings -%}
+{%- assign blog_to_show = section.settings.limit | default: 3 -%}
+{%- assign use_scroll_mobile = section.settings.use_scroll_mobile -%}
+
+<section 
+  id="sf__blog-post-{{  section.id  }}" class="sf__blog-post {{ section.settings.custom_class }}" 
+  data-section-id="{{section.id}}"
+  {%- if has_bg -%}
+  data-bg="{{ bg_color | color_to_hsl }}"
+  style="background-color: {{ bg_color }};"
+  {%- endif -%}
+>
+    <div class="{{- container -}}" style="--column-gap: {{ section.settings.column_gap }}px; --column-gap-mobile: {{ section.settings.mobile_gap }}px; --row-gap: {{ section.settings.column_gap | plus: 10 }}px;">
+        {% render 'index-section-header', section_settings: section.settings %}
+
+        {%- assign blog = blogs[settings.blog] -%}
+        {% if use_scroll_mobile %}<div class="sf__ms">{% endif %}
+            <div id="grid-{{ section.id }}" class="sf-grid {% if use_scroll_mobile %}sf__ms-wrapper{% endif %} md:grid md:grid-cols-{{ settings.column | minus: 1 }} lg:grid-cols-{{ settings.column }}">
+                {% if blog.articles.size > 0  %}
+                    {% for article in blog.articles limit: settings.limit %}
+                        <div class="sf-column">
+                            {% render 'article-card', article: article, view: 'grid', settings: section.settings %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    {% for i in (1..blog_to_show) %}
+                        <div class="sf-column">
+                            <div class="sf__blog-card sf__view-grid">
+                                <div style="--aspect-ratio: 4/3;" class="bg-gray-100">
+                                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                    {{ 'collection-' | append: current | placeholder_svg_tag: 'object-cover sf-image--loaded w-full h-full' }}
+                                </div>
+                                <div class="sf__blog-cardContent">
+                                    <span class="sf__blog-cardDate">May 27, 2021</span>
+                                    <div class="sf__blog-cardTitle">{{ 'homepage.onboarding.blog_title' | t }}</div>
+                                    <div class="sf__blog-cardExcerpt">{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
+                                    <a href="#" class="sf__blog-cardReadmore">{{ 'homepage.onboarding.blog_readmore' | t }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            {% if section.settings.button_text != blank %}
+                {% capture btn_class %}sf__btn {{ section.settings.button_style }} {{ section.settings.button_size }}{% endcapture %}
+                <div class="sf__blog-post-button w-full flex justify-center items-center mt-8 lg:mt-10 2xl:mt-15">
+                    <a class="{{ btn_class }}" href="{{ section.settings.button_link | default: '#' }}">{{ section.settings.button_text }}</a>
+                </div>
+            {% endif %}
+        {% if use_scroll_mobile %}</div>{% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name":"Blog posts",
+    "settings":[
+        {
+            "type": "header",
+            "content": "Section header"
+        },
+        {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading",
+            "default": "Blog posts"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "header_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ]
+        },
+        {
+            "type":"header",
+            "content":"General"
+        },
+        {
+            "type":"select",
+            "id":"container",
+            "label":"Container type",
+            "default":"container-fluid",
+            "options":[
+                {
+                    "value":"container-fluid",
+                    "label":"Default"
+                },
+                {
+                    "value":"w-full",
+                    "label":"Full width"
+                },
+                {
+                    "value":"container",
+                    "label":"Use container box"
+                }
+            ]
+        },
+        {
+            "type":"color",
+            "id":"background_color",
+            "label":"Background color",
+            "default":"rgba(0,0,0,0)"
+        },
+        {
+            "type":"header",
+            "content":"Content"
+        },
+        {
+            "id":"blog",
+            "type":"blog",
+            "label":"Blog"
+        },
+        {
+            "type":"range",
+            "id":"limit",
+            "label":"Posts to show",
+            "min":2,
+            "max":12,
+            "step":1,
+            "default":4
+        },
+        {
+            "type":"range",
+            "id":"column",
+            "label":"Posts per row",
+            "min":2,
+            "max":6,
+            "step":1,
+            "default":4
+        },
+        {
+            "type": "range",
+            "id": "column_gap",
+            "label": "Column gap",
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "default": 30,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "mobile_gap",
+            "label": "Column gap on mobile",
+            "min": 0,
+            "max": 30,
+            "step": 2,
+            "default": 10,
+            "unit": "px"
+        },
+        {
+            "type": "header",
+            "content": "Card settings"
+        },
+        {
+            "type": "select",
+            "id": "article_image_aspect_ratio",
+            "label": "Image aspect ratio",
+            "default": "16/9",
+            "options": [
+            {
+                "value": "original",
+                "label": "Original aspect ratio"
+            },
+            {
+                "value": "1/1",
+                "label": "1:1"
+            },
+            {
+                "value": "3/4",
+                "label": "3:4"
+            },
+            {
+                "value": "4/3",
+                "label": "4:3"
+            },
+            {
+                "value": "16/9",
+                "label": "16:9"
+            }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "article_align_content",
+            "label": "Content alignment",
+            "default": "text-left",
+            "options": [
+            {
+                "label": "Left",
+                "value": "text-left"
+            },
+            {
+                "label": "Center",
+                "value": "text-center"
+            },
+            {
+                "label": "Right",
+                "value": "text-right"
+            }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "article_show_tags",
+            "label": "Show tags",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "article_show_date",
+            "label": "Show publised date",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "article_show_excerpt",
+            "label": "Show excerpt",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "article_show_button",
+            "label": "Show read more link",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Button settings"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button label",
+            "default": "View More",
+            "info": "Leave it blank to hide"
+        },
+        {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+            {
+                "value": "sf__btn-primary",
+                "label": "Primary button"
+            },
+            {
+                "value": "sf__btn-secondary",
+                "label": "Secondary button"
+            },
+            {
+                "value": "sf__btn-white",
+                "label": "White button"
+            },
+            {
+                "value": "sf__btn-link",
+                "label": "Underline button"
+            }
+            ],
+            "default": "sf__btn-primary"
+        },
+        {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+            {
+                "value": "sf__btn-small",
+                "label": "Button small"
+            },
+            {
+                "value": "",
+                "label": "Button medium"
+            },
+            {
+                "value": "sf__btn-large",
+                "label": "Button large"
+            }
+            ],
+            "default": ""
+        },
+        {
+            "type": "header",
+            "content": "Mobile Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "use_scroll_mobile",
+            "label": "Enable horizontal scroll",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "custom_class",
+            "label": "Custom classes"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Blog posts",
+            "category":"Blog"
+        }
+    ]
+}
+{% endschema %}

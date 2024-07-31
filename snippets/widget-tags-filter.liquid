@@ -1,0 +1,98 @@
+{% assign tags_list = block.settings.filtergroup | strip_newlines | replace: ' ,', ',' | replace: ', ', ',' | split: ',' | uniq %}
+{% assign title_handle = block.settings.title | handleize %}
+{% assign has_tags = false %}
+{% assign all_tags_downcase = all_tags_downcase | replace: ' ', '-' %}
+
+{% for tag in tags_list %}
+    {%- assign tag_json = tag | downcase | handleize | json -%}
+    {% assign tag_handle = tag | handleize | downcase | prepend: '_' %}
+    {% if all_tags_downcase contains tag_json or new_current_tags contains tag_handle %}
+        {% assign has_tags = true %}
+    {% endif %}
+{% endfor %}
+
+{% assign block_style = block.settings.design_filtergroup %}
+{% assign show_label = block.settings.show_label %}
+
+{% assign list_class = 'sf__list-row' %}
+{% assign item_class = 'tag-filter--' | append: block_style %}
+{% case block_style %}
+  {% when 'color' %}
+    {% assign list_class = 'sf__options-swatch' %}
+    {% if show_label %}
+      {% assign list_class = 'sf__options-swatch sf__options-swatch--show-label' %}
+    {% endif %}
+  {% when 'inrow' %}
+    {% assign list_class = 'sf__list-inline' %}
+  {% when 'button' %}
+    {% assign list_class = 'sf__options-swatch sf__button' %}
+{% endcase %}
+
+{% assign use_accordion = block.settings.use_accordion %}
+{% assign open_filtergroup = block.settings.open_filtergroup %}
+{% if tags_list.size > 0 and has_tags %}
+    <div style="margin-left: 0px; margin-bottom: -10px; width: auto;" class="mob_widget_pd widget-filter mb-8 {% if use_accordion %}sf__accordion-item{% endif %}{% if use_accordion and open_filtergroup %} open{% endif %}">
+      <p class="{% if use_accordion %}sf__accordion-button{% endif %} mb-4 !text-lg font-medium">{{ block.settings.title }}</p>
+
+        <div class="widget-filter__list max-h-full widget-filter--{{ block_style }}{% if use_accordion %} sf__accordion-content max-h-full{% endif %}"{%- if open_filtergroup -%} style="opacity: 1;"{%- endif -%}>
+            <ul class="{{ list_class }}{% if section.settings.limit_height_widget %} sf-scroll_content sf__custom_scroll{% endif %}" style="--max-height: {{ section.settings.limit_height }}px">
+                {% for tag in tags_list %}
+                    {%- assign tag_json = tag | downcase | handleize | json -%}
+                    {% assign tag_handle = tag | handleize | downcase | prepend: '_' %}
+                    {% assign tag_downcase = tag | handleize | downcase %}
+                    {% if all_tags_downcase contains tag_json or new_current_tags contains tag_handle %}
+                    {%- case block_style -%}
+                    {% when 'color' %}
+                      {%- capture texture -%}{%- render 'get_swatch_texture', texture_name: tag_downcase -%}{%- endcapture -%}
+                      {%- capture texture_style -%}
+                        {%- if texture != '' -%}
+                          {{ texture | asset_url }}
+                        {%- endif -%}
+                      {%- endcapture -%}
+                      {%- assign colors = ',' | append: settings.product_colors | strip_newlines | downcase | append: ',' -%}
+                      {%- assign _tag = tag | downcase | strip -%}
+                      {%- assign _tag = ',' | append: _tag | append: ':' -%}
+                      {%- capture curcol -%}
+                        {%- if colors contains _tag -%}
+                          {{ colors | split: _tag | last | split: ',' | first | strip }}
+                        {%- endif -%}
+                      {%- endcapture -%}
+                      {% assign default_color = tag_downcase | split: '-' | first %}
+
+                      <li class="tag-filter sf__option-filter{% unless show_label %} sf__tooltip-item sf__tooltip-top{% else %} py-2 tag-filter--with-label{% endunless %} tag-filter--color {% if new_current_tags contains tag_handle %}active remove-tag{% else %} add-tag{% endif %}" data-group="{{ title_handle }}" data-handle="{{ tag_downcase }}" data-tag-filter>
+                        {% unless show_label %}
+                          <span class="tag-filter__color tag-filter__color--{{ tag_downcase }}" style="background-color: {{ curcol | default: default_color }}; background-image: url({{-texture_style-}}); background-size: cover;">
+                            {% if new_current_tags contains tag_handle %}
+                              {{ tag | link_to_remove_tag: tag_downcase }}
+                            {% else %}
+                              {{ tag | link_to_add_tag: tag_downcase }}
+                            {% endif %}
+                          </span>
+                          <span class="sf__tooltip-content">{{ tag | capitalize }}</span>
+                        {% else %}
+                          <span class="tag-filter__color tag-filter__color--{{ tag_downcase }}" style="background-color: {{ curcol | default: default_color }}; background-image: url({{-texture_style-}}); background-size: cover;"></span>
+                          {% if new_current_tags contains tag_handle %}
+                            {{ tag | link_to_remove_tag: tag_downcase }}
+                          {% else %}
+                            {{ tag | link_to_add_tag: tag_downcase }}
+                          {% endif %}
+                        {% endunless %}
+                      </li>
+              
+                    {% else %}
+                      <li class="tag-filter sf__option-filter {{ item_class }}{% if block_style == 'default' %} hover-underline{% endif %}{% if new_current_tags contains tag_handle %} active remove-tag{% else %} add-tag{% endif %}" data-group="{{ title_handle }}" data-handle="{{ tag_downcase }}" data-tag-filter>
+                        {% if new_current_tags contains tag_handle %}
+                          {{ tag | link_to_remove_tag: tag_downcase }}
+                        {% else %}
+                          {{ tag | link_to_add_tag: tag_downcase }}
+                        {% endif %}
+                      </li>
+                  {% endcase %}
+                  {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+      
+    </div>
+
+{% endif %}

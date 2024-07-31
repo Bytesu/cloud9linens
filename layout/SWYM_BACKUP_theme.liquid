@@ -1,0 +1,68 @@
+{%- capture body_classes -%}
+template-{{ template.name | handle }} {{ template.name }}-{{ template.suffix }} {{ template.name | append: '-' | append: handle }} {% if cart.item_count == 0 %}cart-empty{% endif %}
+{%- endcapture -%}
+{%- capture html_classes -%}
+no-js supports-no-cookies {%- if request.path == '/challenge' -%}grow-full{%- endif -%}
+{%- endcapture -%}
+{% assign enable_rtl = settings.enable_rtl %}
+<!doctype html>
+<html
+  class="{{- html_classes -}}"
+  lang="{{ request.locale.iso_code }}"
+  style="--sf-page-opacity: 0;"
+  data-template="{{ template.name }}"
+  {% if enable_rtl %}dir="rtl"{% endif %}
+>
+<head>
+  {% render 'sizechartsrelentless' %}
+
+{% include "starapps-core" %}
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+	<meta name="theme-color" content="{{ settings.color_primary }}">
+
+  {% render 'preload' %}
+  {% render 'SEO' %}
+  {% render 'social-meta-tags' %}
+  {% render 'font-face' %}
+  {% render 'critical-css' %}
+  {% render 'critical-scripts' %}
+  {% render 'style-tags' %}
+  {% render 'custom-code-head' %}
+
+  {% comment %} {% render 'content_for_header' %} {% endcomment %}
+  {{ content_for_header }}
+  
+  {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/font-awesome.min.css' | stylesheet_tag }}
+  
+
+{% include 'globo.formbuilder.scripts' %}
+</head>
+
+<body
+  id="sf-theme" style="opacity: 0;"
+  class="{{ body_classes }} relative min-h-screen"
+  {% if template.name == 'product' %}data-product-id="{{ product.id }}"{% endif %}
+>
+  {% render 'theme-data' %}
+  {% section 'annoucement' %}
+  {% section 'header' %}
+
+  <main role="main" id="MainContent">
+    {% render 'scroll-top-button' %}
+    {{ content_for_layout }}
+    <div id="cart-drawer-container"></div>
+  </main>
+
+  {% section 'footer' %}
+  {% section 'mobile-sticky-bar' %}
+
+  {% render 'custom-code-body' %}
+  {% render 'foxkit-messenger' %}
+  {% render 'script-tags' %}
+
+  {% render 'app_wishlist-king' %}
+  </body>
+</html>

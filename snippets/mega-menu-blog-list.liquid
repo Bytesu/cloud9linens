@@ -1,0 +1,29 @@
+<div class="md:pl-4 xl:pl-16 border-color-border border-l">
+    {% assign blog = blogs[bloglist.settings.blog] %}
+    <ul class="flex flex-col">
+        {% for article in blog.articles limit: 3 %}
+            {% assign mb = '' %}
+            {% if forloop.last != true %}
+                {% assign mb = 'mb-8' %}
+            {% endif %}
+
+            <li class="flex {{ mb }}">
+                <a href="{{ article.url }}" class="w-1/4">
+                    {% render 'responsive-image',
+                        image: article.image,
+                        wrapper_class: 'w-full',
+                        wrapper_class: 'mb-2',
+                        aspect_ratio: '16/9',
+                        sizes: '200px'
+                    %}
+                </a>
+                <div class="pl-5 w-3/4 whitespace-normal text-black">
+                    {% if article.tags != blank %}
+                        <span class="block mb-1 uppercase text-xs">{{ article.tags[0] }}</span>
+                    {% endif %}
+                    <a href="{{ article.url }}" class="font-medium">{{ article.title }}</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,14 @@
+<div class="sf__accordion-content">
+  <div class="pb-5 md:pb-0">
+    {% if block.settings.image != blank %}
+      <div class="mb-5" style="max-width: {{ block.settings.image_max }}">
+        {% render 'responsive-image', image: block.settings.image %}
+      </div>
+    {% endif %}
+    {% if block.settings.description != blank %}
+      <div class="ftr_para cus_fonts_source cstm__ftr__para mt-0{% if block.settings.title != blank %} md:mt-4{% endif %} block-text">
+        {{ block.settings.description }}
+      </div>
+    {% endif %}
+  </div>
+</div>

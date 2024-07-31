@@ -1,0 +1,28 @@
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+            <div class="swiper-slide" {{ block.shopify_attributes }} data-index={{ forloop.index0 }}>
+                <div class="bg-white py-6 sm:py-10 px-5 sm:px-[30px] flex rounded-[5px] h-full">
+                    {% if block.settings.image != blank %}
+                        <div class="hover:text-color-subtext hidden lg:flex mr-3 sm:mr-6 flex-shrink-0">
+                            {% render 'responsive-image', image: block.settings.image, wrapper_class: 'w-[60px] h-[60px] sm:w-[84px] sm:h-[84px]', image_class: 'object-cover rounded-full' %}
+                            <div class="mt-4 text-sm not-change">{{ block.settings.image_text }}</div>
+                        </div>
+                    {% endif %}
+                    <div>
+                        {% if section.settings.show_stars %}
+                            <div class="stars flex mb-4">
+                                {%- render 'testimonials__stars' -%}
+                            </div>
+                        {% endif %}
+                        <h3 class="text-xl mb-2.5 font-medium not-change">{{ block.settings.title }}</h3>
+                        <div class="mb-3 text-color-subtext rte not-change">{{ block.settings.description }}</div>
+                        <div class="not-change">{{ block.settings.footer }}</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% render 'slider-controls', show_nav: section.settings.show_navigation, show_pagination: section.settings.show_pagination, absolute: true, container: section.settings.container %}

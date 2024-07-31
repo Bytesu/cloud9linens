@@ -1,0 +1,23 @@
+{% assign review_app = settings.review_app %}
+{% case review_app %}
+  {% when 'shopify' %}
+    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+  {% when 'judge' %}
+    {% capture judgeme_widgets %}{% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}{% endcapture %}
+    {% unless judgeme_widgets contains 'Liquid error' %}
+      {{ judgeme_widgets }}
+    {% else %}
+      {% render 'mm-judgeme-widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+    {% endunless %}
+  {% when 'loox' %}
+    <div class="loox-rating" data-id="{{ product.id }}" data-rating="{{ product.metafields.loox.avg_rating }}" data-raters="{{ product.metafields.loox.num_reviews }}"></div>
+  {% when 'growave' %}
+    {% capture the_snippet_review_avg %}{% render 'ssw-widget-avg-rate-listing', product: product %}{% endcapture %}
+    {% unless the_snippet_review_avg contains 'Liquid error' %}
+      {{ the_snippet_review_avg }}
+    {% else %}
+      {% render 'mm-ssw-widget-avg-rate-listing', product: product %}
+    {% endunless %}
+  {% when 'other' %}
+    {% render 'other-review-app-snippet' %}
+{% endcase %}

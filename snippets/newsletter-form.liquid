@@ -1,0 +1,50 @@
+<div class="newsletter__form-input w-full">
+  sa234234
+    {%- assign formId = 'ContactSubscribe' | append: custom_id -%}
+  
+    {% form 'customer', id: formId %}
+        {%- capture success_message -%}
+            {{ 'contact.form.post_success' | t }}
+        {%- endcapture -%}
+        {% render 'form__error', form: form %}
+        {% render 'form__success', form: form, success_message: success_message %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {% if form_design == '1' %}
+            <div class="flex">
+                {%- capture placeholder_class -%}placeholder-gray-500 placeholder-opacity-75{%- endcapture -%}
+                <input type="email"
+                       name="contact[email]"
+                       id="{{ formId }}-email"
+                       value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+                       placeholder="{{ placeholder }}"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       spellcheck="false"
+                       class="w-full focus:border-black block {{ placeholder_class }} bg-transparent border border-color-border border-r-0 px-4 py-2 rounded-tl rounded-bl newsletter__input-st"
+                >
+                <button type="submit" name="commit" class="not-move newsletter-button sf__btn sf__btn-primary">
+                    <span>{{ button_label | default: 'Subscribe' }}</span>
+                </button>
+            </div>
+        {% else %}
+            <div class="flex items-center justify-center md:flex-row flex-col">
+                {%- capture placeholder_class -%}placeholder-gray-500 placeholder-opacity-75{%- endcapture -%}
+                <input type="email"
+                       name="contact[email]"
+                       id="{{ formId }}-email"
+                       value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+                       placeholder="{{ placeholder }}"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       autocomplete="off"
+                       spellcheck="false"
+                       class="w-full block focus:border-black {{ placeholder_class }} px-0 bg-transparent border-b-2 border-black px-4 py-2 newsletter__input-st"
+                >
+                <button type="submit" name="commit" class="newsletter-button md:ml-2.5 md:mt-0 mt-6 ml-0 flex flex-none items-center bg-black text-white justify-center md:w-12 md:h-12 w-10 h-10 rounded-full">
+                    {% render 'icon', name: 'next' %}
+                </button>
+            </div>
+        {% endif %}
+    {% endform %}
+</div>

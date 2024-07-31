@@ -1,0 +1,15 @@
+{% if tooltips == nil %}
+  {% assign tooltips = 'wishlist,compare,quickview' %}
+{% endif %}
+{%- assign tooltip_items = tooltips | split: ',' -%}
+
+{%- capture class_name -%}
+  sf__tooltip-{{ position | default: 'left' }}
+{%- endcapture -%}
+
+{%- for tooltip in tooltip_items -%}
+  {%- assign settings_key = 'show_' | append: tooltip | append: '_button' | replace: 'add-to-cart', 'cart' -%}
+  {%- if settings[settings_key] -%}
+    {% render 'tooltip', type: tooltip, product: product, class_name: class_name %}
+  {%- endif -%}
+{%- endfor -%}

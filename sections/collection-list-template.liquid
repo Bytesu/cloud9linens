@@ -1,0 +1,139 @@
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+{% assign settings = section.settings %}
+<div class="sf__collection-lists">
+  <div class="{{ container }}">
+    <div class="text-center sf__page-header section__header">
+      {%- if settings.title != blank -%}
+        <h1 class="section__heading">{{ settings.title }}</h1>
+      {%- endif -%}
+      {%- if settings.description != blank -%}
+        <div class="text-center" style="color:var(--color-secondary);">{{ settings.description }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="sf__collection-layout">
+      <div class="grid sf-grid grid-cols-1 sm:grid-cols-2 mg:grid-cols-3 lg:grid-cols-4" style="--column-gap: 30px; --row-gap: 30px;">
+        {% if section.settings.display_type == 'all' %}
+          {% for collection in collections %}
+            {% render 'collection-card', section: section, collection: collection, card_style: 'standard', text_alignment:  'center', image: collection.image, show_product_count: false,  hover_effect: 'scaling-up', title: collection.title %}
+          {% endfor %}
+        {% else %}
+            {% for block in section.blocks %}
+              {% assign settings = block.settings %}
+              {% assign collection = collections[settings.collection] %}
+              {% render 'collection-card', section: section, collection: collection, card_style: 'standard', text_alignment:  'center', image: block.settings.image, show_product_count: false,  hover_effect: 'scaling-up', title: collection.title %}
+            {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collections list page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": {
+        "cs": "Seznam ve výchozím nastavení obsahuje všechny vaše kolekce. Pokud ho chcete přizpůsobit, zvolte možnost Vybrané a přidejte požadované kolekce.",
+        "da": "Alle dine kollektioner vises som standard. Hvis du vil tilpasse din liste, skal du vælge \"Valgte\" og tilføje kollektioner.",
+        "de": "Alle Kategorien sind automatisch gelistet. Zum Ändern der Liste wählen Sie 'Ausgewählt' und fügen Sie Kategorien hinzu.",
+        "en": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections.",
+        "es": "Todas tus colecciones están enlistadas por defecto. Para personalizar tu lista, elige 'Seleccionadas' y agrega colecciones.",
+        "fi": "Kaikki kokoelmasi näkyvät oletuksena. Voit mukauttaa luetteloa napauttamalla \"Valittu\" ja lisäämällä kokoelmia.",
+        "fr": "Toutes vos collections sont listées par défaut. Pour personaliser votre liste, cliquez sur « Sélection » et ajoutez des collections.",
+        "it": "Tutte le tue collezioni vengono elencate per impostazione predefinita. Per personalizzare il tuo elenco, scegli \"Selezionato\" e aggiungi delle collezioni.",
+        "ja": "すべてのコレクションがデフォルトで一覧表示されます。一覧をカスタマイズするには、「選択済み」を選択してコレクションを追加します。",
+        "ko": "모든 콜렉션이 기본으로 나열됩니다. 목록을 사용자 지정하려면 '선택'을 선택하고 컬렉션을 추가하십시오.",
+        "nb": "Alle samlingene dine vises som standard. For å tilpasse listen, velg «Valgte» og legg til samlinger.",
+        "nl": "Standaard worden al je collecties weergegeven. Kies Geselecteerd en voeg collecties toe om de lijst aan te passen.",
+        "pl": "Domyślnie wyświetlana jest lista wszystkich Twoich kolekcji. Aby dostosować listę, wybierz opcję „Wybrane” i dodaj kolekcje.",
+        "pt-BR": "Todas as suas coleções são listadas por padrão. Para personalizar sua lista, escolha \"Selecionado\" e adicione coleções.",
+        "pt-PT": "Todas as suas coleções são listadas por predefinição. Para personalizar a sua lista, escolha \"Selecionado\" e adicione coleções.",
+        "sv": "Alla dina kollektioner är listade som standard. För att anpassa din lista väljer du \"Vald\" och lägger till kollektioner.",
+        "th": "มีการระบุคอลเลกชันทั้งหมดของคุณไว้เป็นค่าเริ่มต้น หากต้องการปรับแต่งรายการของคุณ ให้เลือก 'ที่เลือก' แล้วเพิ่มคอลเลกชัน",
+        "tr": "Varsayılan olarak koleksiyonlarınızın tümü gösterilir. Listenizi özelleştirmek için \"Seçilen\" seçeneğini belirleyin ve koleksiyonlarınızı ekleyin.",
+        "vi": "Tất cả bộ sưu tập của bạn được liệt kê theo mặc định. Để tùy chỉnh danh sách, chọn \"Đã chọn\" và thêm bộ sưu tập.",
+        "zh-CN": "默认情况下列出您的所有产品系列。若要自定义列表，请选择“已选择”并添加产品系列。",
+        "zh-TW": "系統預設會將您所有的商品系列都列入清單。如果想自訂清單，請點選「已選取」並新增商品系列。"
+      }
+    },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+        "type": "select",
+        "id": "display_type",
+        "label": "Select collections to show",
+        "default": "all",
+        "options": [
+            {
+                "value": "all",
+                "label": "All"
+            },
+            {
+                "value": "selected",
+                "label": "Selected"
+            }
+        ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page title",
+      "default": "All collections"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Select image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

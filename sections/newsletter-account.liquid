@@ -1,0 +1,366 @@
+{%- assign st = section.settings -%}
+{%- assign blocks = section.blocks -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% assign form_layout = section.settings.form_layout %}
+{% assign show_icon = section.settings.show_icon %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if section.settings.container == 'w-full' %}
+        {% if has_bg == false or form_layout == 'with_image' %} section-my {% else %} section-py {% endif %}
+    {% else %}
+        {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+    {% endif %}
+{% endcapture %}
+
+<section
+    id="newsletter-{{ section.id }}"
+    class="sf__newsletter-section sf__newsletter-section-{{ section.id }}"
+    style="background-color: {{ st.background_color }};"
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ bg_color }};"
+>
+    <div class="{{ container }}">
+        <div class="flex flex-wrap items-stretch">
+            {% if form_layout == 'with_image' %}
+                {% for block in blocks %}
+                    {%- assign bs = block.settings -%}
+
+                    {% if block.type == 'image' %}
+                        {% case bs.image_width %}
+                            {% when '16%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-1/6' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-5/6' -%}
+                            {% when '25%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-1/4' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-3/4' -%}
+                            {% when '33%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-1/3' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-2/3' -%}
+                            {% when '50%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-1/2' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-1/2' -%}
+                            {% when '66%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-2/3' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-1/3' -%}
+                            {% when '75%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-3/4' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-1/4' -%}
+                            {% when '83%' %}
+                                {%- assign block_width = 'w-full md:w-1/2 xl:w-10/12' -%}
+                                {%- assign form_width = 'w-full md:w-1/2 xl:w-2/12' -%}
+                            {% when '100%' %}
+                                {%- assign block_width = 'w-full' -%}
+                                {%- assign form_width = 'w-full' -%}
+                        {% endcase %}
+
+                        <div class="{{ block_width }} w-full relative">
+                            {% if bs.image != blank %}
+                                {% render 'responsive-image', image: bs.image, aspect_ratio: '21/9', wrapper_class: 'h-full' %}
+                            {% else %}
+                                {{ 'image' | placeholder_svg_tag: 'sf__placeholder-svg w-full lg:absolute h-full object-cover' }}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <div class="{% if form_layout == 'with_image' %}{% if blocks.size <= 0 %}mx-auto lg:w-1/3 w-full {% endif %}{{ form_width }} xl:px-15 xl:px-16 {% if section.settings.container == 'container' %}xl:pt-16{% else %}xl:pt-32{% endif %} xl:pb-16 md:px-8 md:py-10 p-10{% else %}w-full{% endif %}">
+                <div class="sf__newsletter-content md:px-0 {% if form_layout == 'with_image' %} h-full flex flex-col justify-between{% endif %}{% if form_layout == 'horizontal' %} sm:flex justify-between{% endif %}">
+                    <div class="newsletter__form-heading {% if form_layout == 'with_image' %}{% if section.settings.container == 'container' %}lg:mb-18{% else %}lg:mb-24{% endif %}{% endif %} flex flex-wrap flex-col items-center text-center{% if form_layout == 'horizontal' %} sm:text-left sm:items-start flex-1{% else %} mb-5 md:mb-10 justify-center{% endif %}">
+                        {%- if st.heading != blank -%}
+                            <h3 class="hidden-br-mobile text-xl md:text-2xl xl:text-5xl{% if form_layout == 'with_image' %} 2xl:text-6xl{% endif %} text-{{ st.text_color }} leading-tight rte">Sign up for newsletter</h3>
+                        {%- endif -%}
+                        {%- if st.description != blank -%}
+                            <div class="mt-3 w-full text-{{ st.text_color }} opacity-40 rte">{{ st.description }}</div>
+                        {%- endif -%}
+                    </div>
+                    <div class="newsletter__form-input w-full {% if form_layout == 'horizontal' %}mt-4 sm:mt-0 sm:w-1/2{% endif %} mx-auto{% if blocks.size < 0 %} md:w-7/12 xl:w-4/12{% endif %}">
+                        {%- assign formId = 'ContactSubscribe' -%}
+                        {% form 'customer', id: formId, class: "sf-newsletter" %}
+                            {%- capture success_message -%}
+                                {{ 'contact.form.post_success' | t }}
+                            {%- endcapture -%}
+                            {% render 'form__error', form: form %}
+                            {% render 'form__success', form: form, success_message: success_message %}
+                            <input type="hidden" name="contact[tags]" value="newsletter">
+                            {% if st.form_design == '1' %}
+                            <div class="flex items-center {% if form_layout == 'horizontal' %}justify-end{% else %}justify-center{% endif %}">
+                                <div class="sf__newsletter-form-group flex {% if form_layout != 'horizontal' and form_layout != 'with_image' %}md:w-5/12 lg:w-4/12 w-full{% else %}w-full{% endif %} border border-{{ st.text_color }} rounded items-center self-stretch">
+                                    {%- capture placeholder -%}{%- if st.text_color == 'black' -%}placeholder-gray-500 placeholder-opacity-75{% else %}placeholder-white placeholder-opacity-75{% endif %}{%- endcapture -%}
+                                    <input type="email"
+                                    name="contact[email]"
+                                    id="{{ formId }}-email"
+                                    value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+                                    placeholder="{{ st.email_placeholder }}"
+                                    autocorrect="off"
+                                    autocapitalize="off"
+                                    autocomplete="off"
+                                    spellcheck="false"
+                                    required
+                                    class="w-full block {{ placeholder }} text-{{ st.text_color }} bg-transparent  px-4 py-2 newsletter__input-st"
+                                    >
+                                    <button type="submit" name="commit" class="h-full not-move newsletter-button px-4 py-2 text-{{ st.text_color }} {% if st.submit_button != blank %}border-l{% endif %} border-{{ st.text_color }} rounded-tr rounded-br">
+                                        {% if st.submit_button != blank %}
+                                        <span>Click Here</span>
+                                        {% else %}
+                                            {% render 'icon', name: 'next' %}
+                                        {% endif %}
+                                    </button>
+                                </div>
+                            </div>
+                            {% else %}
+                                <div class="flex items-center justify-center md:flex-row flex-col">
+                                    <div class="sf__newsletter-form-group sf__form-group-minimal flex {% if form_layout != 'horizontal' and form_layout != 'with_image' %}md:w-1/4 w-full{% else %}w-full{% endif %} {% if st.submit_button != blank %}border-b-2 border-{{ st.text_color }}{% endif %}">
+                                        {%- capture placeholder -%}{%- if st.text_color == 'black' -%}placeholder-gray-500 placeholder-opacity-75{% else %}placeholder-white placeholder-opacity-75{% endif %}{%- endcapture -%}
+                                        <input type="email"
+                                        name="contact[email]"
+                                        id="{{ formId }}-email"
+                                        value="{% if customer.email != blank %}{{ customer.email }}{% endif %}"
+                                        placeholder="{{ st.email_placeholder }}"
+                                        autocorrect="off"
+                                        autocapitalize="off"
+                                        autocomplete="off"
+                                        spellcheck="false"
+                                        required
+                                        class="w-full block pl-0 {% if st.submit_button == blank %}border-b-2 border-{{ st.text_color }}{% else %}pr-4{% endif %} {{ placeholder }} text-{{ st.text_color }} bg-transparent py-2 newsletter__input-st"
+                                        >
+                                        {%- capture text_color -%}{%- if st.text_color == 'white' -%}black{%- else -%}white{%- endif -%}{%- endcapture -%}
+                                        {% capture btn %}
+                                            {%- if st.submit_button == blank -%}
+                                                md:mt-0 mt-6 ml-0 md:ml-2.5 md:w-12 md:h-12 w-10 h-10 rounded-full bg-{{ st.text_color }} text-{{text_color}}
+                                            {%- else -%}
+                                                text-{{ st.text_color }}
+                                            {%-endif -%}
+                                        {% endcapture %}
+                                        <button type="submit" name="commit" class="newsletter-button flex flex-none items-center justify-center{{ btn }}">
+                                            {% if st.submit_button != blank %}
+                                                <span>{{ st.submit_button }}</span>
+                                            {% else %}
+                                                {% render 'icon', name: 'next' %}
+                                            {% endif %}
+                                        </button>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            <div class="flex justify-center items-center newsletter__agreement-text">
+                                  {% render 'agree-terms-checkbox' %}
+                            </div>
+                        {% endform %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Newsletter Account",
+    "settings": [
+		{
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container type",
+            "default": "w-full",
+            "options": [
+                {
+                    "value": "container-fluid",
+                    "label": "Default"
+                },
+                {
+                    "value": "w-full",
+                    "label": "Full width"
+                },
+                {
+                    "value": "container",
+                    "label": "Use container box"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color"
+        },
+        {
+            "type": "header",
+            "content": "Content"
+        },
+        {
+            "type": "select",
+            "id": "form_layout",
+            "label": "Form layout",
+            "default": "vertical",
+            "options": [
+                {
+                    "value": "vertical",
+                    "label": "Vertical"
+                },
+                {
+                    "value": "horizontal",
+                    "label": "Horizontal"
+                },
+                {
+                    "value": "with_image",
+                    "label": "Form with image"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "form_design",
+            "label": "Form style",
+            "default": "1",
+            "options": [
+                {
+                    "value": "1",
+                    "label": "Bordered"
+                },
+                {
+                    "value": "2",
+                    "label": "Minimal"
+                }
+            ]
+        },
+        {
+            "type": "textarea",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Stay up to date with all fashion news<br> and exclusive offers"
+        },
+        {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "text",
+            "id": "email_placeholder",
+            "label": "Email placeholder text",
+            "default": "Enter your email"
+        },
+        {
+            "type": "text",
+            "id": "submit_button",
+            "label": "Button label",
+            "default": "Subscribe",
+            "info": "Leave blank to use icon"
+        },
+        {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "default": "black",
+            "options": [
+                {
+                    "value": "black",
+                    "label": "Dark"
+                },
+                {
+                    "value": "white",
+                    "label": "Light"
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "show_icon",
+            "label": "Show icon",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "icon_img",
+            "label": "Icon image"
+        },
+        {
+            "type": "text",
+            "id": "icon_img_width",
+            "label": "Icon image width (px)",
+            "default": "30"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_agreement",
+            "label": "Show \"Terms & conditions\" checkbox",
+            "default": false
+        },
+        {
+            "type": "paragraph",
+            "content": "Any customers who sign up will have an account created for them in Shopify. [View customers](/admin/customers?query=&accepts_marketing=1)"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "image",
+            "name": "Image",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "select",
+                    "id": "image_width",
+                    "label": "Width",
+                    "default": "66%",
+                    "options": [
+                        {
+                            "value": "16%",
+                            "label": "16%"
+                        },
+                        {
+                            "value": "25%",
+                            "label": "25%"
+                        },
+                        {
+                            "value": "33%",
+                            "label": "33%"
+                        },
+                        {
+                            "value": "50%",
+                            "label": "50%"
+                        },
+                        {
+                            "value": "66%",
+                            "label": "66%"
+                        },
+                        {
+                            "value": "75%",
+                            "label": "75%"
+                        },
+                        {
+                            "value": "83%",
+                            "label": "83%"
+                        },
+                        {
+                            "value": "100%",
+                            "label": "100%"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Newsletter",
+            "category": "Promotional"
+        }
+    ]
+}
+{% endschema %}

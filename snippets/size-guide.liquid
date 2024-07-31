@@ -1,0 +1,8 @@
+{% if sizechart_enabled %}
+    {% assign sizechart_content = pages[settings.size_chart].content %}
+    <template id="size-chart-content">
+        <div class="size-chart p-8 prose rte max-w-full">
+            {{ sizechart_content }}
+        </div>
+    </template>
+{% endif %}

@@ -1,0 +1,90 @@
+{% if blocks.size > 0 %}
+  <div class="mw_ftr_bdr {% if bordered %} lg:border-b lg:border-color-border{% endif %} sf__footer-middle">
+    <div class="{{ container }}{% if container == 'w-full' %} px-4{% endif %}">
+      <div class="cus_ftr_fc ftr-mob hidden md:flex md:flex-wrap lg:flex-nowrap {% if bordered %}lg:-mx-8{% else %}-mx-5{% endif %}">
+        {% for block in blocks %}
+          {% case block.settings.width %}
+            {% when '16%' %}
+            {%- assign block_width = 'lg:w-1/6' -%}
+            {% when '20%' %}
+            {%- assign block_width = 'lg:w-1/5' -%}
+            {% when '25%' %}
+            {%- assign block_width = 'lg:w-1/4' -%}
+            {% when '33%' %}
+            {%- assign block_width = 'lg:w-1/3' -%}
+            {% when '50%' %}
+            {%- assign block_width = 'lg:w-1/2' -%}
+            {% when '66%' %}
+            {%- assign block_width = 'lg:w-2/3' -%}
+            {% when '75%' %}
+            {%- assign block_width = 'lg:w-3/4' -%}
+            {% when '83%' %}
+            {%- assign block_width = 'lg:w-10/12' -%}
+            {% when '100%' %}
+            {%- assign block_width = 'lg:w-full' -%}
+          {% endcase %}
+
+          <div class="mw_ftr_menu_pd sf-footer__block sf__footer-block-{{ block.type }} {{ block_width }}{% if bordered and forloop.last != true %} lg:border-r lg:border-color-border{% endif %}">
+            <div class="sf-footer__block-inner diff_color testing  {% if bordered %}lg:px-8{% else %}px-5{% endif %}" id="subscribe_main">
+              {%- assign block_title = block.settings.title -%}
+              {% if block.type == 'menu' and block_title == blank %}
+                {% assign block_title = linklists[block.settings.menu].title %}
+              {% endif %}
+              {% if block_title != blank %}
+                <h3 class="ftr_c2_heading font-medium mb-4 text-base sf__footer-block-title ftr_color source-font cstm__ftr__fs">{{ block_title }}</h3>
+              {% endif %}
+              {% case block.type %}
+                {% when 'menu' %}
+                {% render 'footer-block__menu', block: block %}
+                {% when 'our_store' %}
+                {% render 'footer-block__our-stores', block: block %}
+                {% when 'newsletter' %}
+                {% render 'footer-block__newsletter', block: block %}
+                {% when 'custom_text' %}
+                {% render 'footer-block__text', block: block %}
+                {% when 'custom_html' %}
+                {% render 'footer-block__html', block: block %}
+            {% else %}
+              {% endcase %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="cus_ftr_fc sf-footer__accordion px-4 pt-8 md:pt-10 flex md:hidden flex-col ftr-mob">
+      {% for block in section.blocks %}
+        {%- assign block_title = block.settings.title -%}
+        {% if block.type == 'menu' and block_title == blank %}
+          {% assign block_title = linklists[block.settings.menu].title %}
+        {% endif %}
+        {% if block.type != 'spacing' %}
+          {% comment %}
+          MTS
+          <div class="{% if block_title != blank %}sf__accordion-item {% else %}pt-4 {% endif %}mb-2 overflow-hidden {% if block.type == 'newsletter' %} order-first {% endif %}">
+          {% endcomment %}
+
+          <div id="toggleButton" class="ftr_mob_order {% if block_title != blank %} {% else %}pt-4 {% endif %}mb-2 overflow-hidden {% if block.type == 'newsletter' %} order-first {% endif %}">
+
+            {% if block_title != blank %}
+              <h3 class="sf__accordion-button font-medium md:mb-4 text-base sf__footer-block-title ftr_mob_click cus_fonts_source cstm_ftr_mob_upcs">{{ block_title }}</h3>
+            {% endif %}
+            {% case block.type %}
+              {% when 'menu' %}
+              {% render 'footer-block__menu', block: block %}
+              {% when 'our_store' %}
+              {% render 'footer-block__our-stores', block: block %}
+              {% when 'newsletter' %}
+              {% render 'footer-block__newsletter', block: block %}
+              {% when 'custom_text' %}
+              {% render 'footer-block__text', block: block %}
+              {% when 'custom_html' %}
+              {% render 'footer-block__html', block: block %}
+          {% else %}
+            {% endcase %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,1 @@
+{"sections":{"main":{"type":"page","disabled":true,"settings":{}},"1652251061d581629a":{"type":"custom-liquid","settings":{"custom_liquid":"<div class=\"mb-16\">\n            <h3 class=\"text-2xl font-medium mb-8\">{{ 'customer.orders.title' | t }}<\/h3>\n            {% render 'customer-orders' %}\n        <\/div>","custom_class":""}}},"order":["main","1652251061d581629a"]}

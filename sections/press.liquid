@@ -1,0 +1,204 @@
+{%- assign settings = section.settings -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+
+{% assign items = section.blocks.size %}
+<section
+    id="sf__press-{{ section.id }}"
+    class="sf-press {{ section.settings.custom_class }}"
+    data-section-type="press"
+    data-section-id="{{ section.id }}"
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    data-autoplay="{{ section.settings.autoplay | default: false }}"
+    data-items="{{ items }}"
+    style="
+        background-color: {{ settings.background_color }};
+    "
+>
+    <div class="{{ container }}">
+        {% render 'index-section-header', section_settings: section.settings %}
+
+        <div class="press-inner">
+            <div class="press-content swiper-container">
+                <div class="swiper-wrapper flex">
+                    {% for block in section.blocks %}
+                        {% if block.settings.title == blank %}
+                            {% continue %}
+                        {% endif %}
+                        <div class="press-content__item swiper-slide">
+                            <div class="rte text-lg sm:text-2xl xl:text-3xl 2xl:text-4xl px-4 leading-normal sm:leading-normal max-w-screen-md text-center mx-auto">
+                                {{ block.settings.title }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="press-list mx-auto mb-2 sm:mb-0 {% if section.settings.show_divider %}press-list--show-divider mt-10 sm:mt-15 border-t border-color-border{% else %}mt-7 sm:mt-12{% endif %}">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper flex items-center">
+                        {% for block in section.blocks %}
+                            {% if block.settings.title == blank %}
+                                {% continue %}
+                            {% endif %}
+                            {% assign max_width = '100%' %}
+                            {% if block.settings.image_width != blank %}
+                                {% assign max_width = block.settings.image_width %}
+                            {% endif %}
+                            <div class="swiper-slide press-logo px-6 flex justify-center items-center" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                                {% if block.settings.image != blank %}
+                                    {% render  'responsive-image', image: block.settings.image, max_width: max_width, wrapper_class: 'w-full sm:opacity-30' %}
+                                {% else %}
+                                    {{ 'image' | placeholder_svg_tag: 'sf-image sf__placeholder-svg w-56 h-16 sm:opacity-30' }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% render 'slider-controls', show_nav: false, custom_class: 'sm:hidden' %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Press",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section header"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Featured in"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading"
+            },
+            {
+                "type": "textarea",
+                "id": "description",
+                "label": "Description"
+            },
+            {
+                "type": "select",
+                "id": "header_alignment",
+                "label": "Text alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "General"
+            },
+            {
+                "type": "select",
+                "id": "container",
+                "label": "Container type",
+                "default": "container-fluid",
+                "options": [
+                    {
+                        "value": "container-fluid",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "w-full",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "container",
+                        "label": "Use container box"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background color"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_divider",
+                "label": "Show divider"
+            },
+            {
+                "type": "checkbox",
+                "id": "autoplay",
+                "label": "Auto-rotate content"
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom classes"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "news",
+                "name": "Newspaper",
+                "settings": [
+                    {
+                        "type": "richtext",
+                        "id": "title",
+                        "label": "Content",
+                        "default": "<p>Super class, cute, comfortable. You can wear them with just about anything.</p>"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "image_width",
+                        "label": "Image width (px)",
+                        "placeholder": "eg: 100px",
+                        "default": "150px",
+                        "info": "Leave blank to use original width."
+                    },
+                    {
+                        "type": "text",
+                        "id": "url",
+                        "label": "Link"
+                    }
+                ]
+            }
+        ],
+        "presets": [{
+            "name": "Press",
+            "category": "Promotional",
+            "blocks": [
+                { "type": "news" },
+                { "type": "news" },
+                { "type": "news" },
+                { "type": "news" },
+                { "type": "news" },
+                { "type": "news" }
+            ]
+        }]
+    }
+{% endschema %}

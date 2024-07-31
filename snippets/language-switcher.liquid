@@ -1,0 +1,31 @@
+{%- comment -%}
+{% unless form_id %}
+    {% assign form_id = 'language-form' %}
+{% endunless %}
+{%- endcomment -%}
+{% assign show_language_selector = true %}
+
+{% if show_language_selector %}
+  {% assign min = 65 %}
+  {% assign max = 80 %}
+  {% assign diff = max | minus: min %}
+  {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+  <div class="sf-language-switcher {{ box_size }} lg:py-3.5">
+    {% assign form_id = 'localization_form-' | append: randomNumber %}
+    {% form 'localization', class: 'px-4', data-localization-form: '', id: form_id %}
+      <input type="hidden" name="locale_code" value="{{ form.current_locale.iso_code }}" data-localization-input/>
+      <div class="sf__custom-select sf__select-{{ pos }}">
+        <select class="border-transparent bg-transparent" data-localization-select>
+          {% for language in localization.available_languages %}
+            <option
+                    value="{{ language.iso_code }}"
+                    {% if language.iso_code == localization.language.iso_code %}selected="selected"{% endif %}
+            >
+              {{ language.endonym_name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endform %}
+  </div>
+{% endif %}

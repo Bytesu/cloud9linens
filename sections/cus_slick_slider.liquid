@@ -1,0 +1,205 @@
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->   
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> 
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+<section class="three-column boxsection-{{section.id}}">
+    <div class="sec-row flexed">
+      {% for block in section.blocks %}
+        <div class="box boxblock-{{block.id}}">
+        <div class="box-content">
+          <h2 class="box-heading head-{{block.id}}">{{ block.settings.box-heading }}</h2>
+          <span class="box-description">{{ block.settings.box-description }}</span>
+        </div>
+        </div>
+      <style>
+        .box-content{
+          text-align: {{ block.settings.content_aligment }};
+        }
+       .boxblock-{{block.id}}{
+          background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.30)), url({{ block.settings.back-image | img_url: '400x400'}});
+          height:300px;
+          background-repeat: no-repeat;
+          width:{{ block.settings.box-width }}%;
+          align-items:{{ block.settings.box_vertical_alignment }};
+          display:flex;
+          justify-content:center;
+          margin-right:{{ block.settings.box_margin_right }}px;
+         }
+        .box-heading{
+            color:{{ block.settings.heading-color }};
+            font-size:{{ block.settings.font_size_heading }}px;
+         }
+        .box-description{
+            color:{{ block.settings.description-color }};
+            font-size:{{ block.settings.font_size_description }}px;
+         }
+     @media screen and (max-width: 767px) {
+        .boxblock-{{block.id}}{
+           width:100%;
+           margin-bottom: 40px;
+       }
+       }
+      </style>
+      {% endfor %}
+    </div>
+   </section>
+   <style>
+     .three-column{
+     width:100%;
+   }
+   @media screen and (min-width: 992px) {
+   .flexed{
+       display:flex;
+   }
+   .sec-row{
+         max-width: 1152px;
+         margin: 0 auto;
+        }
+      }
+   </style>
+   
+   {% schema %}
+     {
+       "name": "MultiColumn",
+       "settings": [],
+        "blocks": [
+        {
+          "name": "Slide",
+          "type": "slide",
+          "settings": [
+            {
+             "type": "range",
+             "id": "box_margin_right",
+             "min": 0,
+             "max": 30,
+             "step": 1,
+             "unit": "px",
+             "label": "Margin right",
+             "default": 10
+            },
+            {
+             "type": "range",
+             "id": "box-width",
+             "min": 0,
+             "max": 100,
+             "step": 1,
+             "unit": "%",
+             "label": "Box width",
+             "default": 33
+            },
+            {
+             "type": "radio",
+             "id": "content_aligment",
+             "label": "Content alignment",
+             "options": [
+               {
+                 "value": "left",
+                 "label": "Left"
+               },
+               {
+                 "value": "center",
+                 "label": "Center"
+               },
+               {
+                 "value": "right",
+                 "label": "Right"
+               }
+             ],
+             "default": "center"
+            },
+            {
+              "type": "color",
+              "id": "box-color",
+              "label": "Box color"
+            },
+            {
+              "type": "image_picker",
+              "id": "back-image",
+              "label": "Background Image"
+            },
+            {
+              "type": "color",
+              "id": "overlay-1",
+              "label": "Overlay color 1"
+            },
+            {
+              "type": "color",
+              "id": "overlay-2",
+              "label": "Overlay color 2"
+            },
+            {
+              "type": "text",
+              "id": "box-heading",
+              "label": "Box Heading"
+            },
+            {
+              "type": "color",
+              "id": "heading-color",
+              "label": "Box heading color"
+            },
+            {
+             "type": "range",
+             "id": "font_size_heading",
+             "min": 12,
+             "max": 60,
+             "step": 1,
+             "unit": "px",
+             "label": "Font size",
+             "default": 26
+           },
+           {
+              "type": "richtext",
+              "id": "box-description",
+              "label": "Box Description"
+           },
+           {
+              "type": "color",
+              "id": "description-color", 
+              "label": "Box heading color"
+           },
+           {
+             "type": "range",
+             "id": "font_size_description",
+             "min": 12,
+             "max": 46,
+             "step": 1,
+             "unit": "px",
+             "label": "Font size",
+             "default": 16
+          },
+          {
+             "type": "select",
+             "id": "box_vertical_alignment",
+             "label": "Vertical alignment",
+             "options": [
+               {
+                 "value": "top",
+                 "label": "Top"
+               },
+               {
+                 "value": "center",
+                 "label": "Center"
+               },
+               {
+                 "value": "end",
+                 "label": "Bottom"
+               }
+             ],
+             "default": "center"
+           }
+          
+          ]
+        }
+      ],
+       "presets": [
+         {
+           "name": "MultiColumn"
+         }
+       ]
+     }
+   {% endschema %}
+   
+   

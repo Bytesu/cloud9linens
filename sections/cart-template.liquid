@@ -1,0 +1,328 @@
+{%- capture page_title -%}
+    {{ 'cart.general.title' | t }}
+{%- endcapture -%}
+
+{% comment %}
+{% render 'page-title', title: page_title %}
+{% endcomment %}
+
+
+{% comment %} <div class="flex md:hidden mob-container-wrapper mob-collection-title-wrapper" style="margin-top: 52px !important;"> {% endcomment %}
+  {% comment %} <p class="mob-collection-title">My Chart</p> {% endcomment %}
+  {% comment %} <p class="mob-collection-title">Shopping Bag</p>
+  </div> {% endcomment %}
+
+{% comment %} <div class="hidden md:block res-cart-banner" style="background-image: url(https://cdn.shopify.com/s/files/1/0611/3781/3724/files/A-Capitone-bed-cover-300-threadcounts_2.jpg?v=1647329084); background-position: center center; height: 80vh; background-repeat: no-repeat; background-size: cover;">  
+</div> {% endcomment %}
+
+<div class="flex md:hidden mob_shopping" style="margin-top: 52px !important;">
+    <h2>Shopping Bag</h2>
+  </div>
+  <hr class="hrstyle4">
+  
+<div class="flex md:hidden mob-container-wrapper">
+  
+  <div class="shipping_message">
+    <div class="shipping_inn_mess">
+  <h4 class="custom-didot">Free Shipping with CL Account</h4>
+  <p class="fonts_source"><a href="/account/login">Sign in</a> or <a href="/account/login#register_from">Create account</a> for complementary shipping on your order</p>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid res-cart-container hidden md:block" style="margin-top: 100px; padding: 0 !important;">
+  {% comment %} <hr class="hrstyle2 res-cart-hidden">
+  <div class="container res-cart-header" style="display: flex; flex-direction: row; justify-content: space-between;">
+    <div class="res-cart-hidden">
+      <p style="font-size: 18px;"><span class="res-cart-hidden">Cloud9linens</span> <span style="font-weight: 600; padding: 0px 3px;"> | </span>My Shopping Bag</p>
+    </div>
+  	
+    
+    <div>
+      <p style="font-size: 18px;">{{ cart.item_count }} Items</p>
+    </div>
+    
+    <div>
+      <a style="font-size: 18px;" href="javascript:history.back()">Continue Shopping</a>
+    </div>
+    
+  </div> {% endcomment %}
+  <div class="res-cart-hidden">
+    <h2>Shopping Bag</h2>
+  </div>
+  <hr class="hrstyle2 res-cart-hidden">
+
+  <div class="shipping_message">
+  <h4 class="custom-didot">Free Shipping with CL Account</h4>
+  <p class="fonts_source"><a href="/account/login">Sign in</a> or <a href="/account/login#register_from">Create account</a>for complementary shipping on your order</p>
+</div>
+</div>
+
+
+
+{% comment%}
+<div class="container">
+  <div class="scd__wrapper sf-cart pb-20" data-cart-wrapper>
+    {% if cart.item_count > 0 %}
+
+      {% render 'foxkit-cart-countdown' %}
+      {% render 'foxkit-cart-goal' %}
+
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="checkout-form asdasd sf-cart__form scd__content">
+        <div style="width: 66%;" class="sf-cart__table">
+          <div class="sf-cart__table-head flex">
+            <div class="sf-cart__table-col sf-cart__table-product">{{ 'cart.label.product' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-price">{{ 'cart.label.price' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-quantity hidden md:block">{{ 'cart.label.quantity' | t }}</div>
+            <div class="sf-cart__table-col text-right sf-cart__table-subtotal hidden md:block">{{ 'cart.label.total' | t }}</div>
+          </div>
+
+          <div class="sf-cart__table-body scd__body">
+            {%- if cart.items.size > 0 -%}
+              <div class="scd__items">
+                {% for item in cart.items %}
+                  {% render 'cart-line-item', item: item %}
+                {% endfor %}
+              </div>
+            {%- else -%}
+              {% render 'cart-empty-message' %}
+            {%- endif -%}
+          </div>
+        </div>
+
+        <div class="flex justify-end">
+          <div class="sf-cart__summary relative">
+            {% render 'cart-addons' %}
+
+            {%- assign cart_discounts = 'template ' | split: ' ' -%}
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              {%- assign cart_discounts = cart.cart_level_discount_applications -%}
+            {%- endif -%}
+            <div class="scd__summary" data-cart-summary>
+              <div
+                class="scd-item__discounts sf-cart__item-discounts {% if cart.cart_level_discount_applications.size == 0 %}hidden{% endif %}"
+                data-discounts-wrapper
+              >
+                <div class="sf-cart__summary-row text-right">
+                  <span class="visually-hidden">{{ 'customer.order.discounts' | t }}</span>
+                  <div data-discounts>
+                    <ul class="scd-item__discounts-list" data-discounts-list>
+                      {%- for discount_application in cart_discounts -%}
+                        {% if discount_application.total_allocated_amount != blank %}
+                          <li class="scd-item__discounts-item">
+                            {% render 'icon', name: 'discount' %}
+                            <span data-cart-discount-title>{{- discount_application.title -}}&nbsp;(-<span data-cart-discount-amount>{{ discount_application.total_allocated_amount | money }}</span>)</span>
+                          </li>
+                        {% endif %}
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title">{{ 'cart.general.subtotal' | t }}</span>
+                <span class="sf-cart-subtotal__price font-medium" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+              </div>
+            </div>
+
+            {%- capture taxes_shipping_checkout -%}
+              {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- elsif cart.taxes_included -%}
+                {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+              {%- elsif shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+              {%- else -%}
+                {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+              {%- endif -%}
+            {%- endcapture -%}
+            <div class="sf-cart__shipping note" data-shipping-note>{{ taxes_shipping_checkout }}</div>
+            <div class="sf-cart__buttons-container mt-5">
+              {% assign show_terms = false %}
+              {% if settings.agree_text != blank and settings.show_agree_on_cart %}
+                {% render 'agree-terms-checkbox' %}
+                {% assign show_terms = true %}
+              {% endif %}
+              <div class="sf-cart__submit-controls{% if show_terms %} mt-3{% endif %}"{% if show_terms %} data-terms-action disabled{% endif %}>
+                <button type="submit" name="checkout" class="w-full cart__submit sf__btn sf__btn-primary">
+                  {{ 'cart.general.checkout' | t | upcase }}
+                </button>
+              </div>
+              {%- if additional_checkout_buttons -%}
+                <div class="additional-checkout-buttons w-full">{{ content_for_additional_checkout_buttons }}</div>
+              {%- endif -%}
+            </div>
+            {% if settings.cart_drawer_trust_badge %}
+              <div class="scd__trust-badge mt-3">
+                <img src="{{ settings.cart_drawer_trust_badge | img_url: '1000x' }}" alt="Trust secure badge" loading="lazy" width="1000" height="200">
+              </div>
+            {% endif %}
+            <div class="scd__overlay inset-0"></div>
+          </div>
+        </div>
+      </form>
+    
+    {% endif %}
+  </div>
+</div>
+{% endcomment %}
+
+
+
+<div class="container">
+  <div style="padding: 30px 20px; margin-top: 60px;" class="scd__wrapper sf-cart pb-20" data-cart-wrapper>
+    {% if cart.item_count > 0 %}
+
+      {% render 'foxkit-cart-countdown' %}
+      {% render 'foxkit-cart-goal' %}
+
+      <form action="{{ routes.cart_url }}" method="post" novalidate class="checkout-form asdasd sf-cart__form scd__content">
+       <div class="flex res-cart-form">
+        <div style="padding: 10px 20px 30px 20px;" class="sf-cart__table w-full">
+          {% comment %}
+          <div class="sf-cart__table-head flex">
+            <div class="sf-cart__table-col sf-cart__table-product">{{ 'cart.label.product' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-price">{{ 'cart.label.price' | t }}</div>
+            <div class="sf-cart__table-col sf-cart__table-quantity hidden md:block">{{ 'cart.label.quantity' | t }}</div>
+            <div class="sf-cart__table-col text-right sf-cart__table-subtotal hidden md:block">{{ 'cart.label.total' | t }}</div>
+          </div>
+          {% endcomment %}
+
+          <div class="sf-cart__table-body scd__body">
+            {%- if cart.items.size > 0 -%}
+              <div class="scd__items">
+                {% for item in cart.items %}
+                  {% render 'cart-line-item', item: item %}
+                {% endfor %}
+              </div>
+            {%- else -%}
+              {% render 'cart-empty-message' %}
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="ship_img_desk">
+          <img src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/shcc.png?v=1692272711" alt="no pic">
+        </div>
+        <div class="res-cart-summary-sec" style="background-color: white; padding: 20px 0px 30px 0px; height: fit-content; margin: 0 auto;" >
+          <div class="sf-cart__summary relative res-cart-summary">
+            
+            {% comment %} <div class="flex md:hidden" style="justify-content: space-between; padding-bottom: 1rem; font-size: 14px!important; font-family: Minionpro!important;">
+              <p>{{ cart.item_count }} Items</p>
+              <span class="sf-cart-subtotal__price font-medium" style="" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+            </div> {% endcomment %}
+            
+            <div class="shi_order">
+                <h4 class="custom-pt-sans bolded">ORDER SUMMARY</h4>
+            </div>
+
+            {%- assign cart_discounts = 'template ' | split: ' ' -%}
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              {%- assign cart_discounts = cart.cart_level_discount_applications -%}
+            {%- endif -%}
+            <div style="padding: 0.75rem;" class="scd__summary" data-cart-summary>
+              <div
+                class="scd-item__discounts sf-cart__item-discounts {% if cart.cart_level_discount_applications.size == 0 %}hidden{% endif %}"
+                data-discounts-wrapper
+              >
+                <div class="sf-cart__summary-row text-right">
+                  <span class="visually-hidden">{{ 'customer.order.discounts' | t }}</span>
+                  <div data-discounts>
+                    <ul class="scd-item__discounts-list" data-discounts-list>
+                      {%- for discount_application in cart_discounts -%}
+                        {% if discount_application.total_allocated_amount != blank %}
+                          <li class="scd-item__discounts-item">
+                            {% render 'icon', name: 'discount' %}
+                            <span data-cart-discount-title>{{- discount_application.title -}}&nbsp;(-<span data-cart-discount-amount>{{ discount_application.total_allocated_amount | money }}</span>)</span>
+                          </li>
+                        {% endif %}
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              {% comment %}
+              MTS
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title">{{ 'cart.general.subtotal' | t }}</span>
+                <span class="sf-cart-subtotal__price font-medium" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+              </div>
+              {% endcomment %}
+              
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Shipping Cost</span>
+                <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>$20</span>
+              </div>
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Tax</span>
+                <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>$14</span>
+              </div>
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Order Discount</span>
+                <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>$20</span>
+              </div>
+              
+              <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                <span class="sf-cart-subtotal__title fonts_source mob_fs_10">{{ 'cart.general.subtotal' | t }}</span>
+                <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+              </div>
+              <div class="ship_promo">
+                {% render 'cart-addons' %}
+              </div>
+            </div>
+
+            {%- capture taxes_shipping_checkout -%}
+              {%- if cart.taxes_included and shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_included_and_shipping_policy_html' | t: link: shop.shipping_policy.url }}
+              {%- elsif cart.taxes_included -%}
+                {{ 'cart.general.taxes_included_but_shipping_at_checkout' | t }}
+              {%- elsif shop.shipping_policy.body != blank -%}
+                {{ 'cart.general.taxes_and_shipping_policy_at_checkout_html' | t: link: shop.shipping_policy.url }}
+              {%- else -%}
+                {{ 'cart.general.taxes_and_shipping_at_checkout' | t }}
+              {%- endif -%}
+            {%- endcapture -%}
+            <div style="padding: 0px 20px;" class="hidden md:block sf-cart__shipping note" data-shipping-note>{{ taxes_shipping_checkout }}</div>
+            <div class="sf-cart__buttons-container mt-5">
+              {% assign show_terms = false %}
+              {% if settings.agree_text != blank and settings.show_agree_on_cart %}
+                {% render 'agree-terms-checkbox' %}
+                {% assign show_terms = true %}
+              {% endif %}
+              <div class="sf-cart__submit-controls{% if show_terms %} mt-3{% endif %}"{% if show_terms %} data-terms-action disabled{% endif %}>
+                <button style="font-size: 16px; font-weight: 400; border-radius: 0px; text-transform:uppercase;" type="submit" name="checkout" class="w-full cart__submit sf__btn sf__btn-primary">
+                  PROCEED TO CheckOut
+                  {% comment %} {{ 'cart.general.checkout' | t | upcase }}{% endcomment %} 
+                </button>
+              </div>
+              {%- if additional_checkout_buttons -%}
+                <div class="additional-checkout-buttons w-full">{{ content_for_additional_checkout_buttons }}</div>
+              {%- endif -%}
+            </div>
+            {% if settings.cart_drawer_trust_badge %}
+              <div class="scd__trust-badge mt-3">
+                <img src="{{ settings.cart_drawer_trust_badge | img_url: '1000x' }}" alt="Trust secure badge" loading="lazy" width="1000" height="200">
+              </div>
+            {% endif %}
+            <div class="scd__overlay inset-0"></div>
+          </div>
+        </div>
+        </div>
+        <div class="ship_gift">
+          <h4 class="custom-didot">Gift options</h4>
+          <hr class="hrstyle2">
+          <h4 class="custom-didot">Fund Donations</h4>
+          <hr class="hrstyle2">
+        </div>
+        
+      </form>
+    
+      {%- else -%}
+         <p class="cus-empty-cart-txt">Your Shopping Chart is Empty</p>
+    
+    {% endif %}
+  </div>
+  {% comment %} <div class="ship_img_mob">
+    <img src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/othmanian-img.png?v=1685708853" alt="no pic">
+  </div> {% endcomment %}
+</div>

@@ -1,0 +1,337 @@
+<link rel="stylesheet" href="{{ 'app_wishlist-king_templates.css' | asset_url }}" />
+
+<style>
+  
+  .mts-cus-btn-wishlist {
+  	display: none !important;  
+  }
+  
+  .wk-link {
+    margin: 0 15px;
+  }
+  
+  @media only screen and (max-width: 1023px) {
+    .sf-header__mobile-right .wk-link {
+      display: none;
+    }
+  }
+
+  .wk-link__icon {
+    margin-right: 0;
+  }
+  
+  .wk-link__icon2 {
+    display: none;
+  }
+  
+  .mega-menu-customer .wk-link {
+    padding: 5px 0 10px;
+    margin: 0;
+    margin-left: 18px;
+    --wk-link__icon--size: 17px;
+    --wk-icon--stroke-width: 1px;
+  }
+  
+  .mega-menu-customer .wk-link__label {
+    display: block;
+    top: 1px;
+  
+  }
+  
+  .mega-menu-customer .wk-link__icon {
+    margin-right: 22px;
+  }
+  
+  .mega-menu-customer .wk-link__icon2 {
+    display: block;
+    margin-left: 20px;
+  }
+ 
+  .wk-link__label {
+    display: none;
+  }
+
+  .wk-link__count {
+    display: none;
+  }
+
+  .wk-button {
+    font-size: 12px;
+    --wk-icon--stroke-width: 0.8px;
+  }
+  
+  .mob-pcard-content {
+   /* flex-direction: column;*/
+    align-items: flex-end;
+  }
+  
+  .sf__pcard .wk-button {
+    padding: 0;
+    --wk-button__icon--size: 15px;
+    --wk-button__icon--color: #888;
+  }
+  
+  .sf__pcard .wk-button__label {
+    display: none;
+  }
+  
+  .wk-button__icon {
+    top: 0px;
+    margin-right: 10px;
+  }
+
+  .wk-button__label {}
+  
+  .bottom-block__text .wk-button {
+      display: flex;
+    }
+    
+    .cus-prod-extra-btn .wk-button {
+      display: none;
+    }
+  
+  @media (max-width: 767px) {
+    .bottom-block__text .wk-button {
+      display: none;
+    }
+    
+    .cus-prod-extra-btn .wk-button {
+      display: flex;
+    }
+  }
+  
+
+  .wk-button.wk-button--floating {
+  	background: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  
+  .wk-button.wk-button--floating:hover { 
+    background: #fff; 
+  }
+  
+  .wk-button.wk-button--floating .wk-button__icon {
+  	margin: 0 auto;
+    top: 2px;
+  }
+
+  .wk-product-form__submit {}
+
+  :root {
+    --wk-icon--stroke-width: 1px;
+
+    --wk-link--color: #000;
+    --wk-link__icon--size: 20px;
+
+    --wk-button--color: #c6c6c6;
+    --wk-button__icon--color: #000;
+    --wk-button__icon--size: 14px;
+
+    --wk-product-form__submit--color: #000;
+    --wk-product-form__submit--background: #fff;
+
+    --wk-share-button--color: white;
+    --wk-share-button--background: #000;
+    --wk-share-button--size: 26px;
+
+    --wk-page__image--aspect-ratio: 337 / 506;
+    --wk-page__grid--max-columns: 4;
+  }
+</style>
+
+<script type="module" async>
+  import WishlistKing from "{{ 'app_wishlist-king_sdk.js' | asset_url }}";
+  import templates from "{{ 'app_wishlist-king_templates.js' | asset_url }}";
+  import settings from "{{ 'app_wishlist-king_settings.js' | asset_url }}";
+
+  WishlistKing.toolkit.init({
+    templates,
+    settings,
+    events: {
+      ready() {
+        // App is ready and WishlistKing.toolkit can be used
+      },
+      addedToCart(cart) {
+        // This is a good place to trigger AJAX cart update
+        window.scrollTo(0, 0);
+        location.reload();
+      },
+      loginRequired(intent) {
+        window.location = [
+          "/account/login?wk-redirect=",
+          encodeURIComponent(
+            JSON.stringify({
+              path: window.location.pathname,
+              intent: intent,
+            })
+          ),
+        ].join("");
+      },
+    },
+    shop: {
+      name: {{ shop.name | replace: "&amp;", "&" | json }},
+      domain: "{{ shop.domain }}",
+      permanent_domain: "{{ shop.permanent_domain }}",
+      currency: "{{ shop.currency }}",
+      money_format: {{ shop.money_format | json }},
+      root_url: "{% unless routes.root_url == '/'  %}{{ routes.root_url }}{% endunless %}",
+    },
+    session: {
+      customer: {{ customer.id | json }},
+      customer_email: {{ customer.email | json }},
+    },
+    wishlist: {
+      filter: function (product) {
+        return !product.hidden;
+      },
+      share: {
+        title: {{ "app_wishlist-king.general.share_list_title" | t | json }},
+        description: {{ "app_wishlist-king.general.share_list_description" | t: shopName: shop.name | json }},
+      },
+      fallbackImage: "https://cdn.shopify.com/s/images/themes/product-1.png",
+    },
+    theme: {
+      locale: {
+        wishlist: {{ "app_wishlist-king.general.wishlist" | t | json }},
+        wishlist_empty_note: {{ "app_wishlist-king.general.wishlist_empty_note" | t | json }},
+        add_to_wishlist: {{ "app_wishlist-king.general.add_to_wishlist" | t | json }},
+        remove_from_wishlist: {{ "app_wishlist-king.general.remove_from_wishlist" | t | json }},
+        clear_wishlist: {{ "app_wishlist-king.general.clear_wishlist" | t | json }},
+        in_wishlist: {{ "app_wishlist-king.general.in_wishlist" | t | json }},
+        share_wishlist: {{ "app_wishlist-king.general.share_wishlist" | t | json }},
+        copy_share_link: {{ "app_wishlist-king.general.copy_share_link" | t | json }},
+        share_link_copied: {{ "app_wishlist-king.general.share_link_copied" | t | json }},
+        share_by_email_body: {{ "app_wishlist-king.general.share_by_email_body" | t | json }},
+        login_or_signup_note: {{ "app_wishlist-king.general.login_or_signup_note_html" | t: login_url: routes.account_login_url, register_url: routes.account_register_url | json }},
+        add_to_cart: {{ "app_wishlist-king.general.add_to_cart" | t | json }},
+        sold_out: {{ "app_wishlist-king.general.sold_out" | t | json }},
+        quantity: {{ "app_wishlist-king.general.quantity" | t | json }},
+        view_product: {{ "app_wishlist-king.general.view_product" | t | json }},
+        view_wishlist: {{ "app_wishlist-king.general.view_wishlist" | t | json }},
+        share_on_facebook: {{ "app_wishlist-king.general.share_on_facebook" | t | json }},
+        share_on_twitter: {{ "app_wishlist-king.general.share_on_twitter" | t | json }},
+        share_on_pinterest: {{ "app_wishlist-king.general.share_on_pinterest" | t | json }},
+        share_with_whatsapp: {{ "app_wishlist-king.general.share_with_whatsapp" | t | json }},
+        share_by_email: {{ "app_wishlist-king.general.share_by_email" | t | json }},
+        get_link: {{ "app_wishlist-king.general.get_link" | t | json }},
+        send_to_customer_service: {{ "app_wishlist-king.general.send_to_customer_service" | t | json }},
+        add_all_to_cart: {{ "app_wishlist-king.general.add_all_to_cart" | t | json }},
+      },
+      customer: {{ customer.id | json }},
+      customer_accounts_enabled: {{ shop.customer_accounts_enabled | json }},
+    },
+  });
+
+  // Header link
+  
+  WishlistKing.observe(
+    {
+      selector: "a.cart-icon",
+    },
+    (target) => {
+      target.insertBefore(WishlistKing.createComponent("wishlist-link"));
+    }
+  );
+  
+  WishlistKing.observe(
+    {
+      selector: ".mega-menu-customer",
+    },
+    (target) => {
+      target.prepend(WishlistKing.createComponent("wishlist-link"));
+    }
+  );
+  
+
+  //Wishlist button on product page
+  
+  WishlistKing.observe(
+    {
+      selector: "div[data-quantity-input-wrapper]",
+      template: "product",
+    },
+    (target) => {
+      target.insertAfter(
+        WishlistKing.createComponent("wishlist-button", {
+          id: "{{ product.id }}",
+        })
+      );
+    }
+  );
+  
+  WishlistKing.observe(
+    {
+      selector: "div[data-quantity-input-wrapper]",
+      template: "product",
+    },
+    (target) => {
+      target.insertAfter(
+        WishlistKing.createComponent("wishlist-button", {
+          id: "{{ product.id }}",
+        })
+      );
+    }
+  );
+  
+  WishlistKing.observe(
+    {
+      selector: ".spr-summary-actions",
+      template: "product",
+    },
+    (target) => {
+      target.insertAfter(
+        WishlistKing.createElement(
+        "span", 
+        {className: "flex spr-summary-actions cus-prod-extra-btn"}, 
+        WishlistKing.createComponent("wishlist-button", {
+          id: "{{ product.id }}",
+        }))
+      );
+    }
+  );
+  
+  // Wishlist button on collection page
+  
+  WishlistKing.observe(
+    {
+      selector: ".sf__pcard[data-product-id]",
+      template: "collection",
+    },
+    (target) => {
+      target.find(".mob-pcard-content").append(
+        WishlistKing.createComponent("wishlist-button", {
+          id: target.container.getAttribute("data-product-id"),
+        })
+      );
+    }
+  );
+  
+
+  // Wishlist page
+  
+  WishlistKing.observe(
+    {
+      selector: "main .page-header",
+      template: "page",
+      handle: WishlistKing.toolkit.settings.wishlistPageHandle,
+    },
+    (target) => {
+      target.insertAfter(WishlistKing.createComponent("wishlist-page"));
+    }
+  );
+
+  // Shared wishlist page
+  WishlistKing.observe(
+    {
+      selector: "main .rte",
+      template: "page",
+      handle: WishlistKing.toolkit.settings.sharedWishlistPageHandle,
+    },
+    (target) => {
+      target.insertAfter(WishlistKing.createComponent("wishlist-page-shared"));
+    }
+  );
+  
+</script>

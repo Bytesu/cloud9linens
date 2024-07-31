@@ -1,0 +1,54 @@
+{%- capture class -%}
+  sf-logo px-4 {{ box_size }} {{ justify | default: 'justify-center' }}
+  {% if header_settings.logo %}has-logo-img{% endif %}
+{%- endcapture -%}
+{% capture logo_alt %}
+  {{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+
+{% if request.page_type == 'index' and is_in_search != true %}
+  <h1 class="cus_logo_position {{ class | strip_newlines }}">
+  {% else %}
+    <div class="cus_logo_position {{ class | strip_newlines }}">
+    {% endif %}
+    {% if header_settings.logo != blank %}
+      {%- comment -%}
+        <a href="{{ routes.root_url }}" class="site-header__logo-image{% if section.settings.align_logo == 'center' %} site-header__logo-image--centered{% endif %}">
+        {% capture image_size %}{{ section.settings.logo_max_width | escape }}{% endcapture %}
+        <img src="{{ 'Untitled-4_1.svg' | asset_url }}" 
+        alt="{{ shop.name }}"
+        style="max-width: {{ 205 }}px; margin: 25px 0px 10px 0px;">
+        </a>
+      {%- endcomment -%}
+
+
+
+      {%- comment -%}
+        Edited by MTS
+      {%- endcomment -%}
+      <a style="margin-top: 0px;" href="{{ routes.root_url }}" class="block py-2.5 logo-img relative">
+
+        {% if header_settings.logo_light != blank %}
+          {% render 'responsive-image', image_class: 'inline-block', image: header_settings.logo_light, wrapper_class: 'sf-logo-light' %}
+        {% endif %}
+        {% if header_settings.logo_transparent != blank %}
+          {% assign logo_transparent = header_settings.logo_transparent %}
+        {% else %}
+          {% assign logo_transparent = header_settings.logo %}
+        {% endif %}
+        {% render 'responsive-image', image_class: 'inline-block', image: header_settings.logo, wrapper_class: 'sf-logo-default', alt: logo_alt %}
+        {% render 'responsive-image', image_class: 'inline-block', image: logo_transparent, wrapper_class: 'sf-logo-transparent', alt: logo_alt %}
+
+      </a>
+
+
+
+    {% else %}
+      <a href="{{ routes.root_url }}" class="block text-center">
+        <strong>{{ header_settings.logo_text }}</strong>
+      </a>
+    {% endif %}
+    {% if request.page_type == 'index' and is_in_search != true %}
+    </h1>
+{% else %}
+  </div>
+{% endif %}

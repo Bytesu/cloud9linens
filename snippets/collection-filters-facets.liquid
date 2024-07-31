@@ -1,0 +1,39 @@
+<div id="sf-filter-by-items" class="active-facets active-facets-desktop">
+  {%- assign has_filters = false -%}
+  {%- for filter in collection.filters -%}
+    {%- if filter.active_values.size > 0 -%}
+      {%- assign has_filters = true -%}
+    {%- endif -%}
+    {%- for value in filter.active_values -%}
+      <facet-remove class="filtered-item">
+        <a href="{{ value.url_to_remove }}" class="active-facets__button active-facets__button--light">
+          <span class="active-facets__button-inner button button--tertiary flex items-center">
+            <span class="filtered-icon-remove">{% render 'icon', name: 'times', size: 'small' %}</span>
+            {{ value.label | escape }}
+          </span>
+        </a>
+      </facet-remove>
+    {%- endfor -%}
+    {% if filter.type == "price_range" %}
+      {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+        {%- assign has_filters = true -%}
+        <facet-remove class="filtered-item">
+          <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button--light">
+            <span class="active-facets__button-inner button button--tertiary flex">
+              {% comment %} (top div class) flex-row-reverse {% endcomment %}
+              {%- if filter.min_value.value -%}{{ filter.min_value.value | money }}{%- else -%}{{ 0 | money }}{%- endif -%} <span class="mx-1">-</span> {%- if filter.max_value.value -%}{{ filter.max_value.value | money }}{%- else -%}{{ filter.range_max | money }}{%- endif -%}
+              <span class="filtered-icon-remove">{% render 'icon', name: 'times', size: 'small' %}</span>
+            </span>
+          </a>
+        </facet-remove>
+      {%- endif -%}
+    {% endif %}
+  {%- endfor -%}
+  {%- unless has_filters == false -%}
+    <facet-remove class="filtered-item active-facets__button-wrapper">
+      <a href="{{ collection.url }}?sort_by={{ sort_by }}" id="sf-clear-all-filter" class="underlined-link">
+        <span>{{ 'collections.sidebar.clear_all' | t }}</span>
+      </a>
+    </facet-remove>
+  {%- endunless -%}
+</div>

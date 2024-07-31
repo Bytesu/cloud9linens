@@ -1,0 +1,119 @@
+{% assign should_show = section.settings.show_mobile_sticky %}
+{% assign section_settings = section.settings %}
+{% if section_settings.show_home_icon == false and section_settings.show_cart_icon == false and section_settings.show_wishlist_icon == false and section_settings.show_search_icon == false and section_settings.show_account_icon == false %}
+  {% assign should_show = false %}
+{% endif %}
+
+{% if template.name != 'product' and should_show %}
+  {% style %}
+      @media (max-width: 767px) {
+        .sf-footer {
+          padding-bottom: 40px;
+        }
+      }
+  {% endstyle %}
+  <div class="footer-mobile__common md:hidden flex justify-between bg-white">
+    {% if section_settings.show_home_icon %}
+    <div class="footer__common-item">
+      <a href="{{ shop.secure_url }}">
+        {% render 'icon', name: 'home', class: 'w-[24px]' %}
+      </a>
+    </div>
+    {% endif %}
+    {% if section_settings.show_collection_icon %}
+    <div class="footer__common-item">
+      <a href="{{ routes.all_products_collection_url }}">
+        {% render 'icon', name: 'border-all', size: 'medium' %}
+      </a>
+    </div>
+    {% endif %}
+    {% if section_settings.show_cart_icon %}
+    <div class="footer__common-item">
+      {% render 'cart' %}
+    </div>
+    {% endif %}
+    {% if section_settings.show_wishlist_icon %}
+      {% if settings.wishlist_page != blank %}
+        {% assign url = pages[settings.wishlist_page].url %}
+      {% else %}
+        {% assign url = '/pages/wishlist' %}
+      {% endif %}
+      <div class="footer__common-item">
+        <a href="{{ url }}">
+          {% render 'icon', name: 'star', size: 'medium' %}
+          <sup class="sf-wishlist-count font-medium"></sup>
+        </a>
+      </div>
+    {% endif %}
+    {% if section_settings.show_search_icon %}
+    <div class="footer__common-item" data-open-search-popup>
+      <span class="sf__search-footer-common">{% render 'icon', name: 'search', size: 'medium' %}</span>
+    </div>
+    {% endif %}
+    {% if shop.customer_accounts_enabled or shop.customer_accounts_optional %}
+      {% if section_settings.show_account_icon %}
+        <div class="footer__common-item">
+          <a href="{{ routes.account_url }}">
+            {% render 'icon', name: 'user', size: 'medium' %}
+          </a>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endif %}
+{% schema %}
+{
+  "name": "Mobile sticky bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_mobile_sticky",
+      "label": "Show sticky bar",
+      "default": true,
+      "info": "Show a sticky bar on mobile to let customers shopping easier. Switch to mobile view to see it."
+    },
+    {
+      "type": "header",
+      "content": "Addons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_home_icon",
+      "label": "Show home icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_collection_icon",
+      "label": "Show products listing",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart_icon",
+      "label": "Show cart icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search_icon",
+      "label": "Show search icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account_icon",
+      "label": "Show account icon",
+      "default": false,
+      "info": "Customers account must be enabled. See [Enabling customer accounts](https://help.shopify.com/en/manual/checkout-settings/customer-accounts)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist_icon",
+      "label": "Show wishlist icon",
+      "default": false,
+      "info": "Wishlist page must be specified"
+    }
+  ]
+}
+{% endschema %}

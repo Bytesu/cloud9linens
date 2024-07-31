@@ -1,0 +1,134 @@
+{% for block in header.blocks %}
+  {% if block.type == "topbar" %}
+    {% assign show_phone_numb = block.settings.show_phone_numb %}
+    {% assign show_email = block.settings.show_email %}
+    {% assign show_social_links = block.settings.show_social_links %}
+    {% assign show_stores_page = block.settings.show_stores_page %}
+    {% assign show_language_switcher = block.settings.show_language_switcher %}
+    {% assign show_currency_switcher = block.settings.show_currency_switcher %}
+    {% assign show_divider = block.settings.show_divider %}
+    {% assign message = block.settings.alert_message %}
+
+    {% assign container = section.settings.container %}
+    <style>
+      @media(max-width: 1024px) {
+        .sf-topbar {
+          display: none;
+        }
+      }
+      .border-b {
+        border-color: #737372 !important;
+        border-width: 0 0 0.25px 0;
+      }
+    </style>
+    <div class="sf-topbar cus-topbar py-3.5 relative bg-color-topbar-background text-color-topbar{% if show_divider %} border-b border-color-border{% endif %}">
+      <div class="{{ container }}">
+        <div class="sf__topbar-inner -mx-4 cursor-pointer flex justify-between items-center text-[15px]">
+          <div class="flex items-center w-1/3">
+            <a href="#"><img
+                class="cus-topbar-icons"
+                style="margin-left: 15px;"
+                src="{{ 'icon-twitter2.svg' | asset_url }}">
+            </a>
+            <a href="#"><img
+                class="cus-topbar-icons"
+                style="margin-left: 15px;"
+                src="{{ 'icon-pinterest2.svg' | asset_url }}"></a>
+            <a href="#"><img
+                class="cus-topbar-icons"
+                style="margin-left: 15px;"
+                src="{{ 'icon-linkedin2.svg' | asset_url }}"></a>
+            <a href="#"><img
+                class="cus-topbar-icons"
+                style="margin-left: 15px;"
+                src="{{ 'icon-facebook2.svg' | asset_url }}">
+            </a>
+            <a href="#"><img
+                class="cus-topbar-icons"
+                style="margin-left: 15px;"
+                src="{{ 'icon-instagram2.svg' | asset_url }}"></a>
+          </div>
+
+          <div class="flex items-center w-1/3">
+            {% if show_phone_numb %}
+              {% render 'header-contact-item__phone' %}
+            {% endif %}
+            {% if show_email %}
+              {% render 'header-contact-item__email' %}
+            {% endif %}
+            {% if show_social_links %}
+              {% render 'social-media-links', show_label: true %}
+            {% endif %}
+          </div>
+          {% if message != blank %}
+            <div class="flex items-center w-1/3 justify-center">{{ message }}</div>
+          {% endif %}
+          <div class="w-1/3 flex items-center justify-end">
+
+
+            {% comment %}
+            Added by MTS - start
+            {% endcomment %}
+
+            <div class="flex flex-1 justify-end items-center">
+              <div class="sf-search-form  flex items-center  " data-open-search-popup="">
+                <button type="submit" class="py-2 px-3 search">
+                  <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+                    <img
+                      class="cus-topbar-icons"
+                      style="margin-left: 0px;"
+                      src="{{ 'mob-search1.svg' | asset_url }}">
+                    <span class="sf__tooltip-content">Search</span>
+                  </span>
+                </button>
+              </div>
+
+              <a href="https://cloud9l.myshopify.com/account" class="relative px-2 py-3.5 account-mw padd-left">
+                <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+                  <img
+                    class="cus-topbar-icons"
+                    style="margin-left: 0px;"
+                    src="{{ 'icon-user.svg' | asset_url }}">
+                  <span class="sf__tooltip-content">Login/SignUp</span>
+                </span>
+              </a>
+
+              
+
+              <a href="/cart" class="relative  py-2 sf-cart-icon px-2 whitespace-nowrap cursor-pointer cart-icon">
+                <span class="sf__tooltip-item  block sf__tooltip-bottom sf__tooltip-style-2">
+                  {% comment %}
+                  <svg class="w-[20px] h-[20px]" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M352 128C352 57.42 294.579 0 224 0 153.42 0 96 57.42 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 48c44.112 0 80 35.888 80 80H144c0-44.112 35.888-80 80-80zm176 384c0 17.645-14.355 32-32 32H80c-17.645 0-32-14.355-32-32V176h48v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h160v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h48v256z"></path></svg>
+                  {% endcomment %}
+                  <img
+                    class="cus-topbar-icons aaaa"
+                    style="margin-left: 0px;"
+                    src="{{ 'mob-cart-bag1.svg' | asset_url }}">
+                  <span class="sf__tooltip-content">Cart</span>
+                </span>
+                <span class="sf-cart-count font-medium">{{ cart.item_count }}</span>
+              </a>
+            </div>
+
+            {% comment %}
+            Added by MTS - end
+            {% endcomment %}
+
+
+            {% if show_stores_page %}
+              {% render 'header-contact-item__store' %}
+            {% endif %}
+            {% if show_language_switcher %}
+              {% render 'language-switcher' %}
+            {% endif %}
+            {% if show_currency_switcher %}
+              {% render 'currency-switcher' %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% break %}
+  {% endif %}
+
+{% endfor %}

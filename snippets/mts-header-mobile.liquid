@@ -1,0 +1,55 @@
+{% assign show_cart_icon = section.settings.show_cart_icon %}
+{% assign search_settings = section.settings.search %}
+
+<header
+  class="flex lg:hidden sf-header__mobile container-fluid bg-white items-center"
+  data-screen="sf-header__mobile"
+  data-transparent="{{ transparent_on_top }}">
+  {% render 'header-option-item__hamburger-button', box_size: 'flex flex-1 w-1/4' %}
+
+  <div class="mob-logo-container">
+    <a href="{{ routes.root_url }}">
+      {% if section.settings.logo_mob != blank %}
+        <img src="{{ section.settings.logo_mob | img_url: 'master' }}" />
+      {% else %}
+        <img src="{{ section.settings.logo | img_url: 'master' }}}" />
+      {% endif %}
+    </a>
+  </div>
+
+  {% if show_cart_icon or search_settings != 'hide' %}
+    <div class="w-1/4 flex flex-1 items-center justify-end sf-header__mobile-right">
+      {% if search_settings != 'hide' %}
+        <div class="flex justify-center items-center p-2" data-open-search-popup>
+          <span class="sf__search-mb-icon">
+            {% render 'icon', name: 'search', size: 'medium' %}
+          </span>
+        </div>
+      {% endif %}
+      {% if search_settings != 'hide' %}
+        {% comment %} <div class="flex justify-center items-center p-2 hidden" data-open-search-popup>
+          <span class="sf__search-mb-icon">
+            {% render 'icon', name: 'search', size: 'medium' %}
+          </span>
+        </div> {% endcomment %}
+      {% endif %}
+      <a href="/cart" class=" my_custom_icon_size relative  py-2 sf-cart-icon px-2 whitespace-nowrap cursor-pointer cart-icon">
+      {% comment %} <span class="sf__tooltip-item  block sf__tooltip-bottom sf__tooltip-style-2"> {% endcomment %}
+        {% comment %}
+        <svg class="w-[20px] h-[20px]" fill="currentColor" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M352 128C352 57.42 294.579 0 224 0 153.42 0 96 57.42 96 128H0v304c0 44.183 35.817 80 80 80h288c44.183 0 80-35.817 80-80V128h-96zM224 48c44.112 0 80 35.888 80 80H144c0-44.112 35.888-80 80-80zm176 384c0 17.645-14.355 32-32 32H80c-17.645 0-32-14.355-32-32V176h48v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h160v40c0 13.255 10.745 24 24 24s24-10.745 24-24v-40h48v256z"></path></svg>
+        {% endcomment %}
+        {% comment %} <img
+          class="cus-topbar-icons"
+          style="margin-left: 0px;"
+          src="{{ 'mob-cart-bag1.svg' | asset_url }}"> {% endcomment %}
+        <span class="sf__tooltip-content">Cart</span>
+      </span>
+      {% comment %} <span class="sf-cart-count font-medium">{{ cart.item_count }}</span> {% endcomment %}
+    </a>
+
+      {% render 'cart' %}
+
+    </div>
+  {% endif %}
+
+</header>

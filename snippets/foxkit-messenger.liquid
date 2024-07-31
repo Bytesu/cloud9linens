@@ -1,0 +1,42 @@
+{% assign f_messenger = shop.metafields.foxecom-bs-kit.messenger %}
+
+{% assign page_id = f_messenger.page_id %}
+{% assign language = f_messenger.language %}
+{% if f_messenger != blank  and f_messenger.active == true and page_id != blank %}
+
+  {% style %}
+    @media (max-width: 767px) {
+      .fb_dialog_content iframe {
+        margin: 0 !important;
+        bottom: 64px !important;
+      }
+      #scroll-to-top-button {bottom: 130px}
+    }
+  {% endstyle %}
+<!-- Messenger Chat Plugin Code -->
+<div id="fb-root"></div>
+
+<!-- Your Chat Plugin code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", {{ page_id | json }});
+    chatbox.setAttribute("attribution", "setup_tool");
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v11.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/{{ language }}/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+{% endif %}

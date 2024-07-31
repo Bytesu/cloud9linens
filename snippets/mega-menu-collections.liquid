@@ -1,0 +1,41 @@
+{% assign collection_ids = 'collection_1,collection_2,collection_3,collection_4,collection_5' | split: ',' %}
+<div
+    class="sf-mega-menu-collections md:pl-4 xl:pl-12"
+    data-id="{{ block.id }}"
+>
+    <div class="sf-grid flex" style="--column-gap: 1.25rem">
+        {% for collection_id in collection_ids %}
+            {% if block.settings[collection_id] == blank %}{% continue %}{% endif %}
+            {% assign collection_handle = block.settings[collection_id] %}
+            {% assign collection = collections[collection_handle] %}
+            {% assign collection_image = collection.image %}
+            {% assign image_id = 'image_' | append: forloop.index %}
+
+            {% if block.settings[image_id] != blank %}
+                {% assign collection_image = block.settings[image_id] %}
+            {% endif %}
+            <div class="sf-column flex-1">
+                <div class="collection-card collection-card--standard">
+                    <div class="collection-card__inner">
+                        <a href="{{ collection.url }}" class="collection-card__image block group overflow-hidden w-full">
+                            {% if collection_image != blank %}
+                                {% render 'responsive-image', image: collection_image, aspect_ratio: '3/4' %}
+                            {% else %}
+                                <div style="--aspect-ratio: 3/4;">
+                                    {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                    {{ 'collection-' | append: current | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full w-full h-full object-cover' }}
+                                </div>
+                            {% endif %}
+                        </a>
+                        <h3 class="mt-5 text-left">
+                            <a class="md:text-xl font-medium block md:pr-4 text-black" href="{{ collection.url | default: "#" }}">
+                                {{ collection.title | default: default_label }}
+                                <sup class="font-semibold text-xs text-black">{{ collection.all_products_count }}</sup>
+                            </a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,138 @@
+{% if settings.cart_notes_enable or settings.cart_estimate_shipping or settings.discount_code_enable %}
+{% comment %}  {% endcomment %}
+<div class="scd__footer-actions">
+    {% if settings.cart_notes_enable %}
+      <button data-open="note" class="sf__tooltip-item sf__tooltip-top">
+        {% render 'icon', name: 'pencil', size: 'medium' %}
+        <span>{{ 'cart.general.drawer_note' | t }}</span>
+        <span class="sf__tooltip-content text-[12px]">{{ 'cart.general.note_title' | t }}</span>
+      </button>
+    {% endif %}
+    {% if settings.cart_estimate_shipping %}
+      <button data-open="shipping" class="sf__tooltip-item sf__tooltip-top">
+        {% render 'icon', name: 'shipping-fast', size: 'custom', class: 'w-[22px] h-[22px]' %}
+        <span>{{ 'cart.general.shipping' | t }}</span>
+        <span class="sf__tooltip-content text-[12px]">{{ 'cart.general.estimate_shipping_title' | t }}</span>
+      </button>
+    {% endif %}
+    {% if settings.discount_code_enable %}
+      <button data-open="coupon" class="sf__tooltip-item sf__tooltip-top">
+        <span data-discount-noti class="hidden absolute border-2 border-white shadow-md rounded-full w-4 h-4 -top-2 right-1/2 translate-x-5 bg-[#334bfa]"></span>
+        <span class="fonts_source mob_fs_8">Apply Promo Code</span>
+        {% comment %}
+        MTS
+        {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[22px] h-[22px]' %} 
+        <span>{{ 'cart.general.drawer_coupon' | t }}</span>
+        {% endcomment %}
+        
+        <span class="sf__tooltip-content text-[12px]">{{ 'cart.general.coupon_title' | t }}</span>
+      </button>
+    {% endif %}
+  </div>
+
+
+  {% if settings.cart_notes_enable %}
+    <div class="scd__addon" id="scd-note">
+      <div class="scd__addon-title font-medium">
+        {% render 'icon', name: 'pencil', size: 'medium' %}
+        <span>{{ 'cart.general.note_title' | t }}</span>
+      </div>
+      <div class="scd__addon-content">
+        <textarea name="note" class="form-control" rows="3" placeholder="{{ 'cart.general.note' | t }}">{{ cart.note }}</textarea>
+      </div>
+      <div class="scd__addon-actions flex flex-col">
+        <button class="sf__btn sf__btn-primary btn-save" data-action="note">{{ 'cart.general.save' | t }}</button>
+        <button class="sf__btn sf__btn-plain btn-cancel" data-action="note">{{ 'cart.general.cancel' | t }}</button>
+      </div>
+    </div>
+  {% endif %}
+  {% if settings.cart_estimate_shipping %}
+    <div class="scd__addon" id="scd-shipping">
+      <div class="scd__addon-title font-medium">
+        {% render 'icon', name: 'shipping-fast', size: 'custom', class: 'w-[22px]' %}
+        <span>{{ 'cart.general.estimate_shipping_title' | t }}</span>
+      </div>
+      <div class="scd__addon-content">
+        <div data-address="root">
+          <div class="hidden">
+            <label for="AddressFirstName">{{ 'customer.addresses.first_name' | t }}</label>
+            <input type="text" id="AddressFirstName" name="address[first_name]" value="{{ form.first_name }}">
+          </div>
+          <div class="hidden">
+            <label for="AddressLastName">{{ 'customer.addresses.last_name' | t }}</label>
+            <input type="text" id="AddressLastName" name="address[last_name]" value="{{ form.last_name }}">
+          </div>
+
+          <div class="hidden">
+            <label for="AddressCompany">{{ 'customer.addresses.company' | t }}</label>
+            <input type="text" id="AddressCompany" name="address[company]" value="{{ form.company }}">
+          </div>
+
+          <div class="hidden">
+            <label for="AddressAddress1">{{ 'customer.addresses.address1' | t }}</label>
+            <input type="text" id="AddressAddress1" name="address[address1]" value="{{ form.address1 }}">
+          </div>
+
+          <div class="hidden">
+            <label for="AddressAddress2">{{ 'customer.addresses.address2' | t }}</label>
+            <input type="text" id="AddressAddress2" name="address[address2]" value="{{ form.address2 }}">
+          </div>
+
+          <div class="hidden">
+            <label for="AddressCity">{{ 'customer.addresses.city' | t }}</label>
+            <input type="text" id="AddressCity" name="address[city]" value="{{ form.city }}">
+          </div>
+
+          <div class="form-group">
+            <label for="AddressCountry">{{ 'customer.addresses.country' | t }}</label>
+            <select id="AddressCountry" class="form-control" name="address[country]" data-default="US"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="AddressProvince">{{ 'customer.addresses.province' | t }}</label>
+            <select id="AddressProvince" class="form-control" name="address[province]" data-default="{{ form.province }}"></select>
+          </div>
+
+          <div class="form-group">
+            <label for="AddressZip">{{ 'customer.addresses.zip' | t }}</label>
+            <input type="text" class="form-control" id="AddressZip" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+          </div>
+
+          <div class="hidden">
+            <label for="AddressPhone">{{ 'customer.addresses.phone' | t }}</label>
+            <input type="tel" id="AddressPhone" name="address[phone]" value="{{ form.phone }}">
+          </div>
+        </div>
+      </div>
+      <div class="scd__addon-actions flex flex-col">
+        <button class="sf__btn sf__btn-primary btn-calc" data-action="shipping">{{ 'cart.general.estimate_shipping_button' | t }}</button>
+        <button class="sf__btn sf__btn-plain btn-cancel" data-action="shipping">{{ 'cart.general.cancel' | t }}</button>
+      </div>
+      <div class="scd__addon-message py-5"></div>
+    </div>
+  {% endif %}
+  {% if settings.discount_code_enable %}
+    <div class="scd__addon" id="scd-coupon">
+      <div class="scd__addon-title font-medium">
+        {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[20px]' %}
+        <span>{{ 'cart.general.coupon_title' | t }}</span>
+      </div>
+      <div class="scd__addon-content">
+        <div id="coupon-messages" class="mb-4">
+          <p className="my-4"></p>
+        </div>
+        <input
+          placeholder="{{ 'cart.general.enter_discount_code' | t }}"
+          type="text"
+          name="discount"
+          class="scd__discount_code form-control"
+        />
+      </div>
+      <div class="scd__addon-actions flex flex-col">
+        <button class="sf__btn sf__btn-primary btn-save" data-action="coupon">{{ 'cart.general.save' | t }}</button>
+        <button class="sf__btn sf__btn-plain btn-cancel" data-action="coupon">{{ 'cart.general.cancel' | t }}</button>
+      </div>
+    </div>
+  {% endif %}
+{% endif %}
+

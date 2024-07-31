@@ -1,0 +1,248 @@
+{% assign cus-collec = collections[blocks.settings.select_collection] %}
+
+
+
+<div class="custom-collection-slider-main bg-color-pad--{{ section.id }}">
+  <div class="custom-collection-slider_mw page-width">
+
+    <div class="side_section_heading">
+
+      {% if section.settings.small_name != blank %}
+        <h4 class="section__subheading mw_category_sup_text-{{section.id}} sub-text-color{{section.id}}">{{ section.settings.small_name }}</h4>
+      {% endif %}
+      {% if section.settings.large_name != blank %}
+        <h2 class="rte section__heading mw_collect_sub_text-{{section.id}} mw_collect_head text-color{{section.id}}">{{ section.settings.large_name }}</h2>
+      {% endif %}
+
+    </div>
+
+    <div class="collection-slider--inner">
+      {% for blocks in section.blocks %}
+        <div class="custom-collection-slider text-center">
+          <a class="collection-slider-a" href="{{ blocks.settings.select_collection.url }}">
+            {% if blocks.settings.collection_image != blank %}
+              <img
+                class="mx-auto collection-slider-img"
+                src="{{ blocks.settings.collection_image | img_url: 'medium' }}"
+                alt="">
+            {% else %}
+              <img
+                class="mx-auto collection-slider-img"
+                src="{{ blocks.settings.select_collection.featured_image | img_url: 'medium' }}"
+                alt="">
+            {% endif %}
+            <h6 class="mb-0">{{ blocks.settings.select_collection.title }}</h6>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<style>
+  .text-color{{ section.id}}, .sub-text-color{{ section.id}}{
+    color: {{ section.settings.text_color}}
+    ;
+  }
+  .text-color{{ section.id}}{
+    font-size: {{ section.settings.mb-font-size}}
+    px;
+  }
+  .mw_category_sup_text-{{ section.id}}{
+    margin-bottom: 5px;
+  }
+  @media only screen and (max-width: 767px) {
+    .mw_category_sup_text-{{ section.id}}{
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 32px;
+    }
+    .mw_collect_sub_text-{{ section.id}}{
+      font-size: 50px !important;
+      padding-bottom: 35px;
+    }
+    .bg-color-pad--{{ section.id }}{
+      padding-top: 45px !important;
+      padding-bottom: 0 !important;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Shop by category",
+    "settings": [
+      {
+        "type": "text",
+        "id": "small_name",
+        "label": "Small heading",
+        "default": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "large_name",
+        "label": "Large heading",
+        "default": "Heading"
+      },
+      {
+        "type": "color",
+        "id": "coll_slider_bg",
+        "label": "Background color"
+      },
+      {
+        "type": "range",
+        "id": "coll_slider_pad_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 36,
+        "label": "Padding top"
+      }, {
+        "type": "range",
+        "id": "coll_slider_pad_bot",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "default": 36,
+        "label": "Padding bottom"
+      }, {
+        "type": "range",
+        "id": "mb-font-size",
+        "min": 20,
+        "max": 90,
+        "step": 5,
+        "unit": "px",
+        "label": "Font size heading",
+        "default": 40
+      }, {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#000"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "collection",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "collection_image",
+            "label": "Image"
+          }, {
+            "type": "collection",
+            "id": "select_collection",
+            "label": "Select collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shop by category"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .bg-color-pad--{{ section.id }}{
+    background-color: {{ section.settings.coll_slider_bg }}
+    ;
+    Padding-top: {{ section.settings.coll_slider_pad_top }}
+    px;
+    Padding-bottom: {{ section.settings.coll_slider_pad_bot }}
+    px;
+  }
+
+  button.collection-slick {
+    background-color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 #00000050;
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  button.collection-slick-prev {
+    left: 1%;
+  }
+
+  button.collection-slick-next {
+    right: 1%;
+  }
+
+  {%- comment -%}
+    .collection-slider-img {
+      box-shadow: 0 0 10px 0 #00000050;
+    }
+  {%- endcomment -%}
+
+  button.collection-slick::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
+    display: block;
+    position: absolute;
+    top: 50%;
+  }
+
+  button.collection-slick-prev::after {
+    transform: translate(50%, -50%) rotate(45deg);
+  }
+
+  button.collection-slick-next::after {
+    transform: translate(20%, -50%) rotate(225deg);
+  }
+
+  .collection-slider--inner {
+    position: relative;
+    display: flex;
+    gap: 2%;
+    flex-wrap: wrap;
+    row-gap: 30px;
+    justify-content: center;
+  }
+
+  .collection-slider--inner > * {
+    width: 15%;
+  }
+
+  {% comment %}
+    .custom-collection-slider img {
+      width: 250px;
+      height: 250px;
+    }
+  {% endcomment %}
+
+  .custom-collection-slider_mw {
+    display: grid;
+    grid-template-columns: 23% 75%;
+    place-items: center;
+    gap: 0;
+    padding-bottom: 45px;
+  }
+  @media only screen and (max-width: 992px) {
+    .custom-collection-slider_mw {
+      grid-template-columns: 1fr;
+    }
+    .collection-slider--inner > * {
+      width: 30%;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .custom-collection-slider_mw {
+      padding-right: 30px;
+    }
+  }
+</style>

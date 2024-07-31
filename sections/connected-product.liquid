@@ -1,0 +1,515 @@
+{%- comment -%} show product from metafield {%- endcomment -%}
+
+<div class="connected__products">
+
+  <div class="connected__products__inner container-fluid cus_container_mob">
+    {% if section.settings.connected_text != blank and product.metafields.custom.connected_products.value != blank %}
+      <h2 class="text-center connected_heading_wd">{{ section.settings.connected_text }}</h2>
+    {% endif %}
+    {% for product in product.metafields.custom.connected_products.value %}
+      <div id="{{ product.title | split: ' ' }}" class="custom_connected_product">
+        <div class="custom_connected_product_inner">
+          <div class="connected_product_media">
+            <div class="connected_product_media_img">
+              {% for media in product.media %}
+                {{ media | img_url: 'master' | img_tag }}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="connected_product_content mob_text_ctr mob-wid">
+            <form
+              class="connected_product_form"
+              method="post"
+              action="/cart/add">
+
+              <div class="custom-didot collection___name">
+                Cloud9linens Home
+                {% comment %} 
+                {% for collection in product.collections %}
+                {{ collection.title }}
+                {% endfor %}
+                {% endcomment %}
+              </div>
+              <h3 class="custom-pt-serif mw-border cstm__pt__serif">
+                <a href="{{ product.url }}" style="font-weight:600;">{{ product.title }}</a>
+              </h3>
+              <p class="custom-pt-sans connected__price mw-border">
+                {% if product.compare_at_price != blank %}
+                  <span style="text-decoration: line-through;">{{ product.compare_at_price | money }}</span>&nbsp;{% endif %}
+                {{ product.price | money }}</p>
+              {% if section.settings.shipping_text != blank %}
+                <p class="shipping__text">{{ section.settings.shipping_text }}</p>
+              {% endif %}
+
+              <div class="connected_product_options mob_justi_ctr">
+                <div class="connectedOption flex mob-padd">
+                  <div class="connected_variant_detail" style="display: none;">
+                    {%- for variant in product.variants -%}
+
+                      <span
+                        class="connected_variant_details"
+                        data-variant-option="{{ variant.option1 }}"
+                        data-variant-id="{{ variant.id }}"
+                        data-variant-price="{{ variant.price | money}}"></span>
+                    {% endfor %}
+                  </div>
+
+
+                  {%- for option in product.options_with_values -%}
+                    {% unless option.values[0] contains 'Default Title' %}
+                      <div class="flex-wrap">
+                        <div class="sf__select-bordered">
+                          {% comment %} <label for="{{ option.name }} {{ option.position }}">{{ product.title }}</label>{% endcomment %}
+
+                          <div {% comment %}id="{{ option.name }} {{ option.position }}"{% endcomment %}class="sf-product-variant-option-dropdown h-11 border border-color-border rounded w-full pl-4 pr-10 cursor-pointer">
+                            {% comment %} <div class="product__variant-picker product-options connected_product_varriant">
+                            {% render 'product-option', product: product, size_title: size_title%}
+
+                            </div> {% endcomment %}
+                            <div class="cus_drop_item">
+                              <div
+                                class="product-option-item"
+                                data-selected="true"
+                                data-option-position="{{ option.position }}"
+                                data-value="{{ option.name }}"></div>
+                              {% for value in option.values %}
+                                <div
+                                  class="custom-source-pro product-option-item cstm__prd__option {% if option.selected_value == value %}mw_variant_active{% endif %}"
+
+                                  data-option-position="{{ option.position }}"
+                                  data-value="{{- value | escape -}}">
+                                  {{- value -}}
+                                </div>
+                              {% endfor %}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    {% endunless %}
+                  {% endfor %}
+
+
+
+                  <div class="connected_product_quantity qty-border">
+                    {% render 'product-qty-input' %}
+                  </div>
+                </div>
+              </div>
+              {% comment %} <div class="connected_size_chart" style="text-align: center;">
+              <div class="connected_size_chart_icon">
+              <a href="">
+              {% render 'size-chart' %}
+              </a>
+              </div>
+              <p style="color: #949494;"><a href="">Size Chart</a></p>
+              </div> {% endcomment %}
+              <div class="custom-source-pro custom-cart-btn">
+              <input
+                class="main__input"
+                name="id"
+                value="{{ product.selected_or_first_available_variant.id }}"
+                type="hidden" />
+              <input
+                class="connected_cart_btn"
+                name="add"
+                value="ADD TO BAG"
+                type="submit" /></div>
+            </form>
+
+            {% if product.metafields.custom.discount_price_line.value != blank %}
+              <p class="discount-text-line cstm__disc__txt">{{ product.metafields.custom.discount_price_line.value }}</p>
+            {% else %}
+              {% if section.settings.text_under_button != blank %}
+                <div class="bottom-block__text text-center font_style custom-source-pro">
+                  {{ section.settings.text_under_button }}
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+
+          <section
+            class="sf-product__section sf-product__section-tabs cus_connect_pdp {{ section.settings.custom_class }}"
+            data-section-type="tabs"
+            data-section-id="{{ section.id }}"
+            style="background-color: {{ bg_color }}">
+            <div class="{{ section.settings.container }} mob_container mw-cont">
+              <div class="sf-tabs sf-tabs--responsive sf-pdt__accordion">
+                <div class="hidden md:flex border-b border-color-border tab-flex justify-left">
+                  {% for block in section.blocks %}
+                    <div
+                      class="custom-source-pro sf-tab-header cstm__tab__heading text-lg cursor-pointer"
+                      data-index="{{ forloop.index0 }}"
+                      {{ block.shopify_attributes }}>
+                      {{ block.settings.header }}
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="md:py-10">
+                  {% for block in section.blocks %}
+                    <div
+                      class="custom-source-pro sf__accordion-item sf-tab-content sf-mar md:opacity-0{% if forloop.first and section.settings.default_open %} open{% endif %}"
+                      data-block-type={{ block.type }}
+                      {% if forloop.first == false and section.settings.default_open == false %}style="--content-max-height:0px;"{% endif %}>
+                      <div class="sf__accordion-button pb-3 pr-4 accor_head_bg">{{ block.settings.header }}</div>
+                      <div class="sf__accordion-content cus_accor_content">
+                        <div class="custom-pt-sans pb-8 cus_tb_pd cstm__tab__content  cstm__tab__content__desc {% if block.type != 'reviews' %}prose{% endif %}">
+                          {% case block.type %}
+                            {% when 'description' %}
+                            {{ product.description }}
+                            {% when 'reviews' %}
+                            <div class="{{ block.settings.container | default: 'container' }}">
+                              {% render 'product-reviews-app__snippet', custom_liquid: block.settings.custom_liquid %}
+                            </div>
+
+                            {% when 'tab' %}
+                            {% if product.metafields.custom.details_in_tabs != blank %}
+                              {{ product.metafields.custom.details_in_tabs }}
+                            {% else %}
+                              {{ block.settings.content }}
+                              {{ block.settings.content_page.content }}
+                            {% endif %}
+
+                            {% when 'liquid' %}
+                            {{ block.settings.custom_liquid }}
+                        {% else %}
+                          {% endcase %}
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% comment %} <section
+class="sf-product__section sf-product__section-tabs {{ section.settings.custom_class }}"
+data-section-type="tabs" data-section-id="{{ section.id }}"
+style="background-color: {{ bg_color }}"
+>
+<div class="{{ section.settings.container }}">
+<div class="sf-tabs sf-tabs--responsive sf-pdt__accordion">
+<div class="hidden md:flex border-b border-color-border justify-center">
+{% for block in section.blocks %}
+<div class="sf-tab-header text-lg cursor-pointer" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+{{ block.settings.header }}
+</div>
+{% endfor %}
+</div>
+<div class="md:py-10">
+{% for block in section.blocks %}
+<div class="sf__accordion-item sf-tab-content md:opacity-0{% if forloop.first and section.settings.default_open %} open{% endif %}" data-block-type={{ block.type }}{% if forloop.first == false and section.settings.default_open == false %} style="--content-max-height:0px;"{% endif %}>
+<div class="sf__accordion-button pb-3 pr-4">{{ block.settings.header }}</div>
+<div class="sf__accordion-content">
+<div class="pb-8 {% if block.type != 'reviews' %}prose{% endif %}">
+{% case block.type %}
+{% when 'description' %}
+{{ product.description }}
+{% when 'reviews' %}
+<div class="{{ block.settings.container | default: 'container' }}">
+{% render 'product-reviews-app__snippet', custom_liquid: block.settings.custom_liquid %}
+</div>
+{% when 'tab' %}
+{{ block.settings.content }}
+{{ block.settings.content_page.content }}
+{% when 'liquid' %}
+{{ block.settings.custom_liquid }}
+{% else %}
+{% endcase %}
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
+</div>
+
+</section> {% endcomment %}<script>
+  window.themeScriptURLs.tabs.required = true
+</script>
+
+
+{% schema %}
+  {
+    "name": "Connected product",
+    "settings": [
+      {
+        "type": "text",
+        "id": "connected_text",
+        "label": "Connected text"
+      },
+      {
+        "type": "text",
+        "id": "shipping_text",
+        "label": "Shipping text"
+      },
+      {
+        "type": "text",
+        "id": "text_under_button",
+        "label": "Text under add cart button",
+        "info": "It will show when produst has no metafield value"
+      },
+      {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom class"
+      }, {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container",
+        "options": [
+          {
+            "value": "container",
+            "label": "Fixed width"
+          }, {
+            "value": "container-fluid",
+            "label": "Stretched width"
+          }, {
+            "value": "container-narrow",
+            "label": "Narrow width"
+          }
+        ]
+      }, {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color"
+      }, {
+        "type": "checkbox",
+        "id": "default_open",
+        "label": "Default open first tab on mobile",
+        "default": true
+      }
+    ],
+    "max_blocks": 6,
+    "blocks": [
+      {
+        "type": "description",
+        "name": "Product description",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "This tab will show the product's description"
+          }, {
+            "type": "text",
+            "id": "header",
+            "label": "Tab header",
+            "default": "Product description"
+          }
+        ]
+      }, {
+        "type": "reviews",
+        "name": "Product reviews",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Requirements",
+            "info": "This section requires a product reviews app to work. Such as Shopify product reviews, Growave, Judge.me, Loox"
+          },
+          {
+            "type": "text",
+            "id": "header",
+            "label": "Tab header",
+            "default": "Product reviews"
+          },
+          {
+            "type": "select",
+            "id": "container",
+            "label": "Container type",
+            "default": "container",
+            "options": [
+              {
+                "value": "container",
+                "label": "Fixed width"
+              }, {
+                "value": "container-fluid",
+                "label": "Stretched width"
+              }, {
+                "value": "container-narrow",
+                "label": "Narrow width"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Other review app"
+          }, {
+            "type": "liquid",
+            "id": "custom_liquid",
+            "label": "Custom liquid",
+            "info": "Paste the liquid code of the app review here"
+          }
+        ]
+      }, {
+        "type": "tab",
+        "name": "Custom content",
+        "settings": [
+          {
+            "type": "text",
+            "id": "header",
+            "label": "Tab heading",
+            "default": "Shipping & Return",
+            "placeholder": "Shipping & Return"
+          }, {
+            "type": "richtext",
+            "id": "content",
+            "label": "Tab content",
+            "default": "<p>Shipping cost is based on weight. Just add products to your cart and use the Shipping Calculator to see the shipping price.</p><p>We want you to be 100% satisfied with your purchase. Items can be returned or exchanged within 30 days of delivery.</p>"
+          }, {
+            "type": "page",
+            "id": "content_page",
+            "label": "Tab content from page"
+          }
+        ]
+      }, {
+        "type": "liquid",
+        "name": "Custom liquid",
+        "settings": [
+          {
+            "type": "text",
+            "id": "header",
+            "label": "Tab heading",
+            "default": "Tab heading"
+          }, {
+            "type": "liquid",
+            "id": "custom_liquid",
+            "label": "Custom liquid"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Connected product"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .connected__products ul.slick-dots {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    bottom: -35px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .connected__products .slick-dots li button:before {
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    background-color: #0000001c;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    content: '';
+    text-align: center;
+    opacity: 1;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .connected__products .slick-dots li {
+    width: 50px;
+  }
+
+  .connected__products .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: black;
+  }
+
+  .connected__products .slick-dots li.slick-active button:after {
+    font-family: 'slick';
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    opacity: 1;
+    background: #000000a3;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    content: '';
+    text-align: center;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    z-index: 1;
+    animation-name: progress____bar;
+    animation-timing-function: linear;
+    animation-duration: 3000ms;
+    animation-delay: 0;
+  }
+
+  .connected__products .slick-prev {
+    left: -35%;
+  }
+
+  .connected__products .slick-next {
+    right: -35%;
+  }
+
+  .connected__products .slick_arrow {
+    width: 40px;
+    height: 40px;
+    stroke: #000;
+    stroke-width: 2px;
+    z-index: 1;
+    transform: translateX(35%);
+  }
+
+
+  @keyframes progress____bar {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  $(document).ready(function() {
+    $(".connected_product_media_img").slick({
+      infinite: true,
+      arrows: true,
+      dots: true,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      speed: 1000,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      prevArrow: '<svg class="slick-prev slick_arrow" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>',
+      nextArrow: '<svg class="slick-next slick_arrow" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>',
+      responsive: [
+        {
+          breakpoint: 800,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+            arrows: true
+          }
+        }
+      ]
+    });
+  });
+</script>

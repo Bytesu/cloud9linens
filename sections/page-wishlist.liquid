@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="{{ 'customer-global.css' | asset_url }}" as="style">
+{{ 'customer-global.js' | asset_url | script_tag }}
+
+<link rel="stylesheet" href="{{ 'account-global.css' | asset_url }}" as="style">
+
+{% render 'mani_banner' %}
+
+  <div class="wishlist-title-custom lg:px-12 xl:px-28 md:grid-cols-3 xl:grid-cols-4" style="display:none" ><span class="h2">Wishlist</span></div>
+<div
+  class="sf-wishlist__container my-16 px-4 lg:px-12 xl:px-28 grid md:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12 opacity-0 aic_wishlist"
+></div>
+{% if customer %}
+
+  <div class="sf-wishlist__no_products mt-16 px-4 hidden">
+    <!-- <div class="mob_grey_box">
+      <h4 class="mob_fs_12 custom-didot">No Active wishlist</h4>
+      <p class="cus_fonts_source mob_fs_8 txt_center">
+        You have no current<br>
+        active wishlists
+      </p>
+      <a href="/collections/all" class="custom-didot mob_fs_12">Back to Shopping</a>
+    </div>
+
+    <div class="collection-cards flex wishlist_collect_card" style="height: 70vh;">
+      <div class="grey_box">
+        <h4 class="fsz_18 custom-didot">No Active wishlist</h4>
+        <p class="cus_fonts_source fsz_12 txt_center">
+          You have no current<br>
+          active wishlists
+        </p>
+        <a href="/collections/all" class="custom-didot fsz_18">Back to Shopping</a>
+      </div>
+      {% for collection_handle in collections_to_display %}
+        {% assign collection = collections[collection_handle] %}
+        {% if collection %}
+          <div class="collection-card order_ftd_image">
+            <a href="{{ collection.url }}" class="mob_order_collect">
+              <h3 class="fsz_14 txt_center mb-5 mob_fs_10">{{ collection.title }}</h3>
+              <img src="{{ collection.image.src | img_url: 'large' }}" alt="{{ collection.title }}">
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div> -->
+    {% comment %}
+      <h3 class="text-center text-xl">
+          {{ 'layout.wishlist.no_products' | t }}
+          <a href="{{ routes.all_products_collection_url }}" class="border-b border-gray-800">
+              {{ 'layout.back_to_shopping' | t }}
+          </a>
+      </h3>
+    {% endcomment %}
+  </div>
+
+{% else %}
+  <style>
+    .section-my-v2{display:none;}
+  </style>
+  <div class="wish-list-empty">
+    <div class="text-center">
+      <div class="h1">My CL Account </div>
+      <br>
+      <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para h3">
+        Check out faster with saved information. Track your order easier. Enjoy your personlized shopping experience
+
+
+      </div> <br>
+      <a href="/account/login" class="sf__btn-link a-link f-12" style="font-family:Source Code Pro!important;"> SIGN IN </a>
+    </div>
+    <div class="text-center">
+      <div class="h1">Start a Wishlist
+</div>
+      <br>
+      <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para h3">
+        Keep track of all the items you love. Click the heart icon on
+each product image to save your favorites in a wishlist.
+      </div> <br>
+     <div class="buttons">
+
+        <a  class="sf__btn-link a-link f-12" href="/pages/bedlinens " style="font-family:Source Code Pro!important;"> SHOP BEDLINENS'S</a>
+        <a  class="sf__btn-link a-link f-12" href="/pages/bathlinens" style="font-family:Source Code Pro!important;"> SHOP BATHLINENS'S</a>
+     </div>
+    </div>
+  </div>
+{% endif %}
+<script>
+  window.themeScriptURLs.productQuickView.required = true
+  window.themeScriptURLs?.countdown.required = true
+</script>

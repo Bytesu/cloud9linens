@@ -1,0 +1,7 @@
+<link rel="stylesheet" href="https://size-charts-relentless.herokuapp.com/css/size-charts-relentless.css" />
+<script>
+var sizeChartsRelentless = window.sizeChartsRelentless || {};
+sizeChartsRelentless.product = {{product | json}};
+{% if product.collections %}sizeChartsRelentless.productCollections = {{product.collections | json}};{% endif %}
+{% if shop.metafields.sizechartsrelentless.size_charts %}sizeChartsRelentless.metafield = {{shop.metafields.sizechartsrelentless.size_charts}};{% endif %}
+</script>

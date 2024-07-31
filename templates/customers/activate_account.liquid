@@ -1,0 +1,42 @@
+{%- capture page_title -%}
+  {{ 'customer.activate_account.title' | t }}
+{%- endcapture -%}
+{% render 'page-title', title: page_title %}
+
+<div class="container-narrow">
+  <h4 class="h5 mb-2">{{ 'customer.activate_account.subtext' | t }}</h4>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <p>
+      <label for="CustomerPassword" class="label-hidden">
+        {{ 'customer.activate_account.password' | t }}
+      </label>
+      <input
+        type="password"
+        name="customer[password]"
+        id="CustomerPassword"
+        placeholder="{{ 'customer.activate_account.password' | t }}"
+        class="form-control"
+      >
+
+    </p>
+
+    <p>
+      <label for="CustomerPasswordConfirmation" class="label-hidden">
+        {{ 'customer.activate_account.password_confirm' | t }}
+      </label>
+      <input
+          type="password"
+         name="customer[password_confirmation]"
+           id="CustomerPasswordConfirmation"
+           placeholder="{{ 'customer.activate_account.password_confirm' | t }}"
+           class="form-control"
+      >
+    </p>
+
+    <div class="mt-2">
+      <input type="submit" class="sf__btn" value="{{ 'customer.activate_account.submit' | t }}">
+      <input type="submit" class="sf__btn sf__btn-secondary sf__btn-white" name="decline" value="{{ 'customer.activate_account.cancel' | t }}">
+    </div>
+  {% endform %}
+</div>

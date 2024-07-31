@@ -1,0 +1,87 @@
+{% comment %}class bottom div = md:flex {% endcomment %}
+<div class="block" style="position: relative;">
+  <div class="aic_banner">
+    <img src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/account.png?v=1692352352" alt="no image">
+  </div>
+  <div class="mob_aic_banner">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/IMG_4694_e6d533f9-6215-4bee-8a8f-2947538dafd6.jpg?v=1693541997"
+      alt="no image"
+    >
+  </div>
+
+  <div class="aic_toggle {% if customer %}aic_toggle_logined{% endif %}">
+    {% capture htmlData %}
+       {% if customer %}
+         <div class="text-center color-white">
+          <span class="color-white f-12" style="font-family:Source Code Pro!important;">MY CL</span>
+          <h1 class="color-white f-38">Welcome Back, {{ customer.first_name }} <a href="/account/logout" class="log_drop_v2 p-text " tabsAnkr>
+        {{ 'customer.account.log_out' | t }}
+    </a></h1>
+            <br />
+          <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para color-white h3">
+            All of your favorites styles in one place. With this list, you can keep track of saved items whenever you
+            are.
+          </div>
+        </div>
+         <button class="aic-toggle-button cus_fonts_source  mob_fs_14 c-font aic-toggle-button_custom" id="aic-toggle-btn">Overview</button>
+    <div class="aic-content" id="aic-toggle-content" style="display: none;">
+      {% render 'customer-navs' %}
+     </div>
+         {% else %}
+          <div class="aic_banner_txt">
+      <h4 class="custom-didot mob_fs_14 c-h1">Welcome Back,</h4>
+      <h4 class="custom-didot mob_fs_14 c-h1">{{ customer.first_name }}</h4>
+    </div>
+
+    <button class="aic-toggle-button cus_fonts_source  mob_fs_14 c-font aic-toggle-button_custom" id="aic-toggle-btn">Overview</button>
+    <div class="aic-content" id="aic-toggle-content" style="display: none;">
+      {% render 'customer-navs' %}
+    </div>
+         {% endif %}
+  {% endcapture %}
+    {% if request.path contains 'pages/wishlist' %}
+      {% if customer %}
+        {{ htmlData }}
+      {% else %}
+        <div class="text-center color-white">
+          <span class="color-white f-12" style="font-family:Source Code Pro!important;">MY CL</span>
+          <h1 class="color-white f-38">Wishlist</h1>
+            <br />
+          <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para color-white h3">
+            All of your favorites styles in one place. With this list, you can keep track of saved items whenever you
+            are.
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      {{ htmlData }}
+    {% endif %}
+  </div>
+
+  <script>
+    if(window.innerWidth<768){
+      document.querySelector('.aic_toggle').append(document.querySelector('.aic-content'))
+    }
+  </script>
+</div>
+
+{% comment %}
+  <div class="tab_dropdown">
+    <div tabData="addresses" class="select_tab_acc" style="display: none">
+      {% render 'address_tab' %}
+    </div>
+    <div tabData="profile" class="select_tab_acc" style="display: none">
+      {% render 'profile_tab' %}
+    </div>
+    <div tabData="wishlist" class="select_tab_acc" style="display: none">
+      {% render 'wishlist_tab' %}
+    </div>
+    <div tabData="orders_&_returns" class="select_tab_acc" style="display: none">
+      {%- section 'main-order' -%}
+    </div>
+    <div tabData="payments" class="select_tab_acc" style="display: none">
+
+    </div>
+  </div>
+{% endcomment %}

@@ -1,0 +1,340 @@
+<!--
+  <div class="form-success hide" data-reset-success>
+  {{ 'customer.recover_password.success' | t }}
+  </div>
+-->
+<link rel="stylesheet" href="{{ 'account-global.css' | asset_url }}" as="style">
+
+{% comment %}
+  MTS
+  <div class="text-center sf__page-header section__header">
+  <h1 class="section__heading">{{ 'customer.login.title' | t }}</h1>
+  {% render 'breadcrumb', container: 'container', justify: 'center' %}
+  </div>
+{% endcomment %}
+<div class="hidden text-center sf__page-header section__header">
+  <h1 class="section__heading">{{ 'customer.login.title' | t }}</h1>
+  {% render 'breadcrumb', container: 'container', justify: 'center' %}
+</div>
+
+{% comment %}
+  Added by MTS
+{% endcomment %}
+<div class="flex web-container-account-title mob-container-wrapper mob-collection-title-wrapper mb-3 md:mb-0 cus-margin-top">
+  {% comment %} <p class="mob-collection-title">Log In</p> {% endcomment %}
+</div>
+
+<div class="flex flexd-sec">
+  {%-liquid
+      assign img = settings.sign_img|image_url
+      assign img_bg = settings.sign_img_bg|image_url
+  %}
+  <div
+    class="hidden md:block web-account-section "
+    style=" background: url({{ img_bg }}) 0% 0% / 100% 100% no-repeat;"
+    {%-liquid
+       assign is_login_page = false
+       if request.path contains '/login' or request.path contains '/register'
+          assign is_login_page = true
+       endif
+    %}
+    {% unless is_login_page %}
+      style="display:none !important;"
+    {%  endunless %}
+  >
+    <div class="mt-16" style="display:none">
+      <h1>
+        CL ACCOUNT BENEFITS
+
+
+      </h1>
+      <p>
+
+
+        Check out faster with saved information. Track your order easier. Enjoy your personlized shopping experience<br>
+      </p>
+      <!--
+        <li class="py-3">
+
+        </li>
+        <li class="py-3">Check out faster with saved information</li>
+      -->
+      <!--
+        <li class="py-3">Track your order easier</li>
+        <li class="py-3">Enjoy your personlized shopping experience</li>
+      -->
+    </div>
+    <img
+      src="{{ img }}"
+      data-src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/1101_home_hub_c02d_img_540x.webp?v=1668685380"
+    >
+  </div>
+
+  <div class="sf-customer__forms pb-7 md:pt-6 md:pb-15 md:w-2/3 xl:w-2/3 2xl:w-1/2 md:block mx-auto">
+    <div class="sf-customer__login mx-auto w-5/6 xl:w-2/3 2xl:w-1/2">
+      {% comment %} <h3 class="flex cus-account-heading font-medium mb-4 mt-5 md:mb-6">Welcome to Cloud9Linens!</h3> {% endcomment %}
+
+      <div class="account_tab">
+        <button id="login_from">
+          <h2>Sign in</h2>
+        </button>
+        <button id="register_from">
+          <h2>Create Account</h2>
+        </button>
+      </div>
+
+      {% comment %}
+        MTS
+        <h3 class="text-2xl font-medium mb:3 md:mb-6">{{ 'customer.login.title' | t }}</h3>
+      {% endcomment %}
+
+      <h3 class="hidden text-2xl font-medium mb:3 md:mb-6">{{ 'customer.login.title' | t }}</h3>
+      <div id="custom_login-form">
+        {% render 'form__login' %}
+      </div>
+    </div>
+
+    <div class="sf-customer__reset-password hidden md:pt-6 pb-6 mx-auto w-5/6 xl:w-2/3 2xl:w-1/2">
+      {% comment %}
+        MTS
+        <h3 class="text-2xl font-medium">{{ 'customer.recover_password.title' | t }}</h3>
+        <p class="mt-4 mb-2 text-color-secondary">{{ 'customer.recover_password.subtext' | t }}</p>
+      {% endcomment %}
+
+   
+<!--  -->
+      {% render 'form__recover-password' %}
+    </div>
+
+    {% comment %} <hr class="block cus-account-hr"> {% endcomment %}
+
+    {% comment %}
+      <div class="pt-8 mx-auto w-5/6 xl:w-2/3 2xl:w-1/2">
+
+
+      <h3 class="flex cus-account-heading font-medium mb-4 mt-5">Do not have an account yet?</h3>
+      <p class="flex cus-account-text mb-6 text-color-secondary">
+      Sign up to add items to wishlist, checkout, faster, tackorders, fast track refund, and more.
+      </p>
+
+      <h3 class="hidden text-2xl font-medium mb-6">{{ 'customer.login.new_customer' | t }}</h3>
+      <p class="hidden mb-6 text-color-secondary">
+      {{ 'customer.register.description' | t }}
+      </p>
+
+
+      MTS
+      <a
+      class="sf__btn sf__btn-primary"
+      href="{{ routes.account_register_url }}"
+      >
+      {{ 'customer.register.title' | t }}
+      </a>
+
+
+      <a
+      class="sf__btn sf__btn-primary w-full cus-account-btn cus-full-width"
+      href="{{ routes.account_register_url }}"
+      >
+      Creat Account
+      </a>
+
+      </div>
+    {% endcomment %}
+    <div
+      class="sf-customer__login mx-auto w-5/6 xl:w-2/3 2xl:w-1/2"
+      id="custom_register"
+      style="display:none"
+    >
+      <div data-register-form class="cus-account-form">
+        {% form 'create_customer' %}
+         
+
+          <form-control-group class="added">
+            <label class="cus-account-label">Email</label>
+            <input
+              type="email"
+              name="customer[email]"
+              class="form-control"
+            >
+          </form-control-group>
+          <form-control-group class="added">
+            <label class="cus-account-label">Password</label>
+            <input
+              type="password"
+              name="customer[password]"
+              class="form-control"
+            >
+            {% render 'pwd-icon' %}
+          </form-control-group>
+          <!--
+            <div class="flex p-text">
+              <ul class="w-1/2 cus-password-tips">
+                <li>8 Characters Minimum</li>
+                <li>One Number</li>
+                <li>At Least 1 Special Character(s)</li>
+              </ul>
+              <ul class="w-1/2 cus-password-tips">
+                <li>One Lowercase Character</li>
+                <li>One Uppercase Character</li>
+              </ul>
+            </div>
+          -->
+          <form-control-group>
+            <label class="cus-account-label">Re-enter Password</label>
+            <input
+              type="password"
+              value=""
+              name="customer[password_confirmation]"
+              id="confirm-password"
+              class="form-control password text"
+              size="30"
+            >
+            {% render 'pwd-icon' %}
+          </form-control-group>
+          <form-control-group>
+            <label class="cus-account-label">First Name</label>
+            <input
+              type="text"
+              name="customer[first_name]"
+              class="form-control"
+            >
+          </form-control-group>
+          <form-control-group>
+            <label class="cus-account-label">Last Name</label>
+            <input
+              type="text"
+              name="customer[last_name]"
+              class="form-control"
+            >
+          </form-control-group>
+          <div class="flex justify-between items-center">
+      <label class="cus-checkbox-btn flex items-center p-text p-text-2 weight-normal">
+        <input type="checkbox" checked="checked" required>
+        Remember Me
+      </label>
+    </div>
+          <!-- <p class="cus-create-account-txt p-text">Please send me a daily email offers and promotions as they arise.</p> -->
+<div class="flex justify-between items-center" style="    align-items: flex-start;">
+      <label class="cus-checkbox-btn subscription-checkbox-btn flex items-center p-text p-text-2 weight-normal">
+        <input type="checkbox" checked="checked" name="agree_subscription" value="yes" required>
+        Subscribe me to receive email address updates<br/><div><a href="/pages/policy-privacy-policy" class="p-text p-text-2 weight-normal">See Privacy Policy</a></div>
+      </label>
+    </div>
+          {% assign show_terms = false %}
+          {% if settings.agree_text != blank and settings.show_agree_on_register %}
+            {% render 'agree-terms-checkbox' %}
+            {% assign show_terms = true %}
+          {% endif %}
+         
+          <button
+            class="cus-register-btn mt-6 mb-3 w-full sf__btn sf__btn-primary bg-btn btn-width c-btn"
+            {% if show_terms %}
+              data-terms-action
+              disabled
+            {% endif %}
+          >
+            Create Account
+          </button>
+          <a
+            class="cus-register-btn mt-6 mb-3 w-full sf__btn sf__btn-primary bg-btn btn-width c-btn"
+            href="{{ routes.account_login_url }}"
+          >
+            {{ 'customer.login.title' | t }}
+          </a>
+           {% render 'form__error', form: form %}
+          {% render 'form__success', form: form, success_message: success_message %}
+          {% render 'sign-in-bottom', register: true %}
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %}
+  MTS
+  <section
+  class="hidden sf-collapsible cus-account-tabs-section{% if template == 'product' %} sf-product__section{% endif %}"
+  data-section-type="sf-collapsible" data-section-id="{{ section.id }}"
+  >
+  <div class="{{ st.container }}">
+  <div class="prod__accordion">
+
+  <div
+  class="sf__accordion-item cus-account-tabs pt-2{% if block.settings.open %} open{% endif %}"
+  data-index="{{ forloop.index0 }}"
+  style="--content-max-height: {% if block.settings.open %}100%{% else %}0px{% endif %};"
+  {{ block.shopify_attributes }}
+  >
+  <div class="sf__accordion-button lg:text-[18px] pb-2.5 pr-4" style="font-weight:600; font-size: 17px; font-family: 'Minionpro'">
+  My Account
+  </div>
+  <div class="sf__accordion-content text-color-secondary">
+  <div class="pb-8 prose" style="color: #000;">
+
+  <div class="flex" style="flex-direction: column;">
+  <a class="mt-2">Sign in</a>
+  <a class="mt-2">Register</a>
+  <a class="mt-2">Order Status</a>
+  <a class="mt-2">Returns</a>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+  <div
+  class="sf__accordion-item cus-account-tabs pt-2{% if block.settings.open %} open{% endif %}"
+  data-index="{{ forloop.index0 }}"
+  style="--content-max-height: {% if block.settings.open %}100%{% else %}0px{% endif %};"
+  {{ block.shopify_attributes }}
+  >
+  <div class="sf__accordion-button lg:text-[18px] pb-2.5 pr-4" style="font-weight:600; font-size: 17px; font-family: 'Minionpro'">
+  Contact Us
+  </div>
+  <div class="sf__accordion-content text-color-secondary">
+  <div class="pb-8 prose" style="color: #000;">
+
+  <div class="flex" style="flex-direction: column;">
+  <a class="mt-2">Live Chat</a>
+  <a class="mt-2 flex cus-account-tabs-icon">
+  Direct Message
+  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-instagram-250_b4f7976c-20e5-4181-a7cf-40f361a0e2db.png?v=1649848032" class="m-0 mx-4"/>
+  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-whatsapp-120.png?v=1649848032" class="m-0 mx-4"/>
+  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-facebook-messenger-120.png?v=1649848032" class="m-0 mx-4"/>
+  </a>
+  <a class="mt-2">Email Sign Up</a>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+  <div
+  class="sf__accordion-item cus-account-tabs pt-2{% if block.settings.open %} open{% endif %}"
+  data-index="{{ forloop.index0 }}"
+  style="--content-max-height: {% if block.settings.open %}100%{% else %}0px{% endif %};"
+  {{ block.shopify_attributes }}
+  >
+  <div class="sf__accordion-button lg:text-[18px] pb-2.5 pr-4" style="font-weight:600; font-size: 17px; font-family: 'Minionpro'">
+  About Us
+  </div>
+  <div class="sf__accordion-content text-color-secondary">
+  <div class="pb-8 prose" style="color: #000;">
+
+  <div class="flex" style="flex-direction: column;">
+  <a class="mt-2">Heritage</a>
+  <a class="mt-2">Behind The Scene</a>
+  <a class="mt-2">Egyptian Cotton - White Gold</a>
+  <a class="mt-2">Our Story</a>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+
+  </section>
+{% endcomment %}

@@ -1,0 +1,176 @@
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+{%- assign st = section.settings -%}
+<section data-section-type="contact-page" data-section-id={{ section.id }}>
+  <div class="{{ container }} mt-7 pb-7 xl:mt-15 xl:pb-15">
+    <div class="flex flex-wrap-reverse xl:flex-wrap ">
+      <div class="{% if section.blocks.size > 0 %}xl:w-8/12 xl:pr-24 w-full{% else %}xl:w-6/12 mx-auto w-full{% endif %}">
+        {%- if st.title != blank -%}
+        <h3 class="text-2xl font-medium mb-2">{{ st.title }}</h3>
+        {%- endif -%}
+        {%- if st.description != blank -%}
+        <div style="color: var(--color-secondary);" class="mb-10">{{ st.description }}</div>
+        {%- endif -%}
+        {%- form 'contact' -%}
+          {%- capture success_message -%}
+            {{ 'contact.form.post_success' | t }}
+          {%- endcapture -%}
+          {% render 'form__success', form: form, success_message: success_message %}
+          {% render 'form__error', form: form %}
+          <div class="grid grid-cols-1 sm:grid-cols-2 mb-[15px]">
+            {% if section.settings.show_name %}
+            <div class="w-full">
+              <input type="text" class="w-full align-middle" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" id="inputName" placeholder="{{ 'contact.form.name' | t }}">
+            </div>
+            {% endif %}
+            {% if section.settings.show_email %}
+            <div class="w-full">
+              <input type="email" class="w-full align-middle" name="contact[email]" required autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" id="inputEmail" placeholder="{{ 'contact.form.email' | t }}">
+            </div>
+            {% endif %}
+            {% if section.settings.show_phone %}
+            <div class="w-full col-span-2">
+              <input type="tel" class="w-full align-middle" name="contact[phone]" autocorrect="off" autocapitalize="off" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" id="inputPhone" placeholder="{{ 'contact.form.phone' | t }}">
+            </div>
+            {% endif %}
+          </div>
+          {% if section.settings.show_message %}
+          <div class="grid mb-[20px]">
+            <div class="w-full">
+              <textarea class="w-full align-middle" name="contact[body]" rows="8" required placeholder="{{ 'contact.form.message' | t }}" id="textareaMessage">{%- if form.body -%}{{ form.body }}{%- endif -%}</textarea>
+            </div>
+          </div>
+          {% endif %}
+          <div class="flex items-start mb-[30px]">
+            <input type="checkbox" class="flex-none w-[14px] h-[14px]" name="contact[saveInfo]" id="save-info">
+            <label for="save-info" class="ml-[12px] mt-[-4px]">{{ 'contact.form.save_infor_message' | t }}</label>
+          </div>
+          <button type="submit" class="sf__btn sf__btn-primary">{{ 'contact.form.send' | t }}</button>
+        {%- endform -%}
+      </div>
+      {% if section.blocks.size > 0 %}
+      <div class="w-full md:flex md:-mx-4 xl:mx-0 xl:w-4/12 xl:block xl:mb-0 mb-7">
+        {% for block in section.blocks %}
+          {% assign bs = block.settings %}
+          {% case block.type %}
+            {% when 'textblock' %}
+              <div class="md:w-3/12 md:px-4 xl:w-full xl:px-0 sf__text-block mb-7">
+                <h3 class="font-medium mb-5 text-lg">{{ bs.title }}</h3>
+                <div style="color: var(--color-secondary);">{{ bs.content }}</div>
+              </div>
+            {% else %}
+              <div class="md:w-3/12 md:px-4 xl:w-full xl:px-0 sf__text-block mb-7">
+                <h3 class="font-medium mb-5 text-lg">{{ bs.title }}</h3>
+                <div class="-mx-4">{% render 'social-media-links' %}</div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    {
+    "type": "header",
+    "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "We would love to hear from you."
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>If you’ve got great products your making or looking to work with us then drop us a line.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Contact form"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_name",
+      "label": "Show field name",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_phone",
+      "label": "Show field phone number",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_email",
+      "label": "Show field email",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_message",
+      "label": "Show field message",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "textblock",
+      "name": "Text block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Block Title"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>7895 Piermont Dr NE Albuquerque, NM 198866, <a href='#'>See Our Stores</a></p>"
+        }
+      ]
+    },
+    {
+      "type": "socialmedia",
+      "name": "Social media",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Social Media"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

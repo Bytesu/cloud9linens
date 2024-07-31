@@ -1,0 +1,84 @@
+{% if variant == blank %}
+    {% assign variant = product.selected_or_first_available_variant %}
+{% endif %}
+
+{%- capture cp_classes -%}
+  {{ compare_price_class }} {% if variant.compare_at_price <= variant.price %}hidden{% endif %}
+{%- endcapture -%}
+
+{% comment %}
+MTS
+<span class="{{ cp_classes }} prod__compare_price mr-2 line-through text-color-secondary">
+  {{ variant.compare_at_price | money }} 
+</span>
+{% endcomment %}
+
+{% if variant.compare_at_price %}
+  {% if section.settings.price_range != blank %}
+    <span class="{{ cp_classes }} text-color-secondary"  style="font-size: 16px; display:flex; font-family: 'Minionpro';">
+      {{ product.price_min | money}}&nbsp;-&nbsp;
+      
+      </span>
+      <span class="{{ price_class }}" style="font-size: 16px;display:flex; font-family: 'Minionpro';">
+        {{ product.compare_at_price_max | money }}
+    </span>
+  {% else %}
+    <span class="{{ cp_classes }} prod__compare_price mr-2 text-color-secondary" style="text-decoration: line-through; font-size:16px;">
+      {{ variant.compare_at_price | money }}
+    </span>
+    <span class="{{ price_class }} cus-prod__price prod__price ml-2 text-color-regular-price" style="font-size:16px;">
+      {{ variant.price | money }}
+    </span>
+  {% endif %}
+{% elsif variant.price %}
+  <span class="{{ price_class }} cccc prod__price text-color-regular-price cus-price-pcard cstm__prd__price">
+     {{ variant.price | money }}
+  </span>
+{% endif %}
+ 
+
+{% comment %}
+MTS
+{% elsif item.line_level_discount_allocations != blank %}
+	{%- assign item_discounts = 'template ' | split: ' ' -%}
+	{%- assign item_discounts = item.line_level_discount_allocations -%}
+	<ul
+      class="scd-item__discounts sf-cart__item-discounts {% if item.line_level_discount_allocations == blank %} hidden{% endif %}"
+      aria-label="{{ 'customer.order.discount' | t }}"
+      data-cart-item-discount-list
+    >
+      {%- for discount_allocation in item_discounts -%}
+        <li class="order-discount__item" data-cart-item-discount>
+          {% render 'icon', name: 'discount' %}
+          <span data-cart-item-discount-title>
+            {{- discount_allocation.discount_application.title -}}
+          </span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | money }}</span>)
+        </li>
+      {%- endfor -%}
+    </ul>
+{% endcomment %}
+
+
+{% comment %}
+MTS
+
+	{%- assign item_discounts = 'template ' | split: ' ' -%}
+    {%- if item.line_level_discount_allocations != blank -%}
+      {%- assign item_discounts = item.line_level_discount_allocations -%}
+    {%- endif -%}
+
+    <ul
+      class="scd-item__discounts sf-cart__item-discounts {% if item.line_level_discount_allocations == blank %} hidden{% endif %}"
+      aria-label="{{ 'customer.order.discount' | t }}"
+      data-cart-item-discount-list
+    >
+      {%- for discount_allocation in item_discounts -%}
+        <li class="order-discount__item" data-cart-item-discount>
+          {% render 'icon', name: 'discount' %}
+          <span data-cart-item-discount-title>
+            {{- discount_allocation.discount_application.title -}}
+          </span> (-<span data-cart-item-discount-amount>{{ discount_allocation.amount | money }}</span>)
+        </li>
+      {%- endfor -%}
+    </ul>
+{% endcomment %}

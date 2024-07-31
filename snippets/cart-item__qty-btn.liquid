@@ -1,0 +1,12 @@
+<div  class="scd-item__qty flex justify-between border border-color-border rounded">
+  <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="dec">-</button>
+  <input style="background-color: #ededed"
+    class="py-2 scd-item__qty_input w-9 text-center"
+    type="number"
+    name="updates[]"
+    data-id="{{- item.key -}}"
+    value="{{ item.quantity }}"
+    min="0"
+  />
+  <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="inc">+</button>
+</div>

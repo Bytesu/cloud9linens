@@ -1,0 +1,36 @@
+{% if render_by_image %}
+    <div class="sf-prod-media media-image {{ media_class }}" data-media-id="{{ media.id }}">
+        {% render 'responsive-image', image: media.preview_image %}
+    </div>
+    {% if media.media_type == 'model' %}
+        <div class="sf-prod-media media-model hidden" style="--aspect-ratio: 1/1;" data-media-id="{{ media.id }}"">
+          {{ media | model_viewer_tag }}
+        </div>
+    {% endif %}
+{% else %}
+    {% case media.media_type %}
+        {% when 'image' %}
+            <div class="sf-prod-media media-image" data-media-id="{{ media.id }}" {% if aspect_ratio %}style="--aspect-ratio: {{ aspect_ratio }};" {% endif %}>
+                {% render 'responsive-image', image: media %}
+            </div>
+        {% when 'external_video' %}
+            <div style="--aspect-ratio: {{ media.aspect_ratio }}">
+              <div class="sf-prod-media media-video" data-media-id="{{ media.id }}">
+                {{ media | external_video_tag }}
+              </div>
+            </div>
+        {% when 'video' %}
+            <div class="sf-prod-media media-video local-video" data-media-id="{{ media.id }}">
+                {{ media | video_tag: controls: true }}
+            </div>
+        {% when 'model' %}
+            <div class="sf-prod-media media-model" style="--aspect-ratio: 1/1;" data-media-id="{{ media.id }}">
+                {{ media | model_viewer_tag }}
+            </div>
+        {% else %}
+            <div class="sf-prod-media media-fall-back" data-media-id="{{ media.id }}">
+                {{ media | media_tag }}
+            </div>
+    {% endcase %}
+{% endif %}
+

@@ -1,0 +1,13 @@
+<div class="sf__accordion-content rte">
+  <div class="pb-5 md:pb-0">
+    <p class="py-2 block-text sf__newsletter-block-desc ftr_color">{{ block.settings.description }}</p>
+    <div>
+      {% render 'form__newsletter', block_settings: block.settings %}
+    </div>
+    {% if block.settings.show_social %}
+      <div class="block -mx-4 mt-4">
+        {% render 'social-media-links' %}
+      </div>
+    {% endif %}
+  </div>
+</div>

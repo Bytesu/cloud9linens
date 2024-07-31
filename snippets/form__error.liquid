@@ -1,0 +1,8 @@
+{% if form.errors %}
+    <div class="notification show warning mb-3 text-base">
+        {% render 'icon', name: 'warning' %}
+        <div class="ml-3 text-sm md:text-base">
+            {{ form.errors | default_errors }}
+        </div>
+    </div>
+{% endif %}

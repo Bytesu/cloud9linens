@@ -1,0 +1,26 @@
+{% assign show_cart_icon = section.settings.show_cart_icon %}
+{% assign search_settings = section.settings.search %}
+
+<header
+    class="flex lg:hidden sf-header__mobile container-fluid bg-white items-center"
+    data-screen="sf-header__mobile"
+    data-transparent="{{ transparent_on_top }}"
+>
+    {% render 'header-option-item__hamburger-button', box_size: 'flex flex-1 w-1/4' %}
+    {% render 'header-logo', header_settings: section.settings, box_size: 'w-1/2' %}
+    {% if show_cart_icon or search_settings != 'hide' %}
+        <div class="w-1/4 flex flex-1 items-center justify-end sf-header__mobile-right">
+            {% if search_settings != 'hide' %}
+              <div class="flex justify-center items-center p-2" data-open-search-popup>
+                <span class="sf__search-mb-icon">
+                  {% render 'icon', name: 'search', size: 'medium' %}
+                </span>
+              
+          	  </div>
+            {% endif %}
+            {% if show_cart_icon %}
+              {% render 'cart' %}
+            {% endif %}
+        </div>
+    {% endif %}
+</header>

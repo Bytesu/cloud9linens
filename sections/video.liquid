@@ -1,0 +1,427 @@
+{%- assign bg_color = section.settings.background_color -%}
+{%- assign has_bg = false -%}
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+  {% assign has_bg = true %}
+{% endunless %}
+{%- capture container -%}
+  {{ section.settings.container }} {% if section.settings.container != 'w-full' %}{%- if has_bg == false -%}section-my{%- else -%}section-py{%- endif -%}{% endif %}
+{%- endcapture -%}
+
+{% if section.settings.width == blank %}
+  {% assign width = '100%' %}
+{% else %}
+  {% assign width = section.settings.width %}
+{% endif %}
+
+<section
+  class="sf-video {{ section.settings.custom_class }}"
+  data-section-id="{{ section.id }}"
+  data-section-type="video-section"
+  {%- if has_bg -%}
+  data-bg="{{ bg_color | color_to_hsl }}"
+  style="background-color: {{ bg_color }};"
+  {%- endif -%}
+  data-video-ratio="{{ section.settings.ratio | default: '16:9' }}" 
+  data-autoplay="{{ section.settings.autoplay }}" 
+  data-loop="{{ section.settings.loop }}"
+>
+  <div class="{{ container | strip }}">
+    {%- if section.settings.video_link != blank -%}
+      <div class="sf-video__container mx-auto max-w-full" style="width: {{- width -}};">
+        <div class="sf-video__wrapper" style="--aspect-ratio: {{ section.settings.ratio | replace: ':', '/' }}">
+          {%- if section.settings.video_link != blank -%}
+            <div class="video-wrapper" data-plyr-provider="youtube" data-plyr-embed-id="{{section.settings.video_link.id}}"></div>
+          {%- endif -%}
+          {%- if section.settings.image != blank -%}
+            <div class="sf-video__cover bg-center" style="background-image: url({{ section.settings.image | img_url: '1920x' }})"></div>
+          {%- endif -%}
+          <div class="sf-video__inner text-center">
+            <button type="button" class="sf-video__play sf-video__play--style-{{ section.settings.play_style }} sf-video__play--size-{{ section.settings.play_size }} text-{{ section.settings.text_color }}" data-plyr="play" aria-label="Play">
+              {% render 'icon', name: 'play', size: 'medium' %}
+              <span class="plyr__sr-only">{{ 'sections.video.play' | t }}</span>
+            </button>
+            {%- unless section.settings.video_title == blank -%}
+              <h2 class="sf-video__title text-xl hidden md:block {% if section.settings.text_size == 'medium' %}sm:text-3xl{% else %}sm:text-5xl{% endif %} text-{{ section.settings.text_color }}">
+                {{ section.settings.video_title }}
+              </h2>
+            {%- endunless -%}
+          </div>
+        </div>
+      </div>
+    {%- else -%}
+      <div class="placeholder-noblocks text-center">
+        {{ 'homepage.onboarding.no_content' | t }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": {
+    "cs": "Video",
+    "da": "Video",
+    "de": "Video",
+    "en": "Video",
+    "es": "Video",
+    "fi": "Video",
+    "fr": "Vidéo",
+    "it": "Video",
+    "ja": "動画",
+    "ko": "동영상",
+    "nb": "Video",
+    "nl": "Video",
+    "pl": "Film",
+    "pt-BR": "Vídeo",
+    "pt-PT": "Vídeo",
+    "sv": "Video",
+    "th": "วิดีโอ",
+    "tr": "Video",
+    "vi": "Video",
+    "zh-CN": "视频",
+    "zh-TW": "影片"
+  },
+  "settings": [
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "Video settings"
+    },
+    {
+      "type": "video_url",
+      "id": "video_link",
+      "label": {
+        "cs": "Odkaz na video",
+        "da": "Videolink",
+        "de": "Video-Link",
+        "en": "Video link",
+        "es": "Enlace de video",
+        "fi": "Videolinkki",
+        "fr": "Lien de la vidéo",
+        "it": "Link video",
+        "ja": "ビデオリンク",
+        "ko": "동영상 링크",
+        "nb": "Videokobling",
+        "nl": "Videolink",
+        "pl": "Link filmu",
+        "pt-BR": "Link do vídeo",
+        "pt-PT": "Ligação do vídeo",
+        "sv": "Videolänk",
+        "th": "ลิงก์วิดีโอ",
+        "tr": "Video bağlantısı",
+        "vi": "Liên kết video",
+        "zh-CN": "视频链接",
+        "zh-TW": "影片連結"
+      },
+      "accept": [
+        "youtube"
+      ],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+    },
+    {
+        "type": "select",
+        "id": "ratio",
+        "label": "Video ratio",
+        "default": "16:9",
+        "options": [
+            {
+                "value": "16:9",
+                "label": "16:9"
+            },
+            {
+                "value": "21:9",
+                "label": "21:9"
+            },
+            {
+                "value": "4:3",
+                "label": "4:3"
+            }
+        ]
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": {
+        "cs": "Titulní obrázek",
+        "da": "Coverbillede",
+        "de": "Titelbild",
+        "en": "Cover image",
+        "es": "Imagen de portada",
+        "fi": "Kansikuva",
+        "fr": "Image de couverture",
+        "it": "Immagine di copertina",
+        "ja": "表紙画像",
+        "ko": "커버 이미지",
+        "nb": "Forsidebilde",
+        "nl": "Coverafbeelding",
+        "pl": "Obraz w tle",
+        "pt-BR": "Imagem de capa",
+        "pt-PT": "Imagem de capa",
+        "sv": "Omslagsbild",
+        "th": "รูปภาพหน้าปก",
+        "tr": "Kapak görseli",
+        "vi": "Ảnh bìa",
+        "zh-CN": "封面图片",
+        "zh-TW": "封面圖片"
+      },
+      "info": {
+        "en": "Leave blank to use video thumbnail"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "video_title",
+      "label": {
+        "cs": "Nadpis",
+        "da": "Overskrift",
+        "de": "Überschrift",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pl": "Nagłówek",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "tr": "Başlık",
+        "vi": "Tiêu đề",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      }
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": {
+        "cs": "Velikost textu",
+        "da": "Tekststørrelse",
+        "de": "Textgröße",
+        "en": "Text size",
+        "es": "Tamaño del texto",
+        "fi": "Tekstin koko",
+        "fr": "Taille du texte",
+        "it": "Dimensione testo",
+        "ja": "文字サイズ",
+        "ko": "텍스트 사이즈",
+        "nb": "Tekststørrelse",
+        "nl": "Tekengrootte",
+        "pl": "Rozmiar czcionki",
+        "pt-BR": "Tamanho do texto",
+        "pt-PT": "Tamanho do texto",
+        "sv": "Textstorlek",
+        "th": "ขนาดตัวอักษร",
+        "tr": "Metin boyutu",
+        "vi": "Cỡ văn bản",
+        "zh-CN": "文本大小",
+        "zh-TW": "文字尺寸"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "label": {
+            "cs": "Střední",
+            "da": "Medium",
+            "de": "Mittel",
+            "en": "Medium",
+            "es": "Mediano",
+            "fi": "Keskisuuri",
+            "fr": "Moyenne",
+            "it": "Medio",
+            "ja": "中",
+            "ko": "보통",
+            "nb": "Middels",
+            "nl": "Gemiddeld",
+            "pl": "Średnia",
+            "pt-BR": "Médio",
+            "pt-PT": "Intermédio",
+            "sv": "Medium",
+            "th": "ปานกลาง",
+            "tr": "Orta",
+            "vi": "Trung bình",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          },
+          "value": "medium"
+        },
+        {
+          "label": {
+            "cs": "Velká",
+            "da": "Stor",
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fi": "Suuri",
+            "fr": "Grande",
+            "it": "Grande",
+            "ja": "大",
+            "ko": "라지",
+            "nb": "Stor",
+            "nl": "Groot",
+            "pl": "Duża",
+            "pt-BR": "Grande",
+            "pt-PT": "Grande",
+            "sv": "Stor",
+            "th": "ใหญ่",
+            "tr": "Büyük",
+            "vi": "Lớn",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          },
+          "value": "large"
+        }
+      ]
+    },
+    {
+        "type":"select",
+        "id":"text_color",
+        "label":"Text color",
+        "options":[
+            {
+                "label":"Dark",
+                "value":"black"
+            },
+            {
+                "label":"Light",
+                "value":"white"
+            }
+        ],
+        "default": "white"
+    },
+    {
+        "type":"select",
+        "id":"play_style",
+        "label":"Play button style",
+        "options":[
+            {
+                "label":"Outline",
+                "value":"outline"
+            },
+            {
+                "label":"Solid",
+                "value":"solid"
+            }
+        ],
+        "default": "solid"
+    },
+    {
+        "type":"select",
+        "id":"play_size",
+        "label":"Play button size",
+        "options":[
+            {
+                "label":"Medium",
+                "value":"medium"
+            },
+            {
+                "label":"Large",
+                "value":"large"
+            }
+        ],
+        "default": "medium"
+    },
+    {
+        "type":"text",
+        "id":"width",
+        "label":"Video width",
+        "default": "650px"
+    },
+    {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Autoplay",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "loop",
+        "label": "Loop",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "cs": "Video",
+        "da": "Video",
+        "de": "Video",
+        "en": "Video",
+        "es": "Video",
+        "fi": "Video",
+        "fr": "Vidéo",
+        "it": "Video",
+        "ja": "動画",
+        "ko": "동영상",
+        "nb": "Video",
+        "nl": "Video",
+        "pl": "Film",
+        "pt-BR": "Vídeo",
+        "pt-PT": "Vídeo",
+        "sv": "Video",
+        "th": "วิดีโอ",
+        "tr": "Video",
+        "vi": "Video",
+        "zh-CN": "视频",
+        "zh-TW": "影片"
+      },
+      "category": {
+        "cs": "Video",
+        "da": "Video",
+        "de": "Video",
+        "en": "Video",
+        "es": "Video",
+        "fi": "Video",
+        "fr": "Vidéo",
+        "it": "Video",
+        "ja": "動画",
+        "ko": "동영상",
+        "nb": "Video",
+        "nl": "Video",
+        "pl": "Film",
+        "pt-BR": "Vídeo",
+        "pt-PT": "Vídeo",
+        "sv": "Video",
+        "th": "วิดีโอ",
+        "tr": "Video",
+        "vi": "Video",
+        "zh-CN": "视频",
+        "zh-TW": "影片"
+      }
+    }
+  ]
+}
+{% endschema %}

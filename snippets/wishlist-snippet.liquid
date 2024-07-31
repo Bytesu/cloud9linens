@@ -1,0 +1,11 @@
+{% assign wishlist_app = settings.wishlist_app %}
+{% if wishlist_app == 'growave' %}
+  {% capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with product.id %}{% endcapture %}
+  {% unless the_snippet_fave_icon contains 'Liquid error' %}
+    {{ the_snippet_fave_icon }}
+  {% else %}
+    {% render 'mm-ssw-widget-faveicon' with product.id %}
+  {% endunless %}
+{% else %}
+  {% render 'tooltip', type: 'wishlist', product: product, class_name: class_name, style: style %}
+{% endif %}

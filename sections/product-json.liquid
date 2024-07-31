@@ -1,0 +1,15 @@
+<script 
+  class="product-json" 
+  data-has-only-default-variant="{{ product.has_only_default_variant }}"
+  data-aspect-ratio="{{ product.featured_image.aspect_ratio }}"
+  data-url="{{ product.url }}"
+  data-handle="{{ product.handle }}"
+>
+  {{ product | json }}
+</script>
+
+{% if product.selected_or_first_available_variant %}
+  <script class="selected-variant-json">
+    {{ product.selected_or_first_available_variant | json }}
+  </script>
+{% endif %}

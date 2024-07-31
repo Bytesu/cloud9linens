@@ -1,0 +1,276 @@
+{%- assign item = section.settings -%}
+{%- paginate blog.articles by item.blog_list -%}
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+<section
+  data-section-type="blog-template"
+  data-section-id="{{ section.id }}"
+  class="pb-10 lg:pb-12 xl:pb-24">
+  <div class="{{ container }}">
+    <div class="sf__page-header section__header">
+      <h1 class="text-center section__heading">{{ blog.title }}</h1>
+      {% render 'breadcrumb', justify: 'center' %}
+    </div>
+    <div class="mx-auto">
+        {% if item.show_sidebar and section.blocks != blank %}
+          {%- case item.layout -%}
+            {%- when 'left_column' -%}
+            <div class="flex flex-wrap flex-row-reverse -mx-4">
+              <div class="w-full lg:w-9/12 px-4">
+                  <div class="grid grid-cols-1 {% if section.settings.view == 'grid' %}grid-cols-2 md:grid-cols-{{ section.settings.show_item_per_row | minus: 1 }} lg:grid-cols-{{ section.settings.show_item_per_row }}{% endif %} gap-8">
+                    {%- for article in blog.articles -%}
+                        {% render 'article-card', article: article, view: item.view %}
+                    {% endfor %}
+                  </div>
+                {%- if paginate.pages > 1 -%}
+                <div class="flex justify-center my-7 lg:my-16">
+                  {%- render 'pagination', paginate: paginate -%}
+                </div>
+                {%- endif -%}
+              </div>
+              <div class="w-full lg:w-3/12 px-4">
+                {% include 'blog-sidebar' %}
+              </div>
+            </div>
+            {%- else -%}
+            <div class="flex flex-wrap -mx-4">
+              <div class="w-full lg:w-9/12 px-4">
+                  <div class="grid grid-cols-1 {% if section.settings.view == 'grid' %}grid-cols-2 md:grid-cols-{{ section.settings.show_item_per_row | minus: 1 }} lg:grid-cols-{{ section.settings.show_item_per_row }}{% endif %} gap-8">
+                    {%- for article in blog.articles -%}
+                        {% render 'article-card', article: article, view: item.view %}
+                    {% endfor %}
+                  </div>
+                {%- if paginate.pages > 1 -%}
+                <div class="flex justify-center my-7 lg:my-16">
+                  {%- render 'pagination', paginate: paginate -%}
+                </div>
+                {%- endif -%}
+              </div>
+              <div class="w-full lg:w-3/12 px-4">
+                {% include 'blog-sidebar' %}
+              </div>
+            </div>
+          {%- endcase -%}
+        {% else %}
+            <div class="grid grid-cols-1 {% if section.settings.view == 'grid' %}grid-cols-2 md:grid-cols-{{ section.settings.show_item_per_row | minus: 1 }} lg:grid-cols-{{ section.settings.show_item_per_row }}{% endif %} gap-8">
+                {%- for article in blog.articles -%}
+                    {% render 'article-card', article: article, view: item.view %}
+                {% endfor %}
+            </div>
+          {%- if paginate.pages > 1 -%}
+          <div class="flex justify-center mt-7 lg:mt-15">
+            {%- render 'pagination', paginate: paginate -%}
+          </div>
+          {%- endif -%}
+        {% endif %}
+    </div>
+  </div>
+</section>
+{%- endpaginate -%}
+{% schema %}
+{
+  "name": "Blog pages",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sidebar",
+      "label": "Show sidebar",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Placement",
+      "default": "right_column",
+      "options": [
+        {
+          "value": "left_column",
+          "label": "Left column"
+        },
+        {
+          "value": "right_column",
+          "label": "Right column"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "layout"
+    },
+    {
+      "type": "select",
+      "id": "view",
+      "label": "Layout",
+      "default": "grid",
+      "options": [
+        {
+          "label": "Grid",
+          "value": "grid"
+        },
+        {
+          "label": "List",
+          "value": "list"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "blog_list",
+      "label": "Posts to show",
+      "default": 6,
+      "min":2,
+      "max":12,
+      "step":1
+    },
+    {
+      "type":"range",
+      "id":"show_item_per_row",
+      "label":"Posts per row",
+      "min":2,
+      "max":6,
+      "step":1,
+      "default":3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "categories",
+      "name": "Widget categories",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Categories"
+        },
+        {
+          "type": "link_list",
+          "id": "list_blog",
+          "label": "Select categories menu"
+        }
+      ]
+    },
+    {
+      "type": "instagram",
+      "name": "Widget Instagram",
+      "limit": 1,
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Instagram"
+          },
+          {
+            "type": "range",
+            "min": 4,
+            "max": 24,
+            "step": 1,
+            "id": "images_count",
+            "label": "Images to show",
+            "default": 4
+          }
+      ]
+  },
+    {
+      "type": "tags",
+      "name": "Widget tags",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Tags"
+        }
+      ]
+    },
+    {
+      "type": "recent_post",
+      "name": "Widget recent posts",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Recent Post"
+        },
+        {
+          "type": "blog",
+          "id": "sidebar_recent_blog_name",
+          "label": "Blog Name"
+        },
+        {
+          "type": "text",
+          "id": "sidebar_recent_blog_count",
+          "label": "Post Count",
+          "info": "Integer",
+          "default": "3"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_tags",
+          "label": "Show tags",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_author",
+          "label": "Show author",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_show_date",
+          "label": "Show date",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_excerpt",
+          "label": "Show excerpt",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "truncate",
+          "label": "Show Words",
+          "default": "15",
+          "info": "Integer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

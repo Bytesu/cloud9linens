@@ -1,0 +1,68 @@
+<section id="{{ section.id }}">
+  <div class="container-cus">
+    <div class="write-text"> 
+      <h2>{{ section.settings.writer }}</h2>
+    </div>
+    <div class="list-suitable">
+      {%- assign handel = page_title | handle  -%}
+       
+       <ul class="unordered {{ handel }}">  
+          {% for block in section.blocks %}       
+              <li class="{{ block.settings.text-addq }} {% if handel == block.settings.text-addq  %} ---active-new {% endif %}">
+                 <img id="white-i" src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/white-map.png">
+                 <img id="black-i" src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/black-map.png">
+                  <a href="{{ block.settings.btnUrl }}">{{ block.settings.boxText }}</a>
+              </li>            
+          {% endfor %} 
+      </ul>
+    </div>
+  </div>
+</section>
+{% style %}
+  #{{section.id}}{
+    background-color:#f3f3f3;
+    padding:3rem 0;
+  }
+{% endstyle %}
+
+{% schema %}
+  {
+    "name": "Service clients",
+    "settings": [
+      {
+        "type":"text",
+        "id":"writer",
+        "label":"Enter Main Text"
+      }
+    ],
+     "blocks": [
+    {
+      "type": "text",
+      "name": "Column",
+      "limit":6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "boxText",
+          "label": "Box Text"
+        },
+         {
+          "type": "url",
+          "id": "btnUrl",
+          "label": "Box Url"
+        },
+         {
+          "type": "text",
+          "id": "text-addq",
+          "label": "active class"
+        }
+      ]
+    }
+  ],
+    "presets":[
+      {
+        "name":"service-clients"
+      }
+    ]
+  }
+{% endschema %}

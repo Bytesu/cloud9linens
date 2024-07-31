@@ -1,0 +1,110 @@
+{% assign enable_slider = section.settings.enable_slider %}
+{%- capture default_heading -%}
+    {{ 'products.product.product_recommendation_heading' | t }}
+{%- endcapture -%}
+
+{% assign product_id = product.id %}
+
+{% if template == 'cart' %}
+    {%- assign first_cart_item = cart.items | first -%}
+    {% assign product_id = first_cart_item.product_id %}
+{% endif %}
+
+<div
+    class="hidden opacity-0 transition-opacity product-recommendations sf-product__section"
+    data-section-type="product-recommendations"
+    data-section-id="{{ section.id }}"
+    data-base-url="{{ routes.product_recommendations_url }}"
+    data-product-id="{{ product_id }}"
+    data-limit="{{ section.settings.limit }}"
+    data-items="{{ section.settings.columns }}"
+    data-enable-slider="{{ enable_slider }}"
+    style="--column-gap: {{ section.settings.column_gap }}px; --column-gap-mobile: 20px; --row-gap: {{ section.settings.column_gap | plus: 10 }}px; --items: {{ section.settings.columns }}"
+>
+    <div class="{{ section.settings.container }}">
+        <h2 class="sf-product__section-heading">{{ section.settings.heading | default: default_heading }}</h2>
+        <div class="relative">
+            {%- capture grid_class -%}
+              md:grid-cols-{{ section.settings.columns | minus: 1 }} xl:grid-cols-{{ section.settings.columns }}
+            {%- endcapture -%}
+            <div class="sf-grid md:grid {{ grid_class | strip_newlines }}" data-grid-container>
+              <div class="swiper-wrapper" data-product-list></div>
+            </div>
+            {% if enable_slider %}
+              {% render 'slider-controls', absolute: true, show_nav: true, container: section.settings.container, custom_class: 'hidden' %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Product recommendations",
+        "settings": [
+            {
+                "type": "select",
+                "id": "container",
+                "label": "Container type",
+                "default": "container",
+                "options": [
+                    {
+                        "value": "container-fluid",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "w-full",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "container",
+                        "label": "Use container box"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "You Might Also Like",
+                "placeholder": "Product recommendations"
+            },
+            {
+                "type": "range",
+                "id": "limit",
+                "label": "Number of products to show",
+                "default": 8,
+                "min": 3,
+                "max": 20
+            },
+            {
+                "type": "range",
+                "id": "columns",
+                "label": "Products per row",
+                "default": 4,
+                "min": 3,
+                "max": 8
+            },
+            {
+                "type": "range",
+                "id": "column_gap",
+                "label": "Column gap",
+                "default": 30,
+                "min": 0,
+                "max": 50,
+                "step": 2
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_slider",
+                "label": "Enable slider",
+                "default": true
+            }
+        ],
+        "templates": ["product"],
+        "presets": [
+            {
+                "name": "Product recommendations"
+            }
+        ]
+    }
+{% endschema %}

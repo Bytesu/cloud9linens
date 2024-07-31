@@ -1,0 +1,50 @@
+<div class="collection-filters__item sorting caption nodisplaydesktop">
+  <div class="collection-filters__field cus_hide">
+    <div class="select">
+     
+      {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+      
+      <div class="sf__custom-select cus_text_transform {% if collection.sort_by != "" %} sort_by_selected {% endif %}">
+     
+        <select name="sort_by" class="collection-filters__sort select__select" id="SortBy" aria-describedby="a11y-refresh-page-message">
+         
+          {%- for option in collection.sort_options -%}
+            <option 
+              value="{{ option.value | escape }}"
+              {% if option.value == sort_by %} selected="selected"{% endif %}
+              data-index="{{ forloop.index0 }}"
+            >
+            {{ option.name | escape }}
+            
+            </option>
+          {%- endfor -%}
+        </select>
+        <span style="width:100px;font-weight:bold" class="sort_by_label">Sort By</span>
+      </div> 
+    </div>
+  </div>
+</div>
+
+{% comment %}
+MTS
+<div class="collection-filters__item sorting caption">
+  <div class="collection-filters__field">
+    <div class="select">
+      {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+      <div class="sf__custom-select">
+        <select name="sort_by" class="collection-filters__sort select__select" id="SortBy" aria-describedby="a11y-refresh-page-message">
+          {%- for option in collection.sort_options -%}
+            <option 
+              value="{{ option.value | escape }}"
+              {% if option.value == sort_by %} selected="selected"{% endif %}
+              data-index="{{ forloop.index0 }}"
+            >
+              {{ option.name | escape }}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+{% endcomment %}

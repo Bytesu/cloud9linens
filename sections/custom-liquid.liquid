@@ -1,0 +1,27 @@
+<section class="sf-custom-liquid {{ section.settings.custom_class }}">
+  {{ section.settings.custom_liquid }}
+</section>
+
+{% schema %}
+{
+  "name": "Custom liquid",
+  "class": "custom-liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom liquid"
+    },
+    {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom classes"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom liquid"
+    }
+  ]
+}
+{% endschema %}

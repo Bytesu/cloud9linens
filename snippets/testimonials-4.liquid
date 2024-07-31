@@ -1,0 +1,27 @@
+<div class="sf-testimonials__inner">
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <div data-index={{ forloop.index0 }} class="review-block px-[22px] md:px-0 select-none lg:transition-opacity md:opacity-40 text-center">
+                    {% if section.settings.show_stars %}
+                        <div class="stars flex mb-7 justify-center">
+                            {%- render 'testimonials__stars' -%}
+                        </div>
+                    {% endif %}
+                    <div class="sf-testimonials-description text-xl xl:text-3xl leading-normal mb-7 sm:mb-10 rte">
+                        {{ block.settings.description }}
+                    </div>
+                    <div class="sf-testimonials-footer">{{ block.settings.footer }}</div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="indexes text-center mt-5 text-sm font-medium">
+            <span class="sf-slider-index">1</span>
+            <span class="mx-2">/</span>
+            <span>{{ section.blocks | size }}</span>
+        </div>
+    </div>
+</div>
+{% render 'slider-controls', show_nav: section.settings.show_navigation, show_pagination: section.settings.show_pagination, absolute: true, nav_class: '' %}

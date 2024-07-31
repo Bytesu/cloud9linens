@@ -1,0 +1,116 @@
+<!-- /snippets/breadcrumb.liquid -->
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{%- capture separator -%}
+    <span aria-hidden="true" class="sf__breadcrumb-separator py-2">
+        {% render 'icon', name: 'divider-line', size: 'extra-small' %}
+    </span>
+{%- endcapture -%}
+
+{%- capture home -%}
+    <a href="{{ routes.root_url }}" class="bread-crumb__item" title="{{ 'general.breadcrumbs.home_link_title' | t }}">
+        {{ 'general.breadcrumbs.home' | t }}
+    </a>
+{%- endcapture -%}
+
+{% if container == nil %}
+  {% assign container = 'container-fluid' %}
+{% endif %}
+
+{% unless template == 'index' %}
+    <nav
+        class="sf-breadcrumb w-full mt-6 {{ class }}{% if container == 'w-full' %} px-4{% endif %}"
+        role="navigation"
+        aria-label="breadcrumbs"
+    >
+      <div class="{{ container }}">
+      
+      {% comment %}
+      MTS
+      <div class="container-fluid">
+      {% endcomment %}
+        
+        <div class="flex -mx-4 items-center justify-{{ justify | default: 'start' }}">
+          {% unless template.name == 'product'%}
+            {{ home }}
+          {% endunless %}
+
+          {% if template.name == 'product' %}
+            <div class="sf-breadcrumb__nav flex items-center">
+              {% comment %}
+              	{{ home }}
+              {% endcomment %}
+              
+              
+              {% assign current_collection = null %}
+              {% if collection %}
+                {% assign current_collection = collection %}
+              {% elsif product and product.collections.size > 0 %}
+                {% assign current_collection = product.collections.first %}
+              {% endif %}
+              {% if current_collection %}
+              	{% comment %}
+                	{{ separator }}
+              	{% endcomment %}
+                {% if current_collection.handle %}
+                  {% capture url %}/collections/{{ current_collection.handle }}{% endcapture %}
+                  <a href="{{ url }}" class="bread-crumb__item">{{ current_collection.title }}</a>
+                {% endif %}
+              {% endif %}
+              {% unless hide_current == true %}
+                {{ separator }}
+                <span class="sf__breabcrumb-page-title p-4">{{ product.title }}</span>
+              {% endunless %}
+            </div>
+          {% elsif template.name == 'collection' and collection.handle %}
+
+            {{ separator }}
+            {% if current_tags %}
+              {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+              <a href="{{ url }}" class="bread-crumb__item">{{ collection.title }}</a>
+              {{ separator }}
+              <span class="p-4">{{ current_tags | join: " + " }}</span>
+            {% else %}
+              <span class="p-4">{{ collection.title }}</span>
+            {% endif %}
+
+          {% elsif template.name == 'blog' %}
+
+            {{ separator }}
+            {% if current_tags %}
+              <a href="{{blog.url}}" class="bread-crumb__item">{{ blog.title }}</a>
+              {{ separator }}
+              <span class="p-4">{{ current_tags | join: " + " }}</span>
+            {% else %}
+              <span class="sf__breabcrumb-page-title p-4">{{ blog.title }}</span>
+            {% endif %}
+
+          {% elsif template == 'article' %}
+
+            {{ separator }}
+            <a href="{{ blog.url }}" class="bread-crumb__item">{{ blog.title }}</a>
+
+          {% elsif template == "customers/addresses" %}
+
+            {{ separator }}
+            <a href="{{ routes.account_url }}" class="bread-crumb__item">{{ 'customer.account.page_title' | t }}</a>
+            {{ separator }}
+            <span class="sf__breabcrumb-page-title p-4">{{ page_title }}</span>
+
+          {% elsif template contains 'page' %}
+
+            {{ separator }}
+            <span class="sf__breabcrumb-page-title p-4">{{ page.title }}</span>
+
+          {% else %}
+
+            {{ separator }}
+            <span class="sf__breabcrumb-page-title p-4">{{ page_title }}</span>
+
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+{% endunless %}

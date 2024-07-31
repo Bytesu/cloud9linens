@@ -1,0 +1,83 @@
+{% if section.settings.show_announcement and section.settings.message != blank %}
+  {% if section.settings.homepage_only == false or request.page_type == 'index' %}
+    {% style %}
+      .announcement-bar {
+        background-color: {{ settings.color_annoucement_bg | default: '#222' }};
+        {% if section.settings.show_divider %}
+          border-bottom: 1px solid var(--color-border);
+        {% endif %}
+      }
+      .announcement-bar__content,
+      .sf-topbar__close {
+        color: {{ settings.color_annoucement_text | default: '#fff' }}}
+      .announcement-bar a:hover {
+        opacity: .6;
+      }
+    {% endstyle %}
+    <section data-section-id="{{ section.id }}" data-section-type="announcement" class="mw_announce cus_annouce_hide_mob announcement-bar relative">
+      {%- unless section.settings.message_link == blank -%}
+        <a href="{{ section.settings.message_link }}" class="announcement-bar__link">
+        {%- endunless -%}
+        <div class="announce_para announcement-bar__content md:text-center py-2.5 text-base">{{ section.settings.message }}</div>
+        {%- unless section.settings.message_link == blank -%}
+        </a>
+      {%- endunless -%}
+      {% if section.settings.show_close %}
+        <div class="sf-topbar__close p-3 absolute top-0 right-0 cursor-pointer h-full flex items-center">
+          {% render 'icon', name: 'x', size: 'medium' %}
+        </div>
+        <script>
+          document.querySelector('.sf-topbar__close').addEventListener('click', function() {
+            document
+              .querySelector('.announcement-bar')
+              .remove()
+              document
+              .documentElement
+              .style
+              .setProperty('--sf-announcement-height', '0px')
+          })
+        </script>
+      {% endif %}
+    </section>
+  {% endif %}
+{% endif %}
+{% schema %}
+  {
+    "name": "Announcement bar",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "homepage_only",
+        "label": "Home page only",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_close",
+        "label": "Show close button",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "message",
+        "label": "Message",
+        "default": "Free shipping for all orders from $60+"
+      }, {
+        "type": "url",
+        "id": "message_link",
+        "label": "Link"
+      }, {
+        "type": "checkbox",
+        "id": "show_divider",
+        "label": "Show divider",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}

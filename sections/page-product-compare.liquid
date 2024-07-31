@@ -1,0 +1,12 @@
+{% render 'page-title', title: page.title, container: true %}
+
+<div class="sf-prod-compare__container my-16 px-4 lg:px-12 xl:px-28 2xl:px-64 grid md:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12 opacity-0">
+</div>
+<div class="sf-prod-compare__no_products my-32 px-4 hidden">
+    <h3 class="text-center text-xl">
+        {{ 'layout.compare.no_products' | t }}
+        <a href="{{ routes.collections_url }}" class="border-b border-gray-800">
+            {{ 'layout.back_to_shopping' | t }}
+        </a>
+    </h3>
+</div>

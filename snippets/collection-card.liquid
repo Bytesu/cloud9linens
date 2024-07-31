@@ -1,0 +1,63 @@
+<div class="sf-column{% if enable_slider %} swiper-slide{% endif %}">
+    <div class="collection-card collection-card--{{ card_style }}{% if hover_effect != 'none' %} collection-card--hover-{{ hover_effect }}{% endif %}">
+        <div class="collection-card__inner{% if card_style == 'boxed'  %} h-full bg-white py-6 md:py-8 px-4 md:px-9{% endif %}">
+            {% if card_style == 'boxed'  %}
+                <h3 class="hover:underline mb-4 block text-{{ text_alignment }}">
+                    <a class="text-sm md:text-xl font-medium text-black" href="{{ collection.url }}">
+                        {{ collection.title | default: default_label | upcase }}
+                    </a>
+                </h3>
+            {% endif %}
+            {% assign aspect_ratio = image.aspect_ratio %}
+            {% if image_rounded %}
+                {% assign aspect_ratio = 1 %}
+            {% endif %}
+            <a href="{{ collection.url | default: "#" }}" class="{% if section.settings.bdr_none == true %} mw_collect_bdr  {% endif %} collection-card__image block overflow-hidden w-full{% if image_rounded %} collection-card__image-rounded rounded-full{% endif %}">
+                {% if image != blank %}
+                    {% render 'responsive-image',
+                            image: image,
+                            image_class: 'w-full',
+                            aspect_ratio: aspect_ratio
+                    %}
+                {% else %}
+                    <div style="--aspect-ratio: 1/1;">
+                        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                        {{ 'collection-' | append: current | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full w-full h-full object-cover' }}
+                    </div>
+                {% endif %}
+            </a>
+            <div class="{% if section.settings.hide-collection-text != blank %} hide-collection-text {% endif %} mw_collect_text_colr collection-card__info md:mt-5 mt-2.5 text-{{ text_alignment }}">
+                {% if card_style == 'standard' or card_style == 'inside' %}
+                    <h3>
+                        <a class="{% if card_style == 'inside' %}text-black {% endif %}text-lg md:text-xl font-medium block" href="{{ collection.url | default: "#" }}">
+                            {{ title | default: collection.title }}
+                            {% if show_product_count == true and card_style == 'standard' and section.settings.count_inline_title == true %}
+                                <sup class="font-semibold text-xs">{{ collection.all_products_count }}</sup>
+                            {% endif %}
+                        </a> 
+                    </h3>
+                    {% if block.settings.button_label != blank %}
+                        <a href="{{ block.settings.button_link | default: "#" }}" class="sf__btn sf__btn-link ">{{ block.settings.button_label }}</a>
+                    {% endif %}
+                        
+                   
+
+                    {% if show_product_count == true and card_style == 'standard' and section.settings.count_inline_title == false %}
+                        <p class="text-base not-change text-color-subtext">{{ 'collections.general.collection_items' |  t : title: collection.all_products_count }}</p>
+                    {% endif %}
+                    {% if show_product_count == true and card_style == 'inside' %}
+                        <p class="mt-4 text-base not-change text-color-subtext">{{ 'collections.general.collection_items' |  t : title: collection.all_products_count }}</p>
+                    {% endif %}
+                {% endif %}
+                {% if card_style == 'inside' %}
+                    <a class="{% if section.settings.image_batn_none == true %} mw_collect_btn_hide  {% endif %} hidden sf__btn-icon md:inline-flex btn w-[45px] h-[45px] justify-center items-center rounded-full bg-white text-black" href="{{ collection.url }}">
+                        <svg class="not-change" xmlns="http://www.w3.org/2000/svg" width="14" height="13" fill="none" viewBox="0 0 14 13"><path class="not-change" fill="currentColor" d="M6.78594.789062c.16406-.145833.31901-.145833.46484 0L12.9656 6.53125c.1641.14583.1641.29167 0 .4375L7.25078 12.7109c-.14583.1459-.30078.1459-.46484 0l-.54688-.5468c-.05469-.0547-.08203-.1276-.08203-.2188 0-.0911.02734-.1732.08203-.2461l4.23824-4.23826H1.15312c-.218745 0-.32812-.10938-.32812-.32813v-.76562c0-.21875.109375-.32813.32812-.32813h9.32418L6.23906 1.80078c-.14583-.16406-.14583-.31901 0-.46484l.54688-.546878z"/></svg>
+                    </a>
+                {% endif %}
+                {% if show_product_count == true and card_style == 'boxed' %}
+                    <p class="mt-4 text-base not-change text-color-subtext text-{{ text_alignment }}">{{ 'collections.general.collection_items' |  t : title: collection.all_products_count }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

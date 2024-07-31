@@ -1,0 +1,78 @@
+{% assign menu = mobile_menu %}
+{% if mobile_menu == blank %}
+  {% assign menu = main_menu %}
+{% endif %}
+
+{% comment %}
+MTS
+<div
+    style="--tw-bg-opacity: 0;"
+    id="mySidenav"
+    class="sf-menu-wrapper sf-menu-wrapper-mobile hidden fixed z-[80] inset-0 transition-colors duration-300 bg-black"
+>
+{% endcomment %}
+  
+<div
+    style="--tw-bg-opacity: 0;"
+    id="mySidenav"
+    class="sf-menu-wrapper sf-menu-wrapper-mobile hidden fixed z-[80] inset-0 transition-colors duration-300"
+>
+ 
+  	<div class="sf-menu__content transition-transform -translate-x-full duration-300 md:w-[450px] z-50 bg-white text-black overflow-x-hidden h-full overflow-y-scroll">
+        
+      	<div class="flex flex-col">
+            <div class="sf-menu-content flex-grow flex flex-col justify-between transition-all opacity-0 opacity-100 duration-300">
+                
+              <div>
+              
+              	{% comment %}
+              	Added by MTS
+                
+                <a href="javascript:void(0)" class="scd__close " onclick='this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode); return false;'>{% render 'icon', name: 'times', size: 'medium' %}</a>
+              	{% endcomment %}
+              	<div class="cus-mega-menu-header">
+                  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/cloud9-logo2-white.svg?v=1650627887">
+                </div>
+              
+              	{% comment %}
+                MTS
+              	<div class="w-full sf-menu-links pt-8">
+                {% endcomment %}
+                <div class="w-full sf-menu-links cus-mob-menu-links">
+
+                    {% for link in linklists[menu].links %}
+                        {% if link.links != blank %}
+                            <li class="list-none sf-link" data-url="{{ link.url }}">
+                                <button class="w-full px-4 py-3 flex items-center justify-between">
+                                    <span>{{ link.title }}</span>
+                                    {% render 'icon', name: 'chevron-right', size: 'small' %}
+                                </button>
+                                <div class="sf-sub-links hidden absolute inset-y-0 bg-white flex-col left-full w-full">
+                                    <div class="h-full overflow-y-scroll">
+                                        <button class="back p-4 font-medium flex items-center ">
+                                          {% render 'icon', name: 'arrow-left', size: 'small' %}
+                                          {% capture btn_text %}{{ 'layout.back' | t }}{% endcapture %}
+                                          {% if btn_text contains 'translation missing' %}
+                                            {% capture btn_text %}Back{% endcapture %}
+                                          {% endif %}
+                                          <span class="ml-3">{{ btn_text }}</span>
+                                        </button>
+                                      <ul class="pb-4">
+                                        {% render 'mega-menu-link' for link.links as link %}
+                                      </ul>
+                                    </div>
+                                </div>
+                            </li>
+                  {% else %}
+                  {% render 'mega-menu-link' with link as link %}
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              
+              </div>
+              
+              {% render 'mega-menu-customer', section: section %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,367 @@
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+{% assign remove_padding = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% if has_bg == true and section.settings.heading == blank and section.settings.container == 'w-full' %}
+    {% assign remove_padding = true %}
+{% endif %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false or remove_padding == true %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+
+{% assign image_ratio = section.settings.pcard_image_ratio %}
+{% assign show_vendor = section.settings.show_vendor %}
+{% assign pcard_alignment = section.settings.pcard_alignment %}
+{% assign card_style = section.settings.pcard_layout %}
+<section
+    class="featured-slider {{ section.settings.custom_class }}"
+    data-section-type="featured-slider"
+    data-section-id="{{ section.id }}"
+    data-autoplay="{{ section.settings.slide_autoplay }}"
+    data-timeout="{{ section.settings.autorotate_speed | times: 1000 }}"
+    data-show-pagination="{{ section.settings.show_pagination }}"
+    data-show-navigation="{{ section.settings.show_navigation }}"
+    data-container="{{ section.settings.container }}"
+    {% if has_bg %}
+    data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ bg_color }}; --items: 1"
+>
+    <div class="{{ container }}">
+        {% render 'index-section-header', section_settings: section.settings %}
+        <div class="featured-slider__container {% if has_bg and remove_padding == false %}xl:bg-white{% endif %} relative flex flex-col flex-col-reverse md:items-center{% if section.settings.image_placement == 'left' %} featured-slider--nav-right md:flex-row-reverse {% else %} md:flex-row{% endif %}">
+            <div class="w-full lg:w-1/2 px-0 lg:px-16 lg:py-8 {% if remove_padding == true %}py-16{% else %}py-0{% endif %} xl:py-12 xl:px-24 relative">
+                <div class="featured-slider__products featured-slider__products--{{ section.settings.container }} swiper-container" style="--items: 1;">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {%- assign product = all_products[block.settings.product] -%}
+                            <div class="swiper-slide {% if section.settings.container == 'container' %}xl:px-6{% else %}xl:px-12{% endif %}">
+                                <div class="featured-slider__product pb-2">
+                                    {% if block.settings.heading != blank or block.settings.description != blank %}
+                                        <div class="featured-slider__product-content text-center mb-6">
+                                            {% if block.settings.heading != blank %}
+                                                <h3>{{ block.settings.heading }}</h3>
+                                            {% endif %}
+                                            {% if block.settings.description != blank %}
+                                                <div class="rte text-color-subtext mt-[5px]">{{ block.settings.description }}</div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if product != blank %}
+                                        <div class="lg:px-5">
+                                            {% render 'product-card', product: product, card_style: card_style, image_ratio: image_ratio, show_vendor: show_vendor, alignment: pcard_alignment %}
+                                        </div>
+                                    {% else %}
+                                        <div class="text-{{ settings.pcard_alignment }}">
+                                            <div style="--aspect-ratio: 1/1;" class="bg-gray-100">
+                                                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                                {{ 'collection-' | append: current | placeholder_svg_tag: 'object-cover w-full h-full transition-all duration-500 group-hover:scale-105' }}
+                                            </div>
+                                            <div class="block mb-2 sf__pcard-name mt-4 font-medium hover:text-color-secondary{% if settings.uppercase_prd_name %} uppercase{% endif %}">{{ 'homepage.onboarding.product_title' | t }}</div>
+                                            <div class="mb-2.5 sf__pcard-price">
+                                                <p class="prod__price">$19.99</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if section.settings.show_navigation and section.settings.container == 'w-full' %}
+                        {% render 'slider-controls', absolute: true, show_nav: true, show_pagination: false, nav_class: 'border-black', custom_class: 'hidden md:flex' %}
+                    {% endif %}
+                </div>
+                <div class="swiper-pagination swiper-pagination--vertical mt-6 md:mt-0"></div>
+            </div>
+            <div class="hidden lg:block w-full lg:w-1/2 pb-4 sm:pb-0">
+                <div class="featured-slider__images swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {%- assign image = block.settings.image -%}
+                            {%- assign product = all_products[block.settings.product] -%}
+                            {% if image == blank and product != blank %}
+                                {% assign image = product.featured_image %}
+                            {% endif %}
+
+                            <div class="featured-slider__img swiper-slide sf__hover-scale-up">
+                                {% if image == blank %}
+                                    {{ 'image' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full no-border' }}
+                                {% else %}
+                                    {% render 'responsive-image', image: image %}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% if section.settings.show_navigation and section.settings.container != 'w-full' %}
+                {% render 'slider-controls', absolute: true, show_nav: true, show_pagination: false, nav_class: 'bg-white border-0', custom_class: 'hidden md:flex' %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Featured products slider",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section header"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Featured products"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading"
+            },
+            {
+                "type": "textarea",
+                "id": "description",
+                "label": "Description"
+            },
+            {
+                "type": "select",
+                "id": "header_alignment",
+                "label": "Text alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "General"
+            },
+            {
+                "type": "select",
+                "id": "container",
+                "label": "Container type",
+                "default": "container-fluid",
+                "options": [
+                    {
+                        "value": "container-fluid",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "w-full",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "container",
+                        "label": "Use container box"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background color",
+                "default": "rgba(0,0,0,0)"
+            },
+            {
+                "type": "select",
+                "id": "image_placement",
+                "label": "Image placement",
+                "default": "right",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "right",
+                        "label": "Right"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "Slider settings"
+            },
+            {
+                "type": "checkbox",
+                "id": "slide_autoplay",
+                "label": "Auto-rotate slides",
+                "default": false
+            },
+
+            {
+                "type": "checkbox",
+                "id": "show_navigation",
+                "label": "Show navigation",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "show_pagination",
+                "label": "Show pagination",
+                "default": true
+            },
+            {
+                "type": "range",
+                "id": "autorotate_speed",
+                "label": {"en": "Change slides every"},
+                "info": {"en": "Work when auto-rotate"},
+                "max": 10,
+                "min": 2,
+                "step": 1,
+                "unit": "s",
+                "default": 5
+            },
+            {
+                "type": "header",
+                "content": "Product card settings"
+            },
+            {
+                "type": "select",
+                "id": "pcard_layout",
+                "label": "Design layout",
+                "default": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "Use global settings"
+                    },
+                    {
+                        "value": "1",
+                        "label": "Style 1"
+                    },
+                    {
+                        "value": "2",
+                        "label": "Style 2"
+                    },
+                    {
+                        "value": "3",
+                        "label": "Style 3"
+                    },
+                    {
+                        "value": "4",
+                        "label": "Style 4"
+                    }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "pcard_alignment",
+                "label": "Content alignment",
+                "default": "left",
+                "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+                ]
+            },
+            {
+                "type": "select",
+                "id": "pcard_image_ratio",
+                "label": "Image aspect ratio",
+                "default": "",
+                "options": [
+                    {
+                        "value": "",
+                        "label": "Use global settings"
+                    },
+                    {
+                        "value": "original",
+                        "label": "Original aspect ratio"
+                    },
+                    {
+                        "value": "1\/1",
+                        "label": "1:1"
+                    },
+                    {
+                        "value": "3\/4",
+                        "label": "3:4"
+                    },
+                    {
+                        "value": "4\/3",
+                        "label": "4:3"
+                    },
+                    {
+                        "value": "16\/9",
+                        "label": "16:9"
+                    }
+                ]
+            },
+            {
+                "type": "checkbox",
+                "id": "show_vendor",
+                "label": "Show product vendors",
+                "default": false
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom classes"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "product",
+                "name": "Product",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "heading",
+                        "label": "Heading"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Featured image"
+                    }
+                ]
+            }
+        ],
+        "templates": ["index"],
+        "presets": [
+            {
+                "name": "Featured products slider",
+                "category": "Product",
+                "blocks": [
+                    { "type": "product" },
+                    { "type": "product" },
+                    { "type": "product" }
+                ]
+            }
+        ]
+    }
+{% endschema %}

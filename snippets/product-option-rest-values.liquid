@@ -1,0 +1,17 @@
+{%- if rest_values > 0 -%}
+<div 
+  class="{{ class }} rest-values sf-pqv__button" 
+  data-product-handle="{{ product_handle }}"
+>
+  <div class="sf__tooltip-item sf__tooltip-top">
+    <span class="text-base">+{{rest_values}}</span>
+    {%- capture tooltip -%}
+      {{ 'layout.products.product.see_more_options' | t: count: rest_values }}
+    {%- endcapture -%}
+    {%- if tooltip contains 'translation missing' -%}
+      {%- capture tooltip -%}See {{rest_values}} more option(s){%- endcapture -%}
+    {%- endif -%}
+    <span class="sf__tooltip-content">{{ tooltip }}</span>
+  </div>
+</div>
+{%- endif -%}

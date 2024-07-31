@@ -1,0 +1,67 @@
+{% comment %}
+MTS
+<div class="quantity-input h-[46px] flex border border-color-border rounded {{ class }}">
+    <button
+            class="quantity-input__button flex items-center justify-center h-[46px] w-[46px]"
+            type="button"
+            aria-label="{{ 'products.product.decrease_quantity' | t: title: product.title }}"
+            data-quantity-selector="decrease"
+            data-product-id="{{ product.id }}"
+    >
+        {% render 'icon', name: 'minus', size: 'extra-small' %}
+    </button>
+    <input
+            class="quantity-input__element w-10 text-center flex-grow flex-shrink appearance-none"
+            type="number"
+            name="quantity"
+            value="1"
+            min="1"
+            aria-label="{{ 'products.product.product_quantity' | t }}"
+            data-quantity-input
+            data-product-id="{{ product.id }}"
+    >
+    <button
+            class="quantity-input__button flex items-center justify-center h-[46px] w-[46px]"
+            type="button"
+            aria-label="{{ 'products.product.increase_quantity' | t: title: product.title }}"
+            data-quantity-selector="increase"
+            data-product-id="{{ product.id }}"
+    >
+        {% render 'icon', name: 'plus', size: 'extra-small' %}
+    </button>
+</div>
+{% endcomment %}
+
+<div class="cus-label">
+<label class="cus-qty-label custom-source-pro cstm__qty__lbl">
+  Qty
+  {% comment %} <input
+         list="quantity-select"
+         name="quantity"
+         placeholder=" "
+  /> {% endcomment %}
+
+  <select name="quantity" class="mw_quantity">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+</label>
+</div>
+{% comment %} <datalist id="quantity-select">
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+    <option value="4"></option>
+    <option value="5"></option>
+    <option value="6"></option>
+</datalist> {% endcomment %}
+
+

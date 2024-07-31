@@ -1,0 +1,107 @@
+{% comment %} card_style {% endcomment %}
+{% if card_style == nil or card_style == blank %}
+  {%- assign card_style = settings.pcard_layout -%}
+{% endif %}
+
+{%- assign show_title = true -%}
+{% if hide_title == true %}
+  {%- assign show_title = false -%}
+{% endif %}
+
+{% comment %} image_ratio {% endcomment %}
+{% if image_ratio == nil or image_ratio == blank %}
+  {%- assign image_ratio = settings.pcard_image_ratio | default: '1/1' -%}
+{% endif %}
+{%- if image_ratio == 'original' -%}
+  {%- assign image_ratio = product.featured_image.aspect_ratio | default: '1/1' -%}
+{%- endif -%}
+
+{% comment %} show_vendor {% endcomment %}
+{% if show_vendor == nil %}
+  {% assign show_vendor = settings.show_vendor %}
+{% endif %}
+
+{% comment %} sold_out {% endcomment %}
+{% assign sold_out = true %}
+{% assign variant = product.selected_or_first_available_variant %}
+{% if variant.available %}
+  {% assign sold_out = false %}
+{% endif %}
+{% for variant in product.variants %}
+  {% if variant.inventory_management == 'shopify' and variant.inventory_policy == 'continue' and variant.inventory_quantity == 0 %}
+    {% assign sold_out = false %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% comment %} on_sale {% endcomment %}
+{%- assign compare_at_price = variant.compare_at_price -%}
+{%- assign price = variant.price -%}
+{% assign on_sale = false %}
+{% if compare_at_price > price %}
+  {% assign on_sale = true %}
+{% endif %}
+{%- capture card_sale_class -%}
+  {% if sold_out %} sf__pcard--soldout {% endif %}{% if on_sale %}sf__pcard--onsale{% endif %}
+{%- endcapture -%}
+
+{% comment %} quick_add_text {% endcomment %}
+{% assign quick_add_text = 'products.product.quick_add' | t %}
+{%- unless product.has_only_default_variant -%}
+  {% assign quick_add_text = 'products.product.select_options' | t %}
+  {% if quick_add_text contains 'translation missing' %}
+    {% assign quick_add_text = 'Select options' %}
+  {% endif %}
+{%- endunless -%}
+
+{% assign sold_number = product.metafields.foxkit.sold_number %}
+{%- if column_wrapper -%}<div class="sf-column">{%- endif -%}
+  {%- case card_style -%}
+    {%- when '1' -%}
+      {% render 'product-card-1',
+        product: product,
+        card_sale_class: card_sale_class,
+        image_ratio: image_ratio,
+        show_vendor: show_vendor,
+        sold_out: sold_out,
+        quick_add_text: quick_add_text,
+        show_title: show_title,
+        sold_number: sold_number
+      %}
+    {%- when '2' -%}
+      {% render 'product-card-2',
+        product: product,
+        card_sale_class: card_sale_class,
+        image_ratio: image_ratio,
+        show_vendor: show_vendor,
+        sold_out: sold_out,
+        quick_add_text: quick_add_text,
+        show_title: show_title,
+        sold_number: sold_number
+      %}
+    {%- when '3' -%}
+      {% render 'product-card-3',
+        product: product,
+        card_sale_class: card_sale_class,
+        image_ratio: image_ratio,
+        show_vendor: show_vendor,
+        sold_out: sold_out,
+        quick_add_text: quick_add_text,
+        show_title: show_title,
+        sold_number: sold_number
+      %}
+    {%- when '4' -%}
+      {% render 'product-card-4',
+        product: product,
+        card_sale_class: card_sale_class,
+        image_ratio: image_ratio,
+        show_vendor: show_vendor,
+        sold_out: sold_out,
+        quick_add_text: quick_add_text,
+        show_title: show_title,
+        sold_number: sold_number
+      %}
+    {%- else -%}
+      <div style="display: none;">Missing snippet for product-card-{{ card_style }}.liquid </div>
+  {%- endcase -%}
+{%- if column_wrapper -%}</div>{%- endif -%}

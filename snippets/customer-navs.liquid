@@ -1,0 +1,49 @@
+<div class="md:px-4 xl:px-16 w-1/6 sf-customer__nav md:flex flex-col border-r border-color-border aic_toogle_inner fonts_source">
+    <a
+        href="/account" class="cus_overview p-text  {% if request.path == '/account' %}active{% endif %}"  tabsAnkr>
+      Overview
+    </a>
+    <a
+        href="/pages/order" class="order_drop p-text  {% if request.path == '/pages/order' %}active{% endif %}" tabsAnkr>
+      Orders
+    </a>
+    <a
+        href="/pages/profile" class="profile_drop p-text  {% if request.path == '/pages/profile' %}active{% endif %}" tabsAnkr>
+        Profile
+    </a>
+    <a
+        href="/account/addresses" class="address_drop p-text {% if request.path == '/account/addresses' %}active{% endif %}" tabsAnkr>
+        {{ 'customer.account.addresses' | t }}
+    </a>
+    {% if settings.wishlist_page != blank %}
+    <a href="/pages/wishlist" class="wishlish_drop p-text {% if request.path == '/pages/wishlist' %}active{% endif %}"  tabsAnkr>
+        {{ 'customer.account.wishlist' | t }}
+    </a>
+    {% endif %}
+  <a href="/account/logout" class="log_drop p-text " tabsAnkr>
+        {{ 'customer.account.log_out' | t }}
+    </a>
+    
+</div>
+{% comment %} <div class="md:px-4 xl:px-16 w-1/6 sf-customer__nav hidden md:flex flex-col border-r border-color-border">
+    <a
+        href="{{ routes.account_url }}"
+        class="{% if request.path == routes.account_url %} active {% endif %}"
+    >
+        {{ 'customer.account.dashboard' | t }}
+    </a>
+    <a
+        href="{{ routes.account_addresses_url }}"
+        class="{% if request.path == routes.account_addresses_url %} active {% endif %}"
+    >
+        {{ 'customer.account.addresses' | t }}
+    </a>
+    {% if settings.wishlist_page != blank %}
+    <a href="{{ pages[settings.wishlist_page].url }}">
+        {{ 'customer.account.wishlist' | t }}
+    </a>
+    {% endif %}
+    <a href="{{ routes.account_logout_url }}">
+        {{ 'customer.account.log_out' | t }}
+    </a>
+</div> {% endcomment %}

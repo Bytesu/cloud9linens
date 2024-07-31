@@ -1,0 +1,40 @@
+<div
+    class="sf-mega-menu-products md:pl-4 xl:pl-12"
+    data-id="{{ product_list.id }}"
+>
+    {%- assign collection = collections[product_list.settings.collection] -%}
+    <div class="banner-header flex justify-between mb-4 items-center px-2.5 mt-[-10px]">
+        <h3 class="whitespace-normal text-2xl block font-medium text-black">{{ collection.title }}</h3>
+        {% if product_list.settings.limit > product_list.settings.columns %}
+        <div id="sf-slider-controls-{{ product_list.id }}" class="sf-slider__controls flex items-center mr-[-1rem]">
+            <button class="sf-slider__controls-prev cursor-pointer text-black rounded-full">
+                {% render 'icon', name: 'prev' %}
+            </button>
+            <button class="sf-slider__controls-next cursor-pointer text-black rounded-full">
+                {% render 'icon', name: 'next' %}
+            </button>
+        </div>
+        {% endif %}
+    </div>
+    <div class="sf-grid sf-slider-{{ product_list.id }} swiper-container" data-column="{{ product_list.settings.columns }}" style="--column-gap: 1.25rem">
+        <div class="swiper-wrapper">
+            {% for product in collection.products limit: product_list.settings.limit %}
+                <div class="swiper-slide sf-column">
+                    <a class="block" href="{{ product.url }}">
+                        {% render 'responsive-image',
+                            image: product.featured_image,
+                            image_class: 'object-contain object-top',
+                            wrapper_class: 'mb-[10px]',
+                            aspect_ratio: '3/4',
+                            sizes: '400px'
+                        %}
+                        <h3 class="font-medium mb-1 text-base whitespace-normal leading-normal text-black">
+                            {{ product.title | default: 'homepage.onboarding.product_title' }}
+                        </h3>
+                        <p class="text-sm font-normal text-color-regular-price">{{ product.price | money }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

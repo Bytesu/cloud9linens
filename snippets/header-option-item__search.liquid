@@ -1,0 +1,25 @@
+{%- assign search_display = header_settings.search -%}
+
+{% unless search_display == 'hide' %}
+  <div class="sf-search-form  flex items-center{% if icon_left == true %} pr-4{% endif %} {{ box_size }} {%- if search_display == 'show_full' -%} sf-search-form--full border border-color-border hover:border-gray-400 rounded-md{%- endif -%}" data-open-search-popup>
+    {% if icon_left == true %}
+      <button class="flex items-center py-2 px-3">
+        <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+          {% render 'icon', name: 'search', size: 'medium-small' %}
+          <span class="sf__tooltip-content">{{ 'general.search.placeholder_short' | t }}</span>
+        </span>
+      </button>
+    {% endif %}
+    {%- if search_display == 'show_full' -%}
+      <span class="pl-3 text-[#666] whitespace-nowrap">{{ 'general.search.placeholder' | t }}</span>
+    {%- endif -%}
+    {% if icon_left == blank or icon_left == false %}
+      <button type="submit" class="py-2">
+        <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+          {% render 'icon', name: 'search', size: 'medium-small' %}
+          <span class="sf__tooltip-content">{{ 'general.search.placeholder_short' | t }}</span>
+        </span>
+      </button>
+    {% endif %}
+  </div>
+{% endunless %}

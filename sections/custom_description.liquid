@@ -1,0 +1,28 @@
+<div class="cus_collet_desc">
+    {% if collection.description != blank %}
+        {{ collection.description }}
+    {% endif %}
+</div>
+
+{% schema %}
+
+	{
+	"name": "custom description",          
+	"settings": [
+	{
+	"type":"image_picker",
+	"id":"grid-box",
+	"label":"Grid Image"
+	}
+
+	],
+	
+	"presets": [{
+	"name": "Custom description",
+	"category": "Content"
+	}
+	]
+
+	}
+
+	{% endschema %}

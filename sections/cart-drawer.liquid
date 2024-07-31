@@ -1,0 +1,160 @@
+{% assign f_cart_countdown = shop.metafields['foxecom-bs-kit']['cart-countdown'] %}
+<div
+  style="--tw-bg-opacity: 0;"
+  class="scd__wrapper hidden transition-colors duration-300 bg-black fixed z-[100] inset-0"
+>
+  <div class="cus-drawer-sec scd__content transition-transform duration-300 translate-x-0 translate-x-full ml-auto min-h-full md:w-[450px] bg-white z-50">
+    <button class="scd__close p-2 cursor-pointer absolute" style="color:#fff; font-size: 14px;">
+      {% render 'icon', name: 'times', size: 'small' %}
+    </button>
+    <form action="{{ routes.cart_url }}" method="post" class="checkout-form flex flex-col h-full" novalidate>
+      <div class="scd__header mx-6 py-4 md:pt-6">
+        
+        {% comment %}
+        MTS
+		<h3 class="text-2xl font-medium">{{ 'cart.general.title' | t }}</h3>
+        {% endcomment %}
+        
+        <h3 class="flex font-medium xl:px-0 xl:mb-8 xl:py-0">
+          Items added to bag
+        </h3>
+        
+        {% if f_cart_countdown.show_on_drawer == true and template.name != 'cart' %}
+          {% render 'foxkit-cart-countdown' %}
+        {% endif %}
+        {% render 'foxkit-cart-goal' %}
+      </div>
+      
+      <div class="cls_icon" id="cls-id"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="18px" height="18px" fill-rule="nonzero"><g fill="#c0c0c0" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(8.53333,8.53333)"><path d="M7,4c-0.25587,0 -0.51203,0.09747 -0.70703,0.29297l-2,2c-0.391,0.391 -0.391,1.02406 0,1.41406l7.29297,7.29297l-7.29297,7.29297c-0.391,0.391 -0.391,1.02406 0,1.41406l2,2c0.391,0.391 1.02406,0.391 1.41406,0l7.29297,-7.29297l7.29297,7.29297c0.39,0.391 1.02406,0.391 1.41406,0l2,-2c0.391,-0.391 0.391,-1.02406 0,-1.41406l-7.29297,-7.29297l7.29297,-7.29297c0.391,-0.39 0.391,-1.02406 0,-1.41406l-2,-2c-0.391,-0.391 -1.02406,-0.391 -1.41406,0l-7.29297,7.29297l-7.29297,-7.29297c-0.1955,-0.1955 -0.45116,-0.29297 -0.70703,-0.29297z"></path></g></g></svg></div>
+
+
+      <div class="scd__body sf__custom_scroll pb-4 flex flex-col flex-grow main_cls_icon">
+        {%- if cart.items.size > 0 -%}
+          <div class="scd__items px-6">
+            {% for item in cart.items %}
+              {% render 'cart-drawer-item', item: item %}
+            {% endfor %}
+          </div>
+        {%- else -%}
+          <div class="scd-empty-msg px-6">
+            {{ 'cart.general.empty' | t }}
+          </div>
+        {%- endif -%}
+        
+        <div class="resent_product_mw">
+          <div class="cart_recently_head">
+          <h3>Recently Viewed</h3>
+        </div>
+        </div>
+        <div class="resently_bottom_para">
+          <p>Create a cloud9linens and get a 15 % off on your first purshase <a href="/account/login#register_from">Create an account</a> or <a href="/account/login">sign in</a></p>
+        </div>
+      </div>
+      
+      {% comment %} <div class="resent_product_mw"></div> {% endcomment %}
+
+ {% comment %} {%- assign recent_products = cart.items | reverse -%}
+
+<ul class="recent-products">
+  {%- for item in recent_products -%}
+    {%- assign product = item.product -%}
+    <li>
+      <a href="{{ product.url }}">
+        <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+      </a>
+      <div>
+        <h4>{{ product.title }}</h4>
+        <span>{{ product.price | money }}</span>
+      </div>
+    </li>
+  {%- endfor -%}
+</ul> {% endcomment %}
+
+
+{% comment %} {% render 'custom_recent' %} {% endcomment %}
+{% comment %} {% section 'recent-viewed-products' %} aaaa {% endcomment %}
+
+
+      <div class="scd__footer py-4 px-6">
+        {% render 'cart-addons' %}
+        <div class="scd__summary mb-4 pt-4" data-cart-summary>
+          <div data-discounts>
+            <ul class="scd-cart__discounts" role="list" data-discounts-list>
+            {% unless cart.cart_level_discount_applications.size == 0 %}
+                {% for discount in cart.cart_level_discount_applications %}
+                  <li>
+                    {% render 'icon', name: 'discount' %}
+                    <span>{{ discount.title | upcase }}&nbsp;(-{{ discount.total_allocated_amount | money }})</span>
+                  </li>
+                {% endfor %}
+            {% endunless %}
+            </ul>
+          </div>
+          
+          {% comment %}
+          MTS
+          <div class="scd__subtotal flex justify-between" data-cart-subtotal>
+            <span class="font-medium">{{ 'cart.general.subtotal' | t }}</span>
+            <span class="scd__subtotal-price font-medium sf-currency" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+          </div>
+          {% endcomment %}
+          
+          <div class="scd__subtotal flex justify-between" data-cart-subtotal>
+            <span class="font-medium">Estimated Total</span>
+            <span class="scd__subtotal-price font-medium sf-currency" data-cart-subtotal-price>{{ cart.total_price | money }}</span>
+          </div>
+          
+          <div style="font-size: 12px; font-family: Minionpro!important;" class="sf-cart__shipping note mt-2" data-shipping-note="">
+            Taxes and shipping calculated at checkout
+		  </div>
+          
+        </div>
+        <div class="flex flex-col items-center">
+          {% assign show_terms = false %}
+          {% if settings.agree_text != blank and settings.show_agree_on_cart %}
+            {% render 'agree-terms-checkbox' %}
+            {% assign show_terms = true %}
+          {% endif %}
+          <button type="submit" class=" custom_color_change sf__btn sf__btn-primary w-full scd__checkout mb-5" name="checkout"{% if show_terms %} data-terms-action disabled{% endif %}>
+            {{ 'cart.general.checkout' | t }}
+          </button>
+          
+          {% comment %}
+          MTS
+          <a class="underline" href="{{ routes.cart_url }}">
+            {{ 'cart.general.viewcart' | t }}
+          </a>
+          {% endcomment %}
+          
+          <a class="uppercase cus_fonts_source cus_view_shopping" style="padding-bottom: 3px; letter-spacing: 2px;" href="{{ routes.cart_url }}">
+            View Shopping Bag
+          </a>
+        </div>
+        
+        {% comment %}
+        Added by MTS
+        {% endcomment %}
+        <div class="flex pt-8 justify-between">
+          <a href="#"> <img style="width: auto; height: 18px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-pinterest-240.png?v=1652098471"> </a>
+          <div class="flex">
+            <a href="#"> <img style="width: auto; height: 18px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-twitter-150-2.png?v=1652098471"> </a>
+            <a href="#"> <img style="width: auto; height: 18px; margin-left: 30px; " src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-facebook-150-2.png?v=1652098471"></a>
+            <a href="#"> <img style="width: auto; height: 18px; margin-left: 30px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-instagram-150.png?v=1652098471"> </a>
+          </div>
+          <a href="#"> <img style="width: auto; height: 18px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-linkedin-circled-250.png?v=1652098471"> </a>
+      	</div>
+        
+        
+        {% if settings.cart_drawer_trust_badge %}
+        <div class="scd__trust-badge mt-2">
+          <img src="{{ settings.cart_drawer_trust_badge | img_url: '840x' }}" loading="lazy" width="400" height="100" alt="Trust secure badge">
+        </div>
+        {% endif %}
+      </div>
+      <div class="scd__overlay inset-0"></div>
+    </form>
+  </div>
+</div>
+
+
+

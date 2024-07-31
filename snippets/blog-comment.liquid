@@ -1,0 +1,141 @@
+{%- comment -%}
+  Comments will not appear right after they are submitted, either to be checked for spam
+  or to await moderation. When a comment is submitted, the browser is redirected to a page
+  that includes the new comment id in its URL.
+    Example: http://shopname.myshopify.com/blogs/news/2022072-my-post?comment=3721372
+{%- endcomment -%}
+
+{%- assign new_comment = false -%}
+{%- if comment and comment.created_at -%}
+  {%- assign new_comment = true -%}
+  {%- assign new_comment_id = comment.id -%}
+{%- endif -%}
+
+{%- if new_comment -%}
+  {%- assign duplicate_comment = false -%}
+  {%- for comment in article.comments -%}
+    {%- if comment.id == new_comment_id -%}
+      {%- assign duplicate_comment = true -%}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if duplicate_comment -%}
+    {%- assign number_of_comments = article.comments_count -%}
+  {%- else -%}
+    {%- assign number_of_comments = article.comments_count | plus: 1 -%}
+  {%- endif -%}
+{%- else -%}
+  {%- assign number_of_comments = article.comments_count -%}
+{%- endif -%}
+{% if blog.comments_enabled? %}
+    <div class="mt-28">
+        {% if number_of_comments > 0 %}
+            <h3 class="text-black text-3xl mb-6 text-center">
+                {{ 'blogs.comments.comments_with_count' | t: count: number_of_comments }}
+            </h3>
+        {% endif %}
+            
+        {% paginate article.comments by 5 %}
+            <div id="comments">
+                {% if comment and comment.status and comment.id != blank and paginate.current_page == 1 %}
+                <p class="form-success text-center text-gray-700">
+                    {% if blog.moderated? and comment.status != 'published' %}
+                    {{ 'blogs.comments.success_moderated' | t }}
+                    {% else %}
+                    {{ 'blogs.comments.success' | t }}
+                    {% endif %}
+                </p>
+                {% endif %}
+
+                {% if article.comments_count > 0 %}
+                <ul>
+                    {% if comment and comment.status != 'published' and comment.id != blank %}
+                    <li id="{{ comment.id }}" class="py-10 border-b border-gray-100">
+                        <div class="font-semibold leading-6 mb-3">
+                            {{comment.author}}
+                        </div>
+                        <div class="leading-7 text-gray-500">
+                            {{ comment.content }}
+                        </div>
+                    </li>
+                    {% endif %}
+
+                    {% for comment in article.comments %}
+                    <li id="{{ comment.id }}" class="py-10">
+                        <div class="flex mb-3 items-baseline">
+                            <div class="font-semibold">{{comment.author}}</div>
+                            <div class="ml-4 italic text-xs">
+                                {{comment.created_at | date: "%b %d, %Y"}} {{ 'blogs.comments.at_time' | t }} {{comment.created_at | date: "%H:%M"}}
+                            </div>
+                        </div>
+                        <div class="leading-7 text-gray-500 mb-2">
+                            {{ comment.content }}
+                        </div>
+                        <a href="#leave-comment" class="underline">{{ 'blogs.comments.reply' | t }}</a>
+                    </li>
+                    {% unless forloop.last %}
+                    <hr />{% endunless %}
+                    {% endfor %}
+                </ul>
+
+                {% if paginate.pages > 1 %}
+                {% render 'pagination' %}
+                {% endif %}
+                {% endif %}
+            </div>
+        {% endpaginate %}
+    </div>
+    <div class="pt-20 pb-28" id="leave-comment">
+        {% form 'new_comment', article %}
+        <div class="mb-16">
+            <h3 class="text-black text-3xl mb-2 text-center">{{ 'blogs.comments.title' | t }}</h3>
+            <p class="leading-7 text-gray-500 text-center">{{ 'blogs.comments.sub_title' | t }}</p>
+        </div>
+
+        {{ form.errors | default_errors }}
+
+        <div class="mb-7">
+            <label for="CommentBody" class="hidden">{{ 'blogs.comments.message' | t }}</label>
+            <textarea name="comment[body]" id="CommentBody"
+                class="border border-gray-400 rounded w-full py-3 px-5 {% if form.errors contains 'author' %}border-red-400{% endif %}"
+                placeholder="{{ 'blogs.comments.message' | t }}" rows="6">
+        {{- form.body -}}
+        </textarea>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7 mb-7">
+            <div>
+                <label for="CommentAuthor" class="hidden">
+                    {{ 'blogs.comments.name' | t }}
+                </label>
+                <input type="text" name="comment[author]" id="CommentAuthor"
+                    class="border border-gray-400 rounded w-full py-3 px-5 {% if form.errors contains 'author' %}border-red-400{% endif %}"
+                    placeholder="{{ 'blogs.comments.name' | t }}" value="{{ form.author }}" autocapitalize="words">
+            </div>
+            <div>
+                <label for="CommentEmail" class="hidden">
+                    {{ 'blogs.comments.email' | t }}
+                </label>
+                <input type="email" name="comment[email]" id="CommentEmail"
+                    class="border border-gray-400 rounded w-full py-3 px-5 {% if form.errors contains 'email' %}border-red-400{% endif %}"
+                    placeholder="{{ 'blogs.comments.email' | t }}" value="{{ form.email }}" spellcheck="false"
+                    autocomplete="off" autocapitalize="off">
+            </div>
+            <div>
+                <label for="CommentWebsite" class="hidden">
+                    {{ 'blogs.comments.website' | t }}
+                </label>
+                <input type="text" name="comment[website]" id="CommentWebsite"
+                    class="border border-gray-400 rounded w-full py-3 px-5 {% if form.errors contains 'website' %}border-red-400{% endif %}"
+                    placeholder="{{ 'blogs.comments.website' | t }}" value="{{ form.email }}" spellcheck="false"
+                    autocomplete="off" autocapitalize="off">
+            </div>
+        </div>
+        <div class="flex justify-center mt-16">
+            <input type="submit" class="bg-black text-white button cursor-pointer"
+                value="{{ 'blogs.comments.post' | t }}">
+        </div>
+        {% endform %}
+    </div>
+{% endif %}

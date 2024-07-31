@@ -1,0 +1,120 @@
+{% case type %}
+  {% when 'wishlist' %}
+	{% comment %}
+		MTS
+		{%- assign icon_name = 'star' -%}
+	{% endcomment %}
+    {%- assign icon_name = 'wishlist-heart' -%}
+    {%- assign icon_name_active = 'star-solid' -%}
+    {%- capture content -%}{{ 'products.product.add_to_wishlist' | t }}{%- endcapture -%}
+    {%- capture revert_text -%}{{ 'products.product.remove_from_wishlist' | t }}{%- endcapture -%}
+    {%- assign class = 'sf-wishlist__button' -%}
+    {%- assign content_class = 'sf-wishlist__button-content' -%}
+  {% when 'quickview' %}
+	{% comment %}
+		MTS
+    	{%- assign icon_name = 'eye' -%}
+	{% endcomment %}
+	{%- assign icon_name = 'quick-view-text' -%}
+    {%- capture content -%}{{ 'products.product.quick_view' | t }}{%- endcapture -%}
+    {%- assign class = 'sf-pqv__button' -%}
+    {%- assign content_class = '' -%}
+  {% when 'compare' %}
+    {%- assign icon_name = 'compare' -%}
+    {%- assign icon_name_active = 'exchange-solid' -%}
+    {%- capture content -%}{{ 'products.product.add_to_compare' | t }}{%- endcapture -%}
+    {%- capture revert_text -%}{{ 'products.product.remove_from_compare' | t }}{%- endcapture -%}
+    {%- assign class = 'sf-prod-compare__button' -%}
+    {%- assign content_class = 'sf-prod-compare__button-content' -%}
+  {% when 'remove-from-compare' %}
+    {%- assign icon_name = 'x' -%}
+    {%- capture content -%}{{ 'products.product.remove_from_compare' | t }}{%- endcapture -%}
+    {%- assign class = 'sf-prod-compare__remove' -%}
+    {%- assign content_class = '' -%}
+  {% when 'zoom-in' %}
+    {%- assign icon_name = 'search-plus' -%}
+    {%- capture content -%}{{ 'products.product.zoom_in' | t }}{%- endcapture -%}
+    {%- assign class = 'sf-prod-media__zoom-in' -%}
+    {%- assign content_class = '' -%}
+  {% when 'add-to-cart' %}
+    {% capture btnText %}{{ 'products.product.select_options' | t }}{% endcapture %}
+    {% if btnText contains 'translation missing' %}
+      {% capture btnText %}Select options{% endcapture %}
+    {% endif %}
+    {% if product.has_only_default_variant %}
+      {% assign class = 'add-to-cart' %}
+      {% assign btnText = 'products.product.add_to_cart' | t %}
+    {% endif %}
+    {% if product.has_only_default_variant == false and settings.select_option_button_action == 'popup' %}
+      {% assign class = 'sf-pqv__button' %}
+    {% endif %}
+    {% unless product.available %}
+      {% assign class = class | append: 'disabled' %}
+    {% endunless %}
+    {%- capture content -%}{{ btnText }}{%- endcapture -%}
+  {% else %}
+    {%- assign icon_name = 'star' -%}
+    {%- assign content = 'Toolip type not found' -%}
+    {%- assign class = 'hidden' -%}
+    {%- assign content_class = 'hidden' -%}
+{% endcase %}
+
+<div class="sf__tooltip-item sf__btn-icon {{ class }} {{ class_name | default: 'sf__tooltip-left' }} sf__tooltip-style-{{ style | default: '1' }}" data-product-handle="{{ product.handle }}">
+  {% if type != 'add-to-cart' %}
+  	
+  	{% comment %}
+  	MTS
+  	<span class="sf__tooltip-icon block">Quick View</span>
+    {% endcomment %}
+    <span class="sf__tooltip-icon block" style="font-family: 'Minionpro' !important;">
+      {% render 'icon', name: icon_name, size: 'medium' %}
+  	</span>
+
+  {% else %}
+    {% if settings.select_option_button_action == 'popup' %}
+  
+  	  {% comment %}
+      MTS
+      <span class="sf__tooltip-icon quick-add" data-product-handle="{{ product.handle }}">
+      {% endcomment %}
+      
+      <span class="sf__tooltip-icon quick-add" data-product-handle="{{ product.handle }}">
+        {% if product.has_only_default_variant %}
+          {% render 'atc-spinner' %}
+          <span class="cus-pcard-tooltip">{% render 'icon', name: 'cart', size: 'medium' %}</span>
+        {% else %}
+          <div class="hidden md:flex">
+          	{% render 'icon', name: 'quick-view-text', size: 'medium' %}
+          </div>
+          <div class="flex md:hidden" style="justify-content: space-around; width: 100%;">
+          	{% render 'icon', name: 'mob-col-cart', size: 'medium' %}
+          </div>
+        {% endif %}
+      </span>
+    {% else %}
+      <a class="sf__tooltip-icon" href="{{ product.url }}">
+        {% if product.has_only_default_variant %}
+          {% render 'atc-spinner' %}
+          <span class="cus-pcard-tooltip">{% render 'icon', name: 'cart', size: 'medium' %}</span>
+        {% else %}
+          {% render 'icon', name: 'cart', size: 'medium' %}
+        {% endif %}
+      </a>
+    {% endif %}
+  {% endif %}
+  {%- if style == 2 -%}
+      <span class="sf__tooltip-icon-active">
+        {% render 'icon', name: icon_name_active, size: 'medium' %}
+      </span>
+  {%- endif -%}
+  
+  {% comment %}
+  MTS
+  <div
+    class="sf__tooltip-content {{ content_class }}"
+    data-revert-text="{{ revert_text | default: '' }}"
+  >
+    {{ content }}
+  </div>
+  {% endcomment %}
+</div>

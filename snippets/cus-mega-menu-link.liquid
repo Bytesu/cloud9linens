@@ -1,0 +1,16 @@
+<li class="list-none">
+    <a href="{{ link.url }}" class="block px-4 py-3 {% if link.links != blank %}pb-2{% endif %}">
+      {{ link.title }}
+    </a>
+    {% if link.links != blank %}
+        <ul>
+            {% for childlink in link.links %}
+                <li>
+                    <a href="{{ childlink.url }}" class="block p-2 pl-8">
+                        {{ childlink.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>

@@ -1,0 +1,26 @@
+<div class="sf__accordion-content rte">
+    <div class="pb-5 md:pb-0">
+        <p class="mt-0 md:mt-4 block-text">
+            {{ block.settings.description }}
+        </p>
+        <div class="block-text mt-4">
+            {% if settings.contact_phone_number and block.settings.show_phone %}
+               <p>
+                   <a href="tel:{{ settings.contact_phone_number }}" class="hover:text-black">
+                       {{ settings.contact_phone_number }}
+                   </a>
+               </p>
+            {% endif %}
+            {% if settings.contact_email and block.settings.show_email %}
+                <p class="mt-1">
+                    <a href="mailto:{{ settings.contact_email }}" class="hover:text-black">
+                        {{ settings.contact_email }}
+                    </a>
+                </p>
+            {% endif %}
+            {% if block.settings.show_socials_link %}
+                {% render 'social-media-links', box_size: 'mt-6 px-0 -mx-4', size: 'medium' %}
+            {% endif %}
+        </div>
+    </div>
+</div>

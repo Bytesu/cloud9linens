@@ -1,0 +1,22 @@
+{%- assign variant = product.selected_or_first_available_variant -%}
+{%- assign compare_at_price = variant.compare_at_price -%}
+{%- assign price = variant.price -%}
+{%- assign on_sale = false -%}
+{%- if compare_at_price > price -%}
+{%- assign on_sale = true -%}
+{%- endif -%}
+
+{% comment %}
+MTS
+<div class="sf-prod__info-wrapper">
+  <div class="sf-prod__info{% if on_sale %} sf-product--onsale{% endif %}">
+    {% endcomment %}
+
+    <div class="sf-prod__info-wrapper">
+      <div class="sf-prod__info{% if on_sale %} sf-product--onsale{% endif %}" style="height:100%">
+        {% render 'main-product-blocks', section: section %}
+        <div class="addons-block">
+          <div id="fox-product-bundle-inside" data-fox-app="true" data-section-product-bundle></div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,20 @@
+<link rel="canonical" href="{{ canonical_url }}">
+{%- if template.name == 'product' -%}
+<link rel="preload" as="style" href="{{ 'product-template.css' | asset_url }}">
+{%- endif -%}
+{%- if template.name == 'collection' or template.name == 'list-collections' -%}
+<link rel="preload" as="style" href="{{ 'collection.css' | asset_url }}">
+{%- endif -%}
+<link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+
+{% comment %} Minimog prefetch resources {% endcomment %}
+<link rel="dns-prefetch" href="{{ canonical_url }}" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.shopify.com" crossorigin>
+<link rel="preconnect" href="{{ canonical_url }}" crossorigin>
+<link rel="preconnect" href="https://cdn.shopify.com" crossorigin> 
+<link rel="preload" as="style" href="{{ 'chunk.css' | asset_url }}">
+<link rel="preload" as="style" href="{{ 'custom.css' | asset_url }}">
+<link rel="preload" as="script" href="{{ 'app.min.js' | asset_url }}">
+<link rel="preload" as="script" href="{{ 'foxkit-app.min.js' | asset_url }}">
+<link rel="preload" as="script" href="{{ 'lazysizes.min.js' | asset_url }}">
+{% comment %} End Minimog prefetch resources {% endcomment %}

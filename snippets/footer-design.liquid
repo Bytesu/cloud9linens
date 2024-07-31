@@ -1,0 +1,89 @@
+<div class="footer-layout sf__footer-bottom mt-5 md:mt-0 ftr_cyrt">
+  <div class="{{ container }}">
+    <div class="sf__footer-bottom-inner lg:pb-8 pt-0 lg:py-5 flex flex-col lg:flex-row justify-between items-center">
+      {% case section.settings.design %}
+        {% when 'footer-1' %}
+        {% if section.settings.copyright != blank %}
+          <div class="sf-footer__left flex-1 text-center w-full md:text-left mb-6 lg:mb-0 lg:w-auto lg:order-none">
+            <span class="text-sm text-left">{{ section.settings.copyright }}</span>
+          </div>
+        {% endif %}
+
+        <div class="sf-footer__right w-full flex flex-wrap justify-center md:justify-start lg:justify-center items-center lg:w-auto">
+          {% if section.settings.show_currency_selector or section.settings.show_language_selector %}
+            <div class="flex items-center mb-6 lg:mb-0">
+              {% if section.settings.show_currency_selector %}
+                {% render 'currency-switcher', box_size: 'py-0', pos: 'top' %}
+              {% endif %}
+              {% if section.settings.show_language_selector %}
+                {% render 'language-switcher', box_size: 'py-0 ml-2', pos: 'top' %}
+              {% endif %}
+            </div>
+          {% endif %}
+          {% if section.settings.show_social_links %}
+            {% render 'social-media-links', box_size: 'justify-center md:justify-end ml-3 mb-6 lg:mb-0' %}
+          {% endif %}
+          {% if section.settings.show_payment_icons %}
+            {% render 'payment-icons', section: section %}
+          {% endif %}
+        </div>
+        {% when 'footer-2' %}
+        {% if section.settings.show_payment_icons %}
+          <div class="sf-footer__left w-full flex-1 mb-6 lg:mb-0 lg:w-auto">
+            {% render 'payment-icons', section: section %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.copyright != blank %}
+          <div class="sf-footer__center flex-1 text-center mb-6 lg:mb-0 lg:order-none lg:w-auto w-full">
+            <span class="text-sm">{{ section.settings.copyright }}</span>
+          </div>
+        {% endif %}
+        {% if section.settings.show_social_links or section.settings.show_currency_selector or section.settings.show_language_selector %}
+          <div class="sf-footer__right mb-6 lg:mb-0 flex-1 flex flex-wrap items-center justify-center md:justify-start lg:w-auto w-full lg:justify-end">
+            {% if section.settings.show_social_links %}
+              {% render 'social-media-links', box_size: 'justify-center md:justify-end md:mr-4 -mx-4 lg:mx-0' %}
+            {% endif %}
+            <div class="flex items-center ml-5 lg:ml-0">
+              {% if section.settings.show_currency_selector %}
+                {% render 'currency-switcher', box_size: 'py-0', pos: 'top' %}
+              {% endif %}
+              {% if section.settings.show_language_selector %}
+                {% render 'language-switcher', box_size: 'py-0 ml-2', pos: 'top' %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        {% when 'footer-3' %}
+        {% if section.settings.show_social_links or section.settings.show_currency_selector or section.settings.show_language_selector %}
+          <div class="cus-footer-forder cus_justi_start cus_ftr_mob_ctr sf-footer__left mb-8 lg:mb-0 flex-1 flex flex-wrap items-center -mx-4 justify-start lg:w-auto w-full">
+            {% if section.settings.show_social_links %}
+              {% comment %} <h3 class="sf__accordion-button font-medium md:mb-4 text-base sf__footer-block-title">Social Media</h3> {% endcomment %}
+              {% render 'social-media-links', box_size: 'md:justify-end md:mr-4 -mx-4 lg:mx-0' %}
+            {% endif %}
+            <div class="flex items-center ml-5 lg:ml-0">
+              {% if section.settings.show_currency_selector %}
+                {% render 'currency-switcher', box_size: 'py-0', pos: 'top' %}
+              {% endif %}
+              {% if section.settings.show_language_selector %}
+                {% render 'language-switcher', box_size: 'py-0 ml-2', pos: 'top' %}
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+        {% if settings.copyright != blank %}
+          <div class="cus-footer-torder sf-footer__center mb-6 lg:mb-0 flex-1 lg:order-none lg:w-auto w-full ftr_mob_wd cpy_order cstm__ftr_cprt__cont">
+            <span class="custom_p_color-change text-sm cpy_fs cus_mob_fonts_source">{{settings.copyright }}</span> 
+          </div>
+        {% endif %}
+        {% if section.settings.show_payment_icons %}
+          <div class="cus-footer-sorder cus_ftr_mob_ctr sf-footer__right mb-6 lg:mb-0 flex-1 flex justify-center lg:w-auto w-full md:justify-end ftr_payment_mob_hide">
+            <h3 class="sf__accordion-button font-medium md:mb-4 text-base sf__footer-block-title">Pay With</h3>
+            {% render 'payment-icons', section: section %}
+          </div>
+        {% endif %}
+    {% else %}
+      {% endcase %}
+    </div>
+  </div>
+</div>

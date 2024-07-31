@@ -1,0 +1,108 @@
+{% assign show_account_icon = header_settings.show_account_icon %}
+{% assign show_wishlist_icon = header_settings.show_wishlist_icon %}
+{% assign show_compare_icon = header_settings.show_compare_icon %}
+{% assign show_cart_icon = header_settings.show_cart_icon %}
+
+<div
+  style="--tw-bg-opacity: 0.6; z-index: 9999;"
+  data-search-popup
+  data-enable-predictive-search="{{ settings.enable_predictive_search }}"
+  data-search-by-tag="{{ settings.search_by_tag }}"
+  data-search-by-body="{{ settings.search_by_body }}"
+  data-unavailable-products-option="{{ settings.search_unavailable_products }}"
+  class="fixed z-[100] overflow-x-hidden h-full overflow-y-scroll inset-0 transition-opacity duration-300 opacity-0 invisible bg-black"
+>
+  <div class="search-container py-4 md:py-8 bg-white relative z-10 min-h-full md:min-h-0 transition-transform duration-300 transform md:-translate-y-1/2" data-search-container>
+      <div class="container-fluid">
+          <div class="flex justify-between items-center md:hidden mb-2">
+            <h3 class="text-base font-medium">{{ 'general.search.title' | t }}</h3>
+            <button data-close-search class="text-black p-2">
+              {% render 'icon', name: 'times', size: 'medium' %}
+            </button>
+          </div>
+          <div class="flex">
+            {% render 'header-logo', header_settings: header_settings, box_size: 'w-1/6', is_in_search: true %}
+            <div class="w-full md:w-2/3 flex justify-center items-center">
+              <form action="/search" method="POST" novalidate class="relative w-full md:mx-28 flex border border-black rounded-md">
+                  <input type="hidden" name="type" value="product">
+                  <input type="hidden" name="options[unavailable_products]" value="last">
+                  <input type="hidden" name="options[prefix]" value="last">
+                  <input type="hidden" name="options[fields]" value="title,vendor,product_type,variants.title">
+
+                  <input
+                    type="text" name="q" required autocomplete="off"
+                    placeholder="{{ 'general.search.placeholder' | t }}"
+                    aria-label="{{ 'general.search.placeholder' | t }}"
+                    class="w-full h-11" style="border: none;"
+                    data-search-input
+                  />
+
+                  <button type="submit" class="absolute top-px right-0 py-3 px-3.5">
+                    {% render 'icon', name: 'search', size: 'medium-small' %}
+                  </button>
+                  <span class="invisible absolute top-0 right-0 py-2.5 px-3" data-spinner>
+                    {% render 'icon', name: 'spinner' %}
+                  </span>
+                  <span
+                    class="absolute top-0 p-3.5 invisible cursor-pointer text-[#777] right-8"
+                    data-clear-search
+                  >
+                    {% render 'icon', name: 'times', size: 'small' %}
+                  </span>
+              </form>
+            </div>
+            <div class="w-1/6 hidden md:flex justify-end items-center">
+              {% if show_account_icon %}
+                {% render 'header-option-item__account', display_by: 'icon', box_size: 'mx-2' %}
+              {% endif %}
+              {% if show_wishlist_icon %}
+                  {% render 'header-option-item__wishlist', display_by: 'icon', box_size: 'relative mx-2' %}
+              {% endif %}
+              {% if show_compare_icon %}
+                {% render 'header-option-item__compare', display_by: 'icon', box_size: 'relative mx-2' %}
+              {% endif %}
+              {% if show_cart_icon %}
+                  {% render 'cart' %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="flex md:justify-center mt-3 flex-wrap" data-popular-searches>
+              <span class="text-[#666] mr-4">{{ 'general.search.popular_searches' | t }}:</span>
+              <div class="flex items-center flex-wrap">
+                {%- assign popular_queries = settings.popular_search_queries | split: ',' -%}
+                {% for qr in popular_queries %}
+                  <a
+                      class="cursor-pointer underline mr-4 hover:text-gray-800 whitespace-nowrap"
+                      data-ps-query="{{ qr | strip }}"
+                      data-ps-item
+                  >
+                    {{ qr | strip }}
+                  </a>
+                {% endfor %}
+              </div>
+          </div>
+          <div class="hidden" data-result>
+              <div class="text-2xl text-[#999] mt-4 md:mt-9 mb-2 md:mb-7 text-center">
+                  <span
+                    data-message
+                    data-results-one="{{ 'general.search.results_with_count.one' | t }}"
+                    data-results-other="{{ 'general.search.results_with_count.other' | t }}"
+                    data-no-results="{{ 'general.search.no_results' | t }}"
+                  ></span>
+                  “<span class="text-black" data-query></span>”
+              </div>
+
+              <div data-search-items-wrapper class="grid gap-x-3 md:gap-x-6 md:auto-rows-0 grid-rows-1 grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 3xl:grid-cols-7 overflow-y-hidden">
+                  {% for i in (1..10) %}
+                      <div class="hidden" data-search-item></div>
+                  {% endfor %}
+              </div>
+              <div class="flex justify-center mt-10">
+                  <a data-more-result href="/search" class="sf__btn sf__btn-primary">
+                    {{ 'general.search.more_results' | t }}
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

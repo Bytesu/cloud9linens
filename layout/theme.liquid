@@ -1,0 +1,339 @@
+{%- capture body_classes -%}
+  template-{{ template.name | handle }} {{ template.name }}-{{ template.suffix }} {{ template.name | append: '-' | append: handle }}
+  {% if cart.item_count == 0 %}cart-empty{% endif %}
+{%- endcapture -%}
+{%- capture html_classes -%}
+  no-js supports-no-cookies
+  {%- if request.path == '/challenge' -%}grow-full{%- endif -%}
+{%- endcapture -%}
+{% assign enable_rtl = settings.enable_rtl %}
+<!doctype html>
+<html
+  class="{{- html_classes -}}"
+  lang="{{ request.locale.iso_code }}"
+  style="--sf-page-opacity: 0;"
+  data-template="{{ template.name }}"
+  {% if enable_rtl %}dir="rtl"{% endif %}>
+  <head>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "WebSite",
+  "name": "Cloud9linens",
+  "url": "https://cloud9linens.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://cloud9linens.com/{search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% render 'sizechartsrelentless' %}
+
+    {% include "starapps-core" %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+    <meta name="theme-color" content="{{ settings.color_primary }}">
+
+    {% render 'preload' %}
+    {% render 'SEO' %}
+    {% render 'social-meta-tags' %}
+    {% render 'font-face' %}
+    {% render 'critical-css' %}
+    {% render 'critical-scripts' %}
+    {% render 'style-tags' %}
+    {% render 'custom-code-head' %}
+    <script>
+      // ## Action: proxy localStorage setting
+      const originalSetItem = localStorage.setItem;
+      localStorage.setItem = function(key, value) {
+        const lsevent = new Event('itemInserted');
+        lsevent.value = value; // Optional..
+        lsevent.key = key; // Optional..
+      
+        document.dispatchEvent(lsevent);
+      
+        originalSetItem.apply(this, arguments);
+      };
+      // document.addEventListener("itemInserted", (lsevent)=>{
+      //   console.log(lsevent)
+      //   if(lsevent.key=="sf__wishlist-products"){ // update wish list
+      //     //console.log(C.lsGet('sf__wishlist-products'))
+      //     if(JSON.parse(lsevent.value).length){
+      //       document.body.classList.add('added-wish-list')
+      //     }else{
+      //        document.body.classList.remove('added-wish-list')
+      //     }
+      //   }
+      // }, false);
+      // if(localStorage.getItem('sf__wishlist-products')){
+      //   if(JSON.parse(localStorage.getItem('sf__wishlist-products')).length){
+      //     document.body.classList.add('added-wish-list')
+      //   }
+      // }
+
+
+    </script>
+      
+<link rel="stylesheet" href="{{ 'customer-global.css' | asset_url }}" as="style">
+
+    {% comment %} {% render 'content_for_header' %} {% endcomment %}
+
+
+    <!-- Avada Email Marketing Script -->
+    {% include 'avada-em-setting' %}
+    <!-- /Avada Email Marketing Script -->
+
+    
+    {{ content_for_header }}
+
+    {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/font-awesome.min.css' | stylesheet_tag }} {% include 'globo.formbuilder.scripts' %} <link rel="stylesheet" href="{{ 'custom-mw.css' | asset_url }}"> <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+
+
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link
+    rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+    <link rel="stylesheet" href="{{ 'custom-mw2.css' | asset_url }}">
+    <link rel="stylesheet" href="{{ 'mw-font-family.css' | asset_url }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro&family=Source+Sans+3&display=swap" rel="stylesheet">
+   <meta name="google-site-verification" content="GNFAVEyPV9EWx-cVyINf13vecWjVUtHgiDCx7n5DZR4" />
+ <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Montserrat:ital,wght@0,100;0,200;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro&family=Source+Sans+3&display=swap" rel="stylesheet">
+  </head>
+
+  <body
+    id="sf-theme"
+    style="opacity: 0;"
+    class="{{ template.name }} {{ template.suffix }} {{ body_classes }} relative min-h-screen"
+    {% if template.name == 'product' %}data-product-id="{{ product.id }}"{% endif %}>{% include 'appjetty-geo-ip-redirect' %} {% include 'appjetty-popup' %}
+    {% render 'theme-data' %}
+    {% section 'annoucement' %}
+    {% section 'header' %}
+
+    <main
+      role="main"
+      id="MainContent"
+      class="cus_hdr_pd">
+      {% render 'scroll-top-button' %}
+      {{ content_for_layout }}
+      <div id="cart-drawer-container"></div>
+    </main>
+
+    {% section 'footer' %}
+    {% section 'mobile-sticky-bar' %}
+
+    {% render 'custom-code-body' %}
+    {% render 'foxkit-messenger' %}
+    {% render 'script-tags' %}
+
+    {% render 'app_wishlist-king' %}
+
+    {% include 'swymSnippet' %}
+
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    {% comment %} <script type="text/javascript" src="{{ 'mw-custom.js' | asset_url }}" defer></script> {% endcomment %}
+    {{ 'custom-mw.js' | asset_url | script_tag }}
+
+    <div style="display:none;" class=" Shipping_Destination">
+      <div class=" Shipping_inner_section">
+        <div class="shipping_svg">
+          <button>
+            <?xml version="1.0" encoding="iso-8859-1"?>
+            <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+            <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+            <svg
+              fill="#000000"
+              version="1.1"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="10px"
+              height="10px"
+              viewBox="0 0 94.926 94.926"
+              xml:space="preserve">
+              <g>
+                <path d="M55.931,47.463L94.306,9.09c0.826-0.827,0.826-2.167,0-2.994L88.833,0.62C88.436,0.224,87.896,0,87.335,0
+                                                                      c-0.562,0-1.101,0.224-1.498,0.62L47.463,38.994L9.089,0.62c-0.795-0.795-2.202-0.794-2.995,0L0.622,6.096
+                                                                      c-0.827,0.827-0.827,2.167,0,2.994l38.374,38.373L0.622,85.836c-0.827,0.827-0.827,2.167,0,2.994l5.473,5.476
+                                                                      c0.397,0.396,0.936,0.62,1.498,0.62s1.1-0.224,1.497-0.62l38.374-38.374l38.374,38.374c0.397,0.396,0.937,0.62,1.498,0.62
+                                                                      s1.101-0.224,1.498-0.62l5.473-5.476c0.826-0.827,0.826-2.167,0-2.994L55.931,47.463z" />
+              </g>
+            </svg>
+          </button>
+        </div>
+        <div class="my_wellcome_pop_up-color">
+          <h3>Wellcome to Frette</h3>
+        </div>
+        <div class="pop_up_pre">
+          <p>Please choose your shipping destination and preferred language to continue.</p>
+        </div>
+        <div class="pop_up_the-world">
+          <p>Shipping destination</p>
+          <select class="shipping_select">
+            <option selected="true" value="REST OF THE WORLD">REST OF THE WORLD</option>
+          </select>
+        </div>
+        <div class="pop_up_the-world">
+          <p>Shipping destination</p>
+          <select class="shipping_select">
+            <option value="ENGLISH">ENGLISH</option>
+          </select>
+        </div>
+        <button class="shipping_button">EXPLORE</button>
+      </div>
+    </div>
+    
+{% comment %} {% if template.suffix  == 'shipping-and-reurns' and template.name  == 'login' and template.suffix  == 'faq-final' %}
+    <style>
+        .transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {
+            filter: unset;
+        }
+        .header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {
+            color: #041e3a;
+        }
+        .header__22:not(.stuck) .icon-fill-serch {
+            stroke: #000;
+        }
+        .header__22:not(.stuck) .icon-fill-cart {
+            filter: unset;
+        }
+        .header__22 .icon-fill {
+            fill: #000;
+        }
+        .cus-hdr .mobile____menu, .mob-logo-container img {
+            filter: unset;
+        }
+        .cus-margin-top{
+          margin-top:0;
+        }
+        @media only screen and (min-width: 768px) {
+        .flexd-sec {
+            padding-top: 90px;
+        }
+        }
+        @media only screen and (min-width: 768px) and (max-width: 1024px){
+.header__22:not(.stuck) .icon-fill-cart {
+    filter: unset !important;
+}
+    </style>
+{% endif %} {% endcomment %}
+    {% comment %} white header {% endcomment %}
+{% if template.name  == 'page' or template.name == 'account' or template.name == 'addresses' or template.suffix == 'wishlist' %}
+  <style>
+    .custum_hide_icon {
+    filter: invert(1) brightness(9.9);
+  }
+  section.header__22.scroll-dow.stuck img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {
+    filter: inherit;
+}
+
+
+@media only screen and (max-width: 1024px) {
+ 
+  .sf-menu-button.mobile____menu {
+    filter: invert(1) brightness(9.9);
+}
+.mob-logo-container a img {
+    filter: invert(1) brightness(9.9);
+}
+.sf-header__mobile-right {
+    filter: invert(1) brightness(9.9);
+}
+section.header__22.scroll-dow.stuck .sf-menu-button.mobile____menu{
+  filter: inherit;
+}
+section.header__22.scroll-dow.stuck .sf-header__mobile-right{
+  filter: inherit;
+}
+section.header__22.scroll-dow.stuck .mob-logo-container a img {
+    filter: inherit;
+}
+}
+  </style>
+{% endif %}
+{% comment %} black header {% endcomment %}
+{% if template.suffix   == 'shipping-and-returns' or template.suffix == 'select-shipping-desti' or template.suffix == 'consult-designers' or template.suffix == 'store-location' or template.suffix == 'corporate-responsibility' or template.suffix == 'terms-and-conditions' or template.suffix == 'privacy-policy' or template.suffix == 'faq-final' or template.suffix == 'shipping-and-reurns' or template.suffix == 'my-account-sign-in' or template.suffix == 'fqa' or template.suffix == 'cookies-center' or template.suffix == 'check-order-status' or template.suffix == 'contact' or template.suffix == 'template-login' or template.suffix == 'summer-catalog' or template.suffix == 'profile' or template.suffix == 'password' or template.name == 'order' or template.name == 'cart' %}
+<style>.transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {
+    filter: unset;
+}
+.header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {
+    color: #041e3a;
+}
+.header__22 .icon-fill{
+    fill: #000;
+  }
+.cus-col-container .sf__collection-container.block.mt-0.md\:mt-2\.5.lg\:mb-15.lg\:pt-7.sidebar__collapse {
+    padding-top: 6rem;
+}
+.mw_breadcurmb_main {
+    padding-top: 60px;
+}
+.header__22:not(.stuck) .icon-fill-cart {
+    filter: unset;
+}
+.header__22:not(.stuck) .icon-fill-serch {
+    stroke: #000;
+}
+.cus-hdr .mobile____menu, .mob-logo-container img {
+    filter: unset;
+}
+.text-left {
+    padding: 0px;
+}
+.cus_collet_desc h3 {
+    font-size: 24px;
+    font-weight: 400;
+}
+.cus_collet_desc p {
+    font-size: 14px;
+    padding-top: 20px;
+}
+.connected__products__inner h2, .recently-viewed h2 {
+    font-size: 24px;
+    font-weight: 400;
+}
+.cus_logo_position .sf-logo-transparent{
+    filter: unset !important;
+    -webkit-filter: unset !important;
+}
+.custum_hide_icon {
+    filter: unset;
+}
+@media only screen and (max-width: 1024px) {
+  .mob-logo-container a img {
+    filter: inherit;
+}
+.sf-header__mobile-right {
+    filter: inherit;
+}
+}
+</style>
+{% endif %}
+<script>
+    $(document).ready(function(){
+      $('.slick_slider_announcement').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        cssEase: 'linear',
+        autoplay: true,
+        autoplaySpeed: 6000
+      });
+    });
+  </script>
+{% render 'add-to-cart-slide' %}
+  </body>
+</html>

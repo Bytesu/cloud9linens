@@ -1,0 +1,28 @@
+{% comment %}
+  This snippet will create all needed button overlay css vars.
+
+  Usesage:
+
+  wrapper/button style="{% render 'overlay-button-vars' with color_button_text: x, color_button_background: x %}"
+  button class="btn btn--primary/secondary/callout btn--overlay"
+
+  Pass these variables into snippet:
+  * color_button_text: A color object
+  * color_button_background: A color object
+{% endcomment %}
+
+{%- liquid
+  assign color_button_background_brightness = color_button_background | color_brightness
+
+  if color_button_background_brightness > 60
+    assign color_button_background_hover = color_button_background | color_darken: 7
+  else
+    assign color_button_background_hover = color_button_background | color_lighten: 20
+  endif
+-%}
+
+--color-text-overlay-button: {{ color_button_text }}; --color-text-overlay-button-alpha:
+{{ color_button_text | color_modify: 'alpha', 0.6 }}; --color-background-overlay-button: {{ color_button_background }};
+--color-background-overlay-button-hover: {{ color_button_background_hover }};--color-background-overlay-button-alpha:
+{{ color_button_background | color_modify: 'alpha', 0.6 }}; --color-background-overlay-outline-button-alpha:
+{{ color_button_background | color_modify: 'alpha', 0.1 }};

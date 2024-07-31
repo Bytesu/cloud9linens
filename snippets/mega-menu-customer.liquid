@@ -1,0 +1,211 @@
+<div class="mt-16 mega-menu-customer">
+  {% comment %}
+    MTS
+    <a href="https://cloud9l.myshopify.com/account" class="">
+       <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center">
+         <img style="width: auto; height: 16px; margin-left: 0px; margin-left: 5%;" src="{{ 'icon-user1.svg' | asset_url }}">
+         <span class="sf__tooltip-content">Login/SignUp</span>
+         <p>My Account</p>
+       </span>
+     </a>
+  {% endcomment %}
+
+  {% comment %} <div class="block px-4 hidden">
+    <a href="/pages/wishlist" class="cus-mob-mega-menu-links">
+      <span
+        class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+        style="padding-left: 0 !important;"
+      >
+        <img
+          style="width: auto; height: 16px; margin-left: 0px; margin-right: 5%;"
+          src="{{ 'icon-heart1.svg' | asset_url }}"
+        >
+        <span class="sf__tooltip-content">Wishlist</span>
+        <p class="cus-underline-red ml-2">My Favourites</p>
+        <img
+          style="width: auto; height: 16px; margin-right: 0px; margin-left: 5%;"
+          src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-heart-96.png?v=1652097336"
+        >
+      </span>
+    </a>
+  </div> {% endcomment %}
+
+  {% if shop.customer_accounts_enabled or shop.customer_accounts_optional %}
+    <div class=" mw_cus_footr_setting block xl:hidden mb-16 px-4 pb-4">    
+
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="/account/login" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+          <img style="width: auto; height: 16px; margin-left: 0px;" src="{{ 'icon-user1.svg' | asset_url }}">
+            <p class="cus-underline-red ml-6 cus_fonts_source">My account</p>
+          </span>
+        </a>
+      </div>
+
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="/account/login" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+            <img style="width: auto; height: 16px; margin-left: 0px; margin-right: 15px;" src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/login_FILL0_wght200_GRAD0_opsz24.svg?v=1680088433">
+            <p class="cus-underline-red ml-2 cus_fonts_source">Log in</p>
+          </span>
+        </a>
+      </div>
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="/pages/wishlist" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+          <div class=" wk-icon mw-icon wk-link__icon">
+            <svg class="hrt-icon icon-fill" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512" id="heart">
+            <path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z" fill="white"></path>
+          </svg>
+          </div>
+            <p class="cus-underline-red cus_fonts_source">Wishlist</p>
+          </span>
+        </a>
+      </div>
+
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="https://cloud9linens.com/pages/service-areas-worldwide" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          ><img style="width: auto; height: 16px; margin-left: 0px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-location-100_2.png?v=1652097441">
+            <p class="cus-underline-red ml-6 cus_fonts_source">Services areas</p>
+          </span>
+        </a>
+      </div>
+
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="#" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+            <img
+              style="width: auto; height: 16px; margin-left: 0px; margin-right: 5%;"
+              src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/language_FILL0_wght200_GRAD0_opsz24.svg?v=1680088433"
+            >
+            <p class="cus-underline-red ml-2 cus_fonts_source">United states</p>
+          </span>
+        </a>
+      </div>
+
+      <div class="block pt-3 cus-mob-store-absolute">
+        <a href="/pages/contact-us-1" class="cus-mob-mega-menu-links">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+            <img
+              style="width: auto; height: 16px; margin-left: 0px; margin-right: 5%;"
+              src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/phone_enabled_FILL0_wght200_GRAD0_opsz24.svg?v=1680088433"
+            >
+            <p class="cus-underline-red ml-2 cus_fonts_source">Contact us</p>
+          </span>
+        </a>
+      </div>
+     
+
+      <div class="block pt-3 hidden">
+        <a href="" class="">
+          <span
+            class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
+            style="padding-left: 0 !important;"
+          >
+            <img
+              style="width: auto; height: 16px; margin-left: 0px; margin-right: 5%;"
+              src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-location-golbe100.png?v=1652097440"
+            >
+            <p class="cus-underline-red ml-2">Americas</p>
+          </span>
+        </a>
+      </div>
+
+      {% comment %}
+        <div class="mw_cus_iconcolor_change flex justify-between mob-mega-menu-social-icons custom__social__icons">
+          {% comment %} <a href="#"> <img style="width: auto; height: 18px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-pinterest-240.png?v=1652098471"> </a> {% endcomment %}
+          <div class="flex">
+            <a href="#">
+              <img
+                style="width: auto; height: 30px;"
+                src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/icons8-twitter_061501d8-f961-4478-995e-0a095e75f678.svg?v=1680171434"
+              >
+            </a>
+            <a href="#">
+              <img
+                style="width: auto; height: 30px; margin-left: 30px; "
+                src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/icons8-facebook_6502107f-4b5e-4ae3-9aac-994a02c2ddc9.svg?v=1680171434"
+            ></a>
+            <a href="#">
+              <img
+                style="width: auto; height: 30px; margin-left: 30px;"
+                src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/icons8-instagram_afbc69fd-9da9-48bb-89fb-5e74b1f64aa1.svg?v=1680171434"
+              >
+            </a>
+          </div>
+          {% comment %} <a href="#"> <img style="width: auto; height: 18px;" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-linkedin-circled-250.png?v=1652098471"> </a> {% endcomment %}
+        </div>
+      {% endcomment %}
+
+      {% comment %}
+        {% if settings.copyright != blank %}
+          <div class="mw_cus_copyright_color_change cus-footer-torder sf-footer__center mb-6 lg:mb-0 flex-1 lg:order-none lg:w-auto w-full ftr_mob_wd cpy_order">
+            <span class="text-sm cpy_fs">{{ settings.copyright }}</span>
+          </div>
+        {% endif %}
+      {% endcomment %}
+    </div>
+
+    <div class="flex pt-4 mt-8 justify-between mob-mega-menu-socials">
+      <a href="#">
+        <img
+          style="width: auto; height: 18px;"
+          src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-pinterest-240.png?v=1652098471"
+        >
+      </a>
+      <div class="flex">
+        <a href="#">
+          <img
+            style="width: auto; height: 18px;"
+            src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-twitter-150-2.png?v=1652098471"
+          >
+        </a>
+        <a href="#">
+          <img
+            style="width: auto; height: 18px; margin-left: 30px; "
+            src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-facebook-150-2.png?v=1652098471"
+        ></a>
+        <a href="#">
+          <img
+            style="width: auto; height: 18px; margin-left: 30px;"
+            src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-instagram-150.png?v=1652098471"
+          >
+        </a>
+      </div>
+      <a href="#">
+        <img
+          style="width: auto; height: 18px;"
+          src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-linkedin-circled-250.png?v=1652098471"
+        >
+      </a>
+    </div>
+  {% endif %}
+  {% if section.settings.show_language_switcher or section.settings.show_currency_switcher %}
+    <div class="flex">
+      {% if section.settings.show_language_switcher %}
+        {% render 'language-switcher', box_size: 'block xl:hidden py-3.5', pos: 'top' %}
+      {% endif %}
+      {% if section.settings.show_currency_switcher %}
+        {% render 'currency-switcher', box_size: 'block xl:hidden py-3.5', pos: 'top' %}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>

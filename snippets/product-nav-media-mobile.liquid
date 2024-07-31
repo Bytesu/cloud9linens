@@ -1,0 +1,27 @@
+<div class="sf-media-nav-mobile mt-2.5 overflow-hidden">
+  <div class="nav-swiper-container-mobile flex items-stretch sf-no-scroll-bar opacity-0 transition-all">
+    <div class="swiper-wrapper flex flex-nowrap w-auto max-w-none" style="min-width: 70px;">
+      {% for media in product.media %}
+        {% assign aspect_ratio = media.aspect_ratio | default: 1 %}
+        <div
+            class="swiper-slide relative cursor-pointer" data-index="{{ forloop.index0 }}"
+            {% if product_layout == 'layout-6' %}
+              style="--slide-height: {{ 70 | divided_by: aspect_ratio }}px;"
+            {% endif %}
+        >
+          {% render 'media', media: media, render_by_image: true %}
+          {% if media.media_type contains 'video' %}
+            <div class="absolute right-0 top-0 text-white bg-gray-800 p-1 rounded-sm">
+              {% render 'icon', name: 'video', size: 'small' %}
+            </div>
+          {% endif %}
+          {% if media.media_type == 'model' %}
+            <div class="absolute right-0 top-0 text-white bg-gray-800 p-1 rounded-sm">
+              {% render 'icon', name: 'cube', size: 'small' %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1703 @@
+<footer
+  class="mw_fdr cus_text_ctr sf-footer {{ section.settings.custom-class }}"
+  data-section-type="footer"
+  data-section-id="{{ section.id }}"
+  style="background-color:{{section.settings.color_accent}}">
+  {% render 'footer-blocks', blocks: section.blocks, bordered: section.settings.bordered, container: section.settings.container %}
+  {% render 'footer-design', container: section.settings.container %}
+</footer>
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "text",
+        "id": "custom-class",
+        "label": "Custom Class"
+       
+      },
+      {
+        "type": "select",
+        "id": "design",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "footer-1",
+            "label": "Layout 1"
+          }, {
+            "value": "footer-2",
+            "label": "Layout 2"
+          }, {
+            "value": "footer-3",
+            "label": "Layout 3"
+          }
+        ],
+        "default": "footer-1"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+          {
+            "value": "container-fluid",
+            "label": "Default"
+          }, {
+            "value": "w-full",
+            "label": "Full width"
+          }, {
+            "value": "container",
+            "label": "Use container box"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "checkbox",
+        "id": "bordered",
+        "label": "Block bordered",
+        "default": false
+      }, {
+        "type": "text",
+        "id": "copyright",
+        "label": "Copyright text",
+        "default": "&copy; minimog 2021"
+      }, {
+        "type": "header",
+        "content": "Addons"
+      }, {
+        "type": "checkbox",
+        "id": "show_currency_selector",
+        "label": "Show currency selector",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_language_selector",
+        "label": "Show language selector",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_social_links",
+        "label": "Show social icons",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "Payment methods"
+      }, {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      }, {
+        "type": "image_picker",
+        "id": "image_custom_payment",
+        "label": "Payment icons by image",
+        "info": "Leave blank to use icons by Payment methods"
+      }, {
+        "type": "number",
+        "id": "payment_icons_width",
+        "label": "Image width (px)",
+        "default": 300
+      }
+    ],
+    "max_blocks": 5,
+    "blocks": [
+      {
+        "type": "menu",
+        "name": "Menu",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Footer menu",
+            "default": "main-menu"
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Service",
+            "info": "Leave blank to use menu title"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "our_store",
+        "name": "About",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Our store"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "default": "<p>Find a location nearest you.</p>"
+          },
+          {
+            "type": "header",
+            "content": "Contact information",
+            "info": "Go to \"Theme settings > Store contact\" to update these information."
+          },
+          {
+            "type": "checkbox",
+            "id": "show_email",
+            "label": "Show email",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_phone",
+            "label": "Show phone number",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_socials_link",
+            "label": "Show social icons",
+            "default": false
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Subscribe"
+          },
+          {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description",
+            "default": "Enter your email below to be the first to know about new collections and product launches."
+          },
+          {
+            "type": "text",
+            "id": "email_placeholder",
+            "label": "Email placeholder",
+            "default": "Enter your email"
+          },
+          {
+            "type": "select",
+            "id": "form_style",
+            "label": "Form style",
+            "default": "bordered",
+            "options": [
+              {
+                "value": "bordered",
+                "label": "Bordered"
+              }, {
+                "value": "minimal",
+                "label": "Minimal"
+              }
+            ]
+          }, {
+            "type": "checkbox",
+            "id": "show_social",
+            "label": "Show social link",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_agree_checkbox",
+            "label": "Show \"Terms & conditions\" checkbox",
+            "default": false
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "custom_text",
+        "name": "Custom content",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Custom text"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "image_max",
+            "label": "Image max-width (px)",
+            "default": "200px"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Content",
+            "default": "<p>Enter your email below to be the first to know about new collections and product launches.</p>"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      }, {
+        "type": "custom_html",
+        "name": "Custom HTML",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Custom text"
+          }, {
+            "type": "liquid",
+            "id": "html",
+            "label": "HTML",
+            "info": "Liquid code supported"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      }, {
+        "type": "spacing",
+        "name": "Spacing",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Use this block to make a spacing between columns"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "25%",
+            "options": [
+              {
+                "value": "16%",
+                "label": {
+                  "cs": "16 %",
+                  "da": "16 %",
+                  "de": "16%",
+                  "en": "16%",
+                  "es": "16%",
+                  "fi": "16 %",
+                  "fr": "16 %",
+                  "it": "16%",
+                  "ja": "16%",
+                  "ko": "16%",
+                  "nb": "16 %",
+                  "nl": "16%",
+                  "pl": "16%",
+                  "pt-BR": "16%",
+                  "pt-PT": "16%",
+                  "sv": "16 %",
+                  "th": "16%",
+                  "tr": "%16",
+                  "vi": "16%",
+                  "zh-CN": "16％",
+                  "zh-TW": "16%"
+                }
+              },
+              {
+                "value": "20%",
+                "label": {
+                  "cs": "20 %",
+                  "da": "20 %",
+                  "de": "20%",
+                  "en": "20%",
+                  "es": "20%",
+                  "fi": "20 %",
+                  "fr": "20 %",
+                  "it": "20%",
+                  "ja": "20%",
+                  "ko": "20%",
+                  "nb": "20 %",
+                  "nl": "20%",
+                  "pl": "20%",
+                  "pt-BR": "20%",
+                  "pt-PT": "20%",
+                  "sv": "20 %",
+                  "th": "20%",
+                  "tr": "%20",
+                  "vi": "20%",
+                  "zh-CN": "20％",
+                  "zh-TW": "20%"
+                }
+              },
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              }, {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              }, {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "83%",
+                "label": {
+                  "cs": "83 %",
+                  "da": "83 %",
+                  "de": "83%",
+                  "en": "83%",
+                  "es": "83%",
+                  "fi": "83 %",
+                  "fr": "83 %",
+                  "it": "83%",
+                  "ja": "83%",
+                  "ko": "83%",
+                  "nb": "83 %",
+                  "nl": "83%",
+                  "pl": "83%",
+                  "pt-BR": "83%",
+                  "pt-PT": "83%",
+                  "sv": "83 %",
+                  "th": "83%",
+                  "tr": "%83",
+                  "vi": "83%",
+                  "zh-CN": "83%",
+                  "zh-TW": "83%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,50 @@
+{% if settings.wishlist_page != blank %}
+  {% assign url = pages[settings.wishlist_page].url %}
+{% else %}
+  {% assign url = '/pages/wishlist' %}
+{% endif %}
+
+{% assign wishlist_app = settings.wishlist_app %}
+{% if wishlist_app == 'growave' %}
+  {% if shop.customer_accounts_enabled %}
+    {% assign ssw_fave_enabled = 1 %}
+    {% if shop.metafields.ssw['fave_enabled'] %}
+      {% assign ssw_fave_enabled = shop.metafields.ssw['fave_enabled'] | plus: 0 %}
+    {% endif %}
+    {% if ssw_fave_enabled == 1 %}
+      <a class="ssw-link-fave-menu ssw-link-fave-menu-hide-count relative px-2 py-3.5" href="{{ url }}" aria-label="{{ shop.metafields.ssw.lang.my_faves }}">
+              <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2">
+                {% render 'icon', name: 'star', size: 'medium' %}
+                <span class="sf__tooltip-content">{{ 'layout.wishlist.title' | t }}</span>
+              </span>
+        <span class="ssw-counter-fave-menu sf-wishlist-count" style="display:none">0</span>
+      </a>
+      <script defer>var sswFaveCounterMenuLoaded=true;</script>
+    {% endif %}
+  {% endif %}
+{% else %}
+  <a href="{{ url }}" class="header-heart {{ box_size | default: 'relative px-2 py-3.5' }}">
+    {% if display_by == 'icon' %}
+      <span class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 h">
+        {% comment %} <svg class="hrt-icon heart_light icon-fill" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512" id="heart">
+        <path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z"></path>
+      </svg> {% endcomment %}
+     
+        <svg class="hrt-icon_added" 
+          style="    width: 18px; height: 18px;"
+          xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                <path fill="#041d3a" d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z"></path>
+            </svg>
+                {% comment %} {% render 'icon', name: 'star', size: 'medium' %}
+                <span class="sf__tooltip-content">{{ 'layout.wishlist.title' | t }}</span> {% endcomment %}
+ <svg class="hrt-icon icon-fill" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512" id="heart">
+        <path fill="#041d3a" d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z"></path>
+        <path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z" style="opacity:0.8;"></path>
+      </svg> 
+            </span>
+    {% else %}
+      {{ 'layout.wishlist.title' | t }}
+    {% endif %}
+    {% comment %} <sup class="sf-wishlist-count font-medium"></sup> {% endcomment %}
+  </a>
+{% endif %}

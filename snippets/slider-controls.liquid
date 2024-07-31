@@ -1,0 +1,22 @@
+{% if show_pagination == nil %}
+    {% assign show_pagination = true %}
+{% endif %}
+
+{% if container == 'w-full' %}
+    {% assign show_nav = false %}
+{% endif %}
+<div class="sf-slider__controls mw_slide_arrow flex items-center justify-center mt-5 md:mt-0 -mx-2{% if absolute == true %} sf-slider__controls--absolute{% endif %}{% if container == 'w-full' %} sf-slider__controls--full{% endif %} {{ custom_class }}"{% if show_pagination %} style="--nav-offset: 25px"{% endif %}>
+    {% if show_nav %}
+    <button class="sf-slider__controls-button mw_arrow_color swiper-button-prev sf-slider__controls-prev border sm:hover:border-black rounded-full cursor-pointer mx-2 {{ nav_class }}">
+        {% render 'icon', name: 'prev' %}
+    </button>
+    {% endif %}
+    {% if show_pagination %}
+        <div class="swiper-pagination w-full{% if offset_top %} {{offset_top}}{% else %} sm:mt-6{% endif %} {{ dots_class }}"></div>
+    {% endif %}
+    {% if show_nav %}
+    <button class="sf-slider__controls-button mw_arrow_color swiper-button-next sf-slider__controls-next border sm:hover:border-black rounded-full cursor-pointer mx-2 {{ nav_class }}">
+        {% render 'icon', name: 'next' %}
+    </button>
+    {% endif %}
+</div>

@@ -1,0 +1,10 @@
+{% unless cart.cart_level_discount_applications.size == 0 %}
+  <ul class="scd-cart__discounts" role="list" data-discounts-list>
+  {% for discount in cart.cart_level_discount_applications %}
+    <li>
+      {% render 'icon', name: 'discount' %}
+      <span>{{ discount.title | upcase }}&nbsp;(-{{ discount.total_allocated_amount | money }})</span>
+    </li>
+  {% endfor %}
+  </ul>
+{% endunless %}

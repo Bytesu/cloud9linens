@@ -1,0 +1,118 @@
+<style>
+
+  {%- if section.settings.Background-image !=blank -%}
+  .main_section
+    {
+      
+      background-image: url({{section.settings.Background-image | img_url:'master'}});
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-position: center;
+    }
+  {% endif %}
+  </style>
+
+  <section class="main_section cus_masonry_back">
+<!-- Photo Grid -->
+<div class="row-masonry "> 
+
+  {% for blocks in section.blocks %}
+    <div class="column-masonry ">
+      <div class="masonry-inner">
+        {%- if blocks.settings.Secound_image !=blank -%}
+          <img src="{{blocks.settings.Secound_image | img_url:'master'}}">
+          {% else %}
+                {{ 'image' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full w-full h-full object-cover' }}
+        {%- endif -%}
+        <div class="masonry-text {{block.id}} {%- if blocks.settings.first-postion-text !=blank -%}masonry-text-right {% endif %}">
+          {%- if blocks.settings.First_Heading !=blank -%}
+            <h6>{{blocks.settings.First_Heading}}</h6>
+        {%- endif -%} 
+        </div>
+      </div>
+      <div class="masonry-inner">
+        {%- if blocks.settings.first_image !=blank -%}
+          <img src="{{blocks.settings.first_image | img_url:'master'}}">  
+         
+          {% else %}
+                {{ 'image' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full w-full h-full object-cover' }}                
+        {%- endif -%} 
+        <div class="masonry-text {{block.id}} {%- if blocks.settings.sec-postion-text !=blank -%}masonry-text-right {% endif %}">
+          {%- if blocks.settings.Secound_Heading !=blank -%}
+            <h6>{{blocks.settings.Secound_Heading}}</h6>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {% endfor %}  
+ 
+  
+</div>
+
+
+  </section>
+
+
+{%- schema -%}
+{
+  "name": "Masonry Grid",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "Background-image",
+        "label": "Background image"
+        }
+      ],
+      "blocks":[
+          {
+            "type": "block-1",
+            "name": "Column Masonry",
+            "settings": [
+              {
+                "type": "image_picker",
+                "id": "first_image",
+                "label": "Select first image"
+              },
+              {
+                "type": "text",
+                "id": "First_Heading",
+                "label": "First Heading",
+                "default": "Quick links"
+              },
+              {
+                "type": "checkbox",
+                "id": "first-postion-text",
+                "label": "First text in right postion",
+                "info":"By default its show in left",
+                "default": false
+              },
+              {
+                "type": "image_picker",
+                "id": "Secound_image",
+                "label": "Select Secound image"
+              },
+              {
+                "type": "text",
+                "id": "Secound_Heading",
+                "label": "Secound Heading",
+                "default": "Quick links"
+              },
+              {
+                "type": "checkbox",
+                "id": "sec-postion-text",
+                "label": "Secound text in right postion",
+                "info":"By default its show in left",
+                "default": false
+              }
+
+            ]
+          }
+      ], 
+      "presets": [
+          {
+            "name": "Masonry Grid"
+          } 
+        ]
+  }
+  {%- endschema -%}
+

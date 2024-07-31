@@ -1,0 +1,574 @@
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+
+{%- assign product = all_products[section.settings.featured_product] -%}
+{% if product == empty %}
+    {%- assign section_onboarding = true -%}
+{% endif %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{% assign image_placement = section.settings.image_placement %}
+
+{% capture onboarding %}
+  <div class="sf-prod__info-wrapper h-full relative">
+    <div class="sf-prod__info">
+      <a class="prod__title text-2xl md:text-3xl leading-10 font-medium mt-5 mb-2" href="#">
+        {{ 'homepage.onboarding.product_title' | t }}
+      </a>
+      <div class="prod_prices mt-2 mb-8 flex items-center">
+        <span class="text-xl prod__price sf-currency">
+            {{ 1999 | money }}
+        </span>
+      </div>
+      <div class="prod__description leading-7 text-base mt-4 mb-8">{{ 'homepage.onboarding.product_description' | t }}</div>
+      <div class="flex flex-wrap mb-5">
+        <button type="submit" class="add-to-cart sf__btn sf__btn-primary flex-grow flex-shrink relative">
+          <span>{{ 'products.product.add_to_cart' | t }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+{% endcapture %}
+
+  <section
+      id="sf__featured-product-{{ section.id }}"
+      data-section-type="featured-product"
+      data-section-id="{{ section.id }}"
+      class="sf-featured-product {{ section.settings.custom_class }}"
+      {% if has_bg %}
+      data-bg="{{ bg_color | color_to_hsl }}"
+      {% endif %}
+      style="background-color: {{ bg_color }};--column-gap: {{ section.settings.column_gap }}px; --column-gap-mobile: {{ section.settings.column_gap_mobile }}px; --row-gap-mobile: 30px;">
+	 
+    {% comment %}
+    MTS
+    <div class="{{ container }}">
+       <div class="sf-grid flex flex-wrap md:flex-nowrap sf-prod__block{% if image_placement == 'right' %} flex-row-reverse{% endif %}"
+             data-view="featured-product">
+            <div class="sf-column w-full md:w-1/2">
+            {% unless section_onboarding %}
+              {% render 'product-page__slider-1', product_layout: 'layout-4', product: product, show_dots: false %}
+            {% else %}
+              <div style="--aspect-ratio: 1/1;" class="bg-gray-100">
+                {{ 'product-1' | placeholder_svg_tag: 'object-cover w-full h-full' }}
+              </div>
+            {% endunless %}
+            </div>
+            <div class="sf-column w-full md:w-1/2">
+            {% if section_onboarding %}
+              {{ onboarding }}
+            {% else %}
+              {% render 'featured-product-info', product: product, section: section %}
+            {% endif %}
+            </div>
+       </div>
+    </div>
+    {% endcomment %}
+    
+    <div class="{{ container }}">
+       <div class="cus-feat-prod-wrapper flex flex-wrap md:flex-nowrap sf-prod__block{% if image_placement == 'right' %} flex-row-reverse{% endif %}"
+           data-view="featured-product"
+           style="margin: auto; border-bottom: 1px solid #A4A4A3; padding: 25px 0 50px;">
+          <div class="w-full md40 cus-featured-prod-img">
+            {% unless section_onboarding %}
+              {% render 'product-page__slider-1', product_layout: 'layout-4', product: product, show_dots: false %}
+            {% else %}
+              <div style="--aspect-ratio: 1/1;" class="bg-gray-100">
+                {{ 'product-1' | placeholder_svg_tag: 'object-cover w-full h-full' }}
+              </div>
+            {% endunless %}
+            {% render 'MTS-featured-product-info1', product: product, section: section %}
+          </div>
+          <div class="w-full md:w-2/3 cus-featured-prod-content">
+            {% if section_onboarding %}
+              {{ onboarding }}
+            {% else %}
+              {% render 'MTS-featured-product-info2', product: product, section: section %}
+            
+              {% comment %}
+              MTS
+              {% render 'featured-product-info', product: product, section: section %}
+              {% endcomment %}
+            
+            {% endif %}
+          </div>
+       </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Product",
+  "name": {{ product.title | json }},
+  "url": {{ shop.url | append: product.url | json }},
+  {%- if product.featured_media -%}
+  {%- assign media_size = product.featured_media.preview_image.width | append: 'x' -%}
+    "image": [
+      {{ product.featured_media | img_url: media_size | prepend: "https:" | json }}
+    ],
+  {%- endif -%}
+  "description": {{ product.description | strip_html | json }},
+  {%- if current_variant.sku != blank -%}
+    "sku": {{ current_variant.sku | json }},
+  {%- endif -%}
+  "brand": {
+    "@type": "Thing",
+    "name": {{ product.vendor | json }}
+  },
+  "offers": [
+    {%- for variant in product.variants -%}
+      {
+        "@type" : "Offer",
+        {%- if variant.sku != blank -%}
+          "sku": {{ variant.sku | json }},
+        {%- endif -%}
+        "availability" : "http://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+        "price" : {{ variant.price | divided_by: 100.00 | json }},
+        "priceCurrency" : {{ cart.currency.iso_code | json }},
+        "url" : {{ shop.url | append: variant.url | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+
+  </script>
+
+{% schema %}
+{
+  "name": {
+    "cs": "Propagovaný produkt",
+    "da": "Fremhævet produkt",
+    "de": "Vorgestelltes Produkt",
+    "en": "Featured product",
+    "es": "Producto destacado",
+    "fi": "Esittelyssä oleva tuote",
+    "fr": "Produit vedette",
+    "it": "Prodotto in primo piano",
+    "ja": "おすすめ商品",
+    "ko": "특별 상품",
+    "nb": "Utvalgt produkt",
+    "nl": "Uitgelicht product",
+    "pl": "Polecany produkt",
+    "pt-BR": "Produto em destaque",
+    "pt-PT": "Produto em destaque",
+    "sv": "Utvald produkt",
+    "th": "สินค้าที่แนะนำ",
+    "tr": "Öne çıkan ürün",
+    "vi": "Sản phẩm nổi bật",
+    "zh-CN": "特色产品",
+    "zh-TW": "精選產品"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container type",
+      "default": "container",
+      "options": [
+        {
+          "value": "container-fluid",
+          "label": "Default"
+        },
+        {
+          "value": "w-full",
+          "label": "Full width"
+        },
+        {
+          "value": "container",
+          "label": "Use container box"
+        }
+      ]
+    },
+    {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color",
+        "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": {
+        "cs": "Produkt",
+        "da": "Produkt",
+        "de": "Produkte",
+        "en": "Product",
+        "es": "Producto",
+        "fi": "Tuote",
+        "fr": "Produit",
+        "it": "Prodotto",
+        "ja": "商品",
+        "ko": "제품",
+        "nb": "Produkt",
+        "nl": "Product",
+        "pl": "Produkt",
+        "pt-BR": "Produto",
+        "pt-PT": "Produto",
+        "sv": "Produkt",
+        "th": "สินค้า",
+        "tr": "Ürün",
+        "vi": "Sản phẩm",
+        "zh-CN": "产品",
+        "zh-TW": "產品"
+      }
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Item gap",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 100,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "label": "item gap mobile",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "select",
+      "id": "image_placement",
+      "label": "Media placement",
+      "options": [
+        {
+          "label": "Left",
+          "value": "left"
+        },
+        {
+          "label": "Right",
+          "value": "right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "title",
+      "name": "Product title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variants selector",
+      "limit": 1
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_quantity_selector",
+          "default": true,
+          "label": "Show quantity selector"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_atc_button",
+          "default": true,
+          "label": "Show Add-to-cart button"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "Show dynamic checkout buttons",
+          "info": "Using the payment methods available on your store, customers see their preferred option, like PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+        }
+      ]
+    },
+    {
+      "type": "meta",
+      "name": "Product meta",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_collections",
+          "label": "Show collections list",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_sku",
+          "label": "Show SKU",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show product vendor",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "badge",
+      "name": "Custom tags",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Valid formats"
+        },
+        {
+          "type": "paragraph",
+          "content": "tag__hot_[DISPLAY_TEXT]"
+        },
+        {
+          "type": "paragraph",
+          "content": "tag__new_[DISPLAY_TEXT]"
+        },
+        {
+          "type": "paragraph",
+          "content": "tag__sale_[DISPLAY_TEXT]"
+        },
+        {
+          "type": "paragraph",
+          "content": "Example: tag__hot_-50% OFF, tag__new_NEW ARRIVAL"
+        }
+      ]
+    },
+    {
+      "type": "description",
+      "name": "Full description",
+      "limit": 1
+    },
+    {
+      "type": "short_description",
+      "name": "Short description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Add a metafield with namespace \"descriptor.short_description\" to display. [Add metafield](https://shopify.com/admin/metafields/product/create)"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Text block",
+          "label": "Text"
+        },
+        {
+          "type": "select",
+          "label": "Text style",
+          "id": "text_style",
+          "default": "body",
+          "options": [
+            {
+              "label": "Body text",
+              "value": "body"
+            },
+            {
+              "label": "Subtitle",
+              "value": "subtitle"
+            },
+            {
+              "label": "Uppercase",
+              "value": "uppercase"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "custom_text",
+      "name": "Richtext",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Custom text"
+        }
+      ]
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom liquid"
+        }
+      ]
+    },
+    {
+      "type": "shipping",
+      "name": "Shipping information",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_delivery_times",
+          "label": "Show delivery estimation",
+          "info": "How delivery times are generated?",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "deliver_text",
+          "label": "Delivery text",
+          "default": "Estimated Delivery:"
+        },
+        {
+          "type": "text",
+          "id": "deliver_days",
+          "label": "Deliver in:",
+          "info": "days (+/- 2 days)",
+          "default": "7"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_shipping_text",
+          "label": "Show Shipping text",
+          "default": true
+        },
+        {
+          "type": "richtext",
+          "id": "shipping_text",
+          "label": "Shipping text",
+          "default": "<p><strong>Free Shipping & Returns: </strong>On all orders over $75</p>"
+        }
+      ]
+    },
+    {
+      "type": "trust_badge",
+      "name": "Trust badge",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "trust_badges_text",
+          "label": "Heading",
+          "default": "<p>Guarantee safe & secure checkout</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "trust_badges_image",
+          "label": "Trust badges image"
+        },
+        {
+          "type": "text",
+          "id": "trust_badges_image_width",
+          "label": "Image width",
+          "default": "100%"
+        },
+        {
+          "type": "select",
+          "label": "Heading position",
+          "id": "position",
+          "default": "below",
+          "options": [
+            {
+              "label": "Text above image",
+              "value": "above"
+            },
+            {
+              "label": "Text below image",
+              "value": "below"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "collapsible_tab",
+      "name": "Collapsible tab",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Collapsible tab"
+        },
+        {
+          "type": "richtext",
+          "label": "Content",
+          "id": "content"
+        },
+        {
+          "type": "liquid",
+          "label": "Content by Liquid",
+          "id": "liquid",
+          "info": "Example: {{ product.description }}"
+        },
+        {
+          "type": "checkbox",
+          "label": "Default open",
+          "id": "default_open",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        {
+          "type": "title"
+        },
+        {
+          "type": "price"
+        },
+        {
+          "type": "variant_picker"
+        },
+        {
+          "type": "buy_buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

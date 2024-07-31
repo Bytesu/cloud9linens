@@ -1,0 +1,20 @@
+<div class="border-t pt-7 flex {% if blog.previous_article != nil and blog.next_article != nil %}justify-between{% elsif blog.previous_article != nil %}justify-start{% else %}justify-end{% endif %}" style="border-color: var(--border-color-1);">
+  {% if blog.previous_article != nil %}
+  <a href="{{blog.previous_article.url}}" class="flex flex-1 items-center py-2.5 {% if blog.previous_article != nil and blog.next_article != nil %}border-r{% endif %}" style="border-color: var(--border-color-1);">
+      {% render 'icon', name: 'arrow-left-medium', size: 'medium' %}
+      <div class="ml-5">
+          <div class="uppercase text-gray-400 font-medium text-xs lg:mb-1" style="color: var(--text-gray-9b);">{{ 'blogs.article.previous_post' | t }}</div>
+          <div class="text-black hidden md:block">{{ blog.previous_article.title }}</div>
+      </div>
+  </a>
+  {% endif %}
+  {% if blog.next_article != nil %}
+      <a href="{{blog.next_article.url}}" class="flex flex-1 justify-end items-center py-2.5">
+          <div class="mr-5 text-right">
+            <div class="uppercase text-gray-400 text-xs font-medium lg:mb-1" style="color: var(--text-gray-9b);">{{ 'blogs.article.next_post' | t }}</div>
+            <div class="text-black hidden md:block">{{ blog.next_article.title }}</div>
+          </div>
+          {% render 'icon', name: 'arrow-right', size: 'medium' %}
+      </a>
+  {% endif %}
+</div>

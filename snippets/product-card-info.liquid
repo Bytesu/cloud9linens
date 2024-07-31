@@ -1,0 +1,151 @@
+{% comment %}
+MTS
+<div class="mt-3 lg:mt-5">
+{% endcomment %}
+
+<div class="mt-3 lg:mt-5 res-prodcard mw_ftd_text_posi-{{ section.id }}">
+  <div class="max-w-full w-full cus-prodcard-title text-left">
+    <div class="w-3/4 md:w-full">
+
+    <div class="wish_trash_icon">
+      <button class="sf-wishlist__button sf__tooltip-left sf__tooltip-style-1" type="button" data-product-handle="{{product.handle}}">
+        <span class="sf__tooltip-icon block">
+          <svg width="20px" height="20px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#000000" d="M160 256H96a32 32 0 0 1 0-64h256V95.936a32 32 0 0 1 32-32h256a32 32 0 0 1 32 32V192h256a32 32 0 1 1 0 64h-64v672a32 32 0 0 1-32 32H192a32 32 0 0 1-32-32V256zm448-64v-64H416v64h192zM224 896h576V256H224v640zm192-128a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32zm192 0a32 32 0 0 1-32-32V416a32 32 0 0 1 64 0v320a32 32 0 0 1-32 32z"/></svg>
+      </button>
+    
+      
+    </div>
+
+    
+      {%- if show_vendor -%}
+        <span class="custom-didot sf__pcard-vendor block mob_fs_8 mb-2">{{ product.vendor }}</span>
+      {%- endif -%}
+      {% if show_title == true %}
+
+      {% comment %}
+      MTS
+      <h3 class="block text-base"></h3>
+      {% endcomment %}
+      
+      {% assign variant = product.selected_or_first_available_variant %}
+        
+      	{% comment %}
+        MTS
+        <h3 class="block text-base ml-2 {% if variant.compare_at_price > variant.price %} price--on-sale{% endif %}"></h3>
+        {% endcomment %}
+      
+        <h3 class="block text-base {% if variant.compare_at_price > variant.price %} price--on-sale{% endif %} mob_fs_8" style="font-size: 18px;">
+         
+          <a href="{{ product.url | within: collection }}" class="custom-pt-serif block mb-[5px] leading-normal sf__pcard-name font-medium truncate-lines hover:text-color-secondary{% if settings.uppercase_prd_name %} uppercase{% endif %} mob_fs_8 collect_title_wish">
+            {{ product.title }}
+            
+          </a>
+          <div class="posi_absolute">
+           <button class="sf__tooltip-item sf__btn-icon sf-wishlist__button sf__tooltip-left sf__tooltip-style-1" type="button" data-product-handle="{{product.handle}}">
+              <svg class="hrt-icon heart_light icon-fill" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 512 512" id="heart">
+              <path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z" fill="#041d3a"></path>
+            </svg>
+            <svg class="heart_red"
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                viewbox="0 0 24 24">
+                <path fill="#041d3a" d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z"/>
+            </svg>
+           </button>
+        </div>
+
+
+        </h3>
+      {% endif %}
+      {% if settings.show_review_badge %}
+        <div class="sf-pcard__reviews">
+          {% render 'product-reviews-app__badge', product: product %}
+        </div>
+      {% endif %}
+    </div>
+        
+  </div>
+
+      
+  <div class="{% if section.settings.hide_price == true %} mw_ftd_collect {% endif %} mob-pcard-content flex w-full md:justify-start pdl_10">
+      
+    {% comment %}
+    MTS
+    {% assign variant = product.selected_or_first_available_variant %}
+    <div class="sf__pcard-price leading-normal {% if variant.compare_at_price > variant.price %} price--on-sale {% endif %}">
+      {% render 'product-prices', product: product %}
+    </div>
+    {% endcomment %}
+
+    {% assign collection_handles = product.collections | map: 'handle' %}
+    {% assign variant = product.selected_or_first_available_variant %}
+
+    {% comment %}
+    MTS
+    <div class="sf__pcard-price leading-normal">
+    {% endcomment %}
+    
+    <div class="pb-2">
+      
+      {% if variant.compare_at_price > variant.price and collection.handle contains 'bundle-n-save' %}
+      <div class="sf__pcard-price leading-normal" style="display: flex;flex-direction: row; flex-wrap: wrap; margin-left:10px">
+          <span class="{{ cp_classes }} text-color-secondary" style="font-size: 16px !important; color: #888; display:flex; font-family: 'Minionpro';" >
+              $1200.00 - $700.00
+          </span>
+          <span class="flex bundle-n-save text-color-secondary" style="font-size: 16px !important; display:flex; font-family: 'Minionpro';">
+              {{ product.price_min | money }} - {{ product.price_max | money }}
+          </span>
+      </div>
+      {% elsif variant.compare_at_price > variant.price  %}
+      <div class="sf__pcard-price leading-normal">
+          <div class="flex price--on-sale">
+              {% render 'product-prices', product: product %}
+          </div>
+      </div>
+      {% else %}
+      <div class="sf__pcard-price leading-normal">
+        {% if product.price_max == product.price_min %}
+          {{product.price | money}}
+        {% else %}
+           {{ product.price_min | money }} - {{ product.price_max | money }}
+        {% endif %}
+      </div>
+      {% endif %}
+
+	</div>
+      
+
+    {% comment %}
+    </div>
+    {% endcomment %}
+    
+    <div class="w-1/4 block md:hidden sf__tooltip-item sf__btn-icon sf-wishlist__button sf__tooltip-top sf__tooltip-style-1" style="align-items: flex-start;margin-bottom: 0; padding-top:0;" data-product-handle="lewis-capitone-bed-cover-set">
+      <span class="sf__tooltip-icon block" style="font-family: 'Minionpro' !important;">
+		<div class="res-wishlist-icon"></div>
+      </span>
+    </div>
+  
+  </div>
+     <div class="wish_shop_btn">
+       <a href="{{ product.url | within: collection }}" class="block w-full">Shop Now</a>
+     </div> 
+  {% comment %} <div class="custom-source-pro product-form__actions pdl_10">   
+    <div class="flex flex-wrap" style="flex-direction: column;">              
+        <button type="submit" name="add" class="add-to-cart add_cart___btn_btn sf__btn flex-grow flex-shrink not-change relative sf__btn-primary mob_fs_8 pd_0" data-add-to-cart-text="Add to bag" style="text-transform: uppercase; color: #9b9b9b; border-radius: 0px; border-color: transparent !important; text-align:left; padding-left:0;">
+        <span class="atc-spinner inset-0 absolute items-center justify-center">
+        <svg class="animate-spin w-[20px] h-[20px] " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        </span>
+        <span class="not-change mob_fs__8" data-add-to-cart-text="Add to cart" data-sold-out="Sold Out" data-unavailable="Unavailable">Add to bag</span>
+        </button>
+      <a href="#" type="submit" name="add" class="sf__btn hidden flex-grow flex-shrink not-change relative mts-cus-btn-wishlist" style="text-transform: uppercase; border: 0px solid #000; border-radius: 0px;">
+              Gift a Friend
+      </a>
+    </div>
+  </div> {% endcomment %}
+
+  {% render 'product-card-variant-option', product: product %}
+</div>

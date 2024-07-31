@@ -1,0 +1,113 @@
+{% if show_thumbnails == nil %}
+    {% assign show_thumbnails = true %}
+{% endif %}
+{% if show_dots == nil %}
+    {% assign show_dots = true %}
+{% endif %}
+
+{% if product_layout == 'layout-5' and product.media.size < 3 %}
+  {% assign show_dots = false %}
+{% endif %}
+{% assign aspect_ratio = product.featured_image.aspect_ratio %}
+<div class="sf-pis__wrapper overflow-hidden w-1/2 md:w-full">
+    {% if product.media.size <= 1 %}
+        <div class="flex justify-center items-center w-full sf-pis__wrapper--{{ product.featured_media.media_type }}" style="--aspect-ratio: {{ aspect_ratio }}">
+            <div class="sf-prod-media-item">
+              {% render 'media', media: product.featured_media, media_class: 'w-full' %}
+              <div class="zoom-in transition-all opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5">
+                {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+              </div>
+            </div>
+        </div>
+    {% else %}
+      {% if product_layout == 'layout-5' %}
+        {% assign aspect_ratio = product.featured_image.aspect_ratio | times: 2 %}
+      {% endif %}
+  		
+  		{% comment %}
+  		MTS
+        <div style="--aspect-ratio: {{ aspect_ratio }}" class="sf-preview__wrapper mb-4 flex-grow">
+        {% endcomment %}
+          
+        <div style="--aspect-ratio: {{ aspect_ratio }}" class="sf-preview__wrapper flex-grow">  
+            <div>
+                <div class="swiper-container h-full group">
+                    <div class="swiper-wrapper main-slider sf-pis h-full">
+                        {% for media in product.media %}
+                            <div
+                                class="swiper-slide sf-prod-media-item relative media-type-{{ media.media_type }} overflow-hidden{% if media.media_type == 'image' %} cursor-zoom-in {% endif %}"
+                                data-index="{{ forloop.index0 }}"
+                                data-media-type="{{ media.media_type }}"
+                                data-aspect-ratio="{{ media.aspect_ratio | default: '1' }}"
+                            >
+                                {% render 'media', media: media %}
+                                <div class="zoom-in transition-all opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5">
+                                    {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                  
+                  	{% comment %}
+                  	MTS
+                    <div class="absolute z-10 pointer-events-none inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between px-4">
+                        <button class="swiper-button-control swiper-button-prev sf__btn-icon">
+                            {% render 'icon', name: 'prev', size: 'small' %}
+                        </button>
+                        <button class="swiper-button-control swiper-button-next sf__btn-icon">
+                            {% render 'icon', name: 'next', size: 'small' %}
+                        </button>
+                    </div>
+                  	{% endcomment %}	
+                  
+                </div>
+            </div>
+        </div>
+        {% if product_layout != 'layout-5' and show_thumbnails %}
+            <div class="sf-media-nav">
+              <div class="nav-swiper-container flex items-stretch sf-no-scroll-bar opacity-0 transition-all">
+                <div class="swiper-wrapper flex flex-nowrap w-auto max-w-none" style="min-width: 70px; justify-content: flex-end;">
+                  {% if show_dots %}
+                  	<div class="swiper-pagination"></div>
+                  {% endif %}
+                  
+                  {% comment %}
+                  {% for media in product.media %}
+                    {% assign aspect_ratio = media.aspect_ratio | default: 1 %}
+                    <div
+                      class="swiper-slide relative cursor-pointer" data-index="{{ forloop.index0 }}"
+                      {%- if product_layout == 'layout-6' -%}
+                        style="--slide-height: {{ 70 | divided_by: aspect_ratio }}px;"
+                      {%- endif -%}
+                    >
+                      {% render 'media', media: media, render_by_image: true %}
+                      {% if media.media_type contains 'video' %}
+                        <div class="absolute right-0 top-0 text-white bg-gray-800 p-1 rounded-sm">
+                          {% render 'icon', name: 'video', size: 'small' %}
+                        </div>
+                      {% endif %}
+                      {% if media.media_type == 'model' %}
+                        <div class="absolute right-0 top-0 text-white bg-gray-800 p-1 rounded-sm">
+                          {% render 'icon', name: 'cube', size: 'small' %}
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                  {% endcomment %}
+                  
+                </div>
+              </div>
+            </div>
+        {% else %}
+            {% if show_dots %}
+                <div class="swiper-pagination"></div>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+          
+    <div class="flex md:hidden" style="font-size:10px; color: #888; font-family: Minionpro!important; align-items: center;">
+      <span class="prod__additional_infos-label" style="margin-right: 10px; min-width: auto;">{{ 'products.product.sku' | t }} | </span>
+      <div class="prod__additional_infos-value prod__sku">{{ product.selected_or_first_available_variant.sku | default: 'N/A' }}</div>
+    </div>      
+    
+</div>

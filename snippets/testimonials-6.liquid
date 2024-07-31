@@ -1,0 +1,38 @@
+<div class="sf-testimonials__inner -mx-3">
+    <div class="swiper-container swiper--equal-height">
+        <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+                <div class="swiper-slide px-3" {{ block.shopify_attributes }} data-index={{ forloop.index0 }}>
+                    <div class="bg-white p-6 pb-0 flex rounded-[5px] h-full testimonial__item flex flex-col">
+                        <div class="testimonial__item-content flex flex-1 pb-5">
+                            <div class="flex-1">
+                                <div class="not-change testimonial__author font-medium">{{ block.settings.footer }}</div>
+                                {% if section.settings.show_stars %}
+                                    <div class="stars flex mb-4 mt-2">
+                                        {%- render 'testimonials__stars' -%}
+                                    </div>
+                                {% endif %}
+                                <h4 class="text-base mb-2.5 font-medium text-black">{{ block.settings.title }}</h4>
+                                <div class="text-color-subtext rte not-change text-base leading-[28px]">{{ block.settings.description }}</div>
+                            </div>
+                            {% if block.settings.image != blank %}
+                                <div class="flex-shrink-0 ml-6 w-[90px] 2xl:w-[128px] testimonial__item-thumb">
+                                    {% render 'responsive-image', image: block.settings.image %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        {% if block.settings.product != blank %}
+                        <div class="testimonial__item-footer border-t py-3 h-[75px]">
+                            {%- assign product = all_products[block.settings.product] -%}
+                            <a class="testimonial__item-product flex items-center" href="{{ product.url }}" target="_blank">
+                                {% render 'responsive-image', image: product.featured_image, wrapper_class: 'w-[42px] h-[50px] mr-4' %}
+                                <p class="m-0">{{ product.title }}</p>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

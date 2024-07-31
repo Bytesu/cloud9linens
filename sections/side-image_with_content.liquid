@@ -1,0 +1,115 @@
+<div class="side_image_with_content_mw {{ section.id }}">
+  <div class="side_image_with_content_inner">
+    <div class="side_content_with_media_mw">
+      <div class="side_content_mw">
+        <h2 class="sf-font">{{ section.settings.heading }}</h2>
+        <p class="custom-paragraph-font">{{ section.settings.desc }}</p>
+        <a href="{{ section.settings.btn_link }}">{{ section.settings.btn_label }}</a>
+      </div>
+      {% if section.settings.img_left != blank %}
+        <img width="100%" class="" src="{{ section.settings.img_left | img_url: 'master' }}" alt="">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <div class="side_media_mw">
+      {% if section.settings.img_right != blank %}
+        <img width="100%" class="" src="{{ section.settings.img_right | img_url: 'master' }}" alt="">
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Side content with media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "desc",
+        "label": "Description",
+        "default": "Description"
+      },
+      {
+        "type": "text",
+        "id": "btn_label",
+        "label": "Button label",
+        "default": "Button"
+      },
+      {
+        "type": "url",
+        "id": "btn_link",
+        "label": "Button link"
+      }, {
+        "type": "image_picker",
+        "id": "img_left",
+        "label": "Image"
+      }, {
+        "type": "image_picker",
+        "id": "img_right",
+        "label": "Image"
+      }, {
+        "type": "select",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "id": "left_right",
+        "default": "left",
+        "info": "Section position left/right",
+        "label": "Section alignment"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Side content with media"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  
+  @media screen and (min-width: 768px) {
+    .{{ section.id }} .side_content_mw {
+      max-width: 630px;
+      {% if section.settings.left_right == 'right' %}
+        margin-right: auto;
+        text-align: left;
+      {% else %}
+        margin-left: auto;
+        text-align: right;
+      {% endif %}
+     /* padding:50px 0; */
+    }
+    .{{ section.id }} .side_content_with_media_mw {
+      {% if section.settings.left_right == 'right' %}
+        order: 1;
+      {% endif %}
+    }
+  }
+
+
+@media screen and (max-width: 767px) {
+  .{{ section.id }} .side_content_mw {
+    padding:50px 20px;
+    padding-right: 50px;
+    text-align: right;
+    }
+  }
+</style>

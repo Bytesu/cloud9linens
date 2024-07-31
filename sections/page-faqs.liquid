@@ -1,0 +1,121 @@
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+
+{% render 'page-title', title: page.title, container: true %}
+
+<section class="sf__pages-other" data-section-id="{{ section.id }}" data-section-type="page-faqs">
+  <div class="{{ container }} {% if container == 'w-full' %} px-4{% endif %} pb-7 xl:pb-15">
+    <div class="flex flex-col-reverse lg:flex-row">
+      {% if section.settings.menu != blank %}
+        <div class="lg:w-3/12 lg:pr-24 mt-6 lg:mt-0">
+          <ul class="sf__list-row sf__list-row-border">
+            {%- for link in linklists[section.settings.menu].links -%}
+            <li{% if link.active %} class="active"{% endif %}><a href="{{ link.url }}"><span>{{ link.title }}</span></a></li>
+            {%- endfor -%}
+          </ul>
+        </div>
+      {% endif %}
+      <div class="{% if section.settings.menu != blank %}lg:w-9/12{% else %}w-full{% endif %}">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'content' %}
+              {% if block.settings.content != blank %}
+              <div class="{% if forloop.index == 1 %}mb-10{% else %}my-10{% endif %}">
+                {{ block.settings.content }}
+              </div>
+              {% endif %}
+            {% else %}
+              {% if block.settings.title != blank and block.settings.content != blank  %}
+              <div class="sf__accordio-blocks sf__custom-accordion">
+                <div class="sf__accordion-item{% if block.settings.open %} open{% endif %}">
+                  <h3 class="sf__accordion-button text-lg">{{ block.settings.title }}</h3>
+                  <div class="sf__accordion-content text-base text-color-subtext">{{ block.settings.content }}</div>
+                </div>
+              </div>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQs",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Settings"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Select menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "content",
+      "name": "Custom content",
+      "settings": [
+        {
+          "type": "html",
+          "id": "content",
+          "label": "Content",
+          "info": "Allow html code"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Heading",
+          "default": "Question Name"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Answer Content</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open Tab By Default",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

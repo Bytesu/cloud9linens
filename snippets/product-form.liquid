@@ -1,0 +1,111 @@
+{% comment %}
+    Renders a product form
+
+    Accepts:
+    - section_id: {String} Identifier of the section (required)
+    - product: {Object} Product Liquid object (required)
+    - current_variant: {String} Current (required)
+    - enable_dynamic_checkout: {Boolean} Show the dynamic checkout button (optional)
+    - show_quantity_selector: {Boolean} Show the quantity selector (optional)
+    - show_instant_quantity: {Boolean} Show instant quantity buttons after submitting the form (optional)
+
+    Usage:
+    {% render 'product-form',
+      section_id: section.id,
+      product: product,
+      current_variant: product.selected_or_first_available_variant,
+      enable_dynamic_checkout: section.settings.enable_dynamic_checkout,
+      show_quantity_selector: section.settings.show_quantity_selector,
+    %}
+{% endcomment %}
+
+{%- capture form_id -%}product-form-{{product.id}}__{{ "now" | date: "%L" }}{%- endcapture -%}
+{% if enableCardButton == nil %}
+    {% assign enableCardButton = true %}
+{% endif %}
+
+{%- form 'product', product, class: 'product-form form', novalidate: 'novalidate', data-product-id: product.id, data-product-handle: product.handle, id: form_id -%}
+    <div class="form__error-message-wrapper hidden" data-error-message-wrapper role="alert">
+        <span class="hidden">{{ 'general.accessibility.error' | t }} </span>
+        <span class="form__error-message"
+              data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
+    </div>
+    <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+    {%- unless product.has_only_default_variant -%}
+      <div class="product-options">
+        {% render 'product-option', product: product %}
+      </div>
+    {%- endunless -%}
+
+    <div class="product-form__actions">
+      {% if show_quantity_selector == true %}
+      {% comment %}
+      MTS
+        <label class="prod__option-label prod__option-label__quantity font-medium hidden md:block">
+          {{ 'products.product.quantity' | t }}
+        </label>
+      {% endcomment %}
+      {% endif %}
+      <div class="flex flex-wrap" style="flex-direction: column;">
+        {% if show_quantity_selector == true %}
+          <div class="form__input-wrapper form__input-wrapper--select mr-5 w-32" data-quantity-input-wrapper>
+            <label class="hidden prod__option-label font-medium md:hidden mb-4">
+              {{ 'products.product.quantity' | t }}
+            </label>
+            {% render 'product-qty-input' %}
+          </div>
+        {% endif %}
+        {% if enableCardButton %}
+          {% assign btn_class = 'sf__btn-primary' %}
+          {% if enable_dynamic_checkout %}
+            {% assign btn_class = 'sf__btn-secondary' %}
+          {% endif %}
+          {% if section.settings.hide_atc_button != true %}
+            {% render 'product-atc', class: btn_class, product: product %}
+          {% endif %}
+          {% if section.settings.show_atwl and section.settings.layout == 'layout-7' %}
+            <div class="ml-2 hidden md:block">{% render 'tooltip', type: 'wishlist', class_name: 'sf__tooltip-top' %}</div>
+          {% endif %}
+        {% endif %}
+        {% if enable_dynamic_checkout %}
+        
+        <div class="prod__dynamic_checkout buy-one-click{% if section.settings.hide_atc_button != true %} w-full mt-4{% else %} flex-1{% endif %}">
+            {{ form | payment_button }}
+        </div>
+        
+        {% comment %}
+          <div class="prod__dynamic_checkout buy-one-click{% if section.settings.hide_atc_button != true %} w-full mt-4{% else %} flex-1{% endif %}">
+            {{ form | payment_button }}
+          </div>
+        {% endcomment %}
+        
+        {% endif %}
+        
+        {% comment %}
+        Added by MTS
+        {% endcomment %}
+        <a
+           href="#"
+           type="submit"
+           name="add"
+           class="sf__btn flex-grow flex-shrink not-change relative cus-gaf-btn mts-cus-btn-wishlist"
+           style=""
+           >
+          Gift a Friend
+        </a>
+        
+        <a
+           href="#"
+           type="submit"
+           name="add"
+           class="sf__btn flex-grow flex-shrink not-change relative cus-wishlist-btn"
+           style=""
+           >
+          {% render 'wishlist-snippet', class_name: 'sf__tooltip-left, mts-cus-wishlist', product: product %}
+        </a>
+        
+      </div>
+
+    </div>
+    <div class="prod__form-error"></div>
+{%- endform -%}

@@ -1,0 +1,40 @@
+{%- assign item = section.settings -%}
+<div class="sf-page404 flex flex-col justify-center items-center py-32 lg:py-48" style="background: {{ item.bg_color }};">
+  <span class="mb-4">{%- render 'icon', name: 'frown-light', size: 'custom', class: 'w-16 h-16' -%}</span>
+  <p class="sf-title text-3xl lg:text-6xl lg:leading-tight font-medium" style="color: {{ item.t1_color }};">{{ 'general.404.title' | t }}</p>
+  <p class="text-3xl lg:text-6xl lg:leading-tight font-light mb-8" style="color: {{ item.t2_color }};">{{ 'general.404.subtext' | t }}</p>
+  <a href="{{ routes.root_url }}" class="sf__btn sf__btn-primary">{{ 'general.404.button' | t }}</a>
+</div>
+{% schema %}
+  {
+    "name": "404",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Background"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background Color",
+        "default": "#f5f1ed"
+      },
+      {
+        "type": "header",
+        "content": "Texts"
+      },
+      {
+        "type": "color",
+        "id": "t1_color",
+        "label": "Text 1 Color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "t2_color",
+        "label": "Text 2 Color",
+        "default": "#000"
+      }
+    ]
+  }
+{% endschema %}

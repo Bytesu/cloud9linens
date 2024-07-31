@@ -1,0 +1,44 @@
+{% if content_align == nil %}
+    {% assign content_align = settings.article_align_content %}
+{% endif %}
+{% if article_show_date == nil %}
+    {% assign article_show_date = settings.article_show_date %}
+{% endif %}
+{% if article_show_tags == nil %}
+    {% assign article_show_tags = settings.article_show_tags %}
+{% endif %}
+{% if article_show_excerpt == nil %}
+    {%- assign article_show_excerpt = settings.article_show_excerpt -%}    
+{% endif %}
+{% if article_show_button == nil %}
+    {% assign article_show_button = settings.article_show_button %}
+{% endif %}
+{% capture date %}{{ article.published_at | time_tag: format: 'month_day_year' }}{% endcapture %}
+<div class="sf__blog-card sf__view-{{ view }} {{ blog_class }}">
+    <a href="{{ article.url }}">
+        <div class="sf__blog-cardImage" {% if settings.article_image_aspect_ratio != 'original' %}style="--aspect-ratio: {{ settings.article_image_aspect_ratio }}"{% endif %}>
+            {% render 'responsive-image', image: article.image, aspect_ratio: settings.article_image_aspect_ratio, image_class: 'w-full h-full' %}
+        </div>
+    </a>
+    <div class="sf__blog-cardContent {{ content_align }}">
+        {%- if article.tags.size > 0 and article_show_tags -%}
+            <span class="sf__blog-cardTags">{%- for tag in article.tags limit: 1 -%}{{ tag | link_to_tag: tag }}{%- endfor -%}</span>
+        {%- endif -%}
+        {%- if article_show_date -%}
+            <span class="sf__blog-cardDate">{{ date }}</span>
+        {%- endif -%}
+        <h3 class="sf__blog-cardTitle"><a href="{{ article.url }}">{{ article.title }}</a></h3>
+        {%- if article_show_excerpt -%}
+            <div class="sf__blog-cardExcerpt hidden md:block">
+                {%- if article.excerpt.size > 0 -%}
+                    {{ article.excerpt | strip_html | truncatewords: 15, '...' }}
+                {%- else -%}
+                    {{ article.content | strip_html | truncatewords: 15, '...' }}
+                {%- endif -%}
+            </div>
+        {%- endif -%}
+        {%- if article_show_button -%}
+            <a class="sf__blog-cardReadmore sf__btn sf__btn-link" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a>
+        {%- endif -%}
+    </div>
+</div>

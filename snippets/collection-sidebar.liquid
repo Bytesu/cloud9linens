@@ -1,0 +1,93 @@
+{%- assign filters_type = section.settings.filters_type -%}
+{%- assign show_filter = section.settings.show_filter -%}
+{%- assign hide_filters_node = false -%}
+{%- if show_filter == false and section.settings.show_sorting -%}
+  {%- assign show_filter = true -%}
+  {%- assign hide_filters_node = true -%}
+  {%- assign filters_type = 'storefront_filters' -%}
+{%- endif -%}
+
+{%- assign has_filter = false -%}
+{%- if section.blocks.size > 0 -%}
+  {%- assign has_filter = true -%}
+{%- endif -%}
+
+{%- if filters_type == 'storefront_filters' -%}
+  {%- for filter in collection.filters -%}
+    {%- if forloop.first -%}
+      {%- if forloop.length > 0 -%}
+        {%- assign has_filter = true -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
+
+{%- assign position = section.settings.sidebar -%}
+
+{%- if show_filter and has_filter -%}
+{%- if filters_type == 'storefront_filters' -%}
+<script src="{{ 'collection-filters-2.0.min.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+ 
+<div class="sf__sidebar" data-type="{{ position }}">
+  <div class="sf__sidebar-content mw_{{ position }}">
+    {%- if section.settings.sidebar_title != blank -%}
+      {% comment %}
+      MTS
+      <h3 class="text-3xl p-5 font-medium {% if position != 'fixed' %}xl:px-0 xl:mb-8 xl:py-0{% endif %}">
+        {{ section.settings.sidebar_title }}
+      </h3>
+      {% endcomment %}
+      <h3 class="flex md:hidden text-3xl p-5 font-medium {% if position != 'fixed' %}xl:px-0 xl:mb-8 xl:py-0{% endif %}">
+        {{ section.settings.sidebar_title }}
+      </h3>
+    {%- endif -%}
+    
+    
+   
+    <div class="sf__sidebar-close cursor-pointer absolute top-5 right-5">{%- render 'icon', name: 'x', size: 'large' -%}</div>
+    
+    <div class="sf__sidebar-close cursor-pointer absolute right-5">{%- render 'icon', name: 'x', size: 'medium' -%}</div>
+    
+    <div class="sf__sidebar-wrapper">
+      <div class="sf__filter-wrapper cus_filter block md:flex"{%- if filters_type == 'tags_filter' -%} data-filters-block{%- endif -%}>
+        {%- if filters_type == 'storefront_filters' -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'collections' -%}
+                {%- render 'widget-collections-list', block: block, title_class: 'text-base font-medium' -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          {%- render 'storefront-filters', section: section -%}
+        {%- else -%}
+          {%- render 'filter-by-tags', section: section -%}
+        {%- endif -%}
+        
+        {% comment %}
+        MTS
+        {%- render 'collection-filters-sort-by' -%}
+        {% endcomment %}
+        
+        
+        <div class="select nodisplayphone mw_bestsell_hide{{position }}" style="margin-left: auto;">
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+         	<select style="width: 200px; font-size: 17px; letter-spacing: 1px; font-style: normal; font-family: minion pro;" name="sort_by" class="collection-filters__sort select__select" id="SortBy" aria-describedby="a11y-refresh-page-message">
+    <!--           {%- for option in collection.sort_options -%} -->
+                <option style="font-size: 15px; color: #666666;" 
+                  value="{{ option.value | escape }}"
+                  {% if option.value == sort_by %} selected="selected"{% endif %}
+                  data-index="{{ forloop.index0 }}"
+                >
+                  {{ option.name | escape }}
+                </option>
+<!--               {%- endfor -%} -->
+        	</select>
+      	</div>
+        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- endif -%}

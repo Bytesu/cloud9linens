@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="{{ 'customer-global.css' | asset_url }}" as="style">
+
+<h2 class="text-2xl font-medium mb-2 mob_fs_14 pdl_5vw">Orders</h2>
+<div class="main_order md:w-5/6 aic_address_info mb-24">   
+    {% for order in customer.orders %}
+    {% comment %} <p>Order ID: {{ order.order_number }}</p>
+    <p>Total: {{ order.total_price | money }}</p>
+    <p>Status: {{ order.financial_status }}</p>
+    <hr> {% endcomment %}
+    {% for line_item in order.line_items %}
+        {% assign product = line_item.product %}
+            <div class="order-in">
+                <div class="product-images">
+                  {% if product.images.size > 0 %}
+                    <img src="{{ product.images[0].src | img_url: 'master' }}" alt="{{ product.title }} - {{ product.images[0].alt }}">
+                  {% endif %}
+                </div>
+                    <h3 class="cus_fonts_serif fsz_14 mob_fs_12 mt-5">{{ product.title }}</h3>
+            </div>
+    {% endfor %}    
+{% endfor %}
+</div>

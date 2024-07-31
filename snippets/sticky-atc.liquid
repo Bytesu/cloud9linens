@@ -1,0 +1,83 @@
+{% assign class = '' %}
+{% unless section.settings.use_sticky_atc %}
+  {% assign class = 'md:hidden' %}
+{% endunless %}
+
+{% unless section.settings.use_sticky_atc_on_mobile %}
+  {% assign class = 'hidden md:block' %}
+{% endunless %}
+<div
+  class="mw_sticky_product_bar prod__sticky-atc {{ class }} sf-prod__block fixed z-40 bottom-0 inset-x-0 bg-white transition-transform translate-y-full{% if enable_dynamic_checkout %} enable-dynamic-checkout{% endif %}"
+  style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.09);" data-view="sticky-atc"
+>
+  <div class="{{ section.settings.container }}{% if section.settings.container == 'w-full' %} px-4{% endif %}">
+    {% form 'product', product, class: 'form product-form lg:container flex items-center justify-between', novalidate: 'novalidate',
+            data-product-id: product.id, data-product-handle: product.handle, id: 'sticky-atc-form'
+    %}
+    <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+    <div class="{% if product.has_only_default_variant %} flex {% else %} hidden {% endif %} md:flex pr-2">
+        <div class="spc__main-img cursor-pointer py-1.5">
+            {% render 'responsive-image', image: product.featured_image, sizes: "200px", image_class: 'h-full object-contain' %}
+        </div>
+        <div class="ml-6 psa__info">
+            <h3 class="psa__title text-base hover:text-color-primary-darker font-medium cursor-pointer line-clamp-1">
+                {{ product.title }}
+            </h3>
+            <div>
+                {% render 'product-prices', variant: product.selected_or_first_available_variant %}
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-shrink-0 items-center psa__form-controls {% unless product.has_only_default_variant %} w-full md:w-auto{% endunless %}">
+        {%- unless product.has_only_default_variant -%}
+            <select class="sf-product-variant-option-dropdown combined-variant md:hidden border border-color-border flex-grow rounded mr-5 pl-4 text-black" style="width: calc(100vw - 160px - 2.125rem);">
+                {% for variant in product.variants %}
+                  {% assign selected = false %}
+                  {%- if variant.id == product.selected_or_first_available_variant.id -%}
+                    {% assign selected = true %}
+                  {%- endif -%}
+                  <option value="{{ variant.id }}" {% if selected %}selected="true"{% endif %}>
+                    {{ variant.title }} - {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+            </select>
+            <select class="sf-product-variant-option-dropdown combined-variant hidden md:block border border-color-border flex-grow rounded mr-5 pl-4">
+                {% for variant in product.variants %}
+                  {% assign selected = false %}
+                  {%- if variant.id == product.selected_or_first_available_variant.id -%}
+                    {% assign selected = true %}
+                  {%- endif -%}
+                  <option value="{{ variant.id }}" {% if selected %}selected="true"{% endif %}>
+                    {{ variant.title }}
+                  </option>
+                {% endfor %}
+            </select>
+        {%- endunless -%}
+        {%- capture qty_input_class -%}
+            mr-2.5 lg:mr-5 lg:flex {% unless product.has_only_default_variant %}hidden{% endunless %}
+        {%- endcapture -%}
+        {% render 'product-qty-input', class: qty_input_class %}
+        {% assign btn_class = 'sf__btn-primary' %}
+        {% if enable_dynamic_checkout %}
+          {% assign btn_class = 'sf__btn-secondary' %}
+        {% endif %}
+        {% render 'product-atc', class: btn_class, product: product %}
+        {% if enable_dynamic_checkout %}
+            <div class="prod__dynamic_checkout buy-one-click md:ml-5">
+                {{ form | payment_button }}
+            </div>
+        {% endif %}
+      {% if section_settings.sticky_atc_wishtlist or section_settings.sticky_atc_compare %}
+        <div class="hidden lg:flex items-center ml-5">
+          {% if section_settings.sticky_atc_compare %}
+            {% render 'tooltip', type: 'compare', class_name: 'sf__tooltip-top' %}
+          {% endif %}
+          {% if section_settings.sticky_atc_wishtlist %}
+            {% render 'tooltip', type: 'wishlist', class_name: 'sf__tooltip-top' %}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+    {% endform %}
+  </div>
+</div>

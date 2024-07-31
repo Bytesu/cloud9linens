@@ -1,0 +1,115 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<div class="{{ section.settings.custom_class }}">
+<div class="mw_slider cus_sticky_wd">
+  {% for block in section.blocks %}
+    <div class="cus_slider_title {%if block.settings.heading_link contains page.handle %} active-page slick-active{%endif%}" style="width:20%;">
+      <a href="{{block.settings.heading_link}}">{{ block.settings.slide-heading }}</a>
+    </div>
+  {% endfor %}
+</div>
+</div>
+
+<style>
+  .slick-prev::before {
+    content: "";
+    background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/left.png?v=1674794336");
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+  .slick-next::before {
+    content: "";
+    background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/right.png?v=1674794335");
+    width: 32px;
+    height: 32px;
+    display: block;
+  }
+  .mw_slider {
+    width: 80%;
+    margin: 35px auto;
+  }
+  .mw_slider .slick-list.draggable {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .cus_slider_title {
+    text-align: center;
+  }
+  .cus_slider_title a {
+    color: #808080;
+  }
+  .slick-dotted.slick-slider {
+    margin-bottom: 0;
+    margin-top: 50px;
+  }
+  .sticky__cus {
+    position: fixed;
+    top: 25px;
+    z-index: 2;
+    background: #fff;
+    padding: 25px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    width: 100%;
+    transition: all 0.1s ease-out;
+  }
+  .sticky__cus .slick-list.draggable {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .slick-track {
+    display: flex;
+    align-items: center;
+}
+@media only screen and (max-width: 767px) {
+.services_slider_mob .mw_slider{
+  justify-content: space-between;
+}
+}
+</style>
+{% schema %}
+  {
+    "name": "custom title slider",
+    "settings": [
+      {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom Class"
+    }
+    ],
+    "blocks": [
+      {
+        "name": "content",
+        "type": "slide",
+        "settings": [
+          {
+            "type": "text",
+            "id": "slide-heading",
+            "label": "Slide Heading"
+          }, {
+            "type": "url",
+            "id": "heading_link",
+            "label": "Heading link"
+          }
+        ]
+      }
+    ],
+
+    "presets": [
+      {
+        "name": "custom title slider",
+        "category": "Content"
+      }
+    ]
+
+  }
+{% endschema %}

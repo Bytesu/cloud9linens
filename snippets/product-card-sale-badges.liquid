@@ -1,0 +1,37 @@
+{% assign variant = product.selected_or_first_available_variant %}
+{%- assign compare_at_price = variant.compare_at_price -%}
+{%- assign price = variant.price -%}
+
+{% assign discount = '' %}
+{% assign on_sale = false %}
+{% if compare_at_price > price %}
+  {% assign on_sale = true %}
+  {% assign discount = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price %}
+{% endif %}
+
+{% assign show_on_sale_badge = false %}
+{% if settings.on_sale_badge != 'hide' and on_sale %}
+  {% assign show_on_sale_badge = true %}
+{% endif %}
+
+{%- if settings.show_badge_sale or show_on_sale_badge -%}
+  <div class="sf__pcard-tags absolute flex flex-wrap">
+    {% render 'product-tags', product: product %}
+    {% if show_on_sale_badge %}
+      {%- if settings.on_sale_badge == 'show_percentage' -%}
+        {% assign sale_class = 'prod__tag-discounted' %}
+      {%- else -%}
+        {% assign sale_class = 'prod__tag-sale' %}
+      {%- endif -%}
+
+      <span class="py-0.5 px-2 mb-2 mr-2 font-medium rounded-xl text-white prod__tag {{ sale_class }}">
+        {%- if settings.on_sale_badge == 'show_text' -%}
+          {{ 'layout.products.product.on_sale' | t }}
+        {%- endif -%}
+        {%- if settings.on_sale_badge == 'show_percentage' -%}
+          -{{ discount }}%
+        {%- endif -%}
+      </span>
+    {% endif %}
+  </div>
+{%- endif -%}

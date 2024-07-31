@@ -1,0 +1,19 @@
+<div class="content-view-list mt-5 hidden">
+  <div class="leading-7 text-color-secondary mb-4">
+    {{ product.description | strip_html | truncatewords: 15, '...' }}
+  </div>
+  <div class="flex items-start">
+    {%- if settings.show_cart_button -%}
+      {%- if product.has_only_default_variant -%}
+        {% render 'product-atc', product: product, btn_text: quick_add_text, class: 'sf__btn-primary' %}
+      {% else %}
+        <button class="sf-pqv__button quick-add sf__btn sf__btn-primary" data-product-handle="{{ product.handle }}">
+          <span>{{ quick_add_text }}</span>
+        </button>
+      {% endif %}
+    {%- endif -%}
+    <div class="grid grid-cols-3 gap-2.5 ml-2.5">
+      {% render 'product-card-tooltips', product: product, position: 'bottom' %}
+    </div>
+  </div>
+</div>

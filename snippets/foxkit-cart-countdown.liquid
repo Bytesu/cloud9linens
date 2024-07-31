@@ -1,0 +1,22 @@
+{% assign f_cart_countdown = shop.metafields.foxecom-bs-kit.cart-countdown %}
+{% if f_cart_countdown != blank and f_cart_countdown.active == true %}
+  {% capture timer %}
+    <strong class="font-medium timer">
+      <span class="countdown-timer-minute">{{ f_cart_countdown.duration }}</span>
+      <span class="-ml-1">m</span>
+      <span class="countdown-timer-sec -ml-1">0</span>
+      <span class="-ml-1">s</span>
+    </strong>
+  {%endcapture%}
+  <div
+    class="mt-2 scd__countdown"
+    data-countdown-time="{{ f_cart_countdown.duration }}"
+    data-repeat="{{ f_cart_countdown.repeat }}"
+    data-timeout-message="{{ f_cart_countdown.message_out }}"
+  >
+    {% assign replace = "{{timer}}" %}
+    <p data-countdown-message>
+      🔥 {{ f_cart_countdown.message | replace: replace, timer }}
+    </p>
+  </div>
+{% endif %}

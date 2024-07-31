@@ -1,0 +1,61 @@
+{% if collection.metafields.custom.breadcrumb.value != blank %}
+	<div class="mw_breadcurmb_main  {% if section.settings.show_img %} breadcurmb_image-{{section.id}} {% endif %}">
+		<div class="mw_breadcurmb mw_breadcurmb_main__js {{section.id}}--mw_bread1">	
+			{{ collection.metafields.custom.breadcrumb.value }}	
+		</div>
+		{% if section.settings.show_title %}
+			<div class="cus_collet_title cstm__collec__title {{ section.id }}--mw_bread_title">
+			<h1 class="gg">	{{ collection.title }}	</h1>
+			</div>
+		{% endif  %}
+	</div>
+{% endif %}
+<style>
+  h1.gg {
+    font-size: 24px;
+}
+
+	.{{section.id}}--mw_bread1 {
+    background-color:{{ section.settings.bg-color }};
+    padding: 30px 0px 25px 0px;
+}
+</style>
+{% comment %} above style 
+ {% if collection.image != blank %}	
+		.breadcurmb_image-{{section.id}}{
+			background-image: url('{{ collection.image | img_url: 'master' }}');
+	}
+	{% endif %} {% endcomment %}
+{% schema %}
+{
+	"name": "Custom Breadcrumb",          
+	"settings": [
+		{
+		"type":"checkbox",
+		"id":"show_img",
+		"label":"Show Collections image",
+		"info":"Only show if collections image set on backend"
+		},
+		{
+		"type":"checkbox",
+		"id":"show_title",
+		"label":"Show BreaCrumb Title",
+		"info":"Only show if collections image set on backend"
+		},
+		{
+			"type": "color",
+			"id": "bg-color",
+			"label":"Background-color"
+		}
+
+	],
+	
+	"presets": [
+		{
+		"name": "Custom Breadcrumb",
+		"category": "Content"
+		}
+	]
+
+}
+{% endschema %}

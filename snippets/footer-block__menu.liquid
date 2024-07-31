@@ -1,0 +1,14 @@
+{% assign menu = linklists[block.settings.menu] %}
+{% if menu.links != blank %}
+  <ul class="sf__accordion-content ftr_menu ftr_navbar">
+    <div class="pb-5 md:pb-0 ftr_anchor_color cus_fonts_source">
+      {% for link in menu.links %}
+        <li class="link-lv2 leading-8 hover-underline hovr-undrline cstm__ftr__link__upcase">
+          <a href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        </li>
+      {% endfor %}
+    </div>
+  </ul>
+{% endif %}

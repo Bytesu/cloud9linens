@@ -1,0 +1,77 @@
+<div class="cus-customer-section sf-customer-section fixed top-0 transition-transform duration-300 left-full h-screen w-full z-[70]">
+    <div class="sf-customer-section__inner w-full h-full bg-white p-4 relative">
+        
+        {% comment %}
+      	MTS
+      	<button class="absolute top-4 right-4 close-btn" area-label="Close header">
+          {% render 'icon', name: "times" %}
+        </button>
+      	<div class="mt-8 customer-tabs sf-customer__forms">
+        </div>
+      	{% endcomment %}
+      
+        <div class="customer-tabs sf-customer__forms">
+            <div class="py-2 tab-header">
+                <label class="signin sf-user-tab-label">
+                    <input type="radio" name="customer-tab" data-tab="signin" class="hidden signin" checked="true">
+                    <span class="sf-customer__tab-login">{{ 'layout.customer.log_in' | t }}</span>
+                  	<span class="sf-customer__tab-reset hidden">Forgot Your Password</span>
+                  	{% comment %}
+                  	MTS
+                    <span class="sf-customer__tab-reset hidden">{{ 'customer.recover_password.title' | t }}</span>
+                    {% endcomment %}
+                  	<hr />
+                </label>
+                <label class="register sf-user-tab-label">
+                    <input type="radio" name="customer-tab" data-tab="register" class="hidden register">
+                    
+                  	{% comment %}
+                 	MTS
+                  	<span>{{ 'customer.register.title' | t }}</span>
+                    {% endcomment %}
+                  
+                  	<span>Create Account</span>
+                    <hr />
+                </label>
+            </div>
+          
+          	<div class="flex justify-center mt-2">
+              <button class="cus-account-close-btn close-btn" area-label="Close header">
+                {% render 'icon', name: "times", size: 'small' %}
+              </button>
+          	</div>
+              
+            <div class="w-full mt-2 tab-content signin">
+                <div class="sf-customer__login">
+                    <h3 class="flex cus-register-heading font-medium my-4">
+                      Welcome to Cloud9Linens!
+                    </h3>
+                    {% render 'form__login' %}
+                </div>
+                <div class="sf-customer__reset-password hidden">
+                  	<p class="mt-4 mb-2 cus-forgot-password-txt">Provide your account email address to receive an email to reset your password.</p>
+                  	{% comment %}
+                  	MTS
+                    <p class="mt-4 mb-2 text-color-secondary">{{ 'customer.recover_password.subtext' | t }}</p>
+                    {% endcomment %}
+                  	{% render 'form__recover-password' %}
+                </div>
+            </div>
+            <div class="w-full mt-2 tab-content register hidden">
+                <h3 class="flex cus-register-heading font-medium my-4">
+                  Welcome to Cloud9Linens!
+                </h3>
+                {% render 'form__register' %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% style %}
+    .sf-customer-section .customer-tabs input:checked ~ hr {
+        display: block;
+    }
+    .sf-customer-section .customer-tabs input:checked ~ span {
+        color: black;
+    }
+{% endstyle %}

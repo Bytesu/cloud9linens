@@ -1,0 +1,92 @@
+{% render 'page-title', title: page.title, container: true %}
+
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+{% if section.blocks.size > 0 %}
+<section data-section-type="contact-information" data-section-id="{{ section.id }}">
+  <div class="{{ container }}">
+    <div class="w-full md:flex flex-wrap md:-mx-8 xl:mx-0 xl:my-12 my-7">
+      {% for block in section.blocks %}
+        {% assign bs = block.settings %}
+        {% case block.type %}
+          {% when 'textblock' %}
+            <div class="md:w-3/12 md:px-8 sf__text-block mb-7">
+              <h3 class="font-medium text-lg mb-2.5 md:text-center">{{ bs.title }}</h3>
+              <div class="md:text-center rte text-color-subtext">{{ bs.content }}</div>
+            </div>
+          {% else %}
+            <div class="md:w-3/12 md:px-8 sf__text-block mb-7">
+              <h3 class="font-medium text-lg mb-2.5 md:text-center">{{ bs.title }}</h3>
+              <div class="-mx-4 md:text-center">{% render 'social-media-links', centermd: true %}</div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Contact Information",
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "textblock",
+      "name": "Text block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Block Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "7895 Piermont Dr NE Albuquerque, NM 198866, <a href='#'>See Our Stores</a>"
+        }
+      ]
+    },
+    {
+      "type": "socialmedia",
+      "name": "Social media",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Social Media"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

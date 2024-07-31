@@ -1,0 +1,99 @@
+{% layout none %}
+
+<div class="sf__pcard sf-prod-compare sf-prod__block">
+    {% form 'product', product, class: 'form product-form', novalidate: 'novalidate', data-product-id: product.id,
+        data-product-handle: product.handle %}
+    <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+
+    <a class="sf__pcard-image block group overflow-hidden cursor-pointer  relative" href="{{ product.url | within: collection }}">
+        <div style="height: 350px;">
+            {% render 'responsive-image', image: product.featured_image %}
+        </div>
+        <div class="transition-all duration-300 opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5 group-hover:opacity-100 group-hover:right-5">
+            {% render 'tooltip', type: 'remove-from-compare', product: product %}
+        </div>
+    </a>
+    <div class="sf__pcard-content mt-3">
+        <div>
+            {% if product.type %}
+                <p class="text-color-secondary text-sm uppercase">{{ product.type }}</p>
+            {% endif %}
+            <a href="{{ product.url | within: collection }}" class="font-medium hover:underline block my-2">{{ product.title | escape }}</a>
+            <div class="mb-2.5">
+                {% render 'product-prices', product: product %}
+            </div>
+        </div>
+
+        <div>
+            <button
+                type="submit"
+                class="add-to-cart sf__btn flex-grow flex-shrink relative min-w-max my-5
+                {% unless product.available %}
+                    disabled
+                {% endunless %}"
+                style="height: 42px;"
+            >
+                {% render 'atc-spinner' %}
+                <span data-add-to-cart-text="{{ 'products.product.add_to_cart' | t }}"
+                      data-sold-out="{{ 'products.product.sold_out' | t }}"
+                      data-unavailable="{{ 'products.product.unavailable' | t }}">
+            {% if product.available %}
+                {{ 'products.product.add_to_cart' | t }}
+            {% else %}
+                {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </span>
+            </button>
+            <div class="prod__form-error"></div>
+        </div>
+
+        <div>
+            <div class="flex border-b border-color-border py-5">
+                <div class="w-1/2 text-color-info">
+                    {{ 'products.product.availability' | t }}
+                </div>
+                {%- assign color = 'warning' -%}
+                {% if product.available %}
+                    {%- assign color = 'success' -%}
+                {% endif %}
+
+                <div class="w-1/2 flex justify-end text-color-{{ color }}">
+                    {% if product.available %}
+                        {% render 'icon', name: 'check', size: 'medium' %}
+                        <span class="ml-1">{{ 'products.product.in_stock' | t }}</span>
+                    {% else %}
+                        {% render 'icon', name: 'x', size: 'medium' %}
+                        <span class="ml-1">{{ 'products.product.unavailable' | t }}</span>
+                    {% endif %}
+                </div>
+            </div>
+            {% if product.vendor %}
+                <div class="flex border-b border-color-border py-5">
+                    <div class="w-1/2 text-color-info">
+                        {{ 'products.product.brand' | t }}
+                    </div>
+                    <div class="w-1/2 text-right">
+                        {{ product.vendor }}
+                    </div>
+                </div>
+            {% endif %}
+            {%- for option in product.options_with_values -%}
+                {% assign option_name = option.name | downcase %}
+                {% if option_name == "color" or option_name == 'colour' %}
+                    <div class="flex border-b border-color-border py-5">
+                        <div class="w-1/2 text-color-info">
+                            {{ 'products.product.colors' | t }}
+                        </div>
+                        <div class="w-1/2 text-right">
+                            {% for value in option.values %}
+                                {{ value }}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endform %}
+</div>
+

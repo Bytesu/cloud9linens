@@ -1,0 +1,121 @@
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+.main{
+padding: 70px 0;
+}
+.slick-slider {
+margin-bottom: 30px;
+overflow: hidden;
+}
+.slide-show .slick-slide{
+color:white;
+height:auto;
+margin: 0 auto;
+display: flex;
+gap: 20px;
+align-items: center;
+justify-content: center;
+transform: scale(0.8);
+transition: all 0.4s ease-in-out;
+flex-direction: column;
+}
+.slick-next, .slick-prev{
+z-index: 5;
+}
+.slick-next{
+right: 15px;
+}
+.slick-prev{
+left: 15px;
+}
+
+
+.img-text h4 {
+margin: 0 auto;
+font-size: 25px;
+font-weight: bold;
+color: black;
+}
+.img-text {
+text-align: center;
+}
+.img-text p {
+font-size: 19px;
+}slide
+
+</style>
+<section class="slick-slider-m">
+    <div class="main">
+        <div class="slider slide-show">
+            {% for block in section.blocks %}
+                <div class="img-wish">
+                    <img src="{{ block.settings.Slide_image | img_url:'master'}}">
+                    <div class="img-text">
+                        <h4>{{ block.settings.s_text}}</h4> 
+                        <p>{{ block.settings.s_para}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section> 
+
+
+{% schema %}
+{
+        "name": "Slick Slider",
+        "settings": [
+               
+        ],
+        "blocks": [
+                {
+            "type": "Slide",
+            "name": "Slide",
+            "settings": [
+                    {
+                            "type": "image_picker",
+                            "id": "Slide_image",
+                            "label": "Slide Image"
+                            
+                    },
+                    {
+                            "type": "text",
+                            "id": "s_text",
+                            "label": "Image Title"
+                    },
+                    {
+                            "type": "text",
+                            "id": "s_para",
+                            "label": "Image Para"
+                    }
+            ]
+    }
+],
+        "presets": [
+                {
+                        "name": "Slick Slider"
+                }
+        ]
+}
+{% endschema %}
+<script>
+
+
+$(".slider.slide-show").slick({
+  infinite: true,
+  slidesToShow: 1,
+  autoplay: true,
+  autoplaySpeed: 1000,
+  slidesToScroll: 1
+});
+		
+</script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>

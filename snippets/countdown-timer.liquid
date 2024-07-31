@@ -1,0 +1,39 @@
+{% if align_item == blank %}
+    {% assign align_item = 'center' %}
+{% endif %}
+<div class="{{ content_class }} flex lg:justify-{{ settings.align }} justify-center">
+    <div class="flex flex-col items-{{ align_item }}">
+        {% if settings.heading != blank %}
+            <h3 class="text-2xl md:text-4xl mb-5 sm:mb-11">{{ settings.heading }}</h3>
+        {% endif %}
+        <div id="countdown-timer-{{ containerId }}" class="flex countdown-timer-container opacity-0 transition-opacity" data-time="{{ settings.time }}">
+            <div class="mr-4 md:mr-5 md:w-20 text-center">
+                <div class="countdown-timer-day text-4xl md:text-6xl font-light">00</div>
+                <p class="uppercase font-medium text-xs text-center mt-2">{{ 'general.time.days' | t }}</p>
+            </div>
+            <div class="text-3xl text-color-secondary pt-0 md:pt-2">:</div>
+            <div class="mx-4 md:mx-5 md:w-20 text-center">
+                <div class="countdown-timer-hour text-4xl md:text-6xl font-light">00</div>
+                <p class="uppercase font-medium text-xs text-center mt-2 hidden md:block">{{ 'general.time.hours' | t }}</p>
+                <p class="uppercase font-medium text-xs text-center mt-2 block md:hidden">{{ 'general.time.hrs' | t }}</p>
+            </div>
+            <div class="text-3xl text-color-secondary pt-0 md:pt-2">:</div>
+            <div class="mx-4 md:mx-5 md:w-20 text-center">
+                <div class="countdown-timer-minute text-4xl md:text-6xl font-light">00</div>
+                <p class="uppercase font-medium text-xs text-center mt-2 hidden md:block">{{ 'general.time.minutes' | t }}</p>
+                <p class="uppercase font-medium text-xs text-center mt-2 block md:hidden">{{ 'general.time.mins' | t }}</p>
+            </div>
+            <div class="text-3xl text-color-secondary pt-0 md:pt-2">:</div>
+            <div class="ml-4 md:ml-5 md:w-20 text-center">
+                <div class="countdown-timer-sec text-4xl md:text-6xl font-light">00</div>
+                <p class="uppercase font-medium text-xs text-center mt-2 hidden md:block">{{ 'general.time.seconds' | t }}</p>
+                <p class="uppercase font-medium text-xs text-center mt-2 block md:hidden">{{ 'general.time.secs' | t }}</p>
+            </div>
+        </div>
+        {% if settings.button_label != blank %}
+            <div class="mt-8 md:mt-12">
+                <a class="sf__btn {{ settings.button_style }} {{ settings.button_size }} block" href="{{ settings.button_link }}">{{ settings.button_label }}</a>
+            </div>
+        {% endif %}
+    </div>
+</div>

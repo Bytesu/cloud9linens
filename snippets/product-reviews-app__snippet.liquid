@@ -1,0 +1,30 @@
+{% assign review_app = settings.review_app %}
+<div class="sf__product-reviews">
+  {% if custom_liquid != blank %}
+    {{ custom_liquid }}
+  {% else %}
+    {% case review_app %}
+      {% when 'shopify' %}
+        <div id="shopify-product-reviews" data-id="{{product.id}}">
+          {{ product.metafields.spr.reviews }}
+        </div>
+      {% when 'judge' %}
+        {% capture judgeme_widgets %}{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}{% endcapture %}
+        {% unless judgeme_widgets contains 'Liquid error' %}
+          {{ judgeme_widgets }}
+        {% else %}
+          {% render 'mm-judgeme-widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+        {% endunless %}
+      {% when 'loox' %}
+        <div id="looxReviews" data-product-id="{{ product.id }}" class="loox-reviews-default"></div>
+      {% when 'growave' %}
+        {% capture the_snippet_reviews %}{% render 'socialshopwave-widget-recommends' with 1 %}{% endcapture %}
+        {% unless the_snippet_reviews contains 'Liquid error' %}
+          {{ the_snippet_reviews }}
+        {% else %}
+          {% render 'mm-socialshopwave-widget-recommends' with 1 %}
+        {% endunless %}
+    {% endcase %}
+  {% endif %}
+</div>
+

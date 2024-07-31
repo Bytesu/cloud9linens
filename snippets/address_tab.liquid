@@ -1,0 +1,16 @@
+<div class="md:px-6 lg:px-12 xl:px-16 2xl:px-48 flex pd_0">
+    {% render 'customer-navs' %}
+    <div class="px-4 md:px-8 xl:px-16 2xl:px-24 md:w-5/6 wd_100 aic_addr">
+        <div class="mb-10">
+            <h2 class="text-2xl font-medium mb-2 h1">{{ 'customer.addresses.your_addresses' | t }} ({{ customer.addresses_count }})</h2>
+            <a href="/account/addresses"><button class="sf__btn sf-customer__add-new pd_0 " >
+                {% comment %} {{ 'customer.addresses.add_new' | t }} {% endcomment %}
+                ADD OR EDIT ADDRESS / ADDRESS DETAILS
+                </button></a>
+            <div data-address-form>
+                {% render 'form__address', new_or_edit: 'new', address: customer.new_address %}
+            </div>
+        </div>
+        {% render 'customer-addresses' %}
+    </div>
+</div>

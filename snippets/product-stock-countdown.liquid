@@ -1,0 +1,62 @@
+{% assign stock_countdown = shop.metafields['foxecom-bs-kit']['stock-countdown'] %}
+{% if stock_countdown != blank  and stock_countdown.active == true %}
+{% assign should_show = false %}
+
+{% assign applies_to = stock_countdown.applies_to %}
+{% assign target_collections = stock_countdown.target_collections %}
+{% assign target_products = stock_countdown.target_products %}
+
+{% if applies_to == 'specific_collections' %}
+    {% for collection in product.collections %}
+        {% if target_collections contains collection.handle %}
+            {% assign should_show = true %}
+            {% break %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% if applies_to == 'specific_products' %}
+  {% assign product_handles = '' %}
+  {% for product in target_products %}
+    {% assign product_handles = product_handles | append: product.handle | append: ',' %}
+  {% endfor %}
+  {% if product_handles contains product.handle %}
+      {% assign should_show = true %}
+  {% endif %}
+{% endif %}
+
+{% if applies_to == 'all_products' %}
+  {% assign should_show = true %}
+{% endif %}
+
+{% if should_show %}
+  {%- assign countdown_type = stock_countdown.countdown_type -%}
+  {%- assign from = stock_countdown.from -%}
+  {%- assign to = stock_countdown.to -%}
+
+  <div class="prod__stock-countdown" data-countdown-type="{{ countdown_type }}">
+    {%- if countdown_type == 'use_quantity' -%}
+      {%- assign number = product.selected_or_first_available_variant.inventory_quantity -%}
+    {%- else -%}
+      {%- assign hour = "now" | date: "%I" -%}
+      {%- assign range = to | minus: from -%}
+      {%- assign time_ratio = hour | divided_by: 12.0 -%}
+      {%- assign random_ratio_by_id = product.id | slice: 12 | plus: 1 | divided_by: 10.0 -%}
+      {%- assign combined_ratio = time_ratio | plus: random_ratio_by_id -%}
+      {%- if combined_ratio > 1 -%}
+        {%- assign combined_ratio = combined_ratio | minus: 1 -%}
+      {%- endif -%}
+      {%- assign delta = range | times: combined_ratio | ceil -%}
+      {%- assign number = to | minus: delta -%}
+    {%- endif -%}
+
+    {%- assign stock_countdown_number = "{{stock_number}}" -%}
+    {%- assign number = number | prepend: '<strong data-countdown-number>' | append: '</strong>' -%}
+
+    <div class="text-color-prod-desc">{{ stock_countdown.message | replace: stock_countdown_number, number }}</div>
+    <div class="my-3 h-[5px] bg-color-border rounded-[2px]">
+        <div data-stock-countdown-width="5%" style="width: 100%;" class="psc__progress transition-all duration-300 rounded-[2px] h-full"></div>
+    </div>
+  </div>
+{% endif %}
+{% endif %}

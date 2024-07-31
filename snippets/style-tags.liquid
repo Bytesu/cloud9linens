@@ -1,0 +1,175 @@
+{%- assign container_width = settings.container_width -%}
+{%- assign container_fluid_offset = settings.container_fluid_offset -%}
+{%- assign container_fluid_width = settings.container_fluid_width -%}
+{%- assign custom_css = settings.custom_css -%}
+
+{%- assign color_primary = settings.color_primary | color_to_hex -%}
+{%- assign color_primary_darker = '' -%}
+{%- if color_primary == '#000000' -%}
+	{%- assign color_primary_darker = settings.color_primary | color_lighten: 20 -%}
+{%- else -%}
+	{%- assign color_primary_darker = settings.color_primary | color_darken: 12 -%}
+{%- endif -%}
+{%- assign font_body_base = settings.type_base_size -%}
+{%- assign font_header_base = settings.type_header_base_size -%}
+
+{%- style -%}
+  {%- capture style -%}
+	:root {
+		/* BODY */
+		--base-line-height: {{ settings.type_base_line_height }};
+
+		/* PRIMARY COLORS */
+		--color-primary: {{ settings.color_primary }};
+		--plyr-color-main: {{ settings.color_primary }};
+		--color-primary-darker: {{ color_primary_darker }};
+
+		/* TEXT COLORS */
+		--color-body-text: {{ settings.color_body_text }};
+		--color-heading-text: {{ settings.color_heading_text }};
+		--color-sub-text: {{ settings.color_sub_text }};
+		--color-text-link: {{ settings.color_text_link }};
+		--color-text-link-hover: {{ settings.color_text_link_hover }};
+
+		/* BUTTON COLORS */
+		--color-btn-bg:  {{ settings.color_btn_bg }};
+		--color-btn-bg-hover: {{ settings.color_btn_bg_hover }};
+		--color-btn-text: {{ settings.color_btn_text }};
+		--color-btn-text-hover: {{ settings.color_btn_text_hover }};
+		--btn-letter-spacing: {{ settings.btn_letter_spacing }}px;
+		--btn-border-radius: {{ settings.btn_border_radius }}px;
+		--btn-border-width: {{ settings.btn_border_width }}px;
+		--btn-line-height: {{ settings.btn_line_height }}px;
+		{% if settings.btn_uppercase_text %}
+		--btn-text-transform: uppercase;
+		{% endif %}
+
+		/* PRODUCT COLORS */
+		--product-title-color: {{ settings.product_title_color }};
+		--product-sale-price-color: {{ settings.prod_sale_price_color }};
+		--product-regular-price-color: {{ settings.prod_regular_price_color }};
+		--product-type-color: {{ settings.prod_type_color }};
+		--product-desc-color: {{ settings.prod_desc_color }};
+
+		/* TOPBAR COLORS */
+		--color-topbar-background: {{ settings.color_topbar_bg }};
+		--color-topbar-text: {{ settings.color_topbar_text }};
+
+		/* MENU BAR COLORS */
+		--color-menu-background: {{ settings.color_menu_bar_bg }};
+		--color-menu-text: {{ settings.color_menu_bar_text }};
+
+		/* BORDER COLORS */
+		--color-border: {{ settings.color_border }};
+
+		/* FOOTER COLORS */
+		--color-footer-text: {{ settings.color_footer_text }};
+		--color-footer-subtext: {{ settings.color_footer_subtext }};
+		--color-footer-background: {{ settings.color_footer_bg }};
+		--color-footer-link: {{ settings.color_footer_link }};
+		--color-footer-link-hover: {{ settings.color_footer_link_hover }};
+		--color-footer-background-mobile: {{ settings.color_footer_bg_mb }};
+
+		/* FOOTER BOTTOM COLORS */
+		--color-footer-bottom-text: {{ settings.color_footer_bottom_text }};
+		--color-footer-bottom-background: {{ settings.color_footer_bottom_bg }};
+		--color-footer-bottom-background-mobile: {{ settings.color_footer_bottom_bg_mb }};
+
+		/* HEADER */
+		--color-header-text: {{ settings.color_header_link }};
+		--color-header-transparent-text: {{ settings.color_header_transparent }};
+		--color-main-background: {{ settings.color_main_bg }};
+		--color-field-background: {{ settings.color_field_bg }};
+		--color-header-background: {{ settings.color_header_bg }};
+		--color-cart-wishlist-count: {{ settings.color_cart_wishlist_count }};
+		--bg-cart-wishlist-count: {{ settings.bg_cart_wishlist_count }};
+
+		--swatch-item-background-default: #f7f8fa;
+		--text-gray-400: #777777;
+		--text-gray-9b: #9b9b9b;
+		--text-black: #000000;
+		--text-white: #ffffff;
+		--bg-gray-400: #f7f8fa;
+		--bg-black: #000000;
+		--rounded-full: 9999px;
+		--border-color-1: #eeeeee;
+		--border-color-2: #b2b2b2;
+		--border-color-3: #d2d2d2;
+		--border-color-4: #737373;
+
+		--color-secondary: #666666;
+		--color-success: #3a8735;
+		--color-warning: #ff706b;
+		--color-info: #959595;
+		--color-disabled: #cecece;
+
+		--bg-disabled: #f7f7f7;
+		--bg-hover: #737373;
+
+		--bg-color-tooltip: {{ settings.tooltip_background_color }};
+		--text-color-tooltip: {{ settings.tooltip_text_color }};
+
+		--color-image-overlay: {{ settings.img_overlay_bg }};
+		--opacity-image-overlay: {{ settings.img_overlay_opacity | divided_by: 100.00 }};
+		--theme-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.07);
+
+    --arrow-select-box: url({{ 'ar-down.svg' | asset_url }});
+
+		/* FONT SIZES */
+		--font-base-size: {{ font_body_base }};
+		--font-btn-size: {{ settings.btn_base_size }}px;
+		--font-btn-weight: {{ settings.btn_weight }};
+		--font-h1-desktop: {{ font_header_base | times: 1.35 | floor }};
+		--font-h1-mobile: {{ font_header_base | times: 1.25 | floor }};
+		--font-h2-desktop: {{ font_header_base | times: 1.05 | floor }};
+		--font-h2-mobile: {{ font_header_base | times: 1.05 | times: 0.9 | floor }};
+		--font-h3-desktop: {{ font_header_base | times: 0.78 | floor }};
+		--font-h3-mobile: {{ font_header_base | times: 0.78 | times: 0.9 | floor }};
+		--font-h4-desktop: {{ font_header_base | times: 0.68 | floor }};
+		--font-h4-mobile: {{ font_header_base | times: 0.68 | times: 0.9 | floor }};
+		--font-h5-desktop: {{ font_header_base | times: 0.58 | floor }};
+		--font-h5-mobile: {{ font_header_base | times: 0.58 | times: 0.9 | floor }};
+		--font-h6-desktop: {{ font_header_base | times: 0.54 | floor }};
+		--font-h6-mobile: {{ font_header_base | times: 0.54 | times: 0.9 | floor }};
+
+    --arrow-down-url: url({{ 'arrow-down.svg' | asset_url }});
+    --arrow-down-white-url: url({{ 'arrow-down-white.svg' | asset_url }});
+    --product-title-line-clamp: {{ settings.pcard_title_line_clamp }}
+	}
+  {%- endcapture -%}
+
+  {{ style | strip_newlines }}
+{%- endstyle -%}
+
+{%- if template.name == "product" -%}
+<link media="print" onload="this.media = 'all'" rel="stylesheet" href="{{ 'product-template.css' | asset_url }}">
+{%- endif -%}
+{%- if template.name == "collection" or template.name == 'list-collections' -%}
+<link media="print" onload="this.media = 'all'" rel="stylesheet" href="{{ 'collection.css' | asset_url }}">
+{%- endif -%}
+{%- if template.name == "gift_card" -%}
+<link media="print" onload="this.media = 'all'" rel="stylesheet" href="{{ 'template-giftcard.css' | asset_url }}">
+{%- endif -%}
+
+<link as="style" rel="preload" href="{{ 'theme.css' | asset_url }}" onload="__otsl(this)">
+<link as="style" rel="preload" href="{{ 'chunk.css' | asset_url }}" onload="__ocsl(this)">
+<link type="text/css" href="{{ 'custom.css' | asset_url }}" rel="stylesheet">
+{% if settings.enable_rtl %}
+<link as="style" rel="preload" href="{{ 'rtl.css' | asset_url }}" onload="__ocsl(this)">
+{% endif %}
+
+{%- style -%}
+  body {
+    --container-width: {{ container_width }};
+    --fluid-container-width: {{ container_fluid_width }}px;
+    --fluid-container-offset: {{ container_fluid_offset }}px;
+    background-color: {{ settings.color_main_bg }};
+  }
+  {%- if custom_css != blank -%}
+    {{ custom_css | strip_newlines }}
+  {%- endif -%}
+{%- endstyle -%}
+
+{% if request.path == '/challenge' %}
+  {% render 'customer-challenge-style' %}
+{% endif %}

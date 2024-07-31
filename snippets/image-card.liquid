@@ -1,0 +1,84 @@
+{% assign image = block.settings.image %}
+{% assign text_size = block.settings.text_size %}
+{% assign text_color = block.settings.text_color %}
+{{ text-color }}
+
+{% assign content_position = '' %}
+{% case block.settings.content_position %}
+    {% when 'top_left' %}
+        {% assign content_position = ' items-start justify-start' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-start sm:justify-start' %}
+        {% endif %}
+    {% when 'top_right' %}
+        {% assign content_position = ' justify-end items-start' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-start sm:justify-end' %}
+        {% endif %}
+    {% when 'top_center' %}
+        {% assign content_position = ' items-start justify-center' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-start sm:justify-center' %}
+        {% endif %}
+    {% when 'bottom_left' %}
+        {% assign content_position = ' items-end justify-start' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-end sm:justify-start' %}
+        {% endif %}
+    {% when 'bottom_right' %}
+        {% assign content_position = ' items-end justify-end' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-end sm:justify-end' %}
+        {% endif %}
+    {% when 'bottom_center' %}
+        {% assign content_position = ' justify-center items-end' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-end sm:justify-center' %}
+        {% endif %}
+    {% when 'center_left' %}
+        {% assign content_position = ' justify-start items-center' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-center sm:justify-start' %}
+        {% endif %}
+    {% when 'center_right' %}
+        {% assign content_position = ' items-center justify-end' %}
+        {% if stack_on_mobile == true %}
+            {% assign content_position = ' justify-center sm:items-center sm:justify-end' %}
+        {% endif %}
+    {% else %}
+        {% assign content_position = ' items-center justify-center' %}
+{% endcase %}
+
+{% assign content_class = ' pointer-events-none absolute p-5 sm:p-10 inset-0' | append: content_position %}
+{% if stack_on_mobile == true %}
+    {% assign content_class = ' sm:pointer-events-none sm:absolute inset-0 px-3 pt-2.5 sm:p-10' | append: content_position %}
+{% endif %}
+<div class="image-card {{ grid_columns }} sm:max-h-full {{ padding_bot | default: 'pb-0' }} {{ image_card_class }}">
+    <div class="image-card__inner relative sm:overflow-hidden flex flex-col h-full w-full">
+        {% if image != blank %}
+            <{% if block.settings.link %}a{% else %}div{% endif %} class="image-card__img block h-full" href="{{ block.settings.link | default: "#" }}">
+                {% render 'responsive-image', image: image, wrapper_class: 'w-full h-full' %}
+            </{% if block.settings.link %}a{% else %}div{% endif %}>
+        {% else %}
+            <div class="image-card__img  h-full w-full sf__placeholder-wrapper sf-image--loaded">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5 %}{% endcapture %}
+                {{ 'collection-' | append: current | placeholder_svg_tag: 'sf__placeholder-svg sf__placeholder-svg-no-border object-cover w-full h-full' }}
+            </div>
+        {% endif %}
+        <div class="image-card__content flex z-10 {{ content_class }}">
+            <div class="image-card__content-inner {% if stack_on_mobile == true %}text-center sm:text-{{ block.settings.content_alignment }}{% else %}text-{{ block.settings.content_alignment }}{% endif %}">
+                <div class="image__card-heading-group">
+                    {% if block.settings.subtitle != blank %}
+                    <p class="image__card-subheading {% if stack_on_mobile == true %}md:text-{{ text_color }}{% else %} text-{{ text_color }} {% endif %} text-sm md:text-base mb-2">{{ block.settings.subtitle }}</p>
+                    {% endif %}
+                    {% if block.settings.title != blank %}
+                        <h3 class="image__card-heading {% if stack_on_mobile == true %}md:text-{{ text_color }}{% else %} text-{{ text_color }} {% endif %} {% if text_size == 'medium' %}text-2xl sm:text-3xl md:text-4xl {% else %}text-2xl sm:text-5xl {% endif %} mb-4">{{ block.settings.title }}</h3>
+                    {% endif %}
+                </div>
+                {% if block.settings.button_label != blank %}
+                    <a href="{{ block.settings.link }}" class="pointer-events-auto sf__btn {{ block.settings.button_style }} {{ block.settings.button_size }} {% if stack_on_mobile == true %}md:text-{{ text_color }}{% else %}text-{{ text_color }}{% endif %}">{{ block.settings.button_label }}</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

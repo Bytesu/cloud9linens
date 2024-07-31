@@ -1,0 +1,130 @@
+<style>
+  .justify-between #contentright {
+    display: flex;
+    /*flex-direction: row-reverse;*/
+  }
+</style>
+{%- assign position = section.settings.sidebar -%}
+
+{%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+{%- for option in collection.sort_options -%}
+  {% if option.value == sort_by %}
+    {% assign sort_by_name = option.name | escape %}
+    {% break %}
+  {% endif %}
+{%- endfor -%}
+
+<div class="sf__collection-toolbar cus_side_mg" data-layout="{{ grid_layout }}">
+  <div class="sf__toolbar-wrapper transition-all duration-300 flex items-center justify-between">
+    <div class="flex sf__toggle-filter {% unless show_filter %}xl:hidden{% endunless %}">
+
+      <div class="flex w-full p-3 mw_{{position }}_icon ">
+        {%- if show_filter -%}
+          <button class="mw_show{{position }} flex items-center sf__sidebar-open mr-4 md:mr-8 font-medium w-1/3">
+
+            {% render 'icon', name: 'filter-icon', size: 'extra-small' %}
+            <span class="uppercase">{{ 'collections.toolbar.show_filter' | t }}</span>
+
+            {% comment %}
+            MTS
+            <span class="mr-2">{{ 'collections.toolbar.show_filter' | t }}</span>
+            {% render 'icon', name: 'chevron-down', size: 'extra-small' %}
+            {% endcomment %}
+
+          </button>
+        {%- endif -%}
+        {% if section.settings.show_sorting %}
+        {% comment %}
+          MTS
+          <button class="md:hidden sf__sortmb-icon flex items-center font-medium"></button>
+          {% endcomment %}
+
+          {% comment %} <button class="block md:hidden sf__sortmb-icon flex items-center font-medium w-2/3 justify-center">
+          <span class="mr-2 whitespace-nowrap">{{ 'collections.toolbar.sort_by_title' | t }}</span>
+          <span data-sortby-option>{{ sort_by_name }}</span>
+          {% render 'icon', name: 'chevron-down', size: 'extra-small' %}
+          </button> {% endcomment %}
+        {% endif %}
+      </div>
+
+      {% comment %}
+      Added by MTS
+
+      <div class="pb-2">
+      {% render 'collection-filters-product-count' %}
+      </div>{% endcomment %}
+
+    </div>
+
+    {% assign class_name = '' %}
+    {% if show_filter %}
+      {% if section.settings.sidebar != 'fixed' %}
+        {% assign class_name = 'md:w-full w-auto' %}
+      {% endif %}
+    {% else %}
+      {% assign class_name = 'md:w-full w-auto' %}
+    {% endif %}
+    <div id="contentright" class="flex  items-center justify-between sf__group-sortView{% unless section.blocks.size > 0 %} w-full{% endunless %}">
+      {% if section.settings.show_sorting %}
+        <div class="sf__collection-sort md:block" data-toolbar-sortby>
+          {% render 'collection-filters-sort-by' %}
+        </div>
+      {% endif %}
+      {% if section.settings.show_columns_switcher %}
+        <div class="mob_colect_hide sf__gridColumn-view flex flex-wrap" data-product-in-column="{{ grid_columns_view }}">
+          <a
+            href="#"
+            class="desk-hiiden mob-hidden flex sf__tooltip-item sf__tooltip-top sf__col-one{% if grid_layout == 'list' %} active{% endif %}"
+            data-column="1"
+            data-value="sf__col-one">
+            {% render 'icon', name: 'view-list', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.view_list' | t }}</span>
+          </a>
+          <a
+            href="#"
+            class="desk-hiiden flex sf__tooltip-item sf__tooltip-top sf__col-filter-one-grid"
+            data-column="filter-one-grid"
+            data-value="filter-one-grid">
+            {% render 'icon', name: 'view-grid-1column', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.grid_1cloumns' | t }}</span>
+          </a>
+          <a
+            href="#"
+            class="flex sf__tooltip-item sf__tooltip-top sf__col-two"
+            data-column="2"
+            data-value="sf__col-two">
+            {% render 'icon', name: 'view-grid-2column', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.grid_2cloumns' | t }}</span>
+          </a>
+          <a
+            href="#"
+            class="desk-hiiden hidden sf__tooltip-item sf__tooltip-top mob-hidden  sf__col-three"
+            data-column="3"
+            data-value="sf__col-three">
+            {% render 'icon', name: 'view-grid-3column', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.grid_3cloumns' | t }}</span>
+          </a>
+          <a
+            href="#"
+            class="sf__tooltip-item sf__tooltip-top  sf__col-four flex mob-hidden"
+            data-column="4"
+            data-value="sf__col-four">
+            {% render 'icon', name: 'view-grid-4column', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.grid_4cloumns' | t }}</span>
+          </a>
+          <a
+            href="#"
+            class="desk-hiiden  sf__tooltip-item sf__tooltip-top lg:flex sf__col-five mob-hidden"
+            data-column="5"
+            data-value="sf__col-five">
+            {% render 'icon', name: 'view-grid-5column', size: 'extra-small' %}
+            <span class="sf__tooltip-content text-[12px]">{{ 'collections.toolbar.grid_5cloumns' | t }}</span>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if position == 'collapse' %}
+    {%- render 'collection-sidebar', section: section -%}
+  {% endif %}
+</div>

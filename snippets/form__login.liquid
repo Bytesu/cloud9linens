@@ -1,0 +1,81 @@
+{{ 'customer-global.js' | asset_url | script_tag }}
+<link rel="stylesheet" href="{{ 'customer-global.css' | asset_url }}" as="style">
+
+{% comment %}
+  Added by MTS
+{% endcomment %}
+<div data-login-form class="flex flex-col-reverse cus-account-form">
+  {% form 'customer_login' %}
+    {%- comment -%}
+      {% if form.posted_successfully? %}
+      <div class="notification show success mb-3 text-base">
+      {{ 'customer.recover_password.success' | t }}
+      </div>
+      {% endif %}
+    {%- endcomment -%}
+    
+
+    <form-control-group class="added">
+      <label class="cus-account-label">Email Address</label>
+      <!-- <span>*Required</span> -->
+      <input
+        type="email"
+        name="customer[email]"
+        class="form-control"
+      >
+      <!-- <span>This field is required. </span> -->
+    </form-control-group>
+    <form-control-group class="added">
+      <label class="cus-account-label">Password</label>
+      <input
+        type="password"
+        name="customer[password]"
+        class="form-control"
+      >
+      {% render 'pwd-icon' %}
+    </form-control-group>
+    <div class="flex justify-between items-center">
+      <label class="cus-checkbox-btn flex items-center p-text p-text-2 weight-normal">
+        <input type="checkbox" checked="checked">
+        Remember Me
+      </label>
+      <a class="underline block my-3 sf-customer__reset-password-btn p-text p-text-2 weight-normal">{{ 'customer.login.forgot_password' | t }}</a>
+    </div>
+     
+     
+
+    <button class="sf__btn sf__btn-primary mt-2 mb-3 w-full bg-btn c-btn" type="submit">Sign In</button>
+    {% render 'form__error', form: form %}
+  {% endform %}
+</div>
+{% render 'sign-in-bottom',register:true %}
+<div data-login-form class="hidden flex-col-reverse">
+  {% form 'customer_login' %}
+    {%- comment -%}
+      {% if form.posted_successfully? %}
+      <div class="notification show success mb-3 text-base">
+      {{ 'customer.recover_password.success' | t }}
+      </div>
+      {% endif %}
+    {%- endcomment -%}
+    {% render 'form__error', form: form %}
+
+    <input
+      type="email"
+      name="customer[email]"
+      placeholder="{{ 'customer.login.email' | t }}"
+      class="form-control"
+    >
+    <input
+      type="password"
+      name="customer[password]"
+      placeholder="{{ 'customer.login.password' | t }}"
+      class="form-control"
+    >
+
+    <a class="underline block my-3 sf-customer__reset-password-btn">{{ 'customer.login.forgot_password' | t }}</a>
+    <button class="sf__btn sf__btn-primary mt-4  mb-3 w-full" type="submit">
+      {{ 'customer.login.sign_in' | t }}
+    </button>
+  {% endform %}
+</div>

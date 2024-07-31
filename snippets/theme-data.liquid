@@ -1,0 +1,251 @@
+{%- capture primary_locale -%}
+  {% for locale in shop.published_locales %}
+    {%- if locale.primary == true -%}
+      {{locale.iso_code}}
+    {%- endif -%}
+  {% endfor %}
+{%- endcapture -%}
+
+<script>
+    {%- capture color_swatches -%}
+      {%- for i in (1..100) -%}
+          {%- assign key = 'filter_color' | append: i -%}
+          {%- assign key2 = 'filter_color' | append: i | append: '.png' -%}
+
+          {%- capture texture_style -%}
+              {{ key2 | asset_url }}
+          {%- endcapture -%}
+
+          {%- if texture_style != '' and settings[key] != null and settings[key] != '' -%}
+              {{ key2 | json }}: {{ texture_style | json }},
+              {{ key | json }}: {{ settings[key] | json }},
+          {% endif %}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    window.spratlyThemeStrings = {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      inStock: {{ 'products.product.in_stock' | t | json }},
+      outOfStock: {{ 'products.product.out_of_stock' | t | json }},
+      checkout: {{ 'cart.general.checkout' | t | json }},
+      cartRemove: {{ 'cart.general.remove' | t | json }},
+      zipcodeValidate: {{ 'cart.general.zipcode_validate' | t | json }},
+      noShippingRate: {{ 'cart.general.no_found_shipping_rate' | t | json }},
+      shippingRatesResult: {{ 'cart.general.shipping_rates_result' | t | json }},
+      recommendTitle: {{ 'cart.general.recommend_title' | t | json }},
+      shipping: {{ 'cart.general.shipping' | t | json }},
+      add: {{ 'general.foxkit.add' | t | json }},
+      itemAdded: {{ 'general.notifications.item_added' | t | json }},
+      requiredField: {{ 'general.notifications.required_field' | t | json }},
+      hours: {{ 'general.time.hours' | t | json }},
+      mins: {{ 'general.time.mins' | t | json }},
+      sold: {{ 'products.product.sold' | t | json }},
+      available: {{ 'products.product.available' | t | json }}
+    }
+
+    window.spratlyThemeSettings = {
+        rootUrl: "{{ routes.root_url }}",
+        design_mode: {{ request.design_mode | json }},
+        requestPath: "{{ request.path }}",
+        template: "{{ template }}",
+        templateName: "{{ template.name }}",
+        {%- if template.name == "product" -%}
+          productHandle: "{{ product.handle }}",
+          productId: {{ product.id }},
+        {%- endif -%}
+        money_format: {{ shop.money_format | json }},
+        currency_code: {{ shop.currency | json }},
+        not_enough_item_message: "{{ 'products.product.not_enough_items_message' | t: quantity: '__inventory_quantity__' }}",
+        sold_out_items_message: "{{ 'products.product.sold_out_items_message' | t }}",
+        money_with_currency_format: {{ shop.money_with_currency_format | strip_html | json }},
+        {{- color_swatches | strip_html | strip_newlines | strip -}}
+        theme: {
+          id: {{ theme.id }},
+          name: "{{ theme.name }}",
+          role: "{{ theme.role }}",
+          online_store_version: "2.0",
+          preview_url: "{{ shop.url }}?preview_theme_id={{ theme.id }}",
+        },
+        foxkitAppURL: "{{ shop.metafields['foxecom-bs-kit'].shop.foxkitAppURL }}",
+        shop_domain: {{ shop.secure_url | json }},
+        shop_locale: {
+          published: {{ shop.published_locales | json }},
+          current: {{ request.locale.iso_code | json }},
+          primary: "{{ primary_locale | strip_newlines | strip }}",
+        },
+        enable_cart_drawer: {{ settings.enable_cart_drawer | json }}
+    };
+
+    window.adminThemeSettings = {
+      pcard_image_ratio: {{ settings.pcard_image_ratio | json }},
+      cookie_consent_allow: {{ settings.cookie_consent_allow | json }},
+      cookie_consent_message: {{ settings.cookie_consent_message | json }},
+      cookie_consent_placement: {{ settings.cookie_consent_placement | json }},
+      cookie_consent_learnmore_link: {{ settings.cookie_consent_learnmore_link | json }},
+      cookie_consent_learnmore: {{ settings.cookie_consent_learnmore | json }},
+      cookie_consent_theme: {{ settings.cookie_consent_theme | json }},
+      cookie_consent_decline: {{ settings.cookie_consent_decline | json }},
+      show_cookie_consent: {{ settings.show_cookie_consent | json }},
+      product_colors: {{ settings.product_colors | json }},
+      use_ajax_atc: {{ settings.use_ajax_atc | json }},
+      discount_code_enable: {{ settings.discount_code_enable | json }},
+    }
+
+    window.themeStyleURLs = {
+        foxkitApp: {
+            url: "{{ 'foxkit-app.css' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true // assets will load after window "loaded" event
+        },
+        productTemplate: {
+            url: "{{ 'product-template.css' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true // assets will load after window "loaded" event
+        },
+        collection: {
+            url: "{{ 'collection.css' | asset_url }}",
+            required: false
+        },
+        customer: {
+          url: "{{ 'customer.css' | asset_url }}",
+          required: {% if template contains "customers/" %} true {% else %} false {% endif %},
+        },
+        swiper: {
+            url: "{{ 'swiper.css' | asset_url }}",
+            required: {% if template.name == "product" %} true {% else %} false {% endif %},
+        },
+        cookieConsent: {
+            url: "{{ 'cookie-consent.css' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+        glightbox: {
+            url: "{{ 'glightbox.css' | asset_url }}",
+            required: {% if template.name == "product" %} true {% else %} false {% endif %},
+            afterWindowLoaded: true
+        },
+        plyr: {
+            url: "{{ 'plyr.css' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+    }
+
+    window.themeScriptURLs = {
+        productTemplate: {
+            url: "{{ 'product-template.min.js' | asset_url }}",
+            required: {% if template.name == "product" %} true {% else %} false {% endif %},
+            afterWindowLoaded: true
+        },
+        collection: {
+            url: "{{ 'collection.min.js' | asset_url }}",
+            required: {% if template.name == "collection" %} true {% else %} false {% endif %},
+        },
+        tagFilter: {
+          url: "{{ 'tags-filter.min.js' | asset_url }}",
+          required: false,
+        },
+        collectionFilterOS2: {
+          url: "{{ 'collection-filters-2.0.min.js' | asset_url }}",
+          required: false,
+        },
+        customer: {
+            url: "{{ 'customer.min.js' | asset_url }}",
+            required: {% if template == "customers/addresses" %} true {% else %} false {% endif %},
+        },
+        recentlyViewed: {
+            url: "{{ 'recently-viewed.min.js' | asset_url }}",
+            required: false,
+        },
+        salesNotification: {
+            url: "{{ 'sales-notifications.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        bundle: {
+            url: "{{ 'bundle.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        productRecommendations: {
+            url: "{{ 'product-recommendations.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        luckyWheel: {
+            url: "{{ 'lucky-wheel.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        prePurchase: {
+            url: "{{ 'pre-purchase.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        inCart: {
+            url: "{{ 'incart.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        cartGoal: {
+            url: "{{ 'cart-goal.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        quantityDiscount: {
+            url: "{{ 'quantity-discount.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        popup: {
+            url: "{{ 'popup.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: false
+        },
+        countdown: {
+            url: "{{ 'product-countdown.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+        productQuickView: {
+            url: "{{ 'product-quick-view.min.js' | asset_url }}",
+            required: true,
+            afterWindowLoaded: true
+        },
+        tabs: {
+            url: "{{ 'tabs.min.js' | asset_url }}",
+            required: false,
+        },
+        cookieConsent: {
+            url: "{{ 'cookie-consent.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+        glightbox: {
+            url: "{{ 'glightbox.min.js' | asset_url }}",
+            required: {% if template.name == "product" %} true {% else %} false {% endif %},
+            afterWindowLoaded: true
+        },
+        mansory: {
+            url: "{{ 'mansory-layout.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+        plyr: {
+            url: "{{ 'plyr.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        },
+        swiper: {
+            url: "{{ 'swiper.min.js' | asset_url }}",
+            required: {% if template.name == "product" %} true {% else %} false {% endif %},
+        },
+        parallax: {
+            url: "{{ 'simple-parallax.min.js' | asset_url }}",
+            required: false,
+            afterWindowLoaded: true
+        }
+    }
+</script>

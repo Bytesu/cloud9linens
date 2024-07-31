@@ -1,0 +1,19 @@
+<div class="sf__collection-sortmb md:hidden">
+  <div class="sf__sortmb-wrapper">
+    <div class="relative sf__sortmb-list">
+      <span class="cus-sortby-close-btn sf__hidden-sortmb p-3 absolute top-0 right-0">{% render 'icon', name: 'times', size: 'small' %}</span>
+      <span class="sf__sortmb-label text-2xl">{{ 'collections.sorting.title' | t }}</span>
+      <ul>
+        {% for option in collection.sort_options %}
+          <li
+            class="cursor-pointer{% if option.value == collection.sort_by %} active{% endif %}"
+            data-value="{{ option.value }}"
+            data-index="{{ forloop.index0 }}"
+          >
+            <span>{{ option.name }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>

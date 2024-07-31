@@ -1,0 +1,15 @@
+/* h1,h2,h3,h4,h5,h6{
+    font-family: "PT Serif", serif;
+}
+p,.sf-footer .sf__accordion-content  a{
+    font-family: 'SF-Body-font' !important;
+}
+.sf-footer .sf__accordion-button, .sf-footer .sf__footer-block-title{
+
+}
+.mw_ftr_menu_pd .sf__footer-block-title{
+    font-family: "PT Serif", serif !important;
+} */
+.mw_ftr_menu_pd:nth-child(2) {
+    font-family: "Source Code Pro", sans-serif !important;
+}

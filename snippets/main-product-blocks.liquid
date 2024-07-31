@@ -1,0 +1,579 @@
+{%- assign product_form_id = 'product-form-' | append: section.id -%}
+{%- form 'product', product,
+  id: product_form_id,
+  class: 'product-form form main-product h-full',
+  novalidate: 'novalidate',
+  data-product-id: product.id,
+  data-product-handle: product.handle,
+  data-enable-history-state: section.settings.enable_history_state
+-%}
+{% assign size_title = 'size' %}
+{% assign selected_variant = product.selected_or_first_available_variant %}
+{% if section.blocks.size > 0 %}
+  {% assign block_types = '' %}
+  {%- for block in section.blocks -%}
+    {% assign block_types = block_types | append: block.type | append: ',' %}
+  {%- endfor -%}
+
+  {%- for block in section.blocks -%}
+    {% if block.type == 'variant_picker' %}
+      {% assign size_title = block.settings.size_title | default: 'size' %}
+      {% break %}
+    {% endif %}
+  {%- endfor -%}
+
+  {% assign has_block_stock = false %}
+  {% assign has_block_countdown = false %}
+  {% if block_types contains 'foxkit_stock_countdown' %}
+    {% assign has_block_stock = true %}
+  {% endif %}
+  {% if block_types contains 'foxkit_countdown_timer' %}
+    {% assign has_block_countdown = true %}
+  {% endif %}
+
+  {% comment %}
+  MTS
+  <div class="main-product__blocks">
+  {% endcomment %}
+    
+  <div class="main-product__blocks" style="height:100%; display:flex; flex-direction:column; justify-content:space-between;"> 
+    <input hidden name="id" required value="{{ selected_variant.id }}">
+    {%- for block in section.blocks -%}
+      <div class="mob_grid_ctr fs_14 main-product__block main-product__block-{{ block.type }}" {{ block.shopify_attributes }}>
+        {%- case block.type -%}
+          {%- when '@app' -%}
+            {% render block %}
+          {%- when 'badge' -%}
+            {% assign has_tags = false %}
+            {% for tag in product.tags %}
+              {% if tag contains 'tag__' %}
+                {% assign has_tags = true %}
+              {% endif %}
+            {% endfor %}
+            {% if has_tags %}
+              <div class="mb-4 prod__tags">
+                {% render 'product-tags' %}
+              </div>
+            {% endif %}
+          {%- when 'breadcrumb' -%}
+          {% render 'breadcrumb', container: 'container', justify: 'left', hide_current: true %}
+
+          {%- when 'title' -%}
+
+            {% if section.settings.mw_custom_design != blank %}
+              {% if product.collections[0].title != blank %}
+                <div class="custom-didot collection___name mob_text_ctr ">
+                  Cloud9linens Home
+                </div>
+              {% endif %}
+            {% endif %}
+
+            <div class="prod__title cus-prod-title-wrapper flex justify-between items-center pr-2 pt-0.5 mob_text_ctr mw-border cstm-prd-title-wrapper">
+              
+              {% comment %}
+              MTS
+              <h1 class="text-2xl md:text-3xl md:leading-[42px] pr-2">{{ product.title }}</h1>
+              {% endcomment %}
+
+              
+              <h1 class="text-2xl md:leading-[42px] pr-2" style="">{{ product.title }}</h1>
+              {% if section.settings.show_atwl and section.settings.layout != 'layout-7' %}
+                <div class="hidden md:block">
+                  {% render 'wishlist-snippet', class_name: 'sf__tooltip-left', product: product %}
+                </div>
+              {% endif %}
+            </div>
+          {%- when 'price' -%}
+            <div class="prod__reviews-and-prices flex items-center justify-between mob_justi_ctr">
+              <div>
+                {% render 'product-prices', price_class: 'text-xl md:text-2xl' %}
+              </div>
+            </div>
+            <div class="installment-shoppay">{{ form | payment_terms }}</div>
+          {%- when 'short_description' -%}
+            {% if product.metafields.descriptor.short_description != blank %}
+              <div class="prod__description leading-6">{{ product.metafields.descriptor.short_description }}</div>
+            {% endif %}
+          {%- when 'description' -%}
+            <div class="product__description prose cus-prod-desc-wrapper pdp_mob_desc cstm__prd__desc_-wrapper">
+              <p class="custom____desc" style="font-weight:600; margin: 0 auto;">Style Details</p>
+              {{ product.description }}
+            </div>
+
+           {%- comment -%} connected products {%- endcomment -%}
+          {% if section.settings.mw_custom_design != blank %}
+            {% if product.metafields.custom.collection_include != blank %}
+              <div class="connected_product_name cstm_connected_product_name">
+                <p class="connected_product_name_heading cstm__connected_product_name_heading">Collection Includes :</p>
+                {% comment %} {{product.metafields.custom.collection_include}} {% endcomment %}
+                 <span class="custom-meta cstm__custom__meta">{{product.metafields.custom.collection_include | escape | newline_to_br}}</span>
+                {% comment %} {% for product in product.metafields.custom.connected_products.value %}
+                 <span>1 {{ product.title }}</span> 
+                {% endfor %} {% endcomment %}
+              </div>
+            {% endif %}
+
+            {% if product.metafields.custom.connected_products != blank %}
+            <div class="connected_product_name cstm_connected_product_name">
+              <p class="connected_product_name_heading cstm__connected_product_name_heading">Buy only the units :</p>
+              {% for product_include in product.metafields.custom.connected_products.value %}
+                <a href="#{{ product_include.title | split: ' ' }}">{{ product_include.title }}</a>
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% endif %}
+
+          {%- when 'meta' -%}
+            <ul class="prod__additional_infos cus-prod__additional_infos">
+              {% if block.settings.show_vendor and product.vendor != blank %}
+                <li>
+                  <span class="prod__additional_infos-label">{{ 'products.product.vendor' | t }} |</span>
+                  <div class="prod__additional_infos-value">{{ product.vendor | link_to_vendor }}</div>
+                </li>
+              {% endif %}
+              {% if block.settings.show_type and product.type != blank %}
+                <li>
+                  <span class="prod__additional_infos-label">{{ 'products.product.type' | t }} |</span>
+                  <div class="prod__additional_infos-value">{{ product.type | link_to_type }}</div>
+                </li>
+              {% endif %}
+              {% if block.settings.show_collections and product.collections.size > 0 %}
+                <li class="prod__categories">
+                  <div class="prod__additional_infos-label">{{ 'products.product.collections' | t }} |</div>
+                  <div class="prod__additional_infos-value">
+                    {% for collection in product.collections %}
+                      <a href="{{collection.url}}" class="hover:text-black">
+                        {{ collection.title }}{%- if forloop.last != true -%}, {%- endif -%}
+                      </a>
+                    {% endfor %}
+                  </div>
+                </li>
+              {% endif %}
+              {% if block.settings.show_availability %}
+                <li>
+                  <span class="prod__additional_infos-label">{{ 'products.product.availability' | t }} |</span>
+                  {% capture out_of_stock %}{{ 'products.product.out_of_stock' | t }}{% endcapture %}
+                  {% if out_of_stock contains 'translation missing' %}
+                    {% capture out_of_stock %}Out of stock{% endcapture %}
+                  {% endif %}
+                  <div class="prod__additional_infos-value prod__availability{% unless selected_variant.available %} prod__availability--outofstock{% endunless %}" data-availability>{% if selected_variant.available %}{{ 'products.product.in_stock' | t }}{% else %}{{ out_of_stock }}{% endif %}</div>
+                </li>
+              {% endif %}
+              {% if block.settings.show_sku %}
+                <li class="cus-prod-sku" style="margin-top:0; font-size: 14px;">
+                  <span class="prod__additional_infos-label" style="margin-right:0; min-width:50px;">{{ 'products.product.sku' | t }} |</span>
+                  <div class="prod__additional_infos-value prod__sku" data-product-sku>{{ selected_variant.available | default: 'N/A' }}</div>
+                </li>
+              {% endif %}
+            </ul>
+          {%- when 'custom_field' -%}
+            {% assign field_type = block.settings.field_type %}
+            {% assign field_options = block.settings.field_options %}
+            {% assign field_name = block.settings.title %}
+            {% assign field_placeholder = block.settings.field_placeholder %}
+            {% assign field_required = block.settings.field_required %}
+            {% assign show_at_checkout = block.settings.show_at_checkout %}
+
+            <div class="product__custom-field" data-theme-fields data-field-type="{{ field_type }}">
+              <label class="prod__option-label font-medium" for="{{ block.id }}">
+                {{ field_name }}{% if field_required %}<sup>*</sup>{% endif %}
+              </label>
+              {% unless show_at_checkout %}
+                {% assign field_name = field_name | prepend: '_' %}
+              {% endunless %}
+              <div class="product__custom-field-wrapper">
+                {% case field_type %}
+                  {% when 'text' %} 
+                    <input type="text" id="{{ block.id }}" class="form-control" placeholder="{{ field_placeholder }}" name="properties[{{- field_name -}}]"{% if field_required %} required{% endif %}>
+                  {% when 'textarea' %}
+                    <textarea id="{{ block.id }}" class="form-control" placeholder="{{ field_placeholder }}" name="properties[{{- field_name -}}]"{% if field_required %} required{% endif %}></textarea>
+                  {% when 'select' %}
+                    {% assign options = field_options | newline_to_br | split: '<br />' %}
+                    <select id="{{ block.id }}" class="form-control" name="properties[{{- field_name -}}]"{% if field_required %} required{% endif %}>
+                      {% if field_placeholder != blank %}<option value="">{{ field_placeholder }}</option>{% endif %}
+                      {% for option in options %}
+                        <option value="{{ option }}" label="{{ option }}">{{ option }}</option>
+                      {% endfor %}
+                    </select>
+                {% endcase %}
+
+              </div>
+            </div>
+          {%- when 'image_field' -%}
+            {% assign field_name = block.settings.title %}
+            {% assign field_required = block.settings.field_required %}
+            {% assign show_at_checkout = block.settings.show_at_checkout %}
+
+            <div class="product__custom-field" data-theme-fields data-field-type="image_field">
+              <label class="prod__option-label font-medium" for="{{ block.id }}">
+                {{ field_name }}{% if field_required %}<sup>*</sup>{% endif %}
+              </label>
+              {% unless show_at_checkout %}
+                {% assign field_name = field_name | prepend: '_' %}
+              {% endunless %}
+              <div class="product__custom-field-wrapper">
+                <input type="file" accept="image/*" id="{{ block.id }}" class="form-control" name="properties[{{- field_name -}}]"{% if field_required %} required{% endif %}>
+              </div>
+            </div>
+          {%- when 'visitors' -%}
+            {% assign live_views_min = block.settings.live_views_range | split: '-' | first %}
+            {% assign live_views_max = block.settings.live_views_range | split: '-' | last %}
+            {% assign modulo_numb = live_views_max | minus: live_views_min %}
+            {%- assign live_views_current = "now" | date: '%S' | modulo: modulo_numb | plus: live_views_min -%}
+
+            <div
+              class="prod__live-views flex items-center"
+              data-live-views-current="{{ live_views_current }}"
+              data-live-views-min="{{ live_views_min }}"
+              data-live-views-max="{{ live_views_max }}"
+              data-live-views-duration="{{ block.settings.live_view_duration }}"
+            >
+              <span class="flex-shrink-0 mr-2 {% if block.settings.live_view_icon_blinks %} animate-pulse{% endif %}" style="animation-duration: 1s;">
+                  {% render 'icon', name: 'eye-regular', size: 'medium' %}
+              </span>
+              <div class="live-views-text">
+                {%- assign live_views_numb = '{count_number}' -%}
+                {{ block.settings.live_views_text | replace: live_views_numb, live_views_current }}
+              </div>
+            </div>
+          {%- when 'foxkit_stock_countdown' -%}
+            {% render 'product-stock-countdown', product: product %}
+          {%- when 'foxkit_countdown_timer' -%}
+            {% assign sold_number = product.metafields.foxkit.sold_number %}
+            <div
+              class="prod__countdown hidden"
+              data-days="{{ 'general.time.days' | t }}"
+              data-hrs="{{ 'general.time.hrs' | t }}"
+              data-mins="{{ 'general.time.mins' | t }}"
+              data-secs="{{ 'general.time.secs' | t }}"
+              data-sold-number="{{ sold_number }}"
+            ></div>
+          {%- when 'variant_picker' -%}
+            {%- unless product.has_only_default_variant -%}
+              <div class="product__variant-picker product-options">
+                {% render 'product-option', product: product, size_title: size_title %}
+                
+              </div>
+            {%- endunless -%}
+        	
+        	{% comment %}
+        	MTS
+        	{% endcomment %}
+        	<div class="custom___qty cus-qty form__input-wrapper form__input-wrapper--select mr-5 w-32" data-quantity-input-wrapper>
+
+              <label class="custom___qty_label prod__option-label font-medium md:hidden">
+                {{ 'products.product.quantity' | t }}
+              </label>
+              
+              {% render 'product-qty-input' %}
+       		</div>
+        
+          {%- when 'buy_buttons' -%}
+            {% if has_block_countdown == false %}
+              <div
+                class="prod__countdown hidden"
+                data-days="{{ 'general.time.days' | t }}"
+                data-hrs="{{ 'general.time.hrs' | t }}"
+                data-mins="{{ 'general.time.mins' | t }}"
+                data-secs="{{ 'general.time.secs' | t }}"
+              ></div>
+            {% endif %}
+            {% if has_block_stock == false %}
+                {% render 'product-stock-countdown', product: product %}
+            {% endif %}
+
+            {% if section.settings.mw_custom_design != blank %}
+              <div class="connected_size_chart" style="margin-top: 30px; text-align: center;">
+                <div class="connected_size_chart_icon">
+                  <a href="">
+                    {% render 'size-chart' %}
+                  </a>
+                </div>
+                <p style="color: #949494;"><a href="">Size Chart</a></p>
+              </div>
+            {% endif %}
+
+            <div class="custom-source-pro product-form__actions{% if block.settings.show_dynamic_checkout %} enable-dynamic-checkout{% endif %}">
+              {% if block.settings.show_quantity_selector == true %}
+              	{% comment %}
+                MTS
+                <label class="prod__option-label prod__option-label__quantity font-medium hidden md:block">
+                  {{ 'products.product.quantity' | t }}
+                </label>
+              	{% endcomment %}
+              {% endif %}
+              
+              {% comment %}
+              MTS
+			  <div class="flex flex-wrap items-end">
+              {% endcomment %}
+                
+              <div class="flex flex-wrap" style="flex-direction: column;">
+                
+                {% comment %}
+                MTS
+                {% if block.settings.show_quantity_selector %}
+                  <div class="form__input-wrapper form__input-wrapper--select mr-5 w-32" data-quantity-input-wrapper>
+                    <label class="prod__option-label font-medium md:hidden">
+                      {{ 'products.product.quantity' | t }}
+                    </label>
+                    {% render 'product-qty-input' %}
+                  </div>
+                {% endif %}
+                {% endcomment %}
+                
+                {% if block.settings.show_atc_button %}
+                  {% assign btn_class = 'sf__btn-primary' %}
+                  {% if block.settings.show_dynamic_checkout %}
+                    {% assign btn_class = 'sf__btn-secondary' %}
+                  {% endif %}
+                  {% render 'product-atc', class: btn_class, product: product %}
+                  {% if section.settings.show_atwl and section.settings.layout == 'layout-7'  %}
+                    <div class="ml-2 hidden md:block">{% render 'tooltip', type: 'wishlist', class_name: 'sf__tooltip-top' %}</div>
+                  {% endif %}
+                {% endif %}
+                {% assign show_terms = false %}
+                {% if settings.agree_text != blank and settings.show_agree_on_product %}
+                  {% render 'agree-terms-checkbox' %}
+                  {% assign show_terms = true %}
+                {% endif %}
+                {% if block.settings.show_dynamic_checkout %}
+                
+                {% comment %}
+                  By MTS
+                  <div class="prod__dynamic_checkout buy-one-click{% if block.settings.show_atc_button %} w-full mt-5{% else %} flex-1{% endif %}"{% if show_terms %} data-terms-action disabled{% endif %}>
+                {% endcomment %}
+                    
+                  <div class="prod__dynamic_checkout buy-one-click{% if block.settings.show_atc_button %} w-full{% else %} flex-1{% endif %}"{% if show_terms %} data-terms-action disabled{% endif %}>
+                    {{ form | payment_button }}
+                  </div>
+                {% endif %}
+                
+                {% comment %}
+					 Added by MTS
+                {% endcomment %}
+                <a
+                    href="#"
+                    type="submit"
+                    name="add"
+                    class="sf__btn hidden flex-grow flex-shrink not-change relative mts-cus-btn-wishlist"
+                    style="text-transform: uppercase; border: 0px solid #000; border-radius: 0px; background-color: #686868 !important;"
+                >
+                        Gift a Friend
+                </a>
+                   
+              </div>
+            </div>
+                
+            {% comment %}
+            Added by MTS
+            
+            <div class="flex md:hidden cus-mob-extra-btn">
+              <span class="flex spr-summary-actions cus-prod-extra-btn">
+                <a href="#" class="spr-summary-actions-newreview flex" onclick="SPR.toggleForm(7493496635612);return false">
+                  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-star-100.png?v=1652710491" alt="Wishlist" width="auto" height="18px"/>Write a review
+                </a>
+              </span>
+              <a
+                 href="#"
+                 type="submit"
+                 name="add"
+                 class="sf__btn flex not-change relative hidden cus-prod-extra-btn"
+                 style="border: 0px solid #000; border-radius: 0px; padding: 0px;"
+                 >
+                {% render 'wishlist-snippet', class_name: 'sf__tooltip-left', product: product %}
+              </a>
+              
+              <div class="cus-prod-extra-btn">
+                <a href="#open-share" class="flex items-center" data-open-share>
+                  <img src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/icons8-share-64.png?v=1652881231" alt="Share" width="auto" height="18px"/>
+                  <span class="">
+                    {{ 'products.product.social_share' | t }}
+                  </span>
+                </a>
+                <div class="sf-sharing hidden">
+                  <div class="sf-sharing__copy-link">
+                    <label for="" class="font-medium">{{ 'products.product.copy_link' | t }}</label>
+                    <input type="text" class="form-control" value="{{ shop.secure_url }}{{ product.url }}">
+                  </div>
+                  {% assign url = shop.url | append: product.url %}
+                  {% render 'social-sharing', url: url %}
+                </div>
+              </div>
+              
+            </div>
+            {% endcomment %}
+                
+            <div class="prod__form-error pt-4"></div>
+            <div class="quantity-discount-hook"></div>
+          {%- when 'collapsible_tab' -%}
+            {% if block.settings.heading != blank %}
+            <div class="prod__accordion">
+              <div
+                  class="sf__accordion-item overflow-hidden{% if block.settings.default_open %} open{% endif %}"
+                  data-index="{{ forloop.index0 }}"
+                  style="--content-max-height: {% if block.settings.default_open %}100%{% else %}0px{% endif %};"
+              >
+                <div class="sf__accordion-button lg:text-[18px] pb-2.5 pr-4 border-b border-color-border">
+                  {{ block.settings.heading }}
+                </div>
+                <div class="sf__accordion-content">
+                  <div class="py-5 prose">
+                    {{ block.settings.content }}
+                    {{ block.settings.liquid }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+          {%- when 'text' -%}
+            {% if product.metafields.custom.discount_price_line != blank %}
+            <p class="discount-text-line cstm__disc__txt">{{product.metafields.custom.discount_price_line.value}}</p>
+            {% else %}
+            {% if block.settings.text != blank %}
+              {% assign text_style = block.settings.text_style %}
+              {% assign text_class = '' %}
+              {% case text_style %}
+                {% when 'subtitle' %}
+                  {% assign text_class = 'text-color-subtext' %}
+                {% when 'uppercase' %}
+                  {% assign text_class = 'text-color-subtext uppercase text-sm' %}
+              {% endcase %}
+            <div class="custom-source-pro font_style bottom-block__text {{ text_class }} {% if block.settings.text-center %} text-center {% endif %}">
+                {{ block.settings.text }}
+              </div>
+            {% endif %}
+          {% endif %}
+          {%- when 'custom_text' -%}
+            {% if block.settings.content != blank %}
+              <div class="bottom-block__text">
+                <div class="prose">
+                  {{ block.settings.content }}
+                </div>
+              </div>
+            {% endif %}
+          {%- when 'image' -%}
+            {% if block.settings.image != blank %}
+            {% assign image_link = block.settings.image_link %}
+              <div class="flex justify-{{ block.settings.image_alignment }}">
+                <div class="bottom-block__image" style="width: {{ block.settings.image_width }}%">
+                  {% if image_link != blank %}<a href="{{ image_link }}" class="block">{% endif %}
+                    {% render 'responsive-image', image: block.settings.image %}
+                  {% if image_link != blank %}</a>{% endif %}
+                </div>
+              </div>
+            {% endif %}
+
+          {%- when 'custom_liquid' -%}
+            {% if block.settings.custom_liquid != blank %}
+              <div class="bottom-block__text">
+                {{ block.settings.custom_liquid }}
+              </div>
+            {% endif %}
+          {%- when 'trust_badge' -%}
+            {% if block.settings.trust_badges_image != blank %}
+              {% assign position = block.settings.position %}
+              <div class="prod__trust-badges text-center prod__trust-badges--{{ position | default: 'below' }}">
+                <div style="width: {{ block.settings.trust_badges_image_width }};">
+                  {% render 'responsive-image', image: block.settings.trust_badges_image %}
+                </div>
+                {% if block.settings.trust_badges_text != blank %}
+                  <h4 class="text-base">{{ block.settings.trust_badges_text }}</h4>
+                {% endif %}
+              </div>
+            {% endif %}
+          {%- when 'addons' -%}
+            {% assign show_size_button = true %}
+            {% assign size_title_downcase = size_title | downcase %}
+            {%- for option in product.options_with_values -%}
+              {% assign downcased_option = option.name | downcase %}
+              {% if size_title_downcase contains downcased_option %}
+                {% assign show_size_button = false %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+            <div class="actions-block border-b border-color-border">
+              {% if block.settings.show_atcp or block.settings.show_ask_a_question or show_size_button %}
+                <div class="prod__form-buttons flex flex-wrap">
+                  {% if block.settings.show_atcp %}
+                    <a href="#add-to-compare" class="sf-prod-compare__button in-prod-page flex items-center mr-[30px]" data-product-handle="{{ product.handle }}">
+                      {% render 'icon', name: 'compare', size: 'medium' %}
+                      <span class="ml-2" data-revert-text="{{ 'products.product.remove_from_compare' | t }}">
+                    {{ 'products.product.add_to_compare' | t }}
+                </span>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_ask_a_question %}
+                    <a href="#ask-question" class="form-ask__button flex items-center mr-[30px]">
+                      {% render 'icon', name: 'question-circle', size: 'medium' %}
+                      <span class="ml-2">
+                    {{ 'products.product.add_a_question' | t }}
+                    </span>
+                    </a>
+                  {% endif %}
+                  {% if show_size_button %}
+                    <a href="#open-size-guide" data-open-sizeguide class="flex items-center mr-[30px] hidden">
+                      {% render 'icon', name: 'ruler-horizontal' %}
+                      <span class="ml-2">{{ 'products.product.size_guide' | t }}</span>
+                    </a>
+                  {% endif %}
+                  {% if block.settings.show_social %}
+                    <a href="#open-share" class="flex items-center" data-open-share>
+                      {% render 'icon', name: 'sharing', size: 'medium' %}
+                      <span class="ml-2">
+                      	{{ 'products.product.social_share' | t }}
+                      </span>
+                    </a>
+                    <div class="sf-sharing hidden">
+                      <div class="sf-sharing__copy-link">
+                        <label for="" class="font-medium">{{ 'products.product.copy_link' | t }}</label>
+                        <input type="text" class="form-control" value="{{ shop.secure_url }}{{ product.url }}">
+                      </div>
+                      {% assign url = shop.url | append: product.url %}
+                      {% render 'social-sharing', url: url %}
+                    </div>
+                  {% endif %}
+                </div>
+                {% if block.settings.show_ask_a_question %}
+                  <div class="form-ask__success-block"></div>
+                {% endif %}
+              {% endif %}
+            </div>
+          {%- when 'shipping' -%}
+            <ul>
+              {% if block.settings.show_delivery_times %}
+                <li class="prod__delivery-times flex items-center">
+                  <span class="bottom-block__icon">
+                    {% render 'icon', name: 'shipping-fast', size: 'medium' %}
+                  </span>
+                  {% assign range =  2 | times: 24 | times: 60 | times: 60 %}
+                  {% assign deliver_in =  block.settings.deliver_days | times: 24 | times: 60 | times: 60 %}
+                  {% assign now = 'now' | date: "%s" %}
+
+                  {% assign from = now | plus: deliver_in | minus: range | date: "%b %d" %}
+                  {% assign to = now | plus: deliver_in | plus: range | date: "%b %d" %}
+
+                  <div class="ml-3 flex">
+                    <p><strong>{{ block.settings.deliver_text | strip_html }}</strong><span class="ml-2">{{ from }} - {{ to }}</span></p>
+                  </div>
+                </li>
+              {% endif %}
+              {% if block.settings.show_shipping_text and block.settings.shipping_text != blank %}
+                <li class="prod__shipping-text flex items-center mt-2">
+            <span class="bottom-block__icon">
+              {% render 'icon', name: 'box', size: 'custom', class: 'w-5 h-4' %}
+            </span>
+                  <div class="ml-3 flex">
+                    {{ block.settings.shipping_text }}
+                  </div>
+                </li>
+              {% endif %}
+            </ul>
+        {%- endcase -%}
+      </div>
+  {%- endfor -%}
+  
+  </div>
+{% endif %}
+{%- endform -%}
+

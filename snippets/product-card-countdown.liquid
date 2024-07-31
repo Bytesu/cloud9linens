@@ -1,0 +1,30 @@
+{% comment %} TODO: recheck if countdown work or not {% endcomment %}
+
+{%- if settings.show_countdown -%}
+  {% assign metafields_time = product.metafields.global['minimog__countdown'] %}
+  {% if metafields_time != blank %}
+    <div
+      class="prod__countdown w-full p-2 xl:p-4"
+      data-product-id="{{ product.id }}" data-metafields-time="{{ metafields_time }}"
+    >
+      <div class="grid grid-cols-4">
+        <div class="pcard__coutdown-days pcc__item">
+          <span class="countdown-timer-day block">00</span>
+          <span class="block text-xs uppercase text-gray-400">{{ 'general.time.days' | t }}</span>
+        </div>
+        <div class="pcard__coutdown-hours pcc__item">
+          <span class="countdown-timer-hour block">00</span>
+          <span class="block text-xs uppercase text-gray-400">{{ 'general.time.hrs' | t }}</span>
+        </div>
+        <div class="pcard__coutdown-minutes pcc__item">
+          <span class="countdown-timer-minute block">00</span>
+          <span class="block text-xs uppercase text-gray-400">{{ 'general.time.mins' | t }}</span>
+        </div>
+        <div class="pcard__coutdown-seconds pcc__item">
+          <span class="countdown-timer-sec block">00</span>
+          <span class="block text-xs uppercase text-gray-400">{{ 'general.time.secs' | t }}</span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{%- endif -%}

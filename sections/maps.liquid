@@ -1,0 +1,102 @@
+{% capture container %}
+    {{ section.settings.container }}
+{% endcapture %}
+{%- assign st = section.settings -%}
+<section data-section-type="google-maps" data-section-id={{ section.id }}>
+  <div class="{{ container }}">
+    <div class="sf__contact-map">
+      <div class="w-full relative sf__map sf__map-{{ section.settings.map_height }}" id="sf__map" data-key="{{ settings.gm_api }}" data-map-title={{ st.text2 }} data-map-x={{ st.textx }} data-map-y={{ st.texty }} data-map-zoom={{ st.zoom }}></div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Google Maps",
+  "settings": [
+    {
+      "type": "header", 
+      "content": "General"
+    },
+    {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+            {
+                "value": "container-fluid",
+                "label": "Default"
+            },
+            {
+                "value": "w-full",
+                "label": "Full width"
+            },
+            {
+                "value": "container",
+                "label": "Use container box"
+            }
+        ]
+    },
+    {
+      "type": "header",
+      "content": "Maps settings"
+    },
+    {
+      "type": "select",
+      "id": "map_height",
+      "label": "Height",
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Google maps must have API Key. Click Theme Settings bellow to setup API Key."
+    },
+    {
+      "type": "text",
+      "id": "textx",
+      "label": "Coordinate X",
+      "default": "40.6700",
+      "info": "Integer"
+    },
+    {
+      "type": "text",
+      "id": "texty",
+      "label": "Coordinate Y",
+      "default": "-73.9400",
+      "info": "Integer"
+    },
+    {
+      "type": "text",
+      "id": "zoom",
+      "label": "Zoom",
+      "default": "11",
+      "info": "Integer"
+    },
+    {
+      "type": "textarea",
+      "id": "text2",
+      "label": "Map Text",
+      "default": "New York"
+    }
+  ],
+  "presets": [
+      {
+          "name": "Google map"
+      }
+  ]
+}
+{% endschema %}

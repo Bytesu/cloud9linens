@@ -1,0 +1,106 @@
+{%- assign header_font = settings.type_header_font -%}
+{%- assign header_font_bolder = header_font | font_modify: 'weight', 'bolder' -%}
+{%- assign header_font_lighter = header_font | font_modify: 'weight', '-100' -%}
+{%- assign base_font = settings.type_base_font -%}
+{%- assign base_font_bolder = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bold' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+{%- assign use_custom_font_heading = settings.use_custom_font_heading -%}
+{%- assign use_custom_font_body = settings.use_custom_font_body -%}
+{%- assign custom_heading_font = settings.custom_heading_font -%}
+{%- assign custom_body_font = settings.custom_body_font -%}
+
+{%- if use_custom_font_heading == false or use_custom_font_body == false -%}
+{%- unless settings.type_header_font.system? or settings.type_base_font.system? -%}
+<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+{%- endunless -%}
+{%- endif -%}
+
+{%- unless use_custom_font_body or settings.type_base_font.system? -%}
+  <link rel="preload" as="font" href="{{ base_font | font_url }}" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="{{ base_font_bold | font_url }}" type="font/woff2" crossorigin>
+{%- endunless -%}
+
+{%- unless use_custom_font_heading or settings.type_header_font.system? -%}
+  <link rel="preload" as="font" href="{{ header_font | font_url }}" type="font/woff2" crossorigin>
+{%- endunless -%}
+
+{%- capture typo_settings -%}
+{%- if use_custom_font_heading == true and custom_heading_font != blank -%}
+{%- assign heading_fonts = custom_heading_font | newline_to_br | split: '<br />' -%}
+{%- for link in heading_fonts -%}
+{%- assign link_data = link | split: '@' -%}
+{%- assign font_url = link_data | first | strip_newlines -%}
+{%- assign weight = link_data | last -%}
+{%- assign font_type = font_url | split: '.' | last -%}
+{%- if font_type contains '?v=' -%}
+{%- assign font_type = font_type | split: '?v=' | first -%}
+{%- endif -%}
+@font-face {
+  font-family: SF-Heading-font;
+  font-weight: {{- weight -}};
+  src: url({{- font_url -}});
+  font-display: swap;
+}
+{% endfor %}
+{%- if heading_fonts != blank -%}
+:root {
+  --font-stack-header: SF-Heading-font;
+  --font-weight-header: {{ settings.custom_heading_weight | default: 400 }};
+}
+{%- endif -%}
+{% else %}
+{{ header_font | font_face: font_display: 'swap' }}
+{{ header_font_bolder | font_face: font_display: 'swap' }}
+{{ header_font_lighter | font_face: font_display: 'swap' }}
+:root {
+  --font-stack-header: {{ header_font.family }}, {{ header_font.fallback_families }};
+  --font-style-header: {{ header_font.style }};
+  --font-weight-header: {{ header_font.weight }};
+  --font-weight-header--bolder: {{ header_font_bolder.weight | default: 700 }};
+  --font-weight-header--lighter: {{ header_font_lighter.weight | default: 400 }};
+}
+{%- endif -%}
+{%- if use_custom_font_body == true and custom_body_font != blank -%}
+{%- assign body_fonts = custom_body_font | newline_to_br | split: '<br />' -%}
+{%- for link in body_fonts -%}
+{%- assign link_data = link | split: '@' -%}
+{%- assign font_url = link_data | first | strip_newlines -%}
+{%- assign weight = link_data | last -%}
+{%- assign font_type = font_url | split: '.' | last -%}
+{%- if font_type contains '?v=' -%}
+  {%- assign font_type = font_type | split: '?v=' | first -%}
+{%- endif -%}
+@font-face {
+  font-family: SF-Body-font;
+  font-weight: {{- weight -}};
+  src: url({{- font_url -}});
+  font-display: swap;
+}
+{% endfor %}
+{%- if body_fonts != blank -%}
+:root {
+  --font-stack-body: 'SF-Body-font';
+  --font-weight-body: {{ settings.custom_body_weight | default: 400 }};;
+}
+{%- endif -%}
+{% else %}
+{{ base_font | font_face: font_display: 'swap' }}
+{{ base_font_bold | font_face: font_display: 'swap' }}
+{{ base_font_bolder | font_face: font_display: 'swap' }}
+{{ base_font_italic | font_face: font_display: 'swap' }}
+{{ base_font_bold_italic | font_face: font_display: 'swap' }}
+:root {
+  --font-weight-body--bold: {{ base_font_bold.weight | default: 700 }};
+  --font-weight-body--bolder: {{ base_font_bolder.weight | default: 700 }};
+  --font-stack-body: {{ base_font.family }}, {{ base_font.fallback_families }};
+  --font-style-body: {{ base_font.style }};
+  --font-weight-body: {{ base_font.weight }};
+}
+{%- endif -%}
+{%- endcapture -%}
+
+<style media="print" id="mn-font-style">
+  {{ typo_settings | strip_newlines | strip }}
+</style>

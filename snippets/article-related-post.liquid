@@ -1,0 +1,21 @@
+{% if item.show_related_articles %}
+    <div class="text-black text-3xl mb-16 text-center">{{ 'blogs.article.related_title' | t }}</div>
+    <div class="sf__ms">
+        <div class="sf__ms-wrapper md:grid md:grid-cols-2 lg:grid-cols-3 gap-7 md-gap-8">
+            {% assign currentID = article.id %}
+            {% for article in blog.articles limit: 3 %}
+                {%- if article.id != currentID -%}
+                    {% render 'article-card', 
+                        article: article, 
+                        view: 'grid',
+                        content_align: section.settings.article_align_content,
+                        article_show_date: section.settings.article_show_date,
+                        article_show_tags: section.settings.article_show_tags,
+                        article_show_excerpt: section.settings.article_show_excerpt,
+                        article_show_button: section.settings.article_show_button  
+                    %}
+                {%- endif -%}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

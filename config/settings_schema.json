@@ -1,0 +1,2704 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Minimog - OS 2.0",
+    "theme_version": "2.3.0",
+    "theme_author": "ThemeMove",
+    "theme_documentation_url": "https:\/\/docs.minimog.co\/",
+    "theme_support_url": "https:\/\/minimog.co"
+  },
+  {
+    "name": "General Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Favicon"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_favicon",
+        "label": "Use favicon icon (32px x 32px)",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Image favicon",
+        "info": "Will be scaled down to 32 x 32px"
+      },
+      {
+        "type": "header",
+        "content": "Ajax \"ADD TO CART\""
+      },
+      {
+        "type": "checkbox",
+        "id": "use_ajax_atc",
+        "label": "Enable ajax \"ADD TO CART\"",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Scroll to top button"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_scroll_top_button",
+        "label": "Show scroll to top button",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Right-to-Left support"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_rtl",
+        "label": "Enable RTL",
+        "default": false
+      }
+    ]
+  },
+   {
+    "name": "General Sign In",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Sign In"
+      },
+      
+      {
+        "type": "image_picker",
+        "id": "sign_img",
+        "label": "Image"
+      },
+       {
+        "type": "image_picker",
+        "id": "sign_img_bg",
+        "label": "Image Bg"
+      }
+    ]
+  },
+  {
+    "name": "Layout Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Fixed width container"
+      },
+      {
+        "type": "range",
+        "id": "container_width",
+        "label": "Container width",
+        "default": 1280,
+        "min": 1100,
+        "max": 1900,
+        "step": 10,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Fluid container",
+        "info": "A section with \"Fluid container\" will take-up the complete width of the viewport and will expand or shrink when ever the viewport is resized."
+      },
+      {
+        "type": "range",
+        "id": "container_fluid_width",
+        "label": "Container max-width",
+        "default": 1620,
+        "min": 1280,
+        "max": 2560,
+        "step": 20,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "container_fluid_offset",
+        "label": "Margin left & right",
+        "default": 95,
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "da": "Markeringsfarver",
+          "de": "Akzentfarben",
+          "en": "Accent Colors",
+          "es": "Colores de acento",
+          "fi": "Korostusvärit",
+          "fr": "Couleurs d'accents",
+          "hi": "एसेंट कलर",
+          "it": "Colori in risalto",
+          "ja": "アクセントの色",
+          "ko": "강조 색상",
+          "nb": "Uthevingsfarger",
+          "nl": "Accentkleuren",
+          "pt-BR": "Cores de destaque",
+          "pt-PT": "Cores de destaque",
+          "sv": "Accentfärg",
+          "th": "สีที่เน้น",
+          "zh-CN": "主题色",
+          "zh-TW": "強調色"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_primary",
+        "label": "Primary accent",
+        "default": "#000"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Background Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_main_bg",
+        "label": "Main background",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_field_bg",
+        "label": "Form field background",
+        "default": "#f8f8f8"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Text Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_body_text",
+        "label": "Body text",
+        "default": "#161d25"
+      },
+      {
+        "type": "color",
+        "id": "color_heading_text",
+        "label": "Heading texts",
+        "default": "#171717"
+      },
+      {
+        "type": "color",
+        "id": "color_sub_text",
+        "label": "Sub texts",
+        "default": "#9A9A9A"
+      },
+      {
+        "type": "color",
+        "id": "color_text_link",
+        "label": "Text link",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_text_link_hover",
+        "label": "Text link hover",
+        "default": "#999999"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Button Colors (Primary Button)"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_btn_bg",
+        "label": "Background",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "color_btn_bg_hover",
+        "label": "Background hover",
+        "default": "#555555"
+      },
+      {
+        "type": "color",
+        "id": "color_btn_text",
+        "label": "Text color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_btn_text_hover",
+        "label": "Text color hover",
+        "default": "#ffffff"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Product colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "product_title_color",
+        "label": "Product title",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "prod_sale_price_color",
+        "label": "Sale price",
+        "default": "#9b9b9b"
+      },
+      {
+        "type": "color",
+        "id": "prod_regular_price_color",
+        "label": "Regular price",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "prod_type_color",
+        "label": "Product vendor, collection",
+        "default": "#9b9b9b"
+      },
+      {
+        "type": "color",
+        "id": "prod_desc_color",
+        "label": "Product description, details",
+        "default": "#666666"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Announcement bar colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_annoucement_bg",
+        "label": "Background color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_annoucement_text",
+        "label": "Text",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Top bar colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_topbar_bg",
+        "label": "Background color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_topbar_text",
+        "label": "Texts & icons",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Header Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_header_bg",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "color_header_link",
+        "label": "Texts & icons",
+        "default": "#171717"
+      },
+      {
+        "type": "color",
+        "id": "color_header_transparent",
+        "label": "Texts & icons on transparent header",
+        "default": "#171717"
+      },
+      {
+        "type": "color",
+        "id": "color_cart_wishlist_count",
+        "label": "Cart & wishlist count color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "bg_cart_wishlist_count",
+        "label": "Cart & wishlist count background",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Menu Bar Colors"
+        },
+        "info": "For header design where Menu and Logo are in 2 lines"
+      },
+      {
+        "type": "color",
+        "id": "color_menu_bar_bg",
+        "label": "Background color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_menu_bar_text",
+        "label": "Texts",
+        "default": "#fff"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Footer Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg",
+        "label": "Background color",
+        "default": "#efeded"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_text",
+        "label": "Text color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_subtext",
+        "label": "Subtext color",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_link",
+        "label": "Link color",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_link_hover",
+        "label": "Link color hover",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bg_mb",
+        "label": "Mobile background color",
+        "default": "#F5F5F5"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Footer Bottom Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bottom_bg",
+        "label": "Background color",
+        "default": "#efeded"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bottom_text",
+        "label": "Text color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "color_footer_bottom_bg_mb",
+        "label": "Mobile background color",
+        "default": "#F5F5F5"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Border Colors"
+        }
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#EEEEE0"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Image overlay"
+        }
+      },
+      {
+        "type": "color",
+        "id": "img_overlay_bg",
+        "label": "Background",
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "img_overlay_opacity",
+        "label": "Opacity",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      },
+      {
+        "type": "header",
+        "content": {
+          "en": "Tooltip"
+        }
+      },
+      {
+        "type": "color",
+        "id": "tooltip_background_color",
+        "label": "Background color",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "tooltip_text_color",
+        "label": "Text color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": {
+      "cs": "Typografie",
+      "da": "Typografi",
+      "de": "Typographie",
+      "en": "Typography",
+      "es": "Tipografía",
+      "fi": "Typografia",
+      "fr": "Typographie",
+      "it": "Caratteri tipografici",
+      "ja": "文字体裁",
+      "ko": "입력 체계",
+      "nb": "Typografi",
+      "nl": "Typografie",
+      "pl": "Typografia",
+      "pt-BR": "Tipografia",
+      "pt-PT": "Tipografia",
+      "sv": "Typografi",
+      "th": "ตัวพิมพ์",
+      "tr": "Tipografi",
+      "vi": "Kiểu chữ",
+      "zh-CN": "版式",
+      "zh-TW": "印刷樣式"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": {
+          "cs": "Základní text",
+          "da": "Brødtekst",
+          "de": "Body-Text",
+          "en": "BODY TEXT",
+          "es": "Texto del cuerpo",
+          "fi": "Leipäteksti",
+          "fr": "Corps du texte",
+          "it": "Corpo del testo",
+          "ja": "本文",
+          "ko": "본문 텍스트",
+          "nb": "Brødtekst",
+          "nl": "Hoofdtekst",
+          "pl": "Tekst podstawowy",
+          "pt-BR": "Corpo do texto",
+          "pt-PT": "Corpo de texto",
+          "sv": "Brödtext",
+          "th": "ข้อความเนื้อหา",
+          "tr": "Gövde metni",
+          "vi": "Văn bản nội dung",
+          "zh-CN": "正文文本",
+          "zh-TW": "內文"
+        }
+      },
+      {
+        "type": "font_picker",
+        "id": "type_base_font",
+        "label": {
+          "cs": "Písmo",
+          "da": "Skrifttype",
+          "de": "Schriftart",
+          "en": "Font",
+          "es": "Fuente",
+          "fi": "Fontti",
+          "fr": "Police",
+          "it": "Font",
+          "ja": "フォント",
+          "ko": "글꼴",
+          "nb": "Skrifttype",
+          "nl": "Lettertype",
+          "pl": "Czcionka",
+          "pt-BR": "Fonte",
+          "pt-PT": "Tipo de letra",
+          "sv": "Typsnitt",
+          "th": "แบบอักษร",
+          "tr": "Yazı tipi",
+          "vi": "Phông chữ",
+          "zh-CN": "字体",
+          "zh-TW": "字型"
+        },
+        "default": "helvetica_n4"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font_body",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Custom font for Body text"
+      },
+      {
+        "id": "custom_body_font",
+        "type": "textarea",
+        "label": "Font URL",
+        "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+        "info": "Format: Link_to_font@font_weight"
+      },
+      {
+        "id": "custom_body_weight",
+        "type": "select",
+        "label": "Default font weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin 100"
+          },
+          {
+            "value": "200",
+            "label": "Extra-light 200"
+          },
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "type_base_size",
+        "label": {
+          "cs": "Základní velikost",
+          "da": "Basisstørrelse",
+          "de": "Größe",
+          "en": "Base size",
+          "es": "Tamaño de base",
+          "fi": "Peruskoko",
+          "fr": "Dimensions de base",
+          "it": "Dimensione base",
+          "ja": "基本サイズ",
+          "ko": "기본 사이즈",
+          "nb": "Grunnstørrelse",
+          "nl": "Basisafmeting",
+          "pl": "Rozmiar podstawowy",
+          "pt-BR": "Tamanho básico",
+          "pt-PT": "Tamanho básico",
+          "sv": "Basstorlek",
+          "th": "ขนาดพื้นฐาน",
+          "tr": "Temel boyutu",
+          "vi": "Cỡ cơ sở",
+          "zh-CN": "基本尺寸",
+          "zh-TW": "基本尺寸"
+        },
+        "default": 16,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "type_base_line_height",
+        "label": "Line height",
+        "default": 28,
+        "min": 14,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": {
+          "cs": "Nadpisy a tlačítka",
+          "da": "Overskrifter",
+          "de": "Titel",
+          "en": "HEADINGS",
+          "es": "Títulos",
+          "fi": "Otsikot",
+          "fr": "En-têtes",
+          "it": "Titoli",
+          "ja": "見出し",
+          "ko": "제목",
+          "nb": "Overskrifter",
+          "nl": "Koppen",
+          "pl": "Nagłówki",
+          "pt-BR": "Títulos",
+          "pt-PT": "Títulos",
+          "sv": "Rubriker",
+          "th": "หัวเรื่องแล",
+          "tr": "Başlıklar",
+          "vi": "Tiêu đề",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        }
+      },
+      {
+        "type": "font_picker",
+        "id": "type_header_font",
+        "label": {
+          "cs": "Písmo",
+          "da": "Skrifttype",
+          "de": "Schriftart",
+          "en": "Font",
+          "es": "Fuente",
+          "fi": "Fontti",
+          "fr": "Police",
+          "it": "Font",
+          "ja": "フォント",
+          "ko": "글꼴",
+          "nb": "Skrifttype",
+          "nl": "Lettertype",
+          "pl": "Czcionka",
+          "pt-BR": "Fonte",
+          "pt-PT": "Tipo de letra",
+          "sv": "Typsnitt",
+          "th": "แบบอักษร",
+          "tr": "Yazı tipi",
+          "vi": "Phông chữ",
+          "zh-CN": "字体",
+          "zh-TW": "字型"
+        },
+        "default": "helvetica_n7"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_custom_font_heading",
+        "label": "Use custom font",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Custom font for Headings"
+      },
+      {
+        "type": "paragraph",
+        "content": "Allow multiple links, each link in a new line. Please upload to [Shopify files](\/admin\/settings\/files) and paste link here. These formats TTF, OTF, WOFF & WOFF2 are supported."
+      },
+      {
+        "id": "custom_heading_font",
+        "type": "textarea",
+        "label": "Font file URLS",
+        "placeholder": "https:\/\/cdn.shopify.com\/s\/files\/1\/0075\/1288\/3285\/files\/roboto.woff2@400",
+        "info": "Format: Link_to_font@font_weight"
+      },
+      {
+        "id": "custom_heading_weight",
+        "type": "select",
+        "label": "Default font weight",
+        "default": "400",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin 100"
+          },
+          {
+            "value": "200",
+            "label": "Extra-light 200"
+          },
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "type_header_base_size",
+        "label": {
+          "da": "Basisstørrelse for overskrift",
+          "de": "Titelgröße",
+          "en": "Heading base size",
+          "es": "Tamaño base de título",
+          "fi": "Otsikon peruskoko",
+          "fr": "Dimensions de base de l'en-tête",
+          "hi": "शीर्षक के आधार का आकार",
+          "it": "Dimensione base del titolo",
+          "ja": "見出しの基本サイズ",
+          "ko": "제목 기본 크기",
+          "nb": "Grunnstørrelse for overskrift",
+          "nl": "Afmeting kopbasis",
+          "pt-BR": "Tamanho básico do título",
+          "pt-PT": "Tamanho básico do título",
+          "sv": "Rubrik basstorlek",
+          "th": "ขนาดพื้นฐานของหัวเรื่อง",
+          "zh-CN": "标题基本尺寸",
+          "zh-TW": "標題基本尺寸"
+        },
+        "default": 36,
+        "min": 20,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "type_header_spacing",
+        "label": {
+          "en": "Letter spacing"
+        },
+        "default": 0,
+        "min": 0,
+        "max": 10,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "BUTTONS"
+      },
+      {
+        "type": "paragraph",
+        "content": "The button font is inherited from body text."
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_uppercase_text",
+        "label": {
+          "en": "Uppercase text label"
+        },
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "btn_base_size",
+        "label": {
+          "en": "Font size"
+        },
+        "default": 16,
+        "min": 14,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_letter_spacing",
+        "label": {
+          "en": "Letter spacing"
+        },
+        "default": 0,
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_border_width",
+        "label": "Border width",
+        "default": 1,
+        "min": 1,
+        "max": 5,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_border_radius",
+        "label": {
+          "en": "Border radius"
+        },
+        "default": 5,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "btn_line_height",
+        "label": {
+          "en": "Line height"
+        },
+        "default": 23,
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "id": "btn_weight",
+        "type": "select",
+        "label": "Font weight",
+        "default": "500",
+        "options": [
+          {
+            "value": "100",
+            "label": "Thin 100"
+          },
+          {
+            "value": "200",
+            "label": "Extra-light 200"
+          },
+          {
+            "value": "300",
+            "label": "Light 300"
+          },
+          {
+            "value": "400",
+            "label": "Regular 400"
+          },
+          {
+            "value": "500",
+            "label": "Medium 500"
+          },
+          {
+            "value": "600",
+            "label": "Semi-bold 600"
+          },
+          {
+            "value": "700",
+            "label": "Bold 700"
+          },
+          {
+            "value": "800",
+            "label": "Extra-bold 800"
+          },
+          {
+            "value": "900",
+            "label": "Black 900"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Product Card",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Layout"
+      },
+      {
+        "type": "select",
+        "id": "pcard_layout",
+        "label": "Layout style",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Style 1"
+          },
+          {
+            "value": "2",
+            "label": "Style 2"
+          },
+          {
+            "value": "3",
+            "label": "Style 3"
+          },
+          {
+            "value": "4",
+            "label": "Style 4"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pcard_alignment",
+        "label": "Content alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Image"
+      },
+      {
+        "type": "select",
+        "id": "pcard_image_ratio",
+        "label": "Image aspect ratio",
+        "default": "original",
+        "options": [
+          {
+            "value": "original",
+            "label": "Adapt to image"
+          },
+          {
+            "value": "1\/1",
+            "label": "1:1"
+          },
+          {
+            "value": "3\/4",
+            "label": "3:4"
+          },
+          {
+            "value": "4\/3",
+            "label": "4:3"
+          },
+          {
+            "value": "16\/9",
+            "label": "16:9"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "pcard_default_image",
+        "label": "No image thumbnail",
+        "info": "Use for product has no image"
+      },
+      {
+        "type": "header",
+        "content": "Variant options"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_swatch_option",
+        "label": "Show variant options",
+        "info": "Product card is limited to showing only 1 option",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "pcard_option_name",
+        "label": "Option name",
+        "default": "Color",
+        "info": "Example: Color, Size, Material..."
+      },
+      {
+        "type": "select",
+        "id": "pcard_option_design",
+        "label": "Option design",
+        "default": "color",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "pcard_limit_values_number",
+        "min": 0,
+        "max": 20,
+        "step": 1,
+        "label": "Number of option's values to display",
+        "info": "Set to 0 to display all option's values",
+        "default": 4
+      },
+      {
+        "type": "header",
+        "content": "Content"
+      },
+      {
+        "type": "select",
+        "id": "on_sale_badge",
+        "label": "On sale badge",
+        "default": "hide",
+        "options": [
+          {
+            "value": "hide",
+            "label": "Hide"
+          },
+          {
+            "value": "show_text",
+            "label": "Show text"
+          },
+          {
+            "value": "show_percentage",
+            "label": "Show % discounted"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "show_badge_sale",
+        "label": "Show custom badges",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_badge_soldout",
+        "label": "Show Sold out badge",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cart_button",
+        "label": "Show add to cart button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_quickview_button",
+        "label": "Show quickview button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist_button",
+        "label": "Show wishlist button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_compare_button",
+        "label": "Show compare button",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_second_img",
+        "label": "Show second image when hover",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_countdown",
+        "label": "Show countdown",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show vendor",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_review_badge",
+        "label": "Show reviews badge",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "select_option_button_action",
+        "label": "Action on click Select options button",
+        "default": "popup",
+        "options": [
+          {
+            "value": "popup",
+            "label": "Open select options popup"
+          },
+          {
+            "value": "link",
+            "label": "Go to product page"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Product title"
+      },
+      {
+        "type": "checkbox",
+        "id": "uppercase_prd_name",
+        "label": "Uppercase product name",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "pcard_title_line_clamp",
+        "label": "Limit title lines",
+        "default": "unset",
+        "options": [
+          {
+            "value": "unset",
+            "label": "No limit"
+          },
+          {
+            "value": "1",
+            "label": "1 line"
+          },
+          {
+            "value": "2",
+            "label": "2 lines"
+          },
+          {
+            "value": "3",
+            "label": "3 lines"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Product Variation Swatches",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Default Variant Option Design"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design_default",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "button",
+        "info": "Default design if option's name doesn't match any of 5 names in the below settings"
+      },
+      {
+        "type": "header",
+        "content": "Variant Option Design 1"
+      },
+      {
+        "type": "paragraph",
+        "content": "Design for variant option"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_title1",
+        "label": "Option name",
+        "default": "Size"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_display_name1",
+        "label": "Alternative name",
+        "info": "Example: Select a Size"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design1",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "button"
+      },
+      {
+        "type": "header",
+        "content": "Variant Option Design 2"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_title2",
+        "label": "Option name",
+        "default": "Color"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_display_name2",
+        "label": "Alternative name",
+        "info": "Example: Select a color"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design2",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "color"
+      },
+      {
+        "type": "header",
+        "content": "Variant Option Design 3"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_title3",
+        "label": "Option name",
+        "default": "Material"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_display_name3",
+        "label": "Alternative name",
+        "info": "Example: Select a Material"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design3",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "dropdown"
+      },
+      {
+        "type": "header",
+        "content": "Variant Option Design 4"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_title4",
+        "label": "Option name",
+        "default": "Brand"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_display_name4",
+        "label": "Alternative name",
+        "info": "Example: Select a Brand"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design4",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "dropdown"
+      },
+      {
+        "type": "header",
+        "content": "Variant Option Design 5"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_title5",
+        "label": "Option name"
+      },
+      {
+        "type": "text",
+        "id": "variant_option_display_name5",
+        "label": "Alternative name",
+        "info": "Example: Select a Brand"
+      },
+      {
+        "type": "select",
+        "id": "variant_option_design5",
+        "label": "Design",
+        "options": [
+          {
+            "value": "default",
+            "label": "Image \/ Color"
+          },
+          {
+            "value": "color",
+            "label": "Color"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          },
+          {
+            "value": "button",
+            "label": "Button"
+          },
+          {
+            "value": "dropdown",
+            "label": "Dropdown"
+          }
+        ],
+        "default": "button"
+      },
+      {
+        "type": "header",
+        "content": "Variant's swatch image"
+      },
+      {
+        "type": "header",
+        "content": "Product Colors"
+      },
+      {
+        "type": "textarea",
+        "id": "product_colors",
+        "label": "Product colors",
+        "default": "red: #ff0000,\r\nyellow: #ffff00,\r\nblack: #000000,\r\nblue: #0000FF,\r\ngreen: #00ff00,\r\npurple: #800080,\r\nsilver: #c0c0c0,\r\nwhite: #ffffff,\r\nbrown: #7B3F00,\r\nlight-brown: #feb035,\r\ndark-turquoise: #23cddc,\r\norange: #fe9001,\r\ntan: #eacea7,\r\nviolet: #EE82EE,\r\npink: #FFC0CB,\r\ngrey: #808080",
+        "info": "Items separate with comma. Write color name from product option and separate option with color HEX value. All texts in lowercase."
+      },
+      {
+        "type": "header",
+        "content": "Associate Parameter with Image"
+      },
+      {
+        "type": "paragraph",
+        "content": "Paste product handle before parameter name and you will have unique image with same name parameter"
+      },
+      {
+        "type": "text",
+        "id": "filter_color1",
+        "label": "Parameter Name 1",
+        "info": "Enter parameter name and select image \"Image Color 1\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color1.png",
+        "label": "Image Color 1",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color2",
+        "label": "Parameter Name 2",
+        "info": "Enter parameter name and select image \"Image Color 2\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color2.png",
+        "label": "Image Color 2",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color3",
+        "label": "Parameter Name 3",
+        "info": "Enter parameter name and select image \"Image Color 3\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color3.png",
+        "label": "Image Color 3",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color4",
+        "label": "Parameter Name 4",
+        "info": "Enter parameter name and select image \"Image Color 4\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color4.png",
+        "label": "Image Color 4",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color5",
+        "label": "Parameter Name 5",
+        "info": "Enter parameter name and select image \"Image Color 5\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color5.png",
+        "label": "Image Color 5",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color6",
+        "label": "Parameter Name 6",
+        "info": "Enter parameter name and select image \"Image Color 6\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color6.png",
+        "label": "Image Color 6",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color7",
+        "label": "Parameter Name 7",
+        "info": "Enter parameter name and select image \"Image Color 7\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color7.png",
+        "label": "Image Color 7",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color8",
+        "label": "Parameter Name 8",
+        "info": "Enter parameter name and select image \"Image Color 8\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color8.png",
+        "label": "Image Color 8",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color9",
+        "label": "Parameter Name 9",
+        "info": "Enter parameter name and select image \"Image Color 9\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color9.png",
+        "label": "Image Color 9",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color10",
+        "label": "Parameter Name 10",
+        "info": "Enter parameter name and select image \"Image Color 10\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color10.png",
+        "label": "Image Color 10",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color11",
+        "label": "Parameter Name 11",
+        "info": "Enter parameter name and select image \"Image Color 11\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color11.png",
+        "label": "Image Color 11",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color12",
+        "label": "Parameter Name 12",
+        "info": "Enter parameter name and select image \"Image Color 12\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color12.png",
+        "label": "Image Color 12",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color13",
+        "label": "Parameter Name 13",
+        "info": "Enter parameter name and select image \"Image Color 13\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color13.png",
+        "label": "Image Color 13",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color14",
+        "label": "Parameter Name 14",
+        "info": "Enter parameter name and select image \"Image Color 14\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color14.png",
+        "label": "Image Color 14",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color15",
+        "label": "Parameter Name 15",
+        "info": "Enter parameter name and select image \"Image Color 15\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color15.png",
+        "label": "Image Color 15",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color16",
+        "label": "Parameter Name 16",
+        "info": "Enter parameter name and select image \"Image Color 16\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color16.png",
+        "label": "Image Color 16",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color17",
+        "label": "Parameter Name 17",
+        "info": "Enter parameter name and select image \"Image Color 17\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color17.png",
+        "label": "Image Color 17",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color18",
+        "label": "Parameter Name 18",
+        "info": "Enter parameter name and select image \"Image Color 118\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color18.png",
+        "label": "Image Color 18",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color19",
+        "label": "Parameter Name 19",
+        "info": "Enter parameter name and select image \"Image Color 19\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color19.png",
+        "label": "Image Color 19",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color20",
+        "label": "Parameter Name 20",
+        "info": "Enter parameter name and select image \"Image Color 20\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color20.png",
+        "label": "Image Color 20",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color21",
+        "label": "Parameter Name 21",
+        "info": "Enter parameter name and select image \"Image Color 21\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color21.png",
+        "label": "Image Color 21",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color22",
+        "label": "Parameter Name 22",
+        "info": "Enter parameter name and select image \"Image Color 22\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color22.png",
+        "label": "Image Color 22",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color23",
+        "label": "Parameter Name 23",
+        "info": "Enter parameter name and select image \"Image Color 23\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color23.png",
+        "label": "Image Color 23",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color24",
+        "label": "Parameter Name 24",
+        "info": "Enter parameter name and select image \"Image Color 24\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color24.png",
+        "label": "Image Color 24",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color25",
+        "label": "Parameter Name 25",
+        "info": "Enter parameter name and select image \"Image Color 25\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color25.png",
+        "label": "Image Color 25",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color26",
+        "label": "Parameter Name 26",
+        "info": "Enter parameter name and select image \"Image Color 26\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color26.png",
+        "label": "Image Color 26",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color27",
+        "label": "Parameter Name 27",
+        "info": "Enter parameter name and select image \"Image Color 27\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color27.png",
+        "label": "Image Color 27",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color28",
+        "label": "Parameter Name 28",
+        "info": "Enter parameter name and select image \"Image Color 28\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color28.png",
+        "label": "Image Color 28",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color29",
+        "label": "Parameter Name 29",
+        "info": "Enter parameter name and select image \"Image Color 29\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color29.png",
+        "label": "Image Color 29",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color30",
+        "label": "Parameter Name 30",
+        "info": "Enter parameter name and select image \"Image Color 30\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color30.png",
+        "label": "Image Color 30",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color31",
+        "label": "Parameter Name 31",
+        "info": "Enter parameter name and select image \"Image Color 31\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color31.png",
+        "label": "Image Color 31",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color32",
+        "label": "Parameter Name 32",
+        "info": "Enter parameter name and select image \"Image Color 32\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color32.png",
+        "label": "Image Color 32",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color33",
+        "label": "Parameter Name 33",
+        "info": "Enter parameter name and select image \"Image Color 33\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color33.png",
+        "label": "Image Color 33",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color34",
+        "label": "Parameter Name 34",
+        "info": "Enter parameter name and select image \"Image Color 34\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color34.png",
+        "label": "Image Color 34",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color35",
+        "label": "Parameter Name 35",
+        "info": "Enter parameter name and select image \"Image Color 35\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color35.png",
+        "label": "Image Color 35",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color36",
+        "label": "Parameter Name 36",
+        "info": "Enter parameter name and select image \"Image Color 36\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color36.png",
+        "label": "Image Color 36",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color37",
+        "label": "Parameter Name 37",
+        "info": "Enter parameter name and select image \"Image Color 37\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color37.png",
+        "label": "Image Color 37",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color38",
+        "label": "Parameter Name 38",
+        "info": "Enter parameter name and select image \"Image Color 38\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color38.png",
+        "label": "Image Color 38",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color39",
+        "label": "Parameter Name 39",
+        "info": "Enter parameter name and select image \"Image Color 39\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color39.png",
+        "label": "Image Color 39",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color40",
+        "label": "Parameter Name 40",
+        "info": "Enter parameter name and select image \"Image Color 40\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color40.png",
+        "label": "Image Color 40",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color41",
+        "label": "Parameter Name 41",
+        "info": "Enter parameter name and select image \"Image Color 41\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color41.png",
+        "label": "Image Color 41",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color42",
+        "label": "Parameter Name 42",
+        "info": "Enter parameter name and select image \"Image Color 42\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color42.png",
+        "label": "Image Color 42",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color43",
+        "label": "Parameter Name 43",
+        "info": "Enter parameter name and select image \"Image Color 43\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color43.png",
+        "label": "Image Color 43",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color44",
+        "label": "Parameter Name 44",
+        "info": "Enter parameter name and select image \"Image Color 44\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color44.png",
+        "label": "Image Color 44",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color45",
+        "label": "Parameter Name 45",
+        "info": "Enter parameter name and select image \"Image Color 45\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color45.png",
+        "label": "Image Color 45",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color46",
+        "label": "Parameter Name 46",
+        "info": "Enter parameter name and select image \"Image Color 46\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color46.png",
+        "label": "Image Color 46",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color47",
+        "label": "Parameter Name 47",
+        "info": "Enter parameter name and select image \"Image Color 47\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color47.png",
+        "label": "Image Color 47",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color48",
+        "label": "Parameter Name 48",
+        "info": "Enter parameter name and select image \"Image Color 48\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color48.png",
+        "label": "Image Color 48",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color49",
+        "label": "Parameter Name 49",
+        "info": "Enter parameter name and select image \"Image Color 49\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color49.png",
+        "label": "Image Color 49",
+        "info": "Image must be PNG, 60 x 60 Px"
+      },
+      {
+        "type": "text",
+        "id": "filter_color50",
+        "label": "Parameter Name 50",
+        "info": "Enter parameter name and select image \"Image Color 50\""
+      },
+      {
+        "type": "image",
+        "id": "filter_color50.png",
+        "label": "Image Color 50",
+        "info": "Image must be PNG, 60 x 60 Px"
+      }
+    ]
+  },
+  {
+    "name": "Article card",
+    "settings": [
+      {
+        "type": "select",
+        "id": "article_image_aspect_ratio",
+        "label": "Image aspect ratio",
+        "default": "16\/9",
+        "options": [
+          {
+            "value": "original",
+            "label": "Adapt to image"
+          },
+          {
+            "value": "1\/1",
+            "label": "1:1"
+          },
+          {
+            "value": "3\/4",
+            "label": "3:4"
+          },
+          {
+            "value": "4\/3",
+            "label": "4:3"
+          },
+          {
+            "value": "16\/9",
+            "label": "16:9"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "article_align_content",
+        "label": "Content alignment",
+        "default": "text-left",
+        "options": [
+          {
+            "label": "Left",
+            "value": "text-left"
+          },
+          {
+            "label": "Center",
+            "value": "text-center"
+          },
+          {
+            "label": "Right",
+            "value": "text-right"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "article_show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "article_show_date",
+        "label": "Show publised date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "article_show_excerpt",
+        "label": "Show excerpt",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "article_show_button",
+        "label": "Show read more link",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Social sharing",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social sharing image"
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Image",
+        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
+      },
+      {
+        "type": "header",
+        "content": "Social sharing options"
+      },
+      {
+        "type": "checkbox",
+        "id": "social_sharing_blog",
+        "label": "Enable sharing for blog articles",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_facebook",
+        "label": "Share on Facebook",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_twitter",
+        "label": "Tweet on Twitter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "share_pinterest",
+        "label": "Pin on Pinterest",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Store contact",
+    "settings": [
+      {
+        "type": "text",
+        "id": "contact_phone_number",
+        "label": "Phone number",
+        "default": "+84 (0)387 392 056"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Email",
+        "default": "hello@domain.com"
+      },
+      {
+        "type": "page",
+        "id": "find_store",
+        "label": "Find store page"
+      },
+      {
+        "type": "header",
+        "content": "Social links"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter link"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_label",
+        "label": "Twitter label"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook link"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_label",
+        "label": "Facebook label"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest link"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_label",
+        "label": "Pinterest label"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram link"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_label",
+        "label": "Instagram label"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_link",
+        "label": "Snapchat link"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat_label",
+        "label": "Snapchat label"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_link",
+        "label": "Tumblr link"
+      },
+      {
+        "type": "text",
+        "id": "social_tumblr_label",
+        "label": "Tumblr label"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_link",
+        "label": "Youtube link"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_label",
+        "label": "Youtube label"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_link",
+        "label": "Vimeo link"
+      },
+      {
+        "type": "text",
+        "id": "social_vimeo_label",
+        "label": "Vimeo label"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_link",
+        "label": "Tiktok link"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok_label",
+        "label": "Tiktok label"
+      },
+      {
+        "type": "text",
+        "id": "social_discord_link",
+        "label": "Discord link"
+      },
+      {
+        "type": "text",
+        "id": "social_discord_label",
+        "label": "Discord label"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp_link",
+        "label": "Whatsapp link"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp_label",
+        "label": "Whatsapp label"
+      }
+    ]
+  },
+  {
+    "name": "Cart settings",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_cart_drawer",
+        "label": "Enable cart drawer",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_notes_enable",
+        "label": "Show cart note",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "discount_code_enable",
+        "label": "Show discount code",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cart_estimate_shipping",
+        "label": "Show estimate shipping rates",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "cart_drawer_trust_badge",
+        "label": "Trust badge"
+      }
+    ]
+  },
+  {
+    "name": "Search",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_predictive_search",
+        "label": "Enable predictive search",
+        "default": true,
+        "info": "Enable predictive search so that suggested results appear immediately as you type into the search field. [Learn more](https:\/\/shopify.dev\/themes\/navigation-search\/search\/predictive-search)"
+      },
+      {
+        "type": "checkbox",
+        "id": "search_by_tag",
+        "label": "Search by product's tags",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "search_by_body",
+        "label": "Search by product's description",
+        "default": false
+      },
+      {
+        "type": "paragraph",
+        "content": "The default fields searched on are 'title', 'product_type', 'variants.title', and 'vendor'. For the best search experience, you should search on the default field set, or as few fields as possible."
+      },
+      {
+        "type": "textarea",
+        "id": "popular_search_queries",
+        "label": "Popular searches",
+        "default": "T-Shirt, Blue, Jacket",
+        "info": "Separate by \",\"",
+        "placeholder": "Vintage, T-Shirt, Blue, Jacket"
+      },
+      {
+        "type": "select",
+        "id": "search_unavailable_products",
+        "label": "Results for unavailable products",
+        "options": [
+          {
+            "value": "SHOW",
+            "label": "Show"
+          },
+          {
+            "value": "HIDE",
+            "label": "Hide"
+          },
+          {
+            "value": "LAST",
+            "label": "Show at last"
+          }
+        ],
+        "default": "LAST"
+      }
+    ]
+  },
+  {
+    "name": "Additional pages",
+    "settings": [
+      {
+        "type": "page",
+        "id": "wishlist_page",
+        "label": "Wishlist Page"
+      },
+      {
+        "type": "page",
+        "id": "product_compare_page",
+        "label": "Product comparison"
+      }
+    ]
+  },
+  {
+    "name": "GDPR settings",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "It is designed to help you comply with data privacy laws like EU Cookie Law, European GDPR or California CCPA."
+      },
+      {
+        "type": "header",
+        "content": "Terms & conditions checkbox"
+      },
+      {
+        "type": "richtext",
+        "id": "agree_text",
+        "label": "Text",
+        "default": "<p>I agree with the <a href=\"#\" title=\"#\">Terms & conditions<\/a><\/p>"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_agree_on_cart",
+        "label": "Show on cart page & cart drawer",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_agree_on_product",
+        "label": "Show on product page",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_agree_on_register",
+        "label": "Show on register page",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "Cookie consent"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_cookie_consent",
+        "label": "Show cookie consent",
+        "default": false
+      },
+      {
+        "type": "textarea",
+        "id": "cookie_consent_message",
+        "label": "Message",
+        "default": "This website uses cookies to ensure you get the best experience on our website."
+      },
+      {
+        "type": "text",
+        "id": "cookie_consent_allow",
+        "label": "Allow button",
+        "default": "Allow Cookies"
+      },
+      {
+        "type": "text",
+        "id": "cookie_consent_decline",
+        "label": "Decline button",
+        "info": "Leave blank to hide",
+        "default": "Decline"
+      },
+      {
+        "type": "text",
+        "id": "cookie_consent_learnmore",
+        "label": "Learn more text",
+        "default": "Learn more"
+      },
+      {
+        "type": "text",
+        "id": "cookie_consent_learnmore_link",
+        "label": "Learn more link",
+        "info": "Leave blank to hide",
+        "default": "https:\/\/www.cookiesandyou.com\/"
+      },
+      {
+        "type": "header",
+        "content": "Design"
+      },
+      {
+        "type": "select",
+        "id": "cookie_consent_placement",
+        "label": "Placement",
+        "default": "bottom",
+        "options": [
+          {
+            "value": "bottom",
+            "label": "Bottom bar"
+          },
+          {
+            "value": "bottom-left",
+            "label": "Floating left"
+          },
+          {
+            "value": "bottom-right",
+            "label": "Floating right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "cookie_consent_theme",
+        "label": "Theme",
+        "default": "black",
+        "options": [
+          {
+            "value": "white",
+            "label": "Light"
+          },
+          {
+            "value": "black",
+            "label": "Dark"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Integration",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Google map API"
+      },
+      {
+        "type": "text",
+        "id": "gm_api",
+        "label": "API Key",
+        "info": "[Get Api Key](https:\/\/developers.google.com\/maps\/documentation\/javascript\/get-api-key)"
+      },
+      {
+        "type": "header",
+        "content": "Instagram Token"
+      },
+      {
+        "type": "text",
+        "id": "instagram_token",
+        "label": "Instagram Token",
+        "default": "IGQVJXMTBwYTBabmJsdG9xZA0p2Q3RsLWhYc0RvSFI1cDZA6aG1jWEt5M3VpYVNWdV9tVmIweHF6UHBjNWxvVk1sUFQ4T0NJSHFuWksyVGVzTTB3RkozdGszeDJIbVU3MmVycTJzS1E5VGpZAX0dvVUE0RwZDZD",
+        "info": "[Get Instagram token](https:\/\/medium.com\/javascript-in-plain-english\/how-to-generate-a-token-with-the-new-2020-instagram-api-bf27c57858ab)"
+      }
+    ]
+  },
+  {
+    "name": "Advanced",
+    "settings": [
+      {
+        "type": "html",
+        "id": "custom_css",
+        "label": "Custom CSS"
+      }
+    ]
+  },
+  {
+    "name": "3rd-party Apps",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Product reviews"
+      },
+      {
+        "type": "select",
+        "id": "review_app",
+        "label": "Product reviews app",
+        "default": "shopify",
+        "info": "Select your preferred app. If you are using another app, please put the snippet code of the app to file: snippets\/other-review-app-snippet.liquid or contact us for help.",
+        "options": [
+          {
+            "value": "shopify",
+            "label": "Product reviews by Shopify"
+          },
+          {
+            "value": "growave",
+            "label": "Growave"
+          },
+          {
+            "value": "judge",
+            "label": "Judge.me"
+          },
+          {
+            "value": "loox",
+            "label": "Loox"
+          },
+          {
+            "value": "other",
+            "label": "Other"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Wishlist"
+      },
+      {
+        "type": "select",
+        "id": "wishlist_app",
+        "label": "Wishlist app",
+        "default": "theme",
+        "info": "Select your preferred app",
+        "options": [
+          {
+            "value": "theme",
+            "label": "Built-in by Minimog"
+          },
+          {
+            "value": "growave",
+            "label": "Growave"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "copyright",
+    "settings": [
+      {
+        "type": "header",
+        "content": "copyright"
+      },
+      {
+        "type": "richtext",
+        "id": "copyright",
+        "label": "Copyright text"
+      }
+    ]
+  }
+]

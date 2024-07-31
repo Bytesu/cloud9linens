@@ -1,0 +1,34 @@
+{% unless form_id %}
+  {% assign form_id = 'currency-form' %}
+{% endunless %}
+
+{% assign show_currency_selector = true %}
+
+{% if show_currency_selector %}
+  {% assign min = 65 %}
+  {% assign max = 80 %}
+  {% assign diff = max | minus: min %}
+  {% assign randomNumber = "now" | date: "%N" | modulo: diff | plus: min %}
+  {% assign form_id = form_id | append: randomNumber %}
+  {% if shop.enabled_currencies.size > 1 %}
+    <div class="sf-currency-switcher lg:py-3.5 {{ box_size }}">
+      {%- capture form_id -%}localization_form{{ product.id }}__{{ "now" | date: "%L" }}{%- endcapture -%}
+
+      {% form 'localization', class: 'px-4', data-localization-form: '', id: form_id %}
+        <input type="hidden" name="currency_code" value="{{ form.current_currency.iso_code }}" data-localization-input/>
+        <div class="sf__custom-select sf__select-{{ pos }}">
+          <select class="border-transparent bg-transparent" data-localization-select>
+            {% for currency in form.available_currencies %}
+              <option
+                      value="{{ currency.iso_code }}"
+                      {% if form.current_currency.iso_code == currency.iso_code %}selected="selected"{% endif %}
+              >
+                {{ currency.iso_code }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endform %}
+    </div>
+  {% endif %}
+{% endif %}

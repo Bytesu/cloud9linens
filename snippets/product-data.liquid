@@ -1,0 +1,21 @@
+<script>
+  window._themeProducts = window._themeProducts || {}
+  window._themeProducts[{{ product.id }}] = {
+    id: {{ product.id }},
+    title: "{{ product.title }}",
+    available: {{ product.available }},
+    handle: "{{ product.handle }}",
+    variants: {{ product.variants | json }},
+    options: {{ product.options_with_values | json }},
+    selected_or_first_available_variant: {{ product.selected_or_first_available_variant | json }},
+    selected_variant: {{ product.selected_variant | json }},
+    media: {{ product.media | json }},
+    featured_image: "{{ product.featured_image }}",
+    aspect_ratio: {{ product.featured_image.aspect_ratio }},
+    images: {{ product.images | json }},
+    price: {{ product.price }},
+  };
+  {%- for variant in product.variants -%}
+    window._themeProducts[{{ product.id }}].variants[{{forloop.index0}}].inventory_quantity = {{variant.inventory_quantity}};
+  {%- endfor -%}
+</script>

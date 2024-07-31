@@ -1,0 +1,165 @@
+  <!-- css link start here -->
+  <style>
+  * { padding: 0; margin: 0; -webkit-box-sizing: border-box; box-sizing: border-box; }
+  body { position: relative; }.mymodel_two_section { position: absolute; }
+    .appjetty_modal-color { background-color: #fff; }
+    .header-color { background-color: #fff; }
+    .body-color { background-color: #fff; }
+    .footer-color { background-color: #fff; }
+    
+    .header-title { margin-bottom: 30px; font-size: 28px; line-height: 32px; text-transform: uppercase; font-weight: 500; letter-spacing: 0.6px; }
+    .appjetty_modal-header { padding: 15px; text-align: right; border-top-left-radius: 6px; border-top-right-radius: 6px; }
+    .appjetty_modal-header .close-appjetty_modal { border: 0; background: transparent; }
+    .appjetty_modal-body { position: relative; padding: 20px 25px; }
+    .cross-sign { display: block; font-size: 26px; line-height: normal; cursor: pointer; outline: none; font-family: Arial, sans-serif; }
+    .appjetty_modal-paragraph { margin: 5px 50px; font-size: 14px; line-height: 18px; }
+    .appjetty_modal-header .close-appjetty_modal:focus { outline: none; }
+    .appjetty_modal-footer { padding: 20px; padding-bottom: 40px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px; }
+    .footer-paragraph { font-size: 12px; line-height: 16px; max-width: 80%; margin: 0 auto; }
+    .text-gray { color: #9E9E9E; }
+    .text-center { text-align: center; }
+    .appjetty_modal .appjetty_modal-dialog.fade { -webkit-transition: -webkit-transform .5s ease-in-out; -o-transition: -o-transform .5s ease-in-out; transition: transform .5s ease-in-out; opacity: 0; visibility: hidden; position: relative; z-index: 99;}
+    .appjetty_modal .appjetty_modal-dialog.in { -webkit-transition: -webkit-transform .5s ease-in-out; -o-transition: -o-transform .5s ease-in-out; transition: transform .5s ease-in-out; opacity: 1; visibility: visible; position: fixed; top: 0; bottom: 0; height: 100%; width: 100%; background-color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.5); overflow: auto; z-index: 99; }
+    .appjetty_modal-content { position: relative; border: 1px solid #999999; border-radius: 0; -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5); -webkit-background-clip: padding-box; background-clip: padding-box; outline: 0; width: 600px; margin: 30px auto; border-radius: 6px; }
+    .appjetty_modal-btn-link { margin-top: 20px; }
+    .appjetty_modal-link { font-size: 16px; text-transform: capitalize; text-decoration: none; color: #fff; padding: 0; line-height: 35px; border-radius: 0; -webkit-transition: all 0.3s; -o-transition: all 0.3s; transition: all 0.3s; display: block; max-width: 150px; text-align: center; border: 1px solid #000; height: 37px; }
+ 
+    {% if shop.metafields.appjetty_popup.popup_btn_color %}
+      
+      {% assign btn_color = shop.metafields.appjetty_popup.popup_btn_color %}
+    
+    {% else %}
+      
+      {% assign btn_color = "#000" %}
+    
+    {% endif %}
+     
+    
+    {% if shop.metafields.appjetty_popup.popup_btn_bg_color %}
+    
+      {% assign btn_bg_color = shop.metafields.appjetty_popup.popup_btn_bg_color %}
+    
+    {% else %}
+      
+      {% assign btn_bg_color = "#fff" %}
+    
+    {% endif %}
+
+    {% if shop.metafields.appjetty_popup.custom_css %}
+
+      {% assign custom_css = shop.metafields.appjetty_popup.custom_css %}
+
+    {% else %}
+
+      {% assign custom_css = "" %}
+
+    {% endif %}
+
+    {{ custom_css }}
+    
+    .text-color { color: {{ btn_color }}; }
+    
+    .text-color:hover { color: {{ btn_color }} !important; }
+    
+    .appjetty_modal-link:hover {  color: {{ btn_color }}; }
+  
+    .btn-color {  background-color: {{ btn_bg_color }};  }
+
+    .mymodel_two_section .appjetty_modal-content { width: 500px; }
+    .mymodel_two_section .appjetty_modal-header .close-appjetty_modal { height: 35px; width: 35px; border: 2px solid #fff; background-color: #000; color: #fff; border-radius: 50%; position: absolute; top: -10px; right: -10px; }
+    .mymodel_two_section .appjetty_modal-header { padding: 25px; }
+    
+    {%if shop.metafields.appjetty_popup.popup_body_bg %}
+      
+      {% assign popup_bg = shop.metafields.appjetty_popup.popup_body_bg %}
+    
+    {% else %}
+      
+      {% assign popup_bg = "#ffd75e" %}
+    
+    {% endif %}
+    
+    {% if shop.metafields.appjetty_popup.popup_font_color %}
+    
+      .appjetty_modal-paragraph { color : {{ shop.metafields.appjetty_popup.popup_font_color }}; }
+    
+      .header-title { color : {{ shop.metafields.appjetty_popup.popup_font_color }}; }
+    
+    {% endif %}
+    
+    .mymodel_two_section .header-color { background-color: {{ popup_bg }}; }
+    .mymodel_two_section .body-color { background-color: {{ popup_bg }}; }
+    .mymodel_two_section .appjetty_modal-btn-link .appjetty_modal-link { margin: 0 auto; }
+
+    @media (max-width:767px) {
+        .appjetty_modal-content { width: auto; }
+        .header-title { font-size: 24px; line-height: 26px; }
+        .mymodel_four_section .appjetty_modal-content { width: auto; }
+        .mymodel_two_section .appjetty_modal-content { width: auto; }
+    }
+  </style>
+
+  {% assign settings = shop.metafields.appjetty_popup.settings %}
+
+    <section class="mymodel_two_section">
+        <div class="appjetty_modal" id="appjetty_modal_close">
+          <div id="myappjetty_modal_two" class="appjetty_modal-dialog fade">
+            <div class="appjetty_modal-content appjetty_modal-color">
+              <div class="appjetty_modal-header header-color">
+                <button class="close-appjetty_modal" onclick="closeAppJettyModal()">
+                    <span class="cross-sign">×</span>
+                </button>
+              </div>
+              <div class="appjetty_modal-body body-color text-center">
+                <h2 class="header-title" id="popup_header">
+                  {% if settings.header %}
+                      {{ settings.header }}
+                  {% else %}
+                      Are you at the right place ?
+                  {% endif %}
+                </h2>
+                <p class="appjetty_modal-paragraph" id="popup_body">
+                  {% if settings.body %}
+                      {{ settings.body }}
+                  {% else %} 
+                      Please go to [visitor_country] store
+                  {% endif %}
+                </p>
+                <p class="appjetty_modal-btn-link">
+                  <a href="javascript:void(0)" class="appjetty_modal-link btn-color text-color" id="appjetty_redirect_url">
+                      {% if settings.redirect_btn_text %}
+                        {{ settings.redirect_btn_text }}
+                      {% else %}
+                        Visit Site
+                      {% endif %}
+                  </a>
+                </p>
+              </div>
+              <div class="appjetty_modal-footer footer-color">
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+<script>
+  var modal = document.getElementById("myappjetty_modal_two");
+
+  function openAppJettyModal(vistor_country,redirect_url){
+    
+    document.getElementById("popup_body").innerHTML = document.getElementById("popup_body").innerHTML.replace('[visitor_country]',vistor_country);
+
+    document.getElementById("popup_header").innerHTML = document.getElementById("popup_header").innerHTML.replace('[visitor_country]',vistor_country);
+
+    document.getElementById("appjetty_redirect_url").innerHTML = document.getElementById("appjetty_redirect_url").innerHTML.replace('[visitor_country]',vistor_country);
+    
+    document.getElementById("appjetty_redirect_url").href = redirect_url;
+    
+    modal.classList.add("in");
+ }
+
+  function closeAppJettyModal(){
+    modal.classList.remove("in");
+    setCookie('redirection_ignored',1,1);
+  }
+  
+</script>

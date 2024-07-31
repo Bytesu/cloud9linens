@@ -1,0 +1,247 @@
+{%- assign settings = section.settings -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+<section
+    id="st__testimonial-{{ section.id }}"
+    class="sf-testimonials relative {{ section.settings.custom_class }} {{ settings.design }}"
+    data-section-type="testimonials"
+    data-section-id="{{ section.id }}"
+    data-design="{{ settings.design }}"
+    data-autoplay="{% if request.design_mode %}false{% else %}{{ settings.autorotate }}{% endif %}"
+    data-container="{{ settings.container }}"
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ settings.background_color }};--star-color: {{ section.settings.star_color }};"
+>
+    <div class="{{ container }}">
+        <div class="sf-testimonials__header relative text-{{ section.settings.header_alignment }}">
+            {% render 'index-section-header', section_settings: section.settings %}
+            {% if settings.design == 'testimonials-6' %}
+                {% render 'slider-controls', show_nav: section.settings.show_navigation, show_pagination: section.settings.show_pagination %}
+            {% endif %}
+        </div>
+
+        <div class="sf-testimonials__container relative{% if section.settings.container == 'w-full' %} px-5{% endif %}">
+            {%- case settings.design -%}
+                {%- when 'testimonials-1' -%}
+                    {% render 'testimonials-1', section: section, container_class: section.settings.container %}
+                {%- when 'testimonials-2' -%}
+                    {% render 'testimonials-2', section: section, container_class: section.settings.container %}
+                {%- when 'testimonials-3' -%}
+                    {% render 'testimonials-3', section: section, container_class: section.settings.container %}
+                {%- when 'testimonials-4' -%}
+                    {% render 'testimonials-4', section: section, container_class: section.settings.container %}
+                {%- when 'testimonials-5' -%}
+                    {% render 'testimonials-5', section: section, container_class: section.settings.container %}
+                {%- when 'testimonials-6' -%}
+                    {% render 'testimonials-6', section: section, container_class: section.settings.container %}
+                {%- else -%}
+            {%- endcase -%}
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Testimonials",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section header"
+            },
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "What People Are Saying"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading"
+            },
+            {
+                "type": "textarea",
+                "id": "description",
+                "label": "Description"
+            },
+            {
+                "type": "select",
+                "id": "header_alignment",
+                "label": "Text alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "General"
+            },
+            {
+                "type": "select",
+                "id": "container",
+                "label": "Container type",
+                "default": "w-full",
+                "options": [
+                    {
+                        "value": "container-fluid",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "w-full",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "container",
+                        "label": "Use container box"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background color"
+            },
+            {
+                "type": "select",
+                "id": "design",
+                "label": "Layout",
+                "options": [
+                    {
+                        "value": "testimonials-1",
+                        "label": "Layout 1"
+                    },
+                    {
+                        "value": "testimonials-2",
+                        "label": "Layout 2"
+                    },
+                    {
+                        "value": "testimonials-3",
+                        "label": "Layout 3"
+                    },
+                    {
+                        "value": "testimonials-4",
+                        "label": "Layout 4"
+                    },
+                    {
+                        "value": "testimonials-5",
+                        "label": "Layout 5"
+                    },
+                    {
+                        "value": "testimonials-6",
+                        "label": "Layout 6"
+                    }
+                ],
+                "default": "testimonials-1"
+            },
+            {
+                "type": "checkbox",
+                "id": "show_stars",
+                "label": "Show stars",
+                "default": true
+            },
+            {
+                "type": "checkbox",
+                "id": "autorotate",
+                "label": {"en": "Auto-rotate content"},
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "show_navigation",
+                "label": "Show navigation",
+                "default": false
+            },
+            {
+                "type": "checkbox",
+                "id": "show_pagination",
+                "label": "Show pagination",
+                "default": true
+            },
+            {
+                "type": "color",
+                "id": "star_color",
+                "label": "Stars color",
+                "default": "#000"
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom classes"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "testimonial",
+                "name": "Testimonial",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Title",
+                        "default": "Love it so much"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description",
+                        "label": "Content",
+                        "default": "<p>\"Short dress in a printed viscose weave with a round neckline, opening with a button at the back of the Seams with small frill trims at the waist and on the sleeves and skirt. Unlined.\"</p>"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "footer",
+                        "label": "Author",
+                        "default": "<p>Dean D. US</p>"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "image",
+                        "label": "Image",
+                        "info": "Optional"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "image_text",
+                        "label": "Image text",
+                        "info": "Optional"
+                    },
+                    {
+                        "type": "product",
+                        "id": "product",
+                        "label": "Product",
+                        "info": "This option is use only for layout 6."
+                    }
+                ]
+            }
+        ],
+        "presets": [{
+            "name": "Testimonials",
+            "category": "Promotional",
+            "blocks": [
+                { "type": "testimonial" },
+                { "type": "testimonial" },
+                { "type": "testimonial" },
+                { "type": "testimonial" },
+                { "type": "testimonial" },
+                { "type": "testimonial" }
+            ]
+        }]
+    }
+{% endschema %}

@@ -1,0 +1,51 @@
+<section id="{{ section.id }}">
+ <div class="container-cus">
+  <div class="grid-x grid-padding-x grid-padding-y dis-flex">
+  <div class="align-self-middle cell large-7">
+    <ul class="color-white list">
+
+      {% for block in section.blocks %}
+      <li>{{ block.settings.boxText }}
+      </li>
+        {% endfor %}
+
+    </ul>
+    <span>
+      <a class="button grey-btn" href="https://maskad.co/pages/shop-masked" target="_blank" title="" style="cursor: pointer;">Shop Now</a></span>
+  </div>
+  <div class="cell large-5"> <a href="https://maskad.co/pages/shop-masked" title="" target="_blank" style="cursor: pointer;"><img alt="" id="ww-3qt4swpp" src="//dvm0q8ak413bh.cloudfront.net/data/org/27097/media/img/source/edit/3091817_edit.webp"></a></div>
+</div>
+   
+ </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Image with text",
+    "settings": [],
+     "blocks": [
+    {
+      "type": "text",
+      "name": "Column",
+      "limit":6,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "boxText",
+          "label": "Box Text"
+        },
+         {
+          "type": "url",
+          "id": "btnUrl",
+          "label": "Box Url"
+        }
+      ]
+    }
+  ]
+   , "presets":[
+      {
+        "name":"image with text"
+      }
+    ]
+  }
+{% endschema %}

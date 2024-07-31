@@ -1,0 +1,95 @@
+<div
+  class="hidden opacity-0 transition-opacity foxkit-related-products sf-product__section"
+  data-section-type="foxkit-related-products"
+  data-section-id="{{ section.id }}"
+  data-items="{{ section.settings.columns }}"
+  data-enable-slider="{{ section.settings.enable_slider }}"
+  data-product-title="{{ product.title }}"
+  data-product-vendor="{{ product.vendor }}"
+  data-product-type="{{ product.type }}"
+  style="--column-gap: {{ section.settings.column_gap }}px; --column-gap-mobile: 20px; --row-gap: {{ section.settings.column_gap | plus: 10 }}px; --items: {{ section.settings.columns }}"
+>
+  <div class="{{ section.settings.container }}">
+    <h2 class="sf-product__section-heading"></h2>
+    <div class="relative">
+      {%- capture grid_class -%}
+        md:grid-cols-{{ section.settings.columns | minus: 1 }} xl:grid-cols-{{ section.settings.columns }}
+      {%- endcapture -%}
+      <div
+        class="sf-grid md:grid {{ grid_class | strip_newlines }}"
+        data-grid-container
+      >
+        <div class="swiper-wrapper" data-product-list></div>
+      </div>
+      {% if section.settings.enable_slider %}
+        {% render 'slider-controls', absolute: true, show_nav: true, container: section.settings.container, custom_class: 'hidden' %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "[FoxKit] Related products",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Products settings",
+        "info": "Config your related product settings inside [FoxKit App](https://foxkit.app/product-recommendation)"
+      },
+      {
+        "type": "header",
+        "content": "Layout settings"
+      },
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container",
+        "options": [
+          {
+            "value": "container-fluid",
+            "label": "Default"
+          },
+          {
+            "value": "w-full",
+            "label": "Full width"
+          },
+          {
+            "value": "container",
+            "label": "Use container box"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "columns",
+        "label": "Products per row",
+        "default": 4,
+        "min": 3,
+        "max": 8
+      },
+      {
+        "type": "range",
+        "id": "column_gap",
+        "label": "Column gap",
+        "default": 30,
+        "min": 0,
+        "max": 50,
+        "step": 2
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_slider",
+        "label": "Enable slider",
+        "default": true
+      }
+    ],
+    "templates": ["product"],
+    "presets": [
+      {
+        "name": "[FoxKit] Related products"
+      }
+    ]
+  }
+{% endschema %}

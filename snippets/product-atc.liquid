@@ -1,0 +1,43 @@
+{% assign default = 'products.product.add_to_cart' | t %}
+<button
+    type="submit"
+    name="add"
+    class="add-to-cart add_cart___btn_btn sf__btn flex-grow flex-shrink not-change relative mt-5 {{ class }} {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}"
+    data-add-to-cart-text="{{ btn_text | default: "Add to bag" }}"
+    style="text-transform: uppercase; background-color: #c1c1c1; color: #fff; border-radius: 0px; border-color: transparent !important;"
+>
+    {% render 'atc-spinner' %}
+    <span
+        class="not-change cstm__font__size"
+        data-add-to-cart-text="{{ btn_text | default: default }}"
+        data-sold-out="{{ 'products.product.sold_out' | t }}"
+        data-unavailable="{{ 'products.product.unavailable' | t }}"
+    >
+      Add to bag
+        {% if product.available %}
+            {{ btn_text | default: default }}
+        {% else %}
+            {{ 'products.product.sold_out' | t }}
+        {% endif %}
+    </span>
+</button>
+
+
+{% comment %}
+<!-- MTS - Gift a friend button -->
+<button
+    type="submit"
+    name="add"
+    class="sf__btn flex-grow flex-shrink not-change relative {{ class }} {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}"
+>
+        Gift a Friend
+</button>
+
+<button
+    type="submit"
+    name="add"
+    class="sf__btn flex-grow flex-shrink not-change relative mts-cus-btn"
+>
+        Add to 
+</button>
+{% endcomment %}

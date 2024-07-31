@@ -1,0 +1,661 @@
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+
+<section
+    id="sf__img-width-slider-{{ section.id }}"
+    class="slider-{{ section.id }} sf__banner-with-slider {{ section.settings.custom_class }}"
+    data-section-type="banner-with-slider"
+    data-section-id="{{ section.id }}"
+    data-autoplay="{% if request.design_mode %}false{% else %}{{ section.settings.slide_autoplay }}{% endif %}"
+    data-timeout="{{ section.settings.autorotate_speed | times: 1000 }}"
+    data-effect="{{ section.settings.slide_effect }}"
+    {% if has_bg %}
+    data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ bg_color }}; --items: 1;"
+>
+    <div class="{{ container }}">
+        {% render 'index-section-header', section_settings: section.settings %}
+        <div class="sm:grid sm:grid-cols-4{% if section.settings.container != 'w-full' %} -mx-4{% endif %} sm:mx-0">
+            <div class="hidden sm:block relative sm:col-start-1 sm:col-end-3 lg:col-start-1 lg:col-end-1 overflow-hidden sf__hover-scale-up">
+                <a href="{{ section.settings.button_link_1 }}" class="w-full h-full">
+                    {% if section.settings.banner_image_1 %}
+                        {% render 'responsive-image', image: section.settings.banner_image_1, wrapper_class: 'w-full h-full' %}
+                    {% else %}
+                        <div class="sf__placeholder-wrapper h-full w-full sf-image--loaded">
+                            {{ 'collection-4' | placeholder_svg_tag: 'sf__placeholder-svg sf__placeholder-svg-no-border w-full h-full object-cover' }}
+                        </div>
+                    {% endif %}
+                </a>
+                <div class="absolute z-10 bottom-6 left-1/2 -translate-x-1/2">
+                    {% if section.settings.button_text_1 != blank %}
+                    <a href="{{ section.settings.button_link_1 | default: '#' }}" class="sf__btn {{ section.settings.button_style_1 }} {{ section.settings.button_size_1 }}">{{ section.settings.button_text_1 }}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="overflow-hidden h-full w-full sm:col-start-1 sm:col-end-5 order-first lg:col-start-2 lg:col-end-4 lg:order-none">
+                <div class="relative h-full">
+                    <div class="sf-slider-{{ section.id }} swiper-container swiper--equal-height">
+                        <div class="swiper-wrapper">
+                            {% for block in section.blocks %}
+                            {%- assign content_positions = block.settings.content_position | split: ' ' -%}
+                            {%- assign text_alignment = block.settings.text_alignment -%}
+                            {%- assign text_horizontal_alignment = content_positions.first -%}
+                            {%- assign text_vertical_alignment = content_positions.last | strip -%}
+                            {%- assign text_color = block.settings.content_text_color -%}
+                                <div {{ block.shopify_attributes }} data-slide="{{ forloop.index0 }}" class="relative swiper-slide w-full h-full sf-bg-lazy">
+                                    {% if block.settings.item_image != blank %}
+                                        {% render 'responsive-image', image: block.settings.item_image, wrapper_class: 'w-full h-full' %}
+                                    {% else %}
+                                        {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+                                        {{ 'collection-' | append: current | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full w-full h-full object-cover' }}
+                                    {% endif %}
+                                    <div class="sf__slide-block flex sf__slide-block--{{ text_vertical_alignment }}-{{ text_horizontal_alignment }} absolute inset-0 w-full 2xl:p-24 lg:p-12 sm:p-10 p-4">
+                                        <div class="sf__slide-content text-{{ text_alignment }} text-{{ text_color }}">
+                                            {% if block.settings.subheading != blank %}
+                                            <p class="sf__content-subheading">{{ block.settings.subheading }}</p>
+                                            {% endif %}
+                                            {% if block.settings.heading != blank %}
+                                                <h3 class="sf__content-heading text-{{ text_color }}">{{ block.settings.heading }}</h3>
+                                            {% endif %}
+                                            {% if block.settings.description != blank %}
+                                                <div class="rte sf__content-description text-color-subtext">{{ block.settings.description }}</div>
+                                            {% endif %}
+                                            {% if block.settings.button_text != blank %}
+                                                <a href="{{ block.settings.button_link | default: "#" }}" class="xl:mt-12 lg:mt-10 mt-5 slide__block-link inline-block sf__btn {{ block.settings.button_style }} {{ block.settings.button_size }}">
+                                                    {{ block.settings.button_text }}
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="absolute left-0 w-full bottom-0 pb-5 z-10">
+                        {% render 'slider-controls', absolute: true, show_nav: false, dots_class: 'sf__dot-dark' %}
+                    </div>
+                </div>
+            </div>
+            <div class="hidden sm:block sm:col-start-3 sm:col-end-5 lg:col-start-4 lg:col-end-5">
+                <div class="relative overflow-hidden sf__hover-scale-up">
+                    <a href="{{ section.settings.button_link_2 | default: '#' }}" class="w-full">
+                        {% if section.settings.banner_image_2 %}
+                            {% render 'responsive-image', image: section.settings.banner_image_2, wrapper_class: 'w-full h-full' %}
+                        {% else %}
+                            <div class="sf__placeholder-wrapper h-full w-full sf-image--loaded">
+                                {{ 'collection-5' | placeholder_svg_tag: 'sf__placeholder-svg sf__placeholder-svg-no-border w-full h-full' }}
+                            </div>
+                        {% endif %}
+                    </a>
+                    <div class="absolute z-10 bottom-6 left-1/2 -translate-x-1/2">
+                        {% if section.settings.button_text_2 != blank %}
+                        <a href="{{ section.settings.button_link_2 | default: '#' }}" class="sf__btn {{ section.settings.button_style_2 }} {{ section.settings.button_size_2 }}">{{ section.settings.button_text_2 }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="relative overflow-hidden sf__hover-scale-up">
+                    <a href="{{ section.settings.button_link_3 | default: '#' }}" class="w-full">
+                        {% if section.settings.banner_image_3 %}
+                            {% render 'responsive-image', image: section.settings.banner_image_3, wrapper_class: 'w-full h-full' %}
+                        {% else %}
+                            <div class="sf__placeholder-wrapper h-full w-full sf-image--loaded">
+                                {{ 'collection-6' | placeholder_svg_tag: 'sf__placeholder-svg sf__placeholder-svg-no-border w-full h-full' }}
+                            </div>
+                        {% endif %}
+                    </a>
+                    <div class="absolute z-10 bottom-6 left-1/2 -translate-x-1/2">
+                        {% if section.settings.button_text_3 != blank %}
+                        <a href="{{ section.settings.button_link_3 | default: '#' }}" class="sf__btn {{ section.settings.button_style_3 }} {{ section.settings.button_size_3 }}">{{ section.settings.button_text_3 }}</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="sf__ms sm:hidden mt-4">
+                <div class="sf__ms-wrapper grid sf-grid pl-4" style="--column-gap: 1rem;">
+                    {% if section.settings.banner_image_2 %}
+                        <div class="sf-column">
+                            <div class="banner-w-slider__card">
+                                <a href="{{ section.settings.button_link_2 | default: '#' }}" class="banner-w-slider__inner block">
+                                    <div class="banner-w-slider__img">
+                                        {% render 'responsive-image', image: section.settings.banner_image_2, wrapper_class: 'w-full h-full' %}
+                                    </div>
+                                    {% if section.settings.button_text_2 != blank %}
+                                        <h4 class="banner-w-slider__card-title mt-2 text-base">{{ section.settings.button_text_2 }}</h4>
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if section.settings.banner_image_3 %}
+                        <div class="sf-column">
+                            <div class="banner-w-slider__card">
+                                <a href="{{ section.settings.button_link_3 | default: '#' }}" class="banner-w-slider__inner block">
+                                    <div class="banner-w-slider__img">
+                                        {% render 'responsive-image', image: section.settings.banner_image_3, wrapper_class: 'w-full h-full' %}
+                                    </div>
+                                    {% if section.settings.button_text_3 != blank %}
+                                        <h4 class="banner-w-slider__card-title mt-2 text-base">{{ section.settings.button_text_3 }}</h4>
+                                    {% endif %}
+                                </a>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if section.settings.banner_image_1 %}
+                    <div class="sf-column">
+                        <div class="banner-w-slider__card">
+                            <a href="{{ section.settings.button_link_1 | default: '#' }}" class="banner-w-slider__inner block">
+                                <div class="banner-w-slider__img">
+                                    {% render 'responsive-image', image: section.settings.banner_image_1, wrapper_class: 'w-full h-full' %}
+                                </div>
+                                {% if section.settings.button_text_1 != blank %}
+                                    <h4 class="banner-w-slider__card-title mt-2 text-base">{{ section.settings.button_text_1 }}</h4>
+                                {% endif %}
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Image with slider",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section header"
+            },
+            {
+                "type":"text",
+                "id":"heading",
+                "label":"Heading"
+            },
+            {
+                "type": "text",
+                "id": "subheading",
+                "label": "Subheading"
+            },
+            {
+                "type": "select",
+                "id": "header_alignment",
+                "label": "Text alignment",
+                "default": "center",
+                "options": [
+                    {
+                        "value": "left",
+                        "label": "Left"
+                    },
+                    {
+                        "value": "center",
+                        "label": "Center"
+                    }
+                ]
+            },
+            {
+                "type": "header",
+                "content": "General"
+            },
+            {
+                "type": "select",
+                "id": "container",
+                "label": "Container type",
+                "default": "container-fluid",
+                "options": [
+                    {
+                        "value": "container-fluid",
+                        "label": "Default"
+                    },
+                    {
+                        "value": "w-full",
+                        "label": "Full width"
+                    },
+                    {
+                        "value": "container",
+                        "label": "Use container box"
+                    }
+                ]
+            },
+            {
+                "type": "color",
+                "id": "background_color",
+                "label": "Background color",
+                "default": "rgba(0,0,0,0)"
+            },
+            {
+                "type": "header",
+                "content": "Slider"
+            },
+            {
+                "type": "checkbox",
+                "id": "slide_autoplay",
+                "label": "Auto-rotate slides",
+                "default": false
+            },
+            {
+                "type": "range",
+                "id": "autorotate_speed",
+                "label": {"en": "Change slides every"},
+                "info": {"en": "Work when auto-rotate"},
+                "max": 10,
+                "min": 2,
+                "step": 1,
+                "unit": "s",
+                "default": 5
+            },
+            {
+                "type": "header",
+                "content": "Banner Image 1"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_image_1",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "button_text_1",
+                "label": "Button label",
+                "default": "Shop Now"
+            },
+            {
+                "type": "url",
+                "id": "button_link_1",
+                "label": "Button link"
+            },
+            {
+                "type": "select",
+                "id": "button_style_1",
+                "label": "Button style",
+                "options": [
+                    {
+                        "value": "sf__btn-primary",
+                        "label": "Primary button"
+                    },
+                    {
+                        "value": "sf__btn-secondary",
+                        "label": "Secondary button"
+                    },
+                    {
+                        "value": "sf__btn-white",
+                        "label": "White button"
+                    },
+                    {
+                        "value": "sf__btn-link",
+                        "label": "Underline button"
+                    }
+                ],
+                "default": "sf__btn-white"
+            },
+            {
+                "type": "select",
+                "id": "button_size_1",
+                "label": "Button size",
+                "options": [
+                {
+                    "value": "sf__btn-small",
+                    "label": "Button small"
+                },
+                {
+                    "value": "",
+                    "label": "Button medium"
+                },
+                {
+                    "value": "sf__btn-large",
+                    "label": "Button large"
+                }
+                ],
+                "default": ""
+            },
+            {
+                "type": "header",
+                "content": "Banner Image 2"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_image_2",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "button_text_2",
+                "label": "Button label",
+                "default": "Shop Now"
+            },
+            {
+                "type": "url",
+                "id": "button_link_2",
+                "label": "Button link"
+            },
+            {
+                "type": "select",
+                "id": "button_style_2",
+                "label": "Button style",
+                "options": [
+                    {
+                        "value": "sf__btn-primary",
+                        "label": "Primary button"
+                    },
+                    {
+                        "value": "sf__btn-secondary",
+                        "label": "Secondary button"
+                    },
+                    {
+                        "value": "sf__btn-white",
+                        "label": "White button"
+                    },
+                    {
+                        "value": "sf__btn-link",
+                        "label": "Underline button"
+                    }
+                ],
+                "default": "sf__btn-white"
+            },
+            {
+                "type": "select",
+                "id": "button_size_2",
+                "label": "Button size",
+                "options": [
+                {
+                    "value": "sf__btn-small",
+                    "label": "Button small"
+                },
+                {
+                    "value": "",
+                    "label": "Button medium"
+                },
+                {
+                    "value": "sf__btn-large",
+                    "label": "Button large"
+                }
+                ],
+                "default": ""
+            },
+            {
+                "type": "header",
+                "content": "Banner image 3"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner_image_3",
+                "label": "Image"
+            },
+            {
+                "type": "text",
+                "id": "button_text_3",
+                "label": "Button label",
+                "default": "Shop Now"
+            },
+            {
+                "type": "url",
+                "id": "button_link_3",
+                "label": "Button link 3"
+            },
+            {
+                "type": "select",
+                "id": "button_style_3",
+                "label": "Button style",
+                "options": [
+                    {
+                        "value": "sf__btn-primary",
+                        "label": "Primary button"
+                    },
+                    {
+                        "value": "sf__btn-secondary",
+                        "label": "Secondary button"
+                    },
+                    {
+                        "value": "sf__btn-white",
+                        "label": "White button"
+                    },
+                    {
+                        "value": "sf__btn-link",
+                        "label": "Underline button"
+                    }
+                ],
+                "default": "sf__btn-white"
+            },
+            {
+                "type": "select",
+                "id": "button_size_3",
+                "label": "Button size",
+                "options": [
+                {
+                    "value": "sf__btn-small",
+                    "label": "Button small"
+                },
+                {
+                    "value": "",
+                    "label": "Button medium"
+                },
+                {
+                    "value": "sf__btn-large",
+                    "label": "Button large"
+                }
+                ],
+                "default": ""
+            },
+            {
+                "type": "text",
+                "id": "custom_class",
+                "label": "Custom classes"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "item_slide",
+                "name": "Item slide",
+                "settings": [
+                    {
+                        "type": "header",
+                        "content": "Image settings"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "item_image",
+                        "label": "Image"
+                    },
+                    {
+                        "type": "header",
+                        "content": "Content"
+                    },
+                    {
+                        "type": "select",
+                        "id": "content_text_color",
+                        "label": "Text color",
+                        "default": "black",
+                        "options": [
+                            {
+                                "value": "black",
+                                "label": "Dark"
+                            },
+                            {
+                                "value": "white",
+                                "label": "Light"
+                            }
+                        ]
+                    },
+                    {
+                        "type":"select",
+                        "id":"content_position",
+                        "label":{
+                            "en":"Content position"
+                        },
+                        "default":"left middle",
+                        "options":[
+                            {
+                                "label":{
+                                    "en":"Top left"
+                                },
+                                "value":"left top"
+                            },
+                            {
+                                "label":{
+                                    "en":"Top center"
+                                },
+                                "value":"center top"
+                            },
+                            {
+                                "label":{
+                                    "en":"Top right"
+                                },
+                                "value":"right top"
+                            },
+                            {
+                                "label":{
+                                    "en":"Middle left"
+                                },
+                                "value":"left middle"
+                            },
+                            {
+                                "label":{
+                                    "en":"Middle center"
+                                },
+                                "value":"center middle"
+                            },
+                            {
+                                "label":{
+                                    "en":"Middle right"
+                                },
+                                "value":"right middle"
+                            },
+                            {
+                                "label":{
+                                    "en":"Bottom left"
+                                },
+                                "value":"left bottom"
+                            },
+                            {
+                                "label":{
+                                    "en":"Bottom center"
+                                },
+                                "value":"center bottom"
+                            },
+                            {
+                                "label":{
+                                    "en":"Bottom right"
+                                },
+                                "value":"right bottom"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "select",
+                        "id": "text_alignment",
+                        "label": "Content alignment",
+                        "default": "left",
+                        "options": [
+                            {
+                                "value": "left",
+                                "label": {"en": "Left"}
+                            },
+                            {
+                                "value": "center",
+                                "label": {"en": "Center"}
+                            },
+                            {
+                                "value": "right",
+                                "label": {"en": "Right"}
+                            }
+                        ]
+                    },
+                    {
+                        "type": "text",
+                        "id": "subheading",
+                        "label": "Subheading",
+                        "default": "Hot this week"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "heading",
+                        "label": "Heading",
+                        "default": "Chenille sweater with<br> raglan sleeves"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button_text",
+                        "label": "Button label",
+                        "default": "Shop Now"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_link",
+                        "label": "Button link"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_style",
+                        "label": "Button style",
+                        "options": [
+                            {
+                                "value": "sf__btn-primary",
+                                "label": "Primary button"
+                            },
+                            {
+                                "value": "sf__btn-secondary",
+                                "label": "Secondary button"
+                            },
+                            {
+                                "value": "sf__btn-white",
+                                "label": "White button"
+                            },
+                            {
+                                "value": "sf__btn-link",
+                                "label": "Underline button"
+                            }
+                        ],
+                        "default": "sf__btn-link"
+                    },
+                    {
+                        "type": "select",
+                        "id": "button_size",
+                        "label": "Button size",
+                        "options": [
+                        {
+                            "value": "sf__btn-small",
+                            "label": "Button small"
+                        },
+                        {
+                            "value": "",
+                            "label": "Button medium"
+                        },
+                        {
+                            "value": "sf__btn-large",
+                            "label": "Button large"
+                        }
+                        ],
+                        "default": ""
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Image with slider",
+                "category": "Banner",
+                "blocks": [
+                    { "type": "item_slide" },
+                    { "type": "item_slide" },
+                    { "type": "item_slide" }
+                ]
+            }
+        ]
+    }
+{% endschema %}

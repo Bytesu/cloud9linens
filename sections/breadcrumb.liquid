@@ -1,0 +1,68 @@
+{% assign container = section.settings.container %}
+{% assign class = '' %}
+{% if section.settings.hide_on_mb %}
+  {% assign class = 'hidden md:block' %}
+{% endif %}
+
+{% render 'breadcrumb', container: 'container', justify: section.settings.text_alignment, class: class, hide_current:section.settings.hide_current %}
+{% schema %}
+  {
+    "name": "Breadcrumb",
+    "settings": [
+      {
+          "type": "select",
+          "id": "container",
+          "label": "Container type",
+          "default": "container",
+          "options": [
+              {
+                  "value": "container-fluid",
+                  "label": "Default"
+              },
+              {
+                  "value": "w-full",
+                  "label": "Full width"
+              },
+              {
+                  "value": "container",
+                  "label": "Use container box"
+              }
+          ]
+      },
+      {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "Text alignment",
+          "default": "center",
+          "options": [
+              {
+                  "value": "left",
+                  "label": "Left"
+              },
+              {
+                  "value": "center",
+                  "label": "Center"
+              }
+          ]
+      },
+      {
+          "type": "checkbox",
+          "id": "hide_current",
+          "label": "Hide current page",
+          "default": false
+      },
+      {
+          "type": "checkbox",
+          "id": "hide_on_mb",
+          "label": "Hide on mobile",
+          "default": false
+      }
+    ],
+    "templates": ["product", "page", "collection"],
+    "presets": [
+      {
+        "name": "Breadcrumb"
+      }
+    ]
+  }
+{% endschema %}

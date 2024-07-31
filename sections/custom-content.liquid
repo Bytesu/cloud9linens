@@ -1,0 +1,3320 @@
+{% render 'custom-content-section', show_header: true, section: section %}
+
+{% schema %}
+  {
+    "name": {
+      "cs": "Vlastní obsah",
+      "da": "Tilpasset indhold",
+      "de": "Personalisierter Content",
+      "en": "Custom content",
+      "es": "Contenido personalizado",
+      "fi": "Mukautettu sisältö",
+      "fr": "Contenu personnalisé",
+      "it": "Contenuto personalizzato",
+      "ja": "コンテンツをカスタムする",
+      "ko": "사용자 지정 콘텐츠",
+      "nb": "Tilpasset innhold",
+      "nl": "Aangepaste content",
+      "pl": "Zawartość niestandardowa",
+      "pt-BR": "Conteúdo personalizado",
+      "pt-PT": "Conteúdo personalizado",
+      "sv": "Anpassat innehåll",
+      "th": "เนื้อหาแบบกำหนดเอง",
+      "tr": "Özel içerik",
+      "vi": "Nội dung tùy chỉnh",
+      "zh-CN": "自定义内容",
+      "zh-TW": "自訂內容"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section header"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Custom content"
+      },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description"
+      }, {
+        "type": "range",
+        "id": "column_size",
+        "min": 10,
+        "max": 100,
+        "step": 10,
+        "unit": "%",
+        "label": "Side by side width",
+        "default": 50,
+        "info": "left right width"
+      }, {
+        "type": "select",
+        "id": "header_alignment",
+        "label": "Text alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      }, {
+        "type": "header",
+        "content": "General"
+      }, {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "container-fluid",
+        "options": [
+          {
+            "value": "container-fluid",
+            "label": "Default"
+          }, {
+            "value": "w-full",
+            "label": "Full width"
+          }, {
+            "value": "container",
+            "label": "Use container box"
+          }
+        ]
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background color"
+      }, {
+        "type": "range",
+        "id": "gap",
+        "label": "Column gap",
+        "default": 30,
+        "min": 0,
+        "max": 200,
+        "step": 5,
+        "unit": "px"
+      }, {
+        "type": "checkbox",
+        "id": "wd_container",
+        "label": "container",
+        "default": true
+      },
+          {
+      "type": "range",
+      "id": "custom_padding_bottom",
+      "min": 16,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 16
+      },
+      
+      {
+        "type": "header",
+        "content": "Mobile Settings"
+      }, {
+        "type": "checkbox",
+        "id": "use_scroll_mobile",
+        "label": "Enable horizontal scroll",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "gap_mobile",
+        "label": "Column gap",
+        "default": 16,
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px"
+      }, {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom classes"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": {
+          "cs": "Text",
+          "da": "Tekst",
+          "de": "Text",
+          "en": "Text",
+          "es": "Texto",
+          "fi": "Teksti",
+          "fr": "Texte",
+          "it": "Testo",
+          "ja": "テキスト",
+          "ko": "텍스트",
+          "nb": "Tekst",
+          "nl": "Tekst",
+          "pl": "Tekst",
+          "pt-BR": "Texto",
+          "pt-PT": "Texto",
+          "sv": "Text",
+          "th": "ข้อความ",
+          "tr": "Metin",
+          "vi": "Văn bản",
+          "zh-CN": "文本",
+          "zh-TW": "文字"
+        },
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": {
+              "cs": "Nadpis",
+              "da": "Overskrift",
+              "de": "Titel",
+              "en": "Heading",
+              "es": "Título",
+              "fi": "Otsake",
+              "fr": "En-tête",
+              "it": "Heading",
+              "ja": "見出し",
+              "ko": "제목",
+              "nb": "Overskrift",
+              "nl": "Kop",
+              "pl": "Nagłówek",
+              "pt-BR": "Título",
+              "pt-PT": "Título",
+              "sv": "Rubrik",
+              "th": "ส่วนหัว",
+              "tr": "Başlık",
+              "vi": "Tiêu đề",
+              "zh-CN": "标题",
+              "zh-TW": "標題"
+            },
+            "default": {
+              "cs": "Informujte o své značce",
+              "da": "Fortæl om dit brand",
+              "de": "Erzähle von deiner Marke",
+              "en": "Talk about your brand",
+              "es": "Habla de tu marca",
+              "fi": "Kerro brändistäsi",
+              "fr": "Parlez de votre marque",
+              "it": "Parla del tuo brand",
+              "ja": "あなたのブランドについて語る",
+              "ko": "브랜드에 대해 이야기하기",
+              "nb": "Snakk om merkevaren din",
+              "nl": "Vertel over je merk",
+              "pl": "Opowiedz o swojej marce",
+              "pt-BR": "Fale sobre a sua marca",
+              "pt-PT": "Fale sobre a sua marca",
+              "sv": "Prata om ditt varumärke",
+              "th": "พูดถึงแบรนด์ของคุณ",
+              "tr": "Markanızdan bahsedin",
+              "vi": "Chia sẻ về thương hiệu của bạn",
+              "zh-CN": "介绍您的品牌",
+              "zh-TW": "描述您的品牌"
+            }
+          },
+          {
+            "type": "textarea",
+            "id": "subheading",
+            "label": "Subheading"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": {
+              "cs": "Text",
+              "da": "Tekst",
+              "de": "Text",
+              "en": "Text",
+              "es": "Texto",
+              "fi": "Teksti",
+              "fr": "Texte",
+              "it": "Testo",
+              "ja": "テキスト",
+              "ko": "텍스트",
+              "nb": "Tekst",
+              "nl": "Tekst",
+              "pl": "Tekst",
+              "pt-BR": "Texto",
+              "pt-PT": "Texto",
+              "sv": "Text",
+              "th": "ข้อความ",
+              "tr": "Metin",
+              "vi": "Văn bản",
+              "zh-CN": "文本",
+              "zh-TW": "文字"
+            },
+            "default": {
+              "cs": "<p>Informujte zákazníky prostřednictvím tohoto textu o své značce. Zároveň můžete popsat některý z produktů, oznámit důležité informace nebo přivítat zákazníky ve svém obchodě.</p>",
+              "da": "<p>Brug denne tekst til at dele oplysninger om dit brand med dine kunder. Beskriv et produkt, del meddelelser, eller byd kunder velkommen til din butik.</p>",
+              "de": "<p>Nutzen Sie diesen Text, um Infos über Ihre Marke mitzuteilen. Beschreiben Sie ein Produkt, kündigen Sie etwas an oder heißen Sie Kunden willkommen.</p>",
+              "en": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>",
+              "es": "<p>Usa este texto para compartir información sobre tu marca con tus clientes. Describe un producto, comparte anuncios o recibe clientes en tu tienda.</p>",
+              "fi": "<p>Tämän tekstin avulla voit jakaa brändiäsi koskevia tietoja asiakkaille. Kuvaile tuotetta, jaa ilmoituksia tai toivota asiakkaat tervetulleiksi kauppaasi.</p>",
+              "fr": "<p>Utilisez ce texte pour partager des informations sur votre marque. Décrivez un produit, partagez des annonces, ou souhaitez la bienvenue à vos clients.</p>",
+              "it": "<p>Utilizza questo testo per condividere le informazioni sul tuo brand con i tuoi clienti. Descrivi un prodotto, condividi gli annunci o dai il benvenuto ai clienti nel tuo negozio.</p>",
+              "ja": "<p>このテキストを使用して、あなたのブランドに関する情報をお客様と共有します。商品を説明したり、告知の共有をしたり、あるいはあなたのストアのお客様を歓迎します。</p>",
+              "ko": "<p>이 텍스트를 사용하여 고객과 브랜드에 대한 정보를 공유하십시오. 제품 설명, 공지 사항 공유 또는 고객의 스토어 방문을 환영합니다.</p>",
+              "nb": "<p>Bruk denne teksten for å dele informasjon om merkevaren med kundene dine. Beskriv et produkt, del kunngjøringer eller ønsk kunder velkommen til butikken din.</p>",
+              "nl": "<p>Gebruik deze tekst om informatie over je merk te delen met je klanten. Beschrijf een product, deel aankondigingen of verwelkom klanten in je winkel.</p>",
+              "pl": "<p>Użyj tego tekstu, aby udostępnić klientom informacje o swojej marce. Opisz produkt, udostępnij ogłoszenia lub przywitaj klientów w swoim sklepie.</p>",
+              "pt-BR": "<p>Use este texto para compartilhar informações sobre sua marca com seus clientes. Descreva um produto, compartilhe comunicado ou dê boas-vindas aos clientes em sua loja.</p>",
+              "pt-PT": "<p>Utilize este texto para partilhar informações sobre a sua marca com seus clientes. Descreva um produto, partilhe comunicados ou receba clientes na sua loja.</p>",
+              "sv": "<p>Använd den här texten för att dela information om ditt varumärke med dina kunder. Beskriv en produkt, dela meddelanden eller välkomna kunder till din butik.</p>",
+              "th": "<p>ใช้ข้อความนี้ในการแชร์ข้อมูลเกี่ยวกับแบรนด์ของคุณกับลูกค้าของคุณ อธิบายคุณสมบัติของสินค้า แชร์ประกาศ หรือต้อนรับลูกค้าสู่ร้านค้าของคุณ</p>",
+              "tr": "<p>Müşterilerinizle markanız hakkında bilgi paylaşmak için bu metni kullanın. Ürün açıklaması girin, duyuru paylaşın veya mağazanıza gelen müşterileri karşılayın.</p>",
+              "vi": "<p>Sử dụng văn bản này để chia sẻ thông tin về thương hiệu của bạn với khách hàng. Mô tả sản phẩm, chia sẻ thông báo hoặc chào mừng khách hàng tới cửa hàng của bạn.</p>",
+              "zh-CN": "<p>使用此文本与您的客户分享有关您品牌的信息。描述产品、分享公告或欢迎客户访问您的商店。</p>",
+              "zh-TW": "<p>您可以用這段文字和顧客分享品牌資訊、描述產品、分享公告，或歡迎顧客光臨您的商店。</p>"
+            }
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": {
+                  "cs": "Nahoru",
+                  "da": "Top",
+                  "de": "Oben",
+                  "en": "Top",
+                  "es": "Superior",
+                  "fi": "Ylös",
+                  "fr": "Haut",
+                  "it": "In alto",
+                  "ja": "上",
+                  "ko": "위쪽",
+                  "nb": "Topp",
+                  "nl": "Boven",
+                  "pl": "Do góry",
+                  "pt-BR": "Acima",
+                  "pt-PT": "Acima",
+                  "sv": "Högst upp",
+                  "th": "ด้านบน",
+                  "tr": "Üst",
+                  "vi": "Bên trên",
+                  "zh-CN": "顶部",
+                  "zh-TW": "頂部"
+                }
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Al centro",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": {
+                  "cs": "Dolů",
+                  "da": "Bund",
+                  "de": "Unten",
+                  "en": "Bottom",
+                  "es": "Inferior",
+                  "fi": "Alas",
+                  "fr": "Bas",
+                  "it": "In basso",
+                  "ja": "下",
+                  "ko": "아래쪽",
+                  "nb": "Bunn",
+                  "nl": "Onder",
+                  "pl": "Do dołu",
+                  "pt-BR": "Abaixo",
+                  "pt-PT": "Abaixo",
+                  "sv": "Längst ner",
+                  "th": "ด้านล่าง",
+                  "tr": "Alt",
+                  "vi": "Bên dưới",
+                  "zh-CN": "底部",
+                  "zh-TW": "底部"
+                }
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "align_text",
+            "label": {
+              "cs": "Vodorovné zarovnání",
+              "da": "Vandret justering",
+              "de": "Horizontale Ausrichtung",
+              "en": "Horizontal alignment",
+              "es": "Alineación horizontal",
+              "fi": "Vaakasuora tasaus",
+              "fr": "Alignement horizontal",
+              "it": "Allineamento orizzontale",
+              "ja": "水平アラインメント",
+              "ko": "가로 정렬",
+              "nb": "Horisontal justering",
+              "nl": "Horizontaal uitlijnen",
+              "pl": "Wyrównanie w poziomie",
+              "pt-BR": "Alinhamento horizontal",
+              "pt-PT": "Alinhamento horizontal",
+              "sv": "Horisontell justering",
+              "th": "การจัดวางแนวนอน",
+              "tr": "Yatay hizalama",
+              "vi": "Căn ngang",
+              "zh-CN": "水平对齐",
+              "zh-TW": "水平對齊"
+            },
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": {
+                  "cs": "Doleva",
+                  "da": "Venstre",
+                  "de": "Links",
+                  "en": "Left",
+                  "es": "Izquierda",
+                  "fi": "Vasen",
+                  "fr": "Gauche",
+                  "it": "Sinistra",
+                  "ja": "左",
+                  "ko": "왼쪽",
+                  "nb": "Venstre",
+                  "nl": "Links",
+                  "pl": "Do lewej",
+                  "pt-BR": "Esquerda",
+                  "pt-PT": "Esquerda",
+                  "sv": "Vänster",
+                  "th": "ด้านซ้าย",
+                  "tr": "Sol",
+                  "vi": "Bên trái",
+                  "zh-CN": "左侧",
+                  "zh-TW": "左方"
+                }
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "Centreret",
+                  "de": "Mittig",
+                  "en": "Center",
+                  "es": "Centrada",
+                  "fi": "Keskitetty",
+                  "fr": "Centré",
+                  "it": "Centrato",
+                  "ja": "中央揃え",
+                  "ko": "센터 맞추기",
+                  "nb": "Sentrert",
+                  "nl": "Gecentreerd",
+                  "pl": "Wyśrodkowane",
+                  "pt-BR": "Centralizado",
+                  "pt-PT": "Centrado",
+                  "sv": "Centrera",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Giữa",
+                  "zh-CN": "居中",
+                  "zh-TW": "置中"
+                }
+              }, {
+                "value": "right",
+                "label": {
+                  "cs": "Doprava",
+                  "da": "Højre",
+                  "de": "Rechts",
+                  "en": "Right",
+                  "es": "Derecha",
+                  "fi": "Oikea",
+                  "fr": "Droite",
+                  "it": "Destra",
+                  "ja": "右",
+                  "ko": "오른쪽",
+                  "nb": "Høyre",
+                  "nl": "Rechts",
+                  "pl": "Do prawej",
+                  "pt-BR": "Direita",
+                  "pt-PT": "Direita",
+                  "sv": "Höger",
+                  "th": "ด้านขวา",
+                  "tr": "Sağ",
+                  "vi": "Bên phải",
+                  "zh-CN": "右侧",
+                  "zh-TW": "右方"
+                }
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "text_size",
+            "label": "Text size",
+            "options": [
+              {
+                "value": "medium",
+                "label": "Medium"
+              }, {
+                "value": "large",
+                "label": "Large"
+              }
+            ],
+            "default": "medium"
+          }, {
+            "type": "range",
+            "id": "heading_size",
+            "min": 12,
+            "max": 72,
+            "step": 1,
+            "unit": "px",
+            "label": "Heading size",
+            "default": 22
+          }, {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              {
+                "value": "white",
+                "label": "Light"
+              }, {
+                "value": "black",
+                "label": "Dark"
+              }
+            ],
+            "default": "black"
+          }, {
+            "type": "header",
+            "content": "Button settings"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }, {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "sf__btn-primary",
+                "label": "Primary button"
+              }, {
+                "value": "sf__btn-secondary",
+                "label": "Secondary button"
+              }, {
+                "value": "sf__btn-white",
+                "label": "White button"
+              }, {
+                "value": "sf__btn-link",
+                "label": "Underline button"
+              }
+            ],
+            "default": "sf__btn-primary"
+          }, {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+              {
+                "value": "sf__btn-small",
+                "label": "Button small"
+              }, {
+                "value": "",
+                "label": "Button medium"
+              }, {
+                "value": "sf__btn-large",
+                "label": "Button large"
+              }
+            ],
+            "default": ""
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      },
+      {
+        "type": "image",
+        "name": {
+          "cs": "Obrázek",
+          "da": "Billede",
+          "de": "Foto",
+          "en": "Image",
+          "es": "Imagen",
+          "fi": "Kuva",
+          "fr": "Image",
+          "it": "Immagine",
+          "ja": "画像",
+          "ko": "이미지",
+          "nb": "Bilde",
+          "nl": "Afbeelding",
+          "pl": "Obraz",
+          "pt-BR": "Imagem",
+          "pt-PT": "Imagem",
+          "sv": "Bild",
+          "th": "รูปภาพ",
+          "tr": "Görsel",
+          "vi": "Hình ảnh",
+          "zh-CN": "图片",
+          "zh-TW": "圖片"
+        },
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": {
+              "cs": "Obrázek",
+              "da": "Billede",
+              "de": "Foto",
+              "en": "Image",
+              "es": "Imagen",
+              "fi": "Kuva",
+              "fr": "Image",
+              "it": "Immagine",
+              "ja": "画像",
+              "ko": "이미지",
+              "nb": "Bilde",
+              "nl": "Afbeelding",
+              "pl": "Obraz",
+              "pt-BR": "Imagem",
+              "pt-PT": "Imagem",
+              "sv": "Bild",
+              "th": "รูปภาพ",
+              "tr": "Görsel",
+              "vi": "Hình ảnh",
+              "zh-CN": "图片",
+              "zh-TW": "圖片"
+            }
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Image link"
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "70%",
+                "label": "70%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": "Top"
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Al centro",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      },
+      {
+        "type": "video",
+        "name": {
+          "cs": "Video",
+          "da": "Video",
+          "de": "Video",
+          "en": "Video",
+          "es": "Video",
+          "fi": "Video",
+          "fr": "Vidéo",
+          "it": "Video",
+          "ja": "ビデオ",
+          "ko": "동영상",
+          "nb": "Video",
+          "nl": "Video",
+          "pl": "Film",
+          "pt-BR": "Vídeo",
+          "pt-PT": "Vídeo",
+          "sv": "Video",
+          "th": "วิดีโอ",
+          "tr": "Video",
+          "vi": "Video",
+          "zh-CN": "视频",
+          "zh-TW": "影片"
+        },
+        "settings": [
+          {
+            "type": "video_url",
+            "id": "video_link",
+            "label": {
+              "cs": "Odkaz na video",
+              "da": "Videolink",
+              "de": "Video-Link",
+              "en": "Video link",
+              "es": "Enlace de video",
+              "fi": "Videolinkki",
+              "fr": "Lien de la vidéo",
+              "it": "Link video",
+              "ja": "ビデオリンク",
+              "ko": "동영상 링크",
+              "nb": "Videokobling",
+              "nl": "Videolink",
+              "pl": "Link filmu",
+              "pt-BR": "Link do vídeo",
+              "pt-PT": "Ligação do vídeo",
+              "sv": "Videolänk",
+              "th": "ลิงก์วิดีโอ",
+              "tr": "Video bağlantısı",
+              "vi": "Liên kết video",
+              "zh-CN": "视频链接",
+              "zh-TW": "影片連結"
+            },
+            "accept": ["youtube"],
+            "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+          },
+          {
+            "type": "select",
+            "id": "ratio",
+            "label": "Video ratio",
+            "default": "16:9",
+            "options": [
+              {
+                "value": "16:9",
+                "label": "16:9"
+              }, {
+                "value": "21:9",
+                "label": "21:9"
+              }, {
+                "value": "4:3",
+                "label": "4:3"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": {
+              "cs": "Titulní obrázek",
+              "da": "Coverbillede",
+              "de": "Titelbild",
+              "en": "Cover image",
+              "es": "Imagen de portada",
+              "fi": "Kansikuva",
+              "fr": "Image de couverture",
+              "it": "Immagine di copertina",
+              "ja": "表紙画像",
+              "ko": "커버 이미지",
+              "nb": "Forsidebilde",
+              "nl": "Coverafbeelding",
+              "pl": "Obraz w tle",
+              "pt-BR": "Imagem de capa",
+              "pt-PT": "Imagem de capa",
+              "sv": "Omslagsbild",
+              "th": "รูปภาพหน้าปก",
+              "tr": "Kapak görseli",
+              "vi": "Ảnh bìa",
+              "zh-CN": "封面图片",
+              "zh-TW": "封面圖片"
+            },
+            "info": {
+              "en": "Leave blank to use video thumbnail"
+            }
+          },
+          {
+            "type": "textarea",
+            "id": "video_title",
+            "label": {
+              "cs": "Nadpis",
+              "da": "Overskrift",
+              "de": "Überschrift",
+              "en": "Heading",
+              "es": "Título",
+              "fi": "Otsake",
+              "fr": "En-tête",
+              "it": "Heading",
+              "ja": "見出し",
+              "ko": "제목",
+              "nb": "Overskrift",
+              "nl": "Kop",
+              "pl": "Nagłówek",
+              "pt-BR": "Título",
+              "pt-PT": "Título",
+              "sv": "Rubrik",
+              "th": "ส่วนหัว",
+              "tr": "Başlık",
+              "vi": "Tiêu đề",
+              "zh-CN": "标题",
+              "zh-TW": "標題"
+            }
+          }, {
+            "type": "select",
+            "id": "text_size",
+            "label": {
+              "cs": "Velikost textu",
+              "da": "Tekststørrelse",
+              "de": "Textgröße",
+              "en": "Text size",
+              "es": "Tamaño del texto",
+              "fi": "Tekstin koko",
+              "fr": "Taille du texte",
+              "it": "Dimensione testo",
+              "ja": "文字サイズ",
+              "ko": "텍스트 사이즈",
+              "nb": "Tekststørrelse",
+              "nl": "Tekengrootte",
+              "pl": "Rozmiar czcionki",
+              "pt-BR": "Tamanho do texto",
+              "pt-PT": "Tamanho do texto",
+              "sv": "Textstorlek",
+              "th": "ขนาดตัวอักษร",
+              "tr": "Metin boyutu",
+              "vi": "Cỡ văn bản",
+              "zh-CN": "文本大小",
+              "zh-TW": "文字尺寸"
+            },
+            "default": "medium",
+            "options": [
+              {
+                "label": {
+                  "cs": "Střední",
+                  "da": "Medium",
+                  "de": "Mittel",
+                  "en": "Medium",
+                  "es": "Mediano",
+                  "fi": "Keskisuuri",
+                  "fr": "Moyenne",
+                  "it": "Medio",
+                  "ja": "中",
+                  "ko": "보통",
+                  "nb": "Middels",
+                  "nl": "Gemiddeld",
+                  "pl": "Średnia",
+                  "pt-BR": "Médio",
+                  "pt-PT": "Intermédio",
+                  "sv": "Medium",
+                  "th": "ปานกลาง",
+                  "tr": "Orta",
+                  "vi": "Trung bình",
+                  "zh-CN": "中等",
+                  "zh-TW": "中等"
+                },
+                "value": "medium"
+              }, {
+                "label": {
+                  "cs": "Velká",
+                  "da": "Stor",
+                  "de": "Groß",
+                  "en": "Large",
+                  "es": "Grande",
+                  "fi": "Suuri",
+                  "fr": "Grande",
+                  "it": "Grande",
+                  "ja": "大",
+                  "ko": "라지",
+                  "nb": "Stor",
+                  "nl": "Groot",
+                  "pl": "Duża",
+                  "pt-BR": "Grande",
+                  "pt-PT": "Grande",
+                  "sv": "Stor",
+                  "th": "ใหญ่",
+                  "tr": "Büyük",
+                  "vi": "Lớn",
+                  "zh-CN": "大",
+                  "zh-TW": "大型"
+                },
+                "value": "large"
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              {
+                "label": "Dark",
+                "value": "black"
+              }, {
+                "label": "Light",
+                "value": "white"
+              }
+            ],
+            "default": "white"
+          }, {
+            "type": "select",
+            "id": "play_style",
+            "label": "Play button style",
+            "options": [
+              {
+                "label": "Outline",
+                "value": "outline"
+              }, {
+                "label": "Solid",
+                "value": "solid"
+              }
+            ],
+            "default": "solid"
+          }, {
+            "type": "select",
+            "id": "play_size",
+            "label": "Play button size",
+            "options": [
+              {
+                "label": "Medium",
+                "value": "medium"
+              }, {
+                "label": "Large",
+                "value": "large"
+              }
+            ],
+            "default": "medium"
+          }, {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Autoplay",
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "loop",
+            "label": "Loop",
+            "default": false
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "start",
+            "options": [
+              {
+                "value": "start",
+                "label": {
+                  "cs": "Nahoru",
+                  "da": "Top",
+                  "de": "Oben",
+                  "en": "Top",
+                  "es": "Superior",
+                  "fi": "Ylös",
+                  "fr": "Haut",
+                  "it": "In alto",
+                  "ja": "上",
+                  "ko": "위쪽",
+                  "nb": "Topp",
+                  "nl": "Boven",
+                  "pl": "Do góry",
+                  "pt-BR": "Acima",
+                  "pt-PT": "Acima",
+                  "sv": "Högst upp",
+                  "th": "ด้านบน",
+                  "tr": "Üst",
+                  "vi": "Bên trên",
+                  "zh-CN": "顶部",
+                  "zh-TW": "頂部"
+                }
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Centro",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": {
+                  "cs": "Dolů",
+                  "da": "Bund",
+                  "de": "Unten",
+                  "en": "Bottom",
+                  "es": "Inferior",
+                  "fi": "Alas",
+                  "fr": "Bas",
+                  "it": "In basso",
+                  "ja": "下",
+                  "ko": "아래쪽",
+                  "nb": "Bunn",
+                  "nl": "Onder",
+                  "pl": "Do dołu",
+                  "pt-BR": "Abaixo",
+                  "pt-PT": "Abaixo",
+                  "sv": "Längst ner",
+                  "th": "ด้านล่าง",
+                  "tr": "Alt",
+                  "vi": "Bên dưới",
+                  "zh-CN": "底部",
+                  "zh-TW": "底部"
+                }
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      },
+      {
+        "type": "product",
+        "name": {
+          "cs": "Produkt",
+          "da": "Produkt",
+          "de": "Produkt",
+          "en": "Product",
+          "es": "Producto",
+          "fi": "Tuote",
+          "fr": "Produit",
+          "it": "Prodotto",
+          "ja": "商品",
+          "ko": "제품",
+          "nb": "Produkt",
+          "nl": "Product",
+          "pl": "Produkt",
+          "pt-BR": "Produto",
+          "pt-PT": "Produto",
+          "sv": "Produkt",
+          "th": "สินค้า",
+          "tr": "Ürün",
+          "vi": "Sản phẩm",
+          "zh-CN": "产品",
+          "zh-TW": "產品"
+        },
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": {
+              "cs": "Produkt",
+              "da": "Produkt",
+              "de": "Produkt",
+              "en": "Product",
+              "es": "Producto",
+              "fi": "Tuote",
+              "fr": "Produit",
+              "it": "Prodotto",
+              "ja": "商品",
+              "ko": "제품",
+              "nb": "Produkt",
+              "nl": "Product",
+              "pl": "Produkt",
+              "pt-BR": "Produto",
+              "pt-PT": "Produto",
+              "sv": "Produkt",
+              "th": "สินค้า",
+              "tr": "Ürün",
+              "vi": "Sản phẩm",
+              "zh-CN": "产品",
+              "zh-TW": "產品"
+            }
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": "Top"
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Centro",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          },
+          {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "product_form",
+        "name": "Product form",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": {
+              "cs": "Produkt",
+              "da": "Produkt",
+              "de": "Produkt",
+              "en": "Product",
+              "es": "Producto",
+              "fi": "Tuote",
+              "fr": "Produit",
+              "it": "Prodotto",
+              "ja": "商品",
+              "ko": "제품",
+              "nb": "Produkt",
+              "nl": "Product",
+              "pl": "Produkt",
+              "pt-BR": "Produto",
+              "pt-PT": "Produto",
+              "sv": "Produkt",
+              "th": "สินค้า",
+              "tr": "Ürün",
+              "vi": "Sản phẩm",
+              "zh-CN": "产品",
+              "zh-TW": "產品"
+            }
+          },
+          {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": {
+              "cs": "Zobrazit výběr množství",
+              "da": "Vis antalsvælger",
+              "de": "Mengenauswahl anzeigen",
+              "en": "Show quantity selector",
+              "es": "Mostrar selector de cantidad",
+              "fi": "Näytä määrän valitsin",
+              "fr": "Afficher le sélecteur de quantité",
+              "it": "Mostra selettore quantità",
+              "ja": "数量セレクターを表示する",
+              "ko": "수량 선택기 표시",
+              "nb": "Vis mengdevelger",
+              "nl": "Hoeveelheidskiezer weergeven",
+              "pl": "Pokaż selektor ilości",
+              "pt-BR": "Exiba um seletor de quantidade",
+              "pt-PT": "Mostrar um seletor de quantidade",
+              "sv": "Visa kvantitetsväljare",
+              "th": "แสดงตัวเลือกจำนวน",
+              "tr": "Adet seçiciyi göster",
+              "vi": "Hiển thị hộp chọn số lượng",
+              "zh-CN": "显示数量选择器",
+              "zh-TW": "顯示數量選擇器"
+            },
+            "default": false
+          },
+          {
+            "type": "checkbox",
+            "id": "show_vendor",
+            "label": "Show vendor",
+            "default": true
+          },
+          {
+            "type": "checkbox",
+            "id": "show_price",
+            "label": "Show price",
+            "default": true
+          }, {
+            "type": "checkbox",
+            "id": "show_add_to_cart",
+            "label": "Show cart button",
+            "default": true
+          }, {
+            "type": "checkbox",
+            "id": "show_product_review",
+            "label": "Show review",
+            "default": true
+          }, {
+            "type": "checkbox",
+            "id": "enable_payment_button",
+            "label": {
+              "cs": "Zobrazit dynamické tlačítko pokladny",
+              "da": "Vis dynamisk betalingsknap",
+              "de": "Dynamischen Checkout Button anzeigen",
+              "en": "Show dynamic checkout button",
+              "es": "Mostrar botón de pago dinámico",
+              "fi": "Näytä dynaaminen kassapainike",
+              "fr": "Afficher le bouton de paiement dynamique",
+              "it": "Mostra pulsante di check-out dinamico",
+              "ja": "動的チェックアウトボタンを表示する",
+              "ko": "동적 결제 버튼 표시",
+              "nb": "Vis dynamisk knapp for å gå til kassen",
+              "nl": "Dynamische checkoutknop weergeven",
+              "pl": "Pokaż dynamiczny przycisk realizacji zakupu",
+              "pt-BR": "Exibir botão de checkout dinâmico",
+              "pt-PT": "Mostrar o botão dinâmico de finalização da compra",
+              "sv": "Visa dynamiska utcheckningsknappar",
+              "th": "แสดงปุ่มชำระเงินแบบไดนามิก",
+              "tr": "Dinamik ödeme düğmesini göster",
+              "vi": "Hiển thị nút thanh toán nhanh",
+              "zh-CN": "显示动态结账按钮",
+              "zh-TW": "顯示動態結帳按鈕"
+            },
+            "info": {
+              "cs": "Každý zákazník uvidí platební metodu, kterou ze všech metod dostupných v obchodě (například PayPal nebo Apple Pay) nejvíce preferuje. [Další informace](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "da": "Den enkelte kunde vil se sin foretrukne betalingsmetode blandt dem, der er tilgængelige i din butik, f.eks. PayPal eller Apple Pay. [Få mere at vide](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "de": "Jeder Kunde sieht seine bevorzugte Zahlungsmethode aus den in deinem Shop verfügbaren Zahlungsmethoden wie PayPal oder Apple Pay. [Mehr Informationen](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "en": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "es": "Cada cliente verá su forma de pago preferida entre las disponibles en tu tienda, como PayPal o Apple Pay. [Más información](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "fi": "Kukin asiakas näkee ensisijaisen valintansa kauppasi tarjoamista maksutavoista, esim. PayPal tai Apple Pay. [Lisätietoja](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "fr": "Chaque client verra son moyen de paiement préféré parmi ceux qui sont proposés sur votre boutique, tels que PayPal ou Apple Pay. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "it": "Ogni cliente vedrà il suo metodo di pagamento preferito tra quelli disponibili nel tuo negozio, come PayPal o Apple Pay. [Maggiori informazioni](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "ja": "PayPalやApple Payなど、ストアで利用可能な希望の決済方法がお客様に表示されます。[詳しくはこちら](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "ko": "각 고객은 PayPal 또는 Apple Pay와 같이 스토어에서 사용 가능한 지불 방법을 확인할 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "nb": "Hver enkelt kunde vil se sin foretrukne betalingsmåte blant de som er tilgjengelig i butikken din, som PayPal eller Apple Pay. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "nl": "Elke klant ziet zijn of haar beschikbare voorkeursmethode om af te rekenen, zoals PayPal of Apple Pay. [Meer informatie](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "pl": "Każdy klient zobaczy swoją preferowaną metodę płatności wśród metod dostępnych w Twoim sklepie, np. PayPal lub Apple Pay. [Dowiedz się więcej](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "pt-BR": "Cada cliente verá a forma de pagamento preferencial dele dentre as disponíveis na loja, como PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "pt-PT": "Cada cliente irá ver o seu método de pagamento preferido entre os disponíveis na loja, como o PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "sv": "Varje kund kommer att se den föredragna betalningsmetoden från de som finns tillgängliga i din butik, till exempel PayPal eller Apple Pay. [Läs mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "th": "ลูกค้าแต่ละรายจะเห็นวิธีการชำระเงินที่ต้องการจากวิธีที่ใช้ได้ในร้านค้าของคุณ เช่น PayPal หรือ Apple Pay [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "tr": "Her müşteri, mağazanız sunulanlar arasından tercih ettikleri ödeme yöntemini görür (ör. PayPal veya Apple Pay). [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "vi": "Mỗi khách hàng sẽ thấy phương thức thanh toán ưu tiên trong những phương thức thanh toán được hỗ trợ tại cửa hàng như PayPal hoặc Apple Pay. [Tìm hiểu thêm](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "zh-CN": "每位客户都可在您商店提供的付款方式中看到他们的首选付款方式，例如 PayPal 或 Apple Pay。[了解详细信息](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+              "zh-TW": "每位顧客都可以在您商店內開放使用的付款方式中看見他們偏好使用的方式，如 PayPal、Apple Pay 等。[深入瞭解](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+            },
+            "default": true
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": "Top"
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Centro",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "article",
+        "name": {
+          "cs": "Článek",
+          "da": "Artikel",
+          "de": "Artikel",
+          "en": "Article",
+          "es": "Artículo",
+          "fi": "Artikkeli",
+          "fr": "Article",
+          "it": "Articolo",
+          "ja": "記事",
+          "ko": "문서",
+          "nb": "Artikkel",
+          "nl": "Artikel",
+          "pl": "Artykuł",
+          "pt-BR": "Artigo",
+          "pt-PT": "Artigo",
+          "sv": "Artikel",
+          "th": "บทความ",
+          "tr": "Makale",
+          "vi": "Bài viết",
+          "zh-CN": "文章",
+          "zh-TW": "文章"
+        },
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": {
+              "cs": "Článek",
+              "da": "Artikel",
+              "de": "Artikel",
+              "en": "Article",
+              "es": "Artículo",
+              "fi": "Artikkeli",
+              "fr": "Article",
+              "it": "Articolo",
+              "ja": "記事",
+              "ko": "문서",
+              "nb": "Artikkel",
+              "nl": "Artikel",
+              "pl": "Artykuł",
+              "pt-BR": "Artigo",
+              "pt-PT": "Artigo",
+              "sv": "Artikel",
+              "th": "บทความ",
+              "tr": "Makale",
+              "vi": "Bài viết",
+              "zh-CN": "文章",
+              "zh-TW": "文章"
+            }
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "25%",
+                "label": {
+                  "cs": "25 %",
+                  "da": "25 %",
+                  "de": "25%",
+                  "en": "25%",
+                  "es": "25%",
+                  "fi": "25 %",
+                  "fr": "25 %",
+                  "it": "25%",
+                  "ja": "25%",
+                  "ko": "25%",
+                  "nb": "25 %",
+                  "nl": "25%",
+                  "pl": "25%",
+                  "pt-BR": "25%",
+                  "pt-PT": "25%",
+                  "sv": "25 %",
+                  "th": "25%",
+                  "tr": "%25",
+                  "vi": "25%",
+                  "zh-CN": "25％",
+                  "zh-TW": "25%"
+                }
+              },
+              {
+                "value": "33%",
+                "label": {
+                  "cs": "33 %",
+                  "da": "33 %",
+                  "de": "33%",
+                  "en": "33%",
+                  "es": "33%",
+                  "fi": "33 %",
+                  "fr": "33 %",
+                  "it": "33%",
+                  "ja": "33%",
+                  "ko": "33%",
+                  "nb": "33 %",
+                  "nl": "33%",
+                  "pl": "33%",
+                  "pt-BR": "33%",
+                  "pt-PT": "33%",
+                  "sv": "33 %",
+                  "th": "33%",
+                  "tr": "%33",
+                  "vi": "33%",
+                  "zh-CN": "33%",
+                  "zh-TW": "33%"
+                }
+              },
+              {
+                "value": "50%",
+                "label": {
+                  "cs": "50 %",
+                  "da": "50 %",
+                  "de": "50%",
+                  "en": "50%",
+                  "es": "50%",
+                  "fi": "50 %",
+                  "fr": "50 %",
+                  "it": "50%",
+                  "ja": "50%",
+                  "ko": "50%",
+                  "nb": "50 %",
+                  "nl": "50%",
+                  "pl": "50%",
+                  "pt-BR": "50%",
+                  "pt-PT": "50%",
+                  "sv": "50 %",
+                  "th": "50%",
+                  "tr": "%50",
+                  "vi": "50%",
+                  "zh-CN": "50%",
+                  "zh-TW": "50%"
+                }
+              },
+              {
+                "value": "66%",
+                "label": {
+                  "cs": "66 %",
+                  "da": "66 %",
+                  "de": "66%",
+                  "en": "66%",
+                  "es": "66%",
+                  "fi": "66 %",
+                  "fr": "66 %",
+                  "it": "66%",
+                  "ja": "66%",
+                  "ko": "66%",
+                  "nb": "66 %",
+                  "nl": "66%",
+                  "pl": "66%",
+                  "pt-BR": "66%",
+                  "pt-PT": "66%",
+                  "sv": "66 %",
+                  "th": "66%",
+                  "tr": "%66",
+                  "vi": "66%",
+                  "zh-CN": "66%",
+                  "zh-TW": "66%"
+                }
+              }, {
+                "value": "75%",
+                "label": {
+                  "cs": "75 %",
+                  "da": "75 %",
+                  "de": "75%",
+                  "en": "75%",
+                  "es": "75%",
+                  "fi": "75 %",
+                  "fr": "75 %",
+                  "it": "75%",
+                  "ja": "75%",
+                  "ko": "75%",
+                  "nb": "75 %",
+                  "nl": "75%",
+                  "pl": "75%",
+                  "pt-BR": "75%",
+                  "pt-PT": "75%",
+                  "sv": "75 %",
+                  "th": "75%",
+                  "tr": "%75",
+                  "vi": "75%",
+                  "zh-CN": "75%",
+                  "zh-TW": "75%"
+                }
+              }, {
+                "value": "100%",
+                "label": {
+                  "cs": "100 %",
+                  "da": "100 %",
+                  "de": "100%",
+                  "en": "100%",
+                  "es": "100%",
+                  "fi": "100 %",
+                  "fr": "100 %",
+                  "it": "100%",
+                  "ja": "100%",
+                  "ko": "100%",
+                  "nb": "100 %",
+                  "nl": "100%",
+                  "pl": "100%",
+                  "pt-BR": "100%",
+                  "pt-PT": "100%",
+                  "sv": "100 %",
+                  "th": "100%",
+                  "tr": "%100",
+                  "vi": "100%",
+                  "zh-CN": "100%",
+                  "zh-TW": "100%"
+                }
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": {
+              "cs": "Svislé zarovnání",
+              "da": "Lodret justering",
+              "de": "Vertikale Ausrichtung",
+              "en": "Vertical alignment",
+              "es": "Alineación vertical",
+              "fi": "Pystysuuntainen tasaus",
+              "fr": "Alignement vertical",
+              "it": "Allineamento verticale",
+              "ja": "垂直アラインメント",
+              "ko": "수직 정렬",
+              "nb": "Vertikal justering",
+              "nl": "Verticaal uitlijnen",
+              "pl": "Wyrównanie w pionie",
+              "pt-BR": "Alinhamento vertical",
+              "pt-PT": "Alinhamento vertical",
+              "sv": "Vertikal justering",
+              "th": "การจัดวางแนวตั้ง",
+              "tr": "Dikey hizalama",
+              "vi": "Căn dọc",
+              "zh-CN": "垂直对齐",
+              "zh-TW": "垂直對齊"
+            },
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": {
+                  "cs": "Nahoru",
+                  "da": "Top",
+                  "de": "Oben",
+                  "en": "Top",
+                  "es": "Superior",
+                  "fi": "Ylös",
+                  "fr": "Haut",
+                  "it": "Alto",
+                  "ja": "上",
+                  "ko": "위쪽",
+                  "nb": "Topp",
+                  "nl": "Boven",
+                  "pl": "Do góry",
+                  "pt-BR": "Acima",
+                  "pt-PT": "Acima",
+                  "sv": "Högst upp",
+                  "th": "ด้านบน",
+                  "tr": "Üst",
+                  "vi": "Bên trên",
+                  "zh-CN": "顶部",
+                  "zh-TW": "頂部"
+                }
+              }, {
+                "value": "center",
+                "label": {
+                  "cs": "Na střed",
+                  "da": "I midten",
+                  "de": "Mitte",
+                  "en": "Middle",
+                  "es": "Centrada",
+                  "fi": "Keskelle",
+                  "fr": "Milieu",
+                  "it": "Centrale",
+                  "ja": "中央",
+                  "ko": "중간",
+                  "nb": "Midten",
+                  "nl": "Midden",
+                  "pl": "Do środka",
+                  "pt-BR": "Meio",
+                  "pt-PT": "Meio",
+                  "sv": "Mitten",
+                  "th": "ตรงกลาง",
+                  "tr": "Orta",
+                  "vi": "Ở giữa",
+                  "zh-CN": "中间",
+                  "zh-TW": "中央"
+                }
+              }, {
+                "value": "end",
+                "label": {
+                  "cs": "Dolů",
+                  "da": "Bund",
+                  "de": "Unten",
+                  "en": "Bottom",
+                  "es": "Inferior",
+                  "fi": "Alas",
+                  "fr": "Bas",
+                  "it": "Basso",
+                  "ja": "下",
+                  "ko": "아래쪽",
+                  "nb": "Bunn",
+                  "nl": "Onder",
+                  "pl": "Do dołu",
+                  "pt-BR": "Abaixo",
+                  "pt-PT": "Abaixo",
+                  "sv": "Längst ner",
+                  "th": "ด้านล่าง",
+                  "tr": "Alt",
+                  "vi": "Bên dưới",
+                  "zh-CN": "底部",
+                  "zh-TW": "底部"
+                }
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "cover_image",
+            "label": {
+              "cs": "Titulní obrázek",
+              "da": "Coverbillede",
+              "de": "Titelbild",
+              "en": "Cover image",
+              "es": "Imagen de portada",
+              "fi": "Kansikuva",
+              "fr": "Image de couverture",
+              "it": "Immagine di copertina",
+              "ja": "表紙画像",
+              "ko": "커버 이미지",
+              "nb": "Forsidebilde",
+              "nl": "Coverafbeelding",
+              "pl": "Obraz w tle",
+              "pt-BR": "Imagem de capa",
+              "pt-PT": "Imagem de capa",
+              "sv": "Omslagsbild",
+              "th": "รูปภาพหน้าปก",
+              "tr": "Kapak görseli",
+              "vi": "Ảnh bìa",
+              "zh-CN": "封面图片",
+              "zh-TW": "封面圖片"
+            },
+            "default": "large",
+            "options": [
+              {
+                "value": "small",
+                "label": {
+                  "cs": "Malý",
+                  "da": "Lille",
+                  "de": "Klein",
+                  "en": "Small",
+                  "es": "Pequeño",
+                  "fi": "Pieni",
+                  "fr": "Petit",
+                  "it": "Piccolo",
+                  "ja": "スモール",
+                  "ko": "스몰",
+                  "nb": "Liten",
+                  "nl": "Klein",
+                  "pl": "Mały",
+                  "pt-BR": "Pequeno",
+                  "pt-PT": "Pequeno",
+                  "sv": "Liten",
+                  "th": "เล็ก",
+                  "tr": "Küçük",
+                  "vi": "Nhỏ",
+                  "zh-CN": "小",
+                  "zh-TW": "小型"
+                }
+              }, {
+                "value": "large",
+                "label": {
+                  "cs": "Velký",
+                  "da": "Stor",
+                  "de": "Groß",
+                  "en": "Large",
+                  "es": "Grande",
+                  "fi": "Suuri",
+                  "fr": "Grande",
+                  "it": "Grande",
+                  "ja": "大",
+                  "ko": "라지",
+                  "nb": "Stor",
+                  "nl": "Groot",
+                  "pl": "Duży",
+                  "pt-BR": "Grande",
+                  "pt-PT": "Grande",
+                  "sv": "Stor",
+                  "th": "ใหญ่",
+                  "tr": "Büyük",
+                  "vi": "Lớn",
+                  "zh-CN": "大",
+                  "zh-TW": "大型"
+                }
+              }, {
+                "value": "none",
+                "label": {
+                  "cs": "Žádný",
+                  "da": "Ingen",
+                  "de": "Keine",
+                  "en": "None",
+                  "es": "Ninguno",
+                  "fi": "Ei mitään",
+                  "fr": "Aucune",
+                  "it": "Nessuno",
+                  "ja": "なし",
+                  "ko": "없음",
+                  "nb": "Ingen",
+                  "nl": "Geen",
+                  "pl": "Brak",
+                  "pt-BR": "Nenhum",
+                  "pt-PT": "Nenhum",
+                  "sv": "Inga",
+                  "th": "ไม่มี",
+                  "tr": "Yok",
+                  "vi": "Không",
+                  "zh-CN": "无",
+                  "zh-TW": "無"
+                }
+              }
+            ]
+          }, {
+            "type": "checkbox",
+            "id": "show_author",
+            "label": {
+              "cs": "Zobrazit autora",
+              "da": "Vis forfatter",
+              "de": "Autor anzeigen",
+              "en": "Show author",
+              "es": "Mostrar autor",
+              "fi": "Näytä tekijä",
+              "fr": "Afficher l'auteur",
+              "it": "Mostra autore",
+              "ja": "執筆者を表示する",
+              "ko": "작성자 표시",
+              "nb": "Vis forfatter",
+              "nl": "Auteur weergeven",
+              "pl": "Pokaż autora",
+              "pt-BR": "Exibir autor",
+              "pt-PT": "Mostrar autor",
+              "sv": "Visa författare",
+              "th": "แสดงผู้เขียน",
+              "tr": "Yazarı göster",
+              "vi": "Hiển thị tác giả",
+              "zh-CN": "显示作者",
+              "zh-TW": "顯示作者"
+            },
+            "default": false
+          }, {
+            "type": "checkbox",
+            "id": "show_date",
+            "label": {
+              "cs": "Zobrazit datum",
+              "da": "Vis dato",
+              "de": "Datum anzeigen",
+              "en": "Show date",
+              "es": "Mostrar fecha",
+              "fi": "Näytä päivämäärä",
+              "fr": "Afficher la date",
+              "it": "Mostra data",
+              "ja": "日付を表示する",
+              "ko": "날짜 표시",
+              "nb": "Vis dato",
+              "nl": "Datum weergeven",
+              "pl": "Pokaż datę",
+              "pt-BR": "Exibir data",
+              "pt-PT": "Mostrar data",
+              "sv": "Visa datum",
+              "th": "แสดงวันที่",
+              "tr": "Tarihi göster",
+              "vi": "Hiển thị ngày",
+              "zh-CN": "显示日期",
+              "zh-TW": "顯示日期"
+            },
+            "default": true
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "image_card",
+        "name": {
+          "en": "Image card"
+        },
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+              {
+                "value": "top_left",
+                "label": "Top left"
+              },
+              {
+                "value": "top_center",
+                "label": "Top center"
+              },
+              {
+                "value": "top_right",
+                "label": "Top right"
+              },
+              {
+                "value": "center_left",
+                "label": "Middle left"
+              }, {
+                "value": "center_center",
+                "label": "Middle center"
+              }, {
+                "value": "center_right",
+                "label": "Middle right"
+              }, {
+                "value": "bottom_left",
+                "label": "Bottom left"
+              }, {
+                "value": "bottom_center",
+                "label": "Bottom center"
+              }, {
+                "value": "bottom_right",
+                "label": "Bottom right"
+              }
+            ],
+            "default": "bottom_center"
+          },
+          {
+            "type": "select",
+            "id": "content_alignment",
+            "label": "Content alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "text_size",
+            "label": "Text size",
+            "options": [
+              {
+                "value": "medium",
+                "label": "Medium"
+              }, {
+                "value": "large",
+                "label": "Large"
+              }
+            ],
+            "default": "medium"
+          }, {
+            "type": "select",
+            "id": "text_color",
+            "label": "Text color",
+            "options": [
+              {
+                "value": "white",
+                "label": "Light"
+              }, {
+                "value": "black",
+                "label": "Dark"
+              }
+            ],
+            "default": "black"
+          }, {
+            "type": "header",
+            "content": "Content"
+          }, {
+            "type": "image_picker",
+            "id": "image",
+            "label": {
+              "en": "Image"
+            }
+          }, {
+            "type": "url",
+            "id": "link",
+            "label": {
+              "en": "Image link"
+            }
+          }, {
+            "type": "text",
+            "id": "title",
+            "label": {
+              "en": "Heading"
+            }
+          }, {
+            "type": "textarea",
+            "id": "subtitle",
+            "label": "Sub heading"
+          }, {
+            "type": "header",
+            "content": "Button settings"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          }, {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "sf__btn-primary",
+                "label": "Primary button"
+              }, {
+                "value": "sf__btn-secondary",
+                "label": "Secondary button"
+              }, {
+                "value": "sf__btn-white",
+                "label": "White button"
+              }, {
+                "value": "sf__btn-link",
+                "label": "Underline button"
+              }
+            ],
+            "default": "sf__btn-primary"
+          }, {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+              {
+                "value": "sf__btn-small",
+                "label": "Button small"
+              }, {
+                "value": "",
+                "label": "Button medium"
+              }, {
+                "value": "sf__btn-large",
+                "label": "Button large"
+              }
+            ],
+            "default": ""
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "lookbook",
+        "name": {
+          "en": "Lookbook item"
+        },
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "header",
+            "content": "Product 1"
+          },
+          {
+            "type": "range",
+            "id": "top_1",
+            "label": "Offset top",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 9
+          }, {
+            "type": "range",
+            "id": "left_1",
+            "label": "Offset left",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 63
+          }, {
+            "type": "product",
+            "id": "product_1",
+            "label": "Select product"
+          }, {
+            "type": "header",
+            "content": "Product 2"
+          }, {
+            "type": "range",
+            "id": "top_2",
+            "label": "Offset top",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 26
+          }, {
+            "type": "range",
+            "id": "left_2",
+            "label": "Offset left",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 50
+          }, {
+            "type": "product",
+            "id": "product_2",
+            "label": "Select product"
+          }, {
+            "type": "header",
+            "content": "Product 3"
+          }, {
+            "type": "range",
+            "id": "top_3",
+            "label": "Offset top",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 61
+          }, {
+            "type": "range",
+            "id": "left_3",
+            "label": "Offset left",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 48
+          }, {
+            "type": "product",
+            "id": "product_3",
+            "label": "Select product"
+          }, {
+            "type": "header",
+            "content": "Product 4"
+          }, {
+            "type": "range",
+            "id": "top_4",
+            "label": "Offset top",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 0
+          }, {
+            "type": "range",
+            "id": "left_4",
+            "label": "Offset left",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 0
+          }, {
+            "type": "product",
+            "id": "product_4",
+            "label": "Select product"
+          }, {
+            "type": "header",
+            "content": "Product 5"
+          }, {
+            "type": "range",
+            "id": "top_5",
+            "label": "Offset top",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 20
+          }, {
+            "type": "range",
+            "id": "left_5",
+            "label": "Offset left",
+            "min": 0,
+            "max": 100,
+            "unit": "%",
+            "step": 1,
+            "default": 0
+          }, {
+            "type": "product",
+            "id": "product_5",
+            "label": "Select product"
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "product_bundles",
+        "name": {
+          "en": "Product bundles"
+        },
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": "Top"
+              }, {
+                "value": "center",
+                "label": "Middle"
+              }, {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          },
+          {
+            "type": "textarea",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+          }, {
+            "type": "checkbox",
+            "id": "show_reviews",
+            "label": "Show reviews badge"
+          }, {
+            "type": "header",
+            "content": "Products"
+          }, {
+            "type": "product",
+            "id": "product_1",
+            "label": "Product 1"
+          }, {
+            "type": "product",
+            "id": "product_2",
+            "label": "Product 2"
+          }, {
+            "type": "product",
+            "id": "product_3",
+            "label": "Product 3"
+          }, {
+            "type": "product",
+            "id": "product_4",
+            "label": "Product 4"
+          }, {
+            "type": "product",
+            "id": "product_5",
+            "label": "Product 5"
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "countdown",
+        "name": {
+          "en": "Countdown timer"
+        },
+        "settings": [
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Vertical alignment",
+            "default": "center",
+            "options": [
+              {
+                "value": "start",
+                "label": "Top"
+              }, {
+                "value": "center",
+                "label": "Middle"
+              }, {
+                "value": "end",
+                "label": "Bottom"
+              }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "align",
+            "label": "Horizontal alignment",
+            "default": "end",
+            "options": [
+              {
+                "value": "start",
+                "label": "Left"
+              }, {
+                "value": "center",
+                "label": "Center"
+              }, {
+                "value": "end",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "time",
+            "label": "End time",
+            "default": "2021-12-26 23:00:00",
+            "info": "Date format: YYYY-MM-DD HH:MM:ss"
+          }, {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+          }, {
+            "type": "header",
+            "content": "Button settings"
+          }, {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button label"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }, {
+            "type": "select",
+            "id": "button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "sf__btn-primary",
+                "label": "Primary button"
+              }, {
+                "value": "sf__btn-secondary",
+                "label": "Secondary button"
+              }, {
+                "value": "sf__btn-white",
+                "label": "White button"
+              }, {
+                "value": "sf__btn-link",
+                "label": "Underline button"
+              }
+            ],
+            "default": "sf__btn-primary"
+          }, {
+            "type": "select",
+            "id": "button_size",
+            "label": "Button size",
+            "options": [
+              {
+                "value": "sf__btn-small",
+                "label": "Button small"
+              }, {
+                "value": "",
+                "label": "Button medium"
+              }, {
+                "value": "sf__btn-large",
+                "label": "Button large"
+              }
+            ],
+            "default": ""
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "social",
+        "name": {
+          "en": "Social profiles"
+        },
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Go to Theme settings > Store contact to update the social links."
+          },
+          {
+            "type": "text",
+            "id": "heading",
+            "default": "Follow us on",
+            "label": {
+              "en": "Heading"
+            }
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": {
+              "en": "Description"
+            }
+          },
+          {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "newsletter",
+        "name": {
+          "en": "Newsletter form"
+        },
+        "settings": [
+          {
+            "type": "text",
+            "id": "heading",
+            "label": {
+              "en": "Heading"
+            },
+            "default": "Subscribe to our newsletter"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": {
+              "en": "Description"
+            },
+            "default": "<p>Shapes and proportions are for your intellect. I’ve treated the waistcoat as if it were a corset.</p>"
+          },
+          {
+            "type": "select",
+            "id": "form_design",
+            "label": "Form style",
+            "default": "1",
+            "options": [
+              {
+                "value": "1",
+                "label": "Bordered"
+              }, {
+                "value": "2",
+                "label": "Minimal"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "placeholder",
+            "label": "Email placeholder text",
+            "default": "Enter your email address"
+          }, {
+            "type": "text",
+            "id": "submit_button",
+            "label": "Button label",
+            "default": "Subscribe"
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }, {
+        "type": "html",
+        "name": {
+          "cs": "Vlastní HTML",
+          "da": "Tilpasset HTML",
+          "de": "Personalisierte HTML",
+          "en": "Custom HTML",
+          "es": "HTML personalizado",
+          "fi": "Mukautettu HTML",
+          "fr": "HTML personnalisé",
+          "it": "HTML personalizzato",
+          "ja": "HTMLをカスタムする",
+          "ko": "사용자 지정 HTML",
+          "nb": "Tilpasset HTML",
+          "nl": "Aangepaste HTML",
+          "pl": "Niestandardowy HTML",
+          "pt-BR": "HTML personalizado",
+          "pt-PT": "HTML personalizado",
+          "sv": "Anpassa HTML",
+          "th": "HTML แบบกำหนดเอง",
+          "tr": "Özel HTML",
+          "vi": "HTML tùy chỉnh",
+          "zh-CN": "自定义 HTML",
+          "zh-TW": "自訂 HTML"
+        },
+        "settings": [
+          {
+            "type": "html",
+            "id": "code",
+            "label": {
+              "cs": "HTML",
+              "da": "HTML",
+              "de": "HTML",
+              "en": "HTML",
+              "es": "HTML",
+              "fi": "HTML",
+              "fr": "HTML",
+              "it": "HTML",
+              "ja": "HTML",
+              "ko": "HTML",
+              "nb": "HTML",
+              "nl": "HTML",
+              "pl": "HTML",
+              "pt-BR": "HTML",
+              "pt-PT": "HTML",
+              "sv": "HTML",
+              "th": "HTML",
+              "tr": "HTML",
+              "vi": "HTML",
+              "zh-CN": "HTML",
+              "zh-TW": "HTML"
+            }
+          }, {
+            "type": "select",
+            "id": "width",
+            "label": {
+              "cs": "Šířka kontejneru",
+              "da": "Containerbredde",
+              "de": "Breite des Elements",
+              "en": "Container width",
+              "es": "Ancho del contenedor",
+              "fi": "Säiliön leveys",
+              "fr": "Largeur du conteneur",
+              "it": "Larghezza contenitore",
+              "ja": "コンテナーの幅",
+              "ko": "컨테이너 폭",
+              "nb": "Beholderbredde",
+              "nl": "Containerbreedte",
+              "pl": "Szerokość kontenera",
+              "pt-BR": "Largura do contêiner",
+              "pt-PT": "Largura do recipiente",
+              "sv": "Container-bredd",
+              "th": "ความกว้างของความจุ",
+              "tr": "Kapsayıcı genişliği",
+              "vi": "Chiều rộng khoảng chứa",
+              "zh-CN": "容器宽度",
+              "zh-TW": "容器寬度"
+            },
+            "default": "50%",
+            "options": [
+              {
+                "value": "16%",
+                "label": "16%"
+              },
+              {
+                "value": "25%",
+                "label": "25%"
+              },
+              {
+                "value": "33%",
+                "label": "33%"
+              },
+              {
+                "value": "50%",
+                "label": "50%"
+              }, {
+                "value": "66%",
+                "label": "66%"
+              }, {
+                "value": "75%",
+                "label": "75%"
+              }, {
+                "value": "83%",
+                "label": "83%"
+              }, {
+                "value": "100%",
+                "label": "100%"
+              }
+            ]
+          }, {
+            "type": "header",
+            "content": "Advanced settings"
+          }, {
+            "type": "text",
+            "id": "block_custom_class",
+            "label": "Custom classes"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": {
+          "cs": "Vlastní obsah",
+          "da": "Tilpasset indhold",
+          "de": "Personalisierter Content",
+          "en": "Custom content",
+          "es": "Contenido personalizado",
+          "fi": "Mukautettu sisältö",
+          "fr": "Contenu personnalisé",
+          "it": "Contenuto personalizzato",
+          "ja": "コンテンツをカスタムする",
+          "ko": "사용자 지정 콘텐츠",
+          "nb": "Tilpasset innhold",
+          "nl": "Aangepaste content",
+          "pl": "Zawartość niestandardowa",
+          "pt-BR": "Conteúdo personalizado",
+          "pt-PT": "Conteúdo personalizado",
+          "sv": "Anpassat innehåll",
+          "th": "เนื้อหาแบบกำหนดเอง",
+          "tr": "Özel içerik",
+          "vi": "Nội dung tùy chỉnh",
+          "zh-CN": "自定义内容",
+          "zh-TW": "自訂內容"
+        },
+        "category": {
+          "cs": "Pokročilé rozvržení",
+          "da": "Avanceret layout",
+          "de": "Komplizierteres Layout",
+          "en": "Advanced layout",
+          "es": "Diseño avanzado",
+          "fi": "Monimutkaisempi layout",
+          "fr": "Mise en page avancée",
+          "it": "Layout avanzato",
+          "ja": "高度なレイアウト",
+          "ko": "고급 레이아웃",
+          "nb": "Avansert oppsett",
+          "nl": "Geavanceerde opmaak",
+          "pl": "Zaawansowany układ",
+          "pt-BR": "Layout avançado",
+          "pt-PT": "Esquema avançado",
+          "sv": "Avancerad layout",
+          "th": "เลย์เอาท์ขั้นสูง",
+          "tr": "Gelişmiş düzen",
+          "vi": "Bố cục nâng cao",
+          "zh-CN": "高级布局",
+          "zh-TW": "進階版面配置"
+        },
+        "blocks": [
+          {
+            "type": "text"
+          }, {
+            "type": "image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

@@ -1,0 +1,47 @@
+<div class="sf-pis__wrapper mb-8 relative">
+    {% if product.media.size <= 3 %}
+        <div class="flex justify-center items-center mx-auto">
+          {% for media in product.media %}
+            <div
+                class="sf-prod-media-item relative media-type-{{ media.media_type }} overflow-hidden{% if media.media_type == 'image' %} cursor-zoom-in {% endif %}"
+                data-index="{{ forloop.index0 }}"
+                data-media-type="{{ media.media_type }}"
+                style="width: 33.33%"
+            >
+              {% render 'media', media: media %}
+              <div class="zoom-in transition-all opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5">
+                {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    {% else %}
+      {% assign aspect_ratio = product.featured_image.aspect_ratio | times: 3 %}
+        <div style="--aspect-ratio: {{ aspect_ratio }}">
+          <div class="swiper-container">
+            <div class="swiper-wrapper main-slider">
+              {% for media in product.media %}
+                <div
+                  class="swiper-slide sf-prod-media-item relative overflow-hidden"
+                  data-index="{{ forloop.index0 }}"
+                  data-media-type="{{ media.media_type }}"
+                >
+                  {% render 'media', media: media %}
+                  <div class="zoom-in transition-all opacity-100 md:opacity-0 absolute z-10 right-5 md:-right-14 top-5">
+                    {% render 'tooltip', type: 'zoom-in', class_name: 'sf__tooltip-left' %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="absolute z-10 inset-x-0 top-1/2 flex items-center justify-between px-4 pointer-events-none">
+            <button class="swiper-button-control sf__btn-icon swiper-button-prev pointer-events-auto">
+              {% render 'icon', name: 'prev', size: 'small' %}
+            </button>
+            <button class="swiper-button-control sf__btn-icon swiper-button-next pointer-events-auto">
+              {% render 'icon', name: 'next', size: 'small' %}
+            </button>
+          </div>
+        </div>
+    {% endif %}
+</div>

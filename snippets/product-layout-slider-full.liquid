@@ -1,0 +1,13 @@
+<div class="sf-prod__{{ section.settings.layout }} layout-slider-2 sf-prod__block">
+    <div class="sf-prod-media__wrapper">
+      <div class="sf-product-media__desktop hidden md:block">
+        {% render 'product-page__slider-2' %}
+      </div>
+      <div class="sf-product-media__mobile md:hidden">
+        {% render 'product-page-mobile-media' %}
+      </div>
+    </div>
+    <div class="container-narrow md:text-center">
+        {% render 'product-page__info' %}
+    </div>
+</div>

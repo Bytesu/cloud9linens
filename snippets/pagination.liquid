@@ -1,0 +1,9 @@
+<div style="font-style: italic; font-size: 18px;" class="sf-pagination">
+  {{ paginate | default_pagination: next: 'Next', previous: 'Previous' }}
+</div>
+
+{% comment %}
+<div class="sf-pagination">
+  {{ paginate | default_pagination: next: '»', previous: '«' }}
+</div>
+{% endcomment %}

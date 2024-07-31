@@ -1,0 +1,24 @@
+{% if settings.show_swatch_option %}
+  {%- for option in product.options_with_values -%}
+    {% assign option_name = option.name | downcase %}
+    {% case settings.pcard_alignment %}
+        {% when 'left' %}
+            {% assign alignment = 'start' %}
+        {% when 'right' %}
+            {% assign alignment = 'end' %}
+        {% else %}
+            {% assign alignment = 'center' %}
+    {% endcase %}
+    {% assign pcard_option_name_setting_downcase = settings.pcard_option_name | downcase %}
+    {% if option_name == pcard_option_name_setting_downcase %}
+      <div class="pcard-variant-option mt-3 flex flex-wrap items-center justify-{{ alignment }}">
+        {% render 'product-option-design', 
+            design: settings.pcard_option_design, 
+            option: option, 
+            product_handle: product.handle, 
+            is_product_card: true, 
+        %}
+      </div>
+    {% endif %}
+  {%- endfor -%}
+{% endif %}

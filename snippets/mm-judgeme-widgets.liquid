@@ -1,0 +1,17 @@
+{% if widget_type == 'judgeme_review_widget' %}
+  <div style='clear:both'></div>
+  <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}'
+       data-from-snippet='{% if concierge_install != nil  %}{{ concierge_install }}{% else %}true{% endif %}'
+       data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}'>
+    {{ product.metafields.judgeme.widget }}
+  </div>
+{% endif %}
+
+{% if widget_type == 'judgeme_preview_badge' %}
+  <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}'
+       data-template='{% if concierge_install == true or concierge_install == nil %}{{ template }}{% else %}manual-installation{% endif %}'
+       data-auto-install='{% if auto_install != nil %}{{ auto_install }}{% else %}false{% endif %}'>
+    {{ product.metafields.judgeme.badge }}
+  </div>
+{% endif %}
+

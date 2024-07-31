@@ -1,0 +1,142 @@
+{% assign menu_id = menu | default: 'main_menu' %}
+{% assign dropdown_container = section.settings.container | default: 'container' %}
+
+<ul class="sf-nav cus-nav-links flex text-base font-medium whitespace-nowrap clearfix sf-no-scroll-bar {{ nav_class }}">
+  {% for link in linklists[section.settings[menu_id]].links %}
+    {%- assign three_level = false -%}
+    {% assign li_class = 'sf-menu-item list-none' %}
+    {% assign box_size = 'block px-4 py-5' %}
+    {% assign is_mega = true %}
+    {% assign stretch_width = false %}
+
+    {% if link.links != blank %}
+      {% if link.levels == 2 %}
+        {%- assign three_level = true -%}
+      {% endif %}
+    {% endif %}
+
+    {% assign title_handle = link.title | handleize %}
+    {%- assign has_mega_item = false -%}
+    {% for block in section.blocks %}
+      {% assign menu_title = block.settings.heading | handleize %}
+
+      {% if menu_title == blank or menu_title != title_handle %}
+        {% continue %}
+      {% endif %}
+      {% if menu_title == title_handle %}
+        {%- assign has_mega_item = true -%}
+        {% if block.settings.container != 'inherit' %}
+          {% assign dropdown_container = block.settings.container %}
+        {% endif %}
+
+        {% case block.type %}
+          {% when 'banner' %}
+            {% capture block_type %}
+              {% render 'mega-menu-banner', block: block %}
+            {% endcapture %}
+          {% when 'bloglist' %}
+            {% capture block_type %}
+              {% render 'mega-menu-blog-list' with block as bloglist %}
+            {% endcapture %}
+          {% when 'product-list' %}
+            {% assign stretch_width = block.settings.stretch_width %}
+            {% capture block_type %}
+              {% render 'mega-menu-products' with block as product_list %}
+            {% endcapture %}
+          {% when 'collection-list' %}
+            {% capture block_type %}
+              {% assign stretch_width = true %}
+              {% render 'mega-menu-collections', block: block %}
+            {% endcapture %}
+          {% when 'custom_html' %}
+            {% capture block_type %}
+              {% if block.settings.html != blank %}
+                <div class="menu-item__html text-black">
+                  {{ block.settings.html }}
+                </div>
+              {% else %}
+                {%- assign has_mega_item = false -%}
+              {% endif %}
+            {% endcapture %}
+          {% else %}
+            {% capture block_type %}{% endcapture %}
+        {% endcase %}
+      {% endif %}
+    {% endfor %}
+
+    {% if three_level != true and has_mega_item == false %}
+      {% assign li_class = li_class | append: ' sf-menu-item--no-mega' %}
+      {% assign is_mega = false %}
+    {% endif %}
+
+    {% if link.links != blank %}
+      <li class="{{ li_class }} sf__menu-item-level1 sf-menu-item-parent{% if is_mega %} sf-menu-item--mega{% endif %} {% if link.active %} active{% endif %}" data-index="{{ forloop.index0 }}" ">
+        <a href="{{ link.url }}" class="{{ box_size }} sf__sub-menu-link1 flex items-center cus-link-anchor  sf__parent-item{% if section.settings.uppercase_parent_level %} uppercase{% endif %} {% if link.active %} active {% endif %}">{{ link.title }}
+          <span class="ml-2 sf-menu__arrow">{% render 'icon', name: 'chevron-down-solid', size: 'custom', class: 'w-2 h-2' %}</span>
+        </a>
+        {% if link.links != blank %}
+          <div class="sf-menu__submenu sf-menu__desktop-sub-menu pointer-events-none absolute z-50 inset-x-0{% if is_mega == false %} sf-menu__dropdown min-w-max bg-white{% else %}{% endif %}" style="--total-columns: {{ link.links.size }}">
+            <div class="sf-menu__inner">
+              <div class="{%if is_mega %}{{ dropdown_container }}{% endif %} mx-auto{% if dropdown_container == 'w-full' %} px-5{% endif %}">
+                <div class="sf-menu-submenu__content{% if stretch_width == true %} sf-menu-submenu--stretch-width{% endif %} flex{% if is_mega == false %} p-4 {% else %} py-12{% endif %}">
+                  <ul class="sf-menu-submenu__items flex {% if is_mega == false %} flex-col w-full{% else %} -mx-2{% if stretch_width == false and block_type != blank %} w-2/3{% else %} w-full{% endif %}{% endif %}">
+                    {% for childlink in link.links %}
+                      <li class="list-none sf__menu-item-level2 {% if is_mega %} w-1/2 xl:w-1/3 2xl:w-1/4 mb-4{% else %} w-full leading-9{% endif %}{% if stretch_width == true %} min-w-[200px] pr-2{% endif %}">
+                        <a href="{{ childlink.url }}" class="sf__sub-menu-link2 whitespace-normal block cus__header__link__list {% if is_mega %} sf-menu-submenu__title{% else %} sf-sub-menu__link{% endif %}">{{ childlink.title }}</a>
+                        {% if childlink.links != blank %}f
+                          <div class="sf__sub-menu-column mt-4">
+                            <ul class="leading-8">
+                              {% for grandlink in childlink.links %}
+                                <li class="list-none sf__menu-item-level3">
+                                  <a href="{{ grandlink.url }}" class="sf-sub-menu__link">
+                                    {{ grandlink.title }}
+                                  </a>
+                                </li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% if has_mega_item == true and block_type != blank %}
+                    <div class="sf-menu-submenu__addon pl-5{% if stretch_width == false %} w-1/3{% endif %}">
+                      {{ block_type }}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </li>
+    {% else %}
+      <li class="{{ li_class }} sf-menu-item-parent{% if is_mega %} sf-menu-item--mega{% endif %} {% if link.active %} active{% endif %}" data-index="{{ forloop.index0 }}">
+        <a href="{{ link.url }}" class="{{ box_size }} flex items-center cus-link-anchor sf__parent-item{% if section.settings.uppercase_parent_level %} uppercase{% endif %} {% if link.active %} active{% endif %}">
+          {{ link.title }}
+          {% if is_mega %}
+            <span class="ml-2 sf-menu__arrow">{% render 'icon', name: 'chevron-down-solid', size: 'custom', class: 'w-2 h-2' %}</span>
+          {% endif %}
+        </a>
+        {% if is_mega and block_type != blank %}
+          <div class="sf-menu__submenu sf-menu__desktop-sub-menu absolute z-50 inset-x-0">
+            <div class="sf-menu__inner">
+              <div class="{{ dropdown_container }} mx-auto">
+                <div class="sf-menu-submenu__content py-12 flex px-4">
+                  <div class="w-full">
+                    {{ block_type }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </li>
+    {% endif %}
+    {% if section.settings.header_design == '2l-menu-with-icons' and forloop.last == false %}
+      <div class="px-3 py-4 hidden lg:flex items-center">
+        {% render 'icon', name: 'star', size: 'extra-small', fill: '#b3d2c5', stroke: '#b3d2c5' %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</ul>

@@ -1,0 +1,406 @@
+{%- assign bg_color = section.settings.background_color -%}
+{%- assign has_bg = false -%}
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+  {% assign has_bg = true %}
+{% endunless %}
+{%- capture container -%}
+  {{ section.settings.container }} {% if section.settings.container != 'w-full' %}{%- if has_bg == false -%}section-my{%- else -%}section-py{%- endif -%}{% endif %}
+{%- endcapture -%}
+
+{%- assign scrollMobile = section.settings.use_scroll_mobile -%}
+
+<section
+    id="sf-custom-{{ section.id }}"
+    class="{% if section.settings.wd_container == true %}cus_inner_page_wd {% endif %} sf-custom {{ section.settings.custom_class }}{% if hide_if_empty and section.blocks.size == 0 %} hidden{% endif %}"
+    data-section-type="custom-content"
+    data-section-id="{{ section.id }}"
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="--column-gap: {{ section.settings.gap }}px; --column-gap-mobile: {{ section.settings.gap_mobile }}px; background-color: {{ bg_color }};"
+>
+    <div class="{{ container }}">
+        {%- assign block_width_mobile = '' -%}
+        {% if show_header %}
+            {% render 'index-section-header', section_settings: section.settings %}
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+        {% if scrollMobile %}<div class="sf__ms">{% endif %}
+        <div class="sf-custom__grid flex cus_inner_sec_center {% unless scrollMobile %}flex-wrap{% else %}sf__ms-wrapper md:flex-wrap{% endunless %}">
+            {% for block in section.blocks %}
+                {% assign vertical_alignment = block.settings.alignment %}
+                {% case block.settings.width %}
+                    {% when '16%' %}
+                        {%- assign block_width = 'lg:w-1/6' -%}
+                        {%- assign block_width_mobile = 'w-1/2' -%}
+                    {% when '25%' %}
+                        {%- assign block_width = 'lg:w-1/4' -%}
+                        {%- assign block_width_mobile = 'w-1/2' -%}
+                    {% when '33%' %}
+                        {%- assign block_width = 'lg:w-1/3' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                    {% when '50%' %}
+                        {%- assign block_width = 'lg:w-1/2' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                    {% when '66%' %}
+                        {%- assign block_width = 'lg:w-2/3' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                    {% when '75%' %}
+                        {%- assign block_width = 'lg:w-3/4' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                    {% when '83%' %}
+                        {%- assign block_width = 'lg:w-10/12' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                    {% when '100%' %}
+                        {%- assign block_width = 'lg:w-full' -%}
+                        {%- assign block_width_mobile = 'w-full' -%}
+                {% endcase %}
+
+                <div id="sf-custom__block--{{ block.id }}" class="cus_colum_wd sf-custom__block {{ block.settings.block_custom_class }} sf-custom__block--{{ block.type }} flex {{ block_width }} {{ block_width_mobile }} items-{{ vertical_alignment }}" {{ block.shopify_attributes }}>
+                    <div class="sf-custom__block-inner w-full">
+                        {% case block.type %}
+                            {% when 'image' %}
+                                {% if block.settings.image != blank %}
+                      
+										{% comment %}
+                      				 	MTS
+                      					<{% if block.settings.link %}a{% else %}div{% endif %}{% if block.settings.link %} href="{{ block.settings.link }}"{% endif %} class="sf__hover-scale-up">
+                                        {% endcomment %}
+                                          
+                      				    <{% if block.settings.link %}a{% else %}div{% endif %}{% if block.settings.link %} href="{{ block.settings.link }}"{% endif %}>
+                                        
+                                        {% render 'responsive-image', image: block.settings.image %}
+                                    </{% if block.settings.link %}a{% else %}div{% endif %}>
+                                {% else %}
+                                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg sf__placeholder-svg sf__placeholder-svg-no-border' }}
+                                {% endif %}
+                            {% when 'text' %}
+                                <div class="text-{{ block.settings.align_text }}" style="--text-color: {{ block.settings.text_color }};">
+                                    {% if block.settings.subheading != blank %}
+                                        <p class="my-custom-font-size mb-5 content__subheading text-{{ block.settings.text_color }}">{{ block.settings.subheading }}</p>
+                                    {% endif %}
+                                    {% if block.settings.title != blank %}
+                                        <h3 class="content__heading sf-font cus_head_size text-2xl text-{{ block.settings.text_color }} {% if block.settings.text_size == 'medium' %}lg:text-5xl sm:text-4xl{% else %}lg:text-7xl sm:text-6xl {% endif %}">{{ block.settings.title }}</h3>
+                                    {% endif %}
+                                    {% if block.settings.text != blank %}
+                                        <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para">{{ block.settings.text }}</div>
+                                    {% endif %}
+                                    {% if block.settings.button_label != blank %}
+                                        <div class="sf-custom__text-cta mt-8">
+                                            <a href="{{ block.settings.button_link }}" class="sf__btn {{ block.settings.button_style }} {{ block.settings.button_size }}">{{ block.settings.button_label }}</a>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% when 'video' %}
+                                <div class="sf-video">
+                                    {%- if block.settings.video_link != blank -%}
+                                    <div class="sf-video__container sf-video__container--{{ section.id }} mx-auto">
+                                        <div class="sf-video__wrapper sf-video__wrapper--{{ section.id }}" style="--aspect-ratio: {{ block.settings.ratio | replace: ':', '/' }}">
+                                            {%- if block.settings.video_link != blank -%}
+                                                <div id="sf-video__player-{{ section.id }}" class="plyr__video-embed" data-video-ratio="{{ block.settings.ratio | default: '16:9' }}" data-autoplay="{{ block.settings.autoplay }}" data-loop="{{ section.settings.loop }}">
+                                                    <iframe
+                                                        src="https://www.youtube.com/embed/{{ block.settings.video_link.id }}?iv_load_policy=3&amp;modestbranding=0&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+                                                        allowfullscreen
+                                                        allowtransparency
+                                                        allow="autoplay"
+                                                    ></iframe>
+                                                </div>
+                                            {%- endif -%}
+                                            {%- if block.settings.image != blank -%}
+                                                <div class="sf-video__cover bg-center" style="background-image: url({{ block.settings.image | img_url: '1920x' }})">
+                                                </div>
+                                            {%- endif -%}
+                                            <div class="sf-video__inner text-center">
+                                                <button type="button" class="sf-video__play sf-video__play--style-{{ block.settings.play_style }} sf-video__play--size-{{ block.settings.play_size }} text-{{ block.settings.text_color }}" data-plyr="play" aria-label="Play"><svg viewBox="0 0 18 18"><path d="M15.562 8.1L3.87.225c-.818-.562-1.87 0-1.87.9v15.75c0 .9 1.052 1.462 1.87.9L15.563 9.9c.584-.45.584-1.35 0-1.8z" fill="currentColor"></path></svg><span class="plyr__sr-only">{{ 'sections.video.play' | t }}</span></button>
+                                                {%- unless block.settings.video_title == blank -%}
+                                                <h2 class="sf-video__title text-xl {% if block.settings.text_size == 'medium' %}sm:text-3xl{% else %}sm:text-5xl{% endif %} text-{{ block.settings.text_color }}">
+                                                    {{ block.settings.video_title }}
+                                                </h2>
+                                                {%- endunless -%}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {%- else -%}
+                                    <div class="placeholder-noblocks text-center">
+                                        {{ 'homepage.onboarding.no_content' | t }}
+                                    </div>
+                                {%- endif -%}
+                                </div>
+                            {% when 'product' %}
+                                {%- assign product = all_products[block.settings.product] -%}
+                                {% if product.title.size > 0 %}
+                                    {% render 'product-card', product: product %}
+                                {% else %}
+                                    {% comment %}
+                                      No product yet. Show onboarding one.
+                                    {% endcomment %}
+                                    <div class="sf__pcard text-{{ settings.pcard_alignment }}">
+                                        <div style="--aspect-ratio: 1/1;" class="bg-gray-100">
+                                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                            {{ 'collection-' | append: current | placeholder_svg_tag: 'object-cover w-full h-full transition-all duration-500 group-hover:scale-105' }}
+                                        </div>
+                                        <div class="block mb-2 sf__pcard-name mt-4 font-medium hover:text-color-secondary">{{ 'homepage.onboarding.product_title' | t }}</div>
+                                        <div class="mb-2.5 sf__pcard-price">
+                                            <p class="prod__price">$19.99</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% when 'product_form' %}
+                                {%- assign product = all_products[block.settings.product] -%}
+                                {%- assign current_variant = product.selected_or_first_available_variant -%}
+                                {% if product == empty %}
+                                    {%- assign section_onboarding = true -%}
+                                {% endif %}
+                                {% capture class %}
+                                    {% if block.settings.show_quantity_selector %}
+                                        show_quantity_selector
+                                    {% else %}
+                                        hide_quantity_selector
+                                    {% endif %}
+                                    {% if block.settings.enable_payment_button %}
+                                        enable_payment_button
+                                    {% endif %}
+                                    {% if block.settings.show_add_to_cart %}
+                                        enable_cart_button
+                                    {% else %}
+                                        hide_cart_button
+                                    {% endif %}
+                                {% endcapture %}
+                                <div class="sf-prod__block sf-prod__info-wrapper h-full relative {{ class }}">
+                                    <div class="sf-prod__info">
+                                        {% if block.settings.show_vendor %}
+                                        <span class="prod__vendor block mb-4">{{ product.vendor }}</span>
+                                        {% endif %}
+                                        <a class="prod__title text-2xl md:text-3xl leading-10 font-medium mt-5 {% if block.settings.show_price %}mb-2{% else %}mb-10{% endif %}" href="{{ product.url }}">
+                                            {% unless section_onboarding %}
+                                                {{ product.title }}
+                                            {% else %}
+                                                {{ 'homepage.onboarding.product_title' | t }}
+                                            {% endunless %}
+                                        </a>
+                                        {% if block.settings.show_price %}
+                                        <div class="prod_prices mt-2 mb-8 flex items-center">
+                                            {% unless section_onboarding %}
+                                                {% render 'product-prices', product: product, price_class: 'text-xl' %}
+                                            {% else %}
+                                                <span class="text-xl prod__price sf-currency">
+                                            {{ 1999 | money }}
+                                        </span>
+                                            {% endunless %}
+                                        </div>
+                                        {% endif %}
+                                        {% if block.settings.show_product_review %}
+                                        <div class="prod__reviews_count mt-8 mb-4">
+                                            {% render 'product-reviews-app__badge' %}
+                                        </div>
+                                        {% endif %}
+                                        {% unless section_onboarding %}
+                                            <div class="prod__description leading-7 text-base mt-4 mb-8">{{ product.description | strip_html | truncatewords: 100 }}</div>
+                                        {% else %}
+                                            <div class="prod__description leading-7 text-base mt-4 mb-8">{{ 'homepage.onboarding.product_description' | t }}</div>
+                                        {% endunless %}
+                                        {% unless section_onboarding %}
+                                            {% render 'product-form',
+                                                    section_id: block.id,
+                                                    product: product,
+                                                    section: block,
+                                                    current_variant: current_variant,
+                                                    enable_dynamic_checkout: block.settings.enable_payment_button,
+                                                    show_quantity_selector: block.settings.show_quantity_selector,
+                                                    enableCardButton: block.settings.show_add_to_cart
+                                            %}
+                                        {% else %}
+                                            <div class="flex flex-wrap mb-5">
+                                                <button type="submit" class="add-to-cart sf__btn sf__btn-primary flex-grow flex-shrink relative">
+                                                    <span>{{ 'products.product.add_to_cart' | t }}</span>
+                                                </button>
+                                            </div>
+                                        {% endunless %}
+                                    </div>
+                                </div>
+
+                            {% when 'image_card' %}
+                                          
+								{% comment %}
+                      				 MTS
+									{% render 'image-card', block: block, grid_columns: 'w-full', stack_on_mobile: scrollMobile, image_card_class: 'sf__hover-scale-up' %}
+                      			{% endcomment %}
+                                          
+                      			{% render 'image-card', block: block, grid_columns: 'w-full', stack_on_mobile: scrollMobile %}
+                            
+                            {% when 'product_bundles' %}
+                                <div class="product-bundles sm:pr-28">
+                                    {% if block.settings.subheading != blank %}
+                                        <span class="content__subheading block mb-5 font-medium tracking-widest">{{  block.settings.subheading }}</span>
+                                    {% endif %}
+                                    {% if block.settings.title != blank %}
+                                        <h3 class="content__heading sf-font text-4xl font-bold">{{  block.settings.title }}</h3>
+                                    {% endif %}
+                                    <div class="product-bundles__list mt-6">
+                                        {% assign products = 'product_1,product_2,product_3,product_4,product_5' | split: ',' %}
+                                        {% assign total_price = 0 %}
+                                        {% for product_id in products %}
+                                            {% assign saved_price = '' %}
+                                            {%- assign product = all_products[block.settings[product_id]] -%}
+                                            {% assign variant = product.first_available_variant %}
+                                            {% if  variant.compare_at_price != blank and variant.compare_at_price > variant.price %}
+                                                {% assign saved_price = variant.compare_at_price | minus: variant.price | money %}
+                                            {% endif %}
+                                            {% assign sold_out = false %}
+                                            {% unless variant.available %}
+                                              {% assign sold_out = true %}
+                                            {% endunless %}
+                                            {% if product != empty %}
+                                                {% assign total_price = total_price | plus: variant.price %}
+                                                <div class="product-bundles__item flex items-center relative py-4 pl-9 md:pl-12{% if block.settings.show_reviews %} product-bundles__item--has-reviews{% endif %}" data-index="{{ forloop.index0 }}">
+                                                    <span class="product-bundles__item-index -translate-y-2/4 absolute left-0 top-1/2 rounded-full border-2 border-black inline-flex justify-center items-center w-[30px] h-[30px]">{{ forloop.index }}</span>
+                                                    <a href="{{ product.url }}" class="block product-bundles__item-image flex-shrink-0 w-[70px] md:w-[90px] ml-1">
+                                                        {% render 'responsive-image', image: product.featured_image %}
+                                                    </a>
+                                                    <div class="product-bundles__item-info flex flex-wrap md:flex-nowrap flex-1 pl-3 sm:pl-5 h-full">
+                                                        <div class="md:flex-1 md:pr-3 w-full">
+                                                            {% if block.settings.show_reviews %}
+                                                                <div class="sf__product-reviews text-sm">
+                                                                    {% render 'product-reviews-app__badge', product: product %}
+                                                                </div>
+                                                            {% endif %}
+                                                            <h3 class="text-xs md:text-sm uppercase font-bold tracking-wider"><a href="{{ product.url }}">{{ product.title }}</a></h3>
+                                                            <div class="mt-3 pr-4{% if product.has_only_default_variant %} hidden{% endif %}">
+                                                              <select name="id" class="sf-product-variant-option-dropdown form-control">
+                                                                {% for variant in product.variants %}
+                                                                  <option value="{{ variant.id }}"{% if variant.available != true %} disabled{% endif %}>{{ variant.title }}</option>
+                                                                {% endfor %}
+                                                              </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-bundles__item-prices md:text-right pt-2 md:pt-0{% if block.settings.show_reviews %} md:pt-7{% endif %}">
+                                                            <p>
+                                                                {% if saved_price != blank %}
+                                                                  <span class="sf-currency mr-2 line-through text-color-secondary" data-compare-price>
+                                                                      {{ variant.compare_at_price | money }}
+                                                                  </span>
+                                                                {% endif %}
+                                                              {% unless sold_out %}
+                                                                <span class="sf-currency" data-regular-price data-price="{{ variant.price }}">
+                                                                  {{ variant.price | money }}
+                                                               </span>
+                                                              {% else %}
+                                                                <span>{{ 'products.product.sold_out' | t }}</span>
+                                                              {% endunless %}
+                                                            </p>
+                                                            {% if saved_price != blank %}
+                                                                <p>{{ 'products.product.save_html' | t : amount: saved_price }}</p>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <script type="application/json" data-product-variants>
+                                                    {{ product.variants | json }}
+                                                </script>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                    <div class="product-bundles__cta mt-6">
+                                        <button class="sf__btn sf__btn-primary w-full font-weight--bold uppercase text-sm flex justify-center items-center h-[50px]" data-add-bundle><span>{{ 'products.product.add_to_cart' | t }}</span> <span class="px-2">|</span> <span class="sf-currency" data-total-price="{{ total_price }}">{{ total_price | money }}</span></button>
+                                    </div>
+                                    <div class="product-bundles__error mt-5"></div>
+                                </div>
+                            {% when 'lookbook' %}
+                                {% render 'lookbook-card', block: block, image_aspect_ratio: 'original', class: 'mb-0' %}
+                            {% when 'countdown' %}
+                                {% assign content_class = 'h-full items-' | append: vertical_alignment %}
+                                {% render 'countdown-timer', settings: block.settings, containerId: block.id, content_class: content_class, align_item: block.settings.align_text %}
+                            {% when 'html' %}
+                                {% if block.settings.code != blank %}
+                                    {{ block.settings.code }}
+                                {% endif %}
+                            {% when 'newsletter' %}
+                                <div class="sf-custom__newsletter text-center px-4 md:px-14 pt-5 md:pt-0">
+                                    {% if block.settings.heading != blank %}
+                                        <h3 class="text-2xl">{{ block.settings.heading }}</h3>
+                                    {% endif %}
+                                    {% if block.settings.description != blank %}
+                                        <div class="text-base mt-3 rte text-color-subtext">
+                                            {{ block.settings.description }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="mt-8">
+                                        {% render 'newsletter-form', form_layout: 'horizontal', form_design: block.settings.form_design, custom_id: block.id, button_label: block.settings.button_label, placeholder: block.settings.placeholder %}
+                                    </div>
+                                </div>
+                            {% when 'social' %}
+                                <div class="sf-custom__social text-center px-4 md:px-14 pt-5 md:pt-0">
+                                    {% if block.settings.heading != blank %}
+                                        <h3 class="text-2xl">{{ block.settings.heading }}</h3>
+                                    {% endif %}
+                                    {% if block.settings.description != blank %}
+                                        <div class="text-base mt-3 rte text-color-subtext">
+                                            {{ block.settings.description }}
+                                        </div>
+                                    {% endif %}
+                                    <div class="text-center flex justify-center mt-7">
+                                        {% render 'social-media-links' %}
+                                    </div>
+                                </div>
+                            {%- when 'article' -%}
+                                {%- assign article = articles[block.settings.article] -%}
+                                {%- if article != empty -%}
+                                    {% render 'article-card', article: article, view: 'grid', items_per_row: 1 %}
+                                {%- else -%}
+                                    <div class="article">
+                                        <a href="#" class="article__link article__link--fixed-overlay">
+                                            {%- if article.image and cover_image != 'none' -%}
+                                                <div class="article__grid-image-wrapper article__grid-image-wrapper--{{ cover_image }} article-image-wrapper">
+                                                    <div class="article__grid-image-container">
+                                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                                    </div>
+                                                </div>
+                                            {%- endif -%}
+
+                                            <h2 class="article__title h3">{{ 'homepage.onboarding.blog_title' | t }}</h2>
+                                        </a>
+
+                                        {%- if block.settings.show_author or block.settings.show_date -%}
+                                            <div class="article__meta">
+                                                {%- if block.settings.show_author -%}
+                                                    {%- assign author_name = 'homepage.onboarding.blog_author' | t -%}
+                                                    <span class="article__author">{{ 'blogs.article.by_author' | t: author: author_name }}</span>
+                                                {%- endif -%}
+
+                                                {%- if block.settings.show_date -%}
+                                                    <span class="article__date">
+                          {{ "now" | time_tag: format: 'date' }}
+                        </span>
+                                                {%- endif -%}
+                                            </div>
+                                        {%- endif -%}
+
+                                        <div class="rte rte--article">{{ 'homepage.onboarding.blog_excerpt' | t }}</div>
+
+                                        <ul class="list--inline article__meta-buttons">
+                                            <li>
+                                                <a href="#" class="btn btn--tertiary btn--small">
+                                                    {{ 'blogs.article.read_more' | t }}
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="#" class="article__comment-count btn btn--tertiary btn--small">
+                                                    {{ 'blogs.comments.comments_with_count' | t: count: 1 }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    
+                                {%- endif -%}
+                        {% endcase %}
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+        {% if scrollMobile %}</div>{% endif %}
+        {% endif %}
+    </div>
+</section>

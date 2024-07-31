@@ -1,0 +1,158 @@
+{% assign is_size = false %}
+
+{%- for option in product.options_with_values -%}
+    {% assign downcased_option = option.name | downcase %}
+    {% assign size_title_downcase = size_title | downcase %}
+    {% if size_title_downcase contains downcased_option %}
+        {% assign is_size = true %}
+    {% else %}
+        {% assign is_size = false %}
+    {% endif %}
+
+    <div
+      data-index="option-{{ option.position }}-{{ forloop.index0 }}"
+      data-product-option="{{ option.name }}"
+      class="product-options__option product-options__option--"
+    >
+      {% assign found_option = false %}
+      {% assign option_design = '' %}
+      {% assign option_label = option.name %}
+
+      {%- for i in (1..5) -%}
+        {% unless found_option == true %}
+          {%- assign option_name_key = 'variant_option_title' | append: i -%}
+          {%- assign option_display_name_key = 'variant_option_display_name' | append: i -%}
+          {%- assign option_design_key = 'variant_option_design' | append: i -%}
+
+          {%- assign option_name = settings[option_name_key] -%}
+          {%- if option_name == option.name -%}
+              {% assign found_option = true %}
+              {% assign option_design = settings[option_design_key] %}
+              {% assign option_label = settings[option_display_name_key] | default: option.name %}
+          {%- endif -%}
+        {% endunless %}
+      {%- endfor -%}
+
+      {% assign design = option_design %}
+      {%- if found_option == false or option_design == '' -%}
+        {% assign design = settings['variant_option_design_default'] %}
+      {%- endif -%}
+
+        
+      <div class="prod__option-label cus-prod-option-label font-medium flex flex-wrap items-center prod__option-label--{{ option_design }}">
+        <div style="display: flex; align-items: center;">
+          <span>{{ option_label }}</span> 
+        </div>
+
+        {% if option_label == "Size" and "size" %}
+            <a href="" target="_blank">
+                <img style="margin-left: 20px" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-set-square-64.png?v=1650278371" width="25px" height="25px" title="Size Chart Information">
+            </a>
+		{% elsif option_label == "Thread Count" and "Thread count" %}
+            <a href="" target="_blank">
+                <img style="margin-left: 20px" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-thread-64.png?v=1650278371" width="25px" height="25px" title="Size Chart Information">
+            </a>
+        {% else %}
+          <a href="https://cloud9l.myshopify.com/pages/bedlinens-sizechart">
+            <img style="margin-left: 20px" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/help-grey.svg?v=1639560497" class="" width="30px" height="30px" title="Size Chart Information">
+          </a>
+        {% endif %}
+      </div>
+      
+
+      <div class="prod__option mw-border prod__option--{{ design }} flex items-center flex-wrap justify-between">
+        {% render 'product-option-design', design: design, option: option %}
+      </div>
+    </div>
+{%- endfor -%}
+
+
+
+{% comment %}
+MTS
+{% assign is_size = false %}
+
+{%- for option in product.options_with_values -%}
+    {% assign downcased_option = option.name | downcase %}
+    {% assign size_title_downcase = size_title | downcase %}
+    {% if size_title_downcase contains downcased_option %}
+        {% assign is_size = true %}
+    {% else %}
+        {% assign is_size = false %}
+    {% endif %}
+
+    <div
+      data-index="option-{{ option.position }}-{{ forloop.index0 }}"
+      data-product-option="{{ option.name }}"
+      class="product-options__option product-options__option--"
+    >
+      {% assign found_option = false %}
+      {% assign option_design = '' %}
+      {% assign option_label = option.name %}
+
+      {%- for i in (1..5) -%}
+        {% unless found_option == true %}
+          {%- assign option_name_key = 'variant_option_title' | append: i -%}
+          {%- assign option_display_name_key = 'variant_option_display_name' | append: i -%}
+          {%- assign option_design_key = 'variant_option_design' | append: i -%}
+
+          {%- assign option_name = settings[option_name_key] -%}
+          {%- if option_name == option.name -%}
+              {% assign found_option = true %}
+              {% assign option_design = settings[option_design_key] %}
+              {% assign option_label = settings[option_display_name_key] | default: option.name %}
+          {%- endif -%}
+        {% endunless %}
+      {%- endfor -%}
+
+      {% assign design = option_design %}
+      {%- if found_option == false or option_design == '' -%}
+        {% assign design = settings['variant_option_design_default'] %}
+      {%- endif -%}
+
+      {% comment %}
+      MTS
+      <div class="prod__option-label font-medium flex flex-wrap items-center justify-between prod__option-label--{{ option_design }}">
+      {% endcomment %}
+        
+      <div class="prod__option-label font-medium flex flex-wrap items-center justify-between prod__option-label--{{ option_design }}">
+        <div style="display: flex; align-items: center;">
+          <span>{{ option_label }}</span> 
+          <a href="https://cloud9l.myshopify.com/pages/bedlinens-sizechart">
+            <img style="margin-left: 20px" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/help-grey.svg?v=1639560497" class="" width="30px" height="30px" title="Size Chart Information">
+<!--             <img style="margin-left: 20px" src="https://cdn.shopify.com/s/files/1/0611/3781/3724/files/thumb_icons8-set-square-64.png?v=1650278371" class="qv-icon cus-mob-section" title="Size Chart Information"> -->
+          </a>
+          
+          {% comment %}
+          MTS
+          <span>{{ option_label }}:</span>
+          <span
+            data-option-label data-label-position="{{ option.position }}"
+            class="option-label cus-option-label py-5">{{ option.selected_value }}
+          </span>
+          {% endcomment %}
+        </div>
+
+        {% if is_size %}
+          
+          {% comment %}
+          MTS
+          <a href="/pages/{{ pages.title-sizechart }}">Sizechart</a>
+          {% endcomment %}
+        	
+          <button data-open-sizeguide class="inline-flex items-center hidden">
+
+            {% render 'icon', name: 'ruler-horizontal' %}
+            <span class="ml-2 ">{{ 'products.product.size_guide' | t }}</span>
+
+          </button>
+        {% endif %}
+      </div>
+      
+
+      <div class="prod__option prod__option--{{ design }} flex items-center flex-wrap justify-between">
+        {% render 'product-option-design', design: design, option: option %}
+      </div>
+    </div>
+{%- endfor -%}
+{% endcomment %} 

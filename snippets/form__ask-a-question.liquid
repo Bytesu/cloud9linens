@@ -1,0 +1,18 @@
+<div class="form-ask__wrapper hidden">
+    {% form 'contact', id: 'contact-form-ask' %}
+        <input type="hidden" name="contact[product]" value="{{ product.title }}" />
+        <input type="hidden" name="contact[product url]" value="{{ shop.url }}{{ product.url }}" />
+        <div class="p-8 text-center">
+            <h3 class="text-4xl mb-6">{{ 'contact.ask-form.heading' | t }}</h3>
+            <input type="text" class="form-control" name="contact[name]" required placeholder="{{ 'contact.ask-form.name' | t }}*">
+            <input type="text" class="form-control" name="contact[phone]" placeholder="{{ 'contact.ask-form.phone' | t }}">
+            <input type="email" class="form-control" name="contact[email]" required autocorrect="off" placeholder="{{ 'contact.ask-form.email' | t }}*">
+            <textarea class="form-control" name="contact[question]" rows="4" required placeholder="{{ 'contact.ask-form.message' | t }}*"></textarea>
+            <p class="italic text-left text-color-subtext mb-3">* {{ 'contact.ask-form.required-fields' | t }}</p>
+            <button type="submit" class="sf__btn sf__btn-primary">{{ 'contact.ask-form.send' | t }}</button>
+        </div>
+        {% if form.posted_successfully? %}
+            <div class="form-ask__success fixed bottom-1/2 md:bottom-24 left-1/2 -translate-x-1/2 z-50 shadow-theme md:shadow-none w-[80vw] md:w-auto" data-message="{{ 'contact.ask-form.post_success' | t }}"></div>
+        {% endif %}
+    {% endform %}
+</div>

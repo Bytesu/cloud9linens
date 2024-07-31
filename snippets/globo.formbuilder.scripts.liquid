@@ -1,0 +1,70 @@
+<script>
+	var Globo = Globo || {};
+    var globoFormbuilderRecaptchaInit = function(){};
+    Globo.FormBuilder = Globo.FormBuilder || {};
+    Globo.FormBuilder.url = "https://form.globosoftware.net";
+    Globo.FormBuilder.shop = {
+        settings : {
+            reCaptcha : {
+                siteKey : '',
+                recaptchaType : 'v2',
+                languageCode : 'en'
+            },
+            hideWaterMark : false,
+            encryptionFormId : true,
+            copyright: `Powered by G: <a href="https://apps.shopify.com/form-builder-contact-form" target="_blank">Form Builder</a>`,
+            scrollTop: true
+        },
+        pricing:{
+            features:{
+                fileUpload : 30,
+                removeCopyright : true,
+                bulkOrderForm: true,
+                cartForm: true,
+            }
+        },
+        configuration: {
+            money_format:  "{{ shop.money_format | replace: '"', "'" }}"
+        },
+        encryption_form_id : true
+    };
+    Globo.FormBuilder.forms = [];
+
+    {% if customer %}
+        Globo.FormBuilder.customer = {
+            id : '{{ customer.id }}',
+            name : `{{ customer.name }}`,
+            email : '{{ customer.email }}'
+        };
+    {% endif %}
+    Globo.FormBuilder.page = {
+        title : document.title.replaceAll('"', "'"),
+        href : window.location.href,
+        type: "{{ request.page_type }}"
+    };
+    {% if request.page_type == 'product' %}
+    Globo.FormBuilder.product= {
+        title : `{{ product.title }}`,
+        type : `{{ product.type }}`,
+        vendor : `{{ product.vendor }}`
+    }
+    {% endif %}
+    Globo.FormBuilder.assetFormUrls = [];
+            Globo.FormBuilder.assetFormUrls[73256] = "{{ 'globo.formbuilder.data.73256.js' | asset_url }}";
+                    Globo.FormBuilder.assetFormUrls[74017] = "{{ 'globo.formbuilder.data.74017.js' | asset_url }}";
+                    Globo.FormBuilder.assetFormUrls[74511] = "{{ 'globo.formbuilder.data.74511.js' | asset_url }}";
+                    Globo.FormBuilder.assetFormUrls[74525] = "{{ 'globo.formbuilder.data.74525.js' | asset_url }}";
+                    Globo.FormBuilder.assetFormUrls[74530] = "{{ 'globo.formbuilder.data.74530.js' | asset_url }}";
+                    Globo.FormBuilder.assetFormUrls[74532] = "{{ 'globo.formbuilder.data.74532.js' | asset_url }}";
+            
+</script>
+
+<link rel="preload" href="{{ 'globo.formbuilder.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{ 'globo.formbuilder.css' | asset_url }}"></noscript>
+<link rel="stylesheet" href="{{ 'globo.formbuilder.css' | asset_url }}">
+{% capture GF_appScript %}{{ 'globo.formbuilder.index.js' | asset_url }}{% endcapture %}
+{% assign GF_assetsPath = GF_appScript | split: 'globo.formbuilder.index.js' | first %}
+<script>
+    Globo.FormBuilder.__webpack_public_path__ = "{{ GF_assetsPath }}"
+</script>
+<script src="{{GF_appScript}}" defer></script>

@@ -1,0 +1,83 @@
+<div data-register-form class="cus-account-form 1">
+  {% form 'create_customer' %}
+  {% render 'form__error', form: form %}
+  {% render 'form__success', form: form, success_message: success_message %}
+
+  <label class="cus-account-label">First Name</label>
+  <input type="text" name="customer[first_name]" class="form-control" />
+  <label class="cus-account-label">Last Name</label>
+  <input type="text" name="customer[last_name]" class="form-control" />
+  <label class="cus-account-label">Email</label>
+  <input type="email" name="customer[email]" class="form-control" />
+  <label class="cus-account-label">Password</label>
+  <input type="password" name="customer[password]" class="form-control" />
+  <div class="flex">
+    <ul class="w-1/2 cus-password-tips">
+      <li>8 Characters Minimum</li>
+      <li>One Number</li>
+      <li>At Least 1 Special Character(s)</li>
+    </ul>
+    <ul class="w-1/2 cus-password-tips">
+      <li>One Lowercase Character</li>
+      <li>One Uppercase Character</li>
+    </ul>
+  </div>
+  <label class="cus-account-label">Confirm Password</label>
+  <input type="password" value="" name="customer[password_confirmation]" id="confirm-password" class="form-control password text" size="30" />
+  <p class="cus-create-account-txt">Please send me a daily email offers and promotions as they arise.</p>
+
+  {% assign show_terms = false %}
+  {% if settings.agree_text != blank and settings.show_agree_on_register %}
+    {% render 'agree-terms-checkbox' %}
+    {% assign show_terms = true %}
+  {% endif %}
+  <button class="cus-register-btn mt-6 mb-3 w-full sf__btn sf__btn-primary"{% if show_terms %} data-terms-action disabled{% endif %}>
+    Create Account
+  </button>
+  <a class="cus-login-btn w-full mt-[12xpx] sf__btn sf__btn-secondary" href="{{ routes.account_login_url }}">
+    {{ 'customer.login.title' | t }}
+  </a>
+  {% endform %}
+</div>
+ 
+
+{% comment %}
+MTS
+<div data-register-form>
+  {% form 'create_customer' %}
+  {% render 'form__error', form: form %}
+  {% render 'form__success', form: form, success_message: success_message %}
+
+  <input type="text" name="customer[first_name]" placeholder="{{ 'customer.register.first_name' | t }}" class="form-control" />
+  <input type="text" name="customer[last_name]" placeholder="{{ 'customer.register.last_name' | t }}" class="form-control" />
+  <input type="email" name="customer[email]" placeholder="{{ 'customer.login.email' | t }}" class="form-control" />
+  <input type="password" name="customer[password]" placeholder="{{ 'customer.login.password' | t }}" class="form-control" />
+  <div class="mt-3 text-color-secondary">
+    {{ 'customer.register.description' | t }}
+  </div>
+  {% assign show_terms = false %}
+  {% if settings.agree_text != blank and settings.show_agree_on_register %}
+    {% render 'agree-terms-checkbox' %}
+    {% assign show_terms = true %}
+  {% endif %}
+  <button class="mt-6 mb-3 w-full sf__btn sf__btn-primary"{% if show_terms %} data-terms-action disabled{% endif %}>
+    {{ 'customer.register.title' | t }}
+  </button>
+  <a class="w-full mt-[12xpx] sf__btn sf__btn-secondary" href="{{ routes.account_login_url }}">
+    {{ 'customer.login.title' | t }}
+  </a>
+  {% endform %}
+</div>
+{% endcomment %}
+
+
+<script>
+  $(function(){
+    $('#create_customer').submit(function(e) {     
+      if ( $('input[name="customer[password]"]').val() != $('input[name="customer[password_confirmation]"]').val()) {
+        e.preventDefault();
+        alert('Passwords do not match.');
+      }
+    });
+  });
+</script>

@@ -1,0 +1,152 @@
+<!-- /snippets/social-media-links.liquid -->
+{% if show_label == nil %}
+  {% assign show_label = false %}
+{% endif %}
+{% if size == nil %}
+  {%- assign size = 'small' -%}
+{% endif %}
+<div class="custom_sml_left social-media-links ftr_social_links {{ box_size }} flex items-center px-2 {% if centermd %} md:justify-center {% endif %}">
+  {% if settings.social_twitter_link != blank %}
+    <a
+      target="_blank"
+      class=" mob-img"
+      href="{{ settings.social_twitter_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'twitter-white', size: size %}
+      {% if settings.social_twitter_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_twitter_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_facebook_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_facebook_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'facebook-white', size: size %}
+      {% if settings.social_facebook_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_facebook_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_instagram_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_instagram_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'instagram-white', size: size %}
+      {% if settings.social_instagram_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_instagram_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_pinterest_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_pinterest_link }}"
+      rel="noreferrer">
+      {% comment %} {% render 'icon', name: 'pinterest-white', size: size %} {% endcomment %}
+      {% if settings.social_pinterest_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_pinterest_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_snapchat_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_snapchat_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'snapchat', size: size %}
+      {% if settings.social_snapchat_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_snapchat_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_tumblr_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_tumblr_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'tumblr', size: size %}
+      {% if settings.social_tumblr_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_tumblr_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_youtube_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_youtube_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'youtube', size: size %}
+      {% if settings.social_youtube_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_youtube_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_vimeo_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_vimeo_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'vimeo', size: size %}\
+      {% if settings.social_vimeo_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_vimeo_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_tiktok_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_tiktok_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'tiktok', size: size %}
+      {% if settings.social_tiktok_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_tiktok_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_discord_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center"
+      href="{{ settings.social_discord_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'discord', size: size %}
+      {% if settings.social_discord_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_discord_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if settings.social_whatsapp_link != blank %}
+    <a
+      target="_blank"
+      class="px-2 flex items-center mob-img"
+      href="{{ settings.social_whatsapp_link }}"
+      rel="noreferrer">
+      {% render 'icon', name: 'whatsapp', size: size %}
+      {% if settings.social_whatsapp_label != blank and show_label %}
+        <span class="pl-2.5 pr-4">{{ settings.social_whatsapp_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+
+  {% comment %}
+  Added by MTS
+  {% endcomment %}
+  <a
+    target="_blank"
+    class="px-2 flex items-center mob-img"
+    href="{{ settings.social_whatsapp_link }}"
+    rel="noreferrer">{% comment %} {% render 'icon', name: 'linkedin-white', size: size %} {% endcomment %}
+  </a>
+
+</div>

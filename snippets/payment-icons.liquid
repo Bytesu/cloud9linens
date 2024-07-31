@@ -1,0 +1,16 @@
+{% if section.settings.image_custom_payment == blank %}
+  <div class="payment-icons flex">
+    <span class="hidden">{{ 'general.payment.options' | t }}: </span>
+    <ul class="flex flex-wrap -m-2.5">
+      {%- for type in shop.enabled_payment_types -%}
+        <li class="m-2.5">
+          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{% else %}
+  <div style="width: {{ section.settings.payment_icons_width }}px;">
+    {% render 'responsive-image', image: section.settings.image_custom_payment %}
+  </div>
+{% endif %}

@@ -1,0 +1,53 @@
+{% paginate search.results by 10 %}
+
+{% if search.performed %}
+    {% render 'page-title', title: page_title %}
+{% else %}
+    {% render 'customer-challenge-style' %}
+    <div class="page-header flex flex-col items-center">
+        <h1 class="page-header__title mb-6">{{ 'general.search.title' | t }}</h1>
+        <form
+            action="/search" method="POST" novalidate
+            class="relative w-full md:w-1/2 lg:w-2/3 xl:w-1/2 2xl:w-1/3"
+        >
+            <input type="hidden" name="type" value="product">
+            <input type="hidden" name="options[unavailable_products]" value="last">
+            <input type="hidden" name="options[prefix]" value="last">
+            <input type="hidden" name="options[fields]" value="title,vendor,product_type,variants.title">
+
+            <input
+                type="text" name="q" required
+                autocomplete="off"
+                placeholder="{{ 'general.search.placeholder' | t }}"
+                aria-label="{{ 'general.search.placeholder' | t }}"
+                class="sf-search__input w-full leading-6 bg-transparent pr-10" />
+
+            <button type="submit" class="absolute top-0.5 right-0 px-4 py-2">
+                {% render 'icon', name: 'search', size: 'medium' %}
+            </button>
+        </form>
+    </div>
+{% endif %}
+
+{% if search.performed %}
+    {% if search.results_count == 0 %}
+        <div class="py-16 text-center text-xl sf-search-page__no-results">{{ 'general.search.no_results_html' | t: terms: search.terms }}</div>
+        {% render 'customer-challenge-style' %}
+    {% else %}
+        <ul class="mt-5 md:mt-16 container grid md:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12">
+        {% for item in search.results %}
+            {% if item.object_type == 'product' %}
+                {% render 'product-card', product: item %}
+            {% endif %}
+        {% endfor %}
+        </ul>
+
+        {% if paginate.pages > 1 %}
+            <div class="my-16">
+                {% render 'pagination', paginate: paginate %}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% endpaginate %}

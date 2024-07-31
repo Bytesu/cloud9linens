@@ -1,0 +1,692 @@
+<div class="sec_contact_form">
+  <div class=" my_custom_setting cus_inner_sec cus_form">
+    <div class="cont-form">
+    {% form 'contact' %}
+      <div class="cus-head">
+      <h2 class="book_for_call">{{ section.settings.sec_heading }}</h2>
+      <div class="cus_mandatory">
+        <p>*M A N D A T O R Y  F I E L D  </p>
+      </div>
+      </div>
+      {% if section.settings.first_nam != blank %}
+      <div class="cus-conct">
+        <div class="first-name cus_bdr">
+          <label for="first-name">{{ section.settings.first_nam }}{% if section.settings.first_name_req != blank %}*{% endif %}
+          </label>
+          <input
+            {% if section.settings.first_name_req != blank %}required{% endif %}
+            type="text"
+            name="contact[first_name]"
+            id="first-name" />
+        </div>
+      {% endif %}
+
+      {% if section.settings.last_nam != blank %}
+        <div class="last-name cus_bdr">
+          <label for="last-name">{{ section.settings.last_nam }}{% if section.settings.last_name_req != blank %}*{% endif %}
+          </label>
+          <input
+            {% if section.settings.last_name_req != blank %}required{% endif %}
+            type="text"
+            name="contact[last_name]"
+            id="last-name" />
+        </div>
+      {% endif %}
+      
+      {% for block in section.blocks %}
+        {% case block.type %}
+
+          {% when 'company_name' %}
+          {% if block.settings.company_nam != blank %}
+            <div class="first-name cus_bdr">
+              <label for="company">{{ block.settings.company_nam }}{% if block.settings.company_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.company_req != blank %}required{% endif %}
+                type="text"
+                name="contact[company_name]"
+                id="company-name" />
+            </div>
+          {% endif %}
+
+          {% when 'country_name' %}
+          {% if block.settings.country_nam != blank %}
+            <div class="first-name cus_bdr">
+              <label for="country">{{ block.settings.country_nam }}{% if block.settings.country_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.country_req != blank %}required{% endif %}
+                type="text"
+                name="contact[country_name]"
+                id="country-name" />
+            </div>
+          {% endif %}
+
+          {% when 'address' %}
+          {% if block.settings.address != blank %}
+            <div class="first-name cus_bdr">
+              <label for="address">{{ block.settings.address }}{% if block.settings.address_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.address_req != blank %}required{% endif %}
+                type="text"
+                name="contact[address]"
+                id="address" />
+            </div>
+          {% endif %}
+
+          {% when 'city' %}
+          {% if block.settings.city != blank %}
+            <div class="first-name cus_bdr">
+              <label for="city">{{ block.settings.city }}{% if block.settings.city_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.city_req != blank %}required{% endif %}
+                type="text"
+                name="contact[city]"
+                id="city" />
+            </div>
+          {% endif %}
+
+          {% when 'state' %}
+          {% if block.settings.state != blank %}
+            <div class="first-name cus_bdr">
+              <label for="state">{{ block.settings.state }}{% if block.settings.state_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.state_req != blank %}required{% endif %}
+                type="text"
+                name="contact[state]"
+                id="state" />
+            </div>
+          {% endif %}
+
+          {% when 'zip' %}
+          {% if block.settings.zip != blank %}
+            <div class="first-name cus_bdr">
+              <label for="zip">{{ block.settings.zip }}{% if block.settings.zip_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.zip_req != blank %}required{% endif %}
+                type="text"
+                name="contact[zip]"
+                id="zip" />
+            </div>
+          {% endif %}
+
+          {% when 'business' %}
+          {% if block.settings.business != blank %}
+            <div class="first-name cus_bdr">
+              <label for="business">{{ block.settings.business }}{% if block.settings.business_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.business_req != blank %}required{% endif %}
+                type="text"
+                name="contact[business]"
+                id="business" />
+            </div>
+          {% endif %}
+
+          {% when 'email' %}
+
+          {% if block.settings.gmail != blank %}
+            <div class="email cus_bdr">
+              <label for="email">{{ block.settings.gmail }}{% if block.settings.email_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.email_req != blank %}required{% endif %}
+                type="email"
+                name="contact[email]"
+                id="email" />
+            </div>
+          {% endif %}
+
+          {% when 'confirm_email' %}
+          {% if block.settings.con_gmail != blank %}
+            <div class="con-email cus_bdr">
+              <label for="con-email">{{ block.settings.con_gmail }}{% if block.settings.con_email_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.con_email_req != blank %}required{% endif %}
+                type="email"
+                name="contact[email]"
+                id="email" />
+            </div>
+          {% endif %}
+
+          {% when 'Phone_number' %}
+          {% if block.settings.ph_number != blank %}
+            <div class="phone cus_bdr">
+              <label for="phone">{{ block.settings.ph_number }}{% if block.settings.phone_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.phone_req != blank %}required{% endif %}
+                type="tel"
+                name="contact[phone]"
+                id="phone" />
+            </div>
+          {% endif %}
+
+          {% when 'sub_heading' %}
+          {% if block.settings.sub_heading %}
+            <div class="cus_contact_subheading">
+              <h3 class="slect_following">{{ block.settings.sub_heading }}</h3>
+            </div>
+          {% endif %}
+
+
+          {% when 'time' %}
+          {% if block.settings.time_text != blank %}
+            <div class="first-name cus_bdr">
+              <label for="state">{{ block.settings.time_text }}{% if block.settings.time_req != blank %}*{% endif %}
+              </label>
+              <input
+                {% if block.settings.time_req != blank %}required{% endif %}
+                type="text"
+                name="contact[time]"
+                id="state" />
+            </div>
+          {% endif %}
+
+          {% when 'click_box' %}
+          {% if block.settings.click_box != blank %}
+            <div class="cus_checkbox_divi">
+              <div class="contact-time">
+                <input
+                  {% if block.settings.con_time_req != blank %}required{% endif %}
+                  type="checkbox"
+                  name="contact[contact_time_1]"
+                  value="morning"
+                  id="cus_checkbox"><label for="aa">{{ block.settings.click_box }}{% if block.settings.con_time_req != blank %}*{% endif %}
+                </label>
+              </div>
+            </div>
+          {% endif %}
+
+          {% when 'submit_button' %}
+          {% if block.settings.submit_batn %}
+            <div class=" {{section.id}}my_custom_btn-set contact__batn cus_fonts_source">
+              <button type="submit" class="button-f contact__button">
+                SUBMIT
+              </button>
+            </div>
+          {% endif %}
+
+          {% when 'order_number' %}
+          <div class="order-number cus_bdr">
+            <label for="order-number">{{ block.settings.order_number }}{% if block.settings.order_req != blank %}*{% endif %}
+            </label>
+            <input
+              {% if block.settings.order_req != blank %}required{% endif %}
+              type="text"
+              name="contact[order_number]"
+              id="order-number"
+              class="order_cus" />
+          </div>
+
+          {% when 'message' %}
+          <div class="message cus_bdr">
+            <label for="message">MESSAGE</label>
+            <textarea name="contact[body]" id="message"></textarea>
+          </div>
+
+          {% when 'subject' %}
+          <div class="subject cus_bdr">
+            <label for="subject">SUBJECT</label>
+            <textarea name="contact[body]" id="Subject-text"></textarea>
+          </div>
+
+        {% endcase %}
+      {% endfor %}
+      </div>
+    {% endform %}
+    </div>
+  </div>
+</div>
+<style>
+
+  input[type="checkbox"] {
+    opacity: 0.8;
+  }
+  .book_for_call {
+    text-align: {{ section.settings.custom_heading_aligment }}
+    ;
+    color: {{ section.settings.my-content_text_color}}
+    ;
+    {% comment %} padding: 0px 0px 0px 35px; {% endcomment %}
+  }
+  
+  .cus_checkbox_divi {
+    display: inline-grid;
+    padding: 30px 10px 30px 0px;
+    /*padding-bottom: 30px;*/
+    width: 19%;
+    /*padding-right: 10px;*/
+  }
+  .contact-time > label {
+    line-height: 1.3;
+  }
+  .cus_contact_subheading {
+    padding: 30px 0;
+  }
+  .cus_mandatory {
+    padding: 40px 0;
+    {% comment %} padding-left: 35px; {% endcomment %}
+    font-size: 12px;
+    font-weight: 400;
+    color: {{ section.settings.my-content_text_color}}
+    ;
+  }
+  .contact-time {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    gap: 8px;
+    line-height: 40px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .sec_contact_form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e9e9e9;
+  }
+
+  .cus_bdr > input {
+    background-color: transparent;
+    border: 1px solid #041e3a;
+    border-width: 0 0 1px 0;
+    border-radius: unset;
+    width: 100%;
+    padding: 0 0 0px;
+  }
+  .cus_bdr > textarea {
+    background-color: transparent;
+    border: 1px solid #041e3a;
+    border-width: 0 0 1px 0;
+    border-radius: unset;
+    width: 100%;
+    padding: 0;
+    max-height: 25px;
+  }
+
+  .contact__button {
+    background-color: #041e3a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  *:focus-visible {
+    outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
+    outline-offset: 0.3rem;
+    box-shadow: none;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .sec_contact_form {
+      display: flex;
+    }
+    .cus_inner_sec {
+      max-width: 875px;
+      padding: 70px 0;
+      text-transform: uppercase;
+    }
+    .cus_bdr {
+      display: inline-grid;
+      {% comment %} padding: 0 20px 20px 35px; {% endcomment %}
+      width: 720px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+   
+    button.button-f {
+      padding: 15px 0 !important;
+    }
+    .cus_contact_subheading h3 {
+      font-size: 14px;
+    }
+    .contact-time {
+      font-size: 12px;
+    }
+    .contact-time > label {
+      line-height: 1.3;
+    }
+    .cus_inner_sec {
+      padding: 20px;
+    }
+    .cus_checkbox_divi {
+      display: inline-block;
+      width: 49%;
+    }
+    
+  }
+</style>
+{% schema %}
+
+  {
+    "name": "Custom contact form",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sec_heading",
+        "default": "CONTACT US",
+        "label": "Contact form"
+      },
+      {
+        "type": "text",
+        "id": "first_nam",
+        "default": "First name",
+        "label": "First name"
+      },
+      {
+        "type": "checkbox",
+        "id": "first_name_req",
+        "label": "Required",
+        "default": true
+      },
+      {
+        "type": "radio",
+        "id": "custom_heading_aligment",
+        "label": "Heading aligment",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Centered"
+          }
+        ],
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "my-content_text_color",
+        "label": "Text color",
+        "default": "#041e3a",
+        "options": [
+          {
+            "value": "#041e3a",
+            "label": "Dark"
+          }, {
+            "value": "white",
+            "label": "Light"
+          }
+        ]
+      }, {
+        "type": "text",
+        "id": "last_nam",
+        "default": "Last name",
+        "label": "Last name"
+      }, {
+        "type": "checkbox",
+        "id": "last_name_req",
+        "label": "Required",
+        "default": true
+      }
+
+    ],
+    "blocks": [
+      {
+        "type": "company_name",
+        "name": "Company name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "company_nam",
+            "default": "Company name",
+            "label": "Company name"
+          }, {
+            "type": "checkbox",
+            "id": "company_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "country_name",
+        "name": "Country name",
+        "settings": [
+          {
+            "type": "text",
+            "id": "country_nam",
+            "default": "Country name",
+            "label": "Country name"
+          }, {
+            "type": "checkbox",
+            "id": "country_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "address",
+        "name": "Address",
+        "settings": [
+          {
+            "type": "text",
+            "id": "address",
+            "default": "Address",
+            "label": "Address"
+          }, {
+            "type": "checkbox",
+            "id": "address_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      },
+      {
+        "type": "city",
+        "name": "City",
+        "settings": [
+          {
+            "type": "text",
+            "id": "city",
+            "default": "City",
+            "label": "City"
+          }, {
+            "type": "checkbox",
+            "id": "city_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "state",
+        "name": "State",
+        "settings": [
+          {
+            "type": "text",
+            "id": "state",
+            "default": "State",
+            "label": "State"
+          }, {
+            "type": "checkbox",
+            "id": "state_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "zip",
+        "name": "Zip",
+        "settings": [
+          {
+            "type": "text",
+            "id": "zip",
+            "default": "Zip if available",
+            "label": "Zip if available"
+          }, {
+            "type": "checkbox",
+            "id": "zip_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "business",
+        "name": "Business since",
+        "settings": [
+          {
+            "type": "text",
+            "id": "business",
+            "default": "In business since",
+            "label": "In business since"
+          }, {
+            "type": "checkbox",
+            "id": "business_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "email",
+        "name": "Email",
+        "settings": [
+          {
+            "type": "text",
+            "id": "gmail",
+            "default": "Email",
+            "label": "Email"
+          }, {
+            "type": "checkbox",
+            "id": "email_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "confirm_email",
+        "name": "Confirm email",
+        "settings": [
+          {
+            "type": "text",
+            "id": "con_gmail",
+            "default": "Confirm email",
+            "label": "Confirm email"
+          }, {
+            "type": "checkbox",
+            "id": "con_email_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "Phone_number",
+        "name": "Phone number",
+        "settings": [
+          {
+            "type": "text",
+            "id": "ph_number",
+            "default": "Phone number",
+            "label": "Phone number"
+          }, {
+            "type": "checkbox",
+            "id": "phone_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "click_box",
+        "name": "Check box",
+        "settings": [
+          {
+            "type": "text",
+            "id": "click_box",
+            "default": "Checkbox",
+            "label": "Checkbox"
+          }
+        ]
+      }, {
+        "type": "order_number",
+        "name": "Order number",
+        "settings": [
+          {
+            "type": "text",
+            "id": "order_number",
+            "default": "Order number",
+            "label": "Order number"
+          }, {
+            "type": "checkbox",
+            "id": "order_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "message",
+        "name": "Message",
+        "settings": [
+          {
+            "type": "text",
+            "id": "message",
+            "default": "MESSAGE",
+            "label": "MESSAGE"
+          }
+        ]
+      }, {
+        "type": "subject",
+        "name": "Subject",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "Subject-text",
+            "default": "SUBJECT",
+            "label": "SUBJECT"
+          }
+        ]
+      }, {
+        "type": "sub_heading",
+        "name": "Sub heading",
+        "settings": [
+          {
+            "type": "text",
+            "id": "sub_heading",
+            "default": "SELECT FROM THE FOLLOWING",
+            "label": "Sub heading"
+          }
+        ]
+      }, {
+        "type": "time",
+        "name": "Time and call",
+        "settings": [
+          {
+            "type": "text",
+            "id": "time_text",
+            "default": "TIME & DATE FOR CALL",
+            "label": "TIME & DATE FOR CALL"
+          }, {
+            "type": "checkbox",
+            "id": "time_req",
+            "label": "Required",
+            "default": true
+          }
+        ]
+      }, {
+        "type": "submit_button",
+        "name": "Submit button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "submit_batn",
+            "label": "Submit button"
+          }
+        ]
+      }
+
+    ],
+    "presets": [
+      {
+        "name": "Custom contact form",
+        "category": "Content"
+      }
+    ]
+  }
+{% endschema %}

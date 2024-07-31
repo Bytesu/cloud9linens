@@ -1,0 +1,8 @@
+{% if form.posted_successfully? %}
+    <div class="notification show success mb-3 text-base">
+        {% render 'icon', name: 'success' %}
+        <div class="ml-3 text-sm md:text-base">
+            {{ success_message }}
+        </div>
+    </div>
+{% endif %}

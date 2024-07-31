@@ -1,0 +1,16 @@
+{% assign f_cart_goal = shop.metafields.foxecom-bs-kit.cart-goal %}
+{% if f_cart_goal != blank and f_cart_goal.active == true %}
+  {% assign variable = "{{variable}}" %}
+  {% assign goal_left = "<span data-goal-left></span>" %}
+  <div class="f-cartgoal mt-6" data-goal="{{ f_cart_goal.goal_amount }}" style="--progress: 0%">
+    <h4 class="f-cartgoal__title">{{ f_cart_goal.message | replace: variable, goal_left }}</h4>
+    <div class="f-cartgoal__inner">
+      <div class="f-cartgoal__bar">
+        <span data-progress="0"></span>
+      </div>
+      <span class="f-cartgoal__icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" viewBox="0 0 12 12"><path fill="currentColor" d="M5.56445.761719C5.69336.503906 5.90104.375 6.1875.375s.49414.128906.62305.386719L8.20703 3.59766l3.13677.47265c.2864.02865.4726.17904.5585.45117.086.27214.0287.50847-.1718.70899L9.45312 7.44336l.53711 3.13674c.04297.2721-.05013.487-.27929.6445-.22917.1719-.4655.1934-.70899.0645L6.1875 9.82812 3.37305 11.2891c-.24349.1432-.47982.1289-.70899-.043-.22916-.1719-.32226-.3939-.27929-.666l.53711-3.13674L.644531 5.23047C.44401 5.02995.386719 4.79362.472656 4.52148c.085938-.27213.272136-.42252.558594-.45117l3.13672-.47265L5.56445.761719z"/></svg>
+      </span>
+    </div>
+  </div>
+{% endif %}

@@ -1,0 +1,43 @@
+{% if block.settings.banner_image != blank %}
+    <div class="sf-menu__banner h-full">
+        {% if block.settings.banner_style != 'inside' %}
+            <div class="sf-menu__banner-inner">
+                <a href="{{ block.settings.banner_link }}" class="sf__hover-zoom-in">
+                    {% render 'responsive-image', image: block.settings.banner_image, sizes: '500px' %}
+                </a>
+                <div class="mt-4 flex flex-col">
+                    {% if block.settings.banner_title != blank %}
+                        <a href="{{ block.settings.banner_link }}" class="text-black font-normal block text-[24px]">{{ block.settings.banner_title }}</a>
+                    {% endif %}
+                    {% if block.settings.banner_desc != blank %}
+                        <p class="font-base text-black opacity-60">{{ block.settings.banner_desc }}</p>
+                    {% endif %}
+                    {% if block.settings.banner_button_text != blank %}
+                        <p><a href="{{ block.settings.banner_link }}" class="text-black sf__btn sf__btn-link mt-2">{{ block.settings.banner_button_text }}</a></p>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="image-card h-full">
+                <div class="image-card__inner relative h-full">
+                    <a class="image-card__img block h-full absolute w-full" href="{{ block.settings.banner_link | default: "#" }}">
+                        {% render 'responsive-image', image: block.settings.banner_image, sizes: '500px', wrapper_class: 'w-full h-full' %}
+                    </a>
+                    {% if block.settings.banner_title != blank or block.settings.banner_desc != blank %}
+                        <div class="absolute top-[1.7rem] left-[1.5rem]">
+                            {% if block.settings.banner_title != blank %}
+                                <h3 class="text-black text-[24px] mb-2">{{ block.settings.banner_title }}</h3>
+                            {% endif %}
+                            {% if block.settings.banner_desc != blank %}
+                                <p class="font-base text-black opacity-60">{{ block.settings.banner_desc }}</p>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                    {% if block.settings.banner_button_text != blank %}
+                        <a href="{{ block.settings.banner_link }}" class="absolute text-black bottom-[20px] left-[1.5rem] sf__btn sf__btn-link" style="position: absolute;">{{ block.settings.banner_button_text }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endif %}

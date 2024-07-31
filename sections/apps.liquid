@@ -1,0 +1,110 @@
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+<section
+  id="app-wrapper-{{ section.id }}"
+  class="app-wrapper {{ section.settings.custom_class }}"
+  {% if has_bg %}
+  data-bg="{{ bg_color | color_to_hsl }}"
+  {% endif %}
+  style="background-color: {{ bg_color }};"
+>
+  <div class="{{ container }}">
+    {% render 'index-section-header', section_settings: section.settings %}
+    <div class="app-wrapper__content">
+      {% for block in section.blocks %}
+        {% render block %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "App wrapper",
+    "settings": [
+      {
+          "type": "header",
+          "content": "Section header"
+      },
+      {
+          "type":"text",
+          "id":"heading",
+          "label":"Heading"
+      },
+      {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading"
+      },
+      {
+          "type": "select",
+          "id": "header_alignment",
+          "label": "Text alignment",
+          "default": "center",
+          "options": [
+              {
+                  "value": "left",
+                  "label": "Left"
+              },
+              {
+                  "value": "center",
+                  "label": "Center"
+              }
+          ]
+      },
+      {
+          "type": "header",
+          "content": "General"
+      },
+      {
+          "type": "select",
+          "id": "container",
+          "label": "Container type",
+          "default": "container",
+          "options": [
+              {
+                  "value": "container-fluid",
+                  "label": "Default"
+              },
+              {
+                  "value": "w-full",
+                  "label": "Full width"
+              },
+              {
+                  "value": "container",
+                  "label": "Use container box"
+              }
+          ]
+      },
+      {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background color"
+      },
+      {
+          "type": "text",
+          "id": "custom_class",
+          "label": "Custom classes"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "@app"
+      }
+    ],
+    "presets": [
+      {
+        "name": "App wrapper"
+      }
+    ]
+  }
+{% endschema %}

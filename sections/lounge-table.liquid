@@ -1,0 +1,207 @@
+<section class="lounge-section">
+  <div class="lounge-div">
+    {% if section.settings.heading_section != blank %}
+      <div class="lounge-heading">
+        <h2>{{ section.settings.heading_section }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="lounge-content head-lounge">
+      {% for block in section.blocks %}
+        <div
+          class="lounge-content-paragraph {{ block.settings.paragraph_class }} lounge-content-paragraph--{{block.id}}"
+          style="background-color: {{ block.settings.body_text }};"
+        >
+          <p style="color: {{ block.settings.text_color }};" >
+            {{ block.settings.paragraph_id }}
+          </p>
+          <p style="color: {{ block.settings.text_color }};">
+            {{ block.settings['paragraph_id-two'] }}
+          </p>
+          <p style="color: {{ block.settings.text_color }};">
+            {{ block.settings['paragraph_id-three'] }}
+          </p>
+          <p style="color: {{ block.settings.text_color }};">
+            {{ block.settings['paragraph_id-four'] }}
+          </p>
+          <p style="color: {{ block.settings.text_color }};">
+            {{ block.settings['paragraph_id-five'] }}
+          </p>
+          <p style="color: {{ block.settings.text_color }};">
+            {{ block.settings['paragraph_id-six'] }}
+          </p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+          @media only screen and (min-width:768px){
+
+            {% for block in section.blocks %}
+              .lounge-content-paragraph--{{block.id}} p{
+
+              padding-inline:{{ block.settings.paragraph_width }}%;
+              }
+
+            {% endfor %}
+          }
+
+          /*.essentials-2 .cus-hdr-pad, .bedlinens-2 .cus-hdr-pad, .bathlinens-2 .cus-hdr-pad, .lounge-2 .cus-hdr-pad {
+                background: transparent;
+                 }
+
+                 .essentials-2 .stuck .cus_logo_position img, .bedlinens-2 .stuck .cus_logo_position img, .bathlinens-2 .stuck .cus_logo_position img, .lounge-2 .stuck .cus_logo_position img {
+                  filter: invert(0);
+              }
+
+              .essentials-2 .cus_logo_position img, .bedlinens-2 .cus_logo_position img, .bathlinens-2 .cus_logo_position img, .lounge-2 .cus_logo_position img {
+                  filter: invert(1) brightness(9.9);
+                 }
+
+                 .essentials-2 .cus-nav-links a, .bedlinens-2 .cus-nav-links a, .bathlinens-2 .cus-nav-links a, .lounge-2 .cus-nav-links a {
+                  color: white;
+                   }
+
+                   .essentials-2 .stuck .cus-nav-links a, .bedlinens-2 .stuck .cus-nav-links a, .bathlinens-2 .stuck .cus-nav-links a, .lounge-2 .stuck .cus-nav-links a {
+                      color: black;
+                     }
+
+                     .essentials-2 .custum_hide_icon, .bedlinens-2 .custum_hide_icon, .bathlinens-2 .custum_hide_icon, .lounge-2 .custum_hide_icon {
+                    filter: invert(1);
+                }
+
+                .essentials-2 .stuck .custum_hide_icon, .bedlinens-2 .stuck .custum_hide_icon, .bathlinens-2 .stuck .custum_hide_icon, .lounge-2 .stuck .custum_hide_icon {
+                  filter: invert(0);
+              }*/
+
+          @media only screen and (max-width:767px){
+
+          .lounge-content-paragraph {
+            gap: 10px;
+            width: 743px;
+        }
+        .lounge-content {
+          overflow: scroll !important;
+      }
+
+      .lounge-content-paragraph p {
+        max-width: 86%;
+        margin: auto;
+        font-size: 8px;
+        line-height: 12px;
+    }
+
+    /*.essentials-2 .sf-header__mobile, .bedlinens-2 .sf-header__mobile, .bathlinens-2 .sf-header__mobile, .lounge-2 .sf-header__mobile {
+      background: transparent;
+  }
+
+  .essentials-2 .mobile____menu img, .bedlinens-2 .mobile____menu img, .bathlinens-2 .mobile____menu img, .lounge-2 .mobile____menu img{
+    filter: invert(1) brightness(9.9);
+  }
+
+  .essentials-2 .stuck .mobile____menu img, .bedlinens-2 .stuck .mobile____menu img, .bathlinens-2 .stuck .mobile____menu img, .lounge-2 .stuck .mobile____menu img{
+    filter: invert(0);
+  }
+
+  .essentials-2 .mob-logo-container, .bedlinens-2 .mob-logo-container, .bathlinens-2 .mob-logo-container, .lounge-2 .mob-logo-container{
+    filter: invert(1) brightness(9.9);
+  }
+
+  .essentials-2 .stuck .mob-logo-container, .bedlinens-2 .stuck .mob-logo-container, .bathlinens-2 .stuck .mob-logo-container, .lounge-2 .stuck .mob-logo-container{
+    filter: invert(0);
+  }
+
+  .essentials-2 .sf-header__mobile-right svg, .bedlinens-2 .sf-header__mobile-right svg, .bathlinens-2  .sf-header__mobile-right svg, .lounge-2 .sf-header__mobile-right svg{
+    filter: invert(1) brightness(9.9);
+  }
+
+  .essentials-2 .stuck .sf-header__mobile-right svg, .bedlinens-2 .stuck .sf-header__mobile-right svg, .bathlinens-2 .stuck .sf-header__mobile-right svg, .lounge-2 .stuck .sf-header__mobile-right svg{
+    filter: invert(0)
+  }*/
+
+
+          }
+</style>
+
+{%- schema -%}
+{
+  "name": "Lounge",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_section",
+      "label": "Heading"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Lounge Slide",
+      "type": "slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "paragraph_id",
+          "label": "Paragraph one"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_class",
+          "label": "Paragraph class"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_id-two",
+          "label": "Paragraph two"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_id-three",
+          "label": "Paragraph three"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_id-four",
+          "label": "Paragraph four"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_id-five",
+          "label": "Paragraph five"
+        },
+        {
+          "type": "text",
+          "id": "paragraph_id-six",
+          "label": "Paragraph six"
+        },
+        {
+          "type": "color",
+          "id": "body_text",
+          "label": "Background color"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color"
+        },
+        {
+          "type": "range",
+          "id": "paragraph_width",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Padding Inline",
+          "default": 0
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "lounge section"
+    }
+  ]
+}
+{%- endschema -%}

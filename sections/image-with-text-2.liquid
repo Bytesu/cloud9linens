@@ -1,0 +1,836 @@
+{%- assign show_overlay = section.settings.show_overlay -%}
+{%- assign parallax = section.settings.parallax -%}
+
+{%- if section.settings.hero_size == 'adapt' -%}
+  {%- if section.settings.image.aspect_ratio == blank -%}
+    {%- assign min_aspect_ratio = 2.333 -%}
+  {%- else -%}
+    {%- assign min_aspect_ratio = section.settings.image.aspect_ratio -%}
+  {%- endif -%}
+  {% assign wrapper_height = 100 | divided_by: min_aspect_ratio %}
+{%- endif -%}
+
+{%- assign bg_position = section.settings.bg_position -%}
+{%- assign content_positions = section.settings.content_position | split: ' ' -%}
+{%- assign text_horizontal_alignment = content_positions.first -%}
+{%- assign text_vertical_alignment = content_positions.last | strip -%}
+{%- assign text_size = section.settings.text_size -%}
+{%- assign container = section.settings.container -%}
+{%- assign image_link = section.settings.image_link -%}
+
+{% assign content_container = 'container-fluid' %}
+{% if section.settings.content_in_container == true %}
+  {% assign content_container = 'container' %}
+{% endif %}
+
+<section
+  id="sf__hero-{{ section.id }}"
+  class="{% if section.settings.sec-hide-show == true %} mw_img_text_hide_mob {% endif %} {{ section.settings.custom_class }}"
+  data-section-type="hero"
+  data-section-id="{{ section.id }}"
+  data-parallax="{{ parallax }} ">
+  <div class="{{ container }}" style="--content-color: {{ section.settings.text_color }};">
+    <div
+      id="sf-hero-{{ section.id }}"
+      class="sf-hero {% if image_link != blank %} sf-hero--has-link{% endif %}{% if section.settings.mb_image != blank %} sf-hero__mobile-no-overlay{% endif %} sf-hero--text-{{ section.settings.text_color }} sf-hero--{{ section.settings.hero_size }}{% if show_overlay %} sf-hero--has-overlay{% endif %} {% if section.settings.mb_image != blank %}mb-10 md:mb-0{% endif %}"
+      {% if section.settings.hero_size == 'adapt' %}
+      data-min-aspect-ratio="{{ min_aspect_ratio }}"
+      style="--slide-height: {{- wrapper_height -}}vw"
+      {% endif %}>
+      {% unless section.settings.image != blank %}
+        <div class="hidden pc md:block absolute inset-0 overflow-hidden">
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full' }}
+        </div>
+      {% else %}
+        <div
+          class="{% if section.settings.mb_image != blank %}hidden md:block{% endif %} sf-hero__bg lazyload js pointer-events-none bg-no-repeat bg-{{ bg_position }} bg-cover bg-no-repeat{% if parallax %} bg-fixed{% endif %}"
+          data-bg="{{ section.settings.image | img_url: '300x' }}"
+          data-bgset="{% render 'bgset', image: section.settings.image %}"
+          data-parent-fit="contain"
+          data-sizes="auto"
+          data-image-loading></div>
+      {% endunless %}
+      {% if image_link != blank %}
+        <a href="{{ image_link }}" class="sf-slider__link"></a>
+      {% endif %}
+      {% if section.settings.mb_image != blank %}
+        <div class="block md:hidden">{% render 'responsive-image', image: section.settings.mb_image %}</div>
+      {% endif %}
+
+      <div class=" {% if section.settings.my_custum_btn_setting != blank %}my-custom-four-btn{% endif %} flex sf-hero__inner mw_image_mx_wd {{ content_container }} {% if section.settings.mb_image != blank %}pt-7 md:py-24{% else %}py-24{% endif %} sf-hero__inner--{{ text_vertical_alignment }}-{{ text_horizontal_alignment }}">
+        <div class="mw_image_text_wd-{{section.id}} hidden md:block sf-hero__content w-max md:max-w-4xl  text-{{ section.settings.text_alignment }} cus_img_text_font-{{section.id}}">
+          {% if section.settings.subtitle != blank %}
+            <span class="{% if text_size == 'medium' %}text-base {% else %}text-xl {% endif %} mb-4 sf-hero__subtitle text-{{ section.settings.text_color }}">
+              {{- section.settings.subtitle -}}
+            </span>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <h3 class="cus_banner_heading {% if text_size == 'medium' %}text-2xl md:text-5xl {% else %}text-2xl md:text-5xl 2xl:text-6xl {% endif %} 2xl:leading-snug md:leading-snug mb-6 lg:font-medium sf-hero__title text-{{ section.settings.text_color }}">
+              {{ section.settings.title }}
+            </h3>
+          {% endif %}
+          {% if section.settings.text != blank %}
+            <div class=" sec_para_fs cus_img_text_para- {% if text_size == 'medium' %}text-base {% else %}text-lg {% endif %} mb-6 sf-hero__text {% if section.settings.text_color == 'white' %}text-white{% else %}text-color-subtext{% endif %}">
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_label != blank %}
+            <div class="sf-hero__btn">
+              <a href="{{ section.settings.button_link }}" class="sf__btn {{ section.settings.button_style }} {{ section.settings.button_size }}">
+                {{- section.settings.button_label -}}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="{% if section.settings.mob_content == true %} cus_only_desktop hide-on-mob {% endif %} block md:hidden sf-hero__content w-max md:max-w-4xl  text-{{ section.settings.text_alignment }}">
+          {% if section.settings.subtitle != blank %}
+            <span class="{% if text_size == 'medium' %}text-base {% else %}text-xl {% endif %} mb-4 sf-hero__subtitle {% if section.settings.mb_image != blank %}text-color-body-text{% else %}text-{{ section.settings.text_color }}{% endif %}">
+              {{- section.settings.subtitle -}}
+            </span>
+          {% endif %}
+          {% if section.settings.title != blank %}
+            <h3 class="{% if text_size == 'medium' %}text-2xl md:text-5xl {% else %}text-2xl md:text-5xl 2xl:text-6xl {% endif %} 2xl:leading-snug md:leading-snug mb-2 lg:font-medium sf-hero__title sf-font {% if section.settings.mb_image != blank %}text-color-body-text{% else %}text-{{ section.settings.text_color }}{% endif %}">
+              {{ section.settings.title }}
+            </h3>
+          {% endif %}
+          {% if section.settings.text != blank %}
+            <div class="custom-paragraph-font {% if text_size == 'medium' %}text-base {% else %} {% endif %} mb-6 sf-hero__text {% if section.settings.mb_image != blank %}text-color-subtext{% else %}text-{{ section.settings.text_color }}{% endif %}">
+              {{ section.settings.text }}
+            </div>
+          {% endif %}
+          {% if section.settings.button_label != blank %}
+            <div class="sf-hero__btn">
+              <a href="{{ section.settings.button_link }}" class="sf__btn {{ section.settings.button_style }} {{ section.settings.button_size }}">
+                {{- section.settings.button_label -}}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+        <div class="sf-my-custum-hero-btn cus_fonts_source">
+          {%- for block in section.blocks -%}
+            {% case block.type %}
+              {%- when 'Button' -%}
+              <a href="{{ block.settings.custom_button_link }}" class="sf__btn {{block.settings.my_button_style}} sf-my-custum-atag">
+                <p class="sf-my-custum-text">{{ block.settings.custom_button_text }}</p>
+              </a>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% comment %} mob banner section {% endcomment %}
+  <div class="{% if section.settings.mob_content == true %} mob_content_bottom {% endif %} desktop_hide flex sf-hero__inner mw_image_mx_wd {{ content_container }} {% if section.settings.mb_image != blank %}pt-7 md:py-24{% else %}py-24{% endif %} sf-hero__inner--{{ text_vertical_alignment }}-{{ text_horizontal_alignment }}">
+    <div class="mw_image_text_wd-{{section.id}} hidden md:block sf-hero__content w-max md:max-w-4xl  text-{{ section.settings.text_alignment }} cus_img_text_font-{{section.id}}">
+      {% if section.settings.subtitle != blank %}
+        <span class="{% if text_size == 'medium' %}text-base {% else %}text-xl {% endif %} mb-4 sf-hero__subtitle text-{{ section.settings.text_color }}">
+          {{- section.settings.subtitle -}}
+        </span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h3 class="{% if text_size == 'medium' %}text-2xl md:text-5xl {% else %}text-2xl md:text-5xl 2xl:text-6xl {% endif %} 2xl:leading-snug md:leading-snug mb-6 lg:font-medium sf-hero__title text-{{ section.settings.text_color }}">
+          {{ section.settings.title }}
+        </h3>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="cus_img_text_para-{{section.id}} {% if text_size == 'medium' %}text-base {% else %}text-lg {% endif %} mb-6 sf-hero__text {% if section.settings.text_color == 'white' %}text-white{% else %}text-color-subtext{% endif %}">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+      {% if section.settings.button_label != blank %}
+        <div class="sf-hero__btn">
+          <a href="{{ section.settings.button_link }}" class="sf__btn {{ section.settings.button_style }} {{ section.settings.button_size }}">
+            {{- section.settings.button_label -}}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+    <div class="cus_mobile_wd block md:hidden sf-hero__content w-max md:max-w-4xl  text-{{ section.settings.text_alignment }}">
+      {% if section.settings.subtitle != blank %}
+        <span class="{% if text_size == 'medium' %}text-base {% else %}text-xl {% endif %} mb-4 sf-hero__subtitle {% if section.settings.mb_image != blank %}text-color-body-text{% else %}text-{{ section.settings.text_color }}{% endif %}">
+          {{- section.settings.subtitle -}}
+        </span>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <h3 class="mob_heading_color {% if text_size == 'medium' %}text-2xl md:text-5xl {% else %}text-2xl md:text-5xl 2xl:text-6xl {% endif %} 2xl:leading-snug md:leading-snug mb-2 lg:font-medium sf-hero__title {% if section.settings.mb_image != blank %}text-color-body-text{% else %}text-{{ section.settings.text_color }}{% endif %}">
+          {{ section.settings.title }}
+        </h3>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="mob_heading_color {% if text_size == 'medium' %}text-base {% else %}text-lg {% endif %} mb-6 sf-hero__text {% if section.settings.mb_image != blank %}text-color-subtext{% else %}text-{{ section.settings.text_color }}{% endif %}">
+          {{ section.settings.text }}
+        </div>
+      {% endif %}
+      {% if section.settings.button_label != blank %}
+        <div class="sf-hero__btn">
+          <a href="{{ section.settings.button_link }}" class="sf__btn {{ section.settings.button_style }} {{ section.settings.button_size }}">
+            {{- section.settings.button_label -}}
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% comment %} end mob banner section {% endcomment %}
+</section>
+<style>
+  @media only screen and (min-width: 992px) {
+    .mw_image_text_wd-{{ section.id}}{
+      max-width: 43%;
+    }
+  }
+
+  .cus_img_text_font-{{ section.id}}h3 {
+    font-size: {{ section.settings.font_size }}
+    px;
+  }
+  .cus_img_text_para-{{ section.id}}p {
+    font-size: {{ section.settings.para_font_size }}
+    px;
+    /*padding-right: 10%;*/
+    line-height: 1.5;
+  }
+  .mw_image_mx_wd {
+    max-width: 100%;
+  }
+  .my-custom-four-btn {
+    flex-direction: column;
+    gap: 45%;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+  p.sf-my-custum-text:hover {
+    color: #041e3a;
+  }
+  .sf__btn sf__btn-secondary:hover p.sf-my-custum-text {
+    color: #041e3a;
+  }
+
+  a.sf-my-custum-atag {
+    width: 100%;
+    max-width: 100%;
+    justify-content: space-around;
+    display: flex;
+    color: #fff;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .mob_content_bottom {
+      display: none;
+    }
+    .desktop_hide {
+      display: none;
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .mob_content_bottom {
+      display: none !important;
+      padding: 30px 20px 20px;
+    }
+    .mob_content_bottom .mob_heading_color {
+      color: #041e3a;
+    }
+    {% comment %}
+      .cus_only_desktop {
+        display: none;
+      }
+    {% endcomment %}
+    .desktop_hide {
+      display: none;
+    }
+    .cus_mobile_wd {
+      width: 100%;
+    }
+    .cus_only_desktop {
+      width: 100%;
+      max-width: 100%;
+    }
+
+  }
+</style>
+{% schema %}
+  {
+    "name": {
+      "de": "Foto mit überlegtem Text",
+      "en": "Image with text overlay",
+      "es": "Imagen con texto",
+      "fr": "Image avec texte",
+      "it": "Immagine con testo",
+      "ja": "テキストオーバーレイ付き画像",
+      "nl": "Foto met tekstoverlay",
+      "pt-BR": "Imagem com texto",
+      "zh-CN": "带文本叠加的图片",
+      "zh-TW": "附文字疊加的圖片"
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "General"
+      },
+      {
+        "type": "checkbox",
+        "id": "sec-hide-show",
+        "label": "Section Mobile Hide",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "my_custum_btn_setting",
+        "label": "Section Button Setting",
+        "default": true
+      },
+
+      {
+        "type": "select",
+        "id": "container",
+        "label": "Container type",
+        "default": "w-full",
+        "options": [
+          {
+            "value": "container-fluid",
+            "label": "Default"
+          }, {
+            "value": "w-full",
+            "label": "Full width"
+          }, {
+            "value": "container",
+            "label": "Use container box"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "hero_size",
+        "label": {
+          "de": "Bereichs-Höhe",
+          "en": "Section height",
+          "es": "Altura de la sección",
+          "fr": "Hauteur de la section",
+          "it": "Altezza sezione",
+          "ja": "セクションの高さ",
+          "nl": "Sectiehoogte",
+          "pt-BR": "Altura da seção",
+          "zh-CN": "分区高度",
+          "zh-TW": "區塊高度"
+        },
+        "default": "medium",
+        "options": [
+          {
+            "label": {
+              "en": "Adapt to image"
+            },
+            "value": "adapt"
+          },
+          {
+            "label": {
+              "en": "Small"
+            },
+            "value": "small"
+          },
+          {
+            "label": {
+              "en": "Medium"
+            },
+            "value": "medium"
+          },
+          {
+            "label": {
+              "en": "Large"
+            },
+            "value": "large"
+          }, {
+            "label": {
+              "en": "Full-screen"
+            },
+            "value": "fullscreen"
+          }
+        ],
+        "default": "adapt"
+      }, {
+        "type": "checkbox",
+        "id": "show_overlay",
+        "label": "Show overlay",
+        "default": true
+      }, {
+        "type": "header",
+        "content": "Background settings"
+      }, {
+        "type": "image_picker",
+        "id": "image",
+        "label": {
+          "de": "Foto",
+          "en": "Image",
+          "es": "Imagen",
+          "fr": "Image",
+          "it": "Immagine",
+          "ja": "画像",
+          "nl": "Afbeelding",
+          "pt-BR": "Imagem",
+          "zh-CN": "图片",
+          "zh-TW": "圖片"
+        }
+      }, {
+        "type": "select",
+        "id": "bg_position",
+        "label": {
+          "de": "Fotoausrichtung",
+          "en": "Image alignment",
+          "es": "Alineación de imagen",
+          "fr": "Alignement de l'image",
+          "it": "Allineamento immagine",
+          "ja": "画像アラインメント",
+          "nl": "Afbeelding uitlijnen",
+          "pt-BR": "Alinhamento da imagem",
+          "zh-CN": "图片对齐方式",
+          "zh-TW": "圖片對齊"
+        },
+        "default": "center",
+        "options": [
+          {
+            "label": {
+              "en": "Top left"
+            },
+            "value": "left-top"
+          },
+          {
+            "label": {
+              "en": "Top center"
+            },
+            "value": "top"
+          },
+          {
+            "label": {
+              "en": "Top right"
+            },
+            "value": "right-top"
+          },
+          {
+            "label": {
+              "en": "Middle left"
+            },
+            "value": "left"
+          }, {
+            "label": {
+              "en": "Middle center"
+            },
+            "value": "center"
+          }, {
+            "label": {
+              "en": "Middle right"
+            },
+            "value": "right"
+          }, {
+            "label": {
+              "en": "Bottom left"
+            },
+            "value": "left-bottom"
+          }, {
+            "label": {
+              "en": "Bottom center"
+            },
+            "value": "bottom"
+          }, {
+            "label": {
+              "en": "Bottom right"
+            },
+            "value": "right-bottom"
+          }
+        ]
+      }, {
+        "type": "url",
+        "id": "image_link",
+        "label": "Image link"
+      }, {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": {
+          "en": "Parallax effect"
+        },
+        "default": false
+      }, {
+        "type": "header",
+        "content": "Content"
+      }, {
+        "type": "checkbox",
+        "id": "content_in_container",
+        "label": "Content in container box",
+        "default": false
+      }, {
+        "type": "select",
+        "id": "content_position",
+        "label": {
+          "en": "Content position"
+        },
+        "default": "center middle",
+        "options": [
+          {
+            "label": {
+              "en": "Top left"
+            },
+            "value": "left top"
+          },
+          {
+            "label": {
+              "en": "Top center"
+            },
+            "value": "center top"
+          },
+          {
+            "label": {
+              "en": "Top right"
+            },
+            "value": "right top"
+          },
+          {
+            "label": {
+              "en": "Middle left"
+            },
+            "value": "left middle"
+          }, {
+            "label": {
+              "en": "Middle center"
+            },
+            "value": "center middle"
+          }, {
+            "label": {
+              "en": "Middle right"
+            },
+            "value": "right middle"
+          }, {
+            "label": {
+              "en": "Bottom left"
+            },
+            "value": "left bottom"
+          }, {
+            "label": {
+              "en": "Bottom center"
+            },
+            "value": "center bottom"
+          }, {
+            "label": {
+              "en": "Bottom right"
+            },
+            "value": "right bottom"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "text_alignment",
+        "label": "Content alignment",
+        "default": "center",
+        "options": [
+          {
+            "value": "left",
+            "label": {
+              "en": "Left"
+            }
+          }, {
+            "value": "center",
+            "label": {
+              "en": "Center"
+            }
+          }, {
+            "value": "right",
+            "label": {
+              "en": "Right"
+            }
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "text_size",
+        "label": {
+          "de": "Textgröße",
+          "en": "Text size",
+          "es": "Tamaño del texto",
+          "fr": "Taille du texte",
+          "it": "Dimensione testo",
+          "ja": "文字サイズ",
+          "nl": "Tekengrootte",
+          "pt-BR": "Tamanho do texto",
+          "zh-CN": "文本大小",
+          "zh-TW": "文字尺寸"
+        },
+        "default": "medium",
+        "options": [
+          {
+            "label": {
+              "de": "Mitte",
+              "en": "Medium",
+              "es": "Mediano",
+              "fr": "Moyenne",
+              "it": "Medium",
+              "ja": "中",
+              "nl": "Gemiddeld",
+              "pt-BR": "Médio",
+              "zh-CN": "中等",
+              "zh-TW": "中等"
+            },
+            "value": "medium"
+          }, {
+            "label": {
+              "de": "Groß",
+              "en": "Large",
+              "es": "Grande",
+              "fr": "Grande",
+              "it": "Large",
+              "ja": "大",
+              "nl": "Groot",
+              "pt-BR": "Grande",
+              "zh-CN": "大",
+              "zh-TW": "大型"
+            },
+            "value": "large"
+          }
+        ]
+      }, {
+        "type": "select",
+        "id": "text_color",
+        "label": "Text color",
+        "options": [
+          {
+            "label": "Dark",
+            "value": "dark"
+          }, {
+            "label": "Light",
+            "value": "white"
+          }
+        ],
+        "default": "white"
+      }, {
+        "type": "textarea",
+        "id": "title",
+        "label": {
+          "de": "Titel",
+          "en": "Heading",
+          "es": "Título",
+          "fr": "En-tête",
+          "it": "Heading",
+          "ja": "見出し",
+          "nl": "Kop",
+          "pt-BR": "Título",
+          "zh-CN": "标题",
+          "zh-TW": "標題"
+        },
+        "default": {
+          "de": "Foto mit überlegtem Text",
+          "en": "Image with text overlay",
+          "es": "Imagen con texto",
+          "fr": "Image avec superposition de texte",
+          "it": "Immagine con testo",
+          "ja": "テキストオーバーレイ付き画像",
+          "nl": "Foto met tekstoverlay",
+          "pt-BR": "Imagem com sobreposição de texto",
+          "zh-CN": "带文本叠加的图片",
+          "zh-TW": "附文字疊加的圖片"
+        }
+      }, {
+        "type": "range",
+        "id": "font_size",
+        "min": 12,
+        "max": 90,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 24
+      }, {
+        "type": "text",
+        "id": "subtitle",
+        "label": {
+          "en": "Subheading"
+        },
+        "placeholder": {
+          "en": "New Arrivals"
+        }
+      }, {
+        "type": "richtext",
+        "id": "text",
+        "label": {
+          "de": "Text",
+          "en": "Text",
+          "es": "Texto",
+          "fr": "Texte",
+          "it": "Testo",
+          "ja": "テキスト",
+          "nl": "Tekst",
+          "pt-BR": "Texto",
+          "zh-CN": "文本",
+          "zh-TW": "文字"
+        },
+        "default": {
+          "de": "<p>Nutzen Sie überlegten Text, um Kunden über Ihre Marke zu informieren. Wählen Sie Fotos und Text aus, die zu Ihrer Marke passen.</p>",
+          "en": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>",
+          "es": "<p>Usa el texto superpuesto para darles información a tus clientes sobre tu marca. Selecciona imágenes y textos que se relacionen con tu estilo e historia.</p>",
+          "fr": "<p>Utilisez la superposition de texte pour donner un aperçu de votre marque à vos clients. Utilisez une image et du texte qui se rapportent au style et à l'histoire de votre marque.</p>",
+          "it": "<p>Utilizza il testo in sovrapposizione per dare ai clienti informazioni sul tuo brand. Seleziona immagini e testo legati al tuo stile e alla tua storia.</p>",
+          "ja": "<p>オーバーレイテキストを使用して、お客様があなたのブランドについてよく理解できるようにします。あなたのスタイルやストーリーに関連する画像やテキストを選択してください。</p>",
+          "nl": "<p>Gebruik overlay-tekst om uw klanten inzicht te geven in uw merk. Selecteer afbeeldingen en tekst die betrekking hebben op uw stijl en verhaal.</p>",
+          "pt-BR": "<p>Use o texto de sobreposição para apresentar informações sobre sua marca aos clientes. Selecione imagens e textos que reflitam seu estilo e sua história.</p>",
+          "zh-CN": "<p>使用叠加文本让客户深入了解您的品牌。选择与您的风格和故事相关的图片和文本。</p>",
+          "zh-TW": "<p>運用文字疊加讓客戶更加瞭解您的品牌。選擇與您風格和品牌故事相關的圖像和文字。</p>"
+        }
+      }, {
+        "type": "range",
+        "id": "para_font_size",
+        "min": 12,
+        "max": 90,
+        "step": 1,
+        "unit": "px",
+        "label": "Font size",
+        "default": 24
+      }, {
+        "type": "text",
+        "id": "button_label",
+        "label": {
+          "de": "Button-Etikett",
+          "en": "Button label",
+          "es": "Etiqueta de botón",
+          "fr": "Texte du bouton",
+          "it": "Etichetta pulsante",
+          "ja": "ボタンラベル",
+          "nl": "Knoplabel",
+          "pt-BR": "Etiqueta do botão",
+          "zh-CN": "按钮标签",
+          "zh-TW": "按鈕標籤"
+        },
+        "default": "Shop now"
+      }, {
+        "type": "url",
+        "id": "button_link",
+        "label": {
+          "de": "Button-Etikett",
+          "en": "Button link",
+          "es": "Enlace de botón",
+          "fr": "Lien du bouton",
+          "it": "Link pulsante",
+          "ja": "ボタンリンク",
+          "nl": "Knoplink",
+          "pt-BR": "Link do botão",
+          "zh-CN": "按钮链接",
+          "zh-TW": "按鈕連結"
+        }
+      }, {
+        "type": "select",
+        "id": "button_style",
+        "label": "Button style",
+        "options": [
+          {
+            "value": "sf__btn-primary",
+            "label": "Primary button"
+          }, {
+            "value": "sf__btn-secondary",
+            "label": "Secondary button"
+          }, {
+            "value": "sf__btn-white",
+            "label": "White button"
+          }, {
+            "value": "sf__btn-link",
+            "label": "Underline button"
+          }
+        ],
+        "default": "sf__btn-primary"
+      }, {
+        "type": "select",
+        "id": "button_size",
+        "label": "Button size",
+        "options": [
+          {
+            "value": "sf__btn-small",
+            "label": "Button small"
+          }, {
+            "value": "",
+            "label": "Button medium"
+          }, {
+            "value": "sf__btn-large",
+            "label": "Button large"
+          }
+        ],
+        "default": ""
+      }, {
+        "type": "header",
+        "content": "Mobile settings"
+      }, {
+        "type": "image_picker",
+        "id": "mb_image",
+        "label": "Image"
+      }, {
+        "type": "header",
+        "content": "Advanced settings"
+      }, {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom classes",
+        "default": "sec_font_size"
+      }, {
+        "type": "checkbox",
+        "id": "mob_content",
+        "label": "Mobile content bottom",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "Button",
+        "name": "Button",
+        "settings": [
+          {
+            "type": "text",
+            "id": "custom_button_text",
+            "label": "Button text"
+          }, {
+            "type": "url",
+            "id": "custom_button_link",
+            "label": "Button link"
+          }, {
+            "type": "select",
+            "id": "my_button_style",
+            "label": "Button style",
+            "options": [
+              {
+                "value": "sf__btn-primary",
+                "label": "Primary button"
+              }, {
+                "value": "sf__btn-secondary",
+                "label": "Secondary button"
+              }, {
+                "value": "sf__btn-white",
+                "label": "White button"
+              }, {
+                "value": "sf__btn-link",
+                "label": "Underline button"
+              }
+            ],
+            "default": "sf__btn-primary"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": {
+          "de": "Foto mit überlegtem Text",
+          "en": "Image with text overlay",
+          "es": "Imagen con texto",
+          "fr": "Image avec superposition de texte",
+          "it": "Immagine con testo",
+          "ja": "テキストオーバーレイ付き画像",
+          "nl": "Foto met tekstoverlay",
+          "pt-BR": "Imagem com sobreposição de texto",
+          "zh-CN": "带文本叠加的图片",
+          "zh-TW": "附文字疊加的圖片"
+        },
+        "category": {
+          "de": "Foto",
+          "en": "Image",
+          "es": "Imagen",
+          "fr": "Image",
+          "it": "Immagine",
+          "ja": "画像",
+          "nl": "Afbeelding",
+          "pt-BR": "Imagem",
+          "zh-CN": "图片",
+          "zh-TW": "圖片"
+        }
+      }
+    ]
+  }
+{% endschema %}

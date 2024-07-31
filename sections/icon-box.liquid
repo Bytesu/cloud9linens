@@ -1,0 +1,462 @@
+{%- assign st = section.settings -%}
+{% assign bg_color = section.settings.background_color %}
+{% assign has_bg = false %}
+{% assign enable_slider =  section.settings.enable_slider %}
+{% assign use_scroll_mobile = section.settings.use_scroll_mobile %}
+
+{% unless bg_color == "rgba(0,0,0,0)" or bg_color == blank %}
+    {% assign has_bg = true %}
+{% endunless %}
+
+{% capture container %}
+    {{ section.settings.container }}
+    {% if has_bg == false %} section-my {% else %} section-py {% endif %}
+{% endcapture %}
+
+{%- assign blocks = section.blocks -%}
+{%- assign card_style = st.card_style -%}
+{% assign card_classes = 'flex-col' %}
+{% assign alignment = 'sm:items-' | append: st.content_alignment  %}
+{% assign text_alignment = 'sm:text-' | append: st.content_alignment | replace: 'start', 'left' | replace: 'end', 'right' %}
+{% assign icon_classes = 'items-start pt-1 sm:mr-5' %}
+
+{% if card_style == 'horizontal' %}
+    {% if enable_slider or use_scroll_mobile %}
+        {% assign card_classes = 'flex-col justify-center sm:items-start sm:flex-row flex-nowrap' %}
+        {% assign alignment = 'items-center' %}
+    {% else %}
+        {% assign text_alignment = 'text-left sm:text-' | append: st.content_alignment | replace: 'start', 'left' | replace: 'end', 'right' %}
+        {% assign card_classes = 'items-start flex-row flex-nowrap' %}
+        {% assign icon_classes = 'items-start pt-1 mr-5' %}
+        {% assign alignment = '' %}
+    {% endif %}
+{% else %}
+    {% if enable_slider or use_scroll_mobile %}
+        {% assign icon_classes = 'items-' | append: st.content_alignment %}
+        {% assign alignment = 'items-center sm:items-' | append: st.content_alignment %}
+        {% assign text_alignment = 'text-' | append: st.content_alignment | replace: 'start', 'left' | replace: 'end', 'right' %}
+    {% else %}
+        {% assign text_alignment = 'text-' | append: st.content_alignment | replace: 'start', 'left' | replace: 'end', 'right' %}
+        {% assign icon_classes = 'items-' | append: st.content_alignment %}
+        {% assign alignment = 'items-' | append: st.content_alignment %}
+    {% endif %}
+{% endif %}
+
+{%- assign hover = '' -%}
+{% case section.settings.hover_effect %}
+    {% when 'scaling-down' %}
+        {%- assign hover = 'sf__hover-scale-down' -%}
+    {% when 'scaling-up' %}
+        {%- assign hover = 'sf__hover-scale-up' -%}
+    {% when 'zoom-in' %}
+        {%- assign hover = 'sf__hover-zoom-in' -%}
+    {% else %}
+{% endcase %}
+
+<section
+    id="sf__icon-box-{{ section.id }}"
+    class="sf-icon-box {{ section.settings.custom_class }}"
+    data-section-type="icon-box"
+    data-section-id="{{ section.id }}"
+    data-enable-slider="{{ enable_slider }}"
+    {% if enable_slider %}
+    data-show-pagination="{{ section.settings.show_pagination }}"
+    data-show-navigation="{{ section.settings.show_navigation }}"
+    data-items="{{ section.settings.item_per_row }}"
+    {% endif %}
+    {% if has_bg %}
+        data-bg="{{ bg_color | color_to_hsl }}"
+    {% endif %}
+    style="background-color: {{ bg_color }};"
+>
+    <div class="{{ container }}" style="--column-gap: {{ section.settings.item_gap }}px; --column-gap-mobile: {{ section.settings.item_gap_mobile }}px; --row-gap: {{ section.settings.item_gap | plus: 10 }}px; --row-gap-mobile: 30px; --items: {{ section.settings.item_per_row }};">
+        {% render 'index-section-header', section_settings: section.settings %}
+        <div class="{% if use_scroll_mobile %}sf__ms{% endif %}{% if enable_slider %} sf__ms--slider{% endif %}">
+            {% if section.settings.use_grid_column_mb %}
+                {% capture grid_two_column_mb %} grid grid-cols-2{% endcapture %}
+            {% endif %}
+            <div class="sf-grid {% if use_scroll_mobile %}sf__ms-wrapper{% endif %}{{ grid_two_column_mb }} md:grid md:grid-cols-2 lg:grid-cols-{{ section.settings.item_per_row }} {% if enable_slider %}swiper-container{% endif %}">
+                {% if enable_slider == true %}<!-- Start .swiper-wrapper --><div class="swiper-wrapper">{% endif %}
+                {% for block in blocks %}
+                    {% assign bs = block.settings %}
+                    <div class="sf-column{% if enable_slider == true %} swiper-slide{% endif %}" {{ block.shopify_attributes }}>
+                        <div class="sf-icon-box sf-icon-box--{{ card_style }} {{ hover }}">
+                            <div class="sf-icon-box__inner flex {{ card_classes }} {{ alignment }}">
+                                {% if block.settings.link != blank %}
+                                    {%- assign tag = 'a' -%}
+                                {% else %}
+                                    {%- assign tag = 'div' -%}
+                                {% endif %}
+                                <{{ tag }}{% if block.settings.link != blank %} href="{{ block.settings.link }}"{% endif %} class="sf-icon-box__icon w-full flex flex-shrink-0 justify-center max-w-full mb-5 md:mb-0 {{ icon_classes }}" {% if st.image_max_width != blank %} style="width: {{ st.image_max_width }};"{% endif %}>
+                                {% if bs.image != blank %}
+                                {% render 'responsive-image', image: bs.image, wrapper_class: 'w-full', image_class: "w-full" %}
+                                {% endif %}
+                                {% if bs.image == blank and request.design_mode %}
+                                <div class="sf-image--loaded">
+                                    {{ 'product-1' | placeholder_svg_tag: 'sf__placeholder-svg w-full' }}
+                                </div>
+                                {% endif %}
+                            </{{ tag }}>
+                            {% if bs.title != blank %}
+                                <div class="{% if card_style == 'vertical' %}md:mt-5 {% endif %}sf-icon-box__text flex-1 {{ text_alignment }}">
+                                    {% if bs.title != blank %}
+                                        <h3 class="h4 mb-1.5 font-medium">{{ bs.title }}</h3>
+                                    {% endif %}
+                                    {% if bs.description != blank %}
+                                        <div class="rte text-color-subtext">{{ bs.description }}</div>
+                                    {% endif %}
+                                    {% if bs.button_label != blank %}
+                                        <a href="{{ bs.button_link | default: "#" }}" class="sf__btn mt-3 {{ bs.button_style }} {{ bs.button_size }}">{{ bs.button_label }}</a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    </div>
+                {% endfor %}
+                {% if enable_slider == true %}</div> <!-- End .swiper-wrapper -->{% endif %}
+            </div>
+            {% if enable_slider %}
+                {% render 'slider-controls', absolute: true, container: section.settings.container, show_nav: section.settings.show_navigation, dots_class: 'mt-0', custom_class: 'hidden' %}
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "Featured promotion",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section header"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Designed for Your Comfort"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Subheading"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "header_alignment",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "General"
+        },
+        {
+            "type": "select",
+            "id": "container",
+            "label": "Container type",
+            "default": "container-fluid",
+            "options": [
+                {
+                    "value": "container-fluid",
+                    "label": "Default"
+                },
+                {
+                    "value": "w-full",
+                    "label": "Full width"
+                },
+                {
+                    "value": "container",
+                    "label": "Use container box"
+                }
+            ]
+        },
+        {
+            "type": "color",
+            "id": "background_color",
+            "label": "Background color",
+            "default": "rgba(0,0,0,0)"
+        },
+        {
+            "type": "range",
+            "id": "item_per_row",
+            "label": "Columns per row",
+            "min": 2,
+            "max": 8,
+            "step": 1,
+            "default": 4
+        },
+        {
+            "type": "range",
+            "id": "item_gap",
+            "label": "Column gap",
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "default": 30,
+            "unit": "px"
+        },
+        {
+            "type": "range",
+            "id": "item_gap_mobile",
+            "label": "Column gap on mobile",
+            "min": 0,
+            "max": 30,
+            "step": 2,
+            "default": 10,
+            "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Card settings"
+        },
+        {
+          "type": "select",
+          "id": "card_style",
+          "label": "Card layout",
+          "default": "vertical",
+          "options": [
+            {
+              "label": "Vertical",
+              "value": "vertical"
+            },
+            {
+              "label": "Horizontal",
+              "value": "horizontal"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "image_max_width",
+          "label": "Image width",
+            "default": "70px",
+          "info": "Leave blank to use original width."
+        },
+        {
+          "type": "select",
+          "id": "content_alignment",
+          "label": "Content alignment",
+          "default": "center",
+          "options": [
+            {
+              "label": "Left",
+              "value": "start"
+            },
+            {
+              "label": "Center",
+              "value": "center"
+            },
+            {
+              "label": "Right",
+              "value": "end"
+            }
+          ]
+        },
+        {
+            "type": "select",
+            "id": "hover_effect",
+            "label": "Hover effect",
+            "default": "zoom-in",
+            "options": [
+                {
+                    "value": "none",
+                    "label": "None"
+                },
+                {
+                    "value": "scaling-down",
+                    "label": "Style 1"
+                },
+                {
+                    "value": "scaling-up",
+                    "label": "Style 2"
+                },
+                {
+                    "value": "zoom-in",
+                    "label": "style 3"
+                }
+            ]
+        },
+        {
+          "type": "header",
+          "content": "Slider settings"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_slider",
+          "label": "Enable slider",
+          "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_pagination",
+            "label": {"en": "Show pagination"},
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_navigation",
+            "label": {"en": "Show navigation"},
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "Mobile Settings"
+        },
+        {
+            "type": "checkbox",
+            "id": "use_scroll_mobile",
+            "label": "Enable horizontal scroll",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "use_grid_column_mb",
+            "label": "Use grid 2 columns",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "custom_class",
+            "label": "Custom classes"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "iconbox",
+            "name": "Feature",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "This is heading text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "Description",
+                    "default":"<p>Tell about your service.</p>"
+                },
+                {
+                  "type": "url",
+                  "id": "link",
+                  "label": "Image link"
+                },
+                {
+                    "content": "Button settings",
+                    "type": "header"
+                  },
+                  {
+                    "type": "text",
+                    "id": "button_label",
+                    "label": "Button label"
+                  },
+                  {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button link"
+                  },
+                  {
+                    "type": "select",
+                    "id": "button_style",
+                    "label": "Button style",
+                    "options": [
+                    {
+                        "value": "sf__btn-primary",
+                        "label": "Primary button"
+                    },
+                    {
+                        "value": "sf__btn-secondary",
+                        "label": "Secondary button"
+                    },
+                    {
+                        "value": "sf__btn-white",
+                        "label": "White button"
+                    },
+                    {
+                        "value": "sf__btn-link",
+                        "label": "Underline button"
+                    }
+                    ],
+                    "default": "sf__btn-link"
+                },
+                {
+                    "type": "select",
+                    "id": "button_size",
+                    "label": "Button size",
+                    "options": [
+                    {
+                        "value": "sf__btn-small",
+                        "label": "Button small"
+                    },
+                    {
+                        "value": "",
+                        "label": "Button medium"
+                    },
+                    {
+                        "value": "sf__btn-large",
+                        "label": "Button large"
+                    }
+                    ],
+                    "default": ""
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured promotion",
+            "category": "Promotional",
+            "settings": {
+              "item_per_row": 3
+            },
+            "blocks": [
+                {
+                    "type": "iconbox",
+                    "settings": {
+                      "title": "Standard Shipping Worldwide",
+                      "description": "<p>Tell about your service.</p>"
+                    }
+                },
+                {
+                    "type": "iconbox",
+                    "settings": {
+                      "title": "100% Safe & Secure Checkout",
+                      "description": "<p>Tell about your service.</p>"
+                    }
+                },
+                {
+                    "type": "iconbox",
+                    "settings": {
+                      "title": "24/7 online support",
+                      "description": "<p>Tell about your service.</p>"
+                    }
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

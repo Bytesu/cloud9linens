@@ -1,0 +1,278 @@
+<div class="scd-item cus-drawer-item"
+  data-cart-item
+  data-id="{{- item.key -}}"
+  data-product-id="{{- item.product_id -}}"
+  data-index="{{- forloop.index -}}"
+>
+  <div class="scd-item__inner flex items-start recenly_cart_pdp">
+    <div class="scd-item__image">
+      <a href="{{- item.url -}}" class="block" style="--aspect-ratio: {{- item.image.aspect_ratio | default: 0.75 -}}">
+        {% if item.image != blank %}
+          {{- item | img_url: '360x' | img_tag: item.title -}}
+        {% else %}
+          {{- 'image' | placeholder_svg_tag: 'sf__placeholder-svg w-full h-full' -}}
+        {% endif %}
+      </a>
+    </div>
+    <div class="scd-item__info">
+      <a href="{{- item.url -}}" class="font-medium hover:underline">
+        {{- item.product.title -}}
+      </a>
+      {%- unless item.product.has_only_default_variant -%}
+        <div class="scd-item__variant mb-1">
+          {%- for option in item.options_with_values -%}
+            <p class="scd-item__variant-option fonts_source"><span class="font-medium">{{- option.name -}}: </span> {{- option.value -}}</p>
+          {%- endfor -%}
+
+          {% comment %}Properties{% endcomment %}
+          {%- assign property_size = item.properties | size -%}
+          {%- assign properties = 'template ' | split: ' ' -%}
+          {%- if property_size > 0 -%}
+            {%- assign properties = item.properties -%}
+          {%- endif -%}
+          {%- for p in properties -%}
+            {%- assign property_first_char = p.first | slice: 0 -%}
+            <p
+                class="scd-item__variant-option {% if property_size == 0 or p.last == blank or property_first_char == '_' %}hidden{% endif %}"
+                data-cart-item-property
+            >
+              <span class="sf-cart__item-label font-medium" data-cart-item-property-name>{{ p.first }}: </span>
+
+              {%- comment -%}
+                Check if there was an uploaded file associated
+              {%- endcomment -%}
+              <span data-cart-item-property-value>
+                {%- if p.last contains '/uploads/' -%}
+                  <a href="{{ p.last }}" data-role="product-upload" class="underline" target="_blank">{{ p.last | split: '/' | last }}</a>
+                {%- else -%}
+                  {{ p.last }}
+                {%- endif -%}
+              </span>
+            </p>
+          {%- endfor -%}
+        </div>
+      {%- endunless -%}
+      
+      {% comment %}
+      MTS
+      <div class="scd-item__prices">
+        {%- if item.original_price != item.final_price -%}
+        <div class="cart-drawer__discounted-prices">
+          <del class="scd-item__original-price text-color-sale-price">
+            {{- item.original_price | money -}}
+          </del>
+          <span class="scd-item__price scd-item__price--discount sf-currency text-color-regular-price">{{- item.final_price | money -}}</span>
+        </div>
+        {%- else -%}
+        <span class="scd-item__original-price scd-item__price sf-currency text-color-regular-price">{{- item.original_price | money -}}</span>
+        {%- endif -%}
+      </div>
+      {%- if item.discounts.size > 0 -%}
+      <ul class="scd-item__discounts flex" role="list">
+        {%- for discount in item.discounts -%}
+        <li>
+          {% render 'icon', name: 'discount' %}
+          {{- discount.title -}}
+        </li>
+        {%- endfor -%}
+      </ul>
+      {%- endif -%}
+
+      <div class="flex items-center mt-[10px]">
+        <div class="scd-item__quantity flex justify-between rounded">
+          <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="dec">-</button>
+          <input
+                 class="py-1 scd-item__qty_input w-9 text-center"
+                 type="number"
+                 name="updates[]"
+                 data-id="{{- item.key -}}"
+                 value="{{- item.quantity -}}"
+                 min="0"
+                 />
+          <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="inc">+</button>
+        </div>
+        <button class="scd-item__remove underline p-2 ml-2" data-id="{{- item.key -}}">
+          {{- 'cart.general.remove' | t -}}
+        </button>
+      </div>
+      {% endcomment %}
+      
+      <div class="cus_recently_vari cus-cart-drawer-price pt-2">
+
+      <div class="flex items-center flexed_gap">
+      <div><span class="cus-cart-title text-sm sm:block fonts_source">Qty:</span></div>
+      <div class="scd-item__quantity flex justify-between rounded">
+        <button class="scd-item__btn fonts_source" data-id="{{- item.key -}}" data-qty-change="dec">-</button>
+        <input
+               class="scd-item__qty_input w-9 text-center fonts_source"
+               type="number"
+               name="updates[]"
+               data-id="{{- item.key -}}"
+               value="{{- item.quantity -}}"
+               min="0"
+               />
+        <button class="scd-item__btn fonts_source" data-id="{{- item.key -}}" data-qty-change="inc">+</button>
+      </div>
+    </div>
+
+    <div class="recently_each scd-item__prices flexed_gap">
+      <p class="cus-cart-title fonts_source">Each:</p>
+      {%- if item.original_price != item.final_price -%}
+      <div class="cart-drawer__discounted-prices">
+        <del class="scd-item__original-price text-color-sale-price cus-cart-drawer-price">
+          {{- item.original_price | money -}}
+        </del>
+        <span class="scd-item__price scd-item__price--discount sf-currency text-color-regular-price">{{- item.final_price | money -}}</span>
+      </div>
+      {%- else -%}
+      <span class="scd-item__original-price scd-item__price sf-currency text-color-regular-price cus-cart-drawer-price fonts_source">{{- item.original_price | money -}}</span>
+      {%- endif -%}
+    </div>
+    {%- if item.discounts.size > 0 -%}
+    <ul class="scd-item__discounts flex" role="list">
+      {%- for discount in item.discounts -%}
+      <li>
+        {% render 'icon', name: 'discount' %}
+        {{- discount.title -}}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+
+    
+    <div class="recently_total sf-cart__table-col sf-cart__table-subtotal text-right md:block flexed_gap">
+      {%- comment -%}
+        Markup template for discount item
+      {%- endcomment -%}
+      <p class="cus-cart-title fonts_source" style="text-align: center;">Total:</p>
+      <div class="sf-cart__item-discount-prices cus-cart-drawer-price{% unless item.original_line_price != item.final_line_price %} hidden{% endunless %}">
+         <p class="sf-cart__item--regular-price cus-cart-drawer-price">
+          <span class="visually-hidden">{{ 'cart.label.regular_total' | t }}</span>
+          <s data-cart-item-original-price>{{ item.original_line_price | money }}</s>
+        </p>
+        <p class="sf-cart__item--final-price cus-cart-drawer-price">
+          <span class="visually-hidden">{{ 'cart.label.discounted_total' | t }}</span>
+          <span class="order-discount" data-cart-item-final-price>{{ item.final_line_price | money }}</span>
+        </p>
+      </div>
+
+      {%- comment -%}
+        Markup template for regular price item
+      {%- endcomment -%}
+      <div {% if item.original_line_price != item.final_line_price %}class="hidden" {% endif %}>
+        <span class="font-medium scd-item__original_line_price cus-cart-drawer-price fonts_source" data-cart-item-original-price>
+          {{ item.original_line_price | money }}
+        </span>
+      </div>
+     </div>
+    
+  </div>
+
+  
+
+
+    </div>
+    <div class="recently_remove">
+      <button style="font-size: 10px; padding-bottom: 3px;" class="scd-item__remove my-2 fonts_source" data-id="{{- item.key -}}">
+        {{- 'cart.general.remove' | t -}}
+      </button>
+    </div>
+  </div>
+  {% comment %} Each Qty Total {% endcomment %}
+  <!-- <div class="flex cus-cart-drawer-price pt-2">
+    <div class="scd-item__prices">
+      <p class="cus-cart-title">Each</p>
+      {%- if item.original_price != item.final_price -%}
+      <div class="cart-drawer__discounted-prices">
+        <del class="scd-item__original-price text-color-sale-price cus-cart-drawer-price">
+          {{- item.original_price | money -}}
+        </del>
+        <span class="scd-item__price scd-item__price--discount sf-currency text-color-regular-price">{{- item.final_price | money -}}</span>
+      </div>
+      {%- else -%}
+      <span class="scd-item__original-price scd-item__price sf-currency text-color-regular-price cus-cart-drawer-price">{{- item.original_price | money -}}</span>
+      {%- endif -%}
+    </div>
+    {%- if item.discounts.size > 0 -%}
+    <ul class="scd-item__discounts flex" role="list">
+      {%- for discount in item.discounts -%}
+      <li>
+        {% render 'icon', name: 'discount' %}
+        {{- discount.title -}}
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
+
+    <div class="flex items-center" style="flex-direction: column; justify-content: space-between;">
+      <span class="cus-cart-title text-sm sm:block">Qty</span>
+      <div class="scd-item__quantity flex justify-between rounded">
+        <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="dec">-</button>
+        <input
+               class="scd-item__qty_input w-9 text-center"
+               type="number"
+               name="updates[]"
+               data-id="{{- item.key -}}"
+               value="{{- item.quantity -}}"
+               min="0"
+               />
+        <button class="scd-item__btn" data-id="{{- item.key -}}" data-qty-change="inc">+</button>
+      </div>
+    </div>
+
+    
+    <div class="sf-cart__table-col sf-cart__table-subtotal text-right md:block">
+      {%- comment -%}
+        Markup template for discount item
+      {%- endcomment -%}
+      <p class="cus-cart-title" style="text-align: center;">Total</p>
+      <div class="sf-cart__item-discount-prices cus-cart-drawer-price{% unless item.original_line_price != item.final_line_price %} hidden{% endunless %}">
+         <p class="sf-cart__item--regular-price cus-cart-drawer-price">
+          <span class="visually-hidden">{{ 'cart.label.regular_total' | t }}</span>
+          <s data-cart-item-original-price>{{ item.original_line_price | money }}</s>
+        </p>
+        <p class="sf-cart__item--final-price cus-cart-drawer-price">
+          <span class="visually-hidden">{{ 'cart.label.discounted_total' | t }}</span>
+          <span class="order-discount" data-cart-item-final-price>{{ item.final_line_price | money }}</span>
+        </p>
+      </div>
+
+      {%- comment -%}
+        Markup template for regular price item
+      {%- endcomment -%}
+      <div {% if item.original_line_price != item.final_line_price %}class="hidden" {% endif %}>
+        <span class="font-medium scd-item__original_line_price cus-cart-drawer-price" data-cart-item-original-price>
+          {{ item.original_line_price | money }}
+        </span>
+      </div>
+     </div>
+    
+  </div> -->
+  
+  
+  {% comment %} <div class="flex md:hidden res-cart-btn" style="justify-content: space-between; margin: 15px 0px; font-family: 'Minionpro'; align-items: flex-start;">
+    <button style="font-size: 10px; padding-bottom: 3px;" class="scd-item__remove my-2" data-id="{{- item.key -}}">
+      {{- 'cart.general.remove' | t -}}
+    </button>
+
+    <button style="font-size: 10px; padding-bottom: 3px; margin-right: 0 !important;  margin-left: 0 !important; margin-top: 0.5rem !important; margin-bottom: 0.5rem !important;" class = "sf-wishlist__button my-2"  data-id="{{ item.key }}">
+      Add to Wishlist
+    </button>
+
+    <button style="font-size: 10px; padding-bottom: 3px;"  class="my-2" data-id="">
+      Save for later
+    </button>
+  </div> {% endcomment %}
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+

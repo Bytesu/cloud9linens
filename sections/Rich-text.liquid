@@ -1,0 +1,41 @@
+<div class="rich-txt-section {{ section.settings.custom-class }}">
+  <div class="txt-part">
+    <div class="rich-heading">
+      <h6>{{ section.settings.rich-heading }}</h6>
+    </div>
+    <div class="rich-text-part">
+      {{ section.settings.richtext-prt }}
+    </div>
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Rich Text",
+    "settings": [
+      {
+        "type": "text",
+        "id": "rich-heading",
+        "label": "Heading",
+        "default": "Heading"
+      }, {
+        "type": "textarea",
+        "id": "richtext-prt",
+        "label": "Description",
+        "default": "<p>Description</p>"
+      }, {
+        "type": "text",
+        "id": "custom-class",
+        "label": "Custom Class"
+
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich Text"
+      }
+    ]
+  }
+{% endschema %}

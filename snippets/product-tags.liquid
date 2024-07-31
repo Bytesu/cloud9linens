@@ -1,0 +1,19 @@
+{%- comment -%}
+    TODO: add to theme settings [color, tag...]
+    Valid tags:
+     - tag__hot_[DISPLAY_TEXT]
+     - tag__new_[DISPLAY_TEXT]
+     - tag__sale_[DISPLAY_TEXT]
+    Example: tag__hot_-50% OFF, tag__new_NEW ARRIVAL
+{%- endcomment -%}
+
+{% for tag in product.tags %}
+    {% if tag contains 'tag__' %}
+        {%- assign tag_content = tag | split: '__' | last -%}
+        {%- assign type = tag_content | split: '_' | first -%}
+        {%- assign tag_name = tag_content | split: '_' | last -%}
+        <span class="py-0.5 px-2 mb-2 mr-2 font-medium rounded-xl text-white prod__tag prod__tag-{{ type }}">
+            {{ tag_name }}
+        </span>
+    {% endif %}
+{% endfor %}

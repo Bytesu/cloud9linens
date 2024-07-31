@@ -1,0 +1,12 @@
+{% if current_tags.size > 0 %}
+  <div class="filtered-tags flex items-center">
+    <ul id="sf-filter-by-items">
+      {%- for tag in current_tags -%}
+        <li class="filtered-item" data-tag-filter>
+          <span class="filtered-icon-remove pointer-events-none">{% render 'icon', name: 'times', size: 'small' %}</span>{{ tag | link_to_remove_tag: tag }}
+        </li>
+      {%- endfor -%}
+    </ul>
+    <a id="sf-clear-all-filter" aria-label="{{ 'collections.sidebar.clear_all' | t }}" href="{{ collection.url }}" data-reset-filter data-tag-filter>{{ 'collections.sidebar.clear_all' | t }}</a>
+  </div>
+{% endif %}

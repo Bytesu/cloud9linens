@@ -1,0 +1,53 @@
+{%- assign item = section.settings -%}
+{%- if article.image -%}
+    {% render 'responsive-image', image: article.image, image_class: 'w-full' %}
+{%- endif -%}
+<div role="article" class="md:px-24 relative md:-mt-20 pt-4 md:pt-0 flex flex-col md:flex-row gap-8">
+    <article class="flex-1 bg-white sm:p-6">
+        <a href="{{ blog.url }}" class="text-xs text-black uppercase mb-2 text-center block">{{ blog.title }}</a>
+        <h1 class="text-2xl xl:text-4xl xl:leading-relaxed mb-1 text-center">{{ article.title }}</h1>
+        {%- if item.blog_show_author or item.blog_show_date -%}
+            <p class="text-gray-500 mb-7 xl:mb-10 text-center">
+                {% if section.settings.blog_show_author %}
+                    {{ 'blogs.article.by_author' | t }} <span class="text-black">{{article.author}}</span>
+                {% endif %}
+                {% if section.settings.blog_show_date %}
+                    {% if section.settings.blog_show_author %}
+                        <span>{{ 'blogs.article.posted_in' | t }}</span>
+                    {% endif %}
+                    <span class="text-black">{{ article.published_at | date: "%b %d, %Y" }}</span>
+                {% endif %}
+            </p>
+        {%- endif -%}
+        <div class="mb-10 prose max-w-none">
+            {{ article.content }}
+        </div>
+        {%- if item.blog_show_social or item.blog_show_tags -%}
+            <div class="flex flex-col {% if item.blog_show_social and item.blog_show_tags %}justify-between{% else %}justify-start{% endif %} mb-10 gap-2 md:flex-row">
+                {% if article.tags.size > 0 and section.settings.blog_show_tags %}
+                    <div class="text-base">
+                        <span class="text-black">{{ 'blogs.article.tags' | t }}</span>
+                        <ul class="inline-block">
+                            {% for tag in article.tags %}
+                            <li class="inline-block text-gray-500">
+                                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %},
+                                {% endunless %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+              {% if section.settings.blog_show_social %}
+                {% render 'social-sharing', url: url, class: 'flex items-center' %}
+              {% endif %}
+            </div>
+        {%- endif -%}
+        {%- render 'article-next-previous' -%}
+        {%- if item.blog_show_related -%}
+            <div class="mt-28">{%- render 'article-related-post', item: item -%}</div>
+        {%- endif -%}
+        {%- if item.blog_show_comment -%}
+            {%- render 'blog-comment' -%}
+        {%- endif -%}
+    </article>
+</div>

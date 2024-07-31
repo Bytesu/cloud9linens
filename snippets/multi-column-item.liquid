@@ -1,0 +1,107 @@
+{%- capture image_figure -%}
+    <figure class="multi-column__grid-item-image-figure" style="--image-max-width: {{ block.settings.image_width }}%;">
+      {%- capture image_wrapper_tag -%}
+        {%- if block.settings.image_link != blank -%}a{%- else -%}div{%- endif -%}
+      {%- endcapture -%}
+      {%- capture image_wrapper_attributes -%}
+        {%- if block.settings.image_link != blank -%}
+          href="{{ block.settings.image_link }}" aria-label="
+          {{- block.settings.small_caption | default: block.settings.image.alt -}}
+          "
+        {%- endif -%}
+      {%- endcapture -%}
+      <{{ image_wrapper_tag }} {{ image_wrapper_attributes }} class="multi-column__grid-item-image-wrapper">
+        {%- capture image_sizes -%}
+          (min-width: 720px) calc(calc(100vw - calc(2 * clamp(18px, 3.3vw, 3.3vw))) / {{ columns }} *
+          {{ block.settings.image_width | divided_by: 100.0 }}), calc(100vw - calc(2 * 3.3vw))
+        {%- endcapture -%}
+        {%-
+          render 'image' with
+          wrapper_class: "multi-column__grid-item-image",
+          image: block.settings.image,
+          sizes: image_sizes,
+          aspect_ratio: block.settings.aspect_ratio,
+          focal_point: block.settings.focal_point,
+          include_placeholder: true
+        -%}
+      </{{ image_wrapper_tag }}>
+  
+      {%- unless block.settings.small_caption == blank -%}
+        <figcaption class="multi-column__grid-item-small-caption ff-body fs-body-75">
+          {{ block.settings.small_caption }}
+        </figcaption>
+      {%- endunless -%}
+    </figure>
+  {%- endcapture -%}
+  
+  <div class="multi-column__grid-item" {{ block.shopify_attributes }}>
+    <div class="multi-column__grid-item-inner">
+      {%- if block.type == "icon_column" -%}
+        <div
+          class="multi-column__grid-item-icon-wrapper"
+          style="
+            --icon-max-width: {{ block.settings.icon_width }}px;
+            --icon-max-width-mobile: {{ block.settings.icon_width_mobile }}px;
+          "
+        >
+          {%- if block.settings.icon != "none" and block.settings.custom_icon_image == blank -%}
+            {%- render 'icon-editorial' with class: "multi-column__grid-item-icon", icon: block.settings.icon -%}
+          {%- endif -%}
+  
+          {%- if block.settings.custom_icon_image != blank -%}
+            {%-
+              render 'image' with
+              wrapper_class: "multi-column__grid-item-icon",
+              image: block.settings.custom_icon_image,
+              sizes_px: block.settings.icon_width,
+              aspect_ratio: "natural",
+            -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+  
+      {%- if block.type == "image_column" and block.settings.image_position == "above_text" -%}
+        {{ image_figure }}
+      {%- endif -%}
+  
+      {%- unless block.settings.accent == blank and block.settings.heading == blank and block.settings.text == blank and block.settings.link_text == blank -%}
+        <div class="multi-column__grid-item-text-container">
+          {%- unless block.settings.accent == blank -%}
+            <p class="multi-column__grid-item-accent fs-accent">
+              {{ block.settings.accent }}
+            </p>
+          {%- endunless -%}
+  
+          {%- unless block.settings.heading == blank -%}
+            <h3 class="multi-column__grid-item-heading ff-heading {{ block.settings.heading_font_class }}">
+              {{ block.settings.heading }}
+            </h3>
+          {%- endunless -%}
+  
+          {%- unless block.settings.text == blank -%}
+            <div
+              class="multi-column__grid-item-text ff-body {{ block.settings.text_font_class }} rte"
+              style="--text-max-width: {{ block.settings.text_max_width }}%"
+            >
+              {{ block.settings.text }}
+            </div>
+          {%- endunless -%}
+  
+          {%-
+            render 'button-block' with
+            wrapper_class: "multi-column__grid-item-button",
+            link: block.settings.link,
+            label: block.settings.link_text,
+            button_style: block.settings.button_style,
+            is_overlay: true,
+            is_small: true
+          -%}
+        </div>
+      {%- endunless -%}
+  
+      {%- if block.type == "image_column" and block.settings.image_position == "below_text" -%}
+        {{ image_figure }}
+      {%- endif -%}
+    </div>
+  </div>
+  

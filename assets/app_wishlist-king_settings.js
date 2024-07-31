@@ -1,0 +1,1 @@
+export default {"facebookPixel":true,"googleAnalytics":true,"klaviyo":true,"loginRequired":true,"moveToCart":false,"sharedWishlistPageHandle":"shared-wishlist","wishlistPageHandle":"wishlist"}
