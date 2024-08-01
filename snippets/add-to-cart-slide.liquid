@@ -4,7 +4,7 @@
 <script type="text/javascript" src="{{ 'global.js' | asset_url }}" defer></script>
 {%- liquid
   # assign product = all_products['bisou-olive-top-sheet-set']
-   # 
+  #
 
   assign product = all_products['bourbon-life']
 %}
@@ -16,48 +16,70 @@
         <div class="w-full ">
           <div class="sf-prod-media__wrapper">
             <div class="sf-product-media__mobile">
-              {% render 'product-page-mobile-media',product:product %}
+              {% render 'product-page-mobile-media', product: product %}
             </div>
           </div>
         </div>
         <div class="w-full p-info ">
+          <div class="p-block p-title h1" style="">{{ product.title }}</div>
           <div class="p-block p-vendor">{{ p.vendor }}</div>
-          {% if section.settings.mw_custom_design != blank %}
-            {% if product.collections[0].title != blank %}
-              <div class="custom-didot collection___name mob_text_ctr ">Cloud9linens Home</div>
-            {% endif %}
-          {% endif %}
-          <div class="prod__title cus-prod-title-wrapper flex justify-between items-center pr-2 pt-0.5 mob_text_ctr mw-border cstm-prd-title-wrapper">
-            <h1 class="text-2xl md:leading-[42px] pr-2" style="">{{ product.title }}</h1>
+          <div class="p-block p-price">
+            {{ product.selected_or_first_available_variant.price | money }}
           </div>
-          <div class="prod__reviews-and-prices flex items-center justify-between mob_justi_ctr">
-            <div>
-              {% render 'product-prices', product:product ,price_class: 'text-xl md:text-2xl' %}
-            </div>
-          </div>
-          <div class="product__description prose cus-prod-desc-wrapper pdp_mob_desc cstm__prd__desc_-wrapper">
-            <p class="custom____desc" style="font-weight:600; margin: 0 auto;">Details</p>
-            {{ product.description }}
-          </div>
-         <div class="klaviyo-form-UDyRLC"></div>
-          {% render 'product-form',
+          {%- liquid
+            assign section_id = 't-add-to-cart-slide'
+            assign product_form_id = 't-add-to-cart-slide-form'
+          %}
+          <t-variant-radios
+            class="t-no-js-hidden"
+            data-section="{{ section_id }}"
+            data-url="{{ product.url }}"
+          >
+            {%- for option in product.options_with_values -%}
+              <fieldset class="t-js t-product-form__input option-{{ option.name }}">
+                {%- for value in option.values -%}
+                  <input
+                    type="radio"
+                    id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
+                    name="{{ option.name }}"
+                    value="{{ value | escape }}"
+                    form="{{ product_form_id }}"
+                    class="t-radio-btn"
+                    {% if option.selected_value == value %}
+                      checked
+                    {% endif %}
+                  >
+                  <label for="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}" class="bleu-denim">
+                    <span>{{ value }}</span>
+                  </label>
+                {%- endfor -%}
+              </fieldset>
+            {%- endfor -%}
+            <script type="application/json">
+              {{ product.variants | json }}
+            </script>
+          </t-variant-radios>
+
+          <div class="klaviyo-form-UDyRLC"></div>
+
+          {% render 'product-form-v2',
             section_id: 'add-to-cart-slide',
             product: product,
             current_variant: product.selected_or_first_available_variant,
             enable_dynamic_checkout: false,
-            show_quantity_selector: true
+            show_quantity_selector: false
           %}
         </div>
       </div>
     </t-add-to-cart-slide>
 
     <t-added-to-cart-slide class="t-add-to-cart-slide">
-      <div class="h3 text-center" ><span>Added to Cart</span></div>
+      <div class="h3 text-center"><span>Added to Cart</span></div>
       <div class="sf-prod__block flex flex-wrap sf-prod__container">
         <div class="w-full ">
           <div class="sf-prod-media__wrapper">
             <div class="sf-product-media__mobile">
-              {% render 'product-page-mobile-media',product:product %}
+              {% render 'product-page-mobile-media', product: product %}
             </div>
           </div>
         </div>
@@ -73,11 +95,11 @@
           </div>
           <div class="prod__reviews-and-prices flex items-center justify-between mob_justi_ctr">
             <div>
-              {% render 'product-prices',product:product, price_class: 'text-xl md:text-2xl' %}
+              {% render 'product-prices', product: product, price_class: 'text-xl md:text-2xl' %}
             </div>
           </div>
 
-          <a class="button sf__btn sf__btn-primary">CHECKOUT (1)</a>
+          <a href="/" class="button sf__btn sf__btn-primary">CHECKOUT (1)</a>
           <a class="button sf__btn sf__btn-primary">Continue Shopping</a>
         </div>
       </div>

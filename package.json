@@ -1,0 +1,13 @@
+{
+  "name": "cloud9linens",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "login": "shopify login --store cloud9linens-781.myshopify.com",
+    "start":"shopify theme serve --theme-editor-sync"
+  },
+  "author": "",
+  "license": "ISC"
+}

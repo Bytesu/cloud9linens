@@ -7,39 +7,56 @@ t-popup {
   max-width: 400px;
   z-index: 110;
 }
-t-popup > div.pop-container {
+
+t-popup>div.pop-container {
   position: relative;
   height: 100%;
 }
+
+.t-add-to-cart-slide .sf-prod__container {
+  margin: 0 0;
+}
+
 .t-add-to-cart-slide {
-  height: 100%;    padding-right: 14px;
+  height: 100%;
+  padding-right: 0px;
   background: white;
 }
+
 .t-add-to-cart-slide select.mw_quantity {
   width: 100px;
+  text-align: center;
 }
+
 t-popup[type="left-right"] {
   max-width: 700px;
+  width: 700px;
 }
+
 t-popup .zoom-in,
-t-popup > div > * {
+t-popup>div>* {
   display: none;
 }
+
 t-popup[view-type="t-added-to-cart-slide"] t-added-to-cart-slide,
 t-popup[view-type="t-add-to-cart-slide"] t-add-to-cart-slide {
   display: block;
 }
+
 t-popup[type="left-right"] .t-add-to-cart-slide .sf-prod__container {
   flex-direction: row;
   flex-wrap: nowrap;
 }
+
 .pop-close div {
   display: block;
 }
+
 .pop-close .cls_icon {
   top: 0px;
   right: 0;
 }
+
 .pop-close {
   position: absolute;
   right: 10px;
@@ -48,22 +65,30 @@ t-popup[type="left-right"] .t-add-to-cart-slide .sf-prod__container {
   width: 18px;
   height: 18px;
 }
-t-popup[type="left-right"] .t-add-to-cart-slide .sf-prod__container > div {
+
+t-popup[type="left-right"] .t-add-to-cart-slide .sf-prod__container>div {
   flex: 1;
 }
+
 .t-add-to-cart-slide .sf-prod-media__wrapper .px-5 {
   padding: 0;
 }
+
 t-added-to-cart-slide .sf-prod-media__wrapper {
   width: 85%;
   margin: 0 auto;
 }
 
-.p-info{padding:20px !important;    width: auto;}
+.p-info {
+  padding: 20px !important;
+  width: auto;
+}
+
 .t-add-to-cart-slide .sf-prod__container>div,
 .t-add-to-cart-slide .sf-prod__container {
   padding: 0px;
 }
+
 .t-add-to-cart-slide .sf-prod-media__wrapper {
   position: relative;
   max-height: unset;
@@ -71,16 +96,63 @@ t-added-to-cart-slide .sf-prod-media__wrapper {
   top: 0;
   padding: 0;
 }
-.t-add-to-cart-slide .prod__option-label--button > a,
+
+.t-add-to-cart-slide .prod__option-label--button>a,
 .t-add-to-cart-slide .cus-prod-option-label>a {
-    display: none;
+  display: none;
 }
+
 t-popup .sf__btn,
 .t-add-to-cart-slide form {
   display: block;
   width: 100%;
 }
+
 .t-add-to-cart-slide .button.sf__btn.sf__btn-primary {
   background: #041e3a !important;
   color: white;
+}
+
+.t-add-to-cart-slide .klaviyo-form {
+  height: 50px;
+}
+
+.t-add-to-cart-slide .klaviyo-form form button {
+  font-size: 14px !important;
+}
+
+.t-add-to-cart-slide .klaviyo-form form {
+  height: 50px;
+  padding: 0 !important;
+}
+
+.t-add-to-cart-slide .klaviyo-form form>div {
+  min-height: unset !important;
+}
+
+.t-add-to-cart-slide .klaviyo-form form input[type=email]::placeholder,
+.t-add-to-cart-slide .klaviyo-form form input[type="email"] {
+  letter-spacing: normal !important;
+  font-size: 12px !important;
+}
+
+t-variant-radios input[type=radio] {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+t-variant-radios label {
+  font-family: Source Code Pro !important;
+  font-size: 12px;
+}
+
+t-variant-radios fieldset {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 0;
 }

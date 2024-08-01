@@ -1,0 +1,49 @@
+{% comment %}
+  Renders a product form
+
+  Accepts:
+  - section_id: {String} Identifier of the section (required)
+  - product: {Object} Product Liquid object (required)
+  - current_variant: {String} Current (required)
+  - enable_dynamic_checkout: {Boolean} Show the dynamic checkout button (optional)
+  - show_quantity_selector: {Boolean} Show the quantity selector (optional)
+  - show_instant_quantity: {Boolean} Show instant quantity buttons after submitting the form (optional)
+
+  Usage:
+  {% render 'product-form',
+    section_id: section.id,
+    product: product,
+    current_variant: product.selected_or_first_available_variant,
+    enable_dynamic_checkout: section.settings.enable_dynamic_checkout,
+    show_quantity_selector: section.settings.show_quantity_selector,
+  %}
+{% endcomment %}
+
+{%- capture form_id -%}product-form-{{product.id}}__{{ "now" | date: "%L" }}{%- endcapture -%}
+{% if enableCardButton == null %}
+  {% assign enableCardButton = true %}
+{% endif %}
+
+{%- form 'product',
+  product,
+  class: 'product-form form',
+  novalidate: 'novalidate',
+  data-product-id: product.id,
+  data-product-handle: product.handle,
+  id: form_id
+-%}
+  <div class="form__error-message-wrapper hidden" data-error-message-wrapper role="alert">
+    <span class="hidden">{{ 'general.accessibility.error' | t }} </span>
+    <span
+      class="form__error-message"
+      data-error-message
+    >
+      {{- 'products.product.quantity_minimum_message' | t -}}
+    </span>
+  </div>
+  <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
+  <div class="product-form__actions">
+<button type="submit" class="sf__btn sf__btn-primary">Add to Cart</button>
+  </div>
+  <div class="prod__form-error"></div>
+{%- endform -%}
