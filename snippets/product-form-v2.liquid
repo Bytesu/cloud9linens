@@ -20,9 +20,6 @@
 {% endcomment %}
 
 {%- capture form_id -%}product-form-{{product.id}}__{{ "now" | date: "%L" }}{%- endcapture -%}
-{% if enableCardButton == null %}
-  {% assign enableCardButton = true %}
-{% endif %}
 
 {%- form 'product',
   product,
@@ -43,7 +40,7 @@
   </div>
   <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
   <div class="product-form__actions">
-<button type="submit" class="sf__btn sf__btn-primary">Add to Cart</button>
+    <button type="submit" class="sf__btn sf__btn-primary add_cart___btn_btn">Add to Cart</button>
   </div>
   <div class="prod__form-error"></div>
 {%- endform -%}

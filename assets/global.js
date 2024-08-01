@@ -584,7 +584,6 @@ const TDomHelper = {
   },
   insertCssRule,
   insertColor: (colorMap = {}) => {
-
     insertCssRule(Object.keys(colorMap).map(color => {
       let colorVal = colorMap[color]
       if (
@@ -843,31 +842,18 @@ class BaseV2 extends HTMLElement {
       this.addEvent(formEl, 'submit', async (evt) => {
         evt.preventDefault();
         let formData = new FormData(formEl)
-        console.log(formData)
-        let res = await this.fetch('/cart/add', {
-          quantity: 1,
-          id: formData.get('id'),
-        })
+        let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
         console.log(res)
       })
     }
   }
-  fetch(url, data, opt) {
-    opt = {
-      method: "GET",
-      ...opt,
-    };
+  fetch(url, data = { method: 'GET' },type='json') {
+    // opt = {
+    //   method: "GET",
+    //   ...opt,
+    // };
     return new Promise((resolve, reject) => {
-      return fetch(url, {
-        method: opt.method,
-        body: JSON.stringify(data),
-        credentials: "same-origin",
-        headers: {
-          "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-        },
-      })
-        .then((response) => response.json())
+      THelper.fetch({ ...THelper.fetchConfig(type), ...data }, url)
         .then(function (cart) {
           resolve(cart);
         })
@@ -1093,25 +1079,6 @@ class TVariantSelects extends HTMLElement {
     const productForm = document.getElementById(`product-form-${this.sectionHandle}`);
     if (!productForm) return;
     THelper.toggleAddButton(productForm, disable, text)
-    // const addButton = productForm.querySelector('[name="add"] t-btn-container');
-
-    // if (!addButton) return;
-
-    // if (disable) {
-    //   addButton.setAttribute('disabled', 'disabled');
-    // } else {
-    //   addButton.removeAttribute('disabled');
-    //   let textObj = window.tCobo;
-    //   if (textObj.addToCart) {
-    //     addButton.textFn()
-    //   } else {
-    //     THelper.error('`window.tCobo.addToCart` not defined');
-    //   }
-    //   if (textObj.addToCart && !!addButton.closest("t-modal-dialog")) {
-    //     addButton.textFn('Select');
-    //   }
-    // }
-
   }
 
   setUnavailable() {
@@ -1145,7 +1112,6 @@ class TVariantRadios extends TVariantSelects {
   constructor() {
     super();
   }
-
   updateOptions() {
     const fieldsets = Array.from(this.querySelectorAll('fieldset'));
     this.options = fieldsets.map((fieldset) => {
@@ -1184,9 +1150,8 @@ class AddToCartSlide extends BaseV2 {
   }
 
   async init() {
-    console.log(`1111`);
-    let res = await this.fetch("/products/bourbon-life.json");
-    console.log(res);
+    let res = await this.fetch("/products/bourbon-life?section_id=bourbon-life&sections=ajax-p-v2"); // {product:{}}
+    console.log(res)
     this.initImages(res.product.images);
     this.ajaxForm()
   }
@@ -1212,8 +1177,10 @@ class AddToCartSlide extends BaseV2 {
   connectedCallback() {
     this.init();
   }
-  initProductInfo() {
-
+  initProductInfo(p) {
+    this.querySelector('.p-title').innerHTML = p.title
+    this.querySelector('.p-vendor').innerHTML = p.vendor
+    this.querySelector('.p-price').innerHTML = p.price
   }
 }
 if (!customElements.get(`t-add-to-cart-slide`)) {
