@@ -63,7 +63,7 @@ const THelper = {
   },
   moneyFn: (num) => {
     if (!num) return 0;
-    return `${window.tCobo.money_format}${(num / 100).toFixed(2)}`
+    return `${window.spratlyThemeSettings.money_format.replace('{{amount}}', '')}${(num / 100).toFixed(2)}`
   },
   discountRationFn: (ratio) => {
     return (ratio * 100).toFixed(0) + '%'
@@ -78,6 +78,13 @@ const THelper = {
   },
   loadingSvgStr: (color = 'black') => `<svg aria-hidden="true" focusable="false" role="presentation" class="t-spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
         <circle class="t-path" fill="none" stroke-width="6" cx="33" cy="33" r="30" style="stroke: ${color};"></circle> </svg>`,
+  btnLoading(el, color = 'black') {
+    el.innerHTML = el.innerHTML + this.loadingSvgStr(color)
+    el.classList.add('relative')
+  },
+  cancelBtnLoading(el) {
+    el.querySelector?.('svg.t-spinner')?.remove?.()
+  },
 
   isMobile: () => window.innerWidth < 768,
   DOMready: function (callback) {
@@ -836,18 +843,18 @@ class BaseV2 extends HTMLElement {
   isMobile() {
     return window.innerWidth < 750;
   }
-  ajaxForm() {
+  ajaxForm(cb) {
     let formEl = this.querySelector('form[action="/cart/add"]')
     if (formEl) {
       this.addEvent(formEl, 'submit', async (evt) => {
         evt.preventDefault();
         let formData = new FormData(formEl)
         let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
-        console.log(res)
+        cb?.()
       })
     }
   }
-  fetch(url, data = { method: 'GET' },type='json') {
+  fetch(url, data = { method: 'GET' }, type = 'json') {
     // opt = {
     //   method: "GET",
     //   ...opt,
@@ -863,6 +870,7 @@ class BaseV2 extends HTMLElement {
     });
   }
 }
+const ProductFormType = {}
 /***
  *  ## TConsts Object
  */
@@ -897,12 +905,19 @@ class TVariantSelects extends HTMLElement {
   }
   updateShipStatus() {
     let ssdEl = this.parentElement.querySelector('.ship-status-date')
-    const txtJson = JSON.parse(ssdEl.querySelector('noscript').textContent)
-    console.log(txtJson)
+    // const txtJson = JSON.parse(ssdEl.querySelector('noscript').textContent)
+    // console.log(txtJson)
+  }
+  getCurrentSelectedOptions() {
+    return Array.from(this.querySelectorAll('input[type=radio]:checked')).map(item => item.value)
+  }
+  getCurrentSelectedVariant() {
+    let options = this.getCurrentSelectedOptions().sort().join('')
+    return this.getVariantData().filter(item => item.options.sort().join('') == options)?.[0]
   }
   onVariantChange(e) {
     // 判断是否切换颜色
-    this.isColorChanged = TDomHelper.hasClass(TDomHelper.closest('fieldset', e.target), `option-${window.tCobo.colorLabel}`)
+    //this.isColorChanged = TDomHelper.hasClass(TDomHelper.closest('fieldset', e.target), `option-${window.tCobo.colorLabel}`)
     this.updateShipStatus()
     try {
       this.updateOptions();
@@ -1096,9 +1111,7 @@ class TVariantSelects extends HTMLElement {
    * @returns  `variant` 数组
    */
   getVariantData() {
-    this.variantData =
-      this.variantData ||
-      JSON.parse(this.querySelector('[type="application/json"]').textContent);
+    this.variantData = JSON.parse(this.querySelector('[type="application/json"]').textContent);
     return this.variantData;
   }
 }
@@ -1127,15 +1140,27 @@ class TPopup extends BaseV2 {
     console.log(closeEl);
     if (closeEl) {
       this.addEvent(closeEl, "click", () => {
-        this.style.display = "none";
+        // this.style.display = "none";
+        this.classList.remove('active');
       });
     }
+    this.addEvent(this, 'click', (event) => {
+      console.log(event)
+    })
+  }
+  close() {
+    this.classList.remove('active');
   }
   connectedCallback() {
     this.closeEvent();
   }
-  open() {
-    this.style.display = "block";
+  open(type = `t-add-to-cart-slide`) {
+    //this.style.display = "block";
+    this.setAttribute('view-type', type)
+    this.classList.add('active');
+  }
+  openByType(type = 't-add-to-cart-slide') {
+    this.setAttribute('view-type', type)
   }
   constructor() {
     super();
@@ -1149,12 +1174,33 @@ class AddToCartSlide extends BaseV2 {
     super();
   }
 
-  async init() {
-    let res = await this.fetch("/products/bourbon-life?section_id=bourbon-life&sections=ajax-p-v2"); // {product:{}}
-    console.log(res)
+  async init(handle) {
+    if (this.isMobile()) {
+      this.querySelector('.m-images-container').appendChild(this.querySelector('.sf-prod-media__wrapper'))
+    }
+    let res_1 = await this.fetch(`/products/bisou-olive-top-sheet-set?view=metafields`); // {product:{}}
+    console.log(res_1)
+    let res = await this.fetch(`/products/${handle}.json`); // {product:{}}
+    this.product = res.product;
     this.initImages(res.product.images);
-    this.ajaxForm()
+
+    this.initProductInfo(res.product)
+    this.ajaxForm(() => {
+      let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
+      this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
+      this.closest('t-popup').openByType('t-added-to-cart-slide')
+    })
+    this.initEvent();
+    this.closest('t-popup').open()
+
+    // Close btn loading
+    let spinners = Array.from(document.querySelectorAll(`[href*=\"${handle}\"]`)).filter(item => item.closest('form')?.querySelector?.('.t-spinner'));
+    spinners.map(item => {
+      let btn = item.closest('form').querySelector('.t-spinner')
+      if (btn) THelper.cancelBtnLoading(btn.parentElement)
+    })
   }
+  product = null;
   initImages(images) {
     let imgEl = this.querySelector(".mobile__slider");
     images.forEach((image, index) => {
@@ -1173,15 +1219,53 @@ class AddToCartSlide extends BaseV2 {
       imgSubEl.setAttribute("data-srcset", img_path);
       imgEl.parentElement.appendChild(imgClone);
     });
+    if (this.isMobile()) {
+      this.querySelector('.sf-product-media__mobile').style.width = `calc(${(images.length)}*75vw + 10px * ${images.length - 1})`
+    }
   }
   connectedCallback() {
-    this.init();
+
   }
-  initProductInfo(p) {
+  initEvent() {
+    this.addEvent(this, 'change', () => {
+      ///console.log('change event');
+      this.updatePrice()
+    })
+  }
+  updatePrice() {
+    let current = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
+    this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * current.price)
+    this.querySelector('[name="id"]').value = current.id
+  }
+
+
+  initProductInfo(p, v) {
     this.querySelector('.p-title').innerHTML = p.title
     this.querySelector('.p-vendor').innerHTML = p.vendor
-    this.querySelector('.p-price').innerHTML = p.price
+    p.variants = p.variants.map(item => {
+      item.options = item.title.split('/').map(item => item.trim())
+      return item;
+    })
+
+    if (this.querySelector('t-variant-radios')) {
+      this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
+        let options = item.values.map((v, vIndex) => {
+          return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
+                          ${vIndex == 0 ? 'checked="checked"' : ''} ><label for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
+        }).join('')
+        return `<div><span>${item.name}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+          <script type="application/json">${JSON.stringify(p.variants)}</script>`
+      }).join('')
+      this.updatePrice()
+    } else if (this.querySelector('.p-variants') && v) {
+      this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
+        return `<span>${p.options[index].name}:<b>${item}</b></span>`
+      }).join('')
+      this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
+      this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
+    }
   }
+
 }
 if (!customElements.get(`t-add-to-cart-slide`)) {
   customElements.define(`t-add-to-cart-slide`, AddToCartSlide);
@@ -1190,8 +1274,51 @@ class AddedToCartSlide extends AddToCartSlide {
   constructor() {
     super();
   }
+  async initSelected(product, variant) {
+    this.initProductInfo(product, variant)
+    let res = await this.fetch('/cart')
+    this.querySelector(`[type="submit"]`).innerHTML = `CHECKOUT (${res.item_count})`
+  }
+  ajaxForm() { }
+  init() {
+    this.addEvent(this.querySelector('.btn-contine'), 'click', () => {
+      this.closest('t-popup').close()
+    })
+  }
   connectedCallback() { }
 }
 if (!customElements.get(`t-added-to-cart-slide`)) {
   customElements.define(`t-added-to-cart-slide`, AddedToCartSlide);
 }
+
+THelper.DOMready(() => {
+  document.addEventListener('click', (evt) => {
+    console.log(evt.currentTarget)
+
+    // add to tag
+    if (evt.target.tagName == 'T-POPUP') {
+      evt.target.close()
+    } else if (evt.target.closest('.wish_shop_btn')) {
+      THelper.btnLoading(evt.target)
+      let link = evt.target.closest('.sf__pcard').querySelector('.sf__pcard-name')
+      if (link) {
+        let handle = link.getAttribute('href').split('/').slice(-1)[0]
+        document.querySelector('t-add-to-cart-slide').init(handle)
+      }
+    }
+  })
+  let timer = 0
+  let intervaler = setInterval(() => {
+    let btns = queryAll(document, '.wish_shop_btn a')
+    //console.log(btns)
+    btns.forEach(item => {
+      item.setAttribute('href', `javascript:void(0)`)
+    })
+    console.log('--------------------------------------------------------')
+    if (timer > 10) {
+      intervaler && clearInterval(intervaler)
+    }
+    timer++;
+  }, 1000)
+
+})

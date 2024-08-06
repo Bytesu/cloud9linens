@@ -1,11 +1,8 @@
 <link rel="stylesheet" href="{{ 'product-template.css' | asset_url }}" as="style">
 <link rel="stylesheet" href="{{ 'global.css' | asset_url }}" as="style">
-
 <script type="text/javascript" src="{{ 'global.js' | asset_url }}" defer></script>
-{%- liquid
-  # assign product = all_products['bisou-olive-top-sheet-set']
-  #
 
+{%- liquid
   assign product = all_products['bourbon-life']
 %}
 <t-popup type="left-right" view-type="t-add-to-cart-slide">
@@ -13,7 +10,7 @@
   <div class="pop-container">
     <t-add-to-cart-slide class="t-add-to-cart-slide">
       <div class="sf-prod__block flex flex-wrap sf-prod__container">
-        <div class="w-full ">
+        <div class="w-full small--hide">
           <div class="sf-prod-media__wrapper">
             <div class="sf-product-media__mobile">
               {% render 'product-page-mobile-media', product: product %}
@@ -26,6 +23,11 @@
           <div class="p-block p-price">
             {{ product.selected_or_first_available_variant.price | money }}
           </div>
+          <div class="m-images-container">
+            {% comment %} <div class="sf-product-media__mobile">
+              {% render 'product-page-mobile-media', product: product %}
+            </div> {% endcomment %}
+          </div>
           {%- liquid
             assign section_id = 't-add-to-cart-slide'
             assign product_form_id = 't-add-to-cart-slide-form'
@@ -36,32 +38,35 @@
             data-url="{{ product.url }}"
           >
             {%- for option in product.options_with_values -%}
-              <fieldset class="t-js t-product-form__input option-{{ option.name }}">
-                {%- for value in option.values -%}
-                  <input
-                    type="radio"
-                    id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
-                    name="{{ option.name }}"
-                    value="{{ value | escape }}"
-                    form="{{ product_form_id }}"
-                    class="t-radio-btn"
-                    {% if option.selected_value == value %}
-                      checked
-                    {% endif %}
-                  >
-                  <label for="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}" class="bleu-denim">
-                    <span>{{ value }}</span>
-                  </label>
-                {%- endfor -%}
-              </fieldset>
+              <div>
+                <span>{{ option.name }}</span>
+                <fieldset class="t-js t-product-form__input option-{{ option.name }}">
+                  {%- for value in option.values -%}
+                    <div>
+                      <input
+                        type="radio"
+                        id="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}"
+                        name="{{ option.name }}"
+                        value="{{ value | escape }}"
+                        form="{{ product_form_id }}"
+                        class="t-radio-btn"
+                        {% if option.selected_value == value %}
+                          checked
+                        {% endif %}
+                      >
+                      <label for="{{ product_form_id }}-{{ option.position }}-{{ forloop.index0 }}" class="bleu-denim">
+                        <span>{{ value }}</span>
+                      </label>
+                    </div>
+                  {%- endfor -%}
+                </fieldset>
+              </div>
             {%- endfor -%}
             <script type="application/json">
               {{ product.variants | json }}
             </script>
           </t-variant-radios>
-
-          <div class="klaviyo-form-UDyRLC"></div>
-
+          <div class="klaviyo-form-UDyRLC  klaviyo-form-customize"></div>
           {% render 'product-form-v2',
             section_id: 'add-to-cart-slide',
             product: product,
@@ -74,33 +79,56 @@
     </t-add-to-cart-slide>
 
     <t-added-to-cart-slide class="t-add-to-cart-slide">
-      <div class="h3 text-center"><span>Added to Cart</span></div>
       <div class="sf-prod__block flex flex-wrap sf-prod__container">
-        <div class="w-full ">
+        <div class="w-full small--hide">
           <div class="sf-prod-media__wrapper">
-            <div class="sf-product-media__mobile">
-              {% render 'product-page-mobile-media', product: product %}
+
+            <div class="sf-product-media__mobile text-center ">
+              <span class="h2">Complete the Look</span>
+              <div class='item-look'>
+              <a href="/products/adamas-gold-bedspread-set">
+                <img  src="https://cloud9linens.com/cdn/shop/files/Bourbon_Life-Beds_Cloud9linens_540x.jpg?v=1719695523" alt="" />
+              </a>
+            </div>
             </div>
           </div>
         </div>
         <div class="w-full p-info ">
-          <div class="p-block p-vendor">{{ p.vendor }}</div>
-          {% if section.settings.mw_custom_design != blank %}
-            {% if product.collections[0].title != blank %}
-              <div class="custom-didot collection___name mob_text_ctr ">Cloud9linens Home</div>
-            {% endif %}
-          {% endif %}
-          <div class="prod__title cus-prod-title-wrapper flex justify-between items-center pr-2 pt-0.5 mob_text_ctr mw-border cstm-prd-title-wrapper">
-            <h1 class="text-2xl md:leading-[42px] pr-2" style="">{{ product.title }}</h1>
-          </div>
-          <div class="prod__reviews-and-prices flex items-center justify-between mob_justi_ctr">
-            <div>
-              {% render 'product-prices', product: product, price_class: 'text-xl md:text-2xl' %}
-            </div>
-          </div>
+          <div class="h3 text-center added-to-cart">
+            <svg
+              t="1722563820024"
+              class="icon"
+              viewBox="0 0 1024 1024"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              p-id="1466"
+              width="256"
+              height="256"
+            >
+              <path d="M512.45568 57.344c251.35104 0 455.11168 203.76064 455.11168 455.11168 0 251.35104-203.76064 455.11168-455.11168 455.11168C261.10464 967.56736 57.344 763.80672 57.344 512.45568 57.344 261.10464 261.10464 57.344 512.45568 57.344z m272.444416 288.876544c-5.842944-5.445632-16.21504-5.953536-22.995968-1.074176l-0.315392 0.232448-301.232128 228.097024c-5.515264 4.176896-15.601664 4.72064-21.655552 1.186816l-0.320512-0.193536-113.998848-71.015424c-7.031808-4.380672-16.93696-2.89792-22.390784 3.219456l-0.24576 0.2816-13.169664 15.497216c-5.553152 6.53312-4.62848 15.625216 1.519616 21.586944l0.27136 0.258048 140.93312 131.342336c10.247168 9.550848 26.529792 10.051584 36.615168 0.9728l0.313344-0.28672 323.310592-301.310976c6.679552-6.223872 7.225344-15.606784 1.036288-21.63712l-0.254976-0.241664-7.419904-6.915072z" fill="#323233" p-id="1467"></path>
+            </svg>
 
-          <a href="/" class="button sf__btn sf__btn-primary">CHECKOUT (1)</a>
-          <a class="button sf__btn sf__btn-primary">Continue Shopping</a>
+            <span class="h2"> Added to Cart</span>
+          </div>
+          <div class="added-to-cart-img">
+            <img
+              height="auto"
+              width="100%"
+              src="//cloud9linens.com/cdn/shop/files/Bourbon_Life-Beds_Cloud9linens_180x.jpg?v=1719695523"
+            >
+          </div>
+          <div class="p-block p-vendor">{{ p.vendor }}</div>
+          <div class="p-block p-title h1" style="">{{ product.title }}</div>
+          <div class="p-block p-variants">
+            <span>Size:<b>SX</b></span>
+          </div>
+          <div class="p-block p-price">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </div>
+          <form action="{{ routes.cart_url }}" method="post" class="checkout-form flex flex-col h-full" novalidate>
+            <button type="submit" class="button sf__btn sf__btn-primary " name="checkout">CHECKOUT (2)</button>
+          </form>
+          <a class="button sf__btn sf__btn-primary btn-contine">Continue Shopping</a>
         </div>
       </div>
     </t-added-to-cart-slide>

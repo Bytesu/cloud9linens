@@ -1,21 +1,11 @@
 {%- liquid
+  echo section.id
   assign product = all_products[section.id]
-  echo '==='
 %}
 <div
   id="p-container"
   {% for v in product.variants %}
-    data-v-{{ v.id }}-avaiable="{{v.availble} }}"
+    data-v-{{ v.id }}-avaiable="{{v.availble}}"
   {% endfor %}
 ></div>
-{% schema %}
-  {
-    "name": "ajax-p-v2",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Background"
-      }
-    ]
-  }
-{% endschema %}
+

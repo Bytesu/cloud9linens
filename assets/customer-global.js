@@ -1,5 +1,5 @@
 window.initAddressView = () => {
-  console.log("initAddressView------");
+  // console.log("initAddressView------");
   Array.from(document.querySelectorAll("form-control-group")).forEach(
     (item) => {
       item.classList.remove("error");
@@ -41,7 +41,6 @@ const fetchSection = (sectionId, fetchFromCache = false) => {
       const cached = sectionCache.get(sectionId);
       if (cached) return resolve(cached);
     }
-    
     fetch(
       `${window.spratlyThemeSettings.rootUrl}?section_id=${sectionId}`,
       getRequestDefaultConfigs()
@@ -79,26 +78,26 @@ const fetchSection = (sectionId, fetchFromCache = false) => {
   });
 };
 const C = {
-  lsSet(key,v){
-    localStorage.setItem(key,typeof v  == 'object'?JSON.stringify(v):v)
+  lsSet(key, v) {
+    localStorage.setItem(key, typeof v == 'object' ? JSON.stringify(v) : v)
   },
-  lsGet(key){
+  lsGet(key) {
     let v = localStorage.getItem(key)
-    if(v){
-      if(v.indexOf('{')>-1||v.indexOf('[')>-1){
+    if (v) {
+      if (v.indexOf('{') > -1 || v.indexOf('[') > -1) {
         return JSON.parse(v)
       }
       return v;
     }
     return v;
   },
-  click(ele,cb){
-    if(ele){
-      ele.addEventListener('click',cb)
+  click(ele, cb) {
+    if (ele) {
+      ele.addEventListener('click', cb)
     }
   },
-  selector(selector){
-    if(selector){
+  selector(selector) {
+    if (selector) {
       return Array.from(document.querySelectorAll(selector))//.addEventListener('click',cb)
     }
     return []
@@ -108,7 +107,8 @@ const C = {
     Array.from(document.querySelectorAll(selector)).forEach((form) => {
       form.addEventListener("submit", (evt) => {
         evt.preventDefault();
-        that.addToCart({ id: form.querySelector("[name=id]").value });
+        //that.addToCart({ id: form.querySelector("[name=id]").value });
+        document.querySelector('t-popup')?.open?.()
       });
     });
   },
@@ -208,8 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".show-recover-password-form")) {
     document.querySelector(".web-account-section").classList.add("reset-pwd");
   }
-  setTimeout(() => {}, 1000);
-  console.log("1", document.querySelector(".sf-wishlist__container"));
+
   const updateWishlist = () => {
     console.log("1");
     document.querySelector(".wishlist-title-custom").style.display = "block";
@@ -238,35 +237,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.querySelector(".section-my-v2"))
       document.querySelector(".section-my-v2").style.display = "none";
-    // console.log(document.querySelectorAll(".wish_shop_btn"));
 
     ///
-    console.log(document.querySelectorAll(".wishlist .wish_trash_icon"));
     C.selector(".wishlist .wish_trash_icon,.wishlist .posi_absolute").forEach(
       (item) => {
-        if(item.closest('.wish_trash_icon')){
+        if (item.closest('.wish_trash_icon')) {
           let el = item.closest('.wish_trash_icon').parentElement;
           el.classList.remove('w-3/4')
           el.classList.add('w-full')
         }
-        console.log(item);
-        C.click(item,() => {
+        C.click(item, () => {
           let url = item.closest('form').querySelector('.sf__pcard-name').getAttribute('href')
           let handle = url.split('?')[0].split('/').slice(-1)[0]
           let wisshlist = C.lsGet('sf__wishlist-products')
-          C.lsSet('sf__wishlist-products',wisshlist.filter(item=>item!=handle))
-          console.log("item");
-           setTimeout(() => {
-          if (
-            C.selector(".wishlist .wish_trash_icon").length == 0
-          ) {
-            document.querySelector(".wishlist-title-custom").style.display =
-              "none";
+          C.lsSet('sf__wishlist-products', wisshlist.filter(item => item != handle))
+          setTimeout(() => {
+            if (
+              C.selector(".wishlist .wish_trash_icon").length == 0
+            ) {
+              document.querySelector(".wishlist-title-custom").style.display =
+                "none";
 
-            if (document.querySelector(".section-my-v2"))
-              document.querySelector(".section-my-v2").style.display = "block";
-          }
-           },100)
+              if (document.querySelector(".section-my-v2"))
+                document.querySelector(".section-my-v2").style.display = "block";
+            }
+          }, 100)
         });
       }
     );
@@ -298,14 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
       insert = true;
       // updateWishlist()
     });
-  setTimeout(() => {
-    // document
-    //   .querySelector(".sf-wishlist__container")?.addEventListener?.("DOMNodeInserted", () => {
-    // if(insertIndex<10)return;
-    // insertIndex++
-    //insert = true;
-    // updateWishlist()
-  }, 1000);
+
   document
     .querySelector(".sf-customer__cancel-reset")
     ?.addEventListener?.("click", () => {
