@@ -105,8 +105,10 @@ const C = {
   submit(selector) {
     let that = this;
     Array.from(document.querySelectorAll(selector)).forEach((form) => {
+      form.removeEventListener('submit')
       form.addEventListener("submit", (evt) => {
         evt.preventDefault();
+        evt.stopPropagation()
         //that.addToCart({ id: form.querySelector("[name=id]").value });
         document.querySelector('t-popup')?.open?.()
       });
@@ -200,6 +202,8 @@ if (!customElements.get("form-control-group")) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
+
   document
     .querySelector(".sf-customer__reset-password-btn")
     ?.addEventListener?.("click", () => {
@@ -210,30 +214,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const updateWishlist = () => {
-    console.log("1");
-    document.querySelector(".wishlist-title-custom").style.display = "block";
-
+    if(document.querySelector(".wishlist-title-custom"))document.querySelector(".wishlist-title-custom").style.display = "block";
     Array.from(document.querySelectorAll(".wish_shop_btn a")).forEach(
       (item) => {
         let btn = document.createElement("button");
         btn.innerHTML = "Add to Bag";
         btn.classList = item.classList;
-        btn.setAttribute("type", "submit");
+        btn.setAttribute("type", "button");
         item.replaceWith(btn);
+        btn.addEventListener('click', () =>{
+          document.querySelector('t-popup')?.open?.()
+        })
       }
     );
     Array.from(
-      document.querySelectorAll(".sf-wishlist__container .wish_bag_icon button")
+      document.querySelectorAll(".wish_bag_icon button")
     ).forEach((item) => {
       item.insertBefore(
         item
           .closest("form")
-          .querySelector('.wish_shop_btn [type="submit"]')
+          .querySelector('.wish_shop_btn [type="button"]')
           .closest(".wish_shop_btn"),
         item.querySelector("a")
       );
     });
-    C.submit(".sf-wishlist__container form");
+    //C.submit(".sf-wishlist__container form,[action=\"/cart/add\"]");
 
     if (document.querySelector(".section-my-v2"))
       document.querySelector(".section-my-v2").style.display = "none";
@@ -276,16 +281,19 @@ document.addEventListener("DOMContentLoaded", () => {
         //  item.parentElement.insertBefore(item,item.previousElementSibling); console.log('----')
       });
     }, 300);
-  };
+  };  
+  updateWishlist();
+  console.log('updateWishlist')
   let insert = false;
-  if (document.querySelector(".sf-wishlist__container")) {
-    new MutationObserver(() => {
-      console.log("mutation seen!");
-      updateWishlist();
-    }).observe(document.querySelector(".sf-wishlist__container"), {
-      childList: true,
-    });
-  }
+  //if (document.querySelector(".sf-wishlist__container")) {
+  new MutationObserver(() => {
+    console.log("mutation seen!");
+    updateWishlist();
+  }).observe(document.querySelector(".sf-wishlist__container"), {
+    childList: true,
+  });
+
+  //  }
   document
     .querySelector(".sf-wishlist__container")
     ?.addEventListener?.("DOMNodeInserted", () => {

@@ -23,10 +23,7 @@
           <div class="p-block p-price">
             {{ product.selected_or_first_available_variant.price | money }}
           </div>
-          <div class="p-block p-collections">
-            <span>Collection Includes : </span>
-            <div></div>
-          </div>
+          
 
           <div class="m-images-container">
             {% comment %}
@@ -76,6 +73,10 @@
               {{ product.variants | json }}
             </script>
           </t-variant-radios>
+          <div class="p-block p-collections">
+            <span>Collection Includes : </span>
+            <div></div>
+          </div>
           <div class="klaviyo-form-customize">
             <span class="p-text p-text-2"
               >Please enter your email addreses to be notified if product becomes available</span

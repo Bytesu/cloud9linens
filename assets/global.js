@@ -80,7 +80,9 @@ const THelper = {
         <circle class="t-path" fill="none" stroke-width="6" cx="33" cy="33" r="30" style="stroke: ${color};"></circle> </svg>`,
   btnLoading(el, color = 'black') {
     el.innerHTML = el.innerHTML + this.loadingSvgStr(color)
-    el.classList.add('relative')
+    if (!el.classList.contains('wish_shop_btn')) {
+      el.classList.add('relative')
+    }
   },
   cancelBtnLoading(el) {
     el.querySelector?.('svg.t-spinner')?.remove?.()
@@ -851,6 +853,7 @@ class BaseV2 extends HTMLElement {
     let formEl = this.querySelector('form[action="/cart/add"]')
     if (formEl) {
       this.addEvent(formEl, 'submit', async (evt) => {
+        console.log('12')
         THelper.btnLoading(formEl.querySelector('[type="submit"]'), 'white');
         evt.preventDefault();
         let formData = new FormData(formEl)
@@ -1329,7 +1332,7 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
-      this.queryAll('.items-look')[0].innerHTML = p.related.map(item=>{
+      this.queryAll('.items-look')[0].innerHTML = p.related.map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
                     <img
@@ -1401,7 +1404,6 @@ THelper.DOMready(() => {
     btns.forEach(item => {
       item.setAttribute('href', `javascript:void(0)`)
     })
-    console.log('--------------------------------------------------------')
     if (timer > 10) {
       intervaler && clearInterval(intervaler)
     }

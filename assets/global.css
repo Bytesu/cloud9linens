@@ -131,8 +131,8 @@ t-popup[type="left-right"] {
 }
 
 .klaviyo-form-customize > span {
-  font-family: var(--font-stack-body) !important;
-  font-size: 12px !important;
+  font-family: var(--primary-family)!important;
+  font-size: 10px !important;
   font-weight: normal !important;
 }
 .klaviyo-form-customize,
@@ -273,7 +273,7 @@ t-variant-radios [type="radio"][disabled="disabled"]+label:after {
 
 .t-add-to-cart-slide .klaviyo-form span,
 .t-add-to-cart-slide .klaviyo-form form button {
-  font-size: 14px !important;
+  font-size: 12px !important;
   border-radius: 0px !important;
 }
 
@@ -283,7 +283,7 @@ t-variant-radios [type="radio"][disabled="disabled"]+label:after {
 }
 
 .t-add-to-cart-slide .klaviyo-form form {
-  height: 50px;
+  height: 92px;
   padding: 0 !important;
 }
 
@@ -294,7 +294,8 @@ t-variant-radios [type="radio"][disabled="disabled"]+label:after {
 .t-add-to-cart-slide .klaviyo-form form input[type=email]::placeholder,
 .t-add-to-cart-slide .klaviyo-form form input[type="email"] {
   letter-spacing: normal !important;
-  font-size: 14px !important;
+  font-size: 12px !important;
+  font-family: Source Code Pro !important;
   border-radius: 0 !important;
 }
 
@@ -321,7 +322,7 @@ t-variant-radios input[type=radio]+label:hover,
 t-variant-radios input[type=radio]:checked+label {
   font-weight: 700;
   background-color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  border: 0px solid var(--primary-color);
   color: white;
 }
 
@@ -333,7 +334,7 @@ t-variant-radios label {
   font-family: Source Code Pro !important;
   font-size: 12px;
   cursor: pointer;
-  border: 1px solid #041d3aa8;
+  border: 0px solid #041d3aa8;
   font-size: 12px;
   border-radius: 50px;
   display: flex !important;
@@ -348,6 +349,7 @@ t-variant-radios fieldset {
   flex-wrap: wrap;
   gap: 0px 11px;
 }
+.disabled, [disabled]
 
 .added-to-cart-img img {
   display: block;
@@ -357,8 +359,13 @@ t-variant-radios fieldset {
 span.size-container.flex-center {
   justify-content: flex-start;
 }
-
-
+span.size-container,
+.p-block.p-collections,
+.p-vendor {
+  font-family: "GFS Didot", serif;
+}
+span.size-container,
+.p-block.p-collections,
 .p-collections,
 .p-vendor {
   font-weight: 500 !important;
@@ -367,12 +374,12 @@ span.size-container.flex-center {
 }
 .p-title{
   color: var(--primary-color) !important;
-}
-
-.p-title {
   font-weight: 600 !important;
 }
-
+t-add-to-cart-slide .p-title{
+  padding-top: 35px;
+}
+.sf__pcard-content .price--on-sale,
 .p-price {
   font-family: Source Code Pro !important;
   font-size: 12px !important;

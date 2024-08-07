@@ -253,8 +253,8 @@ form-control-group label {
 .account_tab {
   margin-bottom: 40px;
 }
-.sf-wishlist__wrapper .sf__pcard-content .sf__pcard-price *,
-.sf-wishlist__wrapper .sf__pcard-content .sf__pcard-price {
+ .sf__pcard-content .sf__pcard-price *,
+  .sf__pcard-content .sf__pcard-price {
   font-family: Source Code Pro !important;
   font-size: 12px !important;
 }
@@ -272,7 +272,7 @@ form-control-group label {
 .sf-wishlist__wrapper .wish_shop_btn button {
   text-transform: uppercase !important;
 }
-.sf-wishlist__wrapper .wish_shop_btn {
+.wish_shop_btn {
   border: 0px solid black;
   font-size: 12px;
   border-radius: 50px;
@@ -287,7 +287,7 @@ form-control-group label {
   color: #041d3a;
   background: white;
 }
-.sf-wishlist__wrapper .wish_shop_btn:hover {
+ .wish_shop_btn:hover {
   background: #041d3a;
   color: white;
 }
