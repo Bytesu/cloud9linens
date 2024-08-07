@@ -1317,12 +1317,13 @@ class AddToCartSlide extends BaseV2 {
     let sizeLink = `<a href="${url}"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M4.3 17.5q-.75 0-1.275-.525Q2.5 16.45 2.5 15.7V8.3q0-.75.525-1.275Q3.55 6.5 4.3 6.5h15.4q.75 0 1.275.525.525.525.525 1.275v7.4q0 .75-.525 1.275-.525.525-1.275.525Zm0-1.5h15.4q.1 0 .2-.1t.1-.2V8.3q0-.1-.1-.2t-.2-.1h-2.95v3.625h-1.5V8h-2.5v3.625h-1.5V8h-2.5v3.625h-1.5V8H4.3q-.1 0-.2.1t-.1.2v7.4q0 .1.1.2t.2.1Zm2.95-4.375h1.5Zm4 0h1.5Zm4 0h1.5ZM12 12Z"/></svg></a>`
     let availabileOptions = p.firstAvailableVariantData?.options ?? [] //
     if (this.querySelector('t-variant-radios')) {
+      debugger;
       this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
         let options = item.values.map((v, vIndex) => {
           return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" ${availabileOptions.includes(v) ? '' : 'disabled="disabled"'} name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
                           ${availabileOptions.includes(v) && p.firstAvailableVariant ? 'checked="checked"' : ''} ><label for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
         }).join('')
-        return `<div><span class="${item.name == 'Size' ? 'size-container' : ''} flex-center">${item.name} ${item.name == 'Size' ? sizeLink : ''}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        return `<div class="${item.name == 'Color' ?'color-options':''}"><span class="${item.name == 'Size' ? 'size-container' : ''} flex-center" style="    justify-content: flex-start;">${item.name} ${item.name == 'Size' ? sizeLink : ''}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.updatePrice()
@@ -1392,7 +1393,7 @@ THelper.DOMready(() => {
       THelper.btnLoading(evt.target)
       let link = evt.target.closest('.sf__pcard').querySelector('.sf__pcard-name')
       if (link) {
-        let handle = link.getAttribute('href').split('/').slice(-1)[0]
+        let handle = link.getAttribute('href').split('/').slice(-1)[0].split('?')[0]
         document.querySelector('t-add-to-cart-slide').init(handle)
       }
     }

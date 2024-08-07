@@ -110,7 +110,7 @@ const C = {
         evt.preventDefault();
         evt.stopPropagation()
         //that.addToCart({ id: form.querySelector("[name=id]").value });
-        document.querySelector('t-popup')?.open?.()
+        //document.querySelector('t-popup')?.open?.()
       });
     });
   },
@@ -223,7 +223,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.setAttribute("type", "button");
         item.replaceWith(btn);
         btn.addEventListener('click', () =>{
-          document.querySelector('t-popup')?.open?.()
+          //document.querySelector('t-popup')?.open?.()
+          console.log('----')
         })
       }
     );

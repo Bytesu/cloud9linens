@@ -126,8 +126,8 @@ t-popup>div.pop-container {
 }
 
 t-popup[type="left-right"] {
-  max-width: 700px;
-  width: 700px;
+  max-width: 1000px;
+  width: 1000px;
 }
 
 .klaviyo-form-customize > span {
@@ -358,6 +358,7 @@ t-variant-radios fieldset {
 
 span.size-container.flex-center {
   justify-content: flex-start;
+  font-family: var(--primary-family);
 }
 span.size-container,
 .p-block.p-collections,
