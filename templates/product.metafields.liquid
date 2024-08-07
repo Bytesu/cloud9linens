@@ -23,4 +23,10 @@
       data-handle-{{ v.handle|replace:'-','_' }}="{{ v.featured_image.src|image_url:width:'500px' }}"
     {% endif %}
   {% endfor %}
-></div>
+  {%  assign color_values = product.metafields.shopify['color-pattern'].value %}
+  {% for v in color_values %}
+    data-color-{{ v.color}}="{{ v.label }}"
+{% endfor %}
+>
+  
+</div>

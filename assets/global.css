@@ -126,15 +126,31 @@ t-popup>div.pop-container {
 }
 
 t-popup[type="left-right"] {
-  max-width: 1000px;
-  width: 1000px;
+  max-width: 850px;
+  width: 850px;
 }
 
-.klaviyo-form-customize > span {
-  font-family: var(--primary-family)!important;
+t-variant-radios .color-options label span {
+  display: none;
+}
+
+t-variant-radios .color-options label {
+  height: 30px;
+  width: 30px !important;
+  padding: 0;
+}
+
+.color-options>span>span {
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+
+.klaviyo-form-customize>span {
+  font-family: var(--primary-family) !important;
   font-size: 10px !important;
   font-weight: normal !important;
 }
+
 .klaviyo-form-customize,
 t-popup .zoom-in,
 t-popup>div>* {
@@ -349,9 +365,8 @@ t-variant-radios fieldset {
   flex-wrap: wrap;
   gap: 0px 11px;
 }
-.disabled, [disabled]
 
-.added-to-cart-img img {
+.disabled, [disabled] .added-to-cart-img img {
   display: block;
   margin: 0 auto;
 }
@@ -359,12 +374,21 @@ t-variant-radios fieldset {
 span.size-container.flex-center {
   justify-content: flex-start;
   font-family: var(--primary-family);
+  text-transform: uppercase;
+}
+.t-add-to-cart-slide .sf__btn.sf__btn-primary {
+  text-transform: uppercase;
+}
+
+.p-block.p-collections >span {
+  font-family: var(--primary-family);
 }
 span.size-container,
 .p-block.p-collections,
 .p-vendor {
   font-family: "GFS Didot", serif;
 }
+
 span.size-container,
 .p-block.p-collections,
 .p-collections,
@@ -373,13 +397,16 @@ span.size-container,
   font-size: 12px !important;
   color: #041d3a !important;
 }
-.p-title{
+
+.p-title {
   color: var(--primary-color) !important;
   font-weight: 600 !important;
 }
-t-add-to-cart-slide .p-title{
+
+t-add-to-cart-slide .p-title {
   padding-top: 35px;
 }
+
 .sf__pcard-content .price--on-sale,
 .p-price {
   font-family: Source Code Pro !important;

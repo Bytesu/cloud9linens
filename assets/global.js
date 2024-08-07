@@ -1187,32 +1187,30 @@ class AddToCartSlide extends BaseV2 {
   }
   parseAvailable(str, product) {
     let targets = TDomHelper.parseFromStringV2(str).querySelector('[type="page-metafields"]')
+    let availabileOptionMap ={}
     let variantMap = Object.keys(targets.dataset).reduce((res, key) => {
       if (key.startsWith('v-')) {
         let id = key.replace('v-', '')
         res[id] = targets.dataset[key]
         let currentVariant = product.variants.find(v => `${v.id}` == id);
         currentVariant.available = targets.dataset[key] == 'true'
-        // if (currentVariant.id == 43978243637505) {
-        //   currentVariant.available = true
-        // }
-        // if(currentVariant.available){
-        //   product.ava
-        // }
+        if(currentVariant.available){
+           
+        }
       }
       else if (key.endsWith('firstAvailableVariant')) {
         product.firstAvailableVariant = targets.dataset[key]
-        //product.firstAvailableVariant = 43978243637505
       } else if (key.startsWith('handle')) {
         let handle = key.replace('handle', '').replace(/_/ig, '-')
         handle = handle.charAt(0).toLowerCase() + handle.slice(1)
-        console.log(handle)
         if (!product.related) product.related = []
         product.related.push({ src: targets.dataset[key], handle })
+      } else if (key.startsWith('color-')) {
+        if (!product.color) product.color = {}
+        product.color[targets.dataset[key].trim()] = key.replace('color-', '')
       } else if (key.endsWith('includeCollection')) {
         product[`includeCollection`] = targets.dataset[key]
       }
-      //product.firstAvailableVariantData = product.variants.find(item=>`` == `${product.firstAvailableVariant}`)
       product.firstAvailableVariantData = product.variants.find(item => `${item.id}` == `${product.firstAvailableVariant}`)
       return res;
     }, {})
@@ -1319,11 +1317,17 @@ class AddToCartSlide extends BaseV2 {
     if (this.querySelector('t-variant-radios')) {
       debugger;
       this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
+        let firstChecked = ''
         let options = item.values.map((v, vIndex) => {
+          if (availabileOptions.includes(v) && p.firstAvailableVariant) firstChecked = v.toLowerCase()
           return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" ${availabileOptions.includes(v) ? '' : 'disabled="disabled"'} name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
-                          ${availabileOptions.includes(v) && p.firstAvailableVariant ? 'checked="checked"' : ''} ><label for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
+                          ${availabileOptions.includes(v) && p.firstAvailableVariant ? 'checked="checked"' : ''} ><label 
+                            style="${item.name == 'Color' ? 'background-color:' + p.color[v] + ';' : ''}"
+                          for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
         }).join('')
-        return `<div class="${item.name == 'Color' ?'color-options':''}"><span class="${item.name == 'Size' ? 'size-container' : ''} flex-center" style="    justify-content: flex-start;">${item.name} ${item.name == 'Size' ? sizeLink : ''}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
+        <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
+        ${item.name}${item.name == 'Size' ? sizeLink : ': <span>' + firstChecked + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.updatePrice()
