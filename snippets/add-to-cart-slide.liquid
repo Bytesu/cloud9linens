@@ -18,15 +18,22 @@
           </div>
         </div>
         <div class="w-full p-info ">
-          <div class="p-block p-title h1" style="">{{ product.title }}</div>
+          <div class="p-block p-title h3" style="">{{ product.title }}</div>
           <div class="p-block p-vendor">{{ p.vendor }}</div>
           <div class="p-block p-price">
             {{ product.selected_or_first_available_variant.price | money }}
           </div>
+          <div class="p-block p-collections">
+            <span>Collection Includes : </span>
+            <div></div>
+          </div>
+
           <div class="m-images-container">
-            {% comment %} <div class="sf-product-media__mobile">
-              {% render 'product-page-mobile-media', product: product %}
-            </div> {% endcomment %}
+            {% comment %}
+              <div class="sf-product-media__mobile">
+                {% render 'product-page-mobile-media', product: product %}
+              </div>
+            {% endcomment %}
           </div>
           {%- liquid
             assign section_id = 't-add-to-cart-slide'
@@ -39,7 +46,10 @@
           >
             {%- for option in product.options_with_values -%}
               <div>
-                <span>{{ option.name }}</span>
+                <span>
+                  {{- option.name }}
+                  <a href="/pages/bath-size-chart">{% render 'size-chart' %}</a></span
+                >
                 <fieldset class="t-js t-product-form__input option-{{ option.name }}">
                   {%- for value in option.values -%}
                     <div>
@@ -66,7 +76,12 @@
               {{ product.variants | json }}
             </script>
           </t-variant-radios>
-          <div class="klaviyo-form-UDyRLC  klaviyo-form-customize"></div>
+          <div class="klaviyo-form-customize">
+            <span class="p-text p-text-2"
+              >Please enter your email addreses to be notified if product becomes available</span
+            >
+            <div class="klaviyo-form-UDyRLC  "></div>
+          </div>
           {% render 'product-form-v2',
             section_id: 'add-to-cart-slide',
             product: product,
@@ -82,14 +97,19 @@
       <div class="sf-prod__block flex flex-wrap sf-prod__container">
         <div class="w-full small--hide">
           <div class="sf-prod-media__wrapper">
-
             <div class="sf-product-media__mobile text-center ">
-              <span class="h2">Complete the Look</span>
-              <div class='item-look'>
-              <a href="/products/adamas-gold-bedspread-set">
-                <img  src="https://cloud9linens.com/cdn/shop/files/Bourbon_Life-Beds_Cloud9linens_540x.jpg?v=1719695523" alt="" />
-              </a>
-            </div>
+              <span class="h3">Complete the Look</span>
+              <div class="items-look">
+              
+                <div class="item-look">
+                  <a href="/products/adamas-gold-bedspread-set">
+                    <img
+                      src="https://cloud9linens.com/cdn/shop/files/Bourbon_Life-Beds_Cloud9linens_540x.jpg?v=1719695523"
+                      alt=""
+                    >
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -108,7 +128,7 @@
               <path d="M512.45568 57.344c251.35104 0 455.11168 203.76064 455.11168 455.11168 0 251.35104-203.76064 455.11168-455.11168 455.11168C261.10464 967.56736 57.344 763.80672 57.344 512.45568 57.344 261.10464 261.10464 57.344 512.45568 57.344z m272.444416 288.876544c-5.842944-5.445632-16.21504-5.953536-22.995968-1.074176l-0.315392 0.232448-301.232128 228.097024c-5.515264 4.176896-15.601664 4.72064-21.655552 1.186816l-0.320512-0.193536-113.998848-71.015424c-7.031808-4.380672-16.93696-2.89792-22.390784 3.219456l-0.24576 0.2816-13.169664 15.497216c-5.553152 6.53312-4.62848 15.625216 1.519616 21.586944l0.27136 0.258048 140.93312 131.342336c10.247168 9.550848 26.529792 10.051584 36.615168 0.9728l0.313344-0.28672 323.310592-301.310976c6.679552-6.223872 7.225344-15.606784 1.036288-21.63712l-0.254976-0.241664-7.419904-6.915072z" fill="#323233" p-id="1467"></path>
             </svg>
 
-            <span class="h2"> Added to Cart</span>
+            <span class="h3"> Added to Cart</span>
           </div>
           <div class="added-to-cart-img">
             <img

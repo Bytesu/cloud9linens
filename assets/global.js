@@ -197,10 +197,11 @@ const THelper = {
 
   cardType: { CUP_SHE: 'cupshe', },
   // ----------------------------------------  ajax  ----------------------------------------
-  fetchConfig: function (type = 'json') {
+  fetchConfig: function (type = 'application/json') {
     return {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': `application/${type}` }
+      //headers: { 'Content-Type': 'application/json', 'Accept': `text/html` }
+      headers: { 'Content-Type': 'application/json', 'Accept': `${type}` }
     };
   },
   postConfig: { headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest', }, method: 'POST' },
@@ -331,7 +332,7 @@ const THelper = {
       fetch(`${url}`, config)
         .then(response => {
           if (response.ok) {
-            if (config.type === 'text') {
+            if (config.headers.Accept.indexOf('text') > -1) {
               return response.text();
             } else {
               return response.json();
@@ -665,6 +666,9 @@ const TDomHelper = {
     el.innerHTML = domStr;
     return el.childNodes?.length ? el.childNodes[0] : el.childNodes
   },
+  parseFromStringV2(responseText) {
+    return new DOMParser().parseFromString(responseText, 'text/html')
+  },
   /**
    *  图片同步加载
    * @param {*} imgs 
@@ -847,14 +851,16 @@ class BaseV2 extends HTMLElement {
     let formEl = this.querySelector('form[action="/cart/add"]')
     if (formEl) {
       this.addEvent(formEl, 'submit', async (evt) => {
+        THelper.btnLoading(formEl.querySelector('[type="submit"]'), 'white');
         evt.preventDefault();
         let formData = new FormData(formEl)
         let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
         cb?.()
+        THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
       })
     }
   }
-  fetch(url, data = { method: 'GET' }, type = 'json') {
+  fetch(url, data = { method: 'GET' }, type = 'application/json') {
     // opt = {
     //   method: "GET",
     //   ...opt,
@@ -913,6 +919,9 @@ class TVariantSelects extends HTMLElement {
   }
   getCurrentSelectedVariant() {
     let options = this.getCurrentSelectedOptions().sort().join('')
+    if (!options) {
+      return this.getVariantData()[0]
+    }
     return this.getVariantData().filter(item => item.options.sort().join('') == options)?.[0]
   }
   onVariantChange(e) {
@@ -1173,15 +1182,51 @@ class AddToCartSlide extends BaseV2 {
   constructor() {
     super();
   }
+  parseAvailable(str, product) {
+    let targets = TDomHelper.parseFromStringV2(str).querySelector('[type="page-metafields"]')
+    let variantMap = Object.keys(targets.dataset).reduce((res, key) => {
+      if (key.startsWith('v-')) {
+        let id = key.replace('v-', '')
+        res[id] = targets.dataset[key]
+        let currentVariant = product.variants.find(v => `${v.id}` == id);
+        currentVariant.available = targets.dataset[key] == 'true'
+        // if (currentVariant.id == 43978243637505) {
+        //   currentVariant.available = true
+        // }
+        // if(currentVariant.available){
+        //   product.ava
+        // }
+      }
+      else if (key.endsWith('firstAvailableVariant')) {
+        product.firstAvailableVariant = targets.dataset[key]
+        //product.firstAvailableVariant = 43978243637505
+      } else if (key.startsWith('handle')) {
+        let handle = key.replace('handle', '').replace(/_/ig, '-')
+        handle = handle.charAt(0).toLowerCase() + handle.slice(1)
+        console.log(handle)
+        if (!product.related) product.related = []
+        product.related.push({ src: targets.dataset[key], handle })
+      } else if (key.endsWith('includeCollection')) {
+        product[`includeCollection`] = targets.dataset[key]
+      }
+      //product.firstAvailableVariantData = product.variants.find(item=>`` == `${product.firstAvailableVariant}`)
+      product.firstAvailableVariantData = product.variants.find(item => `${item.id}` == `${product.firstAvailableVariant}`)
+      return res;
+    }, {})
 
+    return product
+  }
   async init(handle) {
     if (this.isMobile()) {
       this.querySelector('.m-images-container').appendChild(this.querySelector('.sf-prod-media__wrapper'))
     }
-    let res_1 = await this.fetch(`/products/bisou-olive-top-sheet-set?view=metafields`); // {product:{}}
-    console.log(res_1)
-    let res = await this.fetch(`/products/${handle}.json`); // {product:{}}
-    this.product = res.product;
+    let [res_1, res] = await Promise.all([
+      this.fetch(`/products/${handle}?view=metafields`, { method: 'GET' }, `text/html`),
+      this.fetch(`/products/${handle}.json`)
+    ]); // {product:{}}
+    this.product = this.parseAvailable(res_1, res.product)
+
+    console.log(this.product)
     this.initImages(res.product.images);
 
     this.initProductInfo(res.product)
@@ -1191,14 +1236,17 @@ class AddToCartSlide extends BaseV2 {
       this.closest('t-popup').openByType('t-added-to-cart-slide')
     })
     this.initEvent();
-    this.closest('t-popup').open()
 
     // Close btn loading
-    let spinners = Array.from(document.querySelectorAll(`[href*=\"${handle}\"]`)).filter(item => item.closest('form')?.querySelector?.('.t-spinner'));
-    spinners.map(item => {
-      let btn = item.closest('form').querySelector('.t-spinner')
-      if (btn) THelper.cancelBtnLoading(btn.parentElement)
-    })
+    THelper.debounce(() => {
+      this.closest('t-popup').open()
+      let spinners = Array.from(document.querySelectorAll(`[href*=\"${handle}\"]`)).filter(item => item.closest('form')?.querySelector?.('.t-spinner'));
+      spinners.map(item => {
+        let btn = item.closest('form').querySelector('.t-spinner')
+        if (btn) THelper.cancelBtnLoading(btn.parentElement)
+      })
+    }, 1800)()
+
   }
   product = null;
   initImages(images) {
@@ -1242,29 +1290,68 @@ class AddToCartSlide extends BaseV2 {
   initProductInfo(p, v) {
     this.querySelector('.p-title').innerHTML = p.title
     this.querySelector('.p-vendor').innerHTML = p.vendor
+    if (p.includeCollection) {
+      this.querySelector('.p-collections div').innerHTML = p.includeCollection.split('\n').join('<br/>')
+      this.querySelector('.p-collections').style.display = 'block'
+    } else {
+      this.querySelector('.p-collections').style.display = 'none'
+    }
     p.variants = p.variants.map(item => {
       item.options = item.title.split('/').map(item => item.trim())
       return item;
     })
-
+    let tags = p.tags.split(','), url = '/pages/beddings-size-chart'
+    if (tags.includes('bedlinens')) {
+      url = '/pages/beddings-size-chart'
+    } else if (tags.includes('bathlinens')) {
+      url = '/pages/bath-size-chart'
+    } else if (tags.includes('bedroom-essentials')) {
+      url = '/pages/bedroom-essentials-size-chart'
+    }
+    else if (tags.includes('lounge-wear')) {
+      url = '/pages/lounge-wear-size-chart'
+    }
+    let sizeLink = `<a href="${url}"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M4.3 17.5q-.75 0-1.275-.525Q2.5 16.45 2.5 15.7V8.3q0-.75.525-1.275Q3.55 6.5 4.3 6.5h15.4q.75 0 1.275.525.525.525.525 1.275v7.4q0 .75-.525 1.275-.525.525-1.275.525Zm0-1.5h15.4q.1 0 .2-.1t.1-.2V8.3q0-.1-.1-.2t-.2-.1h-2.95v3.625h-1.5V8h-2.5v3.625h-1.5V8h-2.5v3.625h-1.5V8H4.3q-.1 0-.2.1t-.1.2v7.4q0 .1.1.2t.2.1Zm2.95-4.375h1.5Zm4 0h1.5Zm4 0h1.5ZM12 12Z"/></svg></a>`
+    let availabileOptions = p.firstAvailableVariantData?.options ?? [] //
     if (this.querySelector('t-variant-radios')) {
       this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
         let options = item.values.map((v, vIndex) => {
-          return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
-                          ${vIndex == 0 ? 'checked="checked"' : ''} ><label for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
+          return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" ${availabileOptions.includes(v) ? '' : 'disabled="disabled"'} name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
+                          ${availabileOptions.includes(v) && p.firstAvailableVariant ? 'checked="checked"' : ''} ><label for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
         }).join('')
-        return `<div><span>${item.name}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        return `<div><span class="${item.name == 'Size' ? 'size-container' : ''} flex-center">${item.name} ${item.name == 'Size' ? sizeLink : ''}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.updatePrice()
-    } else if (this.querySelector('.p-variants') && v) {
+    } else if (this.querySelector('.p-variants') && v) { // 
       this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
         return `<span>${p.options[index].name}:<b>${item}</b></span>`
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
+      this.queryAll('.items-look')[0].innerHTML = p.related.map(item=>{
+        return `<div class="item-look">
+                  <a href="/products/${item.handle}">
+                    <img
+                      src="${item.src}"
+                      alt=""
+                    >
+                  </a>
+                </div>`
+      }).join('')
+
+    }
+    if (p.firstAvailableVariant) {
+      if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'none'
+      this.querySelector('.product-form').style.display = 'block'
+    } else {
+      if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'block'
+      this.querySelector('.product-form').style.display = 'none'
+
     }
   }
+
+
 
 }
 if (!customElements.get(`t-add-to-cart-slide`)) {

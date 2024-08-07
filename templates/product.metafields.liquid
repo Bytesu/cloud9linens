@@ -1,0 +1,26 @@
+{% layout none %}
+
+<div
+  type="page-metafields"
+  {% for v in product.variants %}
+    data-v-{{ v.id }}="{{ v.available }}"
+  {% endfor %}
+
+  data-include-collection="{{ product.metafields.custom.collection_include.value }}"
+  data-first-available-variant="{{ product.first_available_variant.id }}"
+
+  {%- liquid
+    # assign values = product.metafields['shopify--discovery--product_search_boost'].related_products.value
+    assign values = product.metafields.custom.related.value
+    # echo values|json
+    for item in values
+      ##  echo item.handle
+      #  echo item.featured_image.src|file_url
+    endfor
+  %}
+  {% for v in values %}
+    {% if v.featured_image != blank %}
+      data-handle-{{ v.handle|replace:'-','_' }}="{{ v.featured_image.src|image_url:width:'500px' }}"
+    {% endif %}
+  {% endfor %}
+></div>
