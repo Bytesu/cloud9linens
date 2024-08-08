@@ -11,22 +11,25 @@
 
   {%- liquid
     # assign values = product.metafields['shopify--discovery--product_search_boost'].related_products.value
-    assign values = product.metafields.custom.related.value
-    # echo values|json
-    for item in values
-      ##  echo item.handle
-      #  echo item.featured_image.src|file_url
-    endfor
+    #assign values = product.metafields.custom.related.value
   %}
-  {% for v in values %}
+  {% comment %} {% for v in values %}
     {% if v.featured_image != blank %}
       data-handle-{{ v.handle|replace:'-','_' }}="{{ v.featured_image.src|image_url:width:'500px' }}"
     {% endif %}
-  {% endfor %}
+  {% endfor %} {% endcomment %}
   {%  assign color_values = product.metafields.shopify['color-pattern'].value %}
   {% for v in color_values %}
     data-color-{{ v.color}}="{{ v.label }}"
 {% endfor %}
+
+{%  assign r = product.metafields['shopify--discovery--product_recommendation'].related_products.value %}
+{% for v in r %}
+  {% if v.featured_image != blank %}
+  data-handle-{{ v.handle|replace:'-','_' }}="{{ v.featured_image.src|image_url:width:'500px' }}"
+  {% endif %}
+{% endfor %}
 >
-  
+
+  {{ |json }}
 </div>

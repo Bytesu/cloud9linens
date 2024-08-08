@@ -853,11 +853,13 @@ class BaseV2 extends HTMLElement {
     let formEl = this.querySelector('form[action="/cart/add"]')
     if (formEl) {
       this.addEvent(formEl, 'submit', async (evt) => {
-        console.log('12')
         THelper.btnLoading(formEl.querySelector('[type="submit"]'), 'white');
         evt.preventDefault();
         let formData = new FormData(formEl)
         let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
+        // let res1 = await this.fetch('/recommendations/products.json?product_id=' + this.product.id)
+        // console.log(res1)
+        // this.product.related = res1.products;
         cb?.()
         THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
       })
@@ -1306,6 +1308,7 @@ class AddToCartSlide extends BaseV2 {
     this.initProductInfo(res.product)
     this.ajaxForm(() => {
       let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
+
       this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
       this.closest('t-popup').openByType('t-added-to-cart-slide')
     })
@@ -1417,7 +1420,7 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
-      this.queryAll('.items-look')[0].innerHTML = p.related.map(item => {
+      this.queryAll(this,'.items-look')[0].innerHTML = p.related.map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
                     <img
@@ -1431,10 +1434,10 @@ class AddToCartSlide extends BaseV2 {
     }
     if (p.firstAvailableVariant) {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'none'
-      this.querySelector('.product-form').style.display = 'block'
+      if(this.querySelector('.product-form'))this.querySelector('.product-form').style.display = 'block'
     } else {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'block'
-      this.querySelector('.product-form').style.display = 'none'
+      if(this.querySelector('.product-form'))this.querySelector('.product-form').style.display = 'none'
 
     }
   }
