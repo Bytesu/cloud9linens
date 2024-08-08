@@ -920,8 +920,9 @@ class TVariantSelects extends HTMLElement {
   getCurrentSelectedOptions() {
     return Array.from(this.querySelectorAll('input[type=radio]:checked')).map(item => item.value)
   }
-  getCurrentSelectedVariant() {
-    let options = this.getCurrentSelectedOptions().sort().join('')
+  getCurrentSelectedVariant(options) {
+
+    if (!options) options = this.getCurrentSelectedOptions().sort().join('')
     if (!options) {
       return this.getVariantData()[0]
     }
@@ -956,6 +957,7 @@ class TVariantSelects extends HTMLElement {
         this.renderProductInfo();
         this.updateShareUrl();
       }
+      this.updateAvaliableOptions() //
     } catch (error) {
       THelper.catchError(error);
     }
@@ -1032,6 +1034,70 @@ class TVariantSelects extends HTMLElement {
     });
   }
 
+  /**
+   * setting option available or not
+   * @param {*} checkedFirst 
+   */
+  updateAvaliableOptions(checkedFirst) {
+    let p = this.closest('t-add-to-cart-slide').product
+
+    let vs = JSON.parse(this.querySelector('t-variant-radios [type="application/json"]').textContent)
+    let map_res = vs.reduce(((res, item) => {
+      if (item.available) {
+        let variant_options = item.title.split('/');
+        variant_options.forEach(option => {
+          if (!res[option.trim()]) res[option.trim()] = []
+          res[option.trim()] = res[option.trim()].concat(variant_options.filter(optItem => {
+            return optItem.trim() != option.trim();
+          }).map(item => item.trim()))
+        })
+      }
+      return res;
+    }), {})
+
+    //console.log(map_res)
+    if (checkedFirst) {
+      let first_avaliable_option = Object.keys(map_res)[0];
+      if (first_avaliable_option) [
+        first_avaliable_option,
+        ...map_res[first_avaliable_option]
+      ].forEach(item => {
+        this.querySelector('[type="radio"][value="' + item + '"]').setAttribute('checked', 'checked')
+      })
+    }
+
+    if (p.options) {
+      let first_name = p.options[0].name
+      p.options.forEach((option, index) => {
+        if (index == 0) {
+
+        } else { // 处理对应数据
+          let first_value = this.querySelector(`[name="${first_name}"]:checked`).value
+          if (first_value && map_res[first_value].length) {
+            Array.from(this.querySelectorAll(`[name="${option.name}"]`)).forEach(el => {
+              if (!map_res[first_value].includes(el.value)) {
+                el.setAttribute('disabled', 'disabled')
+              } else {
+                el.removeAttribute('disabled', 'disabled')
+              }
+            })
+          }
+        }
+      })
+    }
+
+    // let first_checked = querySelector('t-variant-radios').querySelector(':checked').value
+    // let current_variant = this.getCurrentSelectedVariant([
+    //   first_checked,
+    //   ...map_res[first_checked]
+    // ]);
+    //map_res[first_checked]
+    // current_variant.options.forEach((option, index) => {
+    //   if()
+    // })
+
+
+  }
   updatePickupAvailability() {
     const pickUpAvailability = this.closest(TConsts.MODAL_DIALOG) ? this.closest(TConsts.MODAL_DIALOG).querySelector('t-pickup-availability') : document.querySelector('t-pickup-availability');
     if (!pickUpAvailability) return;
@@ -1187,15 +1253,21 @@ class AddToCartSlide extends BaseV2 {
   }
   parseAvailable(str, product) {
     let targets = TDomHelper.parseFromStringV2(str).querySelector('[type="page-metafields"]')
-    let availabileOptionMap ={}
+    let availabileOptionMap = {}
     let variantMap = Object.keys(targets.dataset).reduce((res, key) => {
       if (key.startsWith('v-')) {
         let id = key.replace('v-', '')
         res[id] = targets.dataset[key]
         let currentVariant = product.variants.find(v => `${v.id}` == id);
         currentVariant.available = targets.dataset[key] == 'true'
-        if(currentVariant.available){
-           
+        if (currentVariant.available) {
+          let options = currentVariant.title.split('/').map(item => item.trim())
+          if (!availabileOptionMap[options[0]]) {
+            availabileOptionMap[options[0]] = []
+          } else if (options[1]) {
+            availabileOptionMap[options[0]].push(options[1])
+          }
+
         }
       }
       else if (key.endsWith('firstAvailableVariant')) {
@@ -1211,6 +1283,7 @@ class AddToCartSlide extends BaseV2 {
       } else if (key.endsWith('includeCollection')) {
         product[`includeCollection`] = targets.dataset[key]
       }
+      product.availabileOptionMap = availabileOptionMap
       product.firstAvailableVariantData = product.variants.find(item => `${item.id}` == `${product.firstAvailableVariant}`)
       return res;
     }, {})
@@ -1313,23 +1386,28 @@ class AddToCartSlide extends BaseV2 {
       url = '/pages/lounge-wear-size-chart'
     }
     let sizeLink = `<a href="${url}"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M4.3 17.5q-.75 0-1.275-.525Q2.5 16.45 2.5 15.7V8.3q0-.75.525-1.275Q3.55 6.5 4.3 6.5h15.4q.75 0 1.275.525.525.525.525 1.275v7.4q0 .75-.525 1.275-.525.525-1.275.525Zm0-1.5h15.4q.1 0 .2-.1t.1-.2V8.3q0-.1-.1-.2t-.2-.1h-2.95v3.625h-1.5V8h-2.5v3.625h-1.5V8h-2.5v3.625h-1.5V8H4.3q-.1 0-.2.1t-.1.2v7.4q0 .1.1.2t.2.1Zm2.95-4.375h1.5Zm4 0h1.5Zm4 0h1.5ZM12 12Z"/></svg></a>`
-    let availabileOptions = p.firstAvailableVariantData?.options ?? [] //
+    //let availabileOptions = p.firstAvailableVariantData?.options ?? [] //
+
     if (this.querySelector('t-variant-radios')) {
-      debugger;
+      let availabileOptions = []
       this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
         let firstChecked = ''
+        if (index == 0) {
+          //availabileOptions = p.availabileOptionMap[item.]
+        }
         let options = item.values.map((v, vIndex) => {
           if (availabileOptions.includes(v) && p.firstAvailableVariant) firstChecked = v.toLowerCase()
-          return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" ${availabileOptions.includes(v) ? '' : 'disabled="disabled"'} name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
+          return `<div><input type="radio" id="t-add-to-cart-slide-form-${index}-${vIndex}" ${p.firstAvailableVariant ? '' : ' disabled="disabled" '} name="${item.name}" value="${v}" form="t-add-to-cart-slide-form" class="t-radio-btn"
                           ${availabileOptions.includes(v) && p.firstAvailableVariant ? 'checked="checked"' : ''} ><label 
                             style="${item.name == 'Color' ? 'background-color:' + p.color[v] + ';' : ''}"
                           for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
         }).join('')
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
-        ${item.name}${item.name == 'Size' ? sizeLink : ': <span>' + firstChecked + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        ${item.name}:${item.name == 'Size' ? sizeLink : ' <span>' + firstChecked + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
+      this.querySelector('t-variant-radios').updateAvaliableOptions(true)
       this.updatePrice()
     } else if (this.querySelector('.p-variants') && v) { // 
       this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
