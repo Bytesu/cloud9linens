@@ -1364,11 +1364,13 @@ class AddToCartSlide extends BaseV2 {
   initProductInfo(p, v) {
     this.querySelector('.p-title').innerHTML = p.title
     this.querySelector('.p-vendor').innerHTML = p.vendor
-    if (p.includeCollection) {
-      this.querySelector('.p-collections div').innerHTML = p.includeCollection.split('\n').join('<br/>')
-      this.querySelector('.p-collections').style.display = 'block'
-    } else {
-      this.querySelector('.p-collections').style.display = 'none'
+    if (!v) {
+      if (p.includeCollection) {
+        this.querySelector('.p-collections div').innerHTML = p.includeCollection.split('\n').join('<br/>')
+        this.querySelector('.p-collections').style.display = 'block'
+      } else {
+        this.querySelector('.p-collections').style.display = 'none'
+      }
     }
     p.variants = p.variants.map(item => {
       item.options = item.title.split('/').map(item => item.trim())
@@ -1388,7 +1390,7 @@ class AddToCartSlide extends BaseV2 {
     let sizeLink = `<a href="${url}"><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M4.3 17.5q-.75 0-1.275-.525Q2.5 16.45 2.5 15.7V8.3q0-.75.525-1.275Q3.55 6.5 4.3 6.5h15.4q.75 0 1.275.525.525.525.525 1.275v7.4q0 .75-.525 1.275-.525.525-1.275.525Zm0-1.5h15.4q.1 0 .2-.1t.1-.2V8.3q0-.1-.1-.2t-.2-.1h-2.95v3.625h-1.5V8h-2.5v3.625h-1.5V8h-2.5v3.625h-1.5V8H4.3q-.1 0-.2.1t-.1.2v7.4q0 .1.1.2t.2.1Zm2.95-4.375h1.5Zm4 0h1.5Zm4 0h1.5ZM12 12Z"/></svg></a>`
     //let availabileOptions = p.firstAvailableVariantData?.options ?? [] //
 
-    if (this.querySelector('t-variant-radios')) {
+    if (this.querySelector('t-variant-radios') && !v) {
       let availabileOptions = []
       this.querySelector('t-variant-radios').innerHTML = p.options.map((item, index) => {
         let firstChecked = ''
@@ -1411,7 +1413,7 @@ class AddToCartSlide extends BaseV2 {
       this.updatePrice()
     } else if (this.querySelector('.p-variants') && v) { // 
       this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
-        return `<span>${p.options[index].name}:<b>${item}</b></span>`
+        return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)

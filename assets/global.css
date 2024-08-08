@@ -133,9 +133,15 @@ t-popup[type="left-right"] {
   max-width: 850px;
   width: 850px;
 }
-
+t-popup[view-type="t-added-to-cart-slide"] {
+  max-width: 560px;
+  width: 560px;
+}
 t-variant-radios .color-options label span {
   display: none;
+}
+a.button.sf__btn.sf__btn-primary.btn-contine {
+  margin-top: 10px;
 }
 
 t-variant-radios .color-options label {
@@ -436,6 +442,7 @@ t-add-to-cart-slide .p-title {
 
 .h3.text-center.added-to-cart {
   padding-bottom: 20px;
+  display: flex;
 }
 
 t-added-to-cart-slide .h3 {
