@@ -135,8 +135,8 @@ t-popup[type="left-right"] {
 }
 
 t-popup[view-type="t-added-to-cart-slide"] {
-  max-width: 660px;
-  width: 660px;
+  max-width: 720px;
+  width:720px;
 }
 
 t-variant-radios .color-options label span {
@@ -149,8 +149,8 @@ a.button.sf__btn.sf__btn-primary.btn-contine {
 
 t-popup[type=left-right] t-added-to-cart-slide.t-add-to-cart-slide .w-full.small--hide {
   flex: auto;
-  width: 260px;
-  max-width: 260px;
+  width: 290px;
+  max-width: 290px;
   background: #f1f1f1;
   flex-basis: 0;
 }
@@ -313,8 +313,11 @@ t-variant-radios [type="radio"][disabled="disabled"]+label:after {
   flex-direction: column;
   font-family: var(--primary-family);
   font-size: 12px;
+  font-weight: bold !important;
 }
-
+.p-block.p-variants b{
+  font-weight: normal !important;
+}
 .t-add-to-cart-slide .klaviyo-form span {
   font-family: var(--font-stack-body) !important;
 
