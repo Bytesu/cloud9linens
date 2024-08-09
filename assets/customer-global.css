@@ -269,7 +269,11 @@ form-control-group label {
 .sf-wishlist__wrapper .wish_bag_icon .w-full {
   width: auto;
 }
-.sf-wishlist__wrapper .wish_shop_btn button {
+.wish_shop_btn a {
+  font-size: 12px;
+  font-weight: normal;
+}
+.wish_shop_btn button {
   text-transform: uppercase !important;
 }
 .wish_shop_btn {

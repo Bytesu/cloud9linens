@@ -930,8 +930,20 @@ class TVariantSelects extends HTMLElement {
     }
     return this.getVariantData().filter(item => item.options.sort().join('') == options)?.[0]
   }
+  updateOptionLabel(e) {
+    console.log(e.target)
+    let spanEl = e.target.closest('fieldset').parentElement.children[0]
+    if (spanEl.querySelector('span')) {
+      spanEl.querySelector('span').innerHTML = e.target.value.toLowerCase()
+    } else {
+      let spanEl_ = document.createElement('span')
+      spanEl_.innerHTML = e.target.value.toLowerCase()
+      spanEl.prepend(spanEl_)
+    }
+  }
   onVariantChange(e) {
     // 判断是否切换颜色
+    this.updateOptionLabel(e)
     //this.isColorChanged = TDomHelper.hasClass(TDomHelper.closest('fieldset', e.target), `option-${window.tCobo.colorLabel}`)
     this.updateShipStatus()
     try {
@@ -1409,10 +1421,11 @@ class AddToCartSlide extends BaseV2 {
         }).join('')
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
-        ${item.name}:${item.name == 'Size' ? sizeLink : ' <span>' + firstChecked + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        ${item.name}:${item.name == 'Size' ? `<span>${(p.firstAvailableVariantData[`option`+(index+1)]??'').toLowerCase()}</span>`+sizeLink : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.querySelector('t-variant-radios').updateAvaliableOptions(true)
+      this.querySelector('.p-detail').setAttribute('href', `/products/${p.handle}`)
       this.updatePrice()
     } else if (this.querySelector('.p-variants') && v) { // 
       this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
@@ -1420,7 +1433,7 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
-      this.queryAll(this,'.items-look')[0].innerHTML = p.related.map(item => {
+      this.queryAll(this, '.items-look')[0].innerHTML = p.related.map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
                     <img
@@ -1434,10 +1447,10 @@ class AddToCartSlide extends BaseV2 {
     }
     if (p.firstAvailableVariant) {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'none'
-      if(this.querySelector('.product-form'))this.querySelector('.product-form').style.display = 'block'
+      if (this.querySelector('.product-form')) this.querySelector('.product-form').style.display = 'block'
     } else {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'block'
-      if(this.querySelector('.product-form'))this.querySelector('.product-form').style.display = 'none'
+      if (this.querySelector('.product-form')) this.querySelector('.product-form').style.display = 'none'
 
     }
   }
@@ -1491,6 +1504,7 @@ THelper.DOMready(() => {
     //console.log(btns)
     btns.forEach(item => {
       item.setAttribute('href', `javascript:void(0)`)
+      item.innerHTML = 'Add to Bag'
     })
     if (timer > 10) {
       intervaler && clearInterval(intervaler)

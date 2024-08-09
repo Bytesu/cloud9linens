@@ -150,6 +150,12 @@ a.button.sf__btn.sf__btn-primary.btn-contine {
   border-bottom: 1px solid #061e3a;
   margin: 20px 0;
 }
+t-added-to-cart-slide .p-block,
+.added-to-cart-img img {
+  max-width: 320px;
+    margin: 0 auto;
+    display: block;
+}
 .t-add-to-cart-slide .klaviyo-form form input[type=email] {
   box-shadow: inset 1px 60px 1px #fff;
 }
@@ -288,11 +294,14 @@ t-variant-radios [type="radio"][disabled="disabled"]+label {
 t-variant-radios [type="radio"][disabled="disabled"]+label:after {
   position: absolute;
   content: ' ';
-  transform: rotate(-8deg);
-  border-bottom: 1px solid #041d3aa8;
+  transform: rotate(8deg);
+  border-bottom: 1px solid #fff;
   width: 100%;
 }
-
+t-variant-radios [type=radio][disabled=disabled]+label{
+  background-color: #061d3a;
+  color: white;
+}
 .t-add-to-cart-slide .product-form__actions [type="submit"] {
   flex: 1;
   font-family: var(--primary-family);
@@ -420,7 +429,10 @@ span.size-container.flex-center {
   font-weight: bold !important;
   margin-bottom: 6px;
 }
-
+.size-container span{
+  text-transform: capitalize;
+  font-weight: normal;
+}
 .t-add-to-cart-slide .sf__btn.sf__btn-primary {
   text-transform: uppercase;
 }
@@ -475,7 +487,7 @@ t-add-to-cart-slide .p-title {
   display: flex;
 }
 
-t-added-to-cart-slide .h2 {
+t-added-to-cart-slide .h3 {
   padding: 23px 0;
   display: block;
 }
