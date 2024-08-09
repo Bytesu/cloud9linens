@@ -930,20 +930,20 @@ class TVariantSelects extends HTMLElement {
     }
     return this.getVariantData().filter(item => item.options.sort().join('') == options)?.[0]
   }
-  updateOptionLabel(e) {
-    console.log(e.target)
-    let spanEl = e.target.closest('fieldset').parentElement.children[0]
+  updateOptionLabel(target) {
+    console.log(target)
+    let spanEl = target.closest('fieldset').parentElement.children[0]
     if (spanEl.querySelector('span')) {
-      spanEl.querySelector('span').innerHTML = e.target.value.toLowerCase()
+      spanEl.querySelector('span').innerHTML = target.value.toLowerCase()
     } else {
       let spanEl_ = document.createElement('span')
-      spanEl_.innerHTML = e.target.value.toLowerCase()
+      spanEl_.innerHTML = target.value.toLowerCase()
       spanEl.prepend(spanEl_)
     }
   }
   onVariantChange(e) {
     // 判断是否切换颜色
-    this.updateOptionLabel(e)
+    this.updateOptionLabel(e.target)
     //this.isColorChanged = TDomHelper.hasClass(TDomHelper.closest('fieldset', e.target), `option-${window.tCobo.colorLabel}`)
     this.updateShipStatus()
     try {
@@ -1078,6 +1078,9 @@ class TVariantSelects extends HTMLElement {
       ].forEach(item => {
         this.querySelector('[type="radio"][value="' + item + '"]').setAttribute('checked', 'checked')
       })
+
+
+
     }
 
     if (p.options) {
@@ -1100,15 +1103,10 @@ class TVariantSelects extends HTMLElement {
       })
     }
 
-    // let first_checked = querySelector('t-variant-radios').querySelector(':checked').value
-    // let current_variant = this.getCurrentSelectedVariant([
-    //   first_checked,
-    //   ...map_res[first_checked]
-    // ]);
-    //map_res[first_checked]
-    // current_variant.options.forEach((option, index) => {
-    //   if()
-    // })
+    Array.from(this.querySelectorAll('[type="radio"]:checked'))
+      .forEach(item => {
+        this.updateOptionLabel(item)
+      })
 
 
   }
@@ -1421,7 +1419,7 @@ class AddToCartSlide extends BaseV2 {
         }).join('')
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
-        ${item.name}:${item.name == 'Size' ? `<span>${(p.firstAvailableVariantData[`option`+(index+1)]??'').toLowerCase()}</span>`+sizeLink : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        ${item.name}:${item.name == 'Size' ? `<span>${(p.firstAvailableVariantData?.[`option` + (index + 1)] ?? '').toLowerCase()}</span>` + sizeLink : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.querySelector('t-variant-radios').updateAvaliableOptions(true)
