@@ -146,7 +146,13 @@ t-variant-radios .color-options label span {
 a.button.sf__btn.sf__btn-primary.btn-contine {
   margin-top: 10px;
 }
-
+.splitor-line {
+  border-bottom: 1px solid #061e3a;
+  margin: 20px 0;
+}
+.t-add-to-cart-slide .klaviyo-form form input[type=email] {
+  box-shadow: inset 1px 60px 1px #fff;
+}
 t-popup[type=left-right] t-added-to-cart-slide.t-add-to-cart-slide .w-full.small--hide {
   flex: auto;
   width: 290px;
