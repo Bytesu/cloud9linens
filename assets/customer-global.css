@@ -200,11 +200,15 @@ input[type="password"].form-control + .pwd-icon .b {
 }
 .cus-prodcard-title .sf__pcard-price,
 .cus-account-form .sf-customer__reset-password-btn.p-text,
+.p-text-normal,
 .p-text {
   font-family: Source Code Pro !important;
   font-size: 12px !important;
   color: #041d3a !important;
   font-weight: 600 !important;
+}
+.p-text-normal{
+  font-weight: normal !important;
 }
 .cus-prodcard-title .sf__pcard-name,
 .cus-prodcard-title .sf__pcard-vendor {
