@@ -11,11 +11,18 @@
   "sections": {
     "main": {
       "type": "page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "order_status_GBgWD9": {
+      "type": "order-status",
       "settings": {
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "order_status_GBgWD9"
   ]
 }
