@@ -1,41 +1,65 @@
-<br>
-<br>
-<br>
-<br>
-<link rel="stylesheet" href="{{'customer-global.css'| asset_url }}" as="style">
-<div style="text-align: center;">Enter your tracking number here to see your order status.</div>
-
-<div style="text-align: center;">
-  <input maxlength="50" id="YQNum" type="text" class="input">
-  <input value="TRACK" type="button" onclick="doTrack()" class="sf__btn-primary">
-</div>
-<div id="YQContainer"></div>
-<br>
-<br>
-<br>
-<br>
-<!-- Script code can be put in the bottom of the page, wait until the page is loaded then execute. -->
-<script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
-<script type="text/javascript">
-  // <![CDATA[
-  function doTrack() {
-    var num = document.getElementById('YQNum').value;
-    if (num === '') {
-      alert('Enter your number.');
-      return;
-    }
-    YQV5.trackSingle({
-      //Required, Specify the container ID of the carrier content.
-      YQ_ContainerId: 'YQContainer',
-      //Optional, specify tracking result height, max height 800px, default is 560px.
-      YQ_Height: 560,
-      //Optional, select carrier, default to auto identify.
-      YQ_Fc: '0',
-      //Optional, specify UI language, default language is automatically detected based on the browser settings.
-      YQ_Lang: 'en',
-      //Required, specify the number needed to be tracked.
-      YQ_Num: num,
-    });
+<style>
+  .order-status h2 + div {
+    margin: 20px 0 30px;
   }
-  // ]]>
-</script>
+  div.order-status button.sf__btn-primary.sf__btn.c-btn.bg-btn {
+    color: white !important;
+  }
+  div.order-status .form-container{
+    max-width: 300px;
+    margin: 0 auto;
+  }
+</style>
+<div class="order-status text-center cus-account-form">
+  <br>
+  <br>
+  <br>
+  <br>
+  <link rel="stylesheet" href="{{'customer-global.css'| asset_url }}" as="style">
+  <h2><strong>My Order Status</strong></h2>
+  <div class="p-text">Enter your tracking number here to see your order status.</div>
+  <br>
+
+  <div style="text-align: center;" class="form-container">
+    <form-control-group>
+      <label class="cus-account-label">Order Number</label>
+      <input maxlength="50" id="YQNum" type="text" class="form-control" placeholder="Please input order number please">
+    </form-control-group>
+    <button value="" type="button" onclick="doTrack()" class="sf__btn-primary sf__btn c-btn bg-btn">CHECK STATUS</button>
+  </div>
+  <div id="YQContainer"></div>
+  <div class="text-center sigin-bottom">
+    <p class="p-text">Already Have an Account?</p>
+    <div class="p-text">Sign in to track and view your order history along with other exclusive benefits</div>
+    <a class="p-text" href="/account/login">SIGN IN OR REGISTER NOW</a>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <!-- Script code can be put in the bottom of the page, wait until the page is loaded then execute. -->
+  <script type="text/javascript" src="//www.17track.net/externalcall.js"></script>
+  <script type="text/javascript">
+    // <![CDATA[
+    function doTrack() {
+      var num = document.getElementById('YQNum').value;
+      if (num === '') {
+        alert('Enter your number.');
+        return;
+      }
+      YQV5.trackSingle({
+        //Required, Specify the container ID of the carrier content.
+        YQ_ContainerId: 'YQContainer',
+        //Optional, specify tracking result height, max height 800px, default is 560px.
+        YQ_Height: 560,
+        //Optional, select carrier, default to auto identify.
+        YQ_Fc: '0',
+        //Optional, specify UI language, default language is automatically detected based on the browser settings.
+        YQ_Lang: 'en',
+        //Required, specify the number needed to be tracked.
+        YQ_Num: num,
+      });
+    }
+    // ]]>
+  </script>
+</div>
