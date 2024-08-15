@@ -276,11 +276,12 @@ t-popup .sf__btn,
   margin: 10px 0;
 }
 
+.cart__submit.sf__btn-primary,
 .t-add-to-cart-slide .sf__btn.sf__btn-primary,
 .t-add-to-cart-slide .sf__btn.sf__btn-primary:focus,
 .t-add-to-cart-slide .sf__btn.sf__btn-primary:hover {
   background: #041e3a !important;
-  color: white;
+  color: white !important;
   font-size: 12px !important;
   font-family: var(--primary-family);
 }
@@ -320,7 +321,9 @@ t-variant-radios [type=radio][disabled=disabled]+label{
   justify-content: center;
 }
 
-
+.underline{
+  text-decoration: underline;;
+}
 
 .t-add-to-cart-slide .klaviyo-form {
   height: 50px;
