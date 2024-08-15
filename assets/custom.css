@@ -915,12 +915,11 @@ h1.s_heading{
 .add-to-cart {}
 
 .cus-empty-cart-txt {
+  text-transform: uppercase;
   font-size: 16px;
-  
   letter-spacing: 2px;
   text-align: center;
   margin: 20px 0 !important;
-  min-height: calc(100vh - 100px);
 }
 
 
