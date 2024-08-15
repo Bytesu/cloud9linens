@@ -136,7 +136,7 @@ t-popup[type="left-right"] {
 
 t-popup[view-type="t-added-to-cart-slide"] {
   max-width: 720px;
-  width:720px;
+  width: 720px;
 }
 
 t-variant-radios .color-options label span {
@@ -146,19 +146,23 @@ t-variant-radios .color-options label span {
 a.button.sf__btn.sf__btn-primary.btn-contine {
   margin-top: 10px;
 }
+
 .splitor-line {
   border-bottom: 1px solid #061e3a;
   margin: 20px 0;
 }
+
 t-added-to-cart-slide .p-block,
 .added-to-cart-img img {
   max-width: 320px;
-    margin: 0 auto;
-    display: block;
+  margin: 0 auto;
+  display: block;
 }
+
 .t-add-to-cart-slide .klaviyo-form form input[type=email] {
   box-shadow: inset 1px 60px 1px #fff;
 }
+
 t-popup[type=left-right] t-added-to-cart-slide.t-add-to-cart-slide .w-full.small--hide {
   flex: auto;
   width: 290px;
@@ -216,6 +220,7 @@ t-popup[type="left-right"] .t-add-to-cart-slide .sf-prod__container {
   top: 0px;
   right: 0;
 }
+
 .pop-close svg {
   width: 100%;
   height: 100%;
@@ -303,10 +308,12 @@ t-variant-radios [type="radio"][disabled="disabled"]+label:after {
   border-bottom: 1px solid #fff;
   width: 100%;
 }
-t-variant-radios [type=radio][disabled=disabled]+label{
+
+t-variant-radios [type=radio][disabled=disabled]+label {
   background-color: #061d3a;
   color: white;
 }
+
 .t-add-to-cart-slide .product-form__actions [type="submit"] {
   flex: 1;
   font-family: var(--primary-family);
@@ -321,8 +328,9 @@ t-variant-radios [type=radio][disabled=disabled]+label{
   justify-content: center;
 }
 
-.underline{
-  text-decoration: underline;;
+.underline {
+  text-decoration: underline;
+  ;
 }
 
 .t-add-to-cart-slide .klaviyo-form {
@@ -337,9 +345,11 @@ t-variant-radios [type=radio][disabled=disabled]+label{
   font-size: 12px;
   font-weight: bold !important;
 }
-.p-block.p-variants b{
+
+.p-block.p-variants b {
   font-weight: normal !important;
 }
+
 .t-add-to-cart-slide .klaviyo-form span {
   font-family: var(--font-stack-body) !important;
 
@@ -400,6 +410,13 @@ t-variant-radios input[type=radio]:checked+label {
   color: white;
 }
 
+
+.scd-item__variant {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 t-variant-radios input[type=radio]+label:hover {
   background-color: #041d3aa8;
 }
@@ -436,11 +453,13 @@ span.size-container.flex-center {
   font-weight: bold !important;
   margin-bottom: 6px;
 }
-.size-container span{
+
+.size-container span {
   text-transform: capitalize;
   font-weight: normal;
   padding-left: 10px;
 }
+
 .t-add-to-cart-slide .sf__btn.sf__btn-primary {
   text-transform: uppercase;
 }

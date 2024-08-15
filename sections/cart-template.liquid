@@ -114,9 +114,15 @@
                     </div>
                   </div>
                 </div>
+                <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">{{ 'cart.general.subtotal' | t }}</span>
+                  <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>
+                    {{- cart.total_price | money -}} 
+                  </span>
+                </div>
 
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Shipping Cost</span>
+                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Shipping</span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
                     >$20</span
                   >
@@ -127,19 +133,12 @@
                     >$14</span
                   >
                 </div>
-                <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                {% comment %} <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
                   <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Order Discount</span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
                     >$20</span
                   >
-                </div>
-
-                <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">{{ 'cart.general.subtotal' | t }}</span>
-                  <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>
-                    {{- cart.total_price | money -}}
-                  </span>
-                </div>
+                </div> {% endcomment %}
                 <div class="ship_promo">
                   {% render 'cart-addons' %}
                 </div>
@@ -240,7 +239,7 @@
   .res-cart-summary-sec {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
-    margin: 127px 0 0 auto !important;
+    margin: 132px 0 0 auto !important;
   }
   .res-cart-summary {
     background-color: #f8f8f8 !important;
