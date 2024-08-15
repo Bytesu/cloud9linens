@@ -1,1 +1,75 @@
-{"sections":{"image_with_text_2_G8VCc7":{"type":"image-with-text-2","custom_css":["h3 {color: #ffffff;}","h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/sun-setting-over-ocean.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"medium","text_color":"white","title":"","font_size":24,"subtitle":"<h1><b>COOKIES CENTER<\/b><\/h1>","text":"","para_font_size":24,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size","mob_content":true}},"main":{"type":"page","disabled":true,"settings":{}},"rich_text_wrBirb":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"rich_text_KWWYHJ":{"type":"Rich-text","settings":{"rich-heading":"<h2><b>COKKIES CENTER<\/b><\/h2>","richtext-prt":"<br><p><\/p><div style=\"text-align:left;\">\n<h4 class=\"about__block-heading\">Welcome to Cloud9linens' Cookies Center Information page. Here, we provide you with important details about the use of cookies on our website.<\/h4>\n<br>\n<p><\/p>\n<h4>At Cloud9linens, we use cookies to enhance your browsing experience and provide personalized content and advertisements. Cookies are small text files that are stored on your device when you visit a website. They help us remember your preferences, analyze website traffic, and improve our services.\n<br><br>\n<h4><b>There are different types of cookies that we use:<\/b><\/h4>\n<br><br>\n\n<\/h4>\n<p>\n<\/p>\n<h4>\n<b>Essential Cookies:<\/b> These cookies are necessary for the website to function properly. They enable basic features such as page navigation and access to secure areas of the website. Without these cookies, certain parts of our website may not work correctly.<br><br><b>Analytics Cookies:<\/b> These cookies collect information about how visitors use our website, such as which pages are visited most often and if they encounter any errors. This data helps us improve the performance and usability of our website.<br><br><b>Advertising Cookies:<\/b> These cookies are used to deliver relevant advertisements to you based on your interests. They also limit the number of times you see an ad and measure the effectiveness of our advertising campaigns.\n\n<br>\n<\/h4>\n<p><\/p>\n<h4>By using our website, you consent to the use of cookies as described in this Cookies Center Information. You can manage your cookie preferences by adjusting the settings in your browser. Please note that disabling certain cookies may affect the functionality of our website.\n<br><br>If you have any questions or concerns about our use of cookies, please contact us through our <b>Contact Us<\/b> page. We are committed to protecting your privacy and providing a transparent browsing experience.\n<br><br><h4>\n<b>Thank You For Choosing Cloud9linens LLC !<\/b>\n<br>\n\n\n\n<\/h4>\n<\/h4>\n<p>\n<\/p>\n<\/div>","custom-class":""}}},"order":["image_with_text_2_G8VCc7","main","rich_text_wrBirb","rich_text_KWWYHJ"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "image_with_text_2_G8VCc7": {
+      "type": "image-with-text-2",
+      "custom_css": [
+        "h3 {color: #ffffff;}",
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/sun-setting-over-ocean.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "",
+        "font_size": 24,
+        "subtitle": "<h1><b>COOKIES CENTER<\/b><\/h1>",
+        "text": "",
+        "para_font_size": 24,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "rich_text_wrBirb": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "rich_text_KWWYHJ": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "<h2><b>COKKIES CENTER<\/b><\/h2>",
+        "richtext-prt": "<br><p><\/p><div style=\"text-align:left;\">\n<h4 class=\"about__block-heading\">Welcome to Cloud9linens' Cookies Center Information page. Here, we provide you with important details about the use of cookies on our website.<\/h4>\n<br>\n<p><\/p>\n<h4>At Cloud9linens, we use cookies to enhance your browsing experience and provide personalized content and advertisements. Cookies are small text files that are stored on your device when you visit a website. They help us remember your preferences, analyze website traffic, and improve our services.\n<br><br>\n<h4><b>There are different types of cookies that we use:<\/b><\/h4>\n<br><br>\n\n<\/h4>\n<p>\n<\/p>\n<h4>\n<b>Essential Cookies:<\/b> These cookies are necessary for the website to function properly. They enable basic features such as page navigation and access to secure areas of the website. Without these cookies, certain parts of our website may not work correctly.<br><br><b>Analytics Cookies:<\/b> These cookies collect information about how visitors use our website, such as which pages are visited most often and if they encounter any errors. This data helps us improve the performance and usability of our website.<br><br><b>Advertising Cookies:<\/b> These cookies are used to deliver relevant advertisements to you based on your interests. They also limit the number of times you see an ad and measure the effectiveness of our advertising campaigns.\n\n<br>\n<\/h4>\n<p><\/p>\n<h4>By using our website, you consent to the use of cookies as described in this Cookies Center Information. You can manage your cookie preferences by adjusting the settings in your browser. Please note that disabling certain cookies may affect the functionality of our website.\n<br><br>If you have any questions or concerns about our use of cookies, please contact us through our <b>Contact Us<\/b> page. We are committed to protecting your privacy and providing a transparent browsing experience.\n<br><br><h4>\n<b>Thank You For Choosing Cloud9linens LLC !<\/b>\n<br>\n\n\n\n<\/h4>\n<\/h4>\n<p>\n<\/p>\n<\/div>",
+        "custom-class": ""
+      }
+    }
+  },
+  "order": [
+    "image_with_text_2_G8VCc7",
+    "main",
+    "rich_text_wrBirb",
+    "rich_text_KWWYHJ"
+  ]
+}

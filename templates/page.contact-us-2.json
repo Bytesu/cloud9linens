@@ -1,1 +1,273 @@
-{"sections":{"main":{"type":"page-about-us","disabled":true,"settings":{}},"f538a340-bf07-44d6-bd5f-daf735cdd8ac":{"type":"image-with-text-2","blocks":{"61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8":{"type":"Button","settings":{"custom_button_text":"MY ACCOUNT","custom_button_link":"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount","my_button_style":"sf__btn-secondary"}},"b77ddc79-627d-4d27-ae79-e6dede66ab7b":{"type":"Button","settings":{"custom_button_text":"Shipping and Returns","custom_button_link":"shopify:\/\/pages\/customer-care-shipping-returns-policy","my_button_style":"sf__btn-secondary"}},"c7c46031-da20-4032-ab47-38d460c1ec74":{"type":"Button","settings":{"custom_button_text":"Order Status","custom_button_link":"shopify:\/\/pages\/customer-care-check-order-status","my_button_style":"sf__btn-secondary"}},"c0e78059-3099-4a11-8dc0-746b7465bee6":{"type":"Button","settings":{"custom_button_text":"FAQ","custom_button_link":"shopify:\/\/pages\/customer-care-frequently-asked-questions","my_button_style":"sf__btn-secondary"}}},"block_order":["61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8","b77ddc79-627d-4d27-ae79-e6dede66ab7b","c7c46031-da20-4032-ab47-38d460c1ec74","c0e78059-3099-4a11-8dc0-746b7465bee6"],"custom_css":["h3 {color: #ffffff;}","h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/sun-setting-over-ocean.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"large","text_color":"white","title":"<h3 class=\"about__block-heading\">if you are unable to find the answers you need, please reach out to customer assistance.\n<\/h3>","font_size":18,"subtitle":"<h1><b>How Can We Help?<\/b><\/h1>","text":"<h5><\/h5><p><\/p>","para_font_size":21,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size cus_size_chart","mob_content":true}},"rich_text_UFQ6jq":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"<body>\n<br>\n<br>\n<div style=\"text-align:center;\"><h2><b>CUSTOMER SERVICE<\/b><\/h2><\/div>\n<br>\n\n\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Contact Us<\/title>\n<br>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n\n\n    <div class=\"contact-us\">\n        <h2>Contact Us<\/h2>\n<h5>\n<br>WE WANT TO HEAR FROM YOU...\n        <div class=\"contact-methods\">\n            <div class=\"method\">\n<br>\n                <h3><b>Head office <\/b><\/h3>\n<br>\n                <p><\/p>\n<h3>We're available:<h3>\n<br>\n                <\/h3>\n<\/h3>\n<p><\/p>\n<h5>Mon – Fri: 8:00am – 8:00pm ET<h5>\n                <\/h5>\n<\/h5>\n<p><\/p>\n<h5>Sat: 11:00am – 7:30pm ET<h5>\n                <\/h5>\n<\/h5>\n<p><\/p>\n<h5>Sun: 9:30am – 6:00pm ET\n                <\/h5>\n<p><\/p>\n<h5>Phone: <a href=\"tel:888-475-7674\">888-475-7674<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n               <br><h3><b>Email Us<\/b><\/h3>\n<br>\n                <p><\/p>\n<h5>For any inquiries, email us at:\n                <\/h5>\n<p><\/p>\n<h5>\n<a href=\"mailto:customer_assistance@cloud9linens.com\">customer_assistance@cloud9linens.com<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n              <br><h3><b>Text Us<\/b><\/h3>\n<br><p><\/p>\n<h5>Cloud9linens now offers customer support via text message.\n                <\/h5>\n<p><\/p>\n<h5>Send a message to: <a href=\"sms:13155620208\">1-315-562-0000<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n               <br> <h3><b>Live Chat<\/b><\/h3>\n<br>\n                <p><\/p>\n<h5>\n<a href=\"#\" onclick=\"openLiveChat()\">Start a live chat<\/a>\n            <\/h5>\n<\/div>\n        <\/div>\n    <\/h5>\n<\/div>\n    <script>\n        function openLiveChat() {\n            \/\/ Code to initiate live chat\n        }\n    <\/script>\n\n<\/body>","custom-class":""}},"a48de578-02ae-40a0-8817-b6ae1f12f50b":{"type":"custom_contact_form","blocks":{"0965950e-5581-4491-a1a6-1cc41d2ae6f4":{"type":"Phone_number","settings":{"ph_number":"PHONE","phone_req":true}},"e24d0a08-59ab-4195-b4ae-52d37b31e0da":{"type":"email","settings":{"gmail":"Email","email_req":true}},"11b8ccd8-4f51-4175-a2d6-906c6bfa413a":{"type":"message","settings":{"message":"MESSAGE"}},"9d6e06df-80b9-49e0-b858-32560a70a058":{"type":"subject","settings":{"Subject-text":"SUBJECT"}},"dafb658f-310c-4be3-b91e-b96bed4a623a":{"type":"submit_button","settings":{"submit_batn":""}}},"block_order":["0965950e-5581-4491-a1a6-1cc41d2ae6f4","e24d0a08-59ab-4195-b4ae-52d37b31e0da","11b8ccd8-4f51-4175-a2d6-906c6bfa413a","9d6e06df-80b9-49e0-b858-32560a70a058","dafb658f-310c-4be3-b91e-b96bed4a623a"],"disabled":true,"custom_css":[],"settings":{"sec_heading":"Email","first_nam":"First Name","first_name_req":true,"custom_heading_aligment":"center","my-content_text_color":"white","last_nam":"Last Name","last_name_req":true}},"67d86ce4-3d60-4098-b900-c74d5572d0d3":{"type":"globo-formbuilder","settings":{"form_id":"NzMyNTY="}},"4d5d06ac-e049-46ef-8b42-41304d10e29a":{"type":"custom-liquid","settings":{"custom_liquid":"<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>","custom_class":""}},"custom_liquid_afHnUt":{"type":"custom-liquid","settings":{"custom_liquid":"{% render 'profile_tab' %}","custom_class":""}},"custom_contact_form_ETydPV":{"type":"custom_contact_form","blocks":{"email_c4RUgV":{"type":"email","settings":{"gmail":"Email","email_req":true}},"confirm_email_rMaBxi":{"type":"confirm_email","settings":{"con_gmail":"Confirm email","con_email_req":true}},"phone_number_VMT9Y9":{"type":"Phone_number","settings":{"ph_number":"Phone number","phone_req":true}},"order_number_chNCLc":{"type":"order_number","settings":{"order_number":"Order number","order_req":true}},"subject_fyrNbB":{"type":"subject","settings":{"Subject-text":"SUBJECT"}},"message_c3MUa6":{"type":"message","settings":{"message":"Message"}},"submit_button_8BmWa9":{"type":"submit_button","settings":{"submit_batn":""}},"sub_heading_6Dc8gY":{"type":"sub_heading","settings":{"sub_heading":"<h6>It is our priority to provide you with the exceptional service you have come to expect from Cloud9linens. Your feedback is important to us. Please note that RalphLauren.com does not use your email for promotional purposes or disclose it to a third party. Privacy Notice Please be sure to include in any email or postal mail request your full name, email address, postal address, and any message.<\/h6>"}}},"block_order":["email_c4RUgV","confirm_email_rMaBxi","phone_number_VMT9Y9","order_number_chNCLc","subject_fyrNbB","message_c3MUa6","submit_button_8BmWa9","sub_heading_6Dc8gY"],"settings":{"sec_heading":"CONTACT US","first_nam":"First name","first_name_req":true,"custom_heading_aligment":"left","my-content_text_color":"#041e3a","last_nam":"Last name","last_name_req":true}},"ed4f07d9-c6eb-40af-96ea-a45e3400b01d":{"type":"custom-liquid","disabled":true,"settings":{"custom_liquid":"<div class=\"my_contact_usa\">\n<div class=\"my_contact_usa_row\">\n<div class=\"My_contact_usa_section\">\n<div class=\"My_contact_heading\">\n<h3>United States & Europe <\/h3>\n<\/div>\n<div class=\"my_contact_pera\">\n<p>\nIf you have questions or need assistance, please contact us:\nWe're Available\n<\/p>\n<p>\nMon-Fri: 8:00am- 8:00pm ET\n<\/p>\n<p>\nSat: 11:00am- 7:30pm ET\n<\/p>\n<p>\nSun: 9:30am- 6:00pm ET\n<\/p>\n<\/div>\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M266 630h266v-22H266v22Zm0-123h428v-22H266v22Zm0-123h428v-22H266v22ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p>Email<\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\" >\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M743 878q-95 0-196-53T363 689.5q-83-82.5-136-183T174 311q0-18.429 12.286-30.714Q198.571 268 217 268h73q18 0 30.5 10.5T337 307l19 78q3 16-1 29t-13.83 20.832L256 513q60 100 131 170t168 123l83-87q10-11 21.5-15t25.5-1l62 14q18.312 3.375 28.656 16.287Q786 746.2 786 765v70q0 18.429-12.286 30.714Q761.429 878 743 878ZM244 494l85-77q4-4 5.5-11t.5-13l-20-87q-1-8-6.5-12t-13.5-4h-85q-6 0-10 4t-4 10q-2 40 11.5 88.5T244 494Zm332 321q41 22 91 32t83 10q6 0 10-4t4-10v-84q0-8-4-13.5t-12-6.5l-71-15q-6-1-10.5.5T657 730l-81 85ZM244 494Zm332 321Z\"\/><\/svg><\/svg>\n<\/div>\n<p><a href=\"tel:+4733378901\">+47 333 78 901<\/a><\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M316 523q11 0 19.5-8.5T344 495q0-11-8.5-19.5T316 467q-12 0-20 8.5t-8 19.5q0 11 8 19.5t20 8.5Zm165 0q11 0 19.5-8.5T509 495q0-11-8.5-19.5T481 467q-11 0-19.5 8.5T453 495q0 11 8.5 19.5T481 523Zm163 0q11 0 19.5-8.5T672 495q0-11-8.5-19.5T644 467q-11 0-19.5 8.5T616 495q0 11 8.5 19.5T644 523ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p><\/p>\n<\/div>\n<\/div>\n\n<div class=\"My_contact_usa_section\">\n<div class=\"My_contact_heading\">\n<h3>Africa & Middle East<\/h3>\n<\/div>\n<div class=\"my_contact_pera\">\n<p>\nIf you have questions or need assistance, please contact us:\nWe're Available\n<\/p>\n<p>\nSun-Thur: 8:00am- 8:00pm GMT\n<\/p>\n<p>\nSat: 11:00am- 7:30pm GMT\n<\/p>\n<p>\nSun: 9:30am- 6:00pm GMT\n<\/p>\n<\/div>\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M266 630h266v-22H266v22Zm0-123h428v-22H266v22Zm0-123h428v-22H266v22ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p>Email<\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M316 523q11 0 19.5-8.5T344 495q0-11-8.5-19.5T316 467q-12 0-20 8.5t-8 19.5q0 11 8 19.5t20 8.5Zm165 0q11 0 19.5-8.5T509 495q0-11-8.5-19.5T481 467q-11 0-19.5 8.5T453 495q0 11 8.5 19.5T481 523Zm163 0q11 0 19.5-8.5T672 495q0-11-8.5-19.5T644 467q-11 0-19.5 8.5T616 495q0 11 8.5 19.5T644 523ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p><\/p>\n<\/div>\n\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M743 878q-95 0-196-53T363 689.5q-83-82.5-136-183T174 311q0-18.429 12.286-30.714Q198.571 268 217 268h73q18 0 30.5 10.5T337 307l19 78q3 16-1 29t-13.83 20.832L256 513q60 100 131 170t168 123l83-87q10-11 21.5-15t25.5-1l62 14q18.312 3.375 28.656 16.287Q786 746.2 786 765v70q0 18.429-12.286 30.714Q761.429 878 743 878ZM244 494l85-77q4-4 5.5-11t.5-13l-20-87q-1-8-6.5-12t-13.5-4h-85q-6 0-10 4t-4 10q-2 40 11.5 88.5T244 494Zm332 321q41 22 91 32t83 10q6 0 10-4t4-10v-84q0-8-4-13.5t-12-6.5l-71-15q-6-1-10.5.5T657 730l-81 85ZM244 494Zm332 321Z\"\/><\/svg><\/svg>\n<\/div>\n<p><a href=\"tel:+4733378901\">+47 333 78 901<\/a><\/p>\n<\/div>\n\n\n\n<\/div>\n<div class=\"My_contact_image img-contct\">\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0602\/8673\/0497\/files\/IMG_1296_67a0156e-c292-40a9-ad80-150b6ac8a662.jpg?v=1722328121\">\n<\/div>\n<\/div>\n<\/div>\n\n<style>\n\n.my_contact_usa_row {\n    display: flex;\n    justify-content: space-between;\n    background:#041E3A;\n    color: #fff;\n}\n.My_contact_heading h3 {\n    color: #fff;\n    padding-left: 45px;\n}\n.my_contact_pera {\n    margin-top: 50px;\n    margin-bottom: 30px;\n    display: flex;\n    flex-direction: column;\n    gap: 20px;\n    padding-left: 45px;\n}\n.my_contact_svg {\n    display: flex;\n    gap: 15px;\n    padding-bottom: 20px;\n}\n.My_contact_usa_section {\n    margin-top: 100px;\n    margin-left: 90px;\n}\n.my_contact_svg_pera svg {\n    fill: #fff;\n}\n.My_contact_image {\n    width: 100%;\n    max-width: 23%;\n    height: auto;\n}\n\n.My_contact_image img {\n    width: 100%;\n}\n@media only screen and (max-width: 768px) {\n\n .my_contact_usa_row {\n     flex-wrap: wrap;\n }\n\n .My_contact_usa_section {\n     margin-top: 45px;\n     margin-left: 25px;\n  }\n\n  .My_contact_image {\n    width: 100%;\n    max-width: 100%;\n    height: auto;\n    padding: 0px;\n}\n\n\n   .My_contact_heading h3 {\n      color: #fff;\n      padding-left: 0px; \n    }\n    \n    .my_contact_pera {\n      padding-left: 0px;\n    }\n}\n\n@media (min-width: 769px) and (max-width: 820px) {\n\n   .my_contact_usa_row {\n      flex-wrap: wrap;\n    }\n .my_contact_pera {\n    padding-left: 0px;\n    }\n\n    .My_contact_heading h3{\n     padding-left: 0px;\n     }\n\n    .My_contact_usa_section {\n    margin-top: 65px;\n      }\n    \n   .My_contact_image {\n    width: 100%;\n    max-width: 68%;\n    height: auto;\n    padding: 45px 0px 45px 75px;\n}\n}\n  \n}\n@media (min-width: 821px) and (max-width: 1024px) {\n\n .My_contact_usa_section {\n    margin-top: 50px;\n    margin-left: 40px;\n}\n\n.My_contact_heading h3 {\n    padding-left: 0px;\n}\n.my_contact_pera {\n    padding-left: 0px;\n}\n.My_contact_image {\n    width: 40%;\n    height: auto;\n}\n  \n}\n\n@media only screen and (min-width: 1024px) and (max-width: 1366px) { \n\n.img-contct{\nwidth: 100% !important;\n padding: 0 1.5rem !important;\n}\n\n.img-contct img{\nwidth: 100% !important;\n height: 100% !important;\n}\n}\n\n<\/style>","custom_class":"my_contact_usa"}}},"order":["main","f538a340-bf07-44d6-bd5f-daf735cdd8ac","rich_text_UFQ6jq","a48de578-02ae-40a0-8817-b6ae1f12f50b","67d86ce4-3d60-4098-b900-c74d5572d0d3","4d5d06ac-e049-46ef-8b42-41304d10e29a","custom_liquid_afHnUt","custom_contact_form_ETydPV","ed4f07d9-c6eb-40af-96ea-a45e3400b01d"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "MY ACCOUNT",
+            "custom_button_link": "https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "Shipping and Returns",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-shipping-returns-policy",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c7c46031-da20-4032-ab47-38d460c1ec74": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "Order Status",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-check-order-status",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c0e78059-3099-4a11-8dc0-746b7465bee6": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "FAQ",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-frequently-asked-questions",
+            "my_button_style": "sf__btn-secondary"
+          }
+        }
+      },
+      "block_order": [
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8",
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b",
+        "c7c46031-da20-4032-ab47-38d460c1ec74",
+        "c0e78059-3099-4a11-8dc0-746b7465bee6"
+      ],
+      "custom_css": [
+        "h3 {color: #ffffff;}",
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/sun-setting-over-ocean.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "large",
+        "text_color": "white",
+        "title": "<h3 class=\"about__block-heading\">if you are unable to find the answers you need, please reach out to customer assistance.\n<\/h3>",
+        "font_size": 18,
+        "subtitle": "<h1><b>How Can We Help?<\/b><\/h1>",
+        "text": "<h5><\/h5><p><\/p>",
+        "para_font_size": 21,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size cus_size_chart",
+        "mob_content": true
+      }
+    },
+    "rich_text_UFQ6jq": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "<body>\n<br>\n<br>\n<div style=\"text-align:center;\"><h2><b>CUSTOMER SERVICE<\/b><\/h2><\/div>\n<br>\n\n\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Contact Us<\/title>\n<br>\n    <link rel=\"stylesheet\" href=\"styles.css\">\n\n\n    <div class=\"contact-us\">\n        <h2>Contact Us<\/h2>\n<h5>\n<br>WE WANT TO HEAR FROM YOU...\n        <div class=\"contact-methods\">\n            <div class=\"method\">\n<br>\n                <h3><b>Head office <\/b><\/h3>\n<br>\n                <p><\/p>\n<h3>We're available:<h3>\n<br>\n                <\/h3>\n<\/h3>\n<p><\/p>\n<h5>Mon – Fri: 8:00am – 8:00pm ET<h5>\n                <\/h5>\n<\/h5>\n<p><\/p>\n<h5>Sat: 11:00am – 7:30pm ET<h5>\n                <\/h5>\n<\/h5>\n<p><\/p>\n<h5>Sun: 9:30am – 6:00pm ET\n                <\/h5>\n<p><\/p>\n<h5>Phone: <a href=\"tel:888-475-7674\">888-475-7674<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n               <br><h3><b>Email Us<\/b><\/h3>\n<br>\n                <p><\/p>\n<h5>For any inquiries, email us at:\n                <\/h5>\n<p><\/p>\n<h5>\n<a href=\"mailto:customer_assistance@cloud9linens.com\">customer_assistance@cloud9linens.com<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n              <br><h3><b>Text Us<\/b><\/h3>\n<br><p><\/p>\n<h5>Cloud9linens now offers customer support via text message.\n                <\/h5>\n<p><\/p>\n<h5>Send a message to: <a href=\"sms:13155620208\">1-315-562-0000<\/a>\n            <\/h5>\n<\/div>\n            <div class=\"method\">\n               <br> <h3><b>Live Chat<\/b><\/h3>\n<br>\n                <p><\/p>\n<h5>\n<a href=\"#\" onclick=\"openLiveChat()\">Start a live chat<\/a>\n            <\/h5>\n<\/div>\n        <\/div>\n    <\/h5>\n<\/div>\n    <script>\n        function openLiveChat() {\n            \/\/ Code to initiate live chat\n        }\n    <\/script>\n\n<\/body>",
+        "custom-class": ""
+      }
+    },
+    "a48de578-02ae-40a0-8817-b6ae1f12f50b": {
+      "type": "custom_contact_form",
+      "blocks": {
+        "0965950e-5581-4491-a1a6-1cc41d2ae6f4": {
+          "type": "Phone_number",
+          "settings": {
+            "ph_number": "PHONE",
+            "phone_req": true
+          }
+        },
+        "e24d0a08-59ab-4195-b4ae-52d37b31e0da": {
+          "type": "email",
+          "settings": {
+            "gmail": "Email",
+            "email_req": true
+          }
+        },
+        "11b8ccd8-4f51-4175-a2d6-906c6bfa413a": {
+          "type": "message",
+          "settings": {
+            "message": "MESSAGE"
+          }
+        },
+        "9d6e06df-80b9-49e0-b858-32560a70a058": {
+          "type": "subject",
+          "settings": {
+            "Subject-text": "SUBJECT"
+          }
+        },
+        "dafb658f-310c-4be3-b91e-b96bed4a623a": {
+          "type": "submit_button",
+          "settings": {
+            "submit_batn": ""
+          }
+        }
+      },
+      "block_order": [
+        "0965950e-5581-4491-a1a6-1cc41d2ae6f4",
+        "e24d0a08-59ab-4195-b4ae-52d37b31e0da",
+        "11b8ccd8-4f51-4175-a2d6-906c6bfa413a",
+        "9d6e06df-80b9-49e0-b858-32560a70a058",
+        "dafb658f-310c-4be3-b91e-b96bed4a623a"
+      ],
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+        "sec_heading": "Email",
+        "first_nam": "First Name",
+        "first_name_req": true,
+        "custom_heading_aligment": "center",
+        "my-content_text_color": "white",
+        "last_nam": "Last Name",
+        "last_name_req": true
+      }
+    },
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3": {
+      "type": "globo-formbuilder",
+      "settings": {
+        "form_id": "NzMyNTY="
+      }
+    },
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>",
+        "custom_class": ""
+      }
+    },
+    "custom_liquid_afHnUt": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "{% render 'profile_tab' %}",
+        "custom_class": ""
+      }
+    },
+    "custom_contact_form_ETydPV": {
+      "type": "custom_contact_form",
+      "blocks": {
+        "email_c4RUgV": {
+          "type": "email",
+          "settings": {
+            "gmail": "Email",
+            "email_req": true
+          }
+        },
+        "confirm_email_rMaBxi": {
+          "type": "confirm_email",
+          "settings": {
+            "con_gmail": "Confirm email",
+            "con_email_req": true
+          }
+        },
+        "phone_number_VMT9Y9": {
+          "type": "Phone_number",
+          "settings": {
+            "ph_number": "Phone number",
+            "phone_req": true
+          }
+        },
+        "order_number_chNCLc": {
+          "type": "order_number",
+          "settings": {
+            "order_number": "Order number",
+            "order_req": true
+          }
+        },
+        "subject_fyrNbB": {
+          "type": "subject",
+          "settings": {
+            "Subject-text": "SUBJECT"
+          }
+        },
+        "message_c3MUa6": {
+          "type": "message",
+          "settings": {
+            "message": "Message"
+          }
+        },
+        "submit_button_8BmWa9": {
+          "type": "submit_button",
+          "settings": {
+            "submit_batn": ""
+          }
+        },
+        "sub_heading_6Dc8gY": {
+          "type": "sub_heading",
+          "settings": {
+            "sub_heading": "<h6>It is our priority to provide you with the exceptional service you have come to expect from Cloud9linens. Your feedback is important to us. Please note that RalphLauren.com does not use your email for promotional purposes or disclose it to a third party. Privacy Notice Please be sure to include in any email or postal mail request your full name, email address, postal address, and any message.<\/h6>"
+          }
+        }
+      },
+      "block_order": [
+        "email_c4RUgV",
+        "confirm_email_rMaBxi",
+        "phone_number_VMT9Y9",
+        "order_number_chNCLc",
+        "subject_fyrNbB",
+        "message_c3MUa6",
+        "submit_button_8BmWa9",
+        "sub_heading_6Dc8gY"
+      ],
+      "settings": {
+        "sec_heading": "CONTACT US",
+        "first_nam": "First name",
+        "first_name_req": true,
+        "custom_heading_aligment": "left",
+        "my-content_text_color": "#041e3a",
+        "last_nam": "Last name",
+        "last_name_req": true
+      }
+    },
+    "ed4f07d9-c6eb-40af-96ea-a45e3400b01d": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div class=\"my_contact_usa\">\n<div class=\"my_contact_usa_row\">\n<div class=\"My_contact_usa_section\">\n<div class=\"My_contact_heading\">\n<h3>United States & Europe <\/h3>\n<\/div>\n<div class=\"my_contact_pera\">\n<p>\nIf you have questions or need assistance, please contact us:\nWe're Available\n<\/p>\n<p>\nMon-Fri: 8:00am- 8:00pm ET\n<\/p>\n<p>\nSat: 11:00am- 7:30pm ET\n<\/p>\n<p>\nSun: 9:30am- 6:00pm ET\n<\/p>\n<\/div>\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M266 630h266v-22H266v22Zm0-123h428v-22H266v22Zm0-123h428v-22H266v22ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p>Email<\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\" >\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M743 878q-95 0-196-53T363 689.5q-83-82.5-136-183T174 311q0-18.429 12.286-30.714Q198.571 268 217 268h73q18 0 30.5 10.5T337 307l19 78q3 16-1 29t-13.83 20.832L256 513q60 100 131 170t168 123l83-87q10-11 21.5-15t25.5-1l62 14q18.312 3.375 28.656 16.287Q786 746.2 786 765v70q0 18.429-12.286 30.714Q761.429 878 743 878ZM244 494l85-77q4-4 5.5-11t.5-13l-20-87q-1-8-6.5-12t-13.5-4h-85q-6 0-10 4t-4 10q-2 40 11.5 88.5T244 494Zm332 321q41 22 91 32t83 10q6 0 10-4t4-10v-84q0-8-4-13.5t-12-6.5l-71-15q-6-1-10.5.5T657 730l-81 85ZM244 494Zm332 321Z\"\/><\/svg><\/svg>\n<\/div>\n<p><a href=\"tel:+4733378901\">+47 333 78 901<\/a><\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M316 523q11 0 19.5-8.5T344 495q0-11-8.5-19.5T316 467q-12 0-20 8.5t-8 19.5q0 11 8 19.5t20 8.5Zm165 0q11 0 19.5-8.5T509 495q0-11-8.5-19.5T481 467q-11 0-19.5 8.5T453 495q0 11 8.5 19.5T481 523Zm163 0q11 0 19.5-8.5T672 495q0-11-8.5-19.5T644 467q-11 0-19.5 8.5T616 495q0 11 8.5 19.5T644 523ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p><\/p>\n<\/div>\n<\/div>\n\n<div class=\"My_contact_usa_section\">\n<div class=\"My_contact_heading\">\n<h3>Africa & Middle East<\/h3>\n<\/div>\n<div class=\"my_contact_pera\">\n<p>\nIf you have questions or need assistance, please contact us:\nWe're Available\n<\/p>\n<p>\nSun-Thur: 8:00am- 8:00pm GMT\n<\/p>\n<p>\nSat: 11:00am- 7:30pm GMT\n<\/p>\n<p>\nSun: 9:30am- 6:00pm GMT\n<\/p>\n<\/div>\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M266 630h266v-22H266v22Zm0-123h428v-22H266v22Zm0-123h428v-22H266v22ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p>Email<\/p>\n<\/div>\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M316 523q11 0 19.5-8.5T344 495q0-11-8.5-19.5T316 467q-12 0-20 8.5t-8 19.5q0 11 8 19.5t20 8.5Zm165 0q11 0 19.5-8.5T509 495q0-11-8.5-19.5T481 467q-11 0-19.5 8.5T453 495q0 11 8.5 19.5T481 523Zm163 0q11 0 19.5-8.5T672 495q0-11-8.5-19.5T644 467q-11 0-19.5 8.5T616 495q0 11 8.5 19.5T644 523ZM132 876V282q0-23 15.613-38.5Q163.225 228 186 228h588q23 0 38.5 15.5T828 282v428q0 23-15.5 38.5T774 764H244L132 876Zm22-54 80-80h540q14 0 23-9t9-23V282q0-14-9-23t-23-9H186q-14 0-23 9t-9 23v540Zm0-540v-32 572-540Z\"\/><\/svg>\n<\/div>\n<p><\/p>\n<\/div>\n\n\n<div class=\"my_contact_svg\">\n<div class=\"my_contact_svg_pera\">\n<svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" height=\"25\" viewBox=\"0 96 960 960\" width=\"28\"><path d=\"M743 878q-95 0-196-53T363 689.5q-83-82.5-136-183T174 311q0-18.429 12.286-30.714Q198.571 268 217 268h73q18 0 30.5 10.5T337 307l19 78q3 16-1 29t-13.83 20.832L256 513q60 100 131 170t168 123l83-87q10-11 21.5-15t25.5-1l62 14q18.312 3.375 28.656 16.287Q786 746.2 786 765v70q0 18.429-12.286 30.714Q761.429 878 743 878ZM244 494l85-77q4-4 5.5-11t.5-13l-20-87q-1-8-6.5-12t-13.5-4h-85q-6 0-10 4t-4 10q-2 40 11.5 88.5T244 494Zm332 321q41 22 91 32t83 10q6 0 10-4t4-10v-84q0-8-4-13.5t-12-6.5l-71-15q-6-1-10.5.5T657 730l-81 85ZM244 494Zm332 321Z\"\/><\/svg><\/svg>\n<\/div>\n<p><a href=\"tel:+4733378901\">+47 333 78 901<\/a><\/p>\n<\/div>\n\n\n\n<\/div>\n<div class=\"My_contact_image img-contct\">\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0602\/8673\/0497\/files\/IMG_1296_67a0156e-c292-40a9-ad80-150b6ac8a662.jpg?v=1722328121\">\n<\/div>\n<\/div>\n<\/div>\n\n<style>\n\n.my_contact_usa_row {\n    display: flex;\n    justify-content: space-between;\n    background:#041E3A;\n    color: #fff;\n}\n.My_contact_heading h3 {\n    color: #fff;\n    padding-left: 45px;\n}\n.my_contact_pera {\n    margin-top: 50px;\n    margin-bottom: 30px;\n    display: flex;\n    flex-direction: column;\n    gap: 20px;\n    padding-left: 45px;\n}\n.my_contact_svg {\n    display: flex;\n    gap: 15px;\n    padding-bottom: 20px;\n}\n.My_contact_usa_section {\n    margin-top: 100px;\n    margin-left: 90px;\n}\n.my_contact_svg_pera svg {\n    fill: #fff;\n}\n.My_contact_image {\n    width: 100%;\n    max-width: 23%;\n    height: auto;\n}\n\n.My_contact_image img {\n    width: 100%;\n}\n@media only screen and (max-width: 768px) {\n\n .my_contact_usa_row {\n     flex-wrap: wrap;\n }\n\n .My_contact_usa_section {\n     margin-top: 45px;\n     margin-left: 25px;\n  }\n\n  .My_contact_image {\n    width: 100%;\n    max-width: 100%;\n    height: auto;\n    padding: 0px;\n}\n\n\n   .My_contact_heading h3 {\n      color: #fff;\n      padding-left: 0px; \n    }\n    \n    .my_contact_pera {\n      padding-left: 0px;\n    }\n}\n\n@media (min-width: 769px) and (max-width: 820px) {\n\n   .my_contact_usa_row {\n      flex-wrap: wrap;\n    }\n .my_contact_pera {\n    padding-left: 0px;\n    }\n\n    .My_contact_heading h3{\n     padding-left: 0px;\n     }\n\n    .My_contact_usa_section {\n    margin-top: 65px;\n      }\n    \n   .My_contact_image {\n    width: 100%;\n    max-width: 68%;\n    height: auto;\n    padding: 45px 0px 45px 75px;\n}\n}\n  \n}\n@media (min-width: 821px) and (max-width: 1024px) {\n\n .My_contact_usa_section {\n    margin-top: 50px;\n    margin-left: 40px;\n}\n\n.My_contact_heading h3 {\n    padding-left: 0px;\n}\n.my_contact_pera {\n    padding-left: 0px;\n}\n.My_contact_image {\n    width: 40%;\n    height: auto;\n}\n  \n}\n\n@media only screen and (min-width: 1024px) and (max-width: 1366px) { \n\n.img-contct{\nwidth: 100% !important;\n padding: 0 1.5rem !important;\n}\n\n.img-contct img{\nwidth: 100% !important;\n height: 100% !important;\n}\n}\n\n<\/style>",
+        "custom_class": "my_contact_usa"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac",
+    "rich_text_UFQ6jq",
+    "a48de578-02ae-40a0-8817-b6ae1f12f50b",
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3",
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a",
+    "custom_liquid_afHnUt",
+    "custom_contact_form_ETydPV",
+    "ed4f07d9-c6eb-40af-96ea-a45e3400b01d"
+  ]
+}

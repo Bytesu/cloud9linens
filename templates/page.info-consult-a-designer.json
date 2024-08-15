@@ -1,1 +1,466 @@
-{"sections":{"main":{"type":"page-about-us","disabled":true,"settings":{}},"f538a340-bf07-44d6-bd5f-daf735cdd8ac":{"type":"image-with-text-2","blocks":{"61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8":{"type":"Button","settings":{"custom_button_text":"MY ACCOUNT","custom_button_link":"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount","my_button_style":"sf__btn-secondary"}},"b77ddc79-627d-4d27-ae79-e6dede66ab7b":{"type":"Button","settings":{"custom_button_text":"SHIPPING & RETURNS","custom_button_link":"shopify:\/\/pages\/customer-care-shipping-returns-policy","my_button_style":"sf__btn-secondary"}},"c7c46031-da20-4032-ab47-38d460c1ec74":{"type":"Button","settings":{"custom_button_text":"ORDER STATUS","custom_button_link":"shopify:\/\/pages\/customer-care-check-order-status","my_button_style":"sf__btn-secondary"}},"c0e78059-3099-4a11-8dc0-746b7465bee6":{"type":"Button","settings":{"custom_button_text":"FAQ","custom_button_link":"shopify:\/\/pages\/customer-care-frequently-asked-questions","my_button_style":"sf__btn-secondary"}}},"block_order":["61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8","b77ddc79-627d-4d27-ae79-e6dede66ab7b","c7c46031-da20-4032-ab47-38d460c1ec74","c0e78059-3099-4a11-8dc0-746b7465bee6"],"custom_css":["h3 {color: #ffffff;}","h1 {color: #ffffff;}","h4 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/mbann.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"large","text_color":"white","title":"<h4 class=\"about__block-heading\">Let Us Serve You: Reach Out with Your Inquiries and Expect a Prompt Response<\/h4>","font_size":18,"subtitle":"<h1><b>CONSULT DESIGN TEAM<\/b><\/h1>","text":"","para_font_size":21,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size cus_size_chart","mob_content":true}},"rich_text_zc448t":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"rich_text_7PQCyP":{"type":"Rich-text","settings":{"rich-heading":"<h2><b>CONSULT A DESIGNER<\/b><\/h2>","richtext-prt":"<br><p><\/p><div style=\"text-align:left;\">\n<h3 class=\"about__block-heading\">At Cloud9linens, Branding Partners are able to choose from a variety of styles and designs and are able to customize their measurements. You can pick from various swatches in every product of interest or make your own branded tex-tiles, customizing colors, patterns, monograms, prints, jacquard patterns, and thread counts as the project owner desires or the interior designer recommends.<\/h3>\n<br>\n<p><\/p>\n<h3 class=\"about__block-heading\">You can make your own signature textiles and fabrics. Long-staple Egyptian cotton is our core strength. Its composition can be adjusted as per client requirements. Our product lines do not end at bed linens. We are in the terry industry, bedding essentials dining linens, curtains, uniforms, lounging products, and, last but not least, outdoor textiles. Their finished product is used for clubhouses, restaurants, spas, and upholstery.<\/h3>\n<br>\n<h3 class=\"about__block-heading\">Cloud9linens' custom design team will help you pick the best fabrics and materials that best suit your project requirements. Our team will be with you throughout the project. We will visit the venue to take measurements and supply all of the design specifications for each product. We will send videos as production proceeds to keep our client in the loop. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/h3>\n<\/div>","custom-class":""}},"collection_list_TPwHG4":{"type":"collection-list","blocks":{"collection_block_GU47aE":{"type":"collection_block","settings":{"collection":"","title":"Step 1","button_label":"Pick Your Products","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"collection_block_bfNdUb":{"type":"collection_block","settings":{"collection":"","title":"Step 2","button_label":"Pick From Swatches","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"collection_block_gq9N7H":{"type":"collection_block","settings":{"collection":"","title":"Step 3","button_label":"Designs & Specs","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"collection_block_3aKpqb":{"type":"collection_block","settings":{"collection":"","title":"Step 4","button_label":"Fabrication & Finish","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"collection_block_D3JKVz":{"type":"collection_block","settings":{"collection":"","title":"Step 5","button_label":"Terms & Condition","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"collection_block_6kHhWa":{"type":"collection_block","settings":{"collection":"","title":"Lead Time","button_label":"Delivery","button_link":"","button_style":"sf__btn-link","button_size":"","item_image":"shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"}},"banner_cfzpjb":{"type":"banner","disabled":true,"settings":{"collection":"","title":"1 Pick The Products","description":"<h3><b>STEP 1<\/b><\/h3>","item_bg":"#041e3a","item_text_color":"#ffffff"}}},"block_order":["collection_block_GU47aE","collection_block_bfNdUb","collection_block_gq9N7H","collection_block_3aKpqb","collection_block_D3JKVz","collection_block_6kHhWa","banner_cfzpjb"],"custom_css":["h3 {color: #ffffff;}"],"settings":{"heading":"How Can We Help","subheading":"","description":"<h4>6 Steps to make your own product. Talk to our Design specialist & start production<\/h4>","header_alignment":"center","container":"container-fluid","bdr_none":false,"bdr_none_image":true,"image_batn_none":true,"background_color":"#ffffff","text_color":"#ffffff","super_font_size":36,"sub_font_size":60,"mob_super_font_size":36,"mob_sub_font_size":60,"mb-font-size":40,"description_font_size":24,"layout":"left-side","card_style":"inside","text_alignment":"center","hover_effect":"none","show_product_count":false,"hide-collection-text":false,"count_inline_title":true,"image_rounded":false,"items_per_row":2,"item_gap":15,"enable_slider":true,"show_pagination":false,"show_navigation":false,"autorotate":true,"autorotate_speed":3,"use_scroll_mobile":true,"mobile_gap":10,"hidden_slide_control_mobile":false,"custom_class":""}},"collection_list_9eEmbV":{"type":"collection-list","blocks":{"collection_block_V8wTnw":{"type":"collection_block","disabled":true,"settings":{"collection":"","title":"","button_label":"Shop Collection","button_link":"","button_style":"sf__btn-link","button_size":""}},"collection_block_TFDw8w":{"type":"collection_block","disabled":true,"settings":{"collection":"","title":"","button_label":"Shop Collection","button_link":"","button_style":"sf__btn-link","button_size":""}},"collection_block_MDA9kx":{"type":"collection_block","disabled":true,"settings":{"collection":"","title":"","button_label":"Shop Collection","button_link":"","button_style":"sf__btn-link","button_size":""}},"banner_T9pLPe":{"type":"banner","settings":{"collection":"","title":"New season in town","description":"Claritas est etiam processus dynamicus qui sequitur.","item_bg":"#000000","item_text_color":"#ffffff"}}},"block_order":["collection_block_V8wTnw","collection_block_TFDw8w","collection_block_MDA9kx","banner_T9pLPe"],"disabled":true,"settings":{"heading":"Shop by collections","subheading":"","description":"","header_alignment":"left","container":"container-fluid","bdr_none":true,"bdr_none_image":true,"image_batn_none":true,"background_color":"","text_color":"#000000","super_font_size":36,"sub_font_size":60,"mob_super_font_size":36,"mob_sub_font_size":60,"mb-font-size":40,"description_font_size":24,"layout":"grid","card_style":"standard","text_alignment":"left","hover_effect":"scaling-down","show_product_count":true,"hide-collection-text":false,"count_inline_title":true,"image_rounded":false,"items_per_row":4,"item_gap":30,"enable_slider":false,"show_pagination":false,"show_navigation":false,"autorotate":false,"autorotate_speed":5,"use_scroll_mobile":true,"mobile_gap":10,"hidden_slide_control_mobile":false,"custom_class":""}},"e16c3aa8-617d-48bf-8e99-a5c3276005d0":{"type":"custom-content","blocks":{"template--16747031331073__e16c3aa8-617d-48bf-8e99-a5c3276005d0-1683624660b9cfcd91-1":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/IMG_1293.jpg","link":"","width":"100%","alignment":"center","block_custom_class":""}}},"block_order":["template--16747031331073__e16c3aa8-617d-48bf-8e99-a5c3276005d0-1683624660b9cfcd91-1"],"disabled":true,"settings":{"heading":"","subheading":"","description":"","column_size":50,"header_alignment":"center","container":"container-fluid","background_color":"","gap":30,"wd_container":true,"custom_padding_bottom":16,"use_scroll_mobile":false,"gap_mobile":16,"custom_class":""}},"rich_text_6kVfdR":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"a48de578-02ae-40a0-8817-b6ae1f12f50b":{"type":"custom_contact_form","blocks":{"0965950e-5581-4491-a1a6-1cc41d2ae6f4":{"type":"Phone_number","settings":{"ph_number":"PHONE","phone_req":false}},"e24d0a08-59ab-4195-b4ae-52d37b31e0da":{"type":"email","settings":{"gmail":"Email","email_req":true}},"11b8ccd8-4f51-4175-a2d6-906c6bfa413a":{"type":"message","settings":{"message":"MESSAGE"}},"9d6e06df-80b9-49e0-b858-32560a70a058":{"type":"subject","settings":{"Subject-text":"SUBJECT"}},"dafb658f-310c-4be3-b91e-b96bed4a623a":{"type":"submit_button","settings":{"submit_batn":""}}},"block_order":["0965950e-5581-4491-a1a6-1cc41d2ae6f4","e24d0a08-59ab-4195-b4ae-52d37b31e0da","11b8ccd8-4f51-4175-a2d6-906c6bfa413a","9d6e06df-80b9-49e0-b858-32560a70a058","dafb658f-310c-4be3-b91e-b96bed4a623a"],"custom_css":[],"settings":{"sec_heading":"Book A zoom Call","first_nam":"NAME","first_name_req":true,"custom_heading_aligment":"center","my-content_text_color":"#041e3a","last_nam":"Last Name","last_name_req":true}},"67d86ce4-3d60-4098-b900-c74d5572d0d3":{"type":"globo-formbuilder","settings":{"form_id":"NzMyNTY="}},"4d5d06ac-e049-46ef-8b42-41304d10e29a":{"type":"custom-liquid","settings":{"custom_liquid":"<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>","custom_class":""}}},"order":["main","f538a340-bf07-44d6-bd5f-daf735cdd8ac","rich_text_zc448t","rich_text_7PQCyP","collection_list_TPwHG4","collection_list_9eEmbV","e16c3aa8-617d-48bf-8e99-a5c3276005d0","rich_text_6kVfdR","a48de578-02ae-40a0-8817-b6ae1f12f50b","67d86ce4-3d60-4098-b900-c74d5572d0d3","4d5d06ac-e049-46ef-8b42-41304d10e29a"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "MY ACCOUNT",
+            "custom_button_link": "https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "SHIPPING & RETURNS",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-shipping-returns-policy",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c7c46031-da20-4032-ab47-38d460c1ec74": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "ORDER STATUS",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-check-order-status",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c0e78059-3099-4a11-8dc0-746b7465bee6": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "FAQ",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-frequently-asked-questions",
+            "my_button_style": "sf__btn-secondary"
+          }
+        }
+      },
+      "block_order": [
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8",
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b",
+        "c7c46031-da20-4032-ab47-38d460c1ec74",
+        "c0e78059-3099-4a11-8dc0-746b7465bee6"
+      ],
+      "custom_css": [
+        "h3 {color: #ffffff;}",
+        "h1 {color: #ffffff;}",
+        "h4 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/mbann.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "large",
+        "text_color": "white",
+        "title": "<h4 class=\"about__block-heading\">Let Us Serve You: Reach Out with Your Inquiries and Expect a Prompt Response<\/h4>",
+        "font_size": 18,
+        "subtitle": "<h1><b>CONSULT DESIGN TEAM<\/b><\/h1>",
+        "text": "",
+        "para_font_size": 21,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size cus_size_chart",
+        "mob_content": true
+      }
+    },
+    "rich_text_zc448t": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "rich_text_7PQCyP": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "<h2><b>CONSULT A DESIGNER<\/b><\/h2>",
+        "richtext-prt": "<br><p><\/p><div style=\"text-align:left;\">\n<h3 class=\"about__block-heading\">At Cloud9linens, Branding Partners are able to choose from a variety of styles and designs and are able to customize their measurements. You can pick from various swatches in every product of interest or make your own branded tex-tiles, customizing colors, patterns, monograms, prints, jacquard patterns, and thread counts as the project owner desires or the interior designer recommends.<\/h3>\n<br>\n<p><\/p>\n<h3 class=\"about__block-heading\">You can make your own signature textiles and fabrics. Long-staple Egyptian cotton is our core strength. Its composition can be adjusted as per client requirements. Our product lines do not end at bed linens. We are in the terry industry, bedding essentials dining linens, curtains, uniforms, lounging products, and, last but not least, outdoor textiles. Their finished product is used for clubhouses, restaurants, spas, and upholstery.<\/h3>\n<br>\n<h3 class=\"about__block-heading\">Cloud9linens' custom design team will help you pick the best fabrics and materials that best suit your project requirements. Our team will be with you throughout the project. We will visit the venue to take measurements and supply all of the design specifications for each product. We will send videos as production proceeds to keep our client in the loop. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.<\/h3>\n<\/div>",
+        "custom-class": ""
+      }
+    },
+    "collection_list_TPwHG4": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_block_GU47aE": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Step 1",
+            "button_label": "Pick Your Products",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "collection_block_bfNdUb": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Step 2",
+            "button_label": "Pick From Swatches",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "collection_block_gq9N7H": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Step 3",
+            "button_label": "Designs & Specs",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "collection_block_3aKpqb": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Step 4",
+            "button_label": "Fabrication & Finish",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "collection_block_D3JKVz": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Step 5",
+            "button_label": "Terms & Condition",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "collection_block_6kHhWa": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "",
+            "title": "Lead Time",
+            "button_label": "Delivery",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify:\/\/shop_images\/Consult-a-design-team-member.jpg"
+          }
+        },
+        "banner_cfzpjb": {
+          "type": "banner",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "title": "1 Pick The Products",
+            "description": "<h3><b>STEP 1<\/b><\/h3>",
+            "item_bg": "#041e3a",
+            "item_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_GU47aE",
+        "collection_block_bfNdUb",
+        "collection_block_gq9N7H",
+        "collection_block_3aKpqb",
+        "collection_block_D3JKVz",
+        "collection_block_6kHhWa",
+        "banner_cfzpjb"
+      ],
+      "custom_css": [
+        "h3 {color: #ffffff;}"
+      ],
+      "settings": {
+        "heading": "How Can We Help",
+        "subheading": "",
+        "description": "<h4>6 Steps to make your own product. Talk to our Design specialist & start production<\/h4>",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "bdr_none": false,
+        "bdr_none_image": true,
+        "image_batn_none": true,
+        "background_color": "#ffffff",
+        "text_color": "#ffffff",
+        "super_font_size": 36,
+        "sub_font_size": 60,
+        "mob_super_font_size": 36,
+        "mob_sub_font_size": 60,
+        "mb-font-size": 40,
+        "description_font_size": 24,
+        "layout": "left-side",
+        "card_style": "inside",
+        "text_alignment": "center",
+        "hover_effect": "none",
+        "show_product_count": false,
+        "hide-collection-text": false,
+        "count_inline_title": true,
+        "image_rounded": false,
+        "items_per_row": 2,
+        "item_gap": 15,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": false,
+        "autorotate": true,
+        "autorotate_speed": 3,
+        "use_scroll_mobile": true,
+        "mobile_gap": 10,
+        "hidden_slide_control_mobile": false,
+        "custom_class": ""
+      }
+    },
+    "collection_list_9eEmbV": {
+      "type": "collection-list",
+      "blocks": {
+        "collection_block_V8wTnw": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "title": "",
+            "button_label": "Shop Collection",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "collection_block_TFDw8w": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "title": "",
+            "button_label": "Shop Collection",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "collection_block_MDA9kx": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "",
+            "title": "",
+            "button_label": "Shop Collection",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "banner_T9pLPe": {
+          "type": "banner",
+          "settings": {
+            "collection": "",
+            "title": "New season in town",
+            "description": "Claritas est etiam processus dynamicus qui sequitur.",
+            "item_bg": "#000000",
+            "item_text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_V8wTnw",
+        "collection_block_TFDw8w",
+        "collection_block_MDA9kx",
+        "banner_T9pLPe"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "Shop by collections",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "container": "container-fluid",
+        "bdr_none": true,
+        "bdr_none_image": true,
+        "image_batn_none": true,
+        "background_color": "",
+        "text_color": "#000000",
+        "super_font_size": 36,
+        "sub_font_size": 60,
+        "mob_super_font_size": 36,
+        "mob_sub_font_size": 60,
+        "mb-font-size": 40,
+        "description_font_size": 24,
+        "layout": "grid",
+        "card_style": "standard",
+        "text_alignment": "left",
+        "hover_effect": "scaling-down",
+        "show_product_count": true,
+        "hide-collection-text": false,
+        "count_inline_title": true,
+        "image_rounded": false,
+        "items_per_row": 4,
+        "item_gap": 30,
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "autorotate": false,
+        "autorotate_speed": 5,
+        "use_scroll_mobile": true,
+        "mobile_gap": 10,
+        "hidden_slide_control_mobile": false,
+        "custom_class": ""
+      }
+    },
+    "e16c3aa8-617d-48bf-8e99-a5c3276005d0": {
+      "type": "custom-content",
+      "blocks": {
+        "template--16747031331073__e16c3aa8-617d-48bf-8e99-a5c3276005d0-1683624660b9cfcd91-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/IMG_1293.jpg",
+            "link": "",
+            "width": "100%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--16747031331073__e16c3aa8-617d-48bf-8e99-a5c3276005d0-1683624660b9cfcd91-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": ""
+      }
+    },
+    "rich_text_6kVfdR": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "a48de578-02ae-40a0-8817-b6ae1f12f50b": {
+      "type": "custom_contact_form",
+      "blocks": {
+        "0965950e-5581-4491-a1a6-1cc41d2ae6f4": {
+          "type": "Phone_number",
+          "settings": {
+            "ph_number": "PHONE",
+            "phone_req": false
+          }
+        },
+        "e24d0a08-59ab-4195-b4ae-52d37b31e0da": {
+          "type": "email",
+          "settings": {
+            "gmail": "Email",
+            "email_req": true
+          }
+        },
+        "11b8ccd8-4f51-4175-a2d6-906c6bfa413a": {
+          "type": "message",
+          "settings": {
+            "message": "MESSAGE"
+          }
+        },
+        "9d6e06df-80b9-49e0-b858-32560a70a058": {
+          "type": "subject",
+          "settings": {
+            "Subject-text": "SUBJECT"
+          }
+        },
+        "dafb658f-310c-4be3-b91e-b96bed4a623a": {
+          "type": "submit_button",
+          "settings": {
+            "submit_batn": ""
+          }
+        }
+      },
+      "block_order": [
+        "0965950e-5581-4491-a1a6-1cc41d2ae6f4",
+        "e24d0a08-59ab-4195-b4ae-52d37b31e0da",
+        "11b8ccd8-4f51-4175-a2d6-906c6bfa413a",
+        "9d6e06df-80b9-49e0-b858-32560a70a058",
+        "dafb658f-310c-4be3-b91e-b96bed4a623a"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "sec_heading": "Book A zoom Call",
+        "first_nam": "NAME",
+        "first_name_req": true,
+        "custom_heading_aligment": "center",
+        "my-content_text_color": "#041e3a",
+        "last_nam": "Last Name",
+        "last_name_req": true
+      }
+    },
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3": {
+      "type": "globo-formbuilder",
+      "settings": {
+        "form_id": "NzMyNTY="
+      }
+    },
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac",
+    "rich_text_zc448t",
+    "rich_text_7PQCyP",
+    "collection_list_TPwHG4",
+    "collection_list_9eEmbV",
+    "e16c3aa8-617d-48bf-8e99-a5c3276005d0",
+    "rich_text_6kVfdR",
+    "a48de578-02ae-40a0-8817-b6ae1f12f50b",
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3",
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a"
+  ]
+}

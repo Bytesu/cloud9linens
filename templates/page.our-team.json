@@ -1,1 +1,353 @@
-{"sections":{"main":{"type":"page","disabled":true,"settings":{}},"image_with_text_2_AVb6J8":{"type":"image-with-text-2","blocks":{"button_LLCbbA":{"type":"Button","disabled":true,"settings":{"custom_button_text":"THE FAMILY","custom_button_link":"shopify:\/\/pages\/the-family-1948","my_button_style":"sf__btn-primary"}},"button_Nzwkax":{"type":"Button","disabled":true,"settings":{"custom_button_text":"THE TIMELINE","custom_button_link":"shopify:\/\/pages\/the-timeline","my_button_style":"sf__btn-primary"}},"button_G8g7dP":{"type":"Button","disabled":true,"settings":{"custom_button_text":"LETTERS","custom_button_link":"shopify:\/\/pages\/letters","my_button_style":"sf__btn-primary"}},"button_hNKaHB":{"type":"Button","disabled":true,"settings":{"custom_button_text":"THE AWARDS","custom_button_link":"shopify:\/\/pages\/the-awards","my_button_style":"sf__btn-primary"}},"button_6zyxBX":{"type":"Button","disabled":true,"settings":{"custom_button_text":"ABOUT US","custom_button_link":"shopify:\/\/pages\/our-story","my_button_style":"sf__btn-primary"}}},"block_order":["button_LLCbbA","button_Nzwkax","button_G8g7dP","button_hNKaHB","button_6zyxBX"],"custom_css":["h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/Cloud9linens-About-Us_Large_5a14e7d1-c6a6-487e-9629-42e3522317d5.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"medium","text_color":"white","title":"<h1><b>SHARE HOLDERS AND TEAM<\/b><\/h1>","font_size":24,"subtitle":"","text":"","para_font_size":24,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size","mob_content":true}},"icon_box_BJfBd9":{"type":"icon-box","blocks":{"iconbox_9DB4VJ":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/autumn-trees-hillside.jpg","title":"<b>Textiles Production<\/b>","description":"<h5>Mr. Haytam - 20 years of experiance<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}},"iconbox_w9bijG":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/autumn-trees-hillside.jpg","title":"<b>Terry Production<\/b>","description":"<h5>Mr Youness - 30 years Expertise<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}},"iconbox_ApmdWp":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/autumn-trees-hillside.jpg","title":"<b>Manging Partner & Design<\/b>","description":"<h5>Mr. Saladeen - 20 years Expertise<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}}},"block_order":["iconbox_9DB4VJ","iconbox_w9bijG","iconbox_ApmdWp"],"settings":{"heading":"<h2><b>Mangement Team<\/b><\/h2>","subheading":"","description":"","header_alignment":"center","container":"container-fluid","background_color":"rgba(0,0,0,0)","item_per_row":3,"item_gap":30,"item_gap_mobile":10,"card_style":"vertical","image_max_width":"70px","content_alignment":"center","hover_effect":"zoom-in","enable_slider":false,"show_pagination":false,"show_navigation":false,"use_scroll_mobile":true,"use_grid_column_mb":false,"custom_class":""}},"icon_box_nbE4N7":{"type":"icon-box","blocks":{"iconbox_6xfbUi":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg","title":"<b>Mattress & Essentials<\/b>","description":"<h5>Mr. Ahmmed - 15 years experience<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}},"iconbox_NeAyN4":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg","title":"<b>Specs & Quality Control - 8 years<\/b>","description":"<h5>Mr Safi - 8 years Expertise<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}},"iconbox_wnjR6Q":{"type":"iconbox","settings":{"image":"shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg","title":"<b>Technical Textile control<\/b>","description":"<h5>Mrs Tarik - 15 years experience<\/h5>","link":"","button_label":"","button_link":"","button_style":"sf__btn-link","button_size":""}}},"block_order":["iconbox_6xfbUi","iconbox_NeAyN4","iconbox_wnjR6Q"],"settings":{"heading":"<h2><b>Production Team<\/b><\/h2>","subheading":"","description":"","header_alignment":"center","container":"container-fluid","background_color":"rgba(0,0,0,0)","item_per_row":3,"item_gap":30,"item_gap_mobile":10,"card_style":"vertical","image_max_width":"70px","content_alignment":"center","hover_effect":"zoom-in","enable_slider":false,"show_pagination":false,"show_navigation":false,"use_scroll_mobile":true,"use_grid_column_mb":false,"custom_class":""}},"rich_text_qpYRg7":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"image_with_text_2_VrcqXY":{"type":"image-with-text-2","custom_css":["h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"container","hero_size":"small","show_overlay":true,"image":"shopify:\/\/shop_images\/IMG_4695_b8bccbfc-dade-4c45-a68f-5c7793b11404.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"medium","text_color":"white","title":"<h1><b>STRATEGY<\/b><\/h1>","font_size":24,"subtitle":"","text":"","para_font_size":24,"button_label":"Learn More","button_link":"shopify:\/\/pages\/strategy","button_style":"sf__btn-link","button_size":"","custom_class":"sec_font_size","mob_content":true}},"rich_text_kGt79L":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"image_with_text_2_jRgbNG":{"type":"image-with-text-2","custom_css":["h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"container","hero_size":"small","show_overlay":true,"image":"shopify:\/\/shop_images\/IMG_4692_a8fc4aee-808f-45f6-8360-841f993cad6f.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"medium","text_color":"white","title":"<h1><b>COMMUNITY<\/b><\/h1>","font_size":24,"subtitle":"","text":"","para_font_size":24,"button_label":"Learn More","button_link":"shopify:\/\/pages\/our-community","button_style":"sf__btn-link","button_size":"","custom_class":"sec_font_size","mob_content":true}},"rich_text_BC4f3K":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"breadcrumb_custom_F9tFfD":{"type":"breadcrumb_custom","settings":{}}},"order":["main","image_with_text_2_AVb6J8","icon_box_BJfBd9","icon_box_nbE4N7","rich_text_qpYRg7","image_with_text_2_VrcqXY","rich_text_kGt79L","image_with_text_2_jRgbNG","rich_text_BC4f3K","breadcrumb_custom_F9tFfD"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "image_with_text_2_AVb6J8": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "button_LLCbbA": {
+          "type": "Button",
+          "disabled": true,
+          "settings": {
+            "custom_button_text": "THE FAMILY",
+            "custom_button_link": "shopify:\/\/pages\/the-family-1948",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_Nzwkax": {
+          "type": "Button",
+          "disabled": true,
+          "settings": {
+            "custom_button_text": "THE TIMELINE",
+            "custom_button_link": "shopify:\/\/pages\/the-timeline",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_G8g7dP": {
+          "type": "Button",
+          "disabled": true,
+          "settings": {
+            "custom_button_text": "LETTERS",
+            "custom_button_link": "shopify:\/\/pages\/letters",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_hNKaHB": {
+          "type": "Button",
+          "disabled": true,
+          "settings": {
+            "custom_button_text": "THE AWARDS",
+            "custom_button_link": "shopify:\/\/pages\/the-awards",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_6zyxBX": {
+          "type": "Button",
+          "disabled": true,
+          "settings": {
+            "custom_button_text": "ABOUT US",
+            "custom_button_link": "shopify:\/\/pages\/our-story",
+            "my_button_style": "sf__btn-primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_LLCbbA",
+        "button_Nzwkax",
+        "button_G8g7dP",
+        "button_hNKaHB",
+        "button_6zyxBX"
+      ],
+      "custom_css": [
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/Cloud9linens-About-Us_Large_5a14e7d1-c6a6-487e-9629-42e3522317d5.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "<h1><b>SHARE HOLDERS AND TEAM<\/b><\/h1>",
+        "font_size": 24,
+        "subtitle": "",
+        "text": "",
+        "para_font_size": 24,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
+    "icon_box_BJfBd9": {
+      "type": "icon-box",
+      "blocks": {
+        "iconbox_9DB4VJ": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/autumn-trees-hillside.jpg",
+            "title": "<b>Textiles Production<\/b>",
+            "description": "<h5>Mr. Haytam - 20 years of experiance<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "iconbox_w9bijG": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/autumn-trees-hillside.jpg",
+            "title": "<b>Terry Production<\/b>",
+            "description": "<h5>Mr Youness - 30 years Expertise<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "iconbox_ApmdWp": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/autumn-trees-hillside.jpg",
+            "title": "<b>Manging Partner & Design<\/b>",
+            "description": "<h5>Mr. Saladeen - 20 years Expertise<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "iconbox_9DB4VJ",
+        "iconbox_w9bijG",
+        "iconbox_ApmdWp"
+      ],
+      "settings": {
+        "heading": "<h2><b>Mangement Team<\/b><\/h2>",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "rgba(0,0,0,0)",
+        "item_per_row": 3,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "card_style": "vertical",
+        "image_max_width": "70px",
+        "content_alignment": "center",
+        "hover_effect": "zoom-in",
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "use_scroll_mobile": true,
+        "use_grid_column_mb": false,
+        "custom_class": ""
+      }
+    },
+    "icon_box_nbE4N7": {
+      "type": "icon-box",
+      "blocks": {
+        "iconbox_6xfbUi": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg",
+            "title": "<b>Mattress & Essentials<\/b>",
+            "description": "<h5>Mr. Ahmmed - 15 years experience<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "iconbox_NeAyN4": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg",
+            "title": "<b>Specs & Quality Control - 8 years<\/b>",
+            "description": "<h5>Mr Safi - 8 years Expertise<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        },
+        "iconbox_wnjR6Q": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/seaweed-washed-up-on-beach.jpg",
+            "title": "<b>Technical Textile control<\/b>",
+            "description": "<h5>Mrs Tarik - 15 years experience<\/h5>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "iconbox_6xfbUi",
+        "iconbox_NeAyN4",
+        "iconbox_wnjR6Q"
+      ],
+      "settings": {
+        "heading": "<h2><b>Production Team<\/b><\/h2>",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "rgba(0,0,0,0)",
+        "item_per_row": 3,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "card_style": "vertical",
+        "image_max_width": "70px",
+        "content_alignment": "center",
+        "hover_effect": "zoom-in",
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "use_scroll_mobile": true,
+        "use_grid_column_mb": false,
+        "custom_class": ""
+      }
+    },
+    "rich_text_qpYRg7": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "image_with_text_2_VrcqXY": {
+      "type": "image-with-text-2",
+      "custom_css": [
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "container",
+        "hero_size": "small",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/IMG_4695_b8bccbfc-dade-4c45-a68f-5c7793b11404.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "<h1><b>STRATEGY<\/b><\/h1>",
+        "font_size": 24,
+        "subtitle": "",
+        "text": "",
+        "para_font_size": 24,
+        "button_label": "Learn More",
+        "button_link": "shopify:\/\/pages\/strategy",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
+    "rich_text_kGt79L": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "image_with_text_2_jRgbNG": {
+      "type": "image-with-text-2",
+      "custom_css": [
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "container",
+        "hero_size": "small",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/IMG_4692_a8fc4aee-808f-45f6-8360-841f993cad6f.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "<h1><b>COMMUNITY<\/b><\/h1>",
+        "font_size": 24,
+        "subtitle": "",
+        "text": "",
+        "para_font_size": 24,
+        "button_label": "Learn More",
+        "button_link": "shopify:\/\/pages\/our-community",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
+    "rich_text_BC4f3K": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "breadcrumb_custom_F9tFfD": {
+      "type": "breadcrumb_custom",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_AVb6J8",
+    "icon_box_BJfBd9",
+    "icon_box_nbE4N7",
+    "rich_text_qpYRg7",
+    "image_with_text_2_VrcqXY",
+    "rich_text_kGt79L",
+    "image_with_text_2_jRgbNG",
+    "rich_text_BC4f3K",
+    "breadcrumb_custom_F9tFfD"
+  ]
+}

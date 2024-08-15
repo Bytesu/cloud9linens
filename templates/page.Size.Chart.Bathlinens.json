@@ -1,1 +1,259 @@
-{"sections":{"main":{"type":"page-about-us","disabled":true,"settings":{}},"f538a340-bf07-44d6-bd5f-daf735cdd8ac":{"type":"image-with-text-2","blocks":{"61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8":{"type":"Button","settings":{"custom_button_text":"BEDLINENS","custom_button_link":"shopify:\/\/pages\/beddings-size-chart","my_button_style":"sf__btn-secondary"}},"b77ddc79-627d-4d27-ae79-e6dede66ab7b":{"type":"Button","settings":{"custom_button_text":"BATHLINENS","custom_button_link":"shopify:\/\/pages\/bath-size-chart","my_button_style":"sf__btn-secondary"}},"c7c46031-da20-4032-ab47-38d460c1ec74":{"type":"Button","settings":{"custom_button_text":"ESSENTIALS","custom_button_link":"shopify:\/\/pages\/bedroom-essentials-size-chart","my_button_style":"sf__btn-secondary"}},"c0e78059-3099-4a11-8dc0-746b7465bee6":{"type":"Button","settings":{"custom_button_text":"LOUNGE","custom_button_link":"shopify:\/\/pages\/lounge-wear-size-chart","my_button_style":"sf__btn-secondary"}}},"block_order":["61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8","b77ddc79-627d-4d27-ae79-e6dede66ab7b","c7c46031-da20-4032-ab47-38d460c1ec74","c0e78059-3099-4a11-8dc0-746b7465bee6"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/chart-size-3.png","bg_position":"center","image_link":"shopify:\/\/pages\/bath-size-chart","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"large","text_color":"white","title":"<h4 class=\"about__block-heading\">We are at your service. If you aren’t able to find the answers you’re looking for, please reach out to our <\/h4>","font_size":24,"subtitle":"<h1> See the fit?<\/h1>","text":"","para_font_size":21,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size  cus_size_chart","mob_content":true}},"54c15019-fa71-43b2-a603-b54b1d9383eb":{"type":"lounge-table","blocks":{"6d6f730d-a8d0-4caf-97df-c82c5261f5c0":{"type":"slide","settings":{"paragraph_id":"Towels","paragraph_class":"head-class","paragraph_id-two":"Bath","paragraph_id-three":"Hand","paragraph_id-four":"Wash","paragraph_id-five":"","paragraph_id-six":"","body_text":"#00203b","text_color":"#ffffff","paragraph_width":0}},"e441f4a4-450f-452d-ba97-b077547a7108":{"type":"slide","settings":{"paragraph_id":"in Inches","paragraph_class":"","paragraph_id-two":"56.7\" L x 28.3\" W; 600 GSM","paragraph_id-three":"32.6\" L x 19.68\" W; 600 GSM","paragraph_id-four":"11.8\" L x 11.8\" W; 600 GSM","paragraph_id-five":"","paragraph_id-six":"","body_text":"#f2f2f2","text_color":"#000000","paragraph_width":0}},"d5649de8-9b88-4556-8b96-5087e3d7b337":{"type":"slide","settings":{"paragraph_id":"In Centimeters","paragraph_class":"","paragraph_id-two":"144 L cm L x 72 cm W; 600 GSM","paragraph_id-three":"83 L cm x 50 cm W; 600 GSM","paragraph_id-four":"30 L cm x 30 cm W; 600 GSM","paragraph_id-five":"","paragraph_id-six":"","body_text":"","text_color":"#000000","paragraph_width":0}},"3e13ef28-d5fe-4160-9d20-ce5e946f664a":{"type":"slide","settings":{"paragraph_id":"Bath Robes","paragraph_class":"head-class","paragraph_id-two":"Xlarge","paragraph_id-three":"Large","paragraph_id-four":"Medium","paragraph_id-five":"Small","paragraph_id-six":"Xsmall","body_text":"#00203b","text_color":"","paragraph_width":0}},"8c8b0956-94b7-4858-9235-9202ee5d5d5a":{"type":"slide","settings":{"paragraph_id":"In Inches","paragraph_class":"","paragraph_id-two":"41.5\" from shoulder to hem","paragraph_id-three":"40\" from shoulder to hem","paragraph_id-four":"36\" from shoulder to hem","paragraph_id-five":"35\" from shoulder to hem","paragraph_id-six":"33\" from shoulder to hem","body_text":"#f2f2f2","text_color":"#000000","paragraph_width":0}},"f96c4dde-5ff5-402c-9d3c-01392933652c":{"type":"slide","settings":{"paragraph_id":"In Centimeters","paragraph_class":"","paragraph_id-two":"110 cm from shoulder to hem","paragraph_id-three":"106 cm from shoulder to hem","paragraph_id-four":"102 cm from shoulder to hem","paragraph_id-five":"96 cm from shoulder to hem","paragraph_id-six":"92 cm from shoulder to hem","body_text":"","text_color":"#000000","paragraph_width":0}},"e959b923-0c71-4b85-bdd5-65c46f60bedb":{"type":"slide","settings":{"paragraph_id":"Bath Mats","paragraph_class":"head-class","paragraph_id-two":"One Size","paragraph_id-three":"","paragraph_id-four":"","paragraph_id-five":"","paragraph_id-six":"","body_text":"#00203b","text_color":"","paragraph_width":0}},"ba3345ec-6162-41e0-bf93-640106033ee3":{"type":"slide","settings":{"paragraph_id":"In Inches","paragraph_class":"","paragraph_id-two":"32.6\" L x 19.68\" W; 800 GSM","paragraph_id-three":"","paragraph_id-four":"","paragraph_id-five":"","paragraph_id-six":"","body_text":"#f2f2f2","text_color":"#000000","paragraph_width":0}},"21c4ed18-c7d8-4636-ae33-a05fe8eea0bb":{"type":"slide","settings":{"paragraph_id":"In Centimeters","paragraph_class":"","paragraph_id-two":"83 L cm x 50 cm W; 800 GSM","paragraph_id-three":"","paragraph_id-four":"","paragraph_id-five":"","paragraph_id-six":"","body_text":"","text_color":"#000000","paragraph_width":0}}},"block_order":["6d6f730d-a8d0-4caf-97df-c82c5261f5c0","e441f4a4-450f-452d-ba97-b077547a7108","d5649de8-9b88-4556-8b96-5087e3d7b337","3e13ef28-d5fe-4160-9d20-ce5e946f664a","8c8b0956-94b7-4858-9235-9202ee5d5d5a","f96c4dde-5ff5-402c-9d3c-01392933652c","e959b923-0c71-4b85-bdd5-65c46f60bedb","ba3345ec-6162-41e0-bf93-640106033ee3","21c4ed18-c7d8-4636-ae33-a05fe8eea0bb"],"custom_css":[".lounge-content-paragraph p {text-transform: inherit;}"],"settings":{"heading_section":"BATHLINENS"}},"67d86ce4-3d60-4098-b900-c74d5572d0d3":{"type":"globo-formbuilder","disabled":true,"settings":{"form_id":"NzMyNTY="}}},"order":["main","f538a340-bf07-44d6-bd5f-daf735cdd8ac","54c15019-fa71-43b2-a603-b54b1d9383eb","67d86ce4-3d60-4098-b900-c74d5572d0d3"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "BEDLINENS",
+            "custom_button_link": "shopify:\/\/pages\/beddings-size-chart",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "BATHLINENS",
+            "custom_button_link": "shopify:\/\/pages\/bath-size-chart",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c7c46031-da20-4032-ab47-38d460c1ec74": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "ESSENTIALS",
+            "custom_button_link": "shopify:\/\/pages\/bedroom-essentials-size-chart",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c0e78059-3099-4a11-8dc0-746b7465bee6": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "LOUNGE",
+            "custom_button_link": "shopify:\/\/pages\/lounge-wear-size-chart",
+            "my_button_style": "sf__btn-secondary"
+          }
+        }
+      },
+      "block_order": [
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8",
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b",
+        "c7c46031-da20-4032-ab47-38d460c1ec74",
+        "c0e78059-3099-4a11-8dc0-746b7465bee6"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/chart-size-3.png",
+        "bg_position": "center",
+        "image_link": "shopify:\/\/pages\/bath-size-chart",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "large",
+        "text_color": "white",
+        "title": "<h4 class=\"about__block-heading\">We are at your service. If you aren’t able to find the answers you’re looking for, please reach out to our <\/h4>",
+        "font_size": 24,
+        "subtitle": "<h1> See the fit?<\/h1>",
+        "text": "",
+        "para_font_size": 21,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size  cus_size_chart",
+        "mob_content": true
+      }
+    },
+    "54c15019-fa71-43b2-a603-b54b1d9383eb": {
+      "type": "lounge-table",
+      "blocks": {
+        "6d6f730d-a8d0-4caf-97df-c82c5261f5c0": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "Towels",
+            "paragraph_class": "head-class",
+            "paragraph_id-two": "Bath",
+            "paragraph_id-three": "Hand",
+            "paragraph_id-four": "Wash",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "#00203b",
+            "text_color": "#ffffff",
+            "paragraph_width": 0
+          }
+        },
+        "e441f4a4-450f-452d-ba97-b077547a7108": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "in Inches",
+            "paragraph_class": "",
+            "paragraph_id-two": "56.7\" L x 28.3\" W; 600 GSM",
+            "paragraph_id-three": "32.6\" L x 19.68\" W; 600 GSM",
+            "paragraph_id-four": "11.8\" L x 11.8\" W; 600 GSM",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "#f2f2f2",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        },
+        "d5649de8-9b88-4556-8b96-5087e3d7b337": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "In Centimeters",
+            "paragraph_class": "",
+            "paragraph_id-two": "144 L cm L x 72 cm W; 600 GSM",
+            "paragraph_id-three": "83 L cm x 50 cm W; 600 GSM",
+            "paragraph_id-four": "30 L cm x 30 cm W; 600 GSM",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        },
+        "3e13ef28-d5fe-4160-9d20-ce5e946f664a": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "Bath Robes",
+            "paragraph_class": "head-class",
+            "paragraph_id-two": "Xlarge",
+            "paragraph_id-three": "Large",
+            "paragraph_id-four": "Medium",
+            "paragraph_id-five": "Small",
+            "paragraph_id-six": "Xsmall",
+            "body_text": "#00203b",
+            "text_color": "",
+            "paragraph_width": 0
+          }
+        },
+        "8c8b0956-94b7-4858-9235-9202ee5d5d5a": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "In Inches",
+            "paragraph_class": "",
+            "paragraph_id-two": "41.5\" from shoulder to hem",
+            "paragraph_id-three": "40\" from shoulder to hem",
+            "paragraph_id-four": "36\" from shoulder to hem",
+            "paragraph_id-five": "35\" from shoulder to hem",
+            "paragraph_id-six": "33\" from shoulder to hem",
+            "body_text": "#f2f2f2",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        },
+        "f96c4dde-5ff5-402c-9d3c-01392933652c": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "In Centimeters",
+            "paragraph_class": "",
+            "paragraph_id-two": "110 cm from shoulder to hem",
+            "paragraph_id-three": "106 cm from shoulder to hem",
+            "paragraph_id-four": "102 cm from shoulder to hem",
+            "paragraph_id-five": "96 cm from shoulder to hem",
+            "paragraph_id-six": "92 cm from shoulder to hem",
+            "body_text": "",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        },
+        "e959b923-0c71-4b85-bdd5-65c46f60bedb": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "Bath Mats",
+            "paragraph_class": "head-class",
+            "paragraph_id-two": "One Size",
+            "paragraph_id-three": "",
+            "paragraph_id-four": "",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "#00203b",
+            "text_color": "",
+            "paragraph_width": 0
+          }
+        },
+        "ba3345ec-6162-41e0-bf93-640106033ee3": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "In Inches",
+            "paragraph_class": "",
+            "paragraph_id-two": "32.6\" L x 19.68\" W; 800 GSM",
+            "paragraph_id-three": "",
+            "paragraph_id-four": "",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "#f2f2f2",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        },
+        "21c4ed18-c7d8-4636-ae33-a05fe8eea0bb": {
+          "type": "slide",
+          "settings": {
+            "paragraph_id": "In Centimeters",
+            "paragraph_class": "",
+            "paragraph_id-two": "83 L cm x 50 cm W; 800 GSM",
+            "paragraph_id-three": "",
+            "paragraph_id-four": "",
+            "paragraph_id-five": "",
+            "paragraph_id-six": "",
+            "body_text": "",
+            "text_color": "#000000",
+            "paragraph_width": 0
+          }
+        }
+      },
+      "block_order": [
+        "6d6f730d-a8d0-4caf-97df-c82c5261f5c0",
+        "e441f4a4-450f-452d-ba97-b077547a7108",
+        "d5649de8-9b88-4556-8b96-5087e3d7b337",
+        "3e13ef28-d5fe-4160-9d20-ce5e946f664a",
+        "8c8b0956-94b7-4858-9235-9202ee5d5d5a",
+        "f96c4dde-5ff5-402c-9d3c-01392933652c",
+        "e959b923-0c71-4b85-bdd5-65c46f60bedb",
+        "ba3345ec-6162-41e0-bf93-640106033ee3",
+        "21c4ed18-c7d8-4636-ae33-a05fe8eea0bb"
+      ],
+      "custom_css": [
+        ".lounge-content-paragraph p {text-transform: inherit;}"
+      ],
+      "settings": {
+        "heading_section": "BATHLINENS"
+      }
+    },
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3": {
+      "type": "globo-formbuilder",
+      "disabled": true,
+      "settings": {
+        "form_id": "NzMyNTY="
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac",
+    "54c15019-fa71-43b2-a603-b54b1d9383eb",
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3"
+  ]
+}

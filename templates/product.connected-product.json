@@ -1,1 +1,256 @@
-{"sections":{"breadcrumb":{"type":"breadcrumb","disabled":true,"settings":{"container":"container","text_alignment":"center","hide_current":false,"hide_on_mb":false}},"main":{"type":"main-product","blocks":{"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"c8f7b6b7-df76-405c-b220-456db24b2e38":{"type":"description","settings":{}},"variant_picker":{"type":"variant_picker","settings":{"size_title":"Size"}},"buy_buttons":{"type":"buy_buttons","settings":{"show_quantity_selector":true,"show_atc_button":true,"show_dynamic_checkout":false}},"addons":{"type":"addons","disabled":true,"settings":{"show_atcp":false,"show_ask_a_question":false,"show_social":true}},"custom_liquid_PgcdNa":{"type":"custom_liquid","settings":{"custom_liquid":"<button type=\"button\" name=\"add\" class=\"sf__btn-icon sf-wishlist__button sf__tooltip-left sf__tooltip-style-1 added-to-wishlist added-to-wishlist_btn\" \ndata-product-handle=\"{{product.handle}}\"\ndata-add-to-cart-text=\"Add to bag\" style=\"text-transform: uppercase;background-color: #171343!important;color: #fff;border-color: transparent !important;width: 100%;  font-family: Source Code Pro !important;\">\n   Add to Wishlist\n<\/button>\n<script>\nfunction fn1(){\nlet btn = document.querySelector('.added-to-wishlist_btn')\nbtn.addEventListener('click',()=>{\n btn.closest('.sf-prod-template').querySelector('.sf-wishlist__button').click()\n})\n} \nfn1()\n<\/script>"}}},"block_order":["title","price","c8f7b6b7-df76-405c-b220-456db24b2e38","variant_picker","buy_buttons","addons","custom_liquid_PgcdNa"],"custom_css":["@media only screen and (max-width: 767px) {.mw_custom_design .main-product__block-variant_picker .custom___qty .cus-qty-label {padding-top: 0; }}",".sf-prod-template .posi_absolute {display: none;}"],"settings":{"mw_custom_design":true,"product___slider":"slick","container":"container-fluid","layout":"layout-3","show_atwl":false,"enable_history_state":true,"show_nav_media_mobile":false,"show_pagination_mobile":true,"use_sticky_atc":true,"use_sticky_atc_on_mobile":true,"enable_dynamic_checkout":false,"sticky_atc_wishtlist":false,"sticky_atc_compare":false}},"product-details-tabs":{"type":"product-details-tabs","blocks":{"description":{"type":"description","settings":{"header":"DESCRIPTION"}},"48471f4b-54fe-4ab1-b5ea-032953d25326":{"type":"tab","settings":{"header":"DETAILS","content":"{{ product.metafields.custom.details | metafield_tag }}","content_page":""}},"tab":{"type":"tab","settings":{"header":"SHIPPING & RETURNS","content":"<h5><strong>Fast Shipping With a Cloud9linens Account <\/strong><\/h5><h6>Please refer to your estimated arrival date in checkout once the shipping method is selected.<\/h6><h5><strong>Free Extended Holiday Returns & Exchanges<\/strong><\/h5><h6>Purchases made between October 18, 2023, and December 23, 2023, are eligible to be returned<br\/> until January 31, 2024. Personalized items and gift boxes cannot be returned.<\/h6><h5><strong>Shipping & Returns<\/strong><\/h5><h6>Cloud9linens Account members receive free Fast shipping. <a href=\"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount\" target=\"_blank\" title=\"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount\"><strong>Sign In \/ Join (Details)<\/strong><\/a><\/h6><h6>In addition to our regular shipping services, we also o\u001eer Buy Online, Pick Up in Store; Ship to<br\/> Store; Same Day Delivery; and UPS Store\/UPS Access Point Pickup for your convenience.<\/h6><h5><strong>Gifting Services<\/strong><\/h5><h6>Add our luxurious navy box with signature gold foil lettering and a personalized<br\/>message at checkout.<\/h6>","content_page":""}}},"block_order":["description","48471f4b-54fe-4ab1-b5ea-032953d25326","tab"],"custom_css":[],"settings":{"custom_class":"tab_container tab_bottom_pd","container":"container","bg_color":"","default_open":false}},"438d151f-ef6a-4d42-97b8-fb5f0a81f147":{"type":"connected-product","blocks":{"ec45a854-a8c2-441f-8f98-8b1e215f7e54":{"type":"description","settings":{"header":"DESCRIPTION"}},"ec517292-a1c0-4536-86ab-5857e46708d4":{"type":"tab","settings":{"header":"DETAILS","content":"{{ product.metafields.custom.details | metafield_tag }}","content_page":""}},"049c056c-92fb-484c-8b4c-a8c1e91cd2bd":{"type":"liquid","settings":{"header":"SHIPPING & RETURNS","custom_liquid":"Fast Shipping With a Cloud9linens Account\n\nPlease refer to your estimated arrival date in checkout once the shipping method is selected.\n\nFree Extended Holiday Returns & Exchanges\n\nPurchases made between October 18, 2023, and December 23, 2023, are eligible to be returned\nuntil January 31, 2024. Personalized items and gift boxes cannot be returned.\n\nShipping & Returns\n\nCloud9linens Account members receive free Fast shipping. Sign In \/ Join (Details)\n\nIn addition to our regular shipping services, we also o\u001eer Buy Online, Pick Up in Store; Ship to\nStore; Same Day Delivery; and UPS Store\/UPS Access Point Pickup for your convenience.\n\nGifting Services\n\nAdd our luxurious navy box with signature gold foil lettering and a personalized\nmessage at checkout."}}},"block_order":["ec45a854-a8c2-441f-8f98-8b1e215f7e54","ec517292-a1c0-4536-86ab-5857e46708d4","049c056c-92fb-484c-8b4c-a8c1e91cd2bd"],"custom_css":[".connected__products .connected_product_form > * {margin-top: 0px;}",".connected__products .connectedOption {gap: 8px;}",".qty-border {padding-top: 10px;}",".connected__products .connectedOption {margin-bottom: 10px;}"],"settings":{"connected_text":"Buy Individual Pieces","shipping_text":"","text_under_button":"","custom_class":"","container":"container","bg_color":"","default_open":false}},"product-recommendations":{"type":"product-recommendations","settings":{"container":"container","heading":"Complete The Look","limit":4,"columns":4,"column_gap":30,"enable_slider":true}},"recent-viewed-products":{"type":"recent-viewed-products","custom_css":[".recently-viewed {padding-top: 30px;}",".cus-prodcard-title {padding-left: 0;}",".sf__pcard-price.leading-normal {font-style: normal;}"],"settings":{"heading":"Recently Viewed","container":"container","columns":4,"column_gap":30,"enable_slider":true}},"d219e02c-4e9e-427f-adb7-3eea16f4d126":{"type":"Custom_breadcurmb","disabled":true,"settings":{"show_img":false,"show_title":false,"bg-color":"#f2f2f2"}},"35558f8b-a20c-46db-a878-ed7ccc5d0c3c":{"type":"breadcrumb_custom","custom_css":[],"settings":{}},"b240a6dd-1e6a-4686-a6ac-863be37d9d66":{"type":"custom-liquid","settings":{"custom_liquid":"<style>.transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {\n    filter: unset;\n}\n.header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {\n    color: #041e3a;\n}\n.header__22 .icon-fill{\n    fill: #000;\n  }\n.cus-col-container .sf__collection-container.block.mt-0.md\\:mt-2\\.5.lg\\:mb-15.lg\\:pt-7.sidebar__collapse {\n    padding-top: 6rem;\n}\n.mw_breadcurmb_main {\n    padding-top: 60px;\n}\nmain#MainContent {\n    padding-top: 60px;\n}\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: unset;\n}\n.header__22:not(.stuck) .icon-fill-serch {\n    stroke: #000;\n}\n.cus-hdr .mobile____menu, .mob-logo-container img {\n    filter: unset;\n}\n.connected-product{\n   padding-bottom:0px !important;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size:18px;\n    font-weight: 600;\n}\n<\/style>","custom_class":""}},"2c4a4d15-88e0-4514-9b50-412e62a133ed":{"type":"custom-liquid","settings":{"custom_liquid":"<style>\n@media only screen and (max-width: 767px) {\n.cus-options-item {\n    text-transform: uppercase !important;\n}\n.cus_drop_item {\n    text-transform: uppercase;\n}\n.template-product .product-form__actions .not-change{\n        font-size: 12px;\n    }\nh2.text-center.connected_heading_wd {\n    font-size: 18px;\n}\nol.breadcrumbs__list .breadcrumbs__item a:after {\n    content: \"\/\";\n    padding-inline: 12px;\n}\n.qty-border {\n  border-top: none !important;\n}\n.connected__products .custom_connected_product{\n  border-bottom:none;\n}\n.cus-options-item {\n    font-size: 14px;\n}\n.cus_drop_item .product-option-item {\n    font-size: 14px;\n    justify-content: space-between !important;\n}\n.cus_drop_item {\n    gap: 10px;\n}\n.connected__products .connected_product_content form h3 {\n    font-size: 18px;\n}\n.mw_custom_design .add_cart___btn_btn, .connected__products .connected_cart_btn {\n    background-color: #171343!important;\n    font-size: 12px;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size:18px;\n    font-weight: 600;\n}\n}\n<\/style>","custom_class":""}}},"order":["breadcrumb","main","product-details-tabs","438d151f-ef6a-4d42-97b8-fb5f0a81f147","product-recommendations","recent-viewed-products","d219e02c-4e9e-427f-adb7-3eea16f4d126","35558f8b-a20c-46db-a878-ed7ccc5d0c3c","b240a6dd-1e6a-4686-a6ac-863be37d9d66","2c4a4d15-88e0-4514-9b50-412e62a133ed"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "text_alignment": "center",
+        "hide_current": false,
+        "hide_on_mb": false
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "c8f7b6b7-df76-405c-b220-456db24b2e38": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "size_title": "Size"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_atc_button": true,
+            "show_dynamic_checkout": false
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "disabled": true,
+          "settings": {
+            "show_atcp": false,
+            "show_ask_a_question": false,
+            "show_social": true
+          }
+        },
+        "custom_liquid_PgcdNa": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<button type=\"button\" name=\"add\" class=\"sf__btn-icon sf-wishlist__button sf__tooltip-left sf__tooltip-style-1 added-to-wishlist added-to-wishlist_btn\" \ndata-product-handle=\"{{product.handle}}\"\ndata-add-to-cart-text=\"Add to bag\" style=\"text-transform: uppercase;background-color: #171343!important;color: #fff;border-color: transparent !important;width: 100%;  font-family: Source Code Pro !important;\">\n   Add to Wishlist\n<\/button>\n<script>\nfunction fn1(){\nlet btn = document.querySelector('.added-to-wishlist_btn')\nbtn.addEventListener('click',()=>{\n btn.closest('.sf-prod-template').querySelector('.sf-wishlist__button').click()\n})\n} \nfn1()\n<\/script>"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "c8f7b6b7-df76-405c-b220-456db24b2e38",
+        "variant_picker",
+        "buy_buttons",
+        "addons",
+        "custom_liquid_PgcdNa"
+      ],
+      "custom_css": [
+        "@media only screen and (max-width: 767px) {.mw_custom_design .main-product__block-variant_picker .custom___qty .cus-qty-label {padding-top: 0; }}",
+        ".sf-prod-template .posi_absolute {display: none;}"
+      ],
+      "settings": {
+        "mw_custom_design": true,
+        "product___slider": "slick",
+        "container": "container-fluid",
+        "layout": "layout-3",
+        "show_atwl": false,
+        "enable_history_state": true,
+        "show_nav_media_mobile": false,
+        "show_pagination_mobile": true,
+        "use_sticky_atc": true,
+        "use_sticky_atc_on_mobile": true,
+        "enable_dynamic_checkout": false,
+        "sticky_atc_wishtlist": false,
+        "sticky_atc_compare": false
+      }
+    },
+    "product-details-tabs": {
+      "type": "product-details-tabs",
+      "blocks": {
+        "description": {
+          "type": "description",
+          "settings": {
+            "header": "DESCRIPTION"
+          }
+        },
+        "48471f4b-54fe-4ab1-b5ea-032953d25326": {
+          "type": "tab",
+          "settings": {
+            "header": "DETAILS",
+            "content": "{{ product.metafields.custom.details | metafield_tag }}",
+            "content_page": ""
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "header": "SHIPPING & RETURNS",
+            "content": "<h5><strong>Fast Shipping With a Cloud9linens Account <\/strong><\/h5><h6>Please refer to your estimated arrival date in checkout once the shipping method is selected.<\/h6><h5><strong>Free Extended Holiday Returns & Exchanges<\/strong><\/h5><h6>Purchases made between October 18, 2023, and December 23, 2023, are eligible to be returned<br\/> until January 31, 2024. Personalized items and gift boxes cannot be returned.<\/h6><h5><strong>Shipping & Returns<\/strong><\/h5><h6>Cloud9linens Account members receive free Fast shipping. <a href=\"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount\" target=\"_blank\" title=\"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount\"><strong>Sign In \/ Join (Details)<\/strong><\/a><\/h6><h6>In addition to our regular shipping services, we also o\u001eer Buy Online, Pick Up in Store; Ship to<br\/> Store; Same Day Delivery; and UPS Store\/UPS Access Point Pickup for your convenience.<\/h6><h5><strong>Gifting Services<\/strong><\/h5><h6>Add our luxurious navy box with signature gold foil lettering and a personalized<br\/>message at checkout.<\/h6>",
+            "content_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "48471f4b-54fe-4ab1-b5ea-032953d25326",
+        "tab"
+      ],
+      "custom_css": [
+
+      ],
+      "settings": {
+        "custom_class": "tab_container tab_bottom_pd",
+        "container": "container",
+        "bg_color": "",
+        "default_open": false
+      }
+    },
+    "438d151f-ef6a-4d42-97b8-fb5f0a81f147": {
+      "type": "connected-product",
+      "blocks": {
+        "ec45a854-a8c2-441f-8f98-8b1e215f7e54": {
+          "type": "description",
+          "settings": {
+            "header": "DESCRIPTION"
+          }
+        },
+        "ec517292-a1c0-4536-86ab-5857e46708d4": {
+          "type": "tab",
+          "settings": {
+            "header": "DETAILS",
+            "content": "{{ product.metafields.custom.details | metafield_tag }}",
+            "content_page": ""
+          }
+        },
+        "049c056c-92fb-484c-8b4c-a8c1e91cd2bd": {
+          "type": "liquid",
+          "settings": {
+            "header": "SHIPPING & RETURNS",
+            "custom_liquid": "Fast Shipping With a Cloud9linens Account\n\nPlease refer to your estimated arrival date in checkout once the shipping method is selected.\n\nFree Extended Holiday Returns & Exchanges\n\nPurchases made between October 18, 2023, and December 23, 2023, are eligible to be returned\nuntil January 31, 2024. Personalized items and gift boxes cannot be returned.\n\nShipping & Returns\n\nCloud9linens Account members receive free Fast shipping. Sign In \/ Join (Details)\n\nIn addition to our regular shipping services, we also o\u001eer Buy Online, Pick Up in Store; Ship to\nStore; Same Day Delivery; and UPS Store\/UPS Access Point Pickup for your convenience.\n\nGifting Services\n\nAdd our luxurious navy box with signature gold foil lettering and a personalized\nmessage at checkout."
+          }
+        }
+      },
+      "block_order": [
+        "ec45a854-a8c2-441f-8f98-8b1e215f7e54",
+        "ec517292-a1c0-4536-86ab-5857e46708d4",
+        "049c056c-92fb-484c-8b4c-a8c1e91cd2bd"
+      ],
+      "custom_css": [
+        ".connected__products .connected_product_form > * {margin-top: 0px;}",
+        ".connected__products .connectedOption {gap: 8px;}",
+        ".qty-border {padding-top: 10px;}",
+        ".connected__products .connectedOption {margin-bottom: 10px;}"
+      ],
+      "settings": {
+        "connected_text": "Buy Individual Pieces",
+        "shipping_text": "",
+        "text_under_button": "",
+        "custom_class": "",
+        "container": "container",
+        "bg_color": "",
+        "default_open": false
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "container": "container",
+        "heading": "Complete The Look",
+        "limit": 4,
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    },
+    "recent-viewed-products": {
+      "type": "recent-viewed-products",
+      "custom_css": [
+        ".recently-viewed {padding-top: 30px;}",
+        ".cus-prodcard-title {padding-left: 0;}",
+        ".sf__pcard-price.leading-normal {font-style: normal;}"
+      ],
+      "settings": {
+        "heading": "Recently Viewed",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    },
+    "d219e02c-4e9e-427f-adb7-3eea16f4d126": {
+      "type": "Custom_breadcurmb",
+      "disabled": true,
+      "settings": {
+        "show_img": false,
+        "show_title": false,
+        "bg-color": "#f2f2f2"
+      }
+    },
+    "35558f8b-a20c-46db-a878-ed7ccc5d0c3c": {
+      "type": "breadcrumb_custom",
+      "custom_css": [
+
+      ],
+      "settings": {
+      }
+    },
+    "b240a6dd-1e6a-4686-a6ac-863be37d9d66": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {\n    filter: unset;\n}\n.header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {\n    color: #041e3a;\n}\n.header__22 .icon-fill{\n    fill: #000;\n  }\n.cus-col-container .sf__collection-container.block.mt-0.md\\:mt-2\\.5.lg\\:mb-15.lg\\:pt-7.sidebar__collapse {\n    padding-top: 6rem;\n}\n.mw_breadcurmb_main {\n    padding-top: 60px;\n}\nmain#MainContent {\n    padding-top: 60px;\n}\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: unset;\n}\n.header__22:not(.stuck) .icon-fill-serch {\n    stroke: #000;\n}\n.cus-hdr .mobile____menu, .mob-logo-container img {\n    filter: unset;\n}\n.connected-product{\n   padding-bottom:0px !important;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size:18px;\n    font-weight: 600;\n}\n<\/style>",
+        "custom_class": ""
+      }
+    },
+    "2c4a4d15-88e0-4514-9b50-412e62a133ed": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media only screen and (max-width: 767px) {\n.cus-options-item {\n    text-transform: uppercase !important;\n}\n.cus_drop_item {\n    text-transform: uppercase;\n}\n.template-product .product-form__actions .not-change{\n        font-size: 12px;\n    }\nh2.text-center.connected_heading_wd {\n    font-size: 18px;\n}\nol.breadcrumbs__list .breadcrumbs__item a:after {\n    content: \"\/\";\n    padding-inline: 12px;\n}\n.qty-border {\n  border-top: none !important;\n}\n.connected__products .custom_connected_product{\n  border-bottom:none;\n}\n.cus-options-item {\n    font-size: 14px;\n}\n.cus_drop_item .product-option-item {\n    font-size: 14px;\n    justify-content: space-between !important;\n}\n.cus_drop_item {\n    gap: 10px;\n}\n.connected__products .connected_product_content form h3 {\n    font-size: 18px;\n}\n.mw_custom_design .add_cart___btn_btn, .connected__products .connected_cart_btn {\n    background-color: #171343!important;\n    font-size: 12px;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size:18px;\n    font-weight: 600;\n}\n}\n<\/style>",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "product-details-tabs",
+    "438d151f-ef6a-4d42-97b8-fb5f0a81f147",
+    "product-recommendations",
+    "recent-viewed-products",
+    "d219e02c-4e9e-427f-adb7-3eea16f4d126",
+    "35558f8b-a20c-46db-a878-ed7ccc5d0c3c",
+    "b240a6dd-1e6a-4686-a6ac-863be37d9d66",
+    "2c4a4d15-88e0-4514-9b50-412e62a133ed"
+  ]
+}
