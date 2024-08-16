@@ -36,8 +36,7 @@
           {%- for option in item.options_with_values -%}
             <p class="scd-item__variant-option fonts_source mob_fs_10">
               <span class="font-medium mob_fs_10">
-                {{- option.name -}}
-                :
+                <strong>{{- option.name -}}</strong>:
               </span>
               {{- option.value -}}
             </p>

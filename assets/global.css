@@ -415,6 +415,7 @@ t-variant-radios input[type=radio]:checked+label {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin: 0;
 }
 
 t-variant-radios input[type=radio]+label:hover {

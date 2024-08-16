@@ -20,8 +20,8 @@
   </div>
 {% endcomment %}
 
-<div class="container-fluid" style="padding: 0 !important;">
-  <div style="padding: 2px 0px;" class="scd__wrapper sf-cart pb-20" data-cart-wrapper>
+<div class="mw_custom_hedaer " style="padding: 0 !important;">
+  <div style="padding: 2px 0px;" class="-mx-4 scd__wrapper sf-cart pb-20" data-cart-wrapper>
     {% if cart.item_count > 0 %}
       {% render 'foxkit-cart-countdown' %}
       {% render 'foxkit-cart-goal' %}
@@ -49,8 +49,8 @@
               </h4>
               <p class="fonts_source p-text-normal">
                 <a href="/account/login" class="underline">Sign in</a> or
-                <a class="underline" href="/account/login#register_from">Create account</a>for complementary shipping on
-                your order
+                <a class="underline" href="/account/login#register_from">Create account</a> for tracking orders, your
+                favorite items wishlist back in stock 6 more
               </p>
             </div>
             <div class="sf-cart__table-body scd__body">
@@ -117,28 +117,33 @@
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
                   <span class="sf-cart-subtotal__title fonts_source mob_fs_10">{{ 'cart.general.subtotal' | t }}</span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>
-                    {{- cart.total_price | money -}} 
+                    {{- cart.total_price | money -}}
                   </span>
                 </div>
 
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
                   <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Shipping</span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
-                    >$20</span
+                    >$0</span
                   >
                 </div>
+                <p class="p-text-normal">Taxes calculated at checkout</p>
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
                   <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Tax</span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
-                    >$14</span
+                    >$0</span
                   >
                 </div>
-                {% comment %} <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Order Discount</span>
-                  <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
-                    >$20</span
-                  >
-                </div> {% endcomment %}
+                <p class="p-text-normal">Shipping estimated at checkout</p>
+                <br>
+                {% comment %}
+                  <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
+                    <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Order Discount</span>
+                    <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
+                      >$20</span
+                    >
+                  </div>
+                {% endcomment %}
                 <div class="ship_promo">
                   {% render 'cart-addons' %}
                 </div>
@@ -231,11 +236,31 @@
   .recenly_cart_pdp {
     gap: 0px;
   }
+  .res-cart-form,
+  .res-cart-form p,
+  .scd__footer-actions button,
+  .sf-cart__summary .note,
+  .sf-cart__summary .note a,
+  .scd-item__remove,
+  .scd-item__remove .mob_fs_8,
+  .scd-item__info > a,
+  .recently_remove span,
+  .ship_promo span,
+  .scd__wrapper .res-cart-summary-sec .sf-cart__summary-row span,
+  .p-text-normal a {
+    font-size: 12px !important;
+  }
+  .agree-terms,
+  .agree-terms a {
+    font-size: 10px !important;
+  }
   .sf-cart__table.w-full {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
-
+  .scd__addon .form-control {
+    padding: 20px 16px 0;
+  }
   .res-cart-summary-sec {
     flex: 0 0 33.33333%;
     max-width: 33.33333%;
@@ -247,7 +272,16 @@
   .scd-item__info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
+  }
+  .scd-item__quantity {
+    background-color: #061e3a;
+    color: white !important;
+    border-radius: 22px;
+    font-size: 12px !important;
+  }
+  .color_white {
+    color: white !important;
   }
   .recently_remove {
     top: 0 !important
@@ -273,7 +307,13 @@
     .res-cart-form {
       flex-direction: column;
     }
+    .shipping_message h4 {
+      padding-bottom: 0px !important;
+    }
 
+    .shi_qty {
+      padding-top: 0 !important;
+    }
     .sf-cart__table.w-full {
       flex: 0 0 100%;
       max-width: 100%;

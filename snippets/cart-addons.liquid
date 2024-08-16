@@ -112,25 +112,29 @@
     </div>
   {% endif %}
   {% if settings.discount_code_enable %}
-    <div class="scd__addon" id="scd-coupon">
+    <div class="scd__addon cus-account-form" id="scd-coupon">
       <div class="scd__addon-title font-medium">
         {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[20px]' %}
-        <span>{{ 'cart.general.coupon_title' | t }}</span>
+        <span class="p-text">{{ 'cart.general.coupon_title' | t }}</span>
       </div>
-      <div class="scd__addon-content">
-        <div id="coupon-messages" class="mb-4">
-          <p className="my-4"></p>
-        </div>
+      
+      <form-control-group class="scd__addon-content">
+        
+        <label class="cus-account-label">{{ 'cart.general.enter_discount_code' | t }}</label>
         <input
           placeholder="{{ 'cart.general.enter_discount_code' | t }}"
           type="text"
           name="discount"
           class="scd__discount_code form-control"
         />
+       
+      </form-control-group>
+      <div id="coupon-messages" class="mb-4">
+        <p className="my-4"></p>
       </div>
       <div class="scd__addon-actions flex flex-col">
-        <button class="sf__btn sf__btn-primary btn-save" data-action="coupon">{{ 'cart.general.save' | t }}</button>
-        <button class="sf__btn sf__btn-plain btn-cancel" data-action="coupon">{{ 'cart.general.cancel' | t }}</button>
+        <button class="sf__btn sf__btn-primary btn-save sf__btn-primary sf__btn c-btn bg-btn color_white" data-action="coupon">{{ 'cart.general.save' | t }}</button>
+        <button class="sf__btn  btn-cancel sf__btn-primary sf__btn c-btn bg-btn color_white" data-action="coupon">{{ 'cart.general.cancel' | t }}</button>
       </div>
     </div>
   {% endif %}
