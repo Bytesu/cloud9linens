@@ -1,6 +1,6 @@
 {% if settings.cart_notes_enable or settings.cart_estimate_shipping or settings.discount_code_enable %}
-{% comment %}  {% endcomment %}
-<div class="scd__footer-actions">
+  {% comment %}  {% endcomment %}
+  <div class="scd__footer-actions">
     {% if settings.cart_notes_enable %}
       <button data-open="note" class="sf__tooltip-item sf__tooltip-top">
         {% render 'icon', name: 'pencil', size: 'medium' %}
@@ -16,20 +16,51 @@
       </button>
     {% endif %}
     {% if settings.discount_code_enable %}
-      <button data-open="coupon" class="sf__tooltip-item sf__tooltip-top">
-        <span data-discount-noti class="hidden absolute border-2 border-white shadow-md rounded-full w-4 h-4 -top-2 right-1/2 translate-x-5 bg-[#334bfa]"></span>
-        <span class="fonts_source mob_fs_8">Apply Promo Code</span>
-        {% comment %}
+      {% comment %}
+        <span
+          data-discount-noti
+          class="hidden absolute border-2 border-white shadow-md rounded-full w-4 h-4 -top-2 right-1/2 translate-x-5 bg-[#334bfa]"
+        ></span>
+      {% endcomment %}
+      <span class="fonts_source mob_fs_8">Apply Promo Code </span>
+
+      {% comment %}
         MTS
-        {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[22px] h-[22px]' %} 
+        {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[22px] h-[22px]' %}
         <span>{{ 'cart.general.drawer_coupon' | t }}</span>
-        {% endcomment %}
-        
-        <span class="sf__tooltip-content text-[12px]">{{ 'cart.general.coupon_title' | t }}</span>
-      </button>
+      {% endcomment %}
+
+      {% comment %} <span class="sf__tooltip-content text-[12px]">{{ 'cart.general.coupon_title' | t }}</span> {% endcomment %}
+      <span
+        class="sf__tooltip-item1 "
+      >
+        <svg
+          t="1723807563205"
+          class="icon"
+          viewBox="0 0 1024 1024"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          p-id="1461"
+          width="256"
+          height="256"
+        >
+          <path d="M512.146286 619.52L245.296762 352.792381 193.584762 404.48l318.585905 318.415238 318.268952-318.415238-51.736381-51.687619z" p-id="1462"></path>
+        </svg>
+      </span>
+      <span class="btn-cancel"></span>
+      <script>
+        document.querySelector('.sf__tooltip-item1').addEventListener('click', function () {
+          if (document.querySelector('.sf__tooltip-item1').classList.contains('active')) {
+            document.querySelector('.sf__tooltip-item1').classList.remove('active');
+            document.querySelector('.cus-account-form').classList.remove('open');
+          } else {
+            document.querySelector('.cus-account-form').classList.add('open');
+            document.querySelector('.sf__tooltip-item1').classList.add('active');
+          }
+        });
+      </script>
     {% endif %}
   </div>
-
 
   {% if settings.cart_notes_enable %}
     <div class="scd__addon" id="scd-note">
@@ -38,7 +69,12 @@
         <span>{{ 'cart.general.note_title' | t }}</span>
       </div>
       <div class="scd__addon-content">
-        <textarea name="note" class="form-control" rows="3" placeholder="{{ 'cart.general.note' | t }}">{{ cart.note }}</textarea>
+        <textarea
+          name="note"
+          class="form-control"
+          rows="3"
+          placeholder="{{ 'cart.general.note' | t }}"
+        >{{ cart.note }}</textarea>
       </div>
       <div class="scd__addon-actions flex flex-col">
         <button class="sf__btn sf__btn-primary btn-save" data-action="note">{{ 'cart.general.save' | t }}</button>
@@ -90,53 +126,121 @@
 
           <div class="form-group">
             <label for="AddressProvince">{{ 'customer.addresses.province' | t }}</label>
-            <select id="AddressProvince" class="form-control" name="address[province]" data-default="{{ form.province }}"></select>
+            <select
+              id="AddressProvince"
+              class="form-control"
+              name="address[province]"
+              data-default="{{ form.province }}"
+            ></select>
           </div>
 
           <div class="form-group">
             <label for="AddressZip">{{ 'customer.addresses.zip' | t }}</label>
-            <input type="text" class="form-control" id="AddressZip" name="address[zip]" value="{{ form.zip }}" autocapitalize="characters">
+            <input
+              type="text"
+              class="form-control"
+              id="AddressZip"
+              name="address[zip]"
+              value="{{ form.zip }}"
+              autocapitalize="characters"
+            >
           </div>
 
           <div class="hidden">
             <label for="AddressPhone">{{ 'customer.addresses.phone' | t }}</label>
-            <input type="tel" id="AddressPhone" name="address[phone]" value="{{ form.phone }}">
+            <input
+              type="tel"
+              id="AddressPhone"
+              name="address[phone]"
+              value="{{ form.phone }}"
+            >
           </div>
         </div>
       </div>
       <div class="scd__addon-actions flex flex-col">
-        <button class="sf__btn sf__btn-primary btn-calc" data-action="shipping">{{ 'cart.general.estimate_shipping_button' | t }}</button>
+        <button class="sf__btn sf__btn-primary btn-calc" data-action="shipping">
+          {{ 'cart.general.estimate_shipping_button' | t }}
+        </button>
         <button class="sf__btn sf__btn-plain btn-cancel" data-action="shipping">{{ 'cart.general.cancel' | t }}</button>
       </div>
       <div class="scd__addon-message py-5"></div>
     </div>
   {% endif %}
   {% if settings.discount_code_enable %}
-    <div class="scd__addon cus-account-form" id="scd-coupon">
-      <div class="scd__addon-title font-medium">
-        {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[20px]' %}
-        <span class="p-text">{{ 'cart.general.coupon_title' | t }}</span>
-      </div>
-      
+    <div class="scd__addon cus-account-form " id="scd-coupon">
+      {% comment %}
+        <div class="scd__addon-title font-medium">
+          {% render 'icon', name: 'coupon', size: 'custom', class: 'w-[20px]' %}
+          <span class="p-text">{{ 'cart.general.coupon_title' | t }}</span>
+
+        </div>
+      {% endcomment %}
+
       <form-control-group class="scd__addon-content">
-        
-        <label class="cus-account-label">{{ 'cart.general.enter_discount_code' | t }}</label>
+        {% comment %} <label class="cus-account-label">{{ 'cart.general.enter_discount_code' | t }}</label> {% endcomment %}
         <input
           placeholder="{{ 'cart.general.enter_discount_code' | t }}"
           type="text"
           name="discount"
           class="scd__discount_code form-control"
-        />
-       
+        >
+        <span class="btn-save">Apply</span>
       </form-control-group>
       <div id="coupon-messages" class="mb-4">
         <p className="my-4"></p>
       </div>
-      <div class="scd__addon-actions flex flex-col">
-        <button class="sf__btn sf__btn-primary btn-save sf__btn-primary sf__btn c-btn bg-btn color_white" data-action="coupon">{{ 'cart.general.save' | t }}</button>
-        <button class="sf__btn  btn-cancel sf__btn-primary sf__btn c-btn bg-btn color_white" data-action="coupon">{{ 'cart.general.cancel' | t }}</button>
-      </div>
+      <div class="scd__addon-actions flex flex-col"></div>
     </div>
   {% endif %}
 {% endif %}
+<style>
+  span.btn-save {
+    position: absolute;
+    right: 7px;
+    z-index: 1;
+    display: block;
+    top: 19px;
+    font-size: 12px;
+    color: #061e3a;
+    font-weight: bold;
+    left: auto;
+    height: auto;
+    bottom: auto;
+  }
+  .sf-cart .scd__addon {
+    padding-top: 0px;
+  }
+  .scd__footer-actions {
+    flex-direction: row;
+  }
 
+  .scd__footer-actions button.sf__tooltip-item.sf__tooltip-top {
+    max-width: 128px;
+  }
+  .scd__footer-actions button.sf__tooltip-item.sf__tooltip-top span:not(.fonts_source) {
+    display: none !important;
+  }
+  .scd__footer-actions button:not(:last-child):after {
+    display: none !important;
+  }
+  .sf-cart .scd__footer-actions {
+    padding-left: 20px;
+  }
+  .scd__footer-actions .sf__tooltip-item1 svg {
+    height: 18px;
+    width: 18px;
+  }
+  span.sf__tooltip-item1 svg {
+    transition: transform 0.6s ease;
+  }
+  .scd__addon .form-control{
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+  }
+  .scd__addon{
+    background: transparent !important;
+  }
+  span.sf__tooltip-item1.active svg {
+    transform: rotate(180deg);
+  }
+</style>

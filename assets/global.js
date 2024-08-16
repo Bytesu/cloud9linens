@@ -1087,7 +1087,16 @@ class TVariantSelects extends HTMLElement {
       let first_name = p.options[0].name
       p.options.forEach((option, index) => {
         if (index == 0) {
-
+          // let first_value = this.querySelector(`[name="${first_name}"]:checked`).value
+          option.values.forEach(v => {
+            Array.from(this.querySelectorAll(`[name="${option.name}"][value="${v}"]`)).forEach(el => {
+              if (!map_res[v]) {
+                el.setAttribute('disabled', 'disabled')
+              } else {
+                el.removeAttribute('disabled', 'disabled')
+              }
+            })
+          })
         } else { // 处理对应数据
           let first_value = this.querySelector(`[name="${first_name}"]:checked`).value
           if (first_value && map_res[first_value].length) {

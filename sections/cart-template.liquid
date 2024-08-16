@@ -48,9 +48,9 @@
                 <strong>Free Shipping with CL Account</strong>
               </h4>
               <p class="fonts_source p-text-normal">
-                <a href="/account/login" class="underline">Sign in</a> or
-                <a class="underline" href="/account/login#register_from">Create account</a> for tracking orders, your
-                favorite items wishlist back in stock 6 more
+                <a href="/account/login" class="underline"><strong>Sign in</strong></a> or
+                <a class="underline" href="/account/login#register_from"><strong>Create account</strong></a> for
+                tracking orders, your favorite items wishlist back in stock & more
               </p>
             </div>
             <div class="sf-cart__table-body scd__body">
@@ -115,21 +115,23 @@
                   </div>
                 </div>
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">{{ 'cart.general.subtotal' | t }}</span>
+                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10"
+                    ><strong>{{ 'cart.general.subtotal' | t }}</strong></span
+                  >
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price>
                     {{- cart.total_price | money -}}
                   </span>
                 </div>
 
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Shipping</span>
+                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10"><strong>Shipping</strong></span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
                     >$0</span
                   >
                 </div>
                 <p class="p-text-normal">Taxes calculated at checkout</p>
                 <div class="sf-cart__summary-row sf-cart-subtotal" data-cart-subtotal>
-                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10">Tax</span>
+                  <span class="sf-cart-subtotal__title fonts_source mob_fs_10"><strong>Tax</strong></span>
                   <span class="sf-cart-subtotal__price font-medium fonts_source mob_fs_10" data-cart-subtotal-price
                     >$0</span
                   >
@@ -165,15 +167,14 @@
               </div>
               <div class="sf-cart__buttons-container mt-5">
                 {% assign show_terms = false %}
-                {% if settings.agree_text != blank and settings.show_agree_on_cart %}
-                  {% render 'agree-terms-checkbox' %}
-                  {% assign show_terms = true %}
-                {% endif %}
+                {% comment %}
+                  {% if settings.agree_text != blank and settings.show_agree_on_cart %}
+                    {% render 'agree-terms-checkbox' %}
+                    {% assign show_terms = true %}
+                  {% endif %}
+                {% endcomment %}
                 <div
                   class="sf-cart__submit-controls{% if show_terms %} mt-3{% endif %}"
-                  {% if show_terms %}
-                    data-terms-action disabled
-                  {% endif %}
                 >
                   <button
                     style="font-size: 16px; font-weight: 400; border-radius: 0px; text-transform:uppercase;"
@@ -250,16 +251,64 @@
   .p-text-normal a {
     font-size: 12px !important;
   }
+  .sf-cart .scd__footer-actions {
+    margin-bottom: 0px;
+  }
+  .line-item-tools {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .cls_icon svg,
+  .cls_icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+  .line-item-tools button.added-to-wishlist {
+    background: transparent;
+  }
+  .sf__tooltip-item.sf__btn-icon {
+    color: #061e3a;
+  }
+  .ship_promo span,
+  .res-cart-form p,
+  .sf-cart__summary .note,
   .agree-terms,
   .agree-terms a {
     font-size: 10px !important;
+  }
+  .res-cart-form p {
+    text-transform: capitalize;
+  }
+  .scd__overlay.open {
+    visibility: hidden;
+  }
+  .scd__footer-actions button {
+    padding-left: 20px;
+  }
+  .agree-terms label,
+  .scd__footer-actions button {
+    align-items: flex-start;
+    align-items: flex-start;
+  }
+  .agree-terms * {
+    font-size: 10px !important;
+    letter-spacing: normal;
+    font-family: Source Code Pro !important;
   }
   .sf-cart__table.w-full {
     flex: 0 0 58.33333%;
     max-width: 58.33333%;
   }
   .scd__addon .form-control {
-    padding: 20px 16px 0;
+    padding: 10px 16px 10px;
+  }
+  .scd-item__info > a {
+    font-size: 18px !important;
+    font-weight: 700;
   }
   .res-cart-summary-sec {
     flex: 0 0 33.33333%;
@@ -339,9 +388,6 @@
 
     .ship_cart_pdp {
       padding-top: 0;
-    }
-
-    .recently_remove span {
     }
 
     .recently_remove button {

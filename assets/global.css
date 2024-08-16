@@ -271,6 +271,10 @@ t-added-to-cart-slide .sf-prod-media__wrapper {
   display: none;
 }
 
+
+t-popup .select-selected:after{
+  background-image:none !important;
+}
 t-popup .sf__btn,
 .t-add-to-cart-slide form {
   display: block;
