@@ -1,1 +1,130 @@
-{"sections":{"main":{"type":"page-about-us","disabled":true,"settings":{}},"f538a340-bf07-44d6-bd5f-daf735cdd8ac":{"type":"image-with-text-2","blocks":{"61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8":{"type":"Button","settings":{"custom_button_text":"MY ACCOUNT","custom_button_link":"https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount","my_button_style":"sf__btn-secondary"}},"b77ddc79-627d-4d27-ae79-e6dede66ab7b":{"type":"Button","settings":{"custom_button_text":"SHIPPING & RETUENS","custom_button_link":"shopify:\/\/pages\/customer-care-shipping-returns-policy","my_button_style":"sf__btn-secondary"}},"c7c46031-da20-4032-ab47-38d460c1ec74":{"type":"Button","settings":{"custom_button_text":"ORDER STATUS","custom_button_link":"shopify:\/\/pages\/customer-care-check-order-status","my_button_style":"sf__btn-secondary"}},"c0e78059-3099-4a11-8dc0-746b7465bee6":{"type":"Button","settings":{"custom_button_text":"FAQ","custom_button_link":"shopify:\/\/pages\/customer-care-frequently-asked-questions","my_button_style":"sf__btn-secondary"}}},"block_order":["61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8","b77ddc79-627d-4d27-ae79-e6dede66ab7b","c7c46031-da20-4032-ab47-38d460c1ec74","c0e78059-3099-4a11-8dc0-746b7465bee6"],"custom_css":["h3 {color: #ffffff;}","h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"medium","show_overlay":true,"image":"shopify:\/\/shop_images\/sun-setting-over-ocean.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"large","text_color":"white","title":"","font_size":18,"subtitle":"<h1><b>FAQ<\/b><\/h1>","text":"","para_font_size":21,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size cus_size_chart","mob_content":true}},"rich_text_zwhyyc":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"rich_text_pKJMmp":{"type":"Rich-text","settings":{"rich-heading":"<h2><b>FREQUENTLY ASKED QUESTIONS<\/b><\/h2>","richtext-prt":"<br><p><\/p>\n<h4><b>Ordering<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<p><\/p>\n<h4><b>When will I receive my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Orders are typically fulfilled within 2-3 business days. For shipments to the Egypt & Middle east, deliveries typically take 2-3 business days via UPS Ground after fulfillment. For shipments to the Usa & Europe, 5-7 business days. For shipments to Canada,7-10 days depending on customs clearance.\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>How can I track my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>\n<b>Order status<\/b> can be tracked using Check Order Status or by referring to the shipping confirmation email sent to the email provided at checkout.<\/h4>\n<br>\n<p><\/p>\n<h4><b>How do I cancel my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Please contact <b>Customer Service<\/b> within 15 minutes of placing the order during business hours Monday to Friday 9am to 5pm EDT. We try to ship out all orders as quickly as possible, so in some rare instances, we may be able to stop the order before fulfillment and cancel. If an order has been shipped out, we are unable to cancel the order. Once the order is received, please return the order per the<b> Return Policy.<\/b>\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>How do I exchange an item purchased online?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>We are unable to process exchanges at this time. Please return the original purchase according to our <b>Return Policy<\/b> and place a new order.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What payment methods are accepted?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Cloud9linens.com currently accepts Credit Cards (Visa, Mastercard, American Express), Paypal, Apple Pay, and Klarna. See more details under <b>Payment and Taxes.<\/b>\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>Why are my payments not going through?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>We are not responsible for shipping delays caused by factors beyond our control, such as weather conditions, customs delays, or carrier issues.Delivery charges are based on the total weight of the order. At this time we are unable to ship to P.O. or A.P.O boxes. Our shipping carrier UPS will make a rst attempt, then redirect the package to the nearest UPS Access Point if the rst attempt was unsuccessful. Please visit UPS.com for more information on UPS Access Points.*International shipping charges are not inclusive of any duties, tax or broker fees that may apply and for which the recipient of the shipment will be responsible. Please be advised that, effective March 26, 2020, UPS has suspended the UPS Service Guarantee for all shipments to any destination, at all service levels. For this reason, Cloud9linens has removed all expedited shipping methods from our website until further notice. With regards to processing and lead times, we are currently shipping orders as normal, with increased employee safety measures in place..<\/h4>\n<br>\n<p><\/p>\n<h4><b>On what states or provinces is Sales Tax applied?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>See the full list of states and provinces under Payment and Taxes.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Egypt?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro-Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within United States<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro- Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro- Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>Shippings<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How long does an order take to ship to my destination?.<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Orders are typically fulfilled within 2-3 business days. For shipments to the Egypt & Middle east, deliveries typically take 2-3 business days via UPS Ground after fulfillment. For shipments to the Usa & Europe, 5-7 business days. For shipments to Canada, 7-10 days depending on customs clearance.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How much is shipping?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Shipping cost depends on the weight of the items being purchased, the destination, and the shipping method. Please add all items you would like to purchase to the shopping bag, proceed to checkout, and enter the full shipping address to see the shipping cost per shipping method.*Due to UPS policy change on shipping guarantees, we are not currently offering expedited shipping methods.* For more details, please see our <b>Shipping Policy.<\/b> Summary Returns accepted for 14 days $22.00 flat rate return shipping 5% restocking fee No final sale items.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Do you offer free shipping?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Cloud9linens.com may offer free shipping on orders based on order amount for specific periods of time. If your order is eligible for free shipping at the time of checkout, once you proceed to checkout and enter the full shipping address, the actual shipping cost will appear for the order and the shipping discount will show the deduction of the actual shipping cost in the Order Summary on the top right of the page. If there is no shipping discount shown in the Order Summary, your order may not be eligible for free shipping.Please note free shipping offers are typically applicable only to shipments within the U.S. and Egypt via UPS Ground or Custom orders exceeding $ 5000.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Returns - How can I start a return?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Please review our <b>Returns Policy<\/b> and follow directions for starting a return for a purchase made on <b>cloud9linens.com<\/b>\n<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How long will it take to process my refund?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Refunds for returns are generally processed within 20 days from the date the returning items are received. Once processed, the funds may appear in your account within 2-5 business days depending on the bank. See our <b>Returns Policy<\/b> for more details.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Are delivery fees refundable?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>All shipping costs, domestic and international, are non-refundable. See our Returns Policy for more details.For further assistance, please contact Customer Service, <b><a href=\"mailto:customer_assistance@cloud9linens.com\">customer_assistance@cloud9linens.com<\/a><\/b>\nCloud9linens.com U.S. customer service specialists are available Monday through Friday 9AM – 5PM EST, excluding public holidays.All custom orders, final sale & Holiday Sales are final and can not be returned or refunded only in the exception of a defected product by or end.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Cloud9linens LLC<\/b><\/h4>\n<br>\n<p>\n<\/p>","custom-class":""}},"67d86ce4-3d60-4098-b900-c74d5572d0d3":{"type":"globo-formbuilder","settings":{"form_id":"NzMyNTY="}},"4d5d06ac-e049-46ef-8b42-41304d10e29a":{"type":"custom-liquid","settings":{"custom_liquid":"<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>","custom_class":""}}},"order":["main","f538a340-bf07-44d6-bd5f-daf735cdd8ac","rich_text_zwhyyc","rich_text_pKJMmp","67d86ce4-3d60-4098-b900-c74d5572d0d3","4d5d06ac-e049-46ef-8b42-41304d10e29a"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "MY ACCOUNT",
+            "custom_button_link": "https:\/\/cloud9linens.com\/account\/login?return_url=%2Faccount",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "SHIPPING & RETUENS",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-shipping-returns-policy",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c7c46031-da20-4032-ab47-38d460c1ec74": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "ORDER STATUS",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-check-order-status",
+            "my_button_style": "sf__btn-secondary"
+          }
+        },
+        "c0e78059-3099-4a11-8dc0-746b7465bee6": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "FAQ",
+            "custom_button_link": "shopify:\/\/pages\/customer-care-frequently-asked-questions",
+            "my_button_style": "sf__btn-secondary"
+          }
+        }
+      },
+      "block_order": [
+        "61f84a8e-b6e5-43de-8ec9-d9aa116d8fa8",
+        "b77ddc79-627d-4d27-ae79-e6dede66ab7b",
+        "c7c46031-da20-4032-ab47-38d460c1ec74",
+        "c0e78059-3099-4a11-8dc0-746b7465bee6"
+      ],
+      "custom_css": [
+        "h3 {color: #ffffff;}",
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "medium",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/sun-setting-over-ocean.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "large",
+        "text_color": "white",
+        "title": "",
+        "font_size": 18,
+        "subtitle": "<h1><b>FAQ<\/b><\/h1>",
+        "text": "",
+        "para_font_size": 21,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size cus_size_chart",
+        "mob_content": true
+      }
+    },
+    "rich_text_zwhyyc": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "rich_text_pKJMmp": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "<h2><b>FREQUENTLY ASKED QUESTIONS<\/b><\/h2>",
+        "richtext-prt": "<br><p><\/p>\n<h4><b>Ordering<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<p><\/p>\n<h4><b>When will I receive my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Orders are typically fulfilled within 2-3 business days. For shipments to the Egypt & Middle east, deliveries typically take 2-3 business days via UPS Ground after fulfillment. For shipments to the Usa & Europe, 5-7 business days. For shipments to Canada,7-10 days depending on customs clearance.\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>How can I track my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>\n<b>Order status<\/b> can be tracked using Check Order Status or by referring to the shipping confirmation email sent to the email provided at checkout.<\/h4>\n<br>\n<p><\/p>\n<h4><b>How do I cancel my order?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Please contact <b>Customer Service<\/b> within 15 minutes of placing the order during business hours Monday to Friday 9am to 5pm EDT. We try to ship out all orders as quickly as possible, so in some rare instances, we may be able to stop the order before fulfillment and cancel. If an order has been shipped out, we are unable to cancel the order. Once the order is received, please return the order per the<b> Return Policy.<\/b>\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>How do I exchange an item purchased online?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>We are unable to process exchanges at this time. Please return the original purchase according to our <b>Return Policy<\/b> and place a new order.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What payment methods are accepted?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Cloud9linens.com currently accepts Credit Cards (Visa, Mastercard, American Express), Paypal, Apple Pay, and Klarna. See more details under <b>Payment and Taxes.<\/b>\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>Why are my payments not going through?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>We are not responsible for shipping delays caused by factors beyond our control, such as weather conditions, customs delays, or carrier issues.Delivery charges are based on the total weight of the order. At this time we are unable to ship to P.O. or A.P.O boxes. Our shipping carrier UPS will make a rst attempt, then redirect the package to the nearest UPS Access Point if the rst attempt was unsuccessful. Please visit UPS.com for more information on UPS Access Points.*International shipping charges are not inclusive of any duties, tax or broker fees that may apply and for which the recipient of the shipment will be responsible. Please be advised that, effective March 26, 2020, UPS has suspended the UPS Service Guarantee for all shipments to any destination, at all service levels. For this reason, Cloud9linens has removed all expedited shipping methods from our website until further notice. With regards to processing and lead times, we are currently shipping orders as normal, with increased employee safety measures in place..<\/h4>\n<br>\n<p><\/p>\n<h4><b>On what states or provinces is Sales Tax applied?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>See the full list of states and provinces under Payment and Taxes.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Egypt?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro-Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within United States<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro- Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>What is Sales Tax amount applied within Euro- Zone?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Provinces under Payment and Taxes VAT is 14%.<\/h4>\n<br>\n<p><\/p>\n<h4><b>Shippings<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How long does an order take to ship to my destination?.<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Orders are typically fulfilled within 2-3 business days. For shipments to the Egypt & Middle east, deliveries typically take 2-3 business days via UPS Ground after fulfillment. For shipments to the Usa & Europe, 5-7 business days. For shipments to Canada, 7-10 days depending on customs clearance.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How much is shipping?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Shipping cost depends on the weight of the items being purchased, the destination, and the shipping method. Please add all items you would like to purchase to the shopping bag, proceed to checkout, and enter the full shipping address to see the shipping cost per shipping method.*Due to UPS policy change on shipping guarantees, we are not currently offering expedited shipping methods.* For more details, please see our <b>Shipping Policy.<\/b> Summary Returns accepted for 14 days $22.00 flat rate return shipping 5% restocking fee No final sale items.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Do you offer free shipping?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Cloud9linens.com may offer free shipping on orders based on order amount for specific periods of time. If your order is eligible for free shipping at the time of checkout, once you proceed to checkout and enter the full shipping address, the actual shipping cost will appear for the order and the shipping discount will show the deduction of the actual shipping cost in the Order Summary on the top right of the page. If there is no shipping discount shown in the Order Summary, your order may not be eligible for free shipping.Please note free shipping offers are typically applicable only to shipments within the U.S. and Egypt via UPS Ground or Custom orders exceeding $ 5000.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Returns - How can I start a return?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Please review our <b>Returns Policy<\/b> and follow directions for starting a return for a purchase made on <b>cloud9linens.com<\/b>\n<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>How long will it take to process my refund?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>Refunds for returns are generally processed within 20 days from the date the returning items are received. Once processed, the funds may appear in your account within 2-5 business days depending on the bank. See our <b>Returns Policy<\/b> for more details.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Are delivery fees refundable?<\/b><\/h4>\n<br>\n<p>\n<\/p>\n<h4>All shipping costs, domestic and international, are non-refundable. See our Returns Policy for more details.For further assistance, please contact Customer Service, <b><a href=\"mailto:customer_assistance@cloud9linens.com\">customer_assistance@cloud9linens.com<\/a><\/b>\nCloud9linens.com U.S. customer service specialists are available Monday through Friday 9AM – 5PM EST, excluding public holidays.All custom orders, final sale & Holiday Sales are final and can not be returned or refunded only in the exception of a defected product by or end.<\/h4>\n<br>\n<p>\n<\/p>\n<h4><b>Cloud9linens LLC<\/b><\/h4>\n<br>\n<p>\n<\/p>",
+        "custom-class": ""
+      }
+    },
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3": {
+      "type": "globo-formbuilder",
+      "settings": {
+        "form_id": "NzMyNTY="
+      }
+    },
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media only screen and (min-width: 768px) and (max-width: 1024px){\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: invert(1) !important;\n}\n<\/style>",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "f538a340-bf07-44d6-bd5f-daf735cdd8ac",
+    "rich_text_zwhyyc",
+    "rich_text_pKJMmp",
+    "67d86ce4-3d60-4098-b900-c74d5572d0d3",
+    "4d5d06ac-e049-46ef-8b42-41304d10e29a"
+  ]
+}

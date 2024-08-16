@@ -1,1 +1,285 @@
-{"sections":{"main":{"type":"page","disabled":true,"settings":{}},"image_with_text_2_AVb6J8":{"type":"image-with-text-2","blocks":{"button_LLCbbA":{"type":"Button","settings":{"custom_button_text":"ABOUT US","custom_button_link":"shopify:\/\/pages\/our-story","my_button_style":"sf__btn-primary"}},"button_Nzwkax":{"type":"Button","settings":{"custom_button_text":"THE FAMILY","custom_button_link":"shopify:\/\/pages\/the-family-1948","my_button_style":"sf__btn-primary"}},"button_G8g7dP":{"type":"Button","settings":{"custom_button_text":"THE TIMELINE","custom_button_link":"shopify:\/\/pages\/the-timeline","my_button_style":"sf__btn-primary"}},"button_hNKaHB":{"type":"Button","settings":{"custom_button_text":"THE AWARDS","custom_button_link":"shopify:\/\/pages\/the-awards","my_button_style":"sf__btn-primary"}},"button_6zyxBX":{"type":"Button","settings":{"custom_button_text":"OUR TEAM","custom_button_link":"shopify:\/\/pages\/our-team","my_button_style":"sf__btn-primary"}}},"block_order":["button_LLCbbA","button_Nzwkax","button_G8g7dP","button_hNKaHB","button_6zyxBX"],"custom_css":["h1 {color: #ffffff;}"],"settings":{"sec-hide-show":true,"my_custum_btn_setting":true,"container":"w-full","hero_size":"large","show_overlay":true,"image":"shopify:\/\/shop_images\/Cloud9linens-About-Us_Large_5a14e7d1-c6a6-487e-9629-42e3522317d5.jpg","bg_position":"center","image_link":"","parallax":false,"content_in_container":false,"content_position":"center middle","text_alignment":"center","text_size":"medium","text_color":"white","title":"<h1><b>LETTERS<\/b><\/h1>","font_size":24,"subtitle":"","text":"","para_font_size":24,"button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","custom_class":"sec_font_size","mob_content":true}},"custom_content_MhBjmX":{"type":"custom-content","blocks":{"text_GPVwDL":{"type":"text","settings":{"title":"<h1>GUMP'S<\/h1>","subheading":"","text":"<h6>SAN FRANSISCO<\/h6>","width":"50%","alignment":"center","align_text":"center","text_size":"medium","heading_size":22,"text_color":"black","button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","block_custom_class":""}},"image_nBBqwR":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Letters-of-apprications-1_Large_7c25256e-630d-4fb9-bcb5-e04ff284dec6.jpg","link":"","width":"50%","alignment":"center","block_custom_class":""}}},"block_order":["text_GPVwDL","image_nBBqwR"],"settings":{"heading":"","subheading":"","description":"","column_size":50,"header_alignment":"center","container":"container","background_color":"","gap":30,"wd_container":true,"custom_padding_bottom":16,"use_scroll_mobile":false,"gap_mobile":16,"custom_class":""}},"testimonials_KrKqCp":{"type":"testimonials","blocks":{"testimonial_7UbH9w":{"type":"testimonial","settings":{"title":"Philosophy - Values","description":"<h5>We connect Egyptian young passionate designers and craftsmen with international customers that value quality, craftsmanship, and simplicity in design. <\/h5><h5>Through our products we not only showcase the heritage of Egypt but also empower the generation of young local craftsmen through interconnected world.<\/h5>","footer":"<h6>Z.Sultan -Ceo<\/h6>","image_text":"","product":""}},"testimonial_t3gLYi":{"type":"testimonial","settings":{"title":"Vision","description":"<h5>To be the brand setting the benchmark to the authenticity, quality and style for Egyptian crafted bed and bath products that embraces the essence of Egyptian long fiber cotton in modern design.<\/h5>","footer":"<h6>Z.Sultan -Ceo<\/h6>","image_text":"","product":""}},"testimonial_4cEyrP":{"type":"testimonial","settings":{"title":"Mission","description":"<h5>To offer our client’s authentic modern luxurious home products crafted in Egypt from authentic cotton seeds grown in the Nile valley, woven, designed and sewn by experienced craftsmen in Cairo. We create a real value by offering directly to our customers not only luxurious products that were overpriced but also a unique cultural experience <\/h5>","footer":"<h6>Z.Sultan -Ceo<\/h6>","image_text":"","product":""}}},"block_order":["testimonial_7UbH9w","testimonial_t3gLYi","testimonial_4cEyrP"],"disabled":true,"settings":{"heading":"","subheading":"","description":"","header_alignment":"center","container":"w-full","background_color":"","design":"testimonials-2","show_stars":false,"autorotate":true,"show_navigation":true,"show_pagination":true,"star_color":"#041e3a","custom_class":""}},"custom_content_yQNJjm":{"type":"custom-content","blocks":{"text_QDdEXx":{"type":"text","settings":{"title":"<h1>GUMP'S<\/h1>","subheading":"","text":"<h6>San Fransisco <\/h6>","width":"50%","alignment":"center","align_text":"center","text_size":"medium","heading_size":22,"text_color":"black","button_label":"","button_link":"","button_style":"sf__btn-primary","button_size":"","block_custom_class":""}},"image_g4JHmW":{"type":"image","settings":{"image":"shopify:\/\/shop_images\/Letters-of-apprications_Large_de3ed43c-3c15-4aa1-8121-75dd231d6848.jpg","link":"","width":"50%","alignment":"center","block_custom_class":""}}},"block_order":["text_QDdEXx","image_g4JHmW"],"settings":{"heading":"","subheading":"","description":"","column_size":50,"header_alignment":"center","container":"container","background_color":"","gap":30,"wd_container":true,"custom_padding_bottom":16,"use_scroll_mobile":false,"gap_mobile":16,"custom_class":""}},"rich_text_CnPpgr":{"type":"Rich-text","settings":{"rich-heading":"","richtext-prt":"","custom-class":""}},"breadcrumb_custom_F9tFfD":{"type":"breadcrumb_custom","settings":{}}},"order":["main","image_with_text_2_AVb6J8","custom_content_MhBjmX","testimonials_KrKqCp","custom_content_yQNJjm","rich_text_CnPpgr","breadcrumb_custom_F9tFfD"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "image_with_text_2_AVb6J8": {
+      "type": "image-with-text-2",
+      "blocks": {
+        "button_LLCbbA": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "ABOUT US",
+            "custom_button_link": "shopify:\/\/pages\/our-story",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_Nzwkax": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "THE FAMILY",
+            "custom_button_link": "shopify:\/\/pages\/the-family-1948",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_G8g7dP": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "THE TIMELINE",
+            "custom_button_link": "shopify:\/\/pages\/the-timeline",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_hNKaHB": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "THE AWARDS",
+            "custom_button_link": "shopify:\/\/pages\/the-awards",
+            "my_button_style": "sf__btn-primary"
+          }
+        },
+        "button_6zyxBX": {
+          "type": "Button",
+          "settings": {
+            "custom_button_text": "OUR TEAM",
+            "custom_button_link": "shopify:\/\/pages\/our-team",
+            "my_button_style": "sf__btn-primary"
+          }
+        }
+      },
+      "block_order": [
+        "button_LLCbbA",
+        "button_Nzwkax",
+        "button_G8g7dP",
+        "button_hNKaHB",
+        "button_6zyxBX"
+      ],
+      "custom_css": [
+        "h1 {color: #ffffff;}"
+      ],
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "large",
+        "show_overlay": true,
+        "image": "shopify:\/\/shop_images\/Cloud9linens-About-Us_Large_5a14e7d1-c6a6-487e-9629-42e3522317d5.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "<h1><b>LETTERS<\/b><\/h1>",
+        "font_size": 24,
+        "subtitle": "",
+        "text": "",
+        "para_font_size": 24,
+        "button_label": "",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
+    "custom_content_MhBjmX": {
+      "type": "custom-content",
+      "blocks": {
+        "text_GPVwDL": {
+          "type": "text",
+          "settings": {
+            "title": "<h1>GUMP'S<\/h1>",
+            "subheading": "",
+            "text": "<h6>SAN FRANSISCO<\/h6>",
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "heading_size": 22,
+            "text_color": "black",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-primary",
+            "button_size": "",
+            "block_custom_class": ""
+          }
+        },
+        "image_nBBqwR": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Letters-of-apprications-1_Large_7c25256e-630d-4fb9-bcb5-e04ff284dec6.jpg",
+            "link": "",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_GPVwDL",
+        "image_nBBqwR"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": ""
+      }
+    },
+    "testimonials_KrKqCp": {
+      "type": "testimonials",
+      "blocks": {
+        "testimonial_7UbH9w": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Philosophy - Values",
+            "description": "<h5>We connect Egyptian young passionate designers and craftsmen with international customers that value quality, craftsmanship, and simplicity in design. <\/h5><h5>Through our products we not only showcase the heritage of Egypt but also empower the generation of young local craftsmen through interconnected world.<\/h5>",
+            "footer": "<h6>Z.Sultan -Ceo<\/h6>",
+            "image_text": "",
+            "product": ""
+          }
+        },
+        "testimonial_t3gLYi": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Vision",
+            "description": "<h5>To be the brand setting the benchmark to the authenticity, quality and style for Egyptian crafted bed and bath products that embraces the essence of Egyptian long fiber cotton in modern design.<\/h5>",
+            "footer": "<h6>Z.Sultan -Ceo<\/h6>",
+            "image_text": "",
+            "product": ""
+          }
+        },
+        "testimonial_4cEyrP": {
+          "type": "testimonial",
+          "settings": {
+            "title": "Mission",
+            "description": "<h5>To offer our client’s authentic modern luxurious home products crafted in Egypt from authentic cotton seeds grown in the Nile valley, woven, designed and sewn by experienced craftsmen in Cairo. We create a real value by offering directly to our customers not only luxurious products that were overpriced but also a unique cultural experience <\/h5>",
+            "footer": "<h6>Z.Sultan -Ceo<\/h6>",
+            "image_text": "",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_7UbH9w",
+        "testimonial_t3gLYi",
+        "testimonial_4cEyrP"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "w-full",
+        "background_color": "",
+        "design": "testimonials-2",
+        "show_stars": false,
+        "autorotate": true,
+        "show_navigation": true,
+        "show_pagination": true,
+        "star_color": "#041e3a",
+        "custom_class": ""
+      }
+    },
+    "custom_content_yQNJjm": {
+      "type": "custom-content",
+      "blocks": {
+        "text_QDdEXx": {
+          "type": "text",
+          "settings": {
+            "title": "<h1>GUMP'S<\/h1>",
+            "subheading": "",
+            "text": "<h6>San Fransisco <\/h6>",
+            "width": "50%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "heading_size": 22,
+            "text_color": "black",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "sf__btn-primary",
+            "button_size": "",
+            "block_custom_class": ""
+          }
+        },
+        "image_g4JHmW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Letters-of-apprications_Large_de3ed43c-3c15-4aa1-8121-75dd231d6848.jpg",
+            "link": "",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_QDdEXx",
+        "image_g4JHmW"
+      ],
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": ""
+      }
+    },
+    "rich_text_CnPpgr": {
+      "type": "Rich-text",
+      "settings": {
+        "rich-heading": "",
+        "richtext-prt": "",
+        "custom-class": ""
+      }
+    },
+    "breadcrumb_custom_F9tFfD": {
+      "type": "breadcrumb_custom",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_AVb6J8",
+    "custom_content_MhBjmX",
+    "testimonials_KrKqCp",
+    "custom_content_yQNJjm",
+    "rich_text_CnPpgr",
+    "breadcrumb_custom_F9tFfD"
+  ]
+}
