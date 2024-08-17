@@ -283,12 +283,10 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }, 300);
   };  
-  updateWishlist();
-  console.log('updateWishlist')
+  // updateWishlist();
   let insert = false;
   //if (document.querySelector(".sf-wishlist__container")) {
   new MutationObserver(() => {
-    console.log("mutation seen!");
     updateWishlist();
   }).observe(document.querySelector(".sf-wishlist__container"), {
     childList: true,
@@ -300,7 +298,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ?.addEventListener?.("DOMNodeInserted", () => {
       if (insert) return;
       insert = true;
-      // updateWishlist()
+      updateWishlist()
     });
 
   document
