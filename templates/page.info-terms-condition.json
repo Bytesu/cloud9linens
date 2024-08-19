@@ -100,7 +100,7 @@
     "rich_text_FR4NLb": {
       "type": "Rich-text",
       "settings": {
-        "rich-heading": "TERMS & CONDITIONS",
+        "rich-heading": "<h2><b>TERMS & CONDITIONS<\/b><\/h2>",
         "richtext-prt": "<br><p><\/p><div style=\"text-align:left;\">\n<h4 class=\"about__block-heading\">Welcome to Cloud9linens. By accessing our website, you agree to comply with and be bound by the following terms and conditions.<\/h4>\n<br>\n<h4>Use of the Site You agree to use the site only for lawful purposes and in a way that does not infringe on the rights of others. Accounts You are responsible for maintaining the confidentiality of your account and password. <br><br>You agree to notify us immediately of any unauthorized use of your account. Purchases All purchases made through our site are subject to our acceptance. We reserve the right to refuse or cancel any order. <br><br>Pricing and Availability All prices are subject to change without notice. We strive to ensure accuracy but are not responsible for typographical errors. Returns and Refunds Please refer to our<b>\n<a href=\"\/pages\/customer-care-shipping-returns-policy\"> Return Policy<\/a><\/b> for details on returns and refunds. Limitation of Liability We are not liable for any damages arising from the use of our website or the purchase of our products. Changes to These Terms We reserve the right to update these terms at any time. Changes will be posted on this page.<br><br>Contact Us If you have any questions about these terms, please contact us at <b><a href=\"mailto:customer_assistance@cloud9linens.com\">customer_assistance@cloud9linens.com<\/a>\n\n<\/b>\n<\/h4>\n<br>\n<p><\/p>\n<h4><b>Cloud9linens LLC<\/b><\/h4>\n<br>\n<\/div>",
         "custom-class": ""
       }
