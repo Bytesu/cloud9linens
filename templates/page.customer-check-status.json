@@ -100,7 +100,7 @@
     "rich_text_UBJ8mE": {
       "type": "Rich-text",
       "settings": {
-        "rich-heading": "ORDER STATUS & PACKAGE TRACKING",
+        "rich-heading": "<h2><b>ORDER STATUS & PACKAGE TRACKING<\/b><\/h2>",
         "richtext-prt": "<br><h4 class=\"about__block-heading\"><b>Track My Order<\/b><\/h4><br>\n<div style=\"text-align:left;\"><h4>We are currently experiencing a high volume of orders and are working to ensure you’ll receive your package by the quoted delivery date.<br><br>You may <a href=\"\/pages\/order-status\"><b>Track Your Order<\/b><\/a>  By entering the order number, email address, and associated billing zip code. From here, you may view the Order Status & delivered tracking information.<br><br> Please note, when your order ship you will receive a shipping confirmation email containing tracking information. Click  <a href=\"\/pages\/order-status\"><b>Track Your Order<\/b><\/a>  from the shipping confirmation email to view the status of your shipment(s).<br><br> If you have a registered account with cloud9linens.com, simply go to order history in <a href=\"\/account\"><b>My Account<\/b><\/a> , from there , click on any order number for its complete order details. Including tracking information.<\/h4><\/div>\n<br>\n<b><h4 class=\"about__block-heading\"><b>Cloud9linens LLC<\/b><\/h4><\/b>",
         "custom-class": ""
       }
