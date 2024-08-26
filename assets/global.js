@@ -229,7 +229,6 @@ const THelper = {
     // convert obj to format like 'id=42726933594367:1bb317c086457acb4ae924861dc2ff62&properties[bundle]=bundle10'
     let body = THelper.convertParamFn(obj)
     THelper.fetch({ ...THelper.postConfig, body }, window.tRoutes.cart_change_url).then(res => {
-      console.log(res);
     });
   },
   /**
@@ -849,6 +848,20 @@ class BaseV2 extends HTMLElement {
   isMobile() {
     return window.innerWidth < 750;
   }
+  async updateCart() {
+    let res = await this.fetch('/cart.json')
+    console.log(res)
+    let count_el = document.querySelector('.mw_custom_hedaer .cart-icon .sf-cart-count')
+    if (count_el) {
+      if (res.item_count) {
+        count_el.innerHTML = res.item_count
+        count_el.closest('section').classList.add('cart-has-items')
+      } else {
+        count_el.innerHTML = ''
+        count_el.closest('section').classList.remove('cart-has-items')
+      }
+    }
+  }
   ajaxForm(cb) {
     let formEl = this.querySelector('form[action="/cart/add"]')
     if (formEl) {
@@ -858,9 +871,9 @@ class BaseV2 extends HTMLElement {
         let formData = new FormData(formEl)
         let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
         // let res1 = await this.fetch('/recommendations/products.json?product_id=' + this.product.id)
-        // console.log(res1)
         // this.product.related = res1.products;
         cb?.()
+        this.updateCart()
         THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
       })
     }
@@ -931,7 +944,6 @@ class TVariantSelects extends HTMLElement {
     return this.getVariantData().filter(item => item.options.sort().join('') == options)?.[0]
   }
   updateOptionLabel(target) {
-    console.log(target)
     let spanEl = target.closest('fieldset').parentElement.children[0]
     if (spanEl.querySelector('span')) {
       spanEl.querySelector('span').innerHTML = target.value.toLowerCase()
@@ -1098,7 +1110,7 @@ class TVariantSelects extends HTMLElement {
             })
           })
         } else { // 处理对应数据
-          let first_value = this.querySelector(`[name="${first_name}"]:checked`).value
+          let first_value = this.querySelector(`[name="${first_name}"]:checked`)?.value
           if (first_value && map_res[first_value].length) {
             Array.from(this.querySelectorAll(`[name="${option.name}"]`)).forEach(el => {
               if (!map_res[first_value].includes(el.value)) {
@@ -1236,7 +1248,6 @@ if (!customElements.get(TConsts.VARIANT_RADIOS)) customElements.define(TConsts.V
 class TPopup extends BaseV2 {
   closeEvent() {
     let closeEl = this.querySelector(".pop-close");
-    console.log(closeEl);
     if (closeEl) {
       this.addEvent(closeEl, "click", () => {
         // this.style.display = "none";
@@ -1321,15 +1332,29 @@ class AddToCartSlide extends BaseV2 {
     ]); // {product:{}}
     this.product = this.parseAvailable(res_1, res.product)
 
-    console.log(this.product)
     this.initImages(res.product.images);
 
     this.initProductInfo(res.product)
     this.ajaxForm(() => {
       let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
-
       this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
       this.closest('t-popup').openByType('t-added-to-cart-slide')
+    })
+    if (this.product.firstAvailableVariant && this.product.variants.length == 1) {
+      setTimeout(() => { document.querySelector('t-add-to-cart-slide .product-form__actions [type="submit"]').click() }, 2500)
+    }
+    //console.log(this.product)
+    let favorEl = this.querySelector('.add-to-wishlist')
+    this.querySelector('.add-to-wishlist').addEventListener('click', () => {
+
+      if (favorEl.classList.contains('added-to-wishlist')) {
+        C.removeFavor(handle)
+        favorEl.classList.remove('added-to-wishlist')
+      } else {
+        C.addFavor(handle)
+        favorEl.classList.add('added-to-wishlist')
+      }
+
     })
     this.initEvent();
 
@@ -1346,7 +1371,15 @@ class AddToCartSlide extends BaseV2 {
   }
   product = null;
   initImages(images) {
-    let imgEl = this.querySelector(".mobile__slider");
+    let imgEl = this.querySelector(".sf-product-media__mobile >.mobile__slider:first-child");
+    if (images.length == 0) {
+      imgEl.style.display = "none"
+
+    } else {
+      imgEl.style.display = "block"
+    }
+    this.querySelectorAll(".sf-product-media__mobile >.mobile__slider:not(:first-child)").forEach(item => item.remove())
+
     images.forEach((image, index) => {
       let imgClone = index == 0 ? imgEl : imgEl.cloneNode(true);
       //      imgClone = imgEl.cloneNode(true);
@@ -1368,11 +1401,9 @@ class AddToCartSlide extends BaseV2 {
     }
   }
   connectedCallback() {
-
   }
   initEvent() {
     this.addEvent(this, 'change', () => {
-      ///console.log('change event');
       this.updatePrice()
     })
   }
@@ -1382,8 +1413,8 @@ class AddToCartSlide extends BaseV2 {
     this.querySelector('[name="id"]').value = current.id
   }
 
-
   initProductInfo(p, v) {
+    
     this.querySelector('.p-title').innerHTML = p.title
     this.querySelector('.p-vendor').innerHTML = p.vendor
     if (!v) {
@@ -1428,14 +1459,15 @@ class AddToCartSlide extends BaseV2 {
         }).join('')
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
-        ${item.name}:${item.name == 'Size' ? `<span>${(p.firstAvailableVariantData?.[`option` + (index + 1)] ?? '').toLowerCase()}</span>` + sizeLink : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
+        ${item.name}:${item.name == 'Size' ? sizeLink + `<span>${(p.firstAvailableVariantData?.[`option` + (index + 1)] ?? '').toLowerCase()}</span>` : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
           <script type="application/json">${JSON.stringify(p.variants)}</script>`
       }).join('')
       this.querySelector('t-variant-radios').updateAvaliableOptions(true)
       this.querySelector('.p-detail').setAttribute('href', `/products/${p.handle}`)
       this.updatePrice()
     } else if (this.querySelector('.p-variants') && v) { // 
-      this.querySelector('.p-variants').innerHTML = v.options.map((item, index) => {
+      ;
+      this.querySelector('.p-variants').innerHTML = v.options.reverse().map((item, index) => {
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
@@ -1443,14 +1475,22 @@ class AddToCartSlide extends BaseV2 {
       this.queryAll(this, '.items-look')[0].innerHTML = p.related.map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
-                    <img
-                      src="${item.src}"
-                      alt=""
-                    >
+                    <img src="${item.src}" alt="" >
                   </a>
                 </div>`
       }).join('')
 
+    }
+    if (!this.querySelectorAll('[type="radio"]:checked').length) {
+      let list = p.variants.map(item => parseFloat(`${item.price}`)).sort();
+      console.log(list)
+      let min = Math.min(...list)
+      let max = Math.max(...list)
+      if (max != min) {
+        this.querySelector('.p-price').innerHTML = `${THelper.moneyFn(100 * min)} - ${THelper.moneyFn(100 * max)}`
+      } else {
+        this.querySelector('.p-price').innerHTML = `${THelper.moneyFn(100 * min)}`
+      }
     }
     if (p.firstAvailableVariant) {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'none'
@@ -1461,8 +1501,6 @@ class AddToCartSlide extends BaseV2 {
 
     }
   }
-
-
 
 }
 if (!customElements.get(`t-add-to-cart-slide`)) {
@@ -1475,9 +1513,8 @@ class AddedToCartSlide extends AddToCartSlide {
   async initSelected(product, variant) {
     this.initProductInfo(product, variant)
     let res = await this.fetch('/cart')
-    this.querySelector(`[type="submit"]`).innerHTML = `CHECKOUT (${res.item_count})`
+    this.querySelector(`[type = "submit"]`).innerHTML = `CHECKOUT(${res.item_count})`
   }
-  ajaxForm() { }
   init() {
     this.addEvent(this.querySelector('.btn-contine'), 'click', () => {
       this.closest('t-popup').close()
@@ -1491,8 +1528,6 @@ if (!customElements.get(`t-added-to-cart-slide`)) {
 
 THelper.DOMready(() => {
   document.addEventListener('click', (evt) => {
-    console.log(evt.currentTarget)
-
     // add to tag
     if (evt.target.tagName == 'T-POPUP') {
       evt.target.close()
@@ -1508,9 +1543,8 @@ THelper.DOMready(() => {
   let timer = 0
   let intervaler = setInterval(() => {
     let btns = queryAll(document, '.wish_shop_btn a')
-    //console.log(btns)
     btns.forEach(item => {
-      item.setAttribute('href', `javascript:void(0)`)
+      item.setAttribute('href', `javascript: void (0)`)
       item.innerHTML = 'Add to Bag'
     })
     if (timer > 10) {

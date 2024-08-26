@@ -78,6 +78,25 @@ const fetchSection = (sectionId, fetchFromCache = false) => {
   });
 };
 const C = {
+  initFavorUI(wisshlist) {
+    if (wisshlist.length) {
+      document.body.classList.add('wishlist-has-item')
+    } else {
+      document.body.classList.remove('wishlist-has-item')
+    }
+  },
+  addFavor(handle) {
+    let wisshlist = C.lsGet('sf__wishlist-products')
+    wisshlist = [...wisshlist.filter(item => item != handle), handle]
+    C.lsSet('sf__wishlist-products', wisshlist)
+    C.initFavorUI(wisshlist)
+  },
+  removeFavor(handle) {
+    let wisshlist = C.lsGet('sf__wishlist-products')
+    wisshlist = wisshlist.filter(item => item != handle)
+    C.lsSet('sf__wishlist-products', wisshlist)
+    C.initFavorUI(wisshlist)
+  },
   lsSet(key, v) {
     localStorage.setItem(key, typeof v == 'object' ? JSON.stringify(v) : v)
   },
@@ -203,7 +222,6 @@ if (!customElements.get("form-control-group")) {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
   document
     .querySelector(".sf-customer__reset-password-btn")
     ?.addEventListener?.("click", () => {
@@ -214,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const updateWishlist = () => {
-    if(document.querySelector(".wishlist-title-custom"))document.querySelector(".wishlist-title-custom").style.display = "block";
+    if (document.querySelector(".wishlist-title-custom")) document.querySelector(".wishlist-title-custom").style.display = "block";
     Array.from(document.querySelectorAll(".wish_shop_btn a")).forEach(
       (item) => {
         let btn = document.createElement("button");
@@ -222,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList = item.classList;
         btn.setAttribute("type", "button");
         item.replaceWith(btn);
-        btn.addEventListener('click', () =>{
+        btn.addEventListener('click', () => {
           //document.querySelector('t-popup')?.open?.()
           console.log('----')
         })
@@ -243,8 +261,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (document.querySelector(".section-my-v2"))
       document.querySelector(".section-my-v2").style.display = "none";
-
-    ///
     C.selector(".wishlist .wish_trash_icon,.wishlist .posi_absolute").forEach(
       (item) => {
         if (item.closest('.wish_trash_icon')) {
@@ -278,11 +294,11 @@ document.addEventListener("DOMContentLoaded", () => {
           item.innerHTML = "Remove";
         }
       );
-      C.selector("h3.block.text-base.mob_fs_8").forEach((item) => {
-        //  item.parentElement.insertBefore(item,item.previousElementSibling); console.log('----')
-      });
+      // C.selector("h3.block.text-base.mob_fs_8").forEach((item) => {
+      //   //  item.parentElement.insertBefore(item,item.previousElementSibling); console.log('----')
+      // });
     }, 300);
-  };  
+  };
   // updateWishlist();
   let insert = false;
   //if (document.querySelector(".sf-wishlist__container")) {

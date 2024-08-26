@@ -1,12 +1,3 @@
-/*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
 {
   "current": {
     "favicon": "shopify:\/\/shop_images\/cloud9linens.jpg",
@@ -278,76 +269,6 @@
           "show_compare_icon": true,
           "show_currency_switcher": true,
           "show_language_switcher": false
-        }
-      },
-      "footer": {
-        "type": "footer",
-        "blocks": {
-          "e401f751-a7a4-4513-af15-03e606ea2065": {
-            "type": "newsletter",
-            "settings": {
-              "title": "NEWSLETTER SIGN UP",
-              "description": "",
-              "email_placeholder": "Your Email",
-              "form_style": "minimal",
-              "show_social": false,
-              "show_agree_checkbox": false,
-              "width": "25%"
-            }
-          },
-          "c424c461-5d23-491d-8c9b-223a34f63fda": {
-            "type": "custom_text",
-            "settings": {
-              "title": "Since 1948",
-              "image_max": "100px",
-              "description": "<p>Over the years, from the late '60s to the late '70s, Mida Florence Inter national Crafts Fair has granted & recognized our family's work with sever al Accolades of excellence.<\/p><p><\/p><p><a href=\"#\" target=\"_blank\" title=\"#\">Read More<\/a><\/p>",
-              "width": "25%"
-            }
-          },
-          "e084409f-2e2f-46a5-869c-91ecc24b4f38": {
-            "type": "menu",
-            "settings": {
-              "menu": "customer-care",
-              "title": "",
-              "width": "16%"
-            }
-          },
-          "4335f8ff-5675-4e1a-a920-8f1c05a18159": {
-            "type": "menu",
-            "settings": {
-              "menu": "discover",
-              "title": "",
-              "width": "16%"
-            }
-          },
-          "7ebc2f78-975b-4a81-b874-103c3355a866": {
-            "type": "menu",
-            "settings": {
-              "menu": "information",
-              "title": "",
-              "width": "16%"
-            }
-          }
-        },
-        "block_order": [
-          "e401f751-a7a4-4513-af15-03e606ea2065",
-          "c424c461-5d23-491d-8c9b-223a34f63fda",
-          "e084409f-2e2f-46a5-869c-91ecc24b4f38",
-          "4335f8ff-5675-4e1a-a920-8f1c05a18159",
-          "7ebc2f78-975b-4a81-b874-103c3355a866"
-        ],
-        "settings": {
-          "custom-class": "mob_ftr",
-          "design": "footer-3",
-          "container": "w-full",
-          "color_accent": "#041e3a",
-          "bordered": false,
-          "copyright": "2023 Cloud9linens All Right Reserved 2023 Cloud9linens All Right Reserved |",
-          "show_currency_selector": true,
-          "show_language_selector": true,
-          "show_social_links": true,
-          "show_payment_icons": false,
-          "payment_icons_width": 300
         }
       },
       "annoucement": {
