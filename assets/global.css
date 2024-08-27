@@ -549,7 +549,9 @@ t-added-to-cart-slide .h3 {
     display: block;
   }
 }
-
+[value="Default Title"]+label {
+  display: none !important;
+}
 @media (max-width: 767px) {
   .my-custom-font-size {
     max-width: 90%;

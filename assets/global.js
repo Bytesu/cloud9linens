@@ -850,7 +850,7 @@ class BaseV2 extends HTMLElement {
   }
   async updateCart() {
     let res = await this.fetch('/cart.json')
-    console.log(res)
+    //console.log(res)
     let count_el = document.querySelector('.mw_custom_hedaer .cart-icon .sf-cart-count')
     if (count_el) {
       if (res.item_count) {
@@ -869,12 +869,32 @@ class BaseV2 extends HTMLElement {
         THelper.btnLoading(formEl.querySelector('[type="submit"]'), 'white');
         evt.preventDefault();
         let formData = new FormData(formEl)
-        let res = await this.fetch('/cart/add?id=' + formData.get('id') + '&quantity=1')
+        /**
+         * 此种方式出现库存不足提示
+         */
+        let res = await this.fetch('/cart/add', {
+          method: 'POST',
+          headers: {
+            "Accept": "application/javascript",
+            "X-Requested-With": "XMLHttpRequest"
+          },
+          // body: JSON.stringify({id: formData.get('id'),quantity:1,form_type:'product'}),
+          body: formData,
+          //body:formData,
+        })
+        res = await res.json()
+        if (res.status == 422) {
+          //alert(res.message);
+          cb(true)
+        } else {
+          cb?.()
+          this.updateCart()
+        }
+        THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
+        console.log(res)
         // let res1 = await this.fetch('/recommendations/products.json?product_id=' + this.product.id)
         // this.product.related = res1.products;
-        cb?.()
-        this.updateCart()
-        THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
+
       })
     }
   }
@@ -1287,7 +1307,11 @@ class AddToCartSlide extends BaseV2 {
     let targets = TDomHelper.parseFromStringV2(str).querySelector('[type="page-metafields"]')
     let availabileOptionMap = {}
     let variantMap = Object.keys(targets.dataset).reduce((res, key) => {
-      if (key.startsWith('v-')) {
+      if (key.startsWith('vInventoryQuantity')) {
+        if (!res['inventoryQuantity']) res['inventoryQuantity'] = {}
+        let id = key.replace('vInventoryQuantity-', '')
+        res.inventoryQuantity[id] = targets.dataset[key]
+      } else if (key.startsWith('v-')) {
         let id = key.replace('v-', '')
         res[id] = targets.dataset[key]
         let currentVariant = product.variants.find(v => `${v.id}` == id);
@@ -1299,7 +1323,6 @@ class AddToCartSlide extends BaseV2 {
           } else if (options[1]) {
             availabileOptionMap[options[0]].push(options[1])
           }
-
         }
       }
       else if (key.endsWith('firstAvailableVariant')) {
@@ -1319,7 +1342,7 @@ class AddToCartSlide extends BaseV2 {
       product.firstAvailableVariantData = product.variants.find(item => `${item.id}` == `${product.firstAvailableVariant}`)
       return res;
     }, {})
-
+    ///console.log(variantMap)
     return product
   }
   async init(handle) {
@@ -1331,14 +1354,18 @@ class AddToCartSlide extends BaseV2 {
       this.fetch(`/products/${handle}.json`)
     ]); // {product:{}}
     this.product = this.parseAvailable(res_1, res.product)
-
     this.initImages(res.product.images);
 
     this.initProductInfo(res.product)
-    this.ajaxForm(() => {
-      let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
-      this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
-      this.closest('t-popup').openByType('t-added-to-cart-slide')
+    this.ajaxForm((isOutofStock) => {
+      if (isOutofStock) {
+          this.querySelector('[action="/cart/add"]').style.display = 'none'
+          this.querySelector('.klaviyo-form-customize').style.display = 'block'
+      } else {
+        let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
+        this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
+        this.closest('t-popup').openByType('t-added-to-cart-slide')
+      }
     })
     if (this.product.firstAvailableVariant && this.product.variants.length == 1) {
       setTimeout(() => { document.querySelector('t-add-to-cart-slide .product-form__actions [type="submit"]').click() }, 2500)
@@ -1414,7 +1441,7 @@ class AddToCartSlide extends BaseV2 {
   }
 
   initProductInfo(p, v) {
-    
+
     this.querySelector('.p-title').innerHTML = p.title
     this.querySelector('.p-vendor').innerHTML = p.vendor
     if (!v) {
@@ -1483,7 +1510,6 @@ class AddToCartSlide extends BaseV2 {
     }
     if (!this.querySelectorAll('[type="radio"]:checked').length) {
       let list = p.variants.map(item => parseFloat(`${item.price}`)).sort();
-      console.log(list)
       let min = Math.min(...list)
       let max = Math.max(...list)
       if (max != min) {
@@ -1513,7 +1539,7 @@ class AddedToCartSlide extends AddToCartSlide {
   async initSelected(product, variant) {
     this.initProductInfo(product, variant)
     let res = await this.fetch('/cart')
-    this.querySelector(`[type = "submit"]`).innerHTML = `CHECKOUT(${res.item_count})`
+    this.querySelector(`[type="submit"]`).innerHTML = `CHECKOUT(${res.item_count})`
   }
   init() {
     this.addEvent(this.querySelector('.btn-contine'), 'click', () => {
@@ -1540,16 +1566,16 @@ THelper.DOMready(() => {
       }
     }
   })
-  C.lsGet('sf__wishlist-products').forEach(handle=>{
+  C.lsGet('sf__wishlist-products').forEach(handle => {
 
     let item = document.querySelector(`.add-to-wishlist-action[data-handle="${handle}"]`)
-    if(item){
+    if (item) {
       item.classList.add('added-to-wishlist')
     }
-  
+
   })
 
-  Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl=>{
+  Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl => {
     favorEl.addEventListener('click', () => {
       //console.log(favorEl)
       if (favorEl.classList.contains('added-to-wishlist')) {
@@ -1559,7 +1585,7 @@ THelper.DOMready(() => {
         C.addFavor(favorEl.dataset.handle)
         favorEl.classList.add('added-to-wishlist')
       }
-  
+
     })
 
   })

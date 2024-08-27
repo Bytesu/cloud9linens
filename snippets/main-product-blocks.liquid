@@ -376,7 +376,7 @@
                   <div class="flex flex-wrap items-end">
                 {% endcomment %}
 
-                <div class="flex flex-wrap" style="flex-direction: column;">
+                <div class="flex flex-wrap action-box" style="flex-direction: column;">
                   {% comment %}
                     MTS
                     {% if block.settings.show_quantity_selector %}
@@ -451,6 +451,12 @@
                     .custom-source-pro.product-form__actions > div .added-to-wishlist .heart_red path{fill:white !important}
                     .custom-source-pro.product-form__actions > div .added-to-wishlist .hrt-icon {
                       display: none;
+                    }
+                    .action-box > button{margin-top:0 !important;}
+                    @media (max-width: 768px) {
+                      .main-product__block-custom_liquid{
+                        display:block;
+                      }
                     }
                   </style>
                   {% if block.settings.show_dynamic_checkout %}

@@ -38,6 +38,7 @@
       {{- 'products.product.quantity_minimum_message' | t -}}
     </span>
   </div>
+  <input type="hidden" name="form_type" value="product">
   <input hidden name="id" required value="{{ product.selected_or_first_available_variant.id }}">
   <div class="product-form__actions">
     <button type="submit" class="sf__btn sf__btn-primary add_cart___btn_btn">Add to Bag</button>

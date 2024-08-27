@@ -4,6 +4,7 @@
   type="page-metafields"
   {% for v in product.variants %}
     data-v-{{ v.id }}="{{ v.available }}"
+    data-v-inventory-quantity-{{ v.id }}="{{ v.inventory_quantity }}"
   {% endfor %}
 
   data-include-collection="{{ product.metafields.custom.collection_include.value }}"
