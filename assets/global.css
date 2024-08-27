@@ -552,6 +552,9 @@ t-added-to-cart-slide .h3 {
 [value="Default Title"]+label {
   display: none !important;
 }
+.add-to-wishlist {
+  max-width: 70px;
+}
 @media (max-width: 767px) {
   .my-custom-font-size {
     max-width: 90%;

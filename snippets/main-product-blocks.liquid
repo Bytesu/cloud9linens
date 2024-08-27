@@ -434,22 +434,24 @@
                     </svg>
                   </button>
                   <style>
-                    .custom-source-pro.product-form__actions > div {
+                    .action-box  {
+                      display:flex;
                       flex-direction: row !important;
                     }
-                    custom-source-pro.product-form__actions > div .add-to-wishlist:hover {
+                    .action-box .add-to-wishlist:hover {
                       background: #181443 !important;
                     } 
-                    .custom-source-pro.product-form__actions > div .add-to-wishlist {
-                      border-top: 1px solid #181443;
-                      border-right: 1px solid #181443;
-                      border-bottom: 1px solid #181443;
+                    .action-box  .add-to-wishlist {
+                      border:none;
+                      border-left: 1px solid white;
                     }
+                    .action-box *{margin-top: 0 !important;
+                      border-radius: 0 !important;}
                     .main-product__block-custom_liquid {
                       display: none;
                     }
-                    .custom-source-pro.product-form__actions > div .added-to-wishlist .heart_red path{fill:white !important}
-                    .custom-source-pro.product-form__actions > div .added-to-wishlist .hrt-icon {
+                    .action-box .added-to-wishlist .heart_red path{fill:white !important}
+                    .action-box .added-to-wishlist .hrt-icon {
                       display: none;
                     }
                     .action-box > button{margin-top:0 !important;}
