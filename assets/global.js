@@ -882,7 +882,7 @@ class BaseV2 extends HTMLElement {
           body: formData,
           //body:formData,
         })
-        res = await res.json()
+        if(res.json)res = await res.json()
         if (res.status == 422) {
           //alert(res.message);
           cb(true)
@@ -1499,7 +1499,8 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
-      this.queryAll(this, '.items-look')[0].innerHTML = p.related.map(item => {
+      
+      this.queryAll(this, '.items-look')[0].innerHTML = (p.related??[]).map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
                     <img src="${item.src}" alt="" >
@@ -1538,7 +1539,9 @@ class AddedToCartSlide extends AddToCartSlide {
   }
   async initSelected(product, variant) {
     this.initProductInfo(product, variant)
+    console.log(`initSelected`)
     let res = await this.fetch('/cart')
+    console.log(res)
     this.querySelector(`[type="submit"]`).innerHTML = `CHECKOUT(${res.item_count})`
   }
   init() {
