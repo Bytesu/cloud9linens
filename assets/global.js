@@ -1540,6 +1540,29 @@ THelper.DOMready(() => {
       }
     }
   })
+  C.lsGet('sf__wishlist-products').forEach(handle=>{
+
+    let item = document.querySelector(`.add-to-wishlist-action[data-handle="${handle}"]`)
+    if(item){
+      item.classList.add('added-to-wishlist')
+    }
+  
+  })
+
+  Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl=>{
+    favorEl.addEventListener('click', () => {
+      //console.log(favorEl)
+      if (favorEl.classList.contains('added-to-wishlist')) {
+        C.removeFavor(favorEl.dataset.handle)
+        favorEl.classList.remove('added-to-wishlist')
+      } else {
+        C.addFavor(favorEl.dataset.handle)
+        favorEl.classList.add('added-to-wishlist')
+      }
+  
+    })
+
+  })
   let timer = 0
   let intervaler = setInterval(() => {
     let btns = queryAll(document, '.wish_shop_btn a')

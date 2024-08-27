@@ -72,6 +72,12 @@
             <span class="font-medium mob_fs_10">
             </span>{{ item.sku }}</p>
         </div>
+      {%- else -%}
+        <div class="scd-item__variant mb-1">
+          <p class="scd-item__variant-option fonts_source mob_fs_10">
+            <span class="font-medium mob_fs_10">
+            </span>{{ item.sku }}</p>
+          </div>
       {%- endunless -%}
       <div class="flex items-center flexed_gap? shi_qty">
         {% comment %} <div><span class="cus-cart-title? text-sm sm:block fonts_source mob_fs_10">Qty:</span></div> {% endcomment %}
