@@ -113,7 +113,10 @@
               <input
                 class="connected_cart_btn"
                 name="add"
-                value="ADD TO BAG"
+                {% if product.selected_or_first_available_variant == blank %}
+                  disabled
+                {% endif %}
+                value="{% if product.selected_or_first_available_variant == blank %}SOLD OUT{% else %}ADD TO BAG{% endif %}"
                 type="submit" />
                 <button
                   type="button"
