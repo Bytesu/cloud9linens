@@ -1560,6 +1560,7 @@ class PForm extends AddToCartSlide {
       this.querySelector('[type="submit"]').setAttribute('disabled','disabled')
       this.querySelector('[type="submit"]').innerHTML  = 'Sold out'
     }
+    this.querySelector('.prod__form-error').innerHTML = ''
     return {
       variantId:selectedVaraint.variantId,
       quantity: this.querySelector('[name="quantity"]').value
