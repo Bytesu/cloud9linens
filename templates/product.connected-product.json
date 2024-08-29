@@ -203,7 +203,7 @@
         ".sf__pcard-price.leading-normal {font-style: normal;}"
       ],
       "settings": {
-        "heading": "Recently Viewed",
+        "heading": "<h2>Recently Viewed<\/h2>",
         "container": "container",
         "columns": 4,
         "column_gap": 30,
