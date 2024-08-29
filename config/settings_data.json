@@ -329,7 +329,7 @@
               "title": "NEWSLETTER SIGN UP",
               "description": "",
               "email_placeholder": "Your Email",
-              "form_style": "bordered",
+              "form_style": "minimal",
               "show_social": false,
               "show_agree_checkbox": false,
               "width": "25%"
