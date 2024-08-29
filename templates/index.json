@@ -346,6 +346,18 @@
         "custom_class": "home-collection-section s_heading"
       }
     },
+    "7750f642-1e4a-4b6e-980d-adbb9f8a2354": {
+      "type": "side-image_with_content",
+      "settings": {
+        "heading": "<br><h1>A Manor of Dressing<\/h1>",
+        "desc": "<h4>\n<br>Heritage patterns, suiting fabrics, and impeccable craftsmanship recall Ralph Lauren’s sartorial traditions<\/h4>",
+        "btn_label": "<br><br>",
+        "btn_link": "shopify:\/\/collections\/all",
+        "img_left": "shopify:\/\/shop_images\/Tiamo-gold-quilt-beddings_Large-_Large_6f0b9afa-7324-4de2-959c-965f4ac6ab25.jpg",
+        "img_right": "shopify:\/\/shop_images\/sia-silver-bedding-setLarge.jpg",
+        "left_right": "left"
+      }
+    },
     "47b01171-b9fd-43cc-a745-e947d752a92d": {
       "type": "slider",
       "blocks": {
@@ -479,6 +491,7 @@
         "template--16620171755777__47b01171-b9fd-43cc-a745-e947d752a92d-1668139464182659db-1",
         "template--16620171755777__47b01171-b9fd-43cc-a745-e947d752a92d-1668139464182659db-2"
       ],
+      "disabled": true,
       "custom_css": [
         "h1 {color: #ffffff;}",
         "h3 {color: #ffffff;}"
@@ -1155,18 +1168,6 @@
         "custom-class": ""
       }
     },
-    "7750f642-1e4a-4b6e-980d-adbb9f8a2354": {
-      "type": "side-image_with_content",
-      "disabled": true,
-      "settings": {
-        "heading": "A Manor of Dressing",
-        "desc": "Heritage patterns, suiting fabrics, and impeccable craftsmanship recall Ralph Lauren’s sartorial traditions",
-        "btn_label": "SHOP THE COLLECTION",
-        "btn_link": "shopify:\/\/collections\/all",
-        "img_right": "shopify:\/\/shop_images\/ezgif.com-gif-maker.jpg",
-        "left_right": "left"
-      }
-    },
     "collection_list_dmJmfn": {
       "type": "collection-list",
       "blocks": {
@@ -1263,6 +1264,7 @@
   "order": [
     "1621243260e1af0c20",
     "1656309435d37bc728",
+    "7750f642-1e4a-4b6e-980d-adbb9f8a2354",
     "47b01171-b9fd-43cc-a745-e947d752a92d",
     "rich_text_rPjKFH",
     "84d87ef2-6f4c-4d9a-874b-6e3dd8ef28a0",
@@ -1280,7 +1282,6 @@
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f",
     "d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5",
     "rich_text_Ep3qNw",
-    "7750f642-1e4a-4b6e-980d-adbb9f8a2354",
     "collection_list_dmJmfn"
   ]
 }
