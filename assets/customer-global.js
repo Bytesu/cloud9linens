@@ -302,9 +302,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // updateWishlist();
   let insert = false;
   //if (document.querySelector(".sf-wishlist__container")) {
-  new MutationObserver(() => {
+  let wishlistContainer = document.querySelector(".sf-wishlist__container")
+  if (wishlistContainer) new MutationObserver(() => {
     updateWishlist();
-  }).observe(document.querySelector(".sf-wishlist__container"), {
+  }).observe(wishlistContainer, {
     childList: true,
   });
 

@@ -9,6 +9,15 @@
 */
 {
   "current": {
+{
+  "current": {
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "small",
+    "checkout_heading_font": "PT Serif",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#041e3a",
+    "checkout_button_color": "#041e3a",
+    "checkout_layout": "onepage",
     "favicon": "shopify:\/\/shop_images\/cloud9linens.jpg",
     "use_ajax_atc": true,
     "show_scroll_top_button": true,

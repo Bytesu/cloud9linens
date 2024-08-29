@@ -18,6 +18,7 @@
           </div>
 
           <div class="connected_product_content mob_text_ctr mob-wid">
+            <p-form>
             <form
               class="connected_product_form"
               method="post"
@@ -49,6 +50,8 @@
 
                       <span
                         class="connected_variant_details"
+                        data-variant-available="{{ variant.available }}"
+                        data-variant-quantity="{{ variant.inventory_quantity }}"
                         data-variant-option="{{ variant.option1 }}"
                         data-variant-id="{{ variant.id }}"
                         data-variant-price="{{ variant.price | money}}"></span>
@@ -89,8 +92,6 @@
                     {% endunless %}
                   {% endfor %}
 
-
-
                   <div class="connected_product_quantity qty-border">
                     {% render 'product-qty-input' %}
                   </div>
@@ -111,7 +112,7 @@
                 value="{{ product.selected_or_first_available_variant.id }}"
                 type="hidden" />
               <input
-                class="connected_cart_btn"
+                class="connected_cart_btn wish_shop_btn_v2"
                 name="add"
                 {% if product.selected_or_first_available_variant == blank %}
                   disabled
@@ -146,8 +147,9 @@
                   </svg>
                 </button>
               </div>
+              <div class="prod__form-error pt-4"></div>
             </form>
-
+            </p-form>
             {% if product.metafields.custom.discount_price_line.value != blank %}
               <p class="discount-text-line cstm__disc__txt">{{ product.metafields.custom.discount_price_line.value }}</p>
             {% else %}

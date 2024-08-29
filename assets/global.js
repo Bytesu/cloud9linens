@@ -882,7 +882,7 @@ class BaseV2 extends HTMLElement {
           body: formData,
           //body:formData,
         })
-        if(res.json)res = await res.json()
+        if (res.json) res = await res.json()
         if (res.status == 422) {
           //alert(res.message);
           cb(true)
@@ -1359,8 +1359,8 @@ class AddToCartSlide extends BaseV2 {
     this.initProductInfo(res.product)
     this.ajaxForm((isOutofStock) => {
       if (isOutofStock) {
-          this.querySelector('[action="/cart/add"]').style.display = 'none'
-          this.querySelector('.klaviyo-form-customize').style.display = 'block'
+        this.querySelector('[action="/cart/add"]').style.display = 'none'
+        this.querySelector('.klaviyo-form-customize').style.display = 'block'
       } else {
         let v = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
         this.closest('t-popup').querySelector('t-added-to-cart-slide').initSelected(this.product, v)
@@ -1499,8 +1499,8 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
       this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
-      
-      this.queryAll(this, '.items-look')[0].innerHTML = (p.related??[]).map(item => {
+
+      this.queryAll(this, '.items-look')[0].innerHTML = (p.related ?? []).map(item => {
         return `<div class="item-look">
                   <a href="/products/${item.handle}">
                     <img src="${item.src}" alt="" >
@@ -1533,6 +1533,96 @@ class AddToCartSlide extends BaseV2 {
 if (!customElements.get(`t-add-to-cart-slide`)) {
   customElements.define(`t-add-to-cart-slide`, AddToCartSlide);
 }
+class PForm extends AddToCartSlide {
+  constructor() {
+    super();
+  }
+  getBody (){
+    const els = this.queryAll(this, '.connected_variant_details')
+  
+    let vData = els.reduce((res, el) => {
+      res[el.dataset.variantId] = {
+        ...el.dataset,
+        variantOption: el.dataset.variantOption.split(',').sort().join(',')
+      };//el.dataset 
+      return res
+    }, {})
+    console.log({
+      ...vData
+    })
+    let selectedOptions = this.queryAll(this, '.mw_variant_active').map(item => item.dataset.value).sort().join(',')
+    let selectedVaraint = Object.values(vData).filter(item => item.variantOption == selectedOptions)[0]
+    console.log('- option', selectedVaraint.variantId)
+    if(parseInt(selectedVaraint.variantQuantity)>0){
+      this.querySelector('[type="submit"]').removeAttribute('disabled')
+      this.querySelector('[type="submit"]').innerHTML  = 'Add to Cart'
+    }else{
+      this.querySelector('[type="submit"]').setAttribute('disabled','disabled')
+      this.querySelector('[type="submit"]').innerHTML  = 'Sold out'
+    }
+    return {
+      variantId:selectedVaraint.variantId,
+      quantity: this.querySelector('[name="quantity"]').value
+    }
+
+  }
+
+  async submit(){
+    let formData = new FormData()
+    let form = this.getBody()
+    formData.append('id',form.variantId )
+    formData.append('quantity',form.quantity )
+    /**
+     * 此种方式出现库存不足提示
+     */
+    let res = await this.fetch('/cart/add', {
+      method: 'POST',
+      headers: {
+        "Accept": "application/javascript",
+        "X-Requested-With": "XMLHttpRequest"
+      },
+      // body: JSON.stringify({id: formData.get('id'),quantity:1,form_type:'product'}),
+      body: formData,
+      //body:formData,
+    })
+    if (res.json) res = await res.json()
+    if (res.status == 422) {
+      this.querySelector('.prod__form-error').innerHTML = (res.message);
+      //cb(true)
+    } else {
+      //cb?.()
+      this.querySelector('.prod__form-error').innerHTML = '';
+      this.updateCart()
+    }
+  }
+
+  init() {
+   
+    console.log('- optio11n')
+    this.querySelector('form').addEventListener('submit', e => {
+      e.stopPropagation()
+      e.preventDefault()
+      console.log(e)
+      this.submit()
+    })
+    this.addEvent(this.queryAll(this, '.cus_drop_item .product-option-item'), 'click', () => {
+        this.getBody()
+    })
+    this.addEventListener('input', el => {
+      console.log('-')
+    })
+    this.addEventListener('change', el => {
+      console.log(el)
+    })
+  }
+  connectedCallback() {
+    this.init()
+
+  }
+}
+if (!customElements.get(`p-form`)) {
+  customElements.define(`p-form`, PForm);
+}
 class AddedToCartSlide extends AddToCartSlide {
   constructor() {
     super();
@@ -1560,6 +1650,8 @@ THelper.DOMready(() => {
     // add to tag
     if (evt.target.tagName == 'T-POPUP') {
       evt.target.close()
+      //}else if (evt.target.closest('.')){
+
     } else if (evt.target.closest('.wish_shop_btn')) {
       THelper.btnLoading(evt.target)
       let link = evt.target.closest('.sf__pcard').querySelector('.sf__pcard-name')
