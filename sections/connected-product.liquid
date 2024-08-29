@@ -110,6 +110,7 @@
                 name="id"
                 value="{{ product.selected_or_first_available_variant.id }}"
                 type="hidden" />111 {{ product.selected_or_first_available_variant|json }}
+                {{ product.available }}}
               <input
                 class="connected_cart_btn"
                 name="add"
