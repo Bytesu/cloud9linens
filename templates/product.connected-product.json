@@ -185,6 +185,7 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "container": "container",
         "heading": "Complete The Look",
