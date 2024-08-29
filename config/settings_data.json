@@ -389,6 +389,39 @@
           "icon_img_width": "30",
           "show_agreement": false
         }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "newsletter_hHbLAz": {
+            "type": "newsletter",
+            "settings": {
+              "title": "NEWSLETTER SIGN UP",
+              "description": "",
+              "email_placeholder": "Your Email",
+              "form_style": "minimal",
+              "show_social": false,
+              "show_agree_checkbox": false,
+              "width": "25%"
+            }
+          }
+        },
+        "block_order": [
+          "newsletter_hHbLAz"
+        ],
+        "settings": {
+          "custom-class": "",
+          "design": "footer-3",
+          "container": "w-full",
+          "color_accent": "#041e3a",
+          "bordered": false,
+          "copyright": "2023 Cloud9linens All Right Reserved 2023 Cloud9linens All Right Reserved |",
+          "show_currency_selector": true,
+          "show_language_selector": true,
+          "show_social_links": true,
+          "show_payment_icons": false,
+          "payment_icons_width": 300
+        }
       }
     },
     "content_for_index": [
