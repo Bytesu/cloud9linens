@@ -341,14 +341,14 @@
         ],
         "settings": {
           "custom-class": "",
-          "design": "footer-1",
-          "container": "container-fluid",
-          "color_accent": "#FFFFFF",
+          "design": "footer-3",
+          "container": "w-full",
+          "color_accent": "#041e3a",
           "bordered": false,
-          "copyright": "&copy; minimog 2021",
-          "show_currency_selector": false,
-          "show_language_selector": false,
-          "show_social_links": false,
+          "copyright": "2023 Cloud9linens All Right Reserved 2023 Cloud9linens All Right Reserved |",
+          "show_currency_selector": true,
+          "show_language_selector": true,
+          "show_social_links": true,
           "show_payment_icons": false,
           "payment_icons_width": 300
         }
