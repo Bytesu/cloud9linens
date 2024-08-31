@@ -1504,7 +1504,12 @@ class AddToCartSlide extends BaseV2 {
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
-      this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
+      if(p.image){
+        this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
+        this.querySelector('.added-to-cart-img img').style.display = 'block'
+      }else{
+        this.querySelector('.added-to-cart-img img').style.display = 'none'
+      }
 
       this.queryAll(this, '.items-look')[0].innerHTML = (p.related ?? []).map(item => {
         return `<div class="item-look">
