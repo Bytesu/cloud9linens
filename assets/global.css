@@ -529,6 +529,7 @@ t-added-to-cart-slide .h3 {
 
 t-added-to-cart-slide .p-block.p-title {
   font-size: 12px;
+  font-family: "PT Serif" !important;
 }
 .item-look {
   width: 95%;
