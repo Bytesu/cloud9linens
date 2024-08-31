@@ -552,6 +552,7 @@ t-added-to-cart-slide .p-block.p-title {
 }
 .added-to-cart span.h2 {
   font-weight: bold;
+  flex: 1;
 }
 @media (min-width: 768px) {
   .small--show {
