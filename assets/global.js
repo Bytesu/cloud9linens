@@ -1487,6 +1487,10 @@ class AddToCartSlide extends BaseV2 {
                             style="${item.name == 'Color' ? 'background-color:' + p.color[v] + ';' : ''}"
                           for="t-add-to-cart-slide-form-${index}-${vIndex}" class="bleu-denim"><span>${v}</span></label></div>`
         }).join('')
+        if(item.values[0]=='Default Title'){
+          return `<script type="application/json">${JSON.stringify(p.variants)}</script>`
+        }
+
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
         ${item.name}:${item.name == 'Size' ? sizeLink + `<span>${(p.firstAvailableVariantData?.[`option` + (index + 1)] ?? '').toLowerCase()}</span>` : ' <span>' + firstChecked.toLowerCase() + '</span>'}</span/><fieldset class="t-js t-product-form__input option-${item.name}">${options}</fieldset></div>
