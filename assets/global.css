@@ -540,9 +540,10 @@ t-added-to-cart-slide .p-block.p-title {
   max-height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  max-width: 320px;
   gap: 10px;
-  margin: 0 0 20px;
+  margin: 0 auto 20px;
 }
 .notification>div, .notification.warning{
   font-family: Source Code Pro !important;
