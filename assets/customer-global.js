@@ -277,8 +277,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (
               C.selector(".wishlist .wish_trash_icon").length == 0
             ) {
-              document.querySelector(".wishlist-title-custom").style.display =
-                "none";
+              //document.querySelector(".wishlist-title-custom").style.display =
+                //"none";
 
               if (document.querySelector(".section-my-v2"))
                 document.querySelector(".section-my-v2").style.display = "block";

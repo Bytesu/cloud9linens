@@ -1,13 +1,13 @@
 {% comment %}class bottom div = md:flex {% endcomment %}
 <div class="block" style="position: relative;">
   <div class="aic_banner">
-    <img src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg?v=1722249607
-">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg?v=1722249607"
+    >
   </div>
   <div class="mob_aic_banner">
     <img
-      src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg?v=1722249607
-"
+      src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/person-fishing-on-the-beach-is-silhouetted-at-sunset.jpg?v=1722249607"
     >
   </div>
 
@@ -43,26 +43,28 @@
   {% endcapture %}
     {% if request.path contains 'pages/wishlist' %}
       {% if customer %}
-        {% if html_data != blank and html_data != 'null' %}{{ html_data }}{%  endif %}
+        {% if html_data != blank and html_data != 'null' %}{{ html_data }}{% endif %}
       {% else %}
         <div class="text-center color-white">
           <span class="color-white f-12" style="font-family:Source Code Pro!important;">MY CL</span>
           <h1 class="color-white f-30"><strong>Wishlist</strong></h1>
-            <br />
+          <br>
           <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para color-white h4">
             All of your favorites styles in one place. With this list, you can keep track of saved items whenever you
             are.
           </div>
         </div>
+        
       {% endif %}
-    {% elsif html_data != 'null'%}
-      {{ html_data }}
+
+    {% elsif html_data != 'null' %}
+      {{ html_data }} 
     {% endif %}
   </div>
 
   <script>
-    if(window.innerWidth<768){
-      document.querySelector('.aic_toggle').append(document.querySelector('.aic-content'))
+    if (window.innerWidth < 768) {
+      if(document.querySelector('.aic-content'))document.querySelector('.aic_toggle').append(document.querySelector('.aic-content'));
     }
   </script>
 </div>
