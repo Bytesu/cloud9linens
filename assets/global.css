@@ -569,7 +569,11 @@ t-added-to-cart-slide .p-block.p-title {
 .add-to-wishlist {
   max-width: 70px;
 }
+.font-18{font-size: 18px;;}
 @media (max-width: 767px) {
+  .res-cart-hidden1 {
+    margin-bottom: 10px;
+  }
   .my-custom-font-size {
     max-width: 90%;
     margin-left: auto;
