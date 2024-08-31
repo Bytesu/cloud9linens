@@ -39,20 +39,24 @@
             class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
             style="padding-left: 0 !important;"
           >
-          <img style="width: auto; height: 16px; margin-left: 0px;" src="{{ 'icon-user1.svg' | asset_url }}">
+            {% if customer %}
+            <svg style="width: 24px;height: 24px;" t="1722005766598" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1476" width="256" height="256"><path d="M504.951 511.98c93.49 0 169.28-74.002 169.28-165.26 0-91.276-75.79-165.248-169.28-165.248-93.486 0-169.287 73.972-169.279 165.248-0.001 91.258 75.793 165.26 169.28 165.26z m77.6 55.098H441.466c-120.767 0-218.678 95.564-218.678 213.45V794.3c0 48.183 97.911 48.229 218.678 48.229H582.55c120.754 0 218.66-1.78 218.66-48.229v-13.77c0-117.887-97.898-213.45-218.66-213.45z" p-id="1477" fill="white"></path></svg>
+          {% else %}
+            <img style="width: auto; height: 16px; margin-left: 0px;" src="{{ 'icon-user1.svg' | asset_url }}">
+            {% endif %}
             <p class="cus-underline-red ml-6 cus_fonts_source">My account</p>
           </span>
         </a>
       </div>
 
       <div class="block pt-3 cus-mob-store-absolute">
-        <a href="/account/login" class="cus-mob-mega-menu-links">
+        <a href=" {% if customer %}/account/logout{% else %}/account/login{% endif %}" class="cus-mob-mega-menu-links">
           <span
             class="sf__tooltip-item block sf__tooltip-bottom sf__tooltip-style-2 flex items-center"
             style="padding-left: 0 !important;"
           >
             <img style="width: auto; height: 16px; margin-left: 0px; margin-right: 15px;" src="https://cdn.shopify.com/s/files/1/0602/8673/0497/files/login_FILL0_wght200_GRAD0_opsz24.svg?v=1680088433">
-            <p class="cus-underline-red ml-2 cus_fonts_source">Log in</p>
+            <p class="cus-underline-red ml-2 cus_fonts_source">{% if customer %}{{ 'customer.account.log_out' | t }}{% else %}Log in{% endif %}</p>
           </span>
         </a>
       </div>
