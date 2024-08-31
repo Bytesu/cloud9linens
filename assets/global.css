@@ -532,7 +532,7 @@ t-added-to-cart-slide .p-block.p-title {
   font-family: "PT Serif" !important;
 }
 .item-look {
-  width: 95%;
+  width: calc(95% - 20px);
   margin: 0 auto;
 }
 
