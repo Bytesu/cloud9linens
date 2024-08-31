@@ -46,7 +46,13 @@
        
         <div class="text-center color-white">
           <span class="color-white f-14" style="font-family:Source Code Pro!important;"><strong>MY CL</strong></span>
+        
+          {% unless customer %}
           <h1 class="color-white f-30"><strong>Wishlist</strong>{% unless customer %}, <a href="/account/login" class="sf__btn-link  " style="font-size:14px;font-family:Source Code Pro!important;"> <strong>Sign In</strong> </a>{% endunless %}</h1>
+          {% else %}
+          <h4 class="custom-didot mob_fs_14 c-h1">Welcome Back,</h4>
+          <h4 class="custom-didot mob_fs_14 c-h1">{{ customer.first_name }}</h4>
+          {% endunless %}
           <br>
           <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para color-white h4">
             All of your favorites styles in one place. With this list, you can keep track of saved items whenever you
