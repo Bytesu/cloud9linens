@@ -524,8 +524,12 @@ t-add-to-cart-slide .p-title {
 t-added-to-cart-slide .h3 {
   padding: 23px 0;
   display: block;
+  font-weight: bold;
 }
 
+t-added-to-cart-slide .p-block.p-title {
+  font-size: 12px;
+}
 .item-look {
   width: 95%;
   margin: 0 auto;
