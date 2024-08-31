@@ -539,10 +539,9 @@ t-added-to-cart-slide .h3 {
   gap: 10px;
   margin: 0 0 20px;
 }
-.notification.warning{
+.notification>div, .notification.warning{
   font-family: Source Code !important;
-  font-size: 10px !important;
-  text-align: left;
+    font-size: 10px !important;
 }
 @media (min-width: 768px) {
   .small--show {
