@@ -15,9 +15,9 @@
     {% capture html_data %}
        {% if customer %}
          <div class="text-center color-white">
-          <span class="color-white f-12" style="font-family:Source Code Pro!important;">MY CL</span>
-          <h1 class="color-white f-38">Welcome Back, {{ customer.first_name }} <a href="/account/logout" class="log_drop_v2 p-text " tabsAnkr>
-        {{ 'customer.account.log_out' | t }}
+          <span class="color-white f-14" style="font-family:Source Code Pro!important;"><strong>MY CL</strong></span>
+          <h1 class="color-white f-38">Welcome Back, {{ customer.first_name }} <a href="/account/logout" class="sf__btn-link" style="font-size:14px;font-family:Source Code Pro!important;" tabsAnkr>
+       <strong> {{ 'customer.account.log_out' | t }}</strong>
     </a></h1>
             <br />
           <div class="my-custom-font-size prose rte mt-4 text-color-subtext cus_para color-white h4">
