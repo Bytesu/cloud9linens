@@ -1292,6 +1292,11 @@ class TPopup extends BaseV2 {
   openByType(type = 't-add-to-cart-slide') {
     this.setAttribute('view-type', type)
   }
+  openFromOuter(handle,variantId,type = 't-added-to-cart-slide') {
+    this.setAttribute('view-type', type)
+    this.classList.add('active');
+    this.querySelector(type).openFromOuter(handle,variantId)
+  }
   constructor() {
     super();
   }
@@ -1399,6 +1404,7 @@ class AddToCartSlide extends BaseV2 {
   product = null;
   initImages(images) {
     let imgEl = this.querySelector(".sf-product-media__mobile >.mobile__slider:first-child");
+    if(!imgEl)return;
     if (images.length == 0) {
       imgEl.style.display = "none"
 
@@ -1525,7 +1531,6 @@ class AddToCartSlide extends BaseV2 {
     } else {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'block'
       if (this.querySelector('.product-form')) this.querySelector('.product-form').style.display = 'none'
-
     }
   }
 
@@ -1537,6 +1542,7 @@ class PForm extends AddToCartSlide {
   constructor() {
     super();
   }
+  
   getBody (){
     const els = this.queryAll(this, '.connected_variant_details')
   
@@ -1547,12 +1553,12 @@ class PForm extends AddToCartSlide {
       };//el.dataset 
       return res
     }, {})
-    console.log({
-      ...vData
-    })
+    // console.log({
+    //   ...vData
+    // })
     let selectedOptions = this.queryAll(this, '.mw_variant_active').map(item => item.dataset.value).sort().join(',')
     let selectedVaraint = Object.values(vData).filter(item => item.variantOption == selectedOptions)[0]
-    console.log('- option', selectedVaraint.variantId)
+    //console.log('- option', selectedVaraint.variantId)
     if(parseInt(selectedVaraint.variantQuantity)>0){
       this.querySelector('[type="submit"]').removeAttribute('disabled')
       this.querySelector('[type="submit"]').innerHTML  = 'Add to Cart'
@@ -1599,22 +1605,20 @@ class PForm extends AddToCartSlide {
 
   init() {
    
-    console.log('- optio11n')
     this.querySelector('form').addEventListener('submit', e => {
       e.stopPropagation()
       e.preventDefault()
-      console.log(e)
       this.submit()
     })
     this.addEvent(this.queryAll(this, '.cus_drop_item .product-option-item'), 'click', () => {
         this.getBody()
     })
-    this.addEventListener('input', el => {
-      console.log('-')
-    })
-    this.addEventListener('change', el => {
-      console.log(el)
-    })
+    // this.addEventListener('input', el => {
+    //   console.log('-')
+    // })
+    // this.addEventListener('change', el => {
+    //   console.log(el)
+    // })
   }
   connectedCallback() {
     this.init()
@@ -1628,11 +1632,21 @@ class AddedToCartSlide extends AddToCartSlide {
   constructor() {
     super();
   }
+  async openFromOuter(handle,varaint_id){
+    let [res_1, res] = await Promise.all([
+      this.fetch(`/products/${handle}?view=metafields`, { method: 'GET' }, `text/html`),
+      this.fetch(`/products/${handle}.json`)
+    ]); // {product:{}}
+    this.product = this.parseAvailable(res_1, res.product)
+    this.initImages(res.product.images);
+//    let {product} = await this.fetch(`/products/${handle}.json`)    
+    let variant = this.product.variants.filter(item=>item.id == varaint_id)[0]
+    debugger;
+    this.initSelected(this.product,variant)
+  }
   async initSelected(product, variant) {
     this.initProductInfo(product, variant)
-    console.log(`initSelected`)
     let res = await this.fetch('/cart')
-    console.log(res)
     this.querySelector(`[type="submit"]`).innerHTML = `CHECKOUT(${res.item_count})`
   }
   init() {

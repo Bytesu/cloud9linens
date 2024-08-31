@@ -6530,6 +6530,7 @@ class Product {
 
         const sourceEvent = formData.get('source_event') || 'product-form';
         this.cartAddFromForm(formData).then(r => r.json()).then(res => {
+          console.log('----')
           if ((res === null || res === void 0 ? void 0 : res.status) === 422) {
             var _this$domNodes3;
 
