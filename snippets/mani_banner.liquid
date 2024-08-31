@@ -42,9 +42,8 @@
          {% endif %}
   {% endcapture %}
     {% if request.path contains 'pages/wishlist' %}
-      {% if customer == blank %}
-        {% if html_data != blank %}{{ html_data }}{% endif %}
-      {% else %}
+      
+       
         <div class="text-center color-white">
           <span class="color-white f-14" style="font-family:Source Code Pro!important;"><strong>MY CL</strong></span>
           <h1 class="color-white f-30"><strong>Wishlist</strong>{% unless customer %}, <a href="/account/login" class="sf__btn-link  " style="font-size:14px;font-family:Source Code Pro!important;"> <strong>Sign In</strong> </a>{% endunless %}</h1>
@@ -54,11 +53,17 @@
             are.
           </div>
           <br>
-          <a href="/account/register" class="sf__btn sf__btn-secondary sf-my-custum-atag">
-            <p class="sf-my-custum-text">CREATE ACCOUNT</p> 
-          </a>
+          {% unless customer %}
+            <a href="/account/register" class="sf__btn sf__btn-secondary sf-my-custum-atag">
+              <p class="sf-my-custum-text">CREATE ACCOUNT</p> 
+            </a>
+          {% else %}
+            <button class="aic-toggle-button cus_fonts_source  mob_fs_14 c-font aic-toggle-button_custom" id="aic-toggle-btn">Overview</button>
+            <div class="aic-content" id="aic-toggle-content" style="display: none;">
+              {% render 'customer-navs' %}
+            </div>
+           {% endunless %}
         </div>
-      {% endif %}
     {% else %}
       {{ html_data }} 
     {% endif %}
