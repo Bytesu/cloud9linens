@@ -84,5 +84,5 @@ each product image to save your favorites in a wishlist.
 {% endif %}
 <script>
   window.themeScriptURLs.productQuickView.required = true
-  window.themeScriptURLs?.countdown.required = true
+  if( window.themeScriptURLs)window.themeScriptURLs.countdown.required = true
 </script>

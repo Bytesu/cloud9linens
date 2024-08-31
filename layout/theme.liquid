@@ -327,7 +327,12 @@ section.header__22.scroll-dow.stuck .mob-logo-container a img {
       const response = fetch.apply(this, arguments);
       let argumentsData = arguments
       response.then(async (res) => {
-        if (res.url.indexOf('cart/change') > -1 && !!res.url) {
+        if (res.url.indexOf('products/') > -1 && res.url.endsWith('.js')) {
+            let p = await res.clone().json()
+            //console.log(p.handle,p)
+            if(!window.products)window.products = {}
+            window.products[p.handle] = p
+        }else if (res.url.indexOf('cart/change') > -1 && !!res.url) {
           window.cartData = await res.clone().json()
           if(window.cartData.item_count==0){
             document.querySelector('[data-cart-wrapper]').innerHTML = ` <div class="cus-empty-cart-txt"><h3>Your Shopping Chart is Empty</h3></div>`

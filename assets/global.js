@@ -1110,9 +1110,6 @@ class TVariantSelects extends HTMLElement {
       ].forEach(item => {
         this.querySelector('[type="radio"][value="' + item + '"]').setAttribute('checked', 'checked')
       })
-
-
-
     }
 
     if (p.options) {
@@ -1292,10 +1289,10 @@ class TPopup extends BaseV2 {
   openByType(type = 't-add-to-cart-slide') {
     this.setAttribute('view-type', type)
   }
-  openFromOuter(handle,variantId,type = 't-added-to-cart-slide') {
+  openFromOuter(handle, variantId, type = 't-added-to-cart-slide') {
     this.setAttribute('view-type', type)
     this.classList.add('active');
-    this.querySelector(type).openFromOuter(handle,variantId)
+    this.querySelector(type).openFromOuter(handle, variantId)
   }
   constructor() {
     super();
@@ -1404,7 +1401,7 @@ class AddToCartSlide extends BaseV2 {
   product = null;
   initImages(images) {
     let imgEl = this.querySelector(".sf-product-media__mobile >.mobile__slider:first-child");
-    if(!imgEl)return;
+    if (!imgEl) return;
     if (images.length == 0) {
       imgEl.style.display = "none"
 
@@ -1504,10 +1501,10 @@ class AddToCartSlide extends BaseV2 {
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
       this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
-      if(p.image){
+      if (p.image) {
         this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
         this.querySelector('.added-to-cart-img img').style.display = 'block'
-      }else{
+      } else {
         this.querySelector('.added-to-cart-img img').style.display = 'none'
       }
 
@@ -1547,10 +1544,10 @@ class PForm extends AddToCartSlide {
   constructor() {
     super();
   }
-  
-  getBody (){
+
+  getBody() {
     const els = this.queryAll(this, '.connected_variant_details')
-  
+
     let vData = els.reduce((res, el) => {
       res[el.dataset.variantId] = {
         ...el.dataset,
@@ -1564,26 +1561,26 @@ class PForm extends AddToCartSlide {
     let selectedOptions = this.queryAll(this, '.mw_variant_active').map(item => item.dataset.value).sort().join(',')
     let selectedVaraint = Object.values(vData).filter(item => item.variantOption == selectedOptions)[0]
     //console.log('- option', selectedVaraint.variantId)
-    if(parseInt(selectedVaraint.variantQuantity)>0){
+    if (parseInt(selectedVaraint.variantQuantity) > 0) {
       this.querySelector('[type="submit"]').removeAttribute('disabled')
-      this.querySelector('[type="submit"]').innerHTML  = 'Add to Cart'
-    }else{
-      this.querySelector('[type="submit"]').setAttribute('disabled','disabled')
-      this.querySelector('[type="submit"]').innerHTML  = 'Sold out'
+      this.querySelector('[type="submit"]').innerHTML = 'Add to Cart'
+    } else {
+      this.querySelector('[type="submit"]').setAttribute('disabled', 'disabled')
+      this.querySelector('[type="submit"]').innerHTML = 'Sold out'
     }
     this.querySelector('.prod__form-error').innerHTML = ''
     return {
-      variantId:selectedVaraint.variantId,
+      variantId: selectedVaraint.variantId,
       quantity: this.querySelector('[name="quantity"]').value
     }
 
   }
 
-  async submit(){
+  async submit() {
     let formData = new FormData()
     let form = this.getBody()
-    formData.append('id',form.variantId )
-    formData.append('quantity',form.quantity )
+    formData.append('id', form.variantId)
+    formData.append('quantity', form.quantity)
     /**
      * 此种方式出现库存不足提示
      */
@@ -1609,14 +1606,14 @@ class PForm extends AddToCartSlide {
   }
 
   init() {
-   
+
     this.querySelector('form').addEventListener('submit', e => {
       e.stopPropagation()
       e.preventDefault()
       this.submit()
     })
     this.addEvent(this.queryAll(this, '.cus_drop_item .product-option-item'), 'click', () => {
-        this.getBody()
+      this.getBody()
     })
     // this.addEventListener('input', el => {
     //   console.log('-')
@@ -1637,17 +1634,17 @@ class AddedToCartSlide extends AddToCartSlide {
   constructor() {
     super();
   }
-  async openFromOuter(handle,varaint_id){
+  async openFromOuter(handle, varaint_id) {
     let [res_1, res] = await Promise.all([
       this.fetch(`/products/${handle}?view=metafields`, { method: 'GET' }, `text/html`),
       this.fetch(`/products/${handle}.json`)
     ]); // {product:{}}
     this.product = this.parseAvailable(res_1, res.product)
     this.initImages(res.product.images);
-//    let {product} = await this.fetch(`/products/${handle}.json`)    
-    let variant = this.product.variants.filter(item=>item.id == varaint_id)[0]
+    //    let {product} = await this.fetch(`/products/${handle}.json`)    
+    let variant = this.product.variants.filter(item => item.id == varaint_id)[0]
     debugger;
-    this.initSelected(this.product,variant)
+    this.initSelected(this.product, variant)
   }
   async initSelected(product, variant) {
     this.initProductInfo(product, variant)
@@ -1689,12 +1686,18 @@ THelper.DOMready(() => {
     }
 
   })
+  if (!C.lsGet('sf__wishlist-products').length) {
+    document.body.classList.remove('wishlist-has-item')
+    if (document.querySelector(".wishlist-title-custom")) document.querySelector(".wishlist-title-custom").style.display = 'none'
+  } else {
+    if (document.querySelector(".wishlist-title-custom")) document.querySelector(".wishlist-title-custom").style.display = 'block'
+    let wishListtimer = setInterval(() => {
+      if (document.querySelectorAll('.sf-wishlist__container .sf-wishlist__wrapper').length) {
+        updatePrice()
+        if (wishListtimer) clearInterval(wishListtimer)
+      }
+    }, 1000)
 
-  if(!C.lsGet('sf__wishlist-products').length){
-    document.body.classList.remove('wishlist-has-item' )
-    if(document.querySelector(".wishlist-title-custom"))document.querySelector(".wishlist-title-custom").style.display = 'none'
-  }else{
-    if(document.querySelector(".wishlist-title-custom"))document.querySelector(".wishlist-title-custom").style.display = 'block'
   }
   Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl => {
     favorEl.addEventListener('click', () => {
@@ -1722,5 +1725,29 @@ THelper.DOMready(() => {
     }
     timer++;
   }, 1000)
+
+
+  function updatePrice() {
+    try {
+      Array.from(document.querySelectorAll('.sf-wishlist__container .sf-wishlist__wrapper'))
+        .forEach(item => {
+          let handle = item.querySelector('a[href*=products]').getAttribute('href').split('?')[0].split('/').slice(-1)[0]
+          console.log(window.products[handle])
+          if (window.products[handle]) {
+            let minPrice = (window.products[handle].price_min / 100).toFixed(2)
+            let maxPrice = (window.products[handle].price_max / 100).toFixed(2)
+            let price_str = ''
+            if (minPrice == maxPrice) {
+              price_str = `$${minPrice}`
+            } else {
+              price_str = `$${minPrice} - $${maxPrice}`
+            }
+            item.querySelector('.sf__pcard-price').innerHTML = price_str
+          }
+        })
+    } catch (error) {
+
+    }
+  }
 
 })
