@@ -540,8 +540,9 @@ t-added-to-cart-slide .h3 {
   margin: 0 0 20px;
 }
 .notification>div, .notification.warning{
-  font-family: Source Code !important;
-    font-size: 10px !important;
+  font-family: Source Code Pro !important;
+  font-size: 10px !important;
+  justify-content: center;
 }
 @media (min-width: 768px) {
   .small--show {
