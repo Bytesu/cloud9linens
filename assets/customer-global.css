@@ -191,6 +191,9 @@ input[type="password"].form-control + .pwd-icon .b {
 .f-38 {
   font-size: 38px !important;
 }
+.f-30 {
+  font-size: 30px !important;
+}
 .c-h1 {
   font-size: 24px !important;
   font-family: var(--font-stack-header) !important;
@@ -538,7 +541,6 @@ body:not(.wishlist-has-item) .header-heart .hrt-icon_added{display:none;}
     max-width: 500px;
   }
 }
-.
 .sf-customer-form__new-wrapper form-control-group {
   margin: 0;
 }
@@ -555,7 +557,7 @@ body:not(.wishlist-has-item) .header-heart .hrt-icon_added{display:none;}
 }
 
 .aic_toggle h1.color-white {
-    font-size: 18px !important;
+    /* font-size: 18px !important; */
 }
   .wishlist-title-custom {
     height: 60px;
