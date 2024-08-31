@@ -544,6 +544,9 @@ t-added-to-cart-slide .h3 {
   font-size: 10px !important;
   justify-content: center;
 }
+.added-to-cart span.h2 {
+  font-weight: bold;
+}
 @media (min-width: 768px) {
   .small--show {
     display: none;
