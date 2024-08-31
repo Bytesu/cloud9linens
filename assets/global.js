@@ -1690,6 +1690,9 @@ THelper.DOMready(() => {
 
   })
 
+  if(!C.lsGet('sf__wishlist-products').length){
+    document.body.classList.remove('wishlist-has-item' )
+  }
   Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl => {
     favorEl.addEventListener('click', () => {
       //console.log(favorEl)
