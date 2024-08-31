@@ -42,8 +42,8 @@
          {% endif %}
   {% endcapture %}
     {% if request.path contains 'pages/wishlist' %}
-      {% if customer %}
-        {% if html_data != blank and html_data != 'null' %}{{ html_data }}{% endif %}
+      {% if customer == blank %}
+        {% if html_data != blank %}{{ html_data }}{% endif %}
       {% else %}
         <div class="text-center color-white">
           <span class="color-white f-14" style="font-family:Source Code Pro!important;"><strong>MY CL</strong></span>
@@ -61,7 +61,7 @@
         
       {% endif %}
 
-    {% elsif html_data != 'null' %}
+    {% else %}
       {{ html_data }} 
     {% endif %}
   </div>
