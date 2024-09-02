@@ -850,7 +850,6 @@ class BaseV2 extends HTMLElement {
   }
   async updateCart() {
     let res = await this.fetch('/cart.json')
-    //console.log(res)
     let count_el = document.querySelector('.mw_custom_hedaer .cart-icon .sf-cart-count')
     if (count_el) {
       if (res.item_count) {
@@ -891,7 +890,6 @@ class BaseV2 extends HTMLElement {
           this.updateCart()
         }
         THelper.cancelBtnLoading(formEl.querySelector('[type="submit"]'));
-        console.log(res)
         // let res1 = await this.fetch('/recommendations/products.json?product_id=' + this.product.id)
         // this.product.related = res1.products;
 
@@ -1568,12 +1566,9 @@ class PForm extends AddToCartSlide {
       };//el.dataset 
       return res
     }, {})
-    // console.log({
-    //   ...vData
-    // })
+   
     let selectedOptions = this.queryAll(this, '.mw_variant_active').map(item => item.dataset.value).sort().join(',')
     let selectedVaraint = Object.values(vData).filter(item => item.variantOption == selectedOptions)[0]
-    //console.log('- option', selectedVaraint.variantId)
     if (parseInt(selectedVaraint.variantQuantity) > 0) {
       this.querySelector('[type="submit"]').removeAttribute('disabled')
       this.querySelector('[type="submit"]').innerHTML = 'Add to Cart'
@@ -1628,12 +1623,7 @@ class PForm extends AddToCartSlide {
     this.addEvent(this.queryAll(this, '.cus_drop_item .product-option-item'), 'click', () => {
       this.getBody()
     })
-    // this.addEventListener('input', el => {
-    //   console.log('-')
-    // })
-    // this.addEventListener('change', el => {
-    //   console.log(el)
-    // })
+  
   }
   connectedCallback() {
     this.init()
@@ -1714,7 +1704,6 @@ THelper.DOMready(() => {
   }
   Array.from(document.querySelectorAll('.add-to-wishlist-action')).forEach(favorEl => {
     favorEl.addEventListener('click', () => {
-      //console.log(favorEl)
       if (favorEl.classList.contains('added-to-wishlist')) {
         C.removeFavor(favorEl.dataset.handle)
         favorEl.classList.remove('added-to-wishlist')
@@ -1745,7 +1734,6 @@ THelper.DOMready(() => {
       Array.from(document.querySelectorAll('.sf-wishlist__container .sf-wishlist__wrapper'))
         .forEach(item => {
           let handle = item.querySelector('a[href*=products]').getAttribute('href').split('?')[0].split('/').slice(-1)[0]
-          console.log(window.products[handle])
           if (window.products[handle]) {
             let minPrice = (window.products[handle].price_min / 100).toFixed(2)
             let maxPrice = (window.products[handle].price_max / 100).toFixed(2)
