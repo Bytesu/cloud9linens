@@ -23,13 +23,13 @@ MTS
         {{ product.price_max | money }}
     </span>
   {% else %}
-   
+  <span class="{{ cp_classes }} prod__compare_price mr-2 text-color-secondary" style="text-decoration: line-through; font-size:16px;">
+    {{ variant.compare_at_price | money }}
+  </span>
     <span class="{{ price_class }} cus-prod__price prod__price ml-2 text-color-regular-price" style="font-size:16px;">
       {{ variant.price | money }}
     </span>&nbsp;&nbsp;
-    <span class="{{ cp_classes }} prod__compare_price mr-2 text-color-secondary" style="text-decoration: line-through; font-size:16px;">
-      {{ variant.compare_at_price | money }}
-    </span>
+    
   {% endif %}
 {% elsif variant.price %}
   <span class="{{ price_class }} cccc prod__price text-color-regular-price cus-price-pcard cstm__prd__price">

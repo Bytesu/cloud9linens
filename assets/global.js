@@ -1439,7 +1439,9 @@ class AddToCartSlide extends BaseV2 {
   }
   updatePrice() {
     let current = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
-    this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * current.price)
+    debugger;
+    this.querySelector('.p-price').innerHTML =  `<span>${current.compare_at_price?THelper.moneyFn(100 * current.compare_at_price):''}</span> ${THelper.moneyFn(100 * current.price)} `
+    //THelper.moneyFn(100 * current.price)
     this.querySelector('[name="id"]').value = current.id
   }
 
@@ -1510,7 +1512,8 @@ class AddToCartSlide extends BaseV2 {
         }
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
-      this.querySelector('.p-price').innerHTML = THelper.moneyFn(100 * v.price)
+      debugger;
+      this.querySelector('.p-price').innerHTML = `<span>${v.compare_at_price?THelper.moneyFn(100 * v.compare_at_price):''}</span> ${THelper.moneyFn(100 * v.price)}`
       if (p.image) {
         this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
         this.querySelector('.added-to-cart-img img').style.display = 'block'

@@ -5,7 +5,9 @@
   --primary-color: #041d3a;
   --primary-family: Source Code Pro;
 }
-
+.p-block.p-price span {
+  text-decoration: line-through;
+}
 t-popup {
   display: block;
   position: fixed;
