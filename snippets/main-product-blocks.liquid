@@ -88,7 +88,7 @@
             {%- when 'price' -%}
               <div class="prod__reviews-and-prices flex items-center justify-between mob_justi_ctr">
                 <div>
-                  {% render 'product-prices', price_class: 'text-xl md:text-2xl' %}
+                  {% render 'product-prices', isPdp:true, price_class: 'text-xl md:text-2xl' %}
                 </div>
               </div>
               <div class="installment-shoppay">{{ form | payment_terms }}</div>

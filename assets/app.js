@@ -6279,7 +6279,6 @@ class Product {
         const money_format = (_window4 = window) === null || _window4 === void 0 ? void 0 : (_window4$spratlyTheme = _window4.spratlyThemeSettings) === null || _window4$spratlyTheme === void 0 ? void 0 : _window4$spratlyTheme.money_format;
         const priceText = (0,currency/* formatMoney */.l)(variant.price, money_format);
         if (price) price.innerHTML = priceText;
-
         if (comparePrice) {
           if (variant.compare_at_price > variant.price) {
             const comparePriceText = (0,currency/* formatMoney */.l)(variant.compare_at_price, money_format);

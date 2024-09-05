@@ -506,11 +506,25 @@ span.size-container,
 t-add-to-cart-slide .p-title {
   padding-top: 35px;
 }
-
+.sf__pcard-content .posi_absolute {
+  right: 0;
+}
 .sf__pcard-content .price--on-sale,
 .p-price {
   font-family: Source Code Pro !important;
   font-size: 12px !important;
+}
+
+.sf__pcard-content .posi_absolute {
+  right: 0;
+}
+
+.mob-pcard-content>div {width: 100%;}
+
+.mob-pcard-content>div .price--on-sale {
+  display: flex;
+  justify-content: space-between !important;
+  width: 100% !important;
 }
 
 .added-to-cart svg {
