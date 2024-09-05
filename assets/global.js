@@ -1437,8 +1437,7 @@ class AddToCartSlide extends BaseV2 {
   }
   updatePrice() {
     let current = this.querySelector('t-variant-radios').getCurrentSelectedVariant()
-    debugger;
-    this.querySelector('.p-price').innerHTML =  `<span>${current.compare_at_price?THelper.moneyFn(100 * current.compare_at_price):''}</span> ${THelper.moneyFn(100 * current.price)} `
+    this.querySelector('.p-price').innerHTML = `<span>${current.compare_at_price ? THelper.moneyFn(100 * current.compare_at_price) : ''}</span> ${THelper.moneyFn(100 * current.price)} `
     //THelper.moneyFn(100 * current.price)
     this.querySelector('[name="id"]').value = current.id
   }
@@ -1490,9 +1489,9 @@ class AddToCartSlide extends BaseV2 {
         // if(item.values[0]=='Default Title'){
         //   return `<script type="application/json">${JSON.stringify(p.variants)}</script>`
         // }
-        let title_ = item.name+':'
-        if(item.values[0]=='Default Title'){
-          title_ ='<style>.pop-container t-variant-radios{display:none;}</style>'
+        let title_ = item.name + ':'
+        if (item.values[0] == 'Default Title') {
+          title_ = '<style>.pop-container t-variant-radios{display:none;}</style>'
         }
         return `<div class="${item.name == 'Color' ? 'color-options' : ''}">
         <span class="${item.name == 'Size' ? 'size-container' : 'size-container'} flex-center" style=" justify-content: flex-start;">
@@ -1505,13 +1504,13 @@ class AddToCartSlide extends BaseV2 {
     } else if (this.querySelector('.p-variants') && v) { // 
       ;
       this.querySelector('.p-variants').innerHTML = v.options.reverse().map((item, index) => {
-        if(item=='Default Title'){
+        if (item == 'Default Title') {
           return ''
         }
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
       debugger;
-      this.querySelector('.p-price').innerHTML = `<span>${v.compare_at_price?THelper.moneyFn(100 * v.compare_at_price):''}</span> ${THelper.moneyFn(100 * v.price)}`
+      this.querySelector('.p-price').innerHTML = `<span>${v.compare_at_price ? THelper.moneyFn(100 * v.compare_at_price) : ''}</span> ${THelper.moneyFn(100 * v.price)}`
       if (p.image) {
         this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
         this.querySelector('.added-to-cart-img img').style.display = 'block'
@@ -1528,15 +1527,19 @@ class AddToCartSlide extends BaseV2 {
       }).join('')
 
     }
-    if (!this.querySelectorAll('[type="radio"]:checked').length) {
+    if (!this.querySelectorAll('[type="radio"]:checked').length && !v) {
       let list = p.variants.map(item => parseFloat(`${item.price}`)).sort();
       let min = Math.min(...list)
       let max = Math.max(...list)
       if (max != min) {
         this.querySelector('.p-price').innerHTML = `${THelper.moneyFn(100 * min)} - ${THelper.moneyFn(100 * max)}`
+
       } else {
         this.querySelector('.p-price').innerHTML = `${THelper.moneyFn(100 * min)}`
       }
+    } else {
+      if (v) this.querySelector('.p-price').innerHTML = `${THelper.moneyFn(100 * v.price)}` + (v.compare_at_price ? `&nbsp;<span>${THelper.moneyFn(100 * v.compare_at_price)}</span>` : '')
+
     }
     if (p.firstAvailableVariant) {
       if (this.querySelector('.klaviyo-form-customize')) this.querySelector('.klaviyo-form-customize').style.display = 'none'
@@ -1566,7 +1569,7 @@ class PForm extends AddToCartSlide {
       };//el.dataset 
       return res
     }, {})
-   
+
     let selectedOptions = this.queryAll(this, '.mw_variant_active').map(item => item.dataset.value).sort().join(',')
     let selectedVaraint = Object.values(vData).filter(item => item.variantOption == selectedOptions)[0]
     if (parseInt(selectedVaraint.variantQuantity) > 0) {
@@ -1623,7 +1626,7 @@ class PForm extends AddToCartSlide {
     this.addEvent(this.queryAll(this, '.cus_drop_item .product-option-item'), 'click', () => {
       this.getBody()
     })
-  
+
   }
   connectedCallback() {
     this.init()
@@ -1646,7 +1649,6 @@ class AddedToCartSlide extends AddToCartSlide {
     this.initImages(res.product.images);
     //    let {product} = await this.fetch(`/products/${handle}.json`)    
     let variant = this.product.variants.filter(item => item.id == varaint_id)[0]
-    debugger;
     this.initSelected(this.product, variant)
   }
   async initSelected(product, variant) {
