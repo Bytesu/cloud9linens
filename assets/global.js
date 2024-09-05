@@ -1745,7 +1745,7 @@ THelper.DOMready(() => {
             } else {
               price_str = `$${minPrice} - $${maxPrice}`
             }
-            item.querySelector('.sf__pcard-price').innerHTML = price_str
+     //       item.querySelector('.sf__pcard-price').innerHTML = price_str
           }
         })
     } catch (error) {
