@@ -246,8 +246,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "",
-            "title": "Shams",
-            "button_label": "",
+            "title": "",
+            "button_label": "<h4>Euro Shams</h4>",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -258,8 +258,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "bedspreads",
-            "title": "Bedspreads",
-            "button_label": "",
+            "title": "",
+            "button_label": "<h4>Bedspreads</h4>",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -270,8 +270,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "fitted-sheets",
-            "title": "Fitted sheet",
-            "button_label": "",
+            "title": "",
+            "button_label": "<h4>Fitted Sheets</h4>",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
