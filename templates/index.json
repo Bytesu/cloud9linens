@@ -349,8 +349,8 @@
     "7750f642-1e4a-4b6e-980d-adbb9f8a2354": {
       "type": "side-image_with_content",
       "settings": {
-        "heading": "<br><h1>A Manor of Dressing</h1>",
-        "desc": "Heritage patterns, suiting fabrics, and impeccable craftsmanship recall sartorial traditions",
+        "heading": "<br>Signature Pieces",
+        "desc": "<h4>Heritage patterns, suiting fabrics, and impeccable craftsmanship recall sartorial traditions<br>\n</h4>",
         "btn_label": "",
         "btn_link": "shopify://collections/all",
         "img_left": "shopify://shop_images/Tiamo-gold-quilt-beddings_Large-_Large_6f0b9afa-7324-4de2-959c-965f4ac6ab25.jpg",
@@ -530,9 +530,9 @@
     "84d87ef2-6f4c-4d9a-874b-6e3dd8ef28a0": {
       "type": "featured-collection",
       "settings": {
-        "heading": "",
-        "subheading": "<h2>FINAL SALE CALL</h2>",
-        "description": "Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point.",
+        "heading": "Last Sale Call",
+        "subheading": "Up To 30 % Off Selected Items",
+        "description": "",
         "font_size": 50,
         "header_alignment": "center",
         "pdp_title_alignment": "left",
@@ -1123,9 +1123,9 @@
         "collection_block_JJg6Gc"
       ],
       "settings": {
-        "heading": "",
-        "subheading": "<h1> BUYERS FAVORITES </h1>",
-        "description": "<p>Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point.</p>",
+        "heading": "Explore",
+        "subheading": "<h1> More To</h1>",
+        "description": "<h5>Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point.</h5>",
         "header_alignment": "left",
         "container": "w-full",
         "bdr_none": false,
