@@ -1034,8 +1034,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "lounge-wear-sets",
-            "title": "Women Lounge Wear",
-            "button_label": "<h3>Lumiere Sia Royal Blue Set</h3>",
+            "title": "<h4>Women Lounge Wear</h4>",
+            "button_label": "<h4>Lumiere Sia Royal Blue Set</h4>",
             "button_link": "shopify://products/lumiere-sia-royal-blue-set",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -1047,7 +1047,7 @@
           "settings": {
             "collection": "quilt-sets",
             "title": "<h3>Quilt Sets</h3>",
-            "button_label": "Eva Quilt Sets",
+            "button_label": "<h3>Eva Quilt Sets</h3>",
             "button_link": "shopify://products/eva-royal-blue-quilt-set",
             "button_style": "sf__btn-link",
             "button_size": "",
