@@ -1127,7 +1127,7 @@
       ],
       "custom_css": [
         "h1 {color: #ffffff;}",
-        "h3 {color: #ffffff;}"
+        "h4 {color: #ffffff;}"
       ],
       "settings": {
         "heading": "Explore",
