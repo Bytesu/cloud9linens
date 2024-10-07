@@ -1022,7 +1022,7 @@
           "type": "collection_block",
           "settings": {
             "collection": "lounge-wear-sets",
-            "title": "Women Lounge Wear",
+            "title": "<h3>Women Lounge Wear</h3>",
             "button_label": "<h3>Zigouille Chaleur Set</h3>",
             "button_link": "shopify://products/zigouille-chaleur-set",
             "button_style": "sf__btn-primary",
@@ -1094,8 +1094,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "leather-goods",
-            "title": "Leather Goods",
-            "button_label": "Brown Leather Duffle",
+            "title": "<h3>Leather Goods</h3>",
+            "button_label": "<h3>Brown Leather Duffle</h3>",
             "button_link": "shopify://products/brown-leather-totes",
             "button_style": "sf__btn-link",
             "button_size": "",
