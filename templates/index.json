@@ -1035,7 +1035,7 @@
           "settings": {
             "collection": "lounge-wear-sets",
             "title": "Women Lounge Wear",
-            "button_label": "Lumiere Sia Royal Blue Set",
+            "button_label": "<h3>Lumiere Sia Royal Blue Set</h3>",
             "button_link": "shopify://products/lumiere-sia-royal-blue-set",
             "button_style": "sf__btn-link",
             "button_size": "",
