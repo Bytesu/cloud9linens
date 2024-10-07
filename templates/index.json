@@ -258,8 +258,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "bedspreads",
-            "title": "",
-            "button_label": "<h4>Bedspreads</h4>",
+            "title": "BedSpreads",
+            "button_label": "Bedspreads",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
