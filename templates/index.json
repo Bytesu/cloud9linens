@@ -1020,11 +1020,10 @@
       "blocks": {
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-0": {
           "type": "collection_block",
-          "disabled": true,
           "settings": {
             "collection": "lounge-wear-sets",
             "title": "Women Lounge Wear",
-            "button_label": "Zigouille Chaleur Set",
+            "button_label": "<h3>Zigouille Chaleur Set</h3>",
             "button_link": "shopify://products/zigouille-chaleur-set",
             "button_style": "sf__btn-primary",
             "button_size": "",
@@ -1033,11 +1032,10 @@
         },
         "4ed15d2e-3daf-4048-9338-c138d29e68c3": {
           "type": "collection_block",
-          "disabled": true,
           "settings": {
             "collection": "lounge-wear-sets",
-            "title": "<h3>Women Lounge Wear</h3>",
-            "button_label": "<h6>Lumiere Sia Royal Blue Set</h6>",
+            "title": "Women Lounge Wear",
+            "button_label": "Lumiere Sia Royal Blue Set",
             "button_link": "shopify://products/lumiere-sia-royal-blue-set",
             "button_style": "sf__btn-link",
             "button_size": "",
