@@ -257,9 +257,9 @@
         "1656309435406f3804-2": {
           "type": "collection_block",
           "settings": {
-            "collection": "bedspreads",
-            "title": "BedSpreads",
-            "button_label": "Bedspreads",
+            "collection": "",
+            "title": "",
+            "button_label": "<h2>Side Tables</h2>",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
