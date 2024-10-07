@@ -26,7 +26,7 @@
             "text_color": "white",
             "subheading": "SAKARA DESIGNERS PICK COLLECTION",
             "title": "SAKARA COLLECTION",
-            "description": "<p>Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point</p>",
+            "description": "<h5>Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point</h5>",
             "image_link": "shopify://products/sakara-designers-pick-collection",
             "button_text": "",
             "button_link": "shopify://products/sakara-designers-pick-collection",
@@ -245,13 +245,13 @@
         "1656309435406f3804-1": {
           "type": "collection_block",
           "settings": {
-            "collection": "towels",
+            "collection": "",
             "title": "Shams",
             "button_label": "",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/1101_home_hub_c02f_img.webp"
+            "item_image": "shopify://shop_images/0926_hp_c03d_img.jpg"
           }
         },
         "1656309435406f3804-2": {
@@ -262,7 +262,8 @@
             "button_label": "",
             "button_link": "",
             "button_style": "sf__btn-link",
-            "button_size": ""
+            "button_size": "",
+            "item_image": "shopify://shop_images/0926_hp_c03d_img.jpg"
           }
         },
         "1656309435406f3804-0": {
@@ -273,11 +274,13 @@
             "button_label": "",
             "button_link": "",
             "button_style": "sf__btn-link",
-            "button_size": ""
+            "button_size": "",
+            "item_image": "shopify://shop_images/0926_hp_c03d_img.jpg"
           }
         },
         "f7e983ca-4fdc-4510-b503-e9cfb5954f53": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "collection": "comforters",
             "title": " Comforters",
@@ -289,6 +292,7 @@
         },
         "78db5e2c-d4aa-43f1-9310-10c12af17156": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "collection": "lounge-wear-sets",
             "title": "Pj Sets",
@@ -307,17 +311,17 @@
         "f7e983ca-4fdc-4510-b503-e9cfb5954f53",
         "78db5e2c-d4aa-43f1-9310-10c12af17156"
       ],
-      "disabled": true,
       "settings": {
-        "heading": "THE SHOPS",
-        "subheading": "",
+        "heading": "",
+        "subheading": "Living Better",
         "description": "",
         "header_alignment": "center",
         "container": "w-full",
+        "back-image": "shopify://shop_images/0926_hp_c02_bg.jpg",
         "bdr_none": true,
         "bdr_none_image": true,
         "image_batn_none": true,
-        "background_color": "#cfd8cd",
+        "background_color": "#000000",
         "text_color": "#ffffff",
         "super_font_size": 33,
         "sub_font_size": 46,
@@ -333,7 +337,7 @@
         "hide-collection-text": false,
         "count_inline_title": false,
         "image_rounded": false,
-        "items_per_row": 4,
+        "items_per_row": 3,
         "item_gap": 35,
         "enable_slider": true,
         "show_pagination": false,
@@ -350,7 +354,7 @@
       "type": "side-image_with_content",
       "settings": {
         "heading": "<br>Signature Pieces",
-        "desc": "<br><h4>Heritage patterns, suiting fabrics, and impeccable craftsmanship recall sartorial traditions<br>\n</h4>",
+        "desc": "<h4>Heritage patterns, suiting fabrics, and impeccable craftsmanship recall sartorial traditions</h4>",
         "btn_label": "",
         "btn_link": "shopify://collections/all",
         "img_left": "shopify://shop_images/Tiamo-gold-quilt-beddings_Large-_Large_6f0b9afa-7324-4de2-959c-965f4ac6ab25.jpg",
