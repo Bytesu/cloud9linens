@@ -1058,8 +1058,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "decorative-items",
-            "title": "<h3>Deco Items</h3>",
-            "button_label": "<h6>Velvet Green Cushions</h6>",
+            "title": "Deco Items",
+            "button_label": "Velvet Green Cushions",
             "button_link": "shopify://products/velvet-green-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -1125,13 +1125,17 @@
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-2",
         "collection_block_JJg6Gc"
       ],
+      "custom_css": [
+        "h1 {color: #ffffff;}",
+        "h {color: #ffffff;}"
+      ],
       "settings": {
-        "heading": "Explore",
+        "heading": "<h>Explore</h>",
         "subheading": "<h1> More To</h1>",
-        "description": "<h4>Embrace true luxury with Cloud9linens' Egyptian cotton experience. Discover the authentic feel and quality at a competitive price point.</h4>",
+        "description": "",
         "header_alignment": "left",
         "container": "w-full",
-        "back-image": "shopify://shop_images/woman-wades-in-ocean-at-sunset.jpg",
+        "back-image": "shopify://shop_images/Consult-a-design-team-member.jpg",
         "bdr_none": false,
         "bdr_none_image": false,
         "image_batn_none": true,
