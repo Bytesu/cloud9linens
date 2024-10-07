@@ -269,9 +269,9 @@
         "1656309435406f3804-0": {
           "type": "collection_block",
           "settings": {
-            "collection": "fitted-sheets",
+            "collection": "",
             "title": "",
-            "button_label": "<h4>Fitted Sheets</h4>",
+            "button_label": "<h2>Beds</h2>",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
