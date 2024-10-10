@@ -1785,6 +1785,7 @@ div.cus_inner_sec {
 }
 .relative input::placeholder {
     color: black;
+      padding-left: 5px;
 }
 .sf-footer form.sf__footer-form-newsletter.form__style-minimal .sf__newletter__form-input {
     border-bottom: 1px solid;
