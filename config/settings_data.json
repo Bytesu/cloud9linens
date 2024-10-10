@@ -283,25 +283,24 @@
       "footer": {
         "type": "footer",
         "blocks": {
-          "custom_text_a7NTFq": {
-            "type": "custom_text",
-            "disabled": true,
-            "settings": {
-              "title": "Custom text",
-              "image_max": "200px",
-              "description": "<p>Enter your email below to be the first to know about new collections and product launches.</p>",
-              "width": "25%"
-            }
-          },
           "e401f751-a7a4-4513-af15-03e606ea2065": {
             "type": "newsletter",
             "settings": {
               "title": "NEWSLETTER SIGN UP",
               "description": "",
               "email_placeholder": "Your Email",
-              "form_style": "bordered",
+              "form_style": "minimal",
               "show_social": false,
               "show_agree_checkbox": false,
+              "width": "25%"
+            }
+          },
+          "custom_text_a7NTFq": {
+            "type": "custom_text",
+            "settings": {
+              "title": "Custom text",
+              "image_max": "200px",
+              "description": "<p>Enter your email below to be the first to know about new collections and product launches.</p>",
               "width": "25%"
             }
           },
@@ -331,8 +330,8 @@
           }
         },
         "block_order": [
-          "custom_text_a7NTFq",
           "e401f751-a7a4-4513-af15-03e606ea2065",
+          "custom_text_a7NTFq",
           "e084409f-2e2f-46a5-869c-91ecc24b4f38",
           "4335f8ff-5675-4e1a-a920-8f1c05a18159",
           "7ebc2f78-975b-4a81-b874-103c3355a866"
