@@ -283,12 +283,24 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "e401f751-a7a4-4513-af15-03e606ea2065": {
+            "type": "newsletter",
+            "settings": {
+              "title": "NEWSLETTER SIGN UP",
+              "description": "",
+              "email_placeholder": "Your Email",
+              "form_style": "bordered",
+              "show_social": false,
+              "show_agree_checkbox": false,
+              "width": "25%"
+            }
+          },
           "e084409f-2e2f-46a5-869c-91ecc24b4f38": {
             "type": "menu",
             "settings": {
               "menu": "customer-care",
               "title": "",
-              "width": "25%"
+              "width": "16%"
             }
           },
           "4335f8ff-5675-4e1a-a920-8f1c05a18159": {
@@ -306,25 +318,16 @@
               "title": "",
               "width": "16%"
             }
-          },
-          "e401f751-a7a4-4513-af15-03e606ea2065": {
-            "type": "newsletter",
-            "settings": {
-              "title": "NEWSLETTER SIGN UP",
-              "description": "",
-              "email_placeholder": "Your Email",
-              "form_style": "minimal",
-              "show_social": false,
-              "show_agree_checkbox": false,
-              "width": "25%"
-            }
           }
         },
         "block_order": [
+          "e401f751-a7a4-4513-af15-03e606ea2065",
           "e084409f-2e2f-46a5-869c-91ecc24b4f38",
           "4335f8ff-5675-4e1a-a920-8f1c05a18159",
-          "7ebc2f78-975b-4a81-b874-103c3355a866",
-          "e401f751-a7a4-4513-af15-03e606ea2065"
+          "7ebc2f78-975b-4a81-b874-103c3355a866"
+        ],
+        "custom_css": [
+
         ],
         "settings": {
           "custom-class": "mob_ftr",
@@ -430,5 +433,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+
+    ]
   }
 }
