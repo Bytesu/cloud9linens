@@ -3282,10 +3282,10 @@ h2.book_for_call {
     .index- .home-banner__slideshow .swiper-slide .sf__slide-image .sf-image img{
         height: 80vh;
     }
-    .mw_slide_position {
+    /* .mw_slide_position {
         position: absolute;
         bottom:150px;
-    }
+    } */
     .mw_slide_arrow {
         position: absolute;
         bottom: 0px;
