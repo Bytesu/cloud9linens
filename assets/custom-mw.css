@@ -1782,6 +1782,7 @@ div.cus_inner_sec {
 }
 .mw_ftr_menu_pd.sf-footer__block.sf__footer-block-newsletter.lg\:w-1\/4 h3 {
     color: white;
+  font-family: Source Code Pro;
 }
 .relative input::placeholder {
     color: black;
