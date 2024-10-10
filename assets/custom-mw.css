@@ -2199,6 +2199,7 @@ h2.book_for_call {
     }
     
     .cpy_order {
+        display: none;
         text-align: left;
         order: 2;
     }
