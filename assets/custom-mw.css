@@ -3854,8 +3854,9 @@ div#toggleButton:first-child h3 {
 /***********  footer ***********/
 
 .mw_ftr_menu_pd .ftr_color {
-    color: #fff;
-    font-size: 20px;
+    color: #fff !important;
+    font-size: 12px !important;
+  font-family: Source Code Pro;
 }
 /* .ftr_menu .ftr_anchor_color li a {
     color: #fff !important;
