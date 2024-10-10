@@ -1598,7 +1598,7 @@ button.sf__form-submit.absolute::after {
 }
 .ftr-bttn {
     width: 100%;
-    max-width: 169px;
+    /* max-width: 169px; */
     height: 41px;
 }
 .ftr-bttn .sf__form-submit {
