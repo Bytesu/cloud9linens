@@ -111,6 +111,7 @@ input.form-control {
     text-transform: capitalize !important;
     font-weight: 500;
   font-family: Source Code Pro;
+  margin-top: 21px;
 }
 .cus_fonts_serif {
   font-family: "PT Serif";
