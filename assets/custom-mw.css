@@ -1784,14 +1784,11 @@ div.cus_inner_sec {
     color: #bbb492;
 }
 .relative input::placeholder {
-    color: #ffff;
+    color: black;
 }
 .sf-footer form.sf__footer-form-newsletter.form__style-minimal .sf__newletter__form-input {
     border-bottom: 1px solid;
     background-color: white;
-}
-.input.form-control:placeholder {
-  color: black !important;
 }
 /* p.sf-my-custum-text {
     font-weight: 100;
