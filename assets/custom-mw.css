@@ -1788,7 +1788,10 @@ div.cus_inner_sec {
 }
 .sf-footer form.sf__footer-form-newsletter.form__style-minimal .sf__newletter__form-input {
     border-bottom: 1px solid;
-   
+    background-color: white;
+}
+.sf-footer form.sf__footer-form-newsletter.form__style-minimal .sf__newletter__form-input:placeholder {
+  color: black !important;
 }
 /* p.sf-my-custum-text {
     font-weight: 100;
