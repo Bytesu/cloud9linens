@@ -347,9 +347,9 @@
           "bordered": false,
           "copyright": "2023 Cloud9linens All Right Reserved 2023 Cloud9linens All Right Reserved |",
           "show_currency_selector": true,
-          "show_language_selector": true,
+          "show_language_selector": false,
           "show_social_links": true,
-          "show_payment_icons": true,
+          "show_payment_icons": false,
           "payment_icons_width": 300
         }
       },
