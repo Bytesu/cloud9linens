@@ -109,7 +109,7 @@ input.form-control {
 .cus_fonts_source p {
   font-size: 11px !important;
     text-transform: capitalize !important;
-    font-weight: 700;
+    font-weight: 500;
   font-family: Source Code Pro;
 }
 .cus_fonts_serif {
