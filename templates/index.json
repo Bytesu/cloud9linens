@@ -783,37 +783,6 @@
         "mob_content": false
       }
     },
-    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2": {
-      "type": "image-with-text",
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "back_text_image": "shopify://shop_images/Consult-a-design-team-member.jpg",
-        "container": "container-fluid",
-        "background_color": "#ffffff",
-        "item_gap": 100,
-        "item_gap_mobile": 0,
-        "img-uper-text": "",
-        "image": "shopify://shop_images/0910_hp_c08b_img.jpg",
-        "link": "",
-        "layout": "right",
-        "image_column_size": "6",
-        "hover_effect": false,
-        "title": "Bespoke Your Items",
-        "sub_title": "",
-        "side_text_font_size": 22,
-        "text": "<h3>Choose your favorite colors and designs to customize your own one-of-a-kind pillow</h3>",
-        "text_size": "large",
-        "content_alignment": "center",
-        "button_label": "SHOP NOW",
-        "button_link": "shopify://collections/all",
-        "button_label2": "",
-        "button_link2": "",
-        "button_style": "sf__btn-link",
-        "button_size": "",
-        "custom_class": "cus_text_image_overlap"
-      }
-    },
     "ea969fff-52fe-4f3b-b121-d37d6df38b67": {
       "type": "slider",
       "blocks": {
@@ -942,6 +911,7 @@
     },
     "rich_text_3UzgfC": {
       "type": "Rich-text",
+      "disabled": true,
       "settings": {
         "rich-heading": "",
         "richtext-prt": "",
@@ -1168,8 +1138,40 @@
         "custom_class": "section-my"
       }
     },
+    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "back_text_image": "shopify://shop_images/Consult-a-design-team-member.jpg",
+        "container": "container-fluid",
+        "background_color": "#ffffff",
+        "item_gap": 100,
+        "item_gap_mobile": 0,
+        "img-uper-text": "",
+        "image": "shopify://shop_images/0910_hp_c08b_img.jpg",
+        "link": "",
+        "layout": "right",
+        "image_column_size": "6",
+        "hover_effect": false,
+        "title": "Bespoke Your Items",
+        "sub_title": "",
+        "side_text_font_size": 22,
+        "text": "<h3>Choose your favorite colors and designs to customize your own one-of-a-kind pillow</h3>",
+        "text_size": "large",
+        "content_alignment": "center",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "button_label2": "",
+        "button_link2": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": "cus_text_image_overlap"
+      }
+    },
     "rich_text_Ep3qNw": {
       "type": "Rich-text",
+      "disabled": true,
       "settings": {
         "rich-heading": "",
         "richtext-prt": "",
@@ -1281,7 +1283,6 @@
     "98057385-08d6-4873-b617-028dfcc96e58",
     "e5ce9b5c-773c-4287-aed9-b74536acc258",
     "195e4dbd-90c0-4d58-9973-79cec98eb9b2",
-    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2",
     "ea969fff-52fe-4f3b-b121-d37d6df38b67",
     "ace97bc6-e1f6-4466-af2c-7694bdc379ee",
     "c097faf8-6f73-40d4-a6ea-f30a6a4b6bb1",
@@ -1289,6 +1290,7 @@
     "c7cc8177-6d73-422d-9050-ba1a635b9518",
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f",
     "d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5",
+    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2",
     "rich_text_Ep3qNw",
     "collection_list_dmJmfn"
   ]
