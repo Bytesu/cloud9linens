@@ -9,6 +9,36 @@
  */
 {
   "sections": {
+    "image_with_text_2_dMD4JP": {
+      "type": "image-with-text-2",
+      "settings": {
+        "sec-hide-show": true,
+        "my_custum_btn_setting": true,
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": true,
+        "image": "shopify://shop_images/0926_hp_c06_img.jpg",
+        "bg_position": "center",
+        "image_link": "",
+        "parallax": false,
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "Image with text overlay",
+        "font_size": 24,
+        "subtitle": "",
+        "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>",
+        "para_font_size": 24,
+        "button_label": "Shop now",
+        "button_link": "",
+        "button_style": "sf__btn-primary",
+        "button_size": "",
+        "custom_class": "sec_font_size",
+        "mob_content": true
+      }
+    },
     "1621243260e1af0c20": {
       "type": "slider",
       "blocks": {
@@ -212,6 +242,7 @@
         "slider_item_HtYVnA",
         "4e97d552-cc38-47ce-9f20-876ae7431afe"
       ],
+      "disabled": true,
       "custom_css": [
         "h3 {color: #ffffff;}",
         "h1 {color: #ffffff;}",
@@ -317,7 +348,7 @@
         "description": "",
         "header_alignment": "center",
         "container": "w-full",
-        "back-image": "shopify://shop_images/0926_hp_c02_bg.jpg",
+        "back-image": "shopify://shop_images/sun-setting-over-ocean.jpg",
         "bdr_none": true,
         "bdr_none_image": true,
         "image_batn_none": true,
@@ -333,9 +364,9 @@
         "card_style": "inside",
         "text_alignment": "center",
         "hover_effect": "scaling-up",
-        "show_product_count": false,
-        "hide-collection-text": false,
-        "count_inline_title": false,
+        "show_product_count": true,
+        "hide-collection-text": true,
+        "count_inline_title": true,
         "image_rounded": false,
         "items_per_row": 3,
         "item_gap": 35,
@@ -899,22 +930,13 @@
         "show_overlay": false,
         "dots_position": "bottom",
         "dots_color": "dark",
-        "back_contain": true,
-        "show_dots": true,
+        "back_contain": false,
+        "show_dots": false,
         "show_arrows": false,
         "autorotate": false,
         "autorotate_speed": 5,
         "backgroundcolor": "",
         "custom_class": "section-py"
-      }
-    },
-    "rich_text_3UzgfC": {
-      "type": "Rich-text",
-      "disabled": true,
-      "settings": {
-        "rich-heading": "",
-        "richtext-prt": "",
-        "custom-class": ""
       }
     },
     "c7cc8177-6d73-422d-9050-ba1a635b9518": {
@@ -954,6 +976,37 @@
         "custom_class": "slider_arrow_position h_ftd_collect_pd hp_colect_price"
       }
     },
+    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2": {
+      "type": "image-with-text",
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "back_text_image": "shopify://shop_images/Consult-a-design-team-member.jpg",
+        "container": "container-fluid",
+        "background_color": "#ffffff",
+        "item_gap": 100,
+        "item_gap_mobile": 0,
+        "img-uper-text": "",
+        "image": "shopify://shop_images/0926_hp_c08a_img.jpg",
+        "link": "",
+        "layout": "right",
+        "image_column_size": "6",
+        "hover_effect": false,
+        "title": "Sandals & More",
+        "sub_title": "",
+        "side_text_font_size": 22,
+        "text": "<h5>Choose your favorite colors and designs to customize your own one-of-a-kind pillow</h5>",
+        "text_size": "large",
+        "content_alignment": "center",
+        "button_label": "SHOP NOW",
+        "button_link": "shopify://collections/all",
+        "button_label2": "",
+        "button_link2": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": "cus_text_image_overlap"
+      }
+    },
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f": {
       "type": "image-with-text-2",
       "settings": {
@@ -962,7 +1015,7 @@
         "container": "w-full",
         "hero_size": "adapt",
         "show_overlay": true,
-        "image": "shopify://shop_images/0926_hp_c06_img.jpg",
+        "image": "shopify://shop_images/mbann.jpg",
         "bg_position": "center",
         "image_link": "",
         "parallax": true,
@@ -980,6 +1033,7 @@
         "button_link": "shopify://collections/all",
         "button_style": "sf__btn-link",
         "button_size": "",
+        "mb_image": "shopify://shop_images/Quit-set-royalblue.jpg",
         "custom_class": "",
         "mob_content": false
       }
@@ -1100,16 +1154,15 @@
       ],
       "settings": {
         "heading": "Explore",
-        "subheading": "<h1> More To</h1>",
+        "subheading": "More To",
         "description": "",
         "header_alignment": "left",
         "container": "w-full",
-        "back-image": "shopify://shop_images/Consult-a-design-team-member.jpg",
         "bdr_none": false,
         "bdr_none_image": false,
         "image_batn_none": true,
         "background_color": "#ffffff",
-        "text_color": "#ffffff",
+        "text_color": "#041e3a",
         "super_font_size": 40,
         "sub_font_size": 60,
         "mob_super_font_size": 22,
@@ -1135,46 +1188,6 @@
         "mobile_gap": 10,
         "hidden_slide_control_mobile": true,
         "custom_class": "section-my"
-      }
-    },
-    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2": {
-      "type": "image-with-text",
-      "settings": {
-        "heading": "",
-        "subheading": "",
-        "back_text_image": "shopify://shop_images/Consult-a-design-team-member.jpg",
-        "container": "container-fluid",
-        "background_color": "#ffffff",
-        "item_gap": 100,
-        "item_gap_mobile": 0,
-        "img-uper-text": "",
-        "image": "shopify://shop_images/0910_hp_c08b_img.jpg",
-        "link": "",
-        "layout": "right",
-        "image_column_size": "6",
-        "hover_effect": false,
-        "title": "Bespoke Your Items",
-        "sub_title": "",
-        "side_text_font_size": 22,
-        "text": "<h3>Choose your favorite colors and designs to customize your own one-of-a-kind pillow</h3>",
-        "text_size": "large",
-        "content_alignment": "center",
-        "button_label": "SHOP NOW",
-        "button_link": "shopify://collections/all",
-        "button_label2": "",
-        "button_link2": "",
-        "button_style": "sf__btn-link",
-        "button_size": "",
-        "custom_class": "cus_text_image_overlap"
-      }
-    },
-    "rich_text_Ep3qNw": {
-      "type": "Rich-text",
-      "disabled": true,
-      "settings": {
-        "rich-heading": "",
-        "richtext-prt": "",
-        "custom-class": ""
       }
     },
     "collection_list_dmJmfn": {
@@ -1271,6 +1284,7 @@
     }
   },
   "order": [
+    "image_with_text_2_dMD4JP",
     "1621243260e1af0c20",
     "1656309435d37bc728",
     "7750f642-1e4a-4b6e-980d-adbb9f8a2354",
@@ -1285,12 +1299,10 @@
     "ea969fff-52fe-4f3b-b121-d37d6df38b67",
     "ace97bc6-e1f6-4466-af2c-7694bdc379ee",
     "c097faf8-6f73-40d4-a6ea-f30a6a4b6bb1",
-    "rich_text_3UzgfC",
     "c7cc8177-6d73-422d-9050-ba1a635b9518",
+    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2",
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f",
     "d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5",
-    "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2",
-    "rich_text_Ep3qNw",
     "collection_list_dmJmfn"
   ]
 }
