@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "1621243260e1af0c20": {
@@ -987,13 +987,13 @@
     },
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f": {
       "type": "image-with-text-2",
-      "disabled": true,
       "settings": {
         "sec-hide-show": false,
         "my_custum_btn_setting": true,
         "container": "w-full",
         "hero_size": "adapt",
         "show_overlay": true,
+        "image": "shopify://shop_images/0926_hp_c06_img.jpg",
         "bg_position": "center",
         "image_link": "",
         "parallax": true,
@@ -1004,8 +1004,8 @@
         "text_color": "white",
         "title": "Lorem Ipsum",
         "font_size": 60,
-        "subtitle": "",
-        "text": "",
+        "subtitle": "We Love",
+        "text": "<p>Shop With Collections</p>",
         "para_font_size": 22,
         "button_label": "SHOP NOW",
         "button_link": "shopify://collections/all",
