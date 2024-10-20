@@ -3623,9 +3623,7 @@ div#toggleButton:first-child h3 {
     .announcement-bar__content {
         padding: 10px !important;
     }
-    .announce_para .slick-slide{
-        font-size: 7px !important;
-    }
+    
 
     .stuck.scroll-down .mw_icon_style_heart {
         filter: invert(1);
