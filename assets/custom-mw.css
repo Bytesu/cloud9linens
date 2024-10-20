@@ -1901,7 +1901,6 @@ h2.book_for_call {
         width: 100%;
     }
     .ftr_social_links{
-        max-width: 37% !important;
         padding: 0 !important;
     }
     .mw_ftr_menu_pd:nth-child(1){
@@ -3181,9 +3180,8 @@ h2.book_for_call {
     }
     .ftr_social_links {
         width: 100%;
-        justify-content: flex-start;
+        justify-content: center;
         padding-top: 10px;
-        padding-left: 38px;
     }
     .cus_justi_start{
         justify-self: start;
@@ -3638,10 +3636,8 @@ div#toggleButton:first-child h3 {
     }
    
     .ftr_social_links {
-        width: 60% !important;
-        justify-content: flex-start;
+        justify-content: center;
         padding-top: 10px;
-       padding-left: 38px; 
     }
    /* .mob_ftr .ftr-mob {
         display: grid !important;

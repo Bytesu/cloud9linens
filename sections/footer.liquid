@@ -7,17 +7,18 @@
   {% render 'footer-design', container: section.settings.container %}
 </footer>
 <style>
-  {% if product.contains 'self-watering-garden-bed' %}
-  .vego-material {
-    margin-top: 100px;
-    padding-bottom: 0;
-  }
+ @media (min-width:768px){
+  .mw_ftr_bdr.sf__footer-middle .cus_ftr_fc>* {
+    max-width: 405px;
+    width: auto;
+}
 
-  .page-section.page-section-pb0.assembly-container {
-      margin-bottom: 100px;
-  }
+.mw_ftr_bdr.sf__footer-middle .cus_ftr_fc {
+    justify-content: space-around;
+}
+}
 
-  {% endif %}
+
   </style>
 {% schema %}
   {
