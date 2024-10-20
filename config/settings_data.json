@@ -127,7 +127,7 @@
     "search_unavailable_products": "LAST",
     "wishlist_page": "wishlist",
     "product_compare_page": "comparison",
-    "agree_text": "<h6>I have read the  <a href=\"/pages/privacy-policy\" title=\"Privacy Policy\">Privacy Policy</a>  and I agree to receive via email special offers, promotions, news and events from Cloud9linens.</h6>",
+    "agree_text": "<h6><a href=\"/pages/privacy-policy\" title=\"Privacy Policy\"Click here</a> to read Cloud9linens privacy notice. Or <a href=\"/pages/customer-care-contact-us\">contact us</a></h6>",
     "show_agree_on_cart": true,
     "show_cookie_consent": false,
     "cookie_consent_learnmore_link": "https://cloud9linens.com/pages/cookies-center",
