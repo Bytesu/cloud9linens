@@ -297,6 +297,7 @@
           },
           "custom_text_a7NTFq": {
             "type": "custom_text",
+            "disabled": true,
             "settings": {
               "title": "EsT 1940",
               "image_max": "200px",
