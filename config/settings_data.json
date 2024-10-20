@@ -1,12 +1,12 @@
 /*
-* ------------------------------------------------------------
-* IMPORTANT: The contents of this file are auto-generated.
-*
-* This file may be updated by the Shopify admin theme editor
-* or related systems. Please exercise caution as any changes
-* made to this file may be overwritten.
-* ------------------------------------------------------------
-*/
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "favicon": "shopify://shop_images/cloud9linens.jpg",
@@ -261,9 +261,9 @@
           "header_sticky": true,
           "transparent_on_top": true,
           "logo_text": "",
-          "logo": "shopify://shop_images/logo_2.png",
-          "logo_transparent": "shopify://shop_images/logo_2.png",
-          "logo_mob": "shopify://shop_images/logo_2.png",
+          "logo": "shopify://shop_images/CLOUD9LINENS_acbdabac-ea0c-4605-a997-acbfa614bac3.png",
+          "logo_transparent": "shopify://shop_images/CLOUD9LINENS_acbdabac-ea0c-4605-a997-acbfa614bac3.png",
+          "logo_mob": "shopify://shop_images/CLOUD9LINENS_acbdabac-ea0c-4605-a997-acbfa614bac3.png",
           "logo_max_width": 205,
           "sticky_logo_max_width": 145,
           "mobile_logo_max_width": 185,
