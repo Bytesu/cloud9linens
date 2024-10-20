@@ -1568,9 +1568,8 @@ p.text-align-left {
     max-width: 100%;
 }
 .sf__footer-bottom-inner {
-    flex-direction: row-reverse;
-    align-items: flex-start;
-    /* gap: 25px; */
+    flex-direction: column;
+    align-items: center;
 }
 button.sf__form-submit.absolute {
     position: unset;
@@ -1925,11 +1924,7 @@ h2.book_for_call {
         width: 100% !important;
         max-width: 33%;
     }
-    .sf__footer-bottom-inner {
-        flex-direction: row-reverse !important;
-        align-items: baseline !important;
-        justify-content: space-between !important;
-    }
+    
     .cus_justi_start{
         justify-content: end !important;
     }
@@ -2196,9 +2191,7 @@ h2.book_for_call {
     }
     
     .cpy_order {
-        display: none;
-        text-align: left;
-        order: 2;
+        text-align: center;
     }
    
 
@@ -3526,9 +3519,7 @@ div#toggleButton:first-child h3 {
   .slick_slider_announcement p a {
     font-size:7px !important;
   }
-    .cpy_order {
-            margin-top: -37px;
-    }
+    
     .slick_slider_announcement {
         width: 100% !important;
         margin: 0 auto;
@@ -3537,12 +3528,7 @@ div#toggleButton:first-child h3 {
     .subject {
         padding: 0 !important;
     }
-    .cpy_order {
-        text-align: left;
-        order: 2;
-        /* margin-top: -37px; */
-        padding-left: 13px;
-    }
+ 
     .cus_bdr label {
         text-transform: uppercase !important;
     }
@@ -3658,11 +3644,7 @@ div#toggleButton:first-child h3 {
         height: 18px !important;
         object-fit: contain;
     }
-    .sf__footer-bottom-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        /* gap: 25px; */
-    }
+   
     .ftr_social_links {
         width: 60% !important;
         justify-content: flex-start;
@@ -3806,12 +3788,7 @@ div#toggleButton:first-child h3 {
         max-width: 95%;
         width: 100%;
     }
-    .cpy_order {
-        text-align: left;
-        order: 2;
-        /* margin-top: -37px; */
-        padding-left: 13px;
-    }
+  
 }
 
 @media only screen and (max-width: 1570px) {
@@ -3878,12 +3855,7 @@ span.custom_p_color-change p , .sf-footer a{
 .cus_ftr_fc > :nth-child(2) h3 {
     color: #bbb492;
 }
-.cpy_order {
-    text-align: left;
-    order: 2;
-    /* margin-top: -37px; */
-    /* padding-left: 13px; */
-}
+
 .cus_ftr_fc > .ftr_mob_order:nth-child(2)  {
     order: 5;
 }

@@ -73,7 +73,7 @@
         {% endif %}
         {% if settings.copyright != blank %}
           <div class="cus-footer-torder sf-footer__center mb-6 lg:mb-0 flex-1 lg:order-none lg:w-auto w-full ftr_mob_wd cpy_order cstm__ftr_cprt__cont">
-            <span class="custom_p_color-change text-sm cpy_fs cus_mob_fonts_source">{{settings.copyright }}</span> 
+            <span class="custom_p_color-change text-sm cpy_fs cus_mob_fonts_source ">{{settings.copyright }}</span> 
           </div>
         {% endif %}
         {% if section.settings.show_payment_icons %}
@@ -87,3 +87,12 @@
     </div>
   </div>
 </div>
+<style>
+  .cus-footer-torder span h6 {
+    color: #fff !important;
+    font-size: 13px !important;
+    text-transform: capitalize !important;
+    font-family: "Source Code Pro";
+    padding: 20px 0 0;
+  }
+</style>
