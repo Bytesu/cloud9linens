@@ -2571,6 +2571,9 @@ h2.book_for_call {
     justify-content: end;
     width: 100%;
 }
+.ftr_social_links>a:nth-child(5), .ftr_social_links>a:nth-child(4) {
+    display: none;
+}
 
 @media only screen and (max-width: 767px) {
     .sdss .mw_collect_text_colr a {
@@ -3184,7 +3187,6 @@ h2.book_for_call {
         display: none;
     }
     .ftr_social_links {
-        width: 100%;
         padding-top: 10px;
     }
     .cus_justi_start{
