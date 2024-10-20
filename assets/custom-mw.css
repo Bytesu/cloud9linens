@@ -3176,7 +3176,6 @@ h2.book_for_call {
     .cus-footer-forder {
         order: 1;
         display: flex;
-        justify-content: start;
         flex-wrap: wrap;
         width: 90%;
     }
@@ -3663,10 +3662,7 @@ div#toggleButton:first-child h3 {
     button.sf__form-submit.absolute {
         padding: 15px !important;   
     }
-    footer button.sf__form-submit.absolute {
-        padding: 0px !important;
-        font-size: 10px;   
-    }
+    
     .sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click:after {  
         right: 25px !important;   
         width: 13px !important;
