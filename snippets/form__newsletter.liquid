@@ -6,23 +6,25 @@
     name="contact[tags]"
     value="newsletter">
   <div class="relative ftr-flx">
-    
+    <form-control-group>
+      <label class="cus-account-label">You Email</label>
     <input
       id="subs_batn"
       type="email"
       required
       name="contact[email]"
-      placeholder="{{ block_settings.email_placeholder }}"
+      data-placeholder="{{ block_settings.email_placeholder }}"
       autocorrect="off"
       autocapitalize="off"
       autocomplete="off"
       spellcheck="false"
-      class="form-control form__control-icon py-1.5 px-12 sf__newletter__form-input mw_ftr_input cus_mob_fonts_source" style="font-size:10px;">
+      class="form-control " style="">
     {% unless block_settings.form_style == 'minimal' %}
       <span class="sf__footer-form-newsletter-icon absolute">
         {% render 'icon', name: 'envelope', size: 'small' %}
       </span>
     {% endunless %}
+    </form-control-group>
   
     <div class="cus-ftr-btn">
     <div class="custom_input_type">

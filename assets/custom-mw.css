@@ -1601,9 +1601,7 @@ button.sf__form-submit.absolute::after {
     /* max-width: 169px; */
     height: 41px;
 }
-.ftr-bttn .sf__form-submit {
-    border-radius: 6px;
-}
+
 p.ftr-read {
     font-size:10px;
     /* text-transform: uppercase; */
@@ -2953,9 +2951,7 @@ h2.book_for_call {
         font-family: PT serif;
         font-size: 14px;
     }
-    .ftr-bttn .sf__form-submit {
-        border-radius: unset;
-    }
+   
     .cus_mob_fonts_source{
         font-family: 'Source Code Pro' !important;
     }
