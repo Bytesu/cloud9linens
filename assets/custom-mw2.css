@@ -608,7 +608,7 @@ p.discount-text-line {
   }
 
   .mw_img_text_hide_mob {
-    padding-top: 15px;
+    padding-top: 0px;
   }
 
   .shopify-section .mw_breadcurmb_main {
@@ -631,9 +631,7 @@ p.discount-text-line {
     padding-inline: 15px;
   }
 
-  .index .sf-header__mobile-right svg {
-    filter: invert(1) !important;
-  }
+ 
 
   .index .stuck .sf-header__mobile-right svg {
     filter: unset !important;

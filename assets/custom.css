@@ -2081,7 +2081,6 @@ font-family: 'PT Sans';
 /* #cus-header-wrapper{ top: 52px !important; } */
 .sf-header header.sf-header__mobile {
   height: 100px !important;
-  /* border-bottom: 1px solid #c6c6c6 !important; */
 }
 
 .sf-header__mobile > :last-child {
@@ -2133,7 +2132,7 @@ font-family: 'PT Sans';
 }
 
 .cus-account-tabs .sf__accordion-content a {
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-style: italic;
   text-decoration: none;
   color: #808080 !important;
@@ -4735,7 +4734,7 @@ li.active-c a {
   font-weight: 400!important;
 }
 span.link1 a {
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 200;
   margin-left: -1px!important;
 }
