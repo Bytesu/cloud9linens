@@ -1778,7 +1778,7 @@ div.cus_inner_sec {
 }
 .mw_ftr_menu_pd.sf-footer__block.sf__footer-block-newsletter.lg\:w-1\/4 h3 {
     color: white;
-  font-family: Source Code Pro;
+  font-family: var(--font-stack-header);
 }
 .relative input::placeholder {
     color: black;
@@ -2984,10 +2984,7 @@ h2.book_for_call {
     .ftr_para p {
         font-size: 6px !important;
     }
-    p.ftr-read {
-        font-size:6px;
-        text-transform: uppercase;
-    }
+   
     p.ftr-read a {
         color: white;
         text-decoration: underline;
@@ -3506,7 +3503,7 @@ button.heart_hide {
 /* mobil footer */
 
 div#toggleButton:first-child h3 {
-    color: #bbb492;
+    color: #EDEAE4;
 }
 @media only screen and (max-width: 768px) {
 #shopify-section-footer a {
