@@ -4362,7 +4362,7 @@ width:300px !important;
 color:#041E3A;
 font-family: Source Code Pro ;
 margin-left:230px !important;
-font-size:12px;
+font-size:14px;
 
 }
 
@@ -4472,12 +4472,8 @@ font-weight:700;
 }
   .left_badlinens {
       width: 100% !important;
-      /* margin-top: 35px; */
       margin-left: 180px !important;
-}
- /* .cus_sale_sec .cus_sale_rowed.flex {
-      margin-left: 207px !important;
-  } */
+  }
 
 }
 @media screen and (max-width: 1400px) {
