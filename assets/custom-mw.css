@@ -1901,7 +1901,9 @@ h2.book_for_call {
         width: 100%;
     }
     .ftr_social_links{
-        padding: 0 !important;
+        justify-content: space-between;
+        padding: 10px 0 0;
+        width: 316px;
     }
     .mw_ftr_menu_pd:nth-child(1){
         width: 100% !important;
@@ -3155,6 +3157,7 @@ h2.book_for_call {
     .ftr_navbar_toggle{
         display: block;
     }
+    .sf-footer__accordion > :not(:first-child):not(:nth-child(3)) h3.ftr_mob_click:after,
     .sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click:after{
         content: "";
         position: absolute;
@@ -3166,6 +3169,7 @@ h2.book_for_call {
         right:40px;
         background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/plus.png?v=1675250446");
     }
+    .sf-footer__accordion > :not(:first-child):not(:nth-child(3)) h3.ftr_mob_click.ftr_icon_minus:after,
     .sf-footer__accordion > :not(:first-child):not(:nth-child(2)) h3.ftr_mob_click.ftr_icon_minus:after{
         background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/minus-sign.png?v=1675255571");
     }
@@ -3180,7 +3184,6 @@ h2.book_for_call {
     }
     .ftr_social_links {
         width: 100%;
-        justify-content: center;
         padding-top: 10px;
     }
     .cus_justi_start{
@@ -3636,7 +3639,6 @@ div#toggleButton:first-child h3 {
     }
    
     .ftr_social_links {
-        justify-content: center;
         padding-top: 10px;
     }
    /* .mob_ftr .ftr-mob {
