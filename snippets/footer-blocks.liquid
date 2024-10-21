@@ -1,6 +1,6 @@
 {% if blocks.size > 0 %}
   <div class="mw_ftr_bdr {% if bordered %} lg:border-b lg:border-color-border{% endif %} sf__footer-middle">
-    <div class="{{ container }}{% if container == 'w-full' %} px-4{% endif %}">
+    <div class="{{ container }}{% if container == 'w-full' %} px-41{% endif %}">
       <div class="cus_ftr_fc ftr-mob hidden md:flex md:flex-wrap lg:flex-nowrap {% if bordered %}lg:-mx-8{% else %}-mx-5{% endif %}">
         {% for block in blocks %}
           {% case block.settings.width %}
@@ -87,4 +87,10 @@
       {% endfor %}
     </div>
   </div>
+  <style>
+    @media (min-width:768px){
+      .cus_ftr_fc>div:first-child{width:20% !important;}
+      .cus_ftr_fc>div:not(:first-child){width:calc(80%/3) !important;padding-left:7%;}
+    }
+    </style>
 {% endif %}

@@ -1,5 +1,5 @@
 <div class="footer-layout sf__footer-bottom mt-5 md:mt-0 ftr_cyrt">
-  <div class="{{ container }}">
+  <div class="">
     <div class="sf__footer-bottom-inner lg:pb-8 pt-0 lg:py-5 flex flex-col lg:flex-row justify-between items-center">
       {% case section.settings.design %}
         {% when 'footer-1' %}
@@ -56,7 +56,7 @@
         {% endif %}
         {% when 'footer-3' %}
         {% if section.settings.show_social_links or section.settings.show_currency_selector or section.settings.show_language_selector %}
-          <div class="cus-footer-forder cus_justi_start cus_ftr_mob_ctr sf-footer__left  lg:mb-0 flex-1 flex flex-wrap items-center -mx-4 justify-center lg:w-auto w-full">
+          <div class="cus-footer-forder cus_justi_start cus_ftr_mob_ctr sf-footer__left  lg:mb-0 flex-1 flex flex-wrap items-center -mx-4 justify-center lg:w-auto w-full1">
             {% if section.settings.show_social_links %}
               {% comment %} <h3 class="sf__accordion-button font-medium md:mb-4 text-base sf__footer-block-title">Social Media</h3> {% endcomment %}
               {% render 'social-media-links', box_size: 'md:justify-end md:mr-4 -mx-4 lg:mx-0' %}
@@ -90,7 +90,7 @@
 <style>
   .cus-footer-torder span h6 {
     color: #fff !important;
-    font-size: 13px !important;
+    font-size: 10px !important;
     text-transform: capitalize !important;
     font-family: "Source Code Pro";
     padding: 20px 0 0;
