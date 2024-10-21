@@ -21,7 +21,7 @@
   {% case design %}
     {% when 'logo-center-menu-left' %}
       <div class="{{ container }} relative z-[1]">
-        <div class="sf-menu-logo-bar flex -mx-4 items-center">
+        <div class="sf-menu-logo-bar flex -mx-41 items-center">
           {% render 'header-main-menu-container', section: section, box_size: 'w-5/12' %}
           {% render 'header-logo', header_settings: section.settings, box_size: 'w-1/6' %}
           <div class="w-5/12 flex flex-grow justify-end items-center">
@@ -49,7 +49,7 @@
       </div>
     {% when 'both-center' %}
       <div class="{{ container }} relative z-[1]">
-        <div class="sf-menu-logo-bar flex -mx-4 items-center">
+        <div class="sf-menu-logo-bar flex -mx-41 items-center">
           <div class="flex flex-grow w-1/6 items-center">
             {% if show_language_switcher %}
               {% render 'language-switcher', box_size: 'hidden xl:block' %}
@@ -80,7 +80,7 @@
       </div>
     {% when 'logo-left-menu-center' %}
       <div class="{{ container }} relative z-[1]">
-        <div class="sf-menu-logo-bar flex -mx-4 items-center">
+        <div class="sf-menu-logo-bar flex -mx-41 items-center">
           {% render 'header-logo', header_settings: section.settings, box_size: 'flex-1', justify: 'justify-start' %}
           {% render 'header-main-menu-container',
             section: section,
@@ -200,7 +200,7 @@
       {%- endcomment -%}
     {% when 'logo_left_menu_center_new' %}
       <div class="{{ container }} relative z-[1] mw_custom_hedaer">
-        <div class="sf-menu-logo-bar flex -mx-4 items-center">
+        <div class="sf-menu-logo-bar flex -mx-41 items-center">
           {% render 'header-logo', header_settings: section.settings, box_size: 'w-1/6' %}
           {% render 'header-main-menu-container', section: section, box_size: 'w-5/12' %}
           <div class="{% if section.settings.show_desktop_icon == false %} custum_hide_icon {% endif %} w-5/12 flex flex-grow justify-end items-center">

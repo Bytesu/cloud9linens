@@ -687,7 +687,6 @@ svg.mw_icon_style.mw_heigh {
 }
 .mw_ftr_bdr{
     padding:30px 0px 0px 0px;
-    width:95%;
     margin:auto;
 }
 .wk-link {
@@ -1978,7 +1977,6 @@ h2.book_for_call {
     }
     .mw_ftr_bdr {
         padding: 30px 0px 0px 0px;
-        width: 95%;
         margin: unset !important;
 
     }
