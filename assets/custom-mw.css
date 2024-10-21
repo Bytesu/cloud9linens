@@ -2892,7 +2892,7 @@ h2.book_for_call {
     }
     .mw_fdr .ftr_mob_order .sf-footer .sf__accordion-button, .sf-footer .sf__footer-block-title {
         text-transform: capitalize;
-        font-size: 10px;
+        font-size: 12px;
     }
     /* our heritage */
     .our-heritage .swiper-pagination {
@@ -2957,7 +2957,6 @@ h2.book_for_call {
 
 
     .mw_fdr .ftr_mob_order:first-child > h3.sf__accordion-button:first-child{
-        font-family: PT serif;
         font-size: 14px;
     }
    

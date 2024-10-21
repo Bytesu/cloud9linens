@@ -45,7 +45,8 @@
 
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">BEDLINENS</p> {% endcomment %}
 
-                        <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                        {% comment %} <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                          <a href="/pages/bedlinens" class="block px-4 py-3 ">Shop All</a>
                           <a href="/collections/top-sheet-sets" class="block px-4 py-3 ">Top sheet set</a>
                           <a href="/collections/duvet-cover-sets" class="block px-4 py-3 ">Duvet cover set</a>
                           <a href="/collections/bedspread-set" class="block px-4 py-3 ">Bedspread set</a>
@@ -59,7 +60,8 @@
                           <a href="/collections/quilts" class="block px-4 py-3 ">Quilts</a>
                           <a href="/collections/fitted-sheets" class="block px-4 py-3 ">Fitted sheet</a>
                           <a href="/collections/decortaive" class="block px-4 py-3 ">Decortaive</a>
-                        </div>
+                        </div> {% endcomment %}
+                        {% render 'categories',term:'BATHLINENS' %}
 
                       </div>
                     </div>
@@ -82,13 +84,15 @@
 
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">BATHLINENS</p> {% endcomment %}
 
-                        <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                        {% comment %} <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                          <a href="/pages/bathlinens" class="block px-4 py-3 ">Shop All</a>
                           <a href="/collections/towel-set" class="block px-4 py-3 ">Towel set</a>
                           <a href="/collections/towels" class="block px-4 py-3 ">Towels</a>
                           <a href="/collections/bath-robes" class="block px-4 py-3 ">Bath robes</a>
                          
                           <a href="/collections/mats" class="block px-4 py-3 ">Bathmats</a>
-                        </div>
+                        </div> {% endcomment %}
+                        {% render 'categories',term:'BATHLINENS' %}
 
                       </div>
                     </div>
@@ -109,8 +113,8 @@
                       {% comment %} <p class="cus-mega-menu-subtitle">Only 100 percent Egyptian Cotton</p> {% endcomment %}
                       <div class="pb-8 prose" style="color: #000;">
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">ESSENTIALS</p> {% endcomment %}
-                        <div class="flex" style="flex-direction: column; align-items:flex-start;">
-
+                        {% comment %} <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                          <a href="/pages/bedroom-essentials" class="block px-4 py-3 ">Shop All</a>
                           <a href="/collections/comforter-sets" class="block px-4 py-3 ">Comforter sets</a>
                           <a href="/collections/Comforters" class="block px-4 py-3 ">Comforters</a>
                           <a href="/collections/pillows" class="block px-4 py-3 ">Pillows</a>
@@ -118,7 +122,8 @@
                           <a href="/collections/toppers" class="block px-4 py-3 ">Toppers</a>
                           <a href="/collections/mattresses" class="block px-4 py-3 ">Mattresses</a>
                           <!-- <a href="/collections/protectors" class="block px-4 py-3 ">Protectors</a>-->
-                        </div>
+                        </div> {% endcomment %}
+                        {% render 'categories',term:'Bedroom Essentials' %}
 
                       </div>
                     </div>
@@ -141,7 +146,8 @@
 
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">INTERIOR</p> {% endcomment %}
 
-                        <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                        {% comment %} <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                          <a href="/pages/home-deco" class="block px-4 py-3 ">Shop All</a>
                        <a href="/collections/tablecloth-sets" class="block px-4 py-3">Dining linens sets</a>
                             <a href="/collections/tablecloths" class="block px-4 py-3">Tablecloth</a>
                             <a href="/collections/place-mats" class="block px-4 py-3">Placemats</a>
@@ -149,8 +155,8 @@
                             <a href="/collections/plate-sets" class="block px-4 py-3">Plate sets</a>
                             <a href="/collections/curtains" class="block px-4 py-3">Curtains</a>
                             <a href="/collections/Beds" class="block px-4 py-3">Beds</a>
-                        </div>
-
+                        </div> {% endcomment %}
+                        {% render 'categories',term:'Home Deco' %}
                       </div>
                     </div>
                   </div>
@@ -171,9 +177,9 @@
                       <div class="pb-8 prose" style="color: #000;">
 
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">LOUNGE</p> {% endcomment %}
-
+{% comment %} 
                         <div class="flex" style="flex-direction: column; align-items:flex-start;">
-                      
+                          <a href="/pages/lounge-wear" class="block px-4 py-3 ">Shop All</a>
                            <a href="/collections/pj-sets" class="block px-4 py-3">Lounge wear sets</a>
                               <a href="/collections/tops" class="block px-4 py-3">Long & Short Sleeves Top</a>
                               <a href="/collections/bottoms" class="block px-4 py-3">Shorts & Pants</a>
@@ -181,8 +187,9 @@
                               <a href="/collections/lounge-robes" class="block px-4 py-3">Lounge Robes</a>
                               <a href="/collections/bags" class="block px-4 py-3">Leather goods</a>
                               <a href="/collections/footwear" class="block px-4 py-3">Footwear</a>
-                        </div>
+                        </div> {% endcomment %}
 
+                        {% render 'categories',term:'Lounge Wear' %}
                       </div>
                     </div>
                   </div>
@@ -204,11 +211,13 @@
 
                         {% comment %} <p style="padding: 10px 4px; letter-spacing: 2px; color: #000">FINAL SALE</p> {% endcomment %}
 
-                        <div class="flex" style="flex-direction: column; align-items:flex-start;">
-                       <a href="https://cloud9linens.com/collections/sales-collection" class="block px-4 py-3">Final sale</a>
-                            <a href="https://cloud9linens.com/collections/seasonal-sale-deals" class="block px-4 py-3">Seasonal Sale Deals</a>
-                        </div>
+                        {% comment %} <div class="flex" style="flex-direction: column; align-items:flex-start;">
+                          <a href="/pages/sale" class="block px-4 py-3 ">Shop All</a>
+                          <a href="https://cloud9linens.com/collections/sales-collection" class="block px-4 py-3">Final sale</a>
+                          <a href="https://cloud9linens.com/collections/seasonal-sale-deals" class="block px-4 py-3">Seasonal Sale Deals</a>
+                        </div> {% endcomment %}
 
+                        {% render 'categories',term:'Sale' %}
                       </div>
                     </div>
                   </div>
@@ -286,7 +295,7 @@
 
 
 
-                  <div
+                  {% comment %} <div
                     class="sf__accordion-item cus-account-tabs cus-mega-menu-story pt-2{% if block.settings.open %} open{% endif %}"
                     data-index="{{ forloop.index0 }}"
                     style="--content-max-height: {% if block.settings.open %}100%{% else %}0px{% endif %};"
@@ -321,7 +330,7 @@
 
                       </div>
                     </div>
-                  </div>
+                  </div> {% endcomment %}
 
                 </div>
               </div>

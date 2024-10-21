@@ -7,6 +7,12 @@
   {% render 'footer-design', container: section.settings.container %}
 </footer>
 <style>
+ @media (max-width:768px){
+  .sf-footer .sf__footer-bottom>div{
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+}
  @media (min-width:768px){
   .mw_ftr_bdr.sf__footer-middle .cus_ftr_fc>* {
     max-width: 350px;
@@ -20,7 +26,7 @@
 }
 }
 
-.w-full{width:91%; margin: 0 auto;}
+footer .w-full{width:91%; margin: 0 auto;}
 
   </style>
 {% schema %}
