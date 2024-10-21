@@ -233,6 +233,7 @@
           },
           "custom_html_pV8CXD": {
             "type": "custom_html",
+            "disabled": true,
             "settings": {
               "heading": "Story",
               "container": "inherit",
