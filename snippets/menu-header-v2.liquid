@@ -12,13 +12,32 @@
 </div>
 
 <div class="sub-categories">
-  {% render 'categories', term: section.settings.slider_heading %}
-  {% unless section.settings.slider_heading == 'Bathlinens' %}
+  {% render 'categories', term: collection.title %}
+  {% unless collection.title == 'Bathlinens' %}
     <div class="view-all">View All</div>
   {% endunless %}
+  <div style="flex:1;    min-width: 100%;">
+    <a href="{{ collection.url }}">Shop All</a>
+  </div>
 </div>
 <script>
   function subCategories() {
+    let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags');
+    Array.from(document.querySelectorAll('.sub-categories .flex>a')).forEach((item) => {
+      if (item.textContent != 'Shop All') {
+        item.setAttribute(
+          'href',
+          `${window.location.pathname}?filter.p.m.custom.tags=${item.textContent.trim().replaceAll(/\s+/gi, '+')}`
+        );
+        if (selected_item == item.textContent.trim()) {
+          item.classList.add('active');
+        }
+      }
+      item.addEventListener('click', () => {
+        item.classList.add('active');
+      });
+    });
+
     let vaEl = document.querySelector('.sub-categories .view-all');
     if (vaEl) {
       vaEl.addEventListener('click', () => {
@@ -33,6 +52,13 @@
   subCategories();
 </script>
 <style>
+  nav.breadcrumbs {
+    background: white;
+  }
+  main#MainContent {
+    max-width: 90vw;
+    margin: 0 auto;
+  }
   .nav-bread span {
     padding: 0 5px;
   }
@@ -51,7 +77,7 @@
   }
   .sub-categories {
     flex-wrap: wrap;
-    padding: 20px 0 80px;
+    padding: 20px 0 20px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -73,6 +99,7 @@
   }
   .sub-categories > div a {
     padding: 0;
+    border: 1px solid #041e3a;
     border-color: #041e3a;
     background-color: #fff;
     color: #041e3a;
@@ -80,11 +107,23 @@
     border-radius: 2em;
     padding: 0.625rem 1.625rem;
   }
+  .sub-categories > div a.active {
+    background: #041e3a;
+    color: white;
+  }
 
-  .sub-categories > div a:first-child {
+  .sub-categories > div:first-child > a:first-child {
     display: none;
   }
   @media (max-width: 768px) {
+    .cus_side_mg {
+      margin: 0 0px !important;
+    }
+   
+    .sub-categories > div:last-child {
+      min-width: unset;
+      flex: auto;
+    }
     .cus_slider_heading {
       padding: 44px 20px 0;
     }

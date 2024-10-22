@@ -47,7 +47,7 @@
    
     <div class="sf__sidebar-close cursor-pointer absolute top-5 right-5">{%- render 'icon', name: 'x', size: 'large' -%}</div>
     
-    <div class="sf__sidebar-close cursor-pointer absolute right-5">{%- render 'icon', name: 'x', size: 'medium' -%}</div>
+    {% comment %} <div class="sf__sidebar-close cursor-pointer absolute right-5">{%- render 'icon', name: 'x', size: 'medium' -%}</div> {% endcomment %}
     
     <div class="sf__sidebar-wrapper">
       <div class="sf__filter-wrapper cus_filter block md:flex"{%- if filters_type == 'tags_filter' -%} data-filters-block{%- endif -%}>
@@ -69,7 +69,7 @@
         {% endcomment %}
         
         
-        <div class="select nodisplayphone mw_bestsell_hide{{position }}" style="margin-left: auto;">
+        <div class="select nodisplayphone mw_bestsell_hide{{position }}" style="margin-left: auto;display:none;">
         {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
          	<select style="width: 200px; font-size: 17px; letter-spacing: 1px; font-style: normal; font-family: minion pro;" name="sort_by" class="collection-filters__sort select__select" id="SortBy" aria-describedby="a11y-refresh-page-message">
     <!--           {%- for option in collection.sort_options -%} -->

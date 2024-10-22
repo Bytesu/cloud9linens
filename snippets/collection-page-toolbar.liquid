@@ -18,11 +18,13 @@
   <div class="sf__toolbar-wrapper transition-all duration-300 flex items-center justify-between">
     <div class="flex sf__toggle-filter {% unless show_filter %}xl:hidden{% endunless %}">
 
-      <div class="flex w-full p-3 mw_{{position }}_icon ">
+      <div class="flex w-full p-3 mw_{{position }}_icon " style="padding-left:0;">
         {%- if show_filter -%}
           <button class="mw_show{{position }} flex items-center sf__sidebar-open mr-4 md:mr-8 font-medium w-1/3">
 
             {% render 'icon', name: 'filter-icon', size: 'extra-small' %}
+             &nbsp;
+             &nbsp;
             <span class="uppercase">{{ 'collections.toolbar.show_filter' | t }}</span>
 
             {% comment %}
