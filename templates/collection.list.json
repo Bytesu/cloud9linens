@@ -16,6 +16,7 @@
     },
     "collection-header": {
       "type": "collection-page-header",
+      "disabled": true,
       "settings": {
         "container": "container",
         "layout": "inside",
