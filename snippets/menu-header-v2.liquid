@@ -1,19 +1,19 @@
 <div class="cus_slider_mhead cus_gradi_sec_head-{{section.id}}">
   <h1 class="s_heading">
     <div class="nav-bread">
-      {{ section.settings.slider_heading }}
+      {{ collection.title }}
       <span>/</span>
     </div>
-    {{ section.settings.slider_heading }}
+    {{ collection.title }} Shop All
   </h1>
 </div>
 <div class="custom-paragraph-font cus_slider_mpara cus_gradi_para-{{section.id}}">
-  <p>{{ section.settings.slider_para }}</p>
+  <p>{{ collection.description }}</p>
 </div>
 
 <div class="sub-categories">
   {% render 'categories', term: section.settings.slider_heading %}
-  {% unless section.settings.slider_heading   == 'Bathlinens' %}
+  {% unless section.settings.slider_heading == 'Bathlinens' %}
     <div class="view-all">View All</div>
   {% endunless %}
 </div>
@@ -46,6 +46,7 @@
   }
   .cus_slider_heading,
   h1.s_heading {
+    color: #041e3a;
     text-align: left;
   }
   .sub-categories {
