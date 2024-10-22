@@ -226,7 +226,7 @@
         "show_filter": true,
         "filters_type": "storefront_filters",
         "sidebar": "fixed",
-        "sidebar_title": "",
+        "sidebar_title": "Filter",
         "limit_height_widget": true,
         "limit_height": 300,
         "paginate_type": "paginate"
