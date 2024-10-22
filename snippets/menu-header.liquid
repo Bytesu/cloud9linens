@@ -1,0 +1,93 @@
+<div class="cus_slider_mhead cus_gradi_sec_head-{{section.id}}">
+  <h1 class="s_heading">
+    <div class="nav-bread">
+      {{ section.settings.slider_heading }}
+      <span>/</span>
+    </div>
+
+    {{ section.settings.slider_heading }}
+  </h1>
+</div>
+<div class="custom-paragraph-font cus_slider_mpara cus_gradi_para-{{section.id}}">
+  <p>{{ section.settings.slider_para }}</p>
+</div>
+
+<div class="sub-categories">
+  {% render 'categories', term: section.settings.slider_heading %}
+  <div class="view-all">View All</div>
+</div>
+<script>
+  function subCategories() {
+    let vaEl = document.querySelector('.sub-categories .view-all');
+    if (vaEl) {
+      vaEl.addEventListener('click', () => {
+        if (vaEl.closest('.sub-categories').classList.contains('active')) {
+          vaEl.closest('.sub-categories').classList.remove('active');
+        } else {
+          vaEl.closest('.sub-categories').classList.add('active');
+        }
+      });
+    }
+  }
+  subCategories();
+</script>
+<style>
+  .nav-bread span {
+    padding: 0 5px;
+  }
+  .view-all {
+    cursor: pointer;
+  }
+  .nav-bread {
+    font-size: 0.6875rem;
+    line-height: 1.27273em;
+    letter-spacing: 0.611px;
+  }
+  .cus_slider_heading,
+  h1.s_heading {
+    text-align: left;
+  }
+  .sub-categories {
+    flex-wrap: wrap;
+    padding: 20px 0 80px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  .sub-categories > div .after-6 {
+    display: none;
+  }
+  .sub-categories.active > div .after-6 {
+    display: inline;
+  }
+  .sub-categories > div {
+    display: flex;
+    flex-direction: row !important;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .sub-categories > div a:hover {
+  }
+  .sub-categories > div a {
+    padding: 0;
+    border-color: #041e3a;
+    background-color: #fff;
+    color: #041e3a;
+    font-size: 0.8125rem;
+    border-radius: 2em;
+    padding: 0.625rem 1.625rem;
+  }
+
+  .sub-categories > div a:first-child {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .cus_slider_heading {
+      padding: 44px 20px 0;
+    }
+    .sub-categories {
+      padding: 20px 0 40px;
+    }
+  }
+</style>

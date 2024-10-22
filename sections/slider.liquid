@@ -87,39 +87,17 @@
       and section.settings.slider_para != blank
       and section.settings.slider_button != blank
     %}
+   
       <div class="cus_slider_heading">
-        <div class="cus_slider_mhead cus_gradi_sec_head-{{section.id}}">
-          <h1 class="s_heading">{{ section.settings.slider_heading }}</h1>
-        </div>
-        <div class="custom-paragraph-font cus_slider_mpara cus_gradi_para-{{section.id}}">
-          <p>{{ section.settings.slider_para }}</p>
-        </div>
-        <style>
-          .sub-categories > div {
-            display: flex;
-            flex-direction: row !important;
-            gap: 20px;
-            padding: 20px 0 40px;
-            flex-wrap: wrap;
-          }
-
-          .sub-categories > div a:hover{    text-decoration: underline;}
-          .sub-categories > div a {
-            padding: 0;
-          }
-
-          .sub-categories > div a:first-child {
-            display: none;
-          }
-        </style>
-        <div class="sub-categories">
-          {% render 'categories', term: section.settings.slider_heading %}
-        </div>
-        {% comment %} <div class="cus_slider_ankr">
-          <a href="{{ section.settings.button_link }}" class="sf__btn sf__btn-link cus_slider_link">
-            {{- section.settings.slider_button -}}
-          </a>
-        </div> {% endcomment %}
+        {% render 'menu-header',section:section %}
+       
+        {% comment %}
+          <div class="cus_slider_ankr">
+            <a href="{{ section.settings.button_link }}" class="sf__btn sf__btn-link cus_slider_link">
+              {{- section.settings.slider_button -}}
+            </a>
+          </div>
+        {% endcomment %}
       </div>
     {% endif %}
     <div id="sf-slider-{{ section.id }}" class="mw_slide_pd_mob swiper-container">
