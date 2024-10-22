@@ -227,7 +227,7 @@
         "filters_type": "storefront_filters",
         "sidebar": "fixed",
         "sidebar_title": "",
-        "limit_height_widget": false,
+        "limit_height_widget": true,
         "limit_height": 300,
         "paginate_type": "paginate"
       }
