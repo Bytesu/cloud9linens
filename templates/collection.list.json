@@ -11,7 +11,6 @@
   "sections": {
     "ad732c4c-ddbf-44cf-8faf-65804474707a": {
       "type": "breadcrumb_custom",
-      "disabled": true,
       "settings": {
       }
     },
@@ -229,7 +228,7 @@
         "sidebar_title": "Filter",
         "limit_height_widget": true,
         "limit_height": 300,
-        "paginate_type": "paginate"
+        "paginate_type": "infinite"
       }
     },
     "recent-viewed": {
