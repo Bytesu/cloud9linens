@@ -14,7 +14,9 @@
 
 <div class="sub-categories">
   {% render 'categories', term: section.settings.slider_heading %}
-  <div class="view-all">View All</div>
+  {% unless section.settings.slider_heading   == 'Bathlinens' %}
+    <div class="view-all">View All</div>
+  {% endunless %}
 </div>
 <script>
   function subCategories() {

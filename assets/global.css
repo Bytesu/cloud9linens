@@ -48,14 +48,8 @@ section.sf-header.cart-has-items .cart-icon {
 section.header__22.mw___header:not(.stuck) .mw_icon_style.mw_icon_style_search{
   stroke: white;
 }
-section.sf-header.cart-has-items:not(.stuck) .sf__search-mb-icon ,
-section.sf-header.cart-has-items:not(.stuck) .icon-fill-cart path {
-  stroke: #fff;
-}
-section.sf-header.cart-has-items:not(.stuck) .icon-fill-cart path:first-child {
-  fill: #fff;
-  stroke: #fff;
-} 
+
+
 
 .relative {
   position: relative;

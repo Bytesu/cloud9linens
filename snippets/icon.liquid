@@ -239,34 +239,51 @@
   {% when 'mobile-cart' %}
     <img style="width: auto; height: 20px; margin-left: 0px; " src="{{ 'icon-cart12.svg' | asset_url }}">
   {% when 'mob-cart' %}
-    {%- comment -%} <img style="width: auto; height: 20px; margin-left: 0px; " src="{{ 'mob-cart-bag1.svg' | asset_url }}"> {%- endcomment -%}
-
-    {% comment %}
-      <svg class="w-[16px] h-[16px] mw_icon_style mw_icon_style_cart" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-      </svg>
-    {% endcomment %}
-
-    {% comment %} <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      version="1.1"
-      width="256"
-      height="256"
-      viewBox="0 0 256 256"
-      xml:space="preserve"
-      class="mw_icon_style mw_icon_style_cart"
-    >
-      <defs>
-      </defs>
-      <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;" transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)" >
-      	<path d="M 72.692 28.948 c -0.188 -2.03 -1.867 -3.562 -3.906 -3.562 h -6.481 v -8.082 C 62.305 7.763 54.542 0 45 0 S 27.695 7.763 27.695 17.305 v 8.082 h -6.482 c -2.039 0 -3.718 1.531 -3.905 3.562 L 12.08 85.719 c -0.101 1.096 0.266 2.189 1.007 3.002 C 13.829 89.534 14.884 90 15.984 90 h 58.031 c 1.1 0 2.155 -0.466 2.896 -1.278 s 1.109 -1.907 1.009 -3.003 L 72.692 28.948 z M 29.695 17.305 C 29.695 8.866 36.561 2 45 2 c 8.439 0 15.305 6.866 15.305 15.305 v 8.082 H 29.695 V 17.305 z M 75.435 87.374 C 75.066 87.777 74.563 88 74.016 88 H 15.984 c -0.547 0 -1.051 -0.223 -1.419 -0.627 c -0.369 -0.403 -0.544 -0.926 -0.494 -1.471 L 19.3 29.131 c 0.092 -0.995 0.915 -1.745 1.914 -1.745 h 6.482 v 4.741 c -1.83 0.451 -3.195 2.094 -3.195 4.062 c 0 2.313 1.882 4.195 4.195 4.195 c 2.313 0 4.195 -1.882 4.195 -4.195 c 0 -1.967 -1.366 -3.61 -3.195 -4.061 v -4.741 h 30.609 v 4.741 c -1.83 0.451 -3.195 2.094 -3.195 4.062 c 0 2.313 1.882 4.195 4.195 4.195 s 4.195 -1.882 4.195 -4.195 c 0 -1.967 -1.366 -3.61 -3.195 -4.062 v -4.741 h 6.481 c 1 0 1.822 0.75 1.914 1.745 l 5.229 56.771 C 75.979 86.446 75.804 86.97 75.435 87.374 z M 28.695 33.993 c 1.21 0 2.195 0.985 2.195 2.195 s -0.984 2.195 -2.195 2.195 S 26.5 37.399 26.5 36.188 S 27.485 33.993 28.695 33.993 z M 61.305 33.993 c 1.211 0 2.195 0.985 2.195 2.195 s -0.984 2.195 -2.195 2.195 s -2.195 -0.984 -2.195 -2.195 S 60.094 33.993 61.305 33.993 z" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;" transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+    <svg class="icon-fill icon-fill-cart icon-fill" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_735_337)">
+      <path d="M2.88 5.04004L1.44 17.64H16.56L15.12 5.04004H2.88Z" fill="#33465B" stroke="#33465B" stroke-width="0.72" stroke-miterlimit="10" stroke-linecap="round"/>
+      <path d="M12.24 6.83997C12.24 6.39321 12.24 4.40673 12.24 3.95997C12.24 2.17041 10.7896 0.719971 9.00001 0.719971C7.21045 0.719971 5.76001 2.17041 5.76001 3.95997C5.76001 4.40673 5.76001 6.39321 5.76001 6.83997" stroke="#33465B" stroke-width="0.72" stroke-miterlimit="10" stroke-linecap="round"/>
+      <path d="M12.24 7.56C12.6377 7.56 12.96 7.23764 12.96 6.84C12.96 6.44235 12.6377 6.12 12.24 6.12C11.8424 6.12 11.52 6.44235 11.52 6.84C11.52 7.23764 11.8424 7.56 12.24 7.56Z" fill="#33465B"/>
+      <path d="M5.75998 7.56C6.15762 7.56 6.47998 7.23764 6.47998 6.84C6.47998 6.44235 6.15762 6.12 5.75998 6.12C5.36233 6.12 5.03998 6.44235 5.03998 6.84C5.03998 7.23764 5.36233 7.56 5.75998 7.56Z" fill="#33465B"/>
       </g>
-    </svg> {% endcomment %}
-    <svg class="icon-fill icon-fill-cart" enable-background="new 0 0 50 50" height="18px" id="Layer_1" version="1.1" viewBox="0 0 50 50" width="18px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-      <path d="M8,14L4,49h42l-4-35H8z" fill="none" stroke="#33465b" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/><rect fill="none" height="50" width="50"/>
-        <path d="M34,19c0-1.241,0-6.759,0-8  c0-4.971-4.029-9-9-9s-9,4.029-9,9c0,1.241,0,6.759,0,8" fill="none" stroke="#33465b" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2"/>
-          <circle cx="34" cy="19" r="2"/><circle cx="16" cy="19" r="2"/></svg>
+      <defs>
+      <clipPath id="clip0_735_337">
+      <rect width="18" height="18" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+
+    <svg
+      class="icon-fill icon-fill-cart icon-fill icon-fill-cart-revert"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clip-path="url(#clip0_735_344)">
+      <path d="M2.88 5.04004L1.44 17.64H16.56L15.12 5.04004H2.88Z" fill="white" stroke="white" stroke-width="0.72" stroke-miterlimit="10" stroke-linecap="round"/>
+      <path d="M12.24 6.83997C12.24 6.39321 12.24 4.40673 12.24 3.95997C12.24 2.17041 10.7896 0.719971 9.00001 0.719971C7.21045 0.719971 5.76001 2.17041 5.76001 3.95997C5.76001 4.40673 5.76001 6.39321 5.76001 6.83997" stroke="white" stroke-width="0.72" stroke-miterlimit="10" stroke-linecap="round"/>
+      <path d="M12.24 7.56C12.6377 7.56 12.96 7.23764 12.96 6.84C12.96 6.44235 12.6377 6.12 12.24 6.12C11.8424 6.12 11.52 6.44235 11.52 6.84C11.52 7.23764 11.8424 7.56 12.24 7.56Z" fill="white"/>
+      <path d="M5.75998 7.56C6.15762 7.56 6.47998 7.23764 6.47998 6.84C6.47998 6.44235 6.15762 6.12 5.75998 6.12C5.36233 6.12 5.03998 6.44235 5.03998 6.84C5.03998 7.23764 5.36233 7.56 5.75998 7.56Z" fill="white"/>
+      </g>
+      <defs>
+      <clipPath id="clip0_735_344">
+      <rect width="18" height="18" fill="white"/>
+      </clipPath>
+      </defs>
+    </svg>
+    <style>
+      section.header__22.mw___header:not(.stuck) .icon-fill-cart:not(.icon-fill-cart-revert),
+      .icon-fill-cart + .icon-fill-cart.icon-fill-cart-revert {
+        display: none;
+      }
+      html.prevent-scroll, html.prevent-scroll body{
+        overflow: hidden !important;
+      }
+      section.header__22.mw___header:not(.stuck)  .icon-fill-cart + .icon-fill-cart.icon-fill-cart-revert {display:inline;}
+    </style>
+
   {% when 'mob-col-cart' %}
     <svg
       class="{{ class }}"
@@ -286,20 +303,9 @@
     <!-- Add to <img class="ml-2" width="25px" height="25px" src="{{ 'heart_1.svg' | asset_url }}"> -->
     <div class="res-wishlist-icon"></div>
   {% when 'wishlist' %}
-    {% comment %} <svg
-      class="wk-icon__svg mw_icon_style mw_icon_style_heart"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-    </svg> {% endcomment %}
-
-    
-    <svg class="hrt-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512" id="heart"><path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z"></path></svg>
+    <svg class="hrt-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512" id="heart">
+      <path d="M349.6 64c-36.4 0-70.718 16.742-93.6 43.947C233.117 80.742 198.8 64 162.4 64 97.918 64 48 114.221 48 179.095c0 79.516 70.718 143.348 177.836 241.694L256 448l30.164-27.211C393.281 322.442 464 258.61 464 179.095 464 114.221 414.082 64 349.6 64zm-80.764 329.257l-4.219 3.873-8.617 7.773-8.616-7.772-4.214-3.869c-50.418-46.282-93.961-86.254-122.746-121.994C92.467 236.555 80 208.128 80 179.095c0-22.865 8.422-43.931 23.715-59.316C118.957 104.445 139.798 96 162.4 96c26.134 0 51.97 12.167 69.11 32.545L256 157.661l24.489-29.116C297.63 108.167 323.465 96 349.6 96c22.603 0 43.443 8.445 58.686 23.778C423.578 135.164 432 156.229 432 179.095c0 29.033-12.467 57.459-40.422 92.171-28.784 35.74-72.325 75.709-122.742 121.991z"></path>
+    </svg>
 
   {% when 'filter-icon' %}
     <img style="width: auto; height: 16px; transform: rotate(180deg);" src="{{ 'icons8-slider-100.png' | asset_url }}">
@@ -455,19 +461,29 @@
       <svg class="{{ class }} mw_icon_style mw_icon_style_user" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M272 304h-96C78.8 304 0 382.8 0 480c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32C448 382.8 369.2 304 272 304zM48.99 464C56.89 400.9 110.8 352 176 352h96c65.16 0 119.1 48.95 127 112H48.99zM224 256c70.69 0 128-57.31 128-128c0-70.69-57.31-128-128-128S96 57.31 96 128C96 198.7 153.3 256 224 256zM224 48c44.11 0 80 35.89 80 80c0 44.11-35.89 80-80 80S144 172.1 144 128C144 83.89 179.9 48 224 48z"/></svg>
     {%- endcomment -%}
 
-    {% comment %} <svg
-      class="w-[20px] h-[20px] user___svg mw_icon_style mw_icon_style_user"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
-    >
-      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-    </svg> {% endcomment %}
+    {% comment %}
+      <svg
+        class="w-[20px] h-[20px] user___svg mw_icon_style mw_icon_style_user"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+      </svg>
+    {% endcomment %}
 
-    <svg class="svg-icon usr-icon icon-fill" style="width:18px; height:18px;vertical-align: middle;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M843.282963 870.115556c-8.438519-140.515556-104.296296-257.422222-233.908148-297.14963C687.881481 536.272593 742.4 456.533333 742.4 364.088889c0-127.241481-103.158519-230.4-230.4-230.4S281.6 236.847407 281.6 364.088889c0 92.444444 54.518519 172.183704 133.12 208.877037-129.611852 39.727407-225.46963 156.634074-233.908148 297.14963-0.663704 10.903704 7.964444 20.195556 18.962963 20.195556l0 0c9.955556 0 18.299259-7.774815 18.962963-17.73037C227.745185 718.506667 355.65037 596.385185 512 596.385185s284.254815 122.121481 293.357037 276.195556c0.568889 9.955556 8.912593 17.73037 18.962963 17.73037C835.318519 890.311111 843.946667 881.019259 843.282963 870.115556zM319.525926 364.088889c0-106.287407 86.186667-192.474074 192.474074-192.474074s192.474074 86.186667 192.474074 192.474074c0 106.287407-86.186667 192.474074-192.474074 192.474074S319.525926 470.376296 319.525926 364.088889z"  /></svg>
+    <svg
+      class="svg-icon usr-icon icon-fill"
+      style="width:18px; height:18px;vertical-align: middle;overflow: hidden;"
+      viewBox="0 0 1024 1024"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M843.282963 870.115556c-8.438519-140.515556-104.296296-257.422222-233.908148-297.14963C687.881481 536.272593 742.4 456.533333 742.4 364.088889c0-127.241481-103.158519-230.4-230.4-230.4S281.6 236.847407 281.6 364.088889c0 92.444444 54.518519 172.183704 133.12 208.877037-129.611852 39.727407-225.46963 156.634074-233.908148 297.14963-0.663704 10.903704 7.964444 20.195556 18.962963 20.195556l0 0c9.955556 0 18.299259-7.774815 18.962963-17.73037C227.745185 718.506667 355.65037 596.385185 512 596.385185s284.254815 122.121481 293.357037 276.195556c0.568889 9.955556 8.912593 17.73037 18.962963 17.73037C835.318519 890.311111 843.946667 881.019259 843.282963 870.115556zM319.525926 364.088889c0-106.287407 86.186667-192.474074 192.474074-192.474074s192.474074 86.186667 192.474074 192.474074c0 106.287407-86.186667 192.474074-192.474074 192.474074S319.525926 470.376296 319.525926 364.088889z"  />
+    </svg>
 
   {% when 'information-circle' %}
     <svg class="{{ class }}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
