@@ -82,7 +82,7 @@
       ],
       "settings": {
         "price_range": true,
-        "container": "container",
+        "container": "w-full",
         "grid_layout": "grid",
         "grid_columns": "4",
         "pagination_limit": 24,
