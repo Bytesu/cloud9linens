@@ -4458,6 +4458,7 @@ max-width: 91% !important;
 }
 .mob_ftr .sf__footer-block-menu h3{
 font-size:14px !important;
+font-weight: bold;
 font-family: Source Code Pro;
 }
 .mob_ftr .sf__footer-block-menu ul li a{
