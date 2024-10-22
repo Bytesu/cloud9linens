@@ -33,7 +33,7 @@
     "2b61ff89-6fae-40fa-a008-c531702414d5": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "{% render 'menu-header',section:collection %}",
+        "custom_liquid": "{% render 'menu-header-v2',collection:collection %}",
         "custom_class": ""
       }
     },
