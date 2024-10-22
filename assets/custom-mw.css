@@ -3197,9 +3197,7 @@ h2.book_for_call {
     .ftr_payment_mob_hide{
         display: none;
     }
-    .ftr_social_links {
-        padding-top: 10px;
-    }
+   
     .cus_justi_start{
         justify-self: start;
     }
@@ -3652,9 +3650,7 @@ div#toggleButton:first-child h3 {
         object-fit: contain;
     }
    
-    .ftr_social_links {
-        padding-top: 10px;
-    }
+   
    /* .mob_ftr .ftr-mob {
         display: grid !important;
         grid-template-columns: 1fr 1fr 1fr;
