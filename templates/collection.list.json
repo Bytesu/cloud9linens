@@ -1,0 +1,366 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "ad732c4c-ddbf-44cf-8faf-65804474707a": {
+      "type": "breadcrumb_custom",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "custom_breadcurmb_axfdfB": {
+      "type": "Custom_breadcurmb",
+      "settings": {
+        "show_img": true,
+        "show_title": true,
+        "bg-color": ""
+      }
+    },
+    "b32d7dbb-ed25-4f48-8192-74c7877e91a9": {
+      "type": "collection-image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "container": "container-fluid",
+        "background_color": "rgba(0,0,0,0)",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "link": "",
+        "layout": "right",
+        "image_column_size": "6",
+        "hover_effect": true,
+        "title": "",
+        "sub_title": "",
+        "side_text_font_size": 24,
+        "text": "",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_label2": "",
+        "button_link2": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": ""
+      }
+    },
+    "22517e0b-db0b-4700-a592-f6df7dc49f07": {
+      "type": "image-with-text",
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "container": "container",
+        "background_color": "#ffffff",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "img-uper-text": "",
+        "link": "",
+        "layout": "right",
+        "image_column_size": "6",
+        "hover_effect": true,
+        "title": "COTTON",
+        "sub_title": "Curtains | Cotton",
+        "side_text_font_size": 24,
+        "text": "<p>Behind The Sence</p><p>Egyptian Cotton a scarce resource and our dream to meantain due to its roots with Egyptian heritage & cuture</p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_label2": "",
+        "button_link2": "",
+        "button_style": "sf__btn-link",
+        "button_size": "",
+        "custom_class": "paddingtopbottom"
+      }
+    },
+    "collection-header": {
+      "type": "collection-page-header",
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "layout": "inside",
+        "header_height": "small",
+        "text_alignment": "center",
+        "vertical_alignment": "center",
+        "text_color": "dark",
+        "bg_color": "#ffffff",
+        "enable_parallax": false,
+        "upper_title": false,
+        "show_desc": false,
+        "collection_all_desc": ""
+      }
+    },
+    "16389682459bf6175e": {
+      "type": "custom-content",
+      "blocks": {
+        "9b547915-8ae6-451f-a0b5-b81479b3a87c": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"paddingtopbottom\">\n<a class=\"bedlinetext\" href=\"https://cloud9l.myshopify.com/pages/bedlinens\">BedLinens</a> <span style=\"font-weight: 700; \">|</span> <a class=\"bedlinetext\">  Top Sheet Set</a>\n<h3 class=\"topsheetpadding\">TOP SHEET</h3> \n<p class=\"behindthesence\">Behind The Sence</p>\n<p class=\"behindthesence\">Egyptian Cotton a scarce resource and \nour dream to meantain due to its\nroots with Egyptian heritage &amp;\ncuture</p>\n</div>",
+            "width": "33%",
+            "block_custom_class": "paddingtopbottom"
+          }
+        },
+        "163896824549cccad2-1": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "66%",
+            "alignment": "center",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "9b547915-8ae6-451f-a0b5-b81479b3a87c",
+        "163896824549cccad2-1"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": ""
+      }
+    },
+    "163895923291965bd1": {
+      "type": "custom-content",
+      "blocks": {
+        "9bec37b3-eb0a-4f12-b6b8-07ea929cf742": {
+          "type": "html",
+          "settings": {
+            "code": "<h6>Refine Search</h6>\n<hr class=\"hrstyle\">",
+            "width": "100%",
+            "block_custom_class": ""
+          }
+        }
+      },
+      "block_order": [
+        "9bec37b3-eb0a-4f12-b6b8-07ea929cf742"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "left",
+        "container": "container",
+        "background_color": "",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": ""
+      }
+    },
+    "main": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "26ef6509-772d-4c44-bd90-efc089bd9355": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "default",
+            "title": "Product Type",
+            "filtergroup": "Clothing,Decor,Decortaive",
+            "show_label": true,
+            "use_accordion": true,
+            "open_filtergroup": false
+          }
+        },
+        "fa31a837-9c99-4c92-8cfe-0527ffbe7b15": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "default",
+            "title": "Color",
+            "filtergroup": "White, Royal Blue, Beige Developer, Moca Gold, Pistachio Silver,Silver",
+            "show_label": true,
+            "use_accordion": true,
+            "open_filtergroup": false
+          }
+        },
+        "4903963a-90f0-4fe1-be23-ee4f8749e483": {
+          "type": "filter",
+          "settings": {
+            "design_filtergroup": "inrow",
+            "title": "Tags",
+            "filtergroup": "Accessories,\nBags,\nBath Mat,\nBath Robe,\nBathmate,\nBed Protector,\nBeddings,\nBedspread,\nBedspread Set,\nBeige,\nBiege,\nBlack,\nBottom,\nBottom Sheet,\nBottom sheet set,\nBoudoir,\nBoudoir Sham,\nBriefcase,\nBriefcases,\nCali King,\nCalifornia King,\nCamel,\nComforter Sets,\ncomforters,\nComforters set,\ncontemprery,\nCorded Piping,\nCotton,\nCurtains,\nDark Grey,\nDeco,\nDeco Sham,\nDecorative,\nDecortaive,\nDining,\nDining Set,\nDouble stitch,\nDuvet Cover,\nDuvet Cover Set,\nDuvet covers,\nEssentials,\nEthic,\nEuro Sham,\nFace Towel,\nFany Packs,\nFoam,\nFor 2 to 4 guests,\nFor 6 to 8 guests,\nFor 8 to 10 guests,\nFull Double,\nGrey,\nHand Crafted,\nHand Towel,\nHandwoven,\nHard,\nHeritage,\nHybrid,\nJacquard,\nJaquard,\nKing,\nKing Sham,\nLarge,\nLavish,\nLight,\nLight Blue,\nLight Grey,\nLight Yellow,\nLinen,\nLounge,\nLux,\nMac 13,\nMac 15,\nMac Biefcases,\nMac Briefcases,\nMattresses,\nMedical,\nMedium,\nMoca Gold,\nModern,\nMore,\nNapkins,\nNatural,\nOlive,\nOne Size,\npants,\nPillow & Shams,\nPillow Case,\npillow-case-&-euro-shams,\nPillows,\nPistachio Silver,\nPj Set,\nPlacemats,\nPlates,\nPool Towel,\nPrinted,\nPrints,\nProtectors,\nQueen,\nQueen Sham,\nQuilt Set,\nRegular,\nRobes,\nRoyal Blue,\nSandals,\nSandels,\nSham,\nShams,\nSheet Set,\nSheets,\nShorts,\nShower Towel,\nSilk & Cotton Plain,\nSilver,\nSingle,\nSmall,\nStandard,\nStandard King,\nSummer Light,\nTablecloths,\nTerrys,\nTop,\nTop Sheet,\nTopper,\nToppers,\nTotes,\nTowel Set,\nTreated Silky,\nView all,\nViscose,\nWaterproof,\nWhite,\nWinter Heavy,\nXLarge,\nXs,\nXSmall,\nYarn Dyed,",
+            "show_label": true,
+            "use_accordion": true,
+            "open_filtergroup": true
+          }
+        }
+      },
+      "block_order": [
+        "26ef6509-772d-4c44-bd90-efc089bd9355",
+        "fa31a837-9c99-4c92-8cfe-0527ffbe7b15",
+        "4903963a-90f0-4fe1-be23-ee4f8749e483"
+      ],
+      "settings": {
+        "price_range": true,
+        "container": "container",
+        "grid_layout": "grid",
+        "grid_columns": "4",
+        "pagination_limit": 24,
+        "show_columns_switcher": true,
+        "show_sorting": true,
+        "show_filter": true,
+        "filters_type": "storefront_filters",
+        "sidebar": "fixed",
+        "sidebar_title": "Filter",
+        "limit_height_widget": true,
+        "limit_height": 300,
+        "paginate_type": "paginate"
+      }
+    },
+    "recent-viewed": {
+      "type": "recent-viewed-products",
+      "disabled": true,
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    },
+    "03258037-defc-4572-9182-7b476575c8a5": {
+      "type": "custom_description",
+      "settings": {
+      }
+    },
+    "1638959345618cb666": {
+      "type": "custom-content",
+      "blocks": {
+        "57006bb3-9381-4ec0-906f-ee5f0c37c794": {
+          "type": "html",
+          "settings": {
+            "code": "<center><h4>EGYPTIAN GOLD</h4></center>",
+            "width": "33%",
+            "block_custom_class": "marginincollection1"
+          }
+        },
+        "4f694048-12aa-42bc-b5d9-92b1dbb33dc0": {
+          "type": "html",
+          "settings": {
+            "code": "<p style=\"font-size: 18px;\">We<span style=\"font-style: italic\"> Deserve the little things -</span> Your do not need all the things you think you need - to do all \nthe things you feel called to do. You have all you need right now. right here - now go\nmake life beautiful for all you care for</p>",
+            "width": "66%",
+            "block_custom_class": "marginincollection2"
+          }
+        }
+      },
+      "block_order": [
+        "57006bb3-9381-4ec0-906f-ee5f0c37c794",
+        "4f694048-12aa-42bc-b5d9-92b1dbb33dc0"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "subheading": "",
+        "description": "",
+        "column_size": 50,
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "#646464",
+        "gap": 30,
+        "wd_container": true,
+        "custom_padding_bottom": 16,
+        "use_scroll_mobile": false,
+        "gap_mobile": 16,
+        "custom_class": "lastsection"
+      }
+    },
+    "2b0d7a5e-17a4-44d9-9410-a3acc7288de6": {
+      "type": "recent-viewed-products",
+      "disabled": true,
+      "custom_css": [
+
+      ],
+      "settings": {
+        "heading": "Recently Viewed Products",
+        "container": "container",
+        "columns": 4,
+        "column_gap": 30,
+        "enable_slider": true
+      }
+    },
+    "eee998b2-d8e1-4d64-80e1-9c3a3024c684": {
+      "type": "Custom_breadcurmb",
+      "disabled": true,
+      "settings": {
+        "show_img": false,
+        "show_title": false,
+        "bg-color": "#f2f2f2"
+      }
+    },
+    "68fe09bc-41a8-4c41-a430-f78296fa4299": {
+      "type": "breadcrumb_custom",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "b31346ff-a816-4013-93e0-4319cf95ac7d": {
+      "type": "Custom_breadcurmb",
+      "custom_css": [
+        ".mw_breadcurmb_main {padding-top: 0;}"
+      ],
+      "settings": {
+        "show_img": false,
+        "show_title": false,
+        "bg-color": "#e5e5e5"
+      }
+    },
+    "2b61ff89-6fae-40fa-a008-c531702414d5": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.transparent-on-top img.inline-block.lazyautosizes.lazyloaded, .transparent-on-top img.inline-block.lazyautosizes.ls-is-cached.lazyloaded {\n    filter: unset;\n}\n.header__22 .transparent-on-top header .sf-menu-logo-bar ul.sf-nav li a {\n    color: #041e3a;\n}\n.header__22 .icon-fill{\n    fill: #000;\n  }\n.cus-col-container .sf__collection-container.block.mt-0.md\\:mt-2\\.5.lg\\:mb-15.lg\\:pt-7.sidebar__collapse {\n    padding-top: 6rem;\n}\n.mw_breadcurmb_main {\n    padding-top: 60px;\n}\n.header__22:not(.stuck) .icon-fill-cart {\n    filter: unset;\n}\n.header__22:not(.stuck) .icon-fill-serch {\n    stroke: #000;\n}\n.cus-hdr .mobile____menu, .mob-logo-container img {\n    filter: unset;\n}\n.text-left {\n    padding: 0px;\n}\n.cus_collet_desc h3 {\n    font-size: 24px;\n    font-weight: 400;\n}\n.cus_collet_desc p {\n    font-size: 14px;\n    padding-top: 20px;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size: 24px;\n    font-weight: 400;\n}\n</style>",
+        "custom_class": ""
+      }
+    },
+    "53a19c5d-2efa-4e05-80b8-463f4ed6e80b": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n@media only screen and (max-width: 767px) {\n.cus_collet_title {\n    text-align: center;\n    font-size: 14px;\n    padding: 0;\n}\n.connected__products__inner h2, .recently-viewed h2 {\n    font-size: 14px;\n    font-weight: 400;\n}\n.cus_collet_desc h3 {\n    font-size: 14px;\n    font-weight: 400;\n}\n.cus_collet_desc p {\n    font-size: 12px;\n    padding-top: 20px;\n}\n.cus-col-container .sf__collection-container.block.mt-0.md\\:mt-2\\.5.lg\\:mb-15.lg\\:pt-7.sidebar__collapse {\n    padding-top: 5rem;\n}\n}\n</style>",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "ad732c4c-ddbf-44cf-8faf-65804474707a",
+    "custom_breadcurmb_axfdfB",
+    "b32d7dbb-ed25-4f48-8192-74c7877e91a9",
+    "22517e0b-db0b-4700-a592-f6df7dc49f07",
+    "collection-header",
+    "16389682459bf6175e",
+    "163895923291965bd1",
+    "main",
+    "recent-viewed",
+    "03258037-defc-4572-9182-7b476575c8a5",
+    "1638959345618cb666",
+    "2b0d7a5e-17a4-44d9-9410-a3acc7288de6",
+    "eee998b2-d8e1-4d64-80e1-9c3a3024c684",
+    "68fe09bc-41a8-4c41-a430-f78296fa4299",
+    "b31346ff-a816-4013-93e0-4319cf95ac7d",
+    "2b61ff89-6fae-40fa-a008-c531702414d5",
+    "53a19c5d-2efa-4e05-80b8-463f4ed6e80b"
+  ]
+}
