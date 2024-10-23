@@ -198,7 +198,7 @@
             "settings": {
               "heading": "SALE",
               "container": "inherit",
-              "html": "",
+              "html": "<div></div>",
               "html_liquid": "<div class=\"cus_sale_sec\">\n    <div class=\"cus_sale_rowed flex\">\n      <div class=\"sale_first_col\">\n        <!-- <h5 class=\"sale-submenu-heading\" style=\"font-weight: 500\">SALE</h5> -->\n    SALE   <hr> \n    <div class=\"wrap-per\">\n      <ul class=\"sale_unorder\">\n {% render 'categories',term:'Sale',pc:true %}\n        </ul>\n        <div class=\"side-img\">\n          <div class=\"rlc-block rlc-lazyLoad rlc-tile rlc-tile2 rlc-wasviewed rlc-imgLoaded\">\n              <div class=\"rlc-imagery\">\n                  <div class=\"rlc-imagery\" style=\"background-image: url('https://cdn.shopify.com/s/files/1/0602/8673/0497/files/Sale-By-Cloud9linens_0de74ff4-9366-4864-9eee-05f2b3e8e998.jpg?v=1719912506');\">\n                    <div class=\"posit-abso\">\n                      <p>new</p>\n                      <h2>Gifts Boxes &amp; Seasonal\n                    </h2>\n                  </div>\n                  </div>\n              </div>\n          </div>\n      </div>\n      </div>\n    </div>\n      \n    </div>\n</div>"
             }
           },
