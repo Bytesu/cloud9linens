@@ -87,7 +87,7 @@
         "grid_columns": "4",
         "pagination_limit": 24,
         "show_columns_switcher": true,
-        "show_sorting": true,
+        "show_sorting": false,
         "show_filter": true,
         "filters_type": "storefront_filters",
         "sidebar": "fixed",
