@@ -1,54 +1,53 @@
-<div class="flex" style="flex-direction: column; align-items:flex-start;">
+{% unless pc %}<div class="flex" style="flex-direction: column; align-items:flex-start;">{% endunless %}
   {% if term == 'Lounge Wear' %}
-    <a href="/pages/lounge-wear" class="block px-4 py-3 ">Shop All</a>
-    <a href="/collections/pj-sets" class="block px-4 py-3">Lounge wear sets</a>
-    <a href="/collections/tops" class="block px-4 py-3">Long & Short Sleeves Top</a>
-    <a href="/collections/bottoms" class="block px-4 py-3">Shorts & Pants</a>
-    {% comment %} <a href="/collections/sandels" class="block px-4 py-3">Sandels</a> {% endcomment %}
-    <a href="/collections/lounge-robes" class="block px-4 py-3">Lounge Robes</a>
-    <a href="/collections/bags" class="block px-4 py-3">Leather goods</a>
-    <a href="/collections/footwear" class="after-6 block px-4 py-3">Footwear</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Lounge+Wear+Sets" class="block px-4 py-3">Lounge wear sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Long+&+Short+Sleeves+Top" class="block px-4 py-3">Long & Short Sleeves Top</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Shorts+&+Pants" class="block px-4 py-3">Shorts & Pants</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Lounge+Robes" class="block px-4 py-3">Lounge Robes</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Leather+Goods" class="block px-4 py-3">Leather goods</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/lounge-wear?filter.p.m.custom.tags=Footwear" class="after-6 block px-4 py-3">Footwear</a> {% if pc  %}</li>{% endif %}
   {% elsif term == 'Bedlinens' %}
-    <a href="/pages/bedlinens" class="block px-4 py-3 ">Shop All</a>
-    <a href="/collections/bedlinens?filter.p.m.custom.tags=Top+Sheet+Sets" class="block px-4 py-3 ">Top Sheet Sets</a>
-    <a href="/collections/duvet-cover-sets" class="block px-4 py-3 ">Duvet cover set</a>
-    <a href="/collections/bedspread-set" class="block px-4 py-3 ">Bedspread set</a>
-    <a href="/collections/quilt-set-1" class="block px-4 py-3 ">Quilt set</a>
-    <a href="/collections/fitted-sheet-sets" class="block px-4 py-3 ">Fitted sheet set</a>
-    <a href="/collections/pillow-cases" class="after-6 block px-4 py-3 ">Pillow Cases</a>
-    <a href="/collections/euroshams" class="after-6 block px-4 py-3 ">Euro shams</a>
-    <a href="/collections/top-sheets" class="after-6 block px-4 py-3 ">Top sheets</a>
-    <a href="/collections/duvet-covers-1" class="after-6 block px-4 py-3 ">Duvet covers</a>
-    <a href="/collections/bedspread" class="after-6 block px-4 py-3 ">Bedspreads</a>
-    <a href="/collections/quilts" class="after-6 block px-4 py-3 ">Quilts</a>
-    <a href="/collections/fitted-sheets" class="after-6 block px-4 py-3 ">Fitted sheet</a>
-    <a href="/collections/decortaive" class="after-6 block px-4 py-3 ">Decortaive</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/pages/bedlinens" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Top+Sheet+Sets" class="block px-4 py-3 ">Top Sheet Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Duvet+Cover+Sets" class="block px-4 py-3 ">Duvet Cover Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Bedspread+Sets" class="block px-4 py-3 ">Bedspread Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Quilt+Sets" class="block px-4 py-3 ">Quilt Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Fitted+Sheet+Set" class="block px-4 py-3 ">Fitted Sheet Set</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Pillow+Cases" class="after-6 block px-4 py-3 ">Pillow Cases</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Euro+Shams" class="after-6 block px-4 py-3 ">Euro Shams</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Top+Sheets" class="after-6 block px-4 py-3 ">Top Sheets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Duvet+Covers" class="after-6 block px-4 py-3 ">Duvet Covers</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Bedspreads" class="after-6 block px-4 py-3 ">Bedspreads</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Quilts" class="after-6 block px-4 py-3 ">Quilts</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Fitted+Shees" class="after-6 block px-4 py-3 ">Fitted Sheets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedlinens?filter.p.m.custom.tags=Decortaive" class="after-6 block px-4 py-3 ">Decortaive</a> {% if pc  %}</li>{% endif %}
   {% elsif term == 'BATHLINENS' or term == 'Bathlinens' %}
-    <a href="/pages/bathlinens" class="block px-4 py-3 ">Shop All</a>
-    <a href="/collections/towel-set" class="block px-4 py-3 ">Towel set</a>
-    <a href="/collections/towels" class="block px-4 py-3 ">Towels</a>
-    <a href="/collections/bath-robes" class="block px-4 py-3 ">Bath robes</a>
-    <a href="/collections/mats" class="block px-4 py-3 ">Bathmats</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bathlinens" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bathlinens?filter.p.m.custom.tags=Towel+Sets" class="block px-4 py-3 ">Towel Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bathlinens?filter.p.m.custom.tags=Towels" class="block px-4 py-3 ">Towels</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bathlinens?filter.p.m.custom.tags=Bath+Robes" class="block px-4 py-3 ">Bath Robes</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bathlinens?filter.p.m.custom.tags=Bathmats" class="block px-4 py-3 ">Bathmats</a> {% if pc  %}</li>{% endif %}
   {% elsif term == 'Bedroom Essentials' %}
-    <a href="/pages/bedroom-essentials" class="block px-4 py-3 ">Shop All</a>
-    <a href="/collections/comforter-sets" class="block px-4 py-3 ">Comforter sets</a>
-    <a href="/collections/Comforters" class="block px-4 py-3 ">Comforters</a>
-    <a href="/collections/pillows" class="block px-4 py-3 ">Pillows</a>
-    <a href="/collections/shams" class="block px-4 py-3 ">Shams</a>
-    <a href="/collections/toppers" class="block px-4 py-3 ">Toppers</a>
-    <a href="/collections/mattresses" class="after-6 block px-4 py-3 ">Mattresses</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Comforter+Sets" class="block px-4 py-3 ">Comforter Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Comforters" class="block px-4 py-3 ">Comforters</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Pillows" class="block px-4 py-3 ">Pillows</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Shams" class="block px-4 py-3 ">Shams</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Toppers" class="block px-4 py-3 ">Toppers</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/bedroom-essentials?filter.p.m.custom.tags=Mattresses" class="after-6 block px-4 py-3 ">Mattresses</a> {% if pc  %}</li>{% endif %}
   {% elsif term == 'Home Deco' %}
-    <a href="/pages/home-deco" class="block px-4 py-3 ">Shop All</a>
-    <a href="/collections/tablecloth-sets" class="block px-4 py-3">Dining linens sets</a>
-    <a href="/collections/tablecloths" class="block px-4 py-3">Tablecloth</a>
-    <a href="/collections/place-mats" class="block px-4 py-3">Placemats</a>
-    <a href="/collections/napkins" class="block px-4 py-3">Table Napkins</a>
-    <a href="/collections/plate-sets" class="block px-4 py-3">Plate sets</a>
-    <a href="/collections/curtains" class="after-6 block px-4 py-3">Curtains</a>
-    <a href="/collections/Beds" class="after-6 block px-4 py-3">Beds</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Dining+Linens+Sets" class="block px-4 py-3">Dining Linens Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Tablecloth" class="block px-4 py-3">Tablecloth</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Placemats" class="block px-4 py-3">Placemats</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Table+Napkins" class="block px-4 py-3">Table Napkins</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Plate+Sets" class="block px-4 py-3">Plate Sets</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Curtains" class="after-6 block px-4 py-3">Curtains</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/home-deco?filter.p.m.custom.tags=Beds" class="after-6 block px-4 py-3">Beds</a> {% if pc  %}</li>{% endif %}
   {% elsif term == 'Sale' %}
-    <a href="/pages/sale" class="block px-4 py-3 ">Shop All</a>
-    <a href="https://cloud9linens.com/collections/sales-collection" class="block px-4 py-3">Final sale</a>
-    <a href="https://cloud9linens.com/collections/seasonal-sale-deals" class="block px-4 py-3">Seasonal Sale Deals</a>
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/sale" class="block px-4 py-3 ">Shop All</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/sale?filter.p.m.custom.tags=Final+Sale" class="block px-4 py-3">Final Sale</a> {% if pc  %}</li>{% endif %}
+    {% if pc  %}<li class="hover-underline">{% endif %}<a href="/collections/sale?filter.p.m.custom.tags=Seasonal+Sale+Deals" class="block px-4 py-3">Seasonal Sale Deals</a> {% if pc  %}</li>{% endif %}
   {% endif %}
-</div>
+{% unless pc %}</div>{% endunless %}

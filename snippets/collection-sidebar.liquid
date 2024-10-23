@@ -1,9 +1,9 @@
 {%- assign filters_type = section.settings.filters_type -%}
 {%- assign show_filter = section.settings.show_filter -%}
-{%- assign hide_filters_node = false -%}
+{%- #assign hide_filters_node = false -%}
 {%- if show_filter == false and section.settings.show_sorting -%}
   {%- assign show_filter = true -%}
-  {%- assign hide_filters_node = true -%}
+  {%- #assign hide_filters_node = true -%}
   {%- assign filters_type = 'storefront_filters' -%}
 {%- endif -%}
 

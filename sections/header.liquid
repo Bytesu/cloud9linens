@@ -1,11 +1,6 @@
 {% assign transparent_on_top = false %}
-{% comment %} {% if template.name == 'index' or page.title == 'Contact Us' %}
-  {% assign transparent_on_top = section.settings.transparent_on_top %}
-{% endif %} {% endcomment %}
-
 
   {% assign transparent_on_top = section.settings.transparent_on_top %}
-
 {% style %}
   :root {
     --logo-width-desktop: {{ section.settings.logo_max_width }}px;
