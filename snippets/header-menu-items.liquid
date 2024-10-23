@@ -53,6 +53,7 @@
               {% if block.settings.html != blank %}
                 <div class="menu-item__html text-black">
                   {{ block.settings.html }}
+                  {{ block.settings.html_liquid }}
                 </div>
               {% else %}
                 {%- assign has_mega_item = false -%}

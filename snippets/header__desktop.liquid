@@ -87,30 +87,6 @@
             box_size: 'flex-grow-[2] flex-shrink',
             justify: 'justify-center'
           %}
-
-          {% comment %}
-            Edited by MTS
-
-            <div class="flex flex-1 justify-end items-center">
-            {% if show_language_switcher %}
-            {% render 'language-switcher', box_size: 'hidden xl:block' %}
-            {% endif %}
-            {% if show_currency_switcher %}
-            {% render 'currency-switcher', box_size: 'hidden xl:block' %}
-            {% endif %}
-            {% render 'header-option-item__search', header_settings: section.settings %}
-            {% if show_account_icon %}
-            {% render 'header-option-item__account', display_by: 'icon' %}
-            {% endif %}
-            {% if show_wishlist_icon %}
-            {% render 'header-option-item__wishlist', display_by: 'icon' %}
-            {% endif %}
-            {% if show_compare_icon %}
-            {% render 'header-option-item__compare', display_by: 'icon' %}
-            {% endif %}
-
-            </div>
-          {% endcomment %}
         </div>
       </div>
     {% when 'logo-center__2l' %}
