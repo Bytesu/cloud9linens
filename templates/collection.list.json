@@ -85,7 +85,7 @@
         "container": "w-full",
         "grid_layout": "grid",
         "grid_columns": "4",
-        "pagination_limit": 24,
+        "pagination_limit": 16,
         "show_columns_switcher": true,
         "show_sorting": false,
         "show_filter": true,
@@ -94,7 +94,7 @@
         "sidebar_title": "Filter",
         "limit_height_widget": false,
         "limit_height": 300,
-        "paginate_type": "infinite"
+        "paginate_type": "loadmore"
       }
     },
     "recent-viewed": {
