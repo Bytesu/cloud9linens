@@ -2103,8 +2103,12 @@ class CollectionFiltersForm extends HTMLElement {
 
   onSubmitHandler(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target.closest('form'));
+    let tags = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags')
+    if(tags)formData.append(`filter.p.m.custom.tags`,tags)
     const searchParams = new URLSearchParams(formData).toString();
+
     this.renderPage(searchParams, event);
   }
 
@@ -2129,7 +2133,6 @@ class CollectionFiltersForm extends HTMLElement {
 
   renderPage(searchParams, event, updateURLHash = true) {
     const sections = this.getSections();
-    console.log(this.container);
     this.loading.start();
     sections.forEach(section => {
       const url = `${window.location.pathname}?section_id=${section.section}&${searchParams}`;
@@ -2147,6 +2150,8 @@ class CollectionFiltersForm extends HTMLElement {
 
       this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl, event, callback) : this.renderSectionFromFetch(url, event, callback);
     });
+
+    window.subCategories?.()
     if (updateURLHash) this.updateURLHash(searchParams);
   }
 
