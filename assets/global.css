@@ -596,6 +596,12 @@ t-added-to-cart-slide .p-block.p-title {
   max-width: 70px;
 }
 .font-18{font-size: 18px;;}
+@media (min-width: 767px) {
+
+  .sf__pcard-style-2 .sf__pcard-content {
+    padding: 0 10px;
+  }
+}
 @media (max-width: 767px) {
   .mob-pcard-content .pb-2 {
     padding-left: 0px;
