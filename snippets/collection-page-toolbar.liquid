@@ -25,7 +25,7 @@
             {% render 'icon', name: 'triangle', size: 'extra-small' %}
              &nbsp;
              &nbsp;
-            <span class="uppercase">{{ 'collections.toolbar.show_filter' | t }}</span>
+            <span class="uppercase bold">{{ 'collections.toolbar.show_filter' | t }}</span>
 
             {% comment %}
             MTS
@@ -73,7 +73,7 @@
         </div>
       {% endif %}
       {% if section.settings.show_columns_switcher %}
-        <div class="mob_colect_hide sf__gridColumn-view flex flex-wrap" data-product-in-column="{{ grid_columns_view }}">
+        <div class=" sf__gridColumn-view flex flex-wrap" data-product-in-column="{{ grid_columns_view }}">
           <a
             href="#"
             class="desk-hiiden mob-hidden flex sf__tooltip-item sf__tooltip-top sf__col-one{% if grid_layout == 'list' %} active{% endif %}"

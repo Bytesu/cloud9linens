@@ -534,6 +534,7 @@ t-add-to-cart-slide .p-title {
   display: flex;
   justify-content: space-between !important;
   width: 100% !important;
+  flex-direction: row-reverse;
 }
 
 .added-to-cart svg {

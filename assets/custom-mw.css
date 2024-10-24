@@ -2652,7 +2652,6 @@ collection-filters-form.facets .facets__wrapper.cus_filter_divi {
 @media only screen and (max-width: 992px) {
 
     .cus_filter_selector {
-        justify-content: center;
         padding-top: 20px;
     }
 
