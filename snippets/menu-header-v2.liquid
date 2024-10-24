@@ -35,18 +35,20 @@
 </div>
 <script>
   function subCategories() {
-    let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags');
-    Array.from(document.querySelectorAll('.sub-categories .flex>a')).forEach((item) => {
-      if (item.textContent != 'Shop All') {
+    let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags')?.split(',');
+    let categories = Array.from(document.querySelectorAll('.sub-categories .flex>a'));
+    categories.forEach((item) => {
+        let content = item.textContent.trim()
+      if (content != 'Shop All') {
         item.setAttribute(
           'href',
-          `${window.location.pathname}?filter.p.m.custom.tags=${item.textContent.trim().replaceAll(/\s+/gi, '+')}`
+          `${window.location.pathname}?filter.p.m.custom.tags=${content.replaceAll(/\s+/gi, '+')}`
         );
-        if (selected_item == item.textContent.trim()) {
+        if (selected_item.includes(content)) {
           item.classList.add('active');
         }
       } else {
-        if (!new URLSearchParams(location.search).get('filter.p.m.custom.tags')) item.classList.add('active');
+        if (!selected_item) item.classList.add('active');
       }
       item.addEventListener('click', () => {
         item.classList.add('active');

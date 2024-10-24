@@ -110,6 +110,7 @@
     },
     "03258037-defc-4572-9182-7b476575c8a5": {
       "type": "custom_description",
+      "disabled":true,
       "settings": {
       }
     },

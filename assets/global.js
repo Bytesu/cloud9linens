@@ -1509,7 +1509,6 @@ class AddToCartSlide extends BaseV2 {
         }
         return `<span>${p.options[index].name}: <b>${item}</b></span>`
       }).join('')
-      debugger;
       this.querySelector('.p-price').innerHTML = `<span>${v.compare_at_price ? THelper.moneyFn(100 * v.compare_at_price) : ''}</span> ${THelper.moneyFn(100 * v.price)}`
       if (p.image) {
         this.querySelector('.added-to-cart-img img').setAttribute('src', p.image.src)
