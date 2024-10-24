@@ -2101,7 +2101,7 @@ h2.book_for_call {
 
 #custom_Submit_btn {
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     width: calc(100% - 40px);
     background-color: #041e3a;
     color: #fff;
@@ -4341,15 +4341,13 @@ div#toggleButton:first-child h3 {
     .cus-text {
         display: block;
         text-align: center;
-    }
+}
 
-    .hide-on-mob {
+.hide-on-mob {
         display: none;
     }
 
-    .text-left {
-        padding: 10px;
-    }
+   
 
     .rich-txt-section {
         width: 100%;
