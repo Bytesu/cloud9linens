@@ -290,8 +290,10 @@ class CollectionFilters {
       const sidebarType = sidebar.dataset.type;
 
       if (this.innerWidth < 1280 || sidebarType === 'fixed') {
+        debugger;
         sidebar === null || sidebar === void 0 ? void 0 : sidebar.style.setProperty('--tw-bg-opacity', '0');
-        sidebarContent === null || sidebarContent === void 0 ? void 0 : sidebarContent.style.setProperty('--tw-translate-x', '-100%');
+        sidebarContent === null || sidebarContent === void 0 ? void 0 : sidebarContent.style.setProperty('--tw-translate-x', window.innerWidth<768?
+          '-100%':'100%');
         document.documentElement.classList.remove('prevent-scroll');
         setTimeout(() => {
           sidebar === null || sidebar === void 0 ? void 0 : sidebar.style.setProperty('display', 'none');

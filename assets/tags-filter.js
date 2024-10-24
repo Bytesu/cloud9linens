@@ -277,7 +277,7 @@ class CollectionFilters {
         var _this$accs;
 
         sidebar === null || sidebar === void 0 ? void 0 : sidebar.style.setProperty('--tw-bg-opacity', '0.5');
-        sidebarContent === null || sidebarContent === void 0 ? void 0 : sidebarContent.style.setProperty('--tw-translate-x', '0');
+        sidebarContent === null || sidebarContent === void 0 ? void 0 : sidebarContent.style.setProperty('--tw-translate-x', '100%');
         (_this$accs = this.accs) === null || _this$accs === void 0 ? void 0 : _this$accs.setContentHeight();
       }, 50);
     });

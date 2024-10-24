@@ -126,13 +126,15 @@
                 </div>
                 {% if paginate.pages > 1 %}
                   <div class="sf__collection-paginate text-center mt-10">
+                    <div>1 - {{ paginate.pages }} of {{ paginate.items }} items</div>
+                    <br>
                     {% if paginate_type == 'infinite' or paginate_type == 'loadmore' %}
-                      {% capture loadmore_text %}{{ 'collections.paginate.load_more' | t }}{% endcapture %}
+                      {% comment %} {% capture loadmore_text %}{{ 'collections.paginate.load_more' | t }}{% endcapture %}
                       {% if loadmore_text contains 'translation missing' %}
-                        {% capture loadmore_text %}Load more{% endcapture %}
-                      {% endif %}
+                        {% capture loadmore_text %}Load 16 more{% endcapture %}
+                      {% endif %} {% endcomment %}
                       <button class="sf__btn sf__btn-primary" data-load-more>
-                        <span>{{ loadmore_text }}</span>
+                        <span>Load 16 More</span>
                       </button>
                     {% else %}
                       <hr class="hrstyle2">

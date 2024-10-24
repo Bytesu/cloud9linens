@@ -557,7 +557,14 @@ ul.sf__options-swatch.sf__button-rounded li.active a {
     transition-timing-function: cubic-bezier(.4, 0, .2, 1);
     transition-duration: .15s;
     transition-duration: .3s;
-    width: 405px
+    width: 40vw
+}
+@media (min-width:768px){
+    .sf__collection-container.sidebar__fixed .sf__sidebar .sf__sidebar-content{
+        margin-left: auto;
+        display: block;
+        --tw-translate-x: 100%;
+    }
 }
 
 .sf__collection-container.sidebar__fixed .sf__sidebar .sf__sidebar-content .sf__sidebar-wrapper {

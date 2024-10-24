@@ -2100,6 +2100,9 @@ h2.book_for_call {
 }
 
 #custom_Submit_btn {
+    position: fixed;
+    bottom: 10px;
+    width: calc(100% - 40px);
     background-color: #041e3a;
     color: #fff;
     font-size: 13px;
