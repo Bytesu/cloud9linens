@@ -396,6 +396,7 @@ class FacetRemove extends HTMLElement {
       event.preventDefault();
       const form = this.closest('collection-filters-form') || document.querySelector('collection-filters-form');
       form.onActiveFilterClick(event);
+      
     });
   }
 
@@ -2228,6 +2229,8 @@ class CollectionFiltersForm extends HTMLElement {
     history.pushState({
       searchParams
     }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
+
+    window.subCategories?.()
   }
 
   getSections() {

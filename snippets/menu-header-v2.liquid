@@ -23,7 +23,7 @@
 </div>
 
 <div class="sub-categories">
-  {% render 'categories', term: collection.title %}
+  {% render 'categories', term: collection.title,view_all:true %}
   {% unless collection.title == 'Bathlinens' %}
     {% comment %} <div class="view-all">View All</div> {% endcomment %}
   {% endunless %}
@@ -34,7 +34,7 @@
   {% endcomment %}
 </div>
 <script>
-  function subCategories() {
+   window.subCategories = function(setListener=false) {
     let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags')?.split(',');
     let categories = Array.from(document.querySelectorAll('.sub-categories .flex>a'));
     categories.forEach((item) => {
@@ -44,17 +44,19 @@
         item.setAttribute('href',`${window.location.pathname}?filter.p.m.custom.tags=${content_}`        );
         if (selected_item.includes(content)) {
           item.classList.add('active');
+        }else{
+          item.classList.remove('active');
         }
       } else {
         if (!selected_item) item.classList.add('active');
       }
-      item.addEventListener('click', () => {
+      if(setListener)item.addEventListener('click', () => {
         item.classList.add('active');
       });
     });
 
     let vaEl = document.querySelector('.sub-categories .view-all');
-    if (vaEl) {
+    if (vaEl&&setListener) {
       vaEl.addEventListener('click', () => {
         if (vaEl.closest('.sub-categories').classList.contains('active')) {
           vaEl.closest('.sub-categories').classList.remove('active');
@@ -64,9 +66,14 @@
       });
     }
   }
-  subCategories();
+  window.subCategories(true);
+  
 </script>
 <style>
+  .facets__summary.sf__accordion-button.text-lg.cus_toggleButton {
+    border-bottom: 0.5px solid #b4bbc4;
+    padding: 0 0 10px;
+}
     .facets__summary.sf__accordion-button.cus_toggleButton,
   .collection .facets__price label {
       font-size: 14px;
@@ -127,6 +134,8 @@
 
     .sub-categories > div a:hover {
     }
+    #sf-filter-by-items .filtered-item a,
+    .view-all{font-size: 0.8125rem;}
     .sub-categories > div a {
       padding: 0;
       border: 1px solid #041e3a;
@@ -145,6 +154,11 @@
       font-size: 14px;
     }
     @media (max-width: 768px) {
+      .sf__gridColumn-view>a {
+        width: 26px;
+        height: 26px;
+        padding: 0;
+      }
       .cus_side_mg {
         margin: 0 0px !important;
       }

@@ -15,7 +15,7 @@
 .bolded {
   font-weight: 900;
 }
-.bold{font-weight: 500;}
+.bold{font-weight: 600;}
 @media only screen and (min-width: 768px) {
   .index .s_heading {
     font-size: 64px !important;
