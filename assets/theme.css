@@ -271,7 +271,8 @@ p,a, td {
 /* Custom dropdown arrow - start */
 .sf__accordion-item .sf__accordion-button:after {
 /*   background-image: {{ 'dropdown-arrow.svg' | asset_url }} !important; */
-    background-image: url("https://cdn.shopify.com/s/files/1/0611/3781/3724/files/dropdown-arrow.svg?v=1641474198") !important;
+    /* background-image: url("https://cdn.shopify.com/s/files/1/0611/3781/3724/files/dropdown-arrow.svg?v=1641474198") !important; */
+    background-image: url("https://cdn.shopify.com/s/files/1/0602/8673/0497/files/dropdown-arrow.svg?v=1729775781") !important;
 	width: 20px !important;
     background-size: 20px 20px !important;
 }
