@@ -377,7 +377,6 @@ select{
        padding: 0 20px 40px !important;
     }
   	.sf__pcard-content .sf__pcard-price{
-      justify-content: right !important;
       font-size: 12px !important;
       /*font-family: "ITC New Baskerville" !important;*/
       color: #888;

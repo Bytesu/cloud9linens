@@ -598,7 +598,7 @@ t-added-to-cart-slide .p-block.p-title {
 .font-18{font-size: 18px;;}
 @media (max-width: 767px) {
   .mob-pcard-content .pb-2 {
-    padding-left: 10px;
+    padding-left: 0px;
 }
   .res-cart-hidden1 {
     margin-bottom: 10px;

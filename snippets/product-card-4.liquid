@@ -16,7 +16,7 @@
         {% render 'product-card-countdown', product: product %}
       </div>
     </div>
-    <div class="sf__pcard-content text-{{ settings.pcard_alignment }}">
+    <div class="sf__pcard-content 1text-{{ settings.pcard_alignment }}">
       {% render 'product-card-info', product: product, show_vendor: show_vendor, show_title: show_title %}
       {%- if sold_out == false and settings.show_cart_button -%}
         <div class="sf__pcard-action-atc flex justify-center">
