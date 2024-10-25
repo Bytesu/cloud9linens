@@ -39,6 +39,7 @@
     let categories = Array.from(document.querySelectorAll('.sub-categories .flex>a'));
     categories.forEach((item) => {
       let content = item.textContent.trim();
+      console.log('--')
       if (content != 'Shop All') {
         let content_ = Array.from(new Set([...selected_item,content])).map(item=>item.replaceAll(/\s+/gi, '+')).join(',')
         item.setAttribute('href',`${window.location.pathname}?filter.p.m.custom.tags=${content_}`        );
