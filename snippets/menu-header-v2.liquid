@@ -49,7 +49,7 @@
           item.classList.remove('active');
         }
       } else {
-        if (!selected_item) item.classList.add('active');
+        if (!selected_item.length) item.classList.add('active');
       }
       if(setListener)item.addEventListener('click', () => {
         item.classList.add('active');
