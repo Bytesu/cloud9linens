@@ -41,7 +41,7 @@
       let content = item.textContent.trim();
       console.log('--')
       if (content != 'Shop All') {
-        let content_ = Array.from(new Set([...selected_item,content])).map(item=>item.replaceAll(/\s+/gi, '+')).join(',')
+        let content_ = Array.from(new Set([...selected_item,content])).map(item=>encodeURIComponent(item)).join(',')
         item.setAttribute('href',`${window.location.pathname}?filter.p.m.custom.tags=${content_}`        );
         if (selected_item.includes(content)) {
           item.classList.add('active');
