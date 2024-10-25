@@ -153,6 +153,26 @@
     .nav-bread{
       font-size: 14px;
     }
+    @media (max-width: 992px) {
+      .sf__collection-container.sidebar__fixed .sf__sidebar .sf__sidebar-content .sf__sidebar-wrapper {
+        padding-right: 0;
+          padding-left: 0;
+      }
+      
+      .facets__summary.sf__accordion-button.text-lg.cus_toggleButton {
+          padding-left: 1.25rem;
+          padding-right: 2.25rem;
+      }
+      .facets__summary.sf__accordion-button.cus_toggleButton:after,
+      .facets__summary.sf__accordion-button.text-lg.cus_toggleButton:after {
+          padding-left: 50px;
+      }
+      
+      .facets__summary.sf__accordion-button.cus_toggleButton {
+          padding-left: 1.25rem;
+      }
+    
+    }
     @media (max-width: 768px) {
       #sf-filter-by+.collection {
         margin-left: -5vw;
