@@ -4,8 +4,7 @@
 >
   <h1 class="s_heading">
     <div class="nav-bread cus_font_family">
-      {{ collection.title }}
-      <span>/</span>
+      {{ collection.title }}<span>/</span>
     </div>
     {%- for filter in collection.filters -%}
       {%- for value in filter.active_values -%}
@@ -90,6 +89,29 @@
   customElements.define('el-categories', ElCategories);
 </script>
 <style>
+
+.facets__summary,
+price-range,
+.facets__summary.cus_toggleButton,
+li.list-menu__item.facets__item {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+}
+
+input#custom_Submit_btn {
+    margin: 0 1.25rem;
+}
+.wish_shop_btn {
+  transform: scale(0.9);
+}
+.sf__accordion-item .sf__accordion-button:after {
+    right: 15px;
+}
+
+  .sf__sidebar-wrapper {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
     .facets__summary.sf__accordion-button.text-lg.cus_toggleButton {
       border-bottom: 0.5px solid #b4bbc4;
       padding: 0 0 10px;
@@ -111,7 +133,7 @@
         margin: 0 auto;
       }
       .nav-bread span {
-        padding: 0 5px;
+        padding: 0 0px;
       }
       .view-all {
         cursor: pointer;
@@ -171,7 +193,7 @@
         color: white;
       }
       .nav-bread{
-        font-size: 14px;
+        font-size: 0.8125rem;
       }
       .recently-viewed  {
         visibility: visible !important ;
