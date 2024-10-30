@@ -396,7 +396,7 @@ class FacetRemove extends HTMLElement {
       event.preventDefault();
       const form = this.closest('collection-filters-form') || document.querySelector('collection-filters-form');
       form.onActiveFilterClick(event);
-      
+      document.querySelector('el-categories').subCategories?.()
     });
   }
 
@@ -2151,7 +2151,7 @@ class CollectionFiltersForm extends HTMLElement {
       this.filterData.some(filterDataUrl) ? this.renderSectionFromCache(filterDataUrl, event, callback) : this.renderSectionFromFetch(url, event, callback);
     });
 
-    window.subCategories?.()
+    document.querySelector('el-categories')?.subCategories?.()
     if (updateURLHash) this.updateURLHash(searchParams);
   }
 
@@ -2235,7 +2235,7 @@ class CollectionFiltersForm extends HTMLElement {
       searchParams
     }, '', `${window.location.pathname}${searchParams && '?'.concat(searchParams)}`);
 
-    window.subCategories?.()
+    document.querySelector('el-categories')?.subCategories?.()
   }
 
   getSections() {
