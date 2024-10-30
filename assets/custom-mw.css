@@ -2657,9 +2657,7 @@ collection-filters-form.facets .facets__wrapper.cus_filter_divi {
         padding-top: 20px;
     }
 
-    #custom_Submit_btn {
-        display: none;
-    }
+    
 
     .showApplyBtn #custom_Submit_btn {
         display: block;
