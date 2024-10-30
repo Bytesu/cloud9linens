@@ -35,14 +35,14 @@
 </div>
 <script>
    window.subCategories = function(setListener=false) {
-    let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags')?.split(',')??[];
+    let selected_item = new URLSearchParams(window.location.search).get('filter.p.m.custom.multi_tags')?.split(',')??[];
     let categories = Array.from(document.querySelectorAll('.sub-categories .flex>a'));
     categories.forEach((item) => {
       let content = item.textContent.trim();
       console.log('--')
       if (content != 'Shop All') {
         let content_ = Array.from(new Set([...selected_item,content])).map(item=>encodeURIComponent(item)).join(',')
-        item.setAttribute('href',`${window.location.pathname}?filter.p.m.custom.tags=${content_}`        );
+        item.setAttribute('href',`${window.location.pathname}?filter.p.m.custom.multi_tags=${content_}`        );
         if (selected_item.includes(content)) {
           item.classList.add('active');
         }else{

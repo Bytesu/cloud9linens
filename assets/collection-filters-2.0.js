@@ -2105,8 +2105,8 @@ class CollectionFiltersForm extends HTMLElement {
     event.preventDefault();
 
     const formData = new FormData(event.target.closest('form'));
-    let tags = new URLSearchParams(window.location.search).get('filter.p.m.custom.tags')
-    if(tags)formData.append(`filter.p.m.custom.tags`,tags)
+    let tags = new URLSearchParams(window.location.search).get('filter.p.m.custom.multi_tags')
+    if(tags)formData.append(`filter.p.m.custom.multi_tags`,tags)
     const searchParams = new URLSearchParams(formData).toString();
 
     this.renderPage(searchParams, event);
