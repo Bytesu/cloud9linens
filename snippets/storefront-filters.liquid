@@ -14,7 +14,7 @@
 
           {% case filter.type %}
             {% when 'list' %}
-              {% if filter.label != 'Tags' %}
+              {% if filter.label != 'Tags' and filter.label != 'Multi Tags' %}
                 <div
                   class="cus_toggleButton_main sf__accordion-item open disclosure-has-popup facets__disclosure js-filter"
                   data-index="{{ forloop.index }}"
