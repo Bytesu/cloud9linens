@@ -573,6 +573,9 @@ ul.sf__options-swatch.sf__button-rounded li.active a {
 }
 
 @media screen and (max-width:767px) {
+    .sf__accordion-content.overflow-hidden>* {
+        padding: 0 1.25rem;
+    }
     .sf__collection-container.sidebar__fixed .sf__sidebar .sf__sidebar-content {
         width: calc(100% - 40px)
     }
