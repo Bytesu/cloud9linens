@@ -11,6 +11,7 @@
   "sections": {
     "image_with_text_2_dMD4JP": {
       "type": "image-with-text-2",
+      "disabled": true,
       "settings": {
         "sec-hide-show": true,
         "my_custum_btn_setting": true,
@@ -242,7 +243,6 @@
         "slider_item_HtYVnA",
         "4e97d552-cc38-47ce-9f20-876ae7431afe"
       ],
-      "disabled": true,
       "custom_css": [
         "h3 {color: #ffffff;}",
         "h1 {color: #ffffff;}",
@@ -302,7 +302,7 @@
           "settings": {
             "collection": "",
             "title": "",
-            "button_label": "<h2>Beds</h2>",
+            "button_label": "Beds",
             "button_link": "",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -342,6 +342,7 @@
         "f7e983ca-4fdc-4510-b503-e9cfb5954f53",
         "78db5e2c-d4aa-43f1-9310-10c12af17156"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "subheading": "Better Living",
@@ -718,8 +719,7 @@
         "6bececf4-b35e-49ff-ba2d-ca7a1b6ca01f"
       ],
       "disabled": true,
-      "settings": {
-      }
+      "settings": {}
     },
     "e5ce9b5c-773c-4287-aed9-b74536acc258": {
       "type": "slider",
@@ -941,7 +941,6 @@
     },
     "c7cc8177-6d73-422d-9050-ba1a635b9518": {
       "type": "featured-collection",
-      "disabled": true,
       "settings": {
         "heading": "Shop Bedding",
         "subheading": "",
@@ -978,6 +977,7 @@
     },
     "6206a25e-a41d-4ff4-b2a6-9ce5d59a87f2": {
       "type": "image-with-text",
+      "disabled": true,
       "settings": {
         "heading": "",
         "subheading": "",
@@ -1009,6 +1009,7 @@
     },
     "a2f31901-a4b5-4d2f-99e5-2662abaa3e5f": {
       "type": "image-with-text-2",
+      "disabled": true,
       "settings": {
         "sec-hide-show": false,
         "my_custum_btn_setting": true,
