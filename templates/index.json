@@ -1070,11 +1070,11 @@
           "type": "collection_block",
           "settings": {
             "collection": "quilt-sets",
-            "title": "<h3>Quilt Sets</h3>",
+            "title": "Quilt Sets",
             "button_label": "<h3>Eva Quilt Sets</h3>",
             "button_link": "shopify://products/eva-royal-blue-quilt-set",
-            "button_style": "sf__btn-link",
-            "button_size": "",
+            "button_style": "sf__btn-primary",
+            "button_size": "sf__btn-small",
             "item_image": "shopify://shop_images/eva-royal-blue-quilt-beddings_Large_ab67b995-3ecc-44e8-b82c-2af70879c618.jpg"
           }
         },
