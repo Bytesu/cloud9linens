@@ -1070,8 +1070,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "quilt-sets",
-            "title": "Quilt Sets",
-            "button_label": "<h3>Eva Quilt Sets</h3>",
+            "title": "<h4>Quilt Sets</h4>",
+            "button_label": "<h4>Eva Quilt Sets</h4>",
             "button_link": "shopify://products/eva-royal-blue-quilt-set",
             "button_style": "sf__btn-primary",
             "button_size": "sf__btn-small",
