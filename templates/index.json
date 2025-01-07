@@ -1082,8 +1082,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "decorative-items",
-            "title": "Deco Items",
-            "button_label": "<h3>Velvet Green Cushions</h3>",
+            "title": "<h4>Deco Items</h4>",
+            "button_label": "<h4>Velvet Green Cushions</h4>",
             "button_link": "shopify://products/velvet-green-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
