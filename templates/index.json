@@ -1106,8 +1106,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "curtains",
-            "title": "Curtains",
-            "button_label": "<h3>Natural Linen Curtains</h3>",
+            "title": "<h4>Curtains</h4>",
+            "button_label": "<h4>Natural Linen Curtains</h4>",
             "button_link": "shopify://products/linen-curtains",
             "button_style": "sf__btn-link",
             "button_size": "",
@@ -1118,8 +1118,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "leather-goods",
-            "title": "<h3>Leather Goods</h3>",
-            "button_label": "<h3>Brown Leather Duffle</h3>",
+            "title": "<h4>Leather Goods</h4>",
+            "button_label": "<h4>Brown Leather Duffle</h4>",
             "button_link": "shopify://products/brown-leather-totes",
             "button_style": "sf__btn-link",
             "button_size": "",
