@@ -385,10 +385,10 @@
     "7750f642-1e4a-4b6e-980d-adbb9f8a2354": {
       "type": "side-image_with_content",
       "settings": {
-        "heading": "<br>Signature Pieces",
-        "desc": "<h4>Heritage patterns, suiting fabrics, and impeccable craftsmanship recall sartorial traditions</h4>",
+        "heading": "Signature Pieces",
+        "desc": "",
         "btn_label": "",
-        "btn_link": "shopify://collections/all",
+        "btn_link": "shopify://products/sia-silver-duvet-cover-set",
         "img_left": "shopify://shop_images/Tiamo-gold-quilt-beddings_Large-_Large_6f0b9afa-7324-4de2-959c-965f4ac6ab25.jpg",
         "img_right": "shopify://shop_images/sia-silver-bedding-setLarge.jpg",
         "left_right": "left"
