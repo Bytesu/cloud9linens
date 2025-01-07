@@ -1046,8 +1046,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "lounge-wear-sets",
-            "title": "<h3>Women Lounge Wear</h3>",
-            "button_label": "<h3>Zigouille Chaleur Set</h3>",
+            "title": "<h4>Women Lounge Wear</h4>",
+            "button_label": "<h4>Zigouille Chaleur Set</h4>",
             "button_link": "shopify://products/zigouille-chaleur-set",
             "button_style": "sf__btn-primary",
             "button_size": "",
