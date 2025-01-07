@@ -386,8 +386,8 @@
       "type": "side-image_with_content",
       "settings": {
         "heading": "Signature Pieces",
-        "desc": "",
-        "btn_label": "",
+        "desc": "Know more about cloud9linens family @ about us",
+        "btn_label": "\" Timo Quilts \" - \" Sia Duvet sets \"",
         "btn_link": "shopify://products/sia-silver-duvet-cover-set",
         "img_left": "shopify://shop_images/Tiamo-gold-quilt-beddings_Large-_Large_6f0b9afa-7324-4de2-959c-965f4ac6ab25.jpg",
         "img_right": "shopify://shop_images/sia-silver-bedding-setLarge.jpg",
@@ -567,7 +567,7 @@
       "type": "featured-collection",
       "settings": {
         "heading": "Last Sale Call",
-        "subheading": "Up To 30 % Off Selected Items",
+        "subheading": "Selected Items",
         "description": "",
         "font_size": 50,
         "header_alignment": "center",
