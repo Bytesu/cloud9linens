@@ -891,7 +891,7 @@
           "settings": {
             "video": "https://cdn.shopify.com/videos/c/o/v/51c720efc85844a584899d3bb6e8f6f4.mp4",
             "content_in_container": false,
-            "content_position": "center middle",
+            "content_position": "center bottom",
             "text_alignment": "center",
             "text_size": "medium",
             "text_color": "white",
