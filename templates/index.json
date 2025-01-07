@@ -1130,8 +1130,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "",
-            "title": "Towels",
-            "button_label": "<h3>Bespoke & Monogram</h3>",
+            "title": "<h4>Towels</h4>",
+            "button_label": "<h4>Bespoke & Monogram</h4>",
             "button_link": "shopify://products/towels-bespoke-monograming",
             "button_style": "sf__btn-link",
             "button_size": "",
