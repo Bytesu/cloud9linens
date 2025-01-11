@@ -9,37 +9,6 @@
  */
 {
   "sections": {
-    "image_with_text_2_dMD4JP": {
-      "type": "image-with-text-2",
-      "disabled": true,
-      "settings": {
-        "sec-hide-show": true,
-        "my_custum_btn_setting": true,
-        "container": "w-full",
-        "hero_size": "adapt",
-        "show_overlay": true,
-        "image": "shopify://shop_images/0926_hp_c06_img.jpg",
-        "bg_position": "center",
-        "image_link": "",
-        "parallax": false,
-        "content_in_container": false,
-        "content_position": "center middle",
-        "text_alignment": "center",
-        "text_size": "medium",
-        "text_color": "white",
-        "title": "Image with text overlay",
-        "font_size": 24,
-        "subtitle": "",
-        "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.</p>",
-        "para_font_size": 24,
-        "button_label": "Shop now",
-        "button_link": "",
-        "button_style": "sf__btn-primary",
-        "button_size": "",
-        "custom_class": "sec_font_size",
-        "mob_content": true
-      }
-    },
     "1621243260e1af0c20": {
       "type": "slider",
       "blocks": {
@@ -48,7 +17,7 @@
           "settings": {
             "mw_custom_class": "Sakara Designers Pick Collection",
             "background": "shopify://shop_images/Bedspread-greyPry-Set_1.jpg",
-            "mb_background": "shopify://shop_images/Bedspread-greyPry-Set_1.jpg",
+            "mb_background": "shopify://shop_images/sakara-gold-bedspread-zoom-out_Large_a923a2f0-693b-4359-b13e-ac2dadc28394.jpg",
             "image_alignment": "center top",
             "content_in_container": true,
             "content_position": "center bottom",
@@ -1285,7 +1254,6 @@
     }
   },
   "order": [
-    "image_with_text_2_dMD4JP",
     "1621243260e1af0c20",
     "1656309435d37bc728",
     "7750f642-1e4a-4b6e-980d-adbb9f8a2354",
