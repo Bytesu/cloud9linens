@@ -1041,7 +1041,7 @@
           "type": "collection_block",
           "settings": {
             "collection": "quilt-sets",
-            "title": "Quilt Sets",
+            "title": "<h4>Quilt Sets</h4>",
             "button_label": "<h4>Eva Royal Blue Quilt Set</h4>",
             "button_link": "shopify://products/eva-royal-blue-quilt-set",
             "button_style": "sf__btn-primary",
