@@ -82,7 +82,8 @@
           "type": "slider_item",
           "settings": {
             "mw_custom_class": "Bedroom Essentials",
-            "background": "shopify://shop_images/Essentialsbb.jpg",
+            "background": "shopify://shop_images/Capitone-bed-cover-300-threadcounts_2.jpg",
+            "mb_background": "shopify://shop_images/Tiamo-gold-quilt-beddings.jpg",
             "image_alignment": "center middle",
             "content_in_container": false,
             "content_position": "center bottom",
