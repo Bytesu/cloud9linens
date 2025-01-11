@@ -1065,8 +1065,8 @@
           "type": "collection_block",
           "settings": {
             "collection": "decorative-items",
-            "title": "Deco Items",
-            "button_label": "<h4>Printed Cylinder Cushions</h4>",
+            "title": "<h5>Deco Items</h5>",
+            "button_label": "<h5>Printed Cylinder Cushions</h5>",
             "button_link": "shopify://products/printed-cylinder-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
