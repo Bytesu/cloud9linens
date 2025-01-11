@@ -1013,28 +1013,16 @@
     "d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5": {
       "type": "collection-list",
       "blocks": {
-        "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-0": {
+        "collection_block_JJg6Gc": {
           "type": "collection_block",
           "settings": {
-            "collection": "lounge-wear-sets",
-            "title": "<h4>Women Lounge Wear</h4>",
-            "button_label": "<h4>Zigouille Chaleur Set</h4>",
-            "button_link": "shopify://products/zigouille-chaleur-set",
-            "button_style": "sf__btn-primary",
-            "button_size": "",
-            "item_image": "shopify://shop_images/Zigouille_Chaleur_Set_72b249b8-11e1-4847-9547-98550b455621.jpg"
-          }
-        },
-        "4ed15d2e-3daf-4048-9338-c138d29e68c3": {
-          "type": "collection_block",
-          "settings": {
-            "collection": "lounge-wear-sets",
-            "title": "<h4>Women Lounge Wear</h4>",
-            "button_label": "<h4>Lumiere Sia Royal Blue Set</h4>",
-            "button_link": "shopify://products/lumiere-sia-royal-blue-set",
+            "collection": "",
+            "title": "<h4>Towels</h4>",
+            "button_label": "<h4>Bespoke & Monogram</h4>",
+            "button_link": "shopify://products/towels-bespoke-monograming",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/594ff21521870d2bb1e182a1558b46fc_ff311690-fc08-421d-b25b-3a1649e80e1e.jpg"
+            "item_image": "shopify://shop_images/Bespoke-Towels-cloud9linens.jpg"
           }
         },
         "collection_block_LtcdqQ": {
@@ -1049,28 +1037,16 @@
             "item_image": "shopify://shop_images/eva-royal-blue-quilt-beddings_Large_ab7ae9f7-a812-4b24-bb4e-01e6c644073f.jpg"
           }
         },
-        "d0a53be3-e52a-4998-91a5-ea9a4d3a7f80": {
+        "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-0": {
           "type": "collection_block",
           "settings": {
-            "collection": "decorative-items",
-            "title": "<h4>Deco Items</h4>",
-            "button_label": "<h4>Velvet Green Cushions</h4>",
-            "button_link": "shopify://products/velvet-green-cushions",
-            "button_style": "sf__btn-link",
+            "collection": "lounge-wear-sets",
+            "title": "<h4>Women Lounge Wear</h4>",
+            "button_label": "<h4>Zigouille Chaleur Set</h4>",
+            "button_link": "shopify://products/zigouille-chaleur-set",
+            "button_style": "sf__btn-primary",
             "button_size": "",
-            "item_image": "shopify://shop_images/rectangle-velvet-green-cusions-cloud9linens_JPG.jpg"
-          }
-        },
-        "collection_block_BLrRjd": {
-          "type": "collection_block",
-          "settings": {
-            "collection": "decorative-items",
-            "title": "<h4>Deco Items</h4>",
-            "button_label": "<h4>Printed Cylinder Cushions</h4>",
-            "button_link": "shopify://products/printed-cylinder-cushions",
-            "button_style": "sf__btn-link",
-            "button_size": "",
-            "item_image": "shopify://shop_images/printed-celender-pillows-cloud9linens_60e34107-a070-4179-9752-4be6534d09bb.jpg"
+            "item_image": "shopify://shop_images/Zigouille_Chaleur_Set_72b249b8-11e1-4847-9547-98550b455621.jpg"
           }
         },
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-1": {
@@ -1097,28 +1073,53 @@
             "item_image": "shopify://shop_images/DSC8494.jpg"
           }
         },
-        "collection_block_JJg6Gc": {
+        "d0a53be3-e52a-4998-91a5-ea9a4d3a7f80": {
           "type": "collection_block",
           "settings": {
-            "collection": "",
-            "title": "<h4>Towels</h4>",
-            "button_label": "<h4>Bespoke & Monogram</h4>",
-            "button_link": "shopify://products/towels-bespoke-monograming",
+            "collection": "decorative-items",
+            "title": "<h4>Deco Items</h4>",
+            "button_label": "<h4>Velvet Green Cushions</h4>",
+            "button_link": "shopify://products/velvet-green-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/Bespoke-Towels-cloud9linens.jpg"
+            "item_image": "shopify://shop_images/rectangle-velvet-green-cusions-cloud9linens_JPG.jpg"
+          }
+        },
+        "4ed15d2e-3daf-4048-9338-c138d29e68c3": {
+          "type": "collection_block",
+          "disabled": true,
+          "settings": {
+            "collection": "lounge-wear-sets",
+            "title": "<h4>Lounge Robes</h4>",
+            "button_label": "<h4>Linen Robes</h4>",
+            "button_link": "shopify://products/linen-shawl-robes",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify://shop_images/0d1570db-9315-43eb-9cb5-79a7a7ffc7f0_jpg.jpg"
+          }
+        },
+        "collection_block_BLrRjd": {
+          "type": "collection_block",
+          "settings": {
+            "collection": "decorative-items",
+            "title": "<h4>Deco Items</h4>",
+            "button_label": "<h4>Printed Cylinder Cushions</h4>",
+            "button_link": "shopify://products/printed-cylinder-cushions",
+            "button_style": "sf__btn-link",
+            "button_size": "",
+            "item_image": "shopify://shop_images/printed-celender-pillows-cloud9linens_60e34107-a070-4179-9752-4be6534d09bb.jpg"
           }
         }
       },
       "block_order": [
-        "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-0",
-        "4ed15d2e-3daf-4048-9338-c138d29e68c3",
+        "collection_block_JJg6Gc",
         "collection_block_LtcdqQ",
-        "d0a53be3-e52a-4998-91a5-ea9a4d3a7f80",
-        "collection_block_BLrRjd",
+        "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-0",
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-1",
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-2",
-        "collection_block_JJg6Gc"
+        "d0a53be3-e52a-4998-91a5-ea9a4d3a7f80",
+        "4ed15d2e-3daf-4048-9338-c138d29e68c3",
+        "collection_block_BLrRjd"
       ],
       "custom_css": [
         "h1 {color: #ffffff;}",
