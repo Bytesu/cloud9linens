@@ -50,7 +50,7 @@
           "settings": {
             "mw_custom_class": "Eva Designers Pick Collection",
             "background": "shopify://shop_images/Capitone-bed-cover-300-threadcounts_2.jpg",
-            "mb_background": "shopify://shop_images/eva-royal-blue-quilt-beddings_Large_ab7ae9f7-a812-4b24-bb4e-01e6c644073f.jpg",
+            "mb_background": "shopify://shop_images/Quit-set-rb.jpg",
             "image_alignment": "center middle",
             "content_in_container": false,
             "content_position": "center bottom",
@@ -146,6 +146,7 @@
         },
         "slider_item_HtYVnA": {
           "type": "slider_item",
+          "disabled": true,
           "settings": {
             "mw_custom_class": "Bourbon Life",
             "background": "shopify://shop_images/Capitone-bed-cover-300-threadcounts_2.jpg",
