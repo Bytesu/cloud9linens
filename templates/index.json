@@ -1090,7 +1090,7 @@
           "settings": {
             "collection": "leather-goods",
             "title": "Leather Goods",
-            "button_label": "Brown Leather Duffle",
+            "button_label": "<h4>Brown Leather Duffle</h4>",
             "button_link": "shopify://products/brown-leather-totes",
             "button_style": "sf__btn-link",
             "button_size": "",
