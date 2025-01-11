@@ -148,8 +148,8 @@
           "type": "slider_item",
           "settings": {
             "mw_custom_class": "Bourbon Life",
-            "background": "shopify://shop_images/IMG_2501.jpg",
-            "mb_background": "shopify://shop_images/IMG_2501.jpg",
+            "background": "shopify://shop_images/Capitone-bed-cover-300-threadcounts_2.jpg",
+            "mb_background": "shopify://shop_images/Tiamo-gold-quilt-beddings.jpg",
             "image_alignment": "center middle",
             "content_in_container": false,
             "content_position": "center bottom",
@@ -181,6 +181,7 @@
           "type": "video_slide",
           "settings": {
             "video": "https://cdn.shopify.com/videos/c/o/v/45e4866d415648b09c9f9520c41c489a.mov",
+            "mb_background": "shopify://shop_images/Tiamo-gold-quilt-beddings.jpg",
             "content_in_container": true,
             "content_position": "center bottom",
             "text_alignment": "center",
