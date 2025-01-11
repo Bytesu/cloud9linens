@@ -181,7 +181,6 @@
           "type": "video_slide",
           "settings": {
             "video": "https://cdn.shopify.com/videos/c/o/v/2011860b58e947149470252746742292.mov",
-            "mb_background": "shopify://shop_images/Tiamo-gold-quilt-beddings.jpg",
             "content_in_container": true,
             "content_position": "center bottom",
             "text_alignment": "center",
