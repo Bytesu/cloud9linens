@@ -1053,24 +1053,24 @@
           "type": "collection_block",
           "settings": {
             "collection": "decorative-items",
-            "title": "<h4>Deco Items</h4>",
-            "button_label": "<h4>Velvet Green Cushions</h4>",
+            "title": "Deco Items",
+            "button_label": "Velvet Green Cushions",
             "button_link": "shopify://products/velvet-green-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/rectangle-velvet-green-cushions-cloud9linens_JPG.jpg"
+            "item_image": "shopify://shop_images/rectangle-velvet-green-cusions-cloud9linens_JPG.jpg"
           }
         },
         "collection_block_BLrRjd": {
           "type": "collection_block",
           "settings": {
             "collection": "decorative-items",
-            "title": "<h4>Deco Items</h4>",
-            "button_label": "<h4>Printed Cylinder Cushions</h4>",
+            "title": "Deco Items",
+            "button_label": "Printed Cylinder Cushions",
             "button_link": "shopify://products/printed-cylinder-cushions",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/printed-celender-pillows-cloud9linens.jpg"
+            "item_image": "shopify://shop_images/printed-celender-pillows-cloud9linens_60e34107-a070-4179-9752-4be6534d09bb.jpg"
           }
         },
         "template--16620171755777__d87ef05f-90cd-4bb7-a3fd-c56d1080a8e5-166908882302500f5b-1": {
