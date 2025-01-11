@@ -1089,12 +1089,12 @@
           "type": "collection_block",
           "settings": {
             "collection": "leather-goods",
-            "title": "<h4>Leather Goods</h4>",
-            "button_label": "<h4>Brown Leather Duffle</h4>",
+            "title": "Leather Goods",
+            "button_label": "Brown Leather Duffle",
             "button_link": "shopify://products/brown-leather-totes",
             "button_style": "sf__btn-link",
             "button_size": "",
-            "item_image": "shopify://shop_images/Leather-Goods_da711606-c5a1-4742-b28e-557b1111abe4.jpg"
+            "item_image": "shopify://shop_images/DSC8494.jpg"
           }
         },
         "collection_block_JJg6Gc": {
