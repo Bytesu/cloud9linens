@@ -1087,6 +1087,7 @@
         },
         "d0a53be3-e52a-4998-91a5-ea9a4d3a7f80": {
           "type": "collection_block",
+          "disabled": true,
           "settings": {
             "collection": "decorative-items",
             "title": "<h4>Deco Items</h4>",
