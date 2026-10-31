@@ -32,5 +32,15 @@
 {% endfor %}
 >
 
-  {{ |json }}
+  {{ json }}
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ |json }}"
+  to: "{{ json }}"
+  position: 1244..1254
+{% endcomment %}

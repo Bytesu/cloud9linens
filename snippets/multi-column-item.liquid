@@ -15,15 +15,7 @@
           (min-width: 720px) calc(calc(100vw - calc(2 * clamp(18px, 3.3vw, 3.3vw))) / {{ columns }} *
           {{ block.settings.image_width | divided_by: 100.0 }}), calc(100vw - calc(2 * 3.3vw))
         {%- endcapture -%}
-        {%-
-          render 'image' with
-          wrapper_class: "multi-column__grid-item-image",
-          image: block.settings.image,
-          sizes: image_sizes,
-          aspect_ratio: block.settings.aspect_ratio,
-          focal_point: block.settings.focal_point,
-          include_placeholder: true
-        -%}
+        {%- render 'image' with wrapper_class, wrapper_class: "multi-column__grid-item-image", image: block.settings.image, sizes: image_sizes, aspect_ratio: block.settings.aspect_ratio, focal_point: block.settings.focal_point, include_placeholder: true -%}
       </{{ image_wrapper_tag }}>
   
       {%- unless block.settings.small_caption == blank -%}
@@ -45,17 +37,11 @@
           "
         >
           {%- if block.settings.icon != "none" and block.settings.custom_icon_image == blank -%}
-            {%- render 'icon-editorial' with class: "multi-column__grid-item-icon", icon: block.settings.icon -%}
+            {%- render 'icon-editorial' with class, class: "multi-column__grid-item-icon", icon: block.settings.icon -%}
           {%- endif -%}
   
           {%- if block.settings.custom_icon_image != blank -%}
-            {%-
-              render 'image' with
-              wrapper_class: "multi-column__grid-item-icon",
-              image: block.settings.custom_icon_image,
-              sizes_px: block.settings.icon_width,
-              aspect_ratio: "natural",
-            -%}
+            {%- render 'image' with wrapper_class, wrapper_class: "multi-column__grid-item-icon", image: block.settings.custom_icon_image, sizes_px: block.settings.icon_width, aspect_ratio: "natural" -%}
           {%- endif -%}
         </div>
       {%- endif -%}
@@ -87,15 +73,7 @@
             </div>
           {%- endunless -%}
   
-          {%-
-            render 'button-block' with
-            wrapper_class: "multi-column__grid-item-button",
-            link: block.settings.link,
-            label: block.settings.link_text,
-            button_style: block.settings.button_style,
-            is_overlay: true,
-            is_small: true
-          -%}
+          {%- render 'button-block' with wrapper_class, wrapper_class: "multi-column__grid-item-button", link: block.settings.link, label: block.settings.link_text, button_style: block.settings.button_style, is_overlay: true, is_small: true -%}
         </div>
       {%- endunless -%}
   
@@ -104,4 +82,55 @@
       {%- endif -%}
     </div>
   </div>
-  
+  {%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%-
+              render 'image' with
+              wrapper_class: "multi-column__grid-item-image",
+              image: block.settings.image,
+              sizes: image_sizes,
+              aspect_ratio: block.settings.aspect_ratio,
+              focal_point: block.settings.focal_point,
+              include_placeholder: true
+            -%}
+  to: '{%- render ''image'' with wrapper_class, wrapper_class: "multi-column__grid-item-image",
+    image: block.settings.image, sizes: image_sizes, aspect_ratio: block.settings.aspect_ratio,
+    focal_point: block.settings.focal_point, include_placeholder: true -%}'
+  position: 979..1228
+- from: '{%- render ''icon-editorial'' with class: "multi-column__grid-item-icon",
+    icon: block.settings.icon -%}'
+  to: '{%- render ''icon-editorial'' with class, class: "multi-column__grid-item-icon",
+    icon: block.settings.icon -%}'
+  position: 2064..2172
+- from: |-
+    {%-
+                  render 'image' with
+                  wrapper_class: "multi-column__grid-item-icon",
+                  image: block.settings.custom_icon_image,
+                  sizes_px: block.settings.icon_width,
+                  aspect_ratio: "natural",
+                -%}
+  to: '{%- render ''image'' with wrapper_class, wrapper_class: "multi-column__grid-item-icon",
+    image: block.settings.custom_icon_image, sizes_px: block.settings.icon_width,
+    aspect_ratio: "natural" -%}'
+  position: 2275..2466
+- from: |-
+    {%-
+                render 'button-block' with
+                wrapper_class: "multi-column__grid-item-button",
+                link: block.settings.link,
+                label: block.settings.link_text,
+                button_style: block.settings.button_style,
+                is_overlay: true,
+                is_small: true
+              -%}
+  to: '{%- render ''button-block'' with wrapper_class, wrapper_class: "multi-column__grid-item-button",
+    link: block.settings.link, label: block.settings.link_text, button_style: block.settings.button_style,
+    is_overlay: true, is_small: true -%}'
+  position: 3725..3959
+{%- endcomment -%}
